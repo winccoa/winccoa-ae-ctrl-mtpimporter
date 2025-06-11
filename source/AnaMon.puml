@@ -1,0 +1,178 @@
+@startuml
+
+class WQC
+{
+
+}
+
+class OSLevel
+{
+
+}
+
+enum LCFLUnitType
+{
+
+}
+
+class LCFLUnit
+{
+    - int _value
+    + string toString()
+}
+
+class ValueLimit
+{
+    - string _dpeLimit
+    - string _dpeEnabled
+    - string _dpeActive
+    - anytype _limit
+    - bool _invalid
+    - bool _enabled
+    - bool _active
+
+    # ValueLimit(const string &dpeLimit, const string &dpeEnabled, const string &dpeActive)
+    + bool getInvalid()
+    + bool getActive()
+    + bool getEnabled()
+    # void setLimit(const anytype &limit)
+    # anytype getLimit()
+    - void setActive(const string &dpe, const bool &active)
+
+    ..events..
+    + void activeChanged(const bool &active)
+}
+
+class ValueLimitFloat
+{
+    + ValueLimitFloat(const string &dpeLimit, const string &dpeEnabled, const string &dpeActive)
+    + float getLimit()
+    + void setLimit(const float &limit)
+}
+
+class ValueLimitInt
+{
+    + ValueLimitInt(const string &dpeLimit, const string &dpeEnabled, const string &dpeActive)
+    + int getLimit()
+    + void setLimit(const int &limit)
+}
+
+ValueLimit <|-- ValueLimitFloat
+ValueLimit <|-- ValueLimitInt
+
+class MtpViewModelBase {
+    - string _dp
+    - bool _invalid
+
+    # MtpViewModelBase(const string &dp)
+    + bool getInvalid()
+    + string getDp()
+}
+
+class AnaMon
+{
+    - float _value
+    - float _valueScaleMin
+    - float _valueScaleMax
+
+    + AnaMon(const string &dp)
+    + WQC getWQC()
+    + OSLevel getOSLevel()
+    + float getValue()
+    + float getValueScaleMin()
+    + float getValueScaleMax()
+    + LCFLUnit getValueUnit()
+    + ValueLimitFloat getAlertHighLimit()
+    + ValueLimitFloat getWarningHighLimit()
+    + ValueLimitFloat getToleranceHighLimit()
+    + ValueLimitFloat getToleranceLowLimit()
+    + ValueLimitFloat getWarningLowLimit()
+    + ValueLimitFloat getAlertLowLimit()
+
+    ..events..
+    + void valueChanged(const float &value)
+}
+
+MtpViewModelBase <|-- AnaMon
+WQC "1" --* "1" AnaMon : _wqc
+OSLevel "1" --* "1" AnaMon : _osLevel
+LCFLUnit "1" --* "1" AnaMon : _valueUnit
+ValueLimitFloat "1" --* "1" AnaMon : _alertHighLimit
+ValueLimitFloat "1" --* "1" AnaMon : _warningHighLimit
+ValueLimitFloat "1" --* "1" AnaMon : _toleranceHighLimit
+ValueLimitFloat "1" --* "1" AnaMon : _toleranceLowLimit
+ValueLimitFloat "1" --* "1" AnaMon : _warningLowLimit
+ValueLimitFloat "1" --* "1" AnaMon : _alertLowLimit
+
+class MtpViewBase
+{
+    - mapping _shapes
+
+    # MtpViewBase(MtpViewModelBase viewModel, const mapping &shapes)
+    # MtpViewModelBase getViewModel()
+    # shape extractShape(const string &shapeName)
+    # {abstract} void initializeShapes()
+}
+
+MtpViewModelBase "1" --* "1" MtpViewBase : _viewModel
+
+class AnaMonFaceplateHome
+{
+}
+
+class AnaMonFaceplateSettings1
+{
+
+}
+
+class AnaMonFaceplateSettings2
+{
+
+}
+
+class MtpFacePlateAlarmBase
+{
+
+}
+
+MtpViewBase <|-- MtpFacePlateAlarmBase
+
+class AnaMonFaceplateAlarm
+{
+
+}
+
+MtpFacePlateAlarmBase <|-- AnaMonFaceplateAlarm
+
+class MtpFaceplateTrendBase
+{
+
+}
+
+MtpViewBase <|-- MtpFaceplateTrendBase
+
+class AnaMonFaceplateTrend
+{
+
+}
+
+MtpFaceplateTrendBase <|-- AnaMonFaceplateTrend
+
+MtpViewBase <|-- AnaMonFaceplateHome
+AnaMon "1" --* "1" AnaMonFaceplateHome : _viewModel
+MtpViewBase <|-- AnaMonFaceplateSettings1
+AnaMon "1" --* "1" AnaMonFaceplateSettings1 : _viewModel
+MtpViewBase <|-- AnaMonFaceplateSettings2
+AnaMon "1" --* "1" AnaMonFaceplateSettings2 : _viewModel
+AnaMon "1" --* "1" AnaMonFaceplateAlarm : _viewModel
+AnaMon "1" --* "1" AnaMonFaceplateTrend : _viewModel
+
+
+class AnaMonRef 
+{
+
+}
+
+MtpViewBase <|-- AnaMonRef
+AnaMon "1" --* "1" AnaMonRef : _viewModel
+@enduml
