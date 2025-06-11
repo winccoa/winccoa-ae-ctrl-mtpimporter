@@ -1,15 +1,5 @@
 @startuml
 
-class WQC
-{
-
-}
-
-class OSLevel
-{
-
-}
-
 enum LCFLUnitType
 {
 
@@ -130,7 +120,7 @@ class AnaMonFaceplateSettings2
 
 }
 
-class MtpFacePlateAlarmBase
+class MtpFaceplateAlarmBase
 {
 
 }
