@@ -103,6 +103,32 @@ class Monitor
     + void monitorDynamicErrorChanged(const bool &dynamicError)
 }
 
+class Security
+{
+    - bool _permissionEnabled
+    - bool _permit
+    - bool _interlockEnabled
+    - bool _interlock
+    - bool _protectionEnabled
+    - bool _protect
+
+    # Security(const string &dp)
+    + bool getPermissionEnabled()
+    + bool getPermit()
+    + bool getInterlockEnabled()
+    + bool getInterlock()
+    + bool getProtectionEnabled()
+    + bool getProtect()
+    # void setPermit(const bool &permit)
+    # void setInterlock(const bool &interlock)
+    # void setProtect(const bool &protection)
+
+    ..events..
+    + void permitChanged(const bool &permit)
+    + void interlockChanged(const bool &interlock)
+    + void protectChanged(const bool &protect)
+}
+
 class MonAnaDrv
 {
     - bool _safetyposition
@@ -132,12 +158,6 @@ class MonAnaDrv
     - bool _rpmFeedbackSource
     - bool _rpmFeedbackSignal
     - bool _driveSafetyIndicator
-    - bool _permissionEnabled
-    - bool _permit
-    - bool _interlockEnabled
-    - bool _interlock
-    - bool _protectionEnabled
-    - bool _protect
     - bool _resetOperator
     - bool _resetAutomatic
     - float _rpmError
@@ -182,12 +202,6 @@ class MonAnaDrv
     + bool getRpmFeedbackSource()
     + bool getRpmFeedbackSignal()
     + bool getDriveSafetyIndicator()
-    + bool getPermissionEnabled()
-    + bool getPermit()
-    + bool getInterlockEnabled()
-    + bool getInterlock()
-    + bool getProtectionEnabled()
-    + bool getProtect()
     + bool getResetOperator()
     + bool getResetAutomatic()
     + float getRpmError()
@@ -199,9 +213,6 @@ class MonAnaDrv
     + float getRpmAlarmLowLimit()
     + void setReverseFeedbackSignal(const bool &reverseFeedbackSignal)
     + void setForwardFeedbackSignal(const bool &forwardFeedbackSignal)
-    + void setPermit(const bool &permit)
-    + void setProtect(const bool &protect)
-    + void setInterlock(const bool &interlock)
     + void setRpmAlarmHighLimit(const float &rpmAlarmHighLimit)
     + void setRpmAlarmLowLimit(const float &rpmAlarmLowLimit)
 
@@ -215,9 +226,6 @@ class MonAnaDrv
     + void driveSafetyIndicatorChanged(const bool &driveSafetyIndicator)
     + void rpmAlarmHighActiveChanged(const bool &enabled)
     + void rpmAlarmLowActiveChanged(const bool &enabled)
-    + void permitChanged(const bool &permit)
-    + void interlockChanged(const bool &interlock)
-    + void protectChanged(const bool &protect)
     + void safetyPositionActiveChanged(const bool &active)
     + void rpmErrorChanged(const float &error)
 }
@@ -229,4 +237,5 @@ State "1" --* "1" MonAnaDrv : _state
 Monitor "1" --* "1" MonAnaDrv : _monitor
 Source "1" --* "1" MonAnaDrv : _source
 Unit "1" --* "1" MonAnaDrv : _rpmUnit
+Security "1" --* "1" MonAnaDrv : _security
 @enduml

@@ -66,6 +66,32 @@ class Monitor
     + void monitorDynamicErrorChanged(const bool &dynamicError)
 }
 
+class Security
+{
+    - bool _permissionEnabled
+    - bool _permit
+    - bool _interlockEnabled
+    - bool _interlock
+    - bool _protectionEnabled
+    - bool _protect
+
+    # Security(const string &dp)
+    + bool getPermissionEnabled()
+    + bool getPermit()
+    + bool getInterlockEnabled()
+    + bool getInterlock()
+    + bool getProtectionEnabled()
+    + bool getProtect()
+    # void setPermit(const bool &permit)
+    # void setInterlock(const bool &interlock)
+    # void setProtect(const bool &protection)
+
+    ..events..
+    + void permitChanged(const bool &permit)
+    + void interlockChanged(const bool &interlock)
+    + void protectChanged(const bool &protect)
+}
+
 class MonBinVlv
 {
     - bool _safetyposition
@@ -80,12 +106,6 @@ class MonBinVlv
     - bool _closeFeedbackSource
     - bool _openCheckbackSignal
     - bool _closeCheckbackSignal
-    - bool _permissionEnabled
-    - bool _permit
-    - bool _interlockEnabled
-    - bool _interlock
-    - bool _protectionEnabled
-    - bool _protect
     - bool _resetOperator
     - bool _resetAutomatic
     
@@ -105,26 +125,16 @@ class MonBinVlv
     + bool getCloseFeedbackSource()
     + bool getOpenCheckbackSignal()
     + bool getCloseCheckbackSignal()
-    + bool getPermissionEnabled()
-    + bool getPermit()
-    + bool getInterlockEnabled()
-    + bool getInterlock()
-    + bool getProtectionEnabled()
-    + bool getProtect()
     + bool getResetOperator()
     + bool getResetAutomatic()
     + void setOpenCheckbackSignal(const bool &openCheckbackSignal)
     + void setCloseCheckbackSignal(const bool &closeCheckbackSignal)
     + void setValveControl(const bool &valveControl)
-    + void setPermit(const bool &permit)
-    + void setInterlock(const bool &interlock)
-    + void setProtect(const bool &protection)
 
     ..events..
     + void openCheckBackSignalChanged(const bool &openCheckbackSignal)
     + void valveControlChanged(const bool &valveControl)
     + void closeCheckBackSignalChanged(const bool &openCheckbackSignal)
-    + void permitChanged(const bool &permit)
     + void safetyPositionActiveChanged(const bool &safetyPositionActive)
 }
 
@@ -132,4 +142,5 @@ MtpViewModelBase <|-- MonBinVlv
 WQC "1" --* "1" MonBinVlv : _wqc
 OSLevel "1" --* "1" MonBinVlv : _osLevel
 State "1" --* "1" MonBinVlv : _state
+Security "1" --* "1" MonBinVlv : _security
 @enduml

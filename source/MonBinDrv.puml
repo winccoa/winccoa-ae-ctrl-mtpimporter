@@ -66,6 +66,32 @@ class Monitor
     + void monitorDynamicErrorChanged(const bool &dynamicError)
 }
 
+class Security
+{
+    - bool _permissionEnabled
+    - bool _permit
+    - bool _interlockEnabled
+    - bool _interlock
+    - bool _protectionEnabled
+    - bool _protect
+
+    # Security(const string &dp)
+    + bool getPermissionEnabled()
+    + bool getPermit()
+    + bool getInterlockEnabled()
+    + bool getInterlock()
+    + bool getProtectionEnabled()
+    + bool getProtect()
+    # void setPermit(const bool &permit)
+    # void setInterlock(const bool &interlock)
+    # void setProtect(const bool &protection)
+
+    ..events..
+    + void permitChanged(const bool &permit)
+    + void interlockChanged(const bool &interlock)
+    + void protectChanged(const bool &protect)
+}
+
 class MonBinDrv
 {
     - bool _safetyposition
@@ -85,12 +111,6 @@ class MonBinDrv
     - bool _forwardFeedbackSignal
     - bool _reverseFeedbackSignal
     - bool _driveSafetyIndicator
-    - bool _permissionEnabled
-    - bool _permit
-    - bool _interlockEnabled
-    - bool _interlock
-    - bool _protectionEnabled
-    - bool _protect
     - bool _resetOperator
     - bool _resetAutomatic
     
@@ -116,21 +136,12 @@ class MonBinDrv
     + bool getForwardFeedbackSignal()
     + bool getReverseFeedbackSignal()
     + bool getDriveSafetyIndicator()
-    + bool getPermissionEnabled()
-    + bool getPermit()
-    + bool getInterlockEnabled()
-    + bool getInterlock()
-    + bool getProtectionEnabled()
-    + bool getProtect()
     + bool getResetOperator()
     + bool getResetAutomatic()
     + void setReverseFeedbackSignal(const bool &reverseFeedbackSignal)
     + void setForwardFeedbackSignal(const bool &forwardFeedbackSignal)
     + void setForwardControl(const bool &forwardControl)
     + void setReverseControl(const bool &reverseControl)
-    + void setPermit(const bool &permit)
-    + void setInterlock(const bool &interlock)
-    + void setProtect(const bool &protect)
 
     ..events..
     + void forwardControlChanged(const bool &forwardControl)
@@ -138,7 +149,6 @@ class MonBinDrv
     + void forwardFeedbackSignalChanged(const bool &forwardFeedbackSignal)
     + void reverseFeedbackSignalChanged(const bool &reverseFeedbackSignal)
     + void driveSafetyIndicatorChanged(const bool &driveSafetyIndicator)
-    + void permitChanged(const bool &permit)
     + void safetyPositionActiveChanged(const bool &safetyPositionActive)
     + void forwardAutomaticChanged(const bool &forwardAutomatic)
     + void reverseAutomaticChanged(const bool &reverseAutomatic)
@@ -150,4 +160,5 @@ WQC "1" --* "1" MonBinDrv : _wqc
 OSLevel "1" --* "1" MonBinDrv : _osLevel
 State "1" --* "1" MonBinDrv : _state
 Monitor "1" --* "1" MonBinDrv : _monitor
+Security "1" --* "1" MonBinDrv : _security
 @enduml
