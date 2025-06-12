@@ -1,4 +1,4 @@
-@startuml
+@startuml MonAnaDrv
 
 class MtpViewModelBase {
     - string _dp
@@ -38,8 +38,8 @@ class Source
     + bool getInternalOperator()    
     + bool getManualActive()
     + bool getInternalActive()
-    + void setManualActive(const bool &channel)
-    + void setInternalActive(const bool &channel)
+    # void setManualActive(const bool &channel)
+    # void setInternalActive(const bool &channel)
 
     ..events..
     + void manualActiveChanged(const bool &active)
@@ -70,9 +70,9 @@ class State
     + bool getOperatorActive()
     + bool getAutomaticActive()
     + bool getOffActive()
-    + void setOffActive(const bool &offActive)
-    + void setOperatorActive(const bool &operatorActive)
-    + void setAutomaticActive(const bool &automaticActive)
+    # void setOffActive(const bool &offActive)
+    # void setOperatorActive(const bool &operatorActive)
+    # void setAutomaticActive(const bool &automaticActive)
 
     ..events..
     + void offActiveChanged(const bool &active)
@@ -96,7 +96,7 @@ class Monitor
     + bool getMonitorDynamicError()
     + float getMonitorStaticTime()
     + float getMonitorDynamicTime()
-    + void setMonitorEnabled(const bool &monitorEnabled)
+    # void setMonitorEnabled(const bool &monitorEnabled)
 
     ..events..
     + void monitorStaticErrorChanged(const bool &staticError)

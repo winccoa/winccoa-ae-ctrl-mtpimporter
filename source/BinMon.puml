@@ -1,4 +1,4 @@
-@startuml
+@startuml BinMon
 
 class MtpViewModelBase {
     - string _dp

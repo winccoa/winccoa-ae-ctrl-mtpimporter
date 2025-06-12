@@ -1,4 +1,4 @@
-@startuml
+@startuml AnaManInt
 
 class MtpViewModelBase {
     - string _dp
@@ -38,8 +38,8 @@ class Source
     + bool getInternalOperator()    
     + bool getManualActive()
     + bool getInternalActive()
-    + void setManualActive(const bool &channel)
-    + void setInternalActive(const bool &channel)
+    # void setManualActive(const bool &channel)
+    # void setInternalActive(const bool &channel)
 
     ..events..
     + void manualActiveChanged(const bool &active)
