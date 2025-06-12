@@ -134,7 +134,7 @@ class MonBinVlv
     ..events..
     + void openCheckBackSignalChanged(const bool &openCheckbackSignal)
     + void valveControlChanged(const bool &valveControl)
-    + void closeCheckBackSignalChanged(const bool &openCheckbackSignal)
+    + void closeCheckBackSignalChanged(const bool &closeCheckbackSignal)
     + void safetyPositionActiveChanged(const bool &safetyPositionActive)
 }
 
@@ -142,5 +142,6 @@ MtpViewModelBase <|-- MonBinVlv
 WQC "1" --* "1" MonBinVlv : _wqc
 OSLevel "1" --* "1" MonBinVlv : _osLevel
 State "1" --* "1" MonBinVlv : _state
+Monitor "1" --* "1" MonBinVlv : _monitor
 Security "1" --* "1" MonBinVlv : _security
 @enduml
