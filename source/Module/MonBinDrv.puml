@@ -1,0 +1,121 @@
+@startuml MonBinDrv
+
+class MonBinDrv
+{
+    - bool _safetyposition
+    - bool _safetypositionActive
+    - bool _forwardEnabled
+    - bool _reverseEnabled
+    - bool _stopOperator
+    - bool _forwardOperator
+    - bool _reverseOperator
+    - bool _stopAutomatic
+    - bool _forwardAutomatic
+    - bool _reverseAutomatic
+    - bool _forwardControl
+    - bool _reverseControl
+    - bool _reverseFeedbackSource
+    - bool _forwardFeedbackSource
+    - bool _forwardFeedbackSignal
+    - bool _reverseFeedbackSignal
+    - bool _driveSafetyIndicator
+    - bool _resetOperator
+    - bool _resetAutomatic
+    
+    + MonBinDrv(
+        const string &dpeSafetyPosition,
+        const string &dpeSafetyPositionActive,
+        const string &dpeForwardEnabled,
+        const string &dpeReverseEnabled,
+        const string &dpeStopOperator,
+        const string &dpeForwardOperator,
+        const string &dpeReverseOperator,
+        const string &dpeStopAutomatic,
+        const string &dpeForwardAutomatic,
+        const string &dpeReverseAutomatic,
+        const string &dpeForwardControl,
+        const string &dpeReverseControl,
+        const string &dpeReverseFeedbackSource,
+        const string &dpeForwardFeedbackSource,
+        const string &dpeForwardFeedbackSignal,
+        const string &dpeReverseFeedbackSignal,
+        const string &dpeDriveSafetyIndicator,
+        const string &dpeResetOperator,
+        const string &dpeResetAutomatic
+    )
+    + WQC getWQC()
+    + OSLevel getOSLevel()
+    + State getState()
+    + Monitor getMonitor()
+    + bool getSafetyPosition()
+    + bool getSafetyPositionActive()
+    + bool getForwardEnabled()
+    + bool getReverseEnabled()
+    + bool getStopOperator()
+    + bool getForwardOperator()
+    + bool getReverseOperator()
+    + bool getStopAutomatic()
+    + bool getForwardAutomatic()
+    + bool getReverseAutomatic()
+    + bool getForwardControl()
+    + bool getReverseControl()
+    + bool getReverseFeedbackSource()
+    + bool getForwardFeedbackSource()
+    + bool getForwardFeedbackSignal()
+    + bool getReverseFeedbackSignal()
+    + bool getDriveSafetyIndicator()
+    + bool getResetOperator()
+    + bool getResetAutomatic()
+    + void setResetOperator(const bool &resetOperator)
+    + void setReverseOperator(const bool &reverseOperator)
+    + void setForwardOperator(const bool &forwardOperator)
+    + void setStopOperator(const bool &stopOperator)
+    ' DPE: FwdCtrl
+    - void setForwardControlCB(const string &dpe, const bool &forwardControl)
+    ' DPE: RevCtrl
+    - void setReverseControlCB(const string &dpe, const bool &reverseControl)
+    ' DPE: FwdFbk
+    - void setForwardFeedbackSignalCB(const string &dpe, const bool &forwardFeedbackSignal)
+    ' DPE: RevFbk
+    - void setReverseFeedbackSignalCB(const string &dpe, const bool &reverseFeedbackSignal)
+    ' DPE: Trip
+    - void setDriveSafetyIndicatorCB(const string &dpe, const bool &driveSafetyIndicator)
+    ' DPE: SafePosAct
+    - void setSafetyPositionActiveCB(const string &dpe, const bool &safetyPositionActive)
+    ' DPE: SafePos
+    - void setSafetyPositionCB(const string &dpe, const bool &safetyPosition)
+    ' DPE: FwdAut
+    - void setForwardAutomaticCB(const string &dpe, const bool &forwardAutomatic)
+    ' DPE: RevAut
+    - void setReverseAutomaticCB(const string &dpe, const bool &reverseAutomatic)
+    ' DPE: RevAut
+    - void setReverseAutomaticCB(const string &dpe, const bool &reverseAutomatic)
+    ' DPE: StopAut
+    - void setStopAutomaticCB(const string &dpe, const bool &stopAutomatic)
+    ' DPE: ResetAut
+    - void setResetAutomaticCB(const string &dpe, const bool &resetAutomatic)
+
+    ..events..
+    + void forwardControlChanged(const bool &forwardControl)
+    + void reverseControlChanged(const bool &reverseControl)
+    + void forwardFeedbackSignalChanged(const bool &forwardFeedbackSignal)
+    + void reverseFeedbackSignalChanged(const bool &reverseFeedbackSignal)
+    + void driveSafetyIndicatorChanged(const bool &driveSafetyIndicator)
+    + void safetyPositionActiveChanged(const bool &safetyPositionActive)
+    + void safetyPositionChanged(const bool &safetyPosition)
+    + void forwardAutomaticChanged(const bool &forwardAutomatic)
+    + void reverseAutomaticChanged(const bool &reverseAutomatic)
+    + void stopAutomaticChanged(const bool &stopAutomatic)
+    + void resetAutomaticChanged(const bool &resetAutomatic)
+}
+
+MtpViewModelBase <|-- MonBinDrv
+WQC "1" --* "1" MonBinDrv : _wqc
+OSLevel "1" --* "1" MonBinDrv : _osLevel
+' DPE: StateChannel, StateOffAut, StateOpAut, StateAutAut, StateOffOp, StateOpOp, StateAutOp, StateOpAct, StateAutAct, StateOffAct
+State "1" --* "1" MonBinDrv : _state
+'DPE: MonEn, MonSafePos, MonStatErr, MonDynErr, MonStatTi, MonDynTi
+Monitor "1" --* "1" MonBinDrv : _monitor
+'DPE: PermEn, Permit, IntEn, Interlock, ProtEn, Protect
+Security "1" --* "1" MonBinDrv : _security
+@enduml

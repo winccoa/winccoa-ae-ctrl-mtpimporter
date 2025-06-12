@@ -1,0 +1,197 @@
+@startuml MonAnaDrv
+
+class MonAnaDrv
+{
+    - bool _safetyposition
+    - bool _safetypositionActive
+    - bool _forwardEnabled
+    - bool _reverseEnabled
+    - bool _stopOperator
+    - bool _forwardOperator
+    - bool _reverseOperator
+    - bool _stopAutomatic
+    - bool _forwardAutomatic
+    - bool _reverseAutomatic
+    - bool _forwardControl
+    - bool _reverseControl
+    - float _rpmScaleMin
+    - float _rpmScaleMax
+    - float _rpmMin
+    - float _rpmMax
+    - float _rpmManual
+    - float _rpmInternal
+    - float _rpmReadback
+    - float _rpm
+    - bool _reverseFeedbackSource
+    - bool _forwardFeedbackSource
+    - bool _forwardFeedbackSignal
+    - bool _reverseFeedbackSignal
+    - bool _rpmFeedbackSource
+    - bool _rpmFeedbackSignal
+    - bool _driveSafetyIndicator
+    - bool _resetOperator
+    - bool _resetAutomatic
+    - float _rpmError
+    - bool _rpmAlarmHighEnabled
+    - bool _rpmAlarmLowEnabled
+    - bool _rpmAlarmHighActive
+    - bool _rpmAlarmLowActive
+    - float _rpmAlarmHighLimit
+    - float _rpmAlarmLowLimit
+    
+    + MonAnaDrv(
+        const string &dpeSafetyPosition,
+        const string &dpeSafetyPositionActive,
+        const string &dpeForwardEnabled,
+        const string &dpeReverseEnabled,
+        const string &dpeStopOperator,
+        const string &dpeForwardOperator,
+        const string &dpeReverseOperator,
+        const string &dpeStopAutomatic,
+        const string &dpeForwardAutomatic,
+        const string &dpeReverseAutomatic,
+        const string &dpeForwardControl,
+        const string &dpeReverseControl,
+        const string &dpeRpmScaleMin,
+        const string &dpeRpmScaleMax,
+        const string &dpeRpmMin,
+        const string &dpeRpmMax,
+        const string &dpeRpmManual,
+        const string &dpeRpmInternal,
+        const string &dpeRpmReadback,
+        const string &dpeRpm,
+        const string &dpeReverseFeedbackSource,
+        const string &dpeForwardFeedbackSource,
+        const string &dpeForwardFeedbackSignal,
+        const string &dpeReverseFeedbackSignal,
+        const string &dpeRpmFeedbackSource,
+        const string &dpeRpmFeedbackSignal,
+        const string &dpeDriveSafetyIndicator,
+        const string &dpeResetOperator,
+        const string &dpeResetAutomatic,
+        const string &dpeRpmError,
+        const string &dpeRpmAlarmHighEnabled,
+        const string &dpeRpmAlarmLowEnabled,
+        const string &dpeRpmAlarmHighActive,
+        const string &dpeRpmAlarmLowActive,
+        const string &dpeRpmAlarmHighLimit,
+        const string &dpeRpmAlarmLowLimit
+    )
+    + WQC getWQC()
+    + OSLevel getOSLevel()
+    + State getState()
+    + Monitor getMonitor()
+    + Source getSource()
+    + Unit getRpmUnit()
+    + bool getSafetyPosition()
+    + bool getSafetyPositionActive()
+    + bool getForwardEnabled()
+    + bool getReverseEnabled()
+    + bool getStopOperator()
+    + bool getForwardOperator()
+    + bool getReverseOperator()
+    + bool getStopAutomatic()
+    + bool getForwardAutomatic()
+    + bool getReverseAutomatic()
+    + bool getForwardControl()
+    + bool getReverseControl()
+    + float getRpmScaleMin()
+    + float getRpmScaleMax()
+    + float getRpmMin()
+    + float getRpmMax()
+    + float getRpmManual()
+    + float getRpmInternal()
+    + float getRpmReadback()
+    + float getRpm()
+    + bool getReverseFeedbackSource()
+    + bool getForwardFeedbackSource()
+    + bool getForwardFeedbackSignal()
+    + bool getReverseFeedbackSignal()
+    + bool getRpmFeedbackSource()
+    + bool getRpmFeedbackSignal()
+    + bool getDriveSafetyIndicator()
+    + bool getResetOperator()
+    + bool getResetAutomatic()
+    + float getRpmError()
+    + bool getRpmAlarmHighEnabled()
+    + bool getRpmAlarmLowEnabled()
+    + bool getRpmAlarmHighActive()
+    + bool getRpmAlarmLowActive()
+    + float getRpmAlarmHighLimit()
+    + float getRpmAlarmLowLimit()
+    + void setRpmAlarmHighLimit(const float &rpmAlarmHighLimit)
+    + void setRpmAlarmLowLimit(const float &rpmAlarmLowLimit)
+    + void setRpmManual(const float &rpmManual)
+    + void setStopOperator(const bool &stopOperator)
+    + void setForwardOperator(const bool &forwardOperator)
+    + void setReverseOperator(const bool &reverseOperator)
+    + void setResetOperator(const bool &resetOperator)
+    ' DPE: FwdCtrl
+    - void setForwardControlCB(const string &dpe, const bool &forwardControl)
+    ' DPE: RevCtrl
+    - void setReverseControlCB(const string &dpe, const bool &reverseControl)
+    ' DPE: FwdFbk
+    - void setForwardFeedbackSignalCB(const string &dpe, const bool &forwardFeedbackSignal)
+    ' DPE: RevFbk
+    - void setReverseFeedbackSignalCB(const string &dpe, const bool &reverseFeedbackSignal)
+    ' DPE: RpmFbk
+    - void setRpmFeedbackSignalCB(const string &dpe, const bool &rpmFeedbackSignal)
+    ' DPE: Rpm
+    - void setRpmCB(const string &dpe, const float &rpm)
+    ' DPE: Trip
+    - void setDriveSafetyIndicatorCB(const string &dpe, const bool &driveSafetyIndicator)
+    ' DPE: RpmAHAct
+    - void setRpmAlarmHighActiveCB(const string &dpe, const bool &enabled)
+    ' DPE: RpmALAct
+    - void setRpmAlarmLowActiveCB(const string &dpe, const bool &enabled)
+    ' DPE: SafePosAct
+    - void setSafetyPositionActiveCB(const string &dpe, const bool &active)
+    ' DPE: RpmErr
+    - void setRpmErrorCB(const string &dpe, const float &error)
+    ' DPE: StopAut
+    - void setStopAutomaticCB(const string &dpe, const bool &stopAutomatic)
+    ' DPE: FwdAut
+    - void setForwardAutomaticCB(const string &dpe, const bool &forwardAutomatic)
+    ' DPE: RevAut
+    - void setReverseAutomaticCB(const string &dpe, const bool &reverseAutomatic)
+    ' DPE: SafePos
+    - void setSafetyPositionCB(const string &dpe, const bool &safetyPosition)
+    ' DPE: ResetAut
+    - void setResetAutomaticCB(const string &dpe, const bool &resetAutomatic)
+    ' DPE: RpmInt
+    - void setRpmInternalCB(const string &dpe, const float &rpmInternal)
+
+    ..events..
+    + void forwardControlChanged(const bool &forwardControl)
+    + void reverseControlChanged(const bool &reverseControl)
+    + void forwardFeedbackSignalChanged(const bool &forwardFeedbackSignal)
+    + void reverseFeedbackSignalChanged(const bool &reverseFeedbackSignal)
+    + void rpmFeedbackSignalChanged(const bool &rpmFeedbackSignal)
+    + void rpmChanged(const float &rpm)
+    + void rpmInternalChanged(const float &rpmInternal)
+    + void driveSafetyIndicatorChanged(const bool &driveSafetyIndicator)
+    + void rpmAlarmHighActiveChanged(const bool &enabled)
+    + void rpmAlarmLowActiveChanged(const bool &enabled)
+    + void safetyPositionActiveChanged(const bool &active)
+    + void safetyPositionChanged(const bool &safetyPosition)
+    + void rpmErrorChanged(const float &error)
+    + void stopAutomaticChanged(const bool &stopAutomatic)
+    + void forwardAutomaticChanged(const bool &forwardAutomatic)
+    + void reverseAutomaticChanged(const bool &reverseAutomatic)
+    + void resetAutomaticChanged(const bool &resetAutomatic)
+}
+
+MtpViewModelBase <|-- MonAnaDrv
+WQC "1" --* "1" MonAnaDrv : _wqc
+OSLevel "1" --* "1" MonAnaDrv : _osLevel
+' DPE: StateChannel, StateOffAut, StateOpAut, StateAutAut, StateOffOp, StateOpOp, StateAutOp, StateOpAct, StateAutAct, StateOffAct
+MtpState "1" --* "1" MonAnaDrv : _state
+'DPE: MonEn, MonSafePos, MonStatErr, MonDynErr, MonStatTi, MonDynTi
+MtpMonitor "1" --* "1" MonAnaDrv : _monitor
+'DPE: SrcChannel, SrcManAut, SrcIntAut, SrcManOp, SrcIntOp, SrcManAct, SrcIntAct
+MtpSource "1" --* "1" MonAnaDrv : _source
+'DPE: RpmUnit
+MtpUnit "1" --* "1" MonAnaDrv : _rpmUnit
+'DPE: PermEn, Permit, IntEn, Interlock, ProtEn, Protect
+MtpSecurity "1" --* "1" MonAnaDrv : _security
+@enduml

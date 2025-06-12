@@ -1,0 +1,55 @@
+@startuml BinMon
+
+class BinMon
+{
+    - bool _value
+    - string _valueStateFalseText
+    - string _valueStateTrueText
+    - bool _flutterEnabled
+    - float _flutterTime
+    - int _flutterCount
+    - bool _flutterActive
+
+    + BinMon(
+        const string &dpeValue,
+        const string &dpeValueStateTrueText,
+        const string &dpeValueStateFalseText,
+        const string &dpeFlutterEnabled,
+        const string &dpeFlutterTime,
+        const string &dpeFlutterCount,
+        const string &dpeFlutterActive
+    )
+    + WQC getWQC()
+    + OSLevel getOSLevel()
+    + bool getValue()
+    + string getValueStateTrueText()
+    + string getValueStateFalseText()
+    + bool getFlutterEnabled()
+    + float getFlutterTime()
+    + int getFlutterCount()
+    + bool getFlutterActive()
+    + void setFlutterCount(const int &count)
+    + void setFlutterTime(const float &time)
+    ' DPE: V
+    - void setValueCB(const string &dpe, const bool &value)
+    ' DPE: VFlutAct
+    - void setFlutterActiveCB(const string &dpe, const bool &flutterActive)
+    ' DPE: VState0
+    - void setValueStateFalseTextCB(const string &dpe, const string &valueStateFalseText)
+    ' DPE: VState1
+    - void setValueStateTrueTextCB(const string &dpe, const string &valueStateTrueText)
+    ' DPE: VFlutEn
+    - void setFlutterEnabledCB(const string &dpe, const bool &flutterEnabled)
+
+    ..events..
+    + void valueChanged(const bool &value)
+    + void flutterActiveChanged(const bool &flutterActive)
+    + void valueStateFalseTextChanged(const string &valueStateFalseText)
+    + void valueStateTrueTextChanged(const string &valueStateTrueText)
+    + void flutterEnabledChanged(const bool &flutterEnabled)
+}
+
+MtpViewModelBase <|-- BinMon
+WQC "1" --* "1" BinMon : _wqc
+OSLevel "1" --* "1" BinMon : _osLevel
+@enduml

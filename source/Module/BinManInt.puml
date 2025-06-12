@@ -1,0 +1,57 @@
+@startuml BinManInt
+
+class BinManInt
+{
+    - bool _valueOut
+    - string _valueStateFalseText
+    - string _valueStateTrueText
+    - bool _valueManual
+    - bool _valueInternal
+    - bool _valueReadback
+    - bool _valueFeedback
+
+    + BinManInt(
+        const string &dpeValueOut,
+        const string &dpeValueStateTrueText,
+        const string &dpeValueStateFalseText,
+        const string &dpeValueManual,
+        const string &dpeValueInternal,
+        const string &dpeValueReadback,
+        const string &dpeValueFeedback
+    )
+    + WQC getWQC()
+    + OSLevel getOSLevel()
+    + bool getValueOut()
+    + string getValueStateTrueText()
+    + string getValueStateFalseText()
+    + bool getValueManual()
+    + bool getValueInternal()
+    + bool getValueReadback()
+    + bool getValueFeedback()
+    + MtpSource getSource()
+    + void setValueManual(const bool &valueManual)
+    ' DPE: VOut
+    - void setValueOutCB(const string &dpe, const bool &valueOut)
+    ' DPE: VFbk
+    - void setValueFeedbackCB(const string &dpe, const bool &valueFeedback)
+    ' DPE: VInt
+    - void setValueInternalCB(const string &dpe, const bool &valueInternal)
+    ' DPE: VState0
+    - void setValueStateFalseTextCB(const string &dpe, const string &valueStateFalseText)
+    ' DPE: VState1
+    - void setValueStateTrueTextCB(const string &dpe, const string &valueStateTrueText)
+
+    ..events..
+    + void valueOutChanged(const bool &valueOut)
+    + void valueFeedbackChanged(const bool &valueFeedback)
+    + void valueInternalChanged(const bool &valueInternal)
+    + void valueStateFalseTextChanged(const string &valueStateFalseText)
+    + void valueStateTrueTextChanged(const string &valueStateTrueText)
+}
+
+MtpViewModelBase <|-- BinManInt
+WQC "1" --* "1" BinManInt : _wqc
+OSLevel "1" --* "1" BinManInt : _osLevel
+'DPE: SrcChannel, SrcManAut, SrcIntAut, SrcManOp, SrcIntOp, SrcManAct, SrcIntAct
+MtpSource "1" --* "1" BinManInt : _source
+@enduml
