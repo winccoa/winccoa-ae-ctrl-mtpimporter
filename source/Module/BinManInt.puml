@@ -42,8 +42,10 @@ class BinManInt
 }
 
 MtpViewModelBase <|-- BinManInt
+' DPE: WQC
 WQC "1" --* "1" BinManInt : _wqc
+' DPE: OSLevel
 OSLevel "1" --* "1" BinManInt : _osLevel
-'DPE: SrcChannel, SrcManAut, SrcIntAut, SrcManOp, SrcIntOp, SrcManAct, SrcIntAct
+' DPE: SrcChannel, SrcManAut, SrcIntAut, SrcManOp, SrcIntOp, SrcManAct, SrcIntAct
 MtpSource "1" --* "1" BinManInt : _source
 @enduml

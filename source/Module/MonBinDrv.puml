@@ -90,12 +90,14 @@ class MonBinDrv
 }
 
 MtpViewModelBase <|-- MonBinDrv
+' DPE: WQC
 WQC "1" --* "1" MonBinDrv : _wqc
+' DPE: OSLevel
 OSLevel "1" --* "1" MonBinDrv : _osLevel
 ' DPE: StateChannel, StateOffAut, StateOpAut, StateAutAut, StateOffOp, StateOpOp, StateAutOp, StateOpAct, StateAutAct, StateOffAct
 State "1" --* "1" MonBinDrv : _state
-'DPE: MonEn, MonSafePos, MonStatErr, MonDynErr, MonStatTi, MonDynTi
+' DPE: MonEn, MonSafePos, MonStatErr, MonDynErr, MonStatTi, MonDynTi
 Monitor "1" --* "1" MonBinDrv : _monitor
-'DPE: PermEn, Permit, IntEn, Interlock, ProtEn, Protect
+' DPE: PermEn, Permit, IntEn, Interlock, ProtEn, Protect
 Security "1" --* "1" MonBinDrv : _security
 @enduml

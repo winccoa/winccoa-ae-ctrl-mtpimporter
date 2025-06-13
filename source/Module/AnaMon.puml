@@ -27,21 +27,23 @@ class AnaMon
 }
 
 MtpViewModelBase <|-- AnaMon
+' DPE: WQC
 WQC "1" --* "1" AnaMon : _wqc
+' DPE: OSLevel
 OSLevel "1" --* "1" AnaMon : _osLevel
-'DPE: VUnit
+' DPE: VUnit
 MtpUnit "1" --* "1" AnaMon : _valueUnit
-'DPE: VAHLim, VAHEn, VAHAct
+' DPE: VAHLim, VAHEn, VAHAct
 MtpValueLimitFloat "1" --* "1" AnaMon : _alertHighLimit
-'DPE: VWHLim, VWHEn, VWHAct
+' DPE: VWHLim, VWHEn, VWHAct
 MtpValueLimitFloat "1" --* "1" AnaMon : _warningHighLimit
-'DPE: VTHLim, VTHEn, VTHAct
+' DPE: VTHLim, VTHEn, VTHAct
 MtpValueLimitFloat "1" --* "1" AnaMon : _toleranceHighLimit
-'DPE: VTLLim, VTLEn, VTLAct
+' DPE: VTLLim, VTLEn, VTLAct
 MtpValueLimitFloat "1" --* "1" AnaMon : _toleranceLowLimit
-'DPE: VWLLim, VWLEn, VWLAct
+' DPE: VWLLim, VWLEn, VWLAct
 MtpValueLimitFloat "1" --* "1" AnaMon : _warningLowLimit
-'DPE: VALLim, VALEn, VALAct
+' DPE: VALLim, VALEn, VALAct
 MtpValueLimitFloat "1" --* "1" AnaMon : _alertLowLimit
 
 class MtpViewBase

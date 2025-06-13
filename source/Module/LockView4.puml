@@ -28,17 +28,17 @@ class LockView4
 }
 
 MtpViewModelBase <|-- LockView4
-'DPE: WQC
+' DPE: WQC
 WQC "1" --* "1" LockView4 : _wqc
-'DPE: In1En, In1, In1QC, In1Inv, In1Txt
+' DPE: In1En, In1, In1QC, In1Inv, In1Txt
 MtpInput "1" --* "1" LockView4 : _input1
-'DPE: In2En, In2, In2QC, In2Inv, In2Txt
+' DPE: In2En, In2, In2QC, In2Inv, In2Txt
 MtpInput "1" --* "1" LockView4 : _input2
-'DPE: In3En, In3, In3QC, In3Inv, In3Txt
+' DPE: In3En, In3, In3QC, In3Inv, In3Txt
 MtpInput "1" --* "1" LockView4 : _input3
-'DPE: In4En, In4, In4QC, In4Inv, In4Txt
+' DPE: In4En, In4, In4QC, In4Inv, In4Txt
 MtpInput "1" --* "1" LockView4 : _input4
-'DPE: OutQC
+' DPE: OutQC
 QualityCode "1" --* "1" LockView4 : _outputQualityCode
 
 @enduml

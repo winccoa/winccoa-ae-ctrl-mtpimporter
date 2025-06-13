@@ -109,7 +109,9 @@ class PIDCtrl
 }
 
 MtpViewModelBase <|-- PIDCtrl
+' DPE: WQC
 WQC "1" --* "1" PIDCtrl : _wqc
+' DPE: OSLevel
 OSLevel "1" --* "1" PIDCtrl : _osLevel
 ' DPE: StateChannel, StateOffAut, StateOpAut, StateAutAut, StateOffOp, StateOpOp, StateAutOp, StateOpAct, StateAutAct, StateOffAct
 MtpState "1" --* "1" PIDCtrl : _state

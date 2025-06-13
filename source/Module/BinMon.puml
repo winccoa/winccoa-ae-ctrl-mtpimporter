@@ -42,6 +42,8 @@ class BinMon
 }
 
 MtpViewModelBase <|-- BinMon
+' DPE: WQC
 WQC "1" --* "1" BinMon : _wqc
+' DPE: OSLevel
 OSLevel "1" --* "1" BinMon : _osLevel
 @enduml

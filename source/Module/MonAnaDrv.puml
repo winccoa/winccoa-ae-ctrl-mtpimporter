@@ -145,16 +145,18 @@ class MonAnaDrv
 }
 
 MtpViewModelBase <|-- MonAnaDrv
+' DPE: WQC
 WQC "1" --* "1" MonAnaDrv : _wqc
+' DPE: OSLevel
 OSLevel "1" --* "1" MonAnaDrv : _osLevel
 ' DPE: StateChannel, StateOffAut, StateOpAut, StateAutAut, StateOffOp, StateOpOp, StateAutOp, StateOpAct, StateAutAct, StateOffAct
 MtpState "1" --* "1" MonAnaDrv : _state
-'DPE: MonEn, MonSafePos, MonStatErr, MonDynErr, MonStatTi, MonDynTi
+' DPE: MonEn, MonSafePos, MonStatErr, MonDynErr, MonStatTi, MonDynTi
 MtpMonitor "1" --* "1" MonAnaDrv : _monitor
-'DPE: SrcChannel, SrcManAut, SrcIntAut, SrcManOp, SrcIntOp, SrcManAct, SrcIntAct
+' DPE: SrcChannel, SrcManAut, SrcIntAut, SrcManOp, SrcIntOp, SrcManAct, SrcIntAct
 MtpSource "1" --* "1" MonAnaDrv : _source
-'DPE: RpmUnit
+' DPE: RpmUnit
 MtpUnit "1" --* "1" MonAnaDrv : _rpmUnit
-'DPE: PermEn, Permit, IntEn, Interlock, ProtEn, Protect
+' DPE: PermEn, Permit, IntEn, Interlock, ProtEn, Protect
 MtpSecurity "1" --* "1" MonAnaDrv : _security
 @enduml
