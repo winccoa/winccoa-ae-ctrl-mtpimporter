@@ -39,44 +39,7 @@ class MonAnaDrv
     - float _rpmAlarmHighLimit
     - float _rpmAlarmLowLimit
     
-    + MonAnaDrv(
-        const string &dpeSafetyPosition,
-        const string &dpeSafetyPositionActive,
-        const string &dpeForwardEnabled,
-        const string &dpeReverseEnabled,
-        const string &dpeStopOperator,
-        const string &dpeForwardOperator,
-        const string &dpeReverseOperator,
-        const string &dpeStopAutomatic,
-        const string &dpeForwardAutomatic,
-        const string &dpeReverseAutomatic,
-        const string &dpeForwardControl,
-        const string &dpeReverseControl,
-        const string &dpeRpmScaleMin,
-        const string &dpeRpmScaleMax,
-        const string &dpeRpmMin,
-        const string &dpeRpmMax,
-        const string &dpeRpmManual,
-        const string &dpeRpmInternal,
-        const string &dpeRpmReadback,
-        const string &dpeRpm,
-        const string &dpeReverseFeedbackSource,
-        const string &dpeForwardFeedbackSource,
-        const string &dpeForwardFeedbackSignal,
-        const string &dpeReverseFeedbackSignal,
-        const string &dpeRpmFeedbackSource,
-        const string &dpeRpmFeedbackSignal,
-        const string &dpeDriveSafetyIndicator,
-        const string &dpeResetOperator,
-        const string &dpeResetAutomatic,
-        const string &dpeRpmError,
-        const string &dpeRpmAlarmHighEnabled,
-        const string &dpeRpmAlarmLowEnabled,
-        const string &dpeRpmAlarmHighActive,
-        const string &dpeRpmAlarmLowActive,
-        const string &dpeRpmAlarmHighLimit,
-        const string &dpeRpmAlarmLowLimit
-    )
+    + MonAnaDrv(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()
     + State getState()

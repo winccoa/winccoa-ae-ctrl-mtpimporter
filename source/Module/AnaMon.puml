@@ -6,11 +6,7 @@ class AnaMon
     - float _valueScaleMin
     - float _valueScaleMax
 
-    + AnaMon(
-        const string &dpeValue,
-        const string &dpeValueScaleMin,
-        const string &dpeValueScaleMax
-    )
+    + AnaMon(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()
     + float getValue()

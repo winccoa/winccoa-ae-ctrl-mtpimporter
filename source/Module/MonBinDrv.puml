@@ -22,27 +22,7 @@ class MonBinDrv
     - bool _resetOperator
     - bool _resetAutomatic
     
-    + MonBinDrv(
-        const string &dpeSafetyPosition,
-        const string &dpeSafetyPositionActive,
-        const string &dpeForwardEnabled,
-        const string &dpeReverseEnabled,
-        const string &dpeStopOperator,
-        const string &dpeForwardOperator,
-        const string &dpeReverseOperator,
-        const string &dpeStopAutomatic,
-        const string &dpeForwardAutomatic,
-        const string &dpeReverseAutomatic,
-        const string &dpeForwardControl,
-        const string &dpeReverseControl,
-        const string &dpeReverseFeedbackSource,
-        const string &dpeForwardFeedbackSource,
-        const string &dpeForwardFeedbackSignal,
-        const string &dpeReverseFeedbackSignal,
-        const string &dpeDriveSafetyIndicator,
-        const string &dpeResetOperator,
-        const string &dpeResetAutomatic
-    )
+    + MonBinDrv(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()
     + State getState()

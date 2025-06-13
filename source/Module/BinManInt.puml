@@ -10,15 +10,7 @@ class BinManInt
     - bool _valueReadback
     - bool _valueFeedback
 
-    + BinManInt(
-        const string &dpeValueOut,
-        const string &dpeValueStateTrueText,
-        const string &dpeValueStateFalseText,
-        const string &dpeValueManual,
-        const string &dpeValueInternal,
-        const string &dpeValueReadback,
-        const string &dpeValueFeedback
-    )
+    + BinManInt(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()
     + bool getValueOut()

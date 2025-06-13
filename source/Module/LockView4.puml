@@ -5,10 +5,7 @@ class LockView4
     - bool _logic
     - bool _output
 
-    + LockView4(
-        const string &dpeLogic,
-        const string &dpeOutput
-    )
+    + LockView4(const string &dp)
     + bool getLogic()
     + bool getOutput()
     + WQC getWQC()

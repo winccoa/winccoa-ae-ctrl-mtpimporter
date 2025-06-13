@@ -10,15 +10,7 @@ class BinMon
     - int _flutterCount
     - bool _flutterActive
 
-    + BinMon(
-        const string &dpeValue,
-        const string &dpeValueStateTrueText,
-        const string &dpeValueStateFalseText,
-        const string &dpeFlutterEnabled,
-        const string &dpeFlutterTime,
-        const string &dpeFlutterCount,
-        const string &dpeFlutterActive
-    )
+    + BinMon(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()
     + bool getValue()

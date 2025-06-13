@@ -12,17 +12,7 @@ class AnaManInt
     - bool _valueMinExceeded
     - bool _valueMaxExceeded
 
-    + AnaManInt(
-        const string &dpeValueOut,
-        const string &dpeValueScaleMin,
-        const string &dpeValueScaleMax,
-        const string &dpeValueManual,
-        const string &dpeValueInternal,
-        const string &dpeValueReadback,
-        const string &dpeValueFeedback,
-        const string &dpeValueMinExceeded,
-        const string &dpeValueMaxExceeded
-    )
+    + AnaManInt(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()
     + float getValueOut()

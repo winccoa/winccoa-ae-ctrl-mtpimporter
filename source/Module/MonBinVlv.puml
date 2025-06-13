@@ -17,22 +17,7 @@ class MonBinVlv
     - bool _resetOperator
     - bool _resetAutomatic
     
-    + MonBinVlv(
-        const string &dpeSafetyPosition,
-        const string &dpeSafetyPositionActive,
-        const string &dpeSafetyPositionEnabled,
-        const string &dpeOpenOperator,
-        const string &dpeCloseOperator,
-        const string &dpeOpenAutomatic,
-        const string &dpeCloseAutomatic,
-        const string &dpeValveControl,
-        const string &dpeOpenFeedbackSource,
-        const string &dpeCloseFeedbackSource,
-        const string &dpeOpenCheckbackSignal,
-        const string &dpeCloseCheckbackSignal,
-        const string &dpeResetOperator,
-        const string &dpeResetAutomatic
-    )
+    + MonBinVlv(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()
     + State getState()
