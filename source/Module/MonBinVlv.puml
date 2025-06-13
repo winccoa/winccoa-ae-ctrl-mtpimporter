@@ -55,7 +55,7 @@ class MonBinVlv
     + void setResetOperator(const bool &resetOperator)
     ' DPE: OpenFbk
     - void setOpenCheckbackSignalCB(const string &dpe, const bool &openCheckbackSignal)
-   ' DPE: CloseFbk
+    ' DPE: CloseFbk
     - void setCloseCheckbackSignalCB(const string &dpe, const bool &closeCheckbackSignal)
     ' DPE: SafePos
     - void setSafetyPositionCB(const string &dpe, const bool &safetyPosition)

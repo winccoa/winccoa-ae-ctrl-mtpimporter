@@ -1,0 +1,35 @@
+@startuml MtpUnit
+
+class MtpInput
+{
+    - bool _enabled
+    - bool _value
+    - bool _inverted
+    - string _text
+
+    + MtpInput(
+        const string &dpeEnabled,
+        const string &dpeValue,
+        const string &dpeInverted,
+        const string &dpeText
+    )
+    + bool getEnabled()
+    + bool getValue()
+    + bool getInverted()
+    + string getText()
+    + QualityCode getQualityCode()
+    - void setEnabledCB(const string &dpe, const bool &enabled)
+    - void setValueCB(const string &dpe, const bool &value)
+    - void setInvertedCB(const string &dpe, const bool &inverted)
+    - void setTextCB(const string &dpe, const string &text)
+
+    ..events..
+    + void enabledChanged(const bool &enabled)
+    + void valueChanged(const bool &value)
+    + void invertedChanged(const bool &inverted)
+    + void textChanged(const string &text)
+}
+
+QualityCode "1" --* "1" MtpInput : _mtpInput
+
+

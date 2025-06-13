@@ -1,0 +1,47 @@
+@startuml LockView4
+
+class LockView4
+{
+    - bool _logic
+    - bool _output
+
+    + LockView4(
+        const string &dpeLogic,
+        const string &dpeOutput
+    )
+    + bool getLogic()
+    + bool getOutput()
+    + WQC getWQC()
+    + MtpInput getInput1()
+    + MtpInput getInput2()
+    + MtpInput getInput3()
+    + MtpInput getInput4()
+    + QualityCode getOutputQualityCode()
+    ' DPE: Out
+    - void setOutputCB(const string &dpe, const bool &output)
+    ' DPE: Logic
+    - void setLogicCB(const string &dpe, const bool &logic)
+    ' DPE: OutQC
+    - void setOutputQualityCodeCB(const string &dpe, const QualityCode &qualityCode)
+
+    ...events..
+    + void outputChanged(const bool &output)
+    + void logicChanged(const bool &logic)
+    + void outputQualityCodeChanged(const QualityCode &qualityCode)
+}
+
+MtpViewModelBase <|-- LockView4
+'DPE: WQC
+WQC "1" --* "1" LockView4 : _wqc
+'DPE: In1En, In1, In1QC, In1Inv, In1Txt
+MtpInput "1" --* "1" LockView4 : _input1
+'DPE: In2En, In2, In2QC, In2Inv, In2Txt
+MtpInput "1" --* "1" LockView4 : _input2
+'DPE: In3En, In3, In3QC, In3Inv, In3Txt
+MtpInput "1" --* "1" LockView4 : _input3
+'DPE: In4En, In4, In4QC, In4Inv, In4Txt
+MtpInput "1" --* "1" LockView4 : _input4
+'DPE: OutQC
+QualityCode "1" --* "1" LockView4 : _outputQualityCode
+
+@enduml
