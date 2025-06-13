@@ -8,7 +8,7 @@ class MtpSecurity
     - bool _interlock
     - bool _protectionEnabled
     - bool _protect
-
+--
     + MtpSecurity(
         const string &dpePermissionEnabled,
         const string &dpePermit,
@@ -38,3 +38,5 @@ class MtpSecurity
     + void interlockEnabledChanged(const bool &interlockEnabled)
     + void protectionEnabledChanged(const bool &protectionEnabled)
 }
+
+@enduml

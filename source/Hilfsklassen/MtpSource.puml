@@ -9,7 +9,7 @@ class MtpSource
     - bool _internalOperator
     - bool _manualActive
     - bool _internalActive
-
+--
     + MtpSource(
         const string &dpeChannel, 
         const string &dpeManualAutomatic, 
@@ -41,3 +41,5 @@ class MtpSource
     + void internalActiveChanged(const bool &internalActive)
     + void channelChanged(const bool &channel)
 }
+
+@enduml

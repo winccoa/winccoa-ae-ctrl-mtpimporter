@@ -1,4 +1,8 @@
 @startuml MonBinDrv
+!include source/Hilfsklassen/MtpViewModelBase.puml
+!include source/Hilfsklassen/MtpState.puml
+!include source/Hilfsklassen/MtpMonitor.puml
+!include source/Hilfsklassen/MtpSecurity.puml
 
 class MonBinDrv
 {
@@ -21,7 +25,7 @@ class MonBinDrv
     - bool _driveSafetyIndicator
     - bool _resetOperator
     - bool _resetAutomatic
-    
+--
     + MonBinDrv(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()
@@ -95,9 +99,9 @@ WQC "1" --* "1" MonBinDrv : _wqc
 ' DPE: OSLevel
 OSLevel "1" --* "1" MonBinDrv : _osLevel
 ' DPE: StateChannel, StateOffAut, StateOpAut, StateAutAut, StateOffOp, StateOpOp, StateAutOp, StateOpAct, StateAutAct, StateOffAct
-State "1" --* "1" MonBinDrv : _state
+MtpState "1" --* "1" MonBinDrv : _state
 ' DPE: MonEn, MonSafePos, MonStatErr, MonDynErr, MonStatTi, MonDynTi
-Monitor "1" --* "1" MonBinDrv : _monitor
+MtpMonitor "1" --* "1" MonBinDrv : _monitor
 ' DPE: PermEn, Permit, IntEn, Interlock, ProtEn, Protect
-Security "1" --* "1" MonBinDrv : _security
+MtpSecurity "1" --* "1" MonBinDrv : _security
 @enduml

@@ -1,4 +1,7 @@
 @startuml AnaManInt
+!include source/Hilfsklassen/MtpViewModelBase.puml
+!include source/Hilfsklassen/MtpSource.puml
+!include source/Hilfsklassen/MtpUnit.puml
 
 class AnaManInt
 {
@@ -11,7 +14,7 @@ class AnaManInt
     - float _valueFeedback
     - bool _valueMinExceeded
     - bool _valueMaxExceeded
-
+--
     + AnaManInt(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()

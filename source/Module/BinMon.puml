@@ -1,4 +1,5 @@
 @startuml BinMon
+!include source/Hilfsklassen/MtpViewModelBase.puml
 
 class BinMon
 {
@@ -9,7 +10,7 @@ class BinMon
     - float _flutterTime
     - int _flutterCount
     - bool _flutterActive
-
+--
     + BinMon(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()

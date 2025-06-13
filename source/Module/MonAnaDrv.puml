@@ -1,4 +1,10 @@
 @startuml MonAnaDrv
+!include source/Hilfsklassen/MtpViewModelBase.puml
+!include source/Hilfsklassen/MtpSource.puml
+!include source/Hilfsklassen/MtpState.puml
+!include source/Hilfsklassen/MtpMonitor.puml
+!include source/Hilfsklassen/MtpUnit.puml
+!include source/Hilfsklassen/MtpSecurity.puml
 
 class MonAnaDrv
 {
@@ -38,7 +44,7 @@ class MonAnaDrv
     - bool _rpmAlarmLowActive
     - float _rpmAlarmHighLimit
     - float _rpmAlarmLowLimit
-    
+--
     + MonAnaDrv(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()

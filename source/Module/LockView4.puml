@@ -1,10 +1,12 @@
 @startuml LockView4
+!include source/Hilfsklassen/MtpViewModelBase.puml
+!include source/Hilfsklassen/MtpInput.puml
 
 class LockView4
 {
     - bool _logic
     - bool _output
-
+--
     + LockView4(const string &dp)
     + bool getLogic()
     + bool getOutput()

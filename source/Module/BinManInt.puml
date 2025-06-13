@@ -1,4 +1,6 @@
 @startuml BinManInt
+!include source/Hilfsklassen/MtpViewModelBase.puml
+!include source/Hilfsklassen/MtpSource.puml
 
 class BinManInt
 {
@@ -9,7 +11,7 @@ class BinManInt
     - bool _valueInternal
     - bool _valueReadback
     - bool _valueFeedback
-
+--
     + BinManInt(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()

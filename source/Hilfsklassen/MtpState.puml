@@ -12,7 +12,7 @@ class MtpState
     - bool _operatorActive
     - bool _automaticActive
     - bool _offActive
-    
+--
     + MtpState(
         const string &dpeChannel,
         const string &dpeOffAutomatic,
@@ -24,7 +24,7 @@ class MtpState
         const string &dpeOperatorActive,
         const string &dpeAutomaticActive,
         const string &dpeOffActive
-        )
+    )
     + bool getChannel()
     + bool getOffAutomatic()
     + bool getOperatorAutomatic()
@@ -55,3 +55,5 @@ class MtpState
     + void automaticAutomaticChanged(const bool &automaticAutomatic)
     + void offAutomaticChanged(const bool &offAutomatic)
 }
+
+@enduml

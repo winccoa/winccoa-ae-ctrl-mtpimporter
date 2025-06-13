@@ -9,7 +9,7 @@ class MtpValueLimit
     - bool _invalid
     - bool _enabled
     - bool _active
-
+--
     # ValueLimit(
         const string &dpeLimit,
         const string &dpeEnabled,
@@ -42,3 +42,5 @@ class MtpValueLimitInt
 
 MtpValueLimit <|-- MtpValueLimitFloat
 MtpValueLimit <|-- MtpValueLimitInt
+
+@enduml

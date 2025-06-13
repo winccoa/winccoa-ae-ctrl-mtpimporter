@@ -1,4 +1,8 @@
 @startuml MonBinVlv
+!include source/Hilfsklassen/MtpViewModelBase.puml
+!include source/Hilfsklassen/MtpMonitor.puml
+!include source/Hilfsklassen/MtpState.puml
+!include source/Hilfsklassen/MtpSecurity.puml
 
 class MonBinVlv
 {
@@ -16,7 +20,7 @@ class MonBinVlv
     - bool _closeCheckbackSignal
     - bool _resetOperator
     - bool _resetAutomatic
-    
+--
     + MonBinVlv(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()

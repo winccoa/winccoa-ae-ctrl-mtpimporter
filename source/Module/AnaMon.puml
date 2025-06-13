@@ -1,11 +1,14 @@
 @startuml AnaMon
+!include source/Hilfsklassen/MtpViewModelBase.puml
+!include source/Hilfsklassen/MtpUnit.puml
+!include source/Hilfsklassen/MtpValueLimit.puml
 
 class AnaMon
 {
     - float _value
     - float _valueScaleMin
     - float _valueScaleMax
-
+--
     + AnaMon(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()

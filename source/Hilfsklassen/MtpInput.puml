@@ -6,7 +6,7 @@ class MtpInput
     - bool _value
     - bool _inverted
     - string _text
-
+--
     + MtpInput(
         const string &dpeEnabled,
         const string &dpeValue,
@@ -30,6 +30,6 @@ class MtpInput
     + void textChanged(const string &text)
 }
 
-QualityCode "1" --* "1" MtpInput : _mtpInput
+QualityCode "1" --* "1" MtpInput : _qualityCode
 
-
+@enduml

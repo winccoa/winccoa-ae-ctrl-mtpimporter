@@ -1,4 +1,8 @@
 @startuml PIDCtrl
+!include source/Hilfsklassen/MtpViewModelBase.puml
+!include source/Hilfsklassen/MtpUnit.puml
+!include source/Hilfsklassen/MtpSource.puml
+!include source/Hilfsklassen/MtpState.puml
 
 class PIDCtrl
 {
@@ -23,7 +27,7 @@ class PIDCtrl
     - float _proportionalParameter
     - float _integrationParameter
     - float _derivationParameter
-
+--
     + PIDCtrl(const string &dp)
     + WQC getWQC()
     + OSLevel getOSLevel()

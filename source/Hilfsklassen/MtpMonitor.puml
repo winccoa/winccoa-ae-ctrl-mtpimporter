@@ -8,7 +8,7 @@ class MtpMonitor
     - bool _dynamicError
     - float _staticTime
     - float _dynamicTime
-'
+--
     + MtpMonitor(
         const string &dpeEnabled,
         const string &dpeSafePosition,
@@ -37,3 +37,5 @@ class MtpMonitor
     + void staticTimeChanged(const float &staticTime)
     + void dynamicTimeChanged(const float &dynamicTime)
 }
+
+@enduml
