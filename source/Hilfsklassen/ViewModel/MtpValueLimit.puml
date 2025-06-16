@@ -1,10 +1,7 @@
-@startuml MtpValueLimit
+@startuml
 
-class MtpValueLimit
-{
+class MtpValueLimit {
     - string _dpeLimit
-    - string _dpeEnabled
-    - string _dpeActive
     - anytype _limit
     - bool _invalid
     - bool _enabled
@@ -26,15 +23,13 @@ class MtpValueLimit
     + void activeChanged(const bool &active)
 }
 
-class MtpValueLimitFloat
-{
+class MtpValueLimitFloat {
     + MtpValueLimitFloat(const string &dpeLimit, const string &dpeEnabled, const string &dpeActive)
     + float getLimit()
     + void setLimit(const float &limit)
 }
 
-class MtpValueLimitInt
-{
+class MtpValueLimitInt {
     + MtpValueLimitInt(const string &dpeLimit, const string &dpeEnabled, const string &dpeActive)
     + int getLimit()
     + void setLimit(const int &limit)

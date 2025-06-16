@@ -1,8 +1,9 @@
-@startuml BinMon
-!include source/Hilfsklassen/MtpViewModelBase.puml
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
+!include source/Hilfsklassen/ViewModel/MtpOsLevel.puml
 
-class BinMon
-{
+class BinMon {
     - bool _value
     - string _valueStateFalseText
     - string _valueStateTrueText
@@ -12,8 +13,8 @@ class BinMon
     - bool _flutterActive
 --
     + BinMon(const string &dp)
-    + WQC getWQC()
-    + OSLevel getOSLevel()
+    + MtpQualityCode getWqc()
+    + MtpOsLevel getOsLevel()
     + bool getValue()
     + string getValueStateTrueText()
     + string getValueStateFalseText()
@@ -44,7 +45,7 @@ class BinMon
 
 MtpViewModelBase <|-- BinMon
 ' DPE: WQC
-WQC "1" --* "1" BinMon : _wqc
+MtpQualityCode "1" --* "1" BinMon : _wqc
 ' DPE: OSLevel
-OSLevel "1" --* "1" BinMon : _osLevel
+MtpOsLevel"1" --* "1" BinMon : _osLevel
 @enduml

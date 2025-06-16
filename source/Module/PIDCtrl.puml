@@ -1,11 +1,12 @@
-@startuml PIDCtrl
-!include source/Hilfsklassen/MtpViewModelBase.puml
-!include source/Hilfsklassen/MtpUnit.puml
-!include source/Hilfsklassen/MtpSource.puml
-!include source/Hilfsklassen/MtpState.puml
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/ViewModel/MtpUnit.puml
+!include source/Hilfsklassen/ViewModel/MtpSource.puml
+!include source/Hilfsklassen/ViewModel/MtpState.puml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
+!include source/Hilfsklassen/ViewModel/MtpOsLevel.puml
 
-class PIDCtrl
-{
+class PidCtrl {
     - float _processValue
     - float _processValueScaleMin
     - float _processValueScaleMax
@@ -28,9 +29,9 @@ class PIDCtrl
     - float _integrationParameter
     - float _derivationParameter
 --
-    + PIDCtrl(const string &dp)
-    + WQC getWQC()
-    + OSLevel getOSLevel()
+    + PidCtrl(const string &dp)
+    + MtpQualityCode getWqc()
+    + MtpOsLevel getOsLevel()
     + MtpState getState()
     + MtpSource getSource()
     + float getProcessValue()
@@ -112,18 +113,18 @@ class PIDCtrl
     + void manipulatedValueScaleMaxChanged(const float &manipulatedValueScaleMax)
 }
 
-MtpViewModelBase <|-- PIDCtrl
+MtpViewModelBase <|-- PidCtrl
 ' DPE: WQC
-WQC "1" --* "1" PIDCtrl : _wqc
+MtpQualityCode "1" --* "1" PidCtrl : _wqc
 ' DPE: OSLevel
-OSLevel "1" --* "1" PIDCtrl : _osLevel
+MtpOsLevel"1" --* "1" PidCtrl : _osLevel
 ' DPE: StateChannel, StateOffAut, StateOpAut, StateAutAut, StateOffOp, StateOpOp, StateAutOp, StateOpAct, StateAutAct, StateOffAct
-MtpState "1" --* "1" PIDCtrl : _state
+MtpState "1" --* "1" PidCtrl : _state
 ' DPE: SrcChannel, SrcManAut, SrcIntAut, SrcManOp, SrcIntOp, SrcManAct, SrcIntAct
-MtpSource "1" --* "1" PIDCtrl : _source
+MtpSource "1" --* "1" PidCtrl : _source
 ' DPE: PVUnit
-MtpUnit "1" --* "1" PIDCtrl : _processValueUnit
+MtpUnit "1" --* "1" PidCtrl : _processValueUnit
 ' DPE: SPUnit
-MtpUnit "1" --* "1" PIDCtrl : _setpointUnit
+MtpUnit "1" --* "1" PidCtrl : _setpointUnit
 ' DPE: MVUnit
-MtpUnit "1" --* "1" PIDCtrl : _manipulatedValueUnit
+MtpUnit "1" --* "1" PidCtrl : _manipulatedValueUnit

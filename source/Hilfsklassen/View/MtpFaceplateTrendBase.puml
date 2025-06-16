@@ -1,0 +1,9 @@
+@startuml
+!include source/Hilfsklassen/View/MtpViewBase.puml
+class MtpFaceplateTrendBase
+{
+
+}
+
+MtpViewBase <|-- MtpFaceplateTrendBase
+@enduml

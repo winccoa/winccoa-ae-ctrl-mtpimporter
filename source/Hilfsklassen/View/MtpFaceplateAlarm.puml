@@ -1,0 +1,10 @@
+@startuml
+!include source/Hilfsklassen/View/MtpViewBase.puml
+
+class MtpFaceplateAlarm {
+    + MtpFaceplateAlarm()
+    # initializeShapes()
+}
+
+MtpViewBase <|-- MtpFaceplateAlarm
+@enduml

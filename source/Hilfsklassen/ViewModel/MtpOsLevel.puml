@@ -1,0 +1,14 @@
+@startuml
+class MtpOsLevel {
+    - bool _invalid
+    - int _level
+--
+    + MtpOsLevel(const string &dpeOsLevel)
+    + bool getInvalid()
+    + int getOsLevel()
+    - void setOsLevelCB(const string &dpe, const int &level)
+
+    ..events..
+    + void osLevelChanged(const int &level)
+}
+@enduml

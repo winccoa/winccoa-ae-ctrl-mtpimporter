@@ -1,7 +1,6 @@
-@startuml MtpSecurity
+@startuml
 
-class MtpSecurity
-{
+class MtpSecurity {
     - bool _permissionEnabled
     - bool _permit
     - bool _interlockEnabled

@@ -1,9 +1,10 @@
-@startuml BinManInt
-!include source/Hilfsklassen/MtpViewModelBase.puml
-!include source/Hilfsklassen/MtpSource.puml
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/ViewModel/MtpSource.puml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
+!include source/Hilfsklassen/ViewModel/MtpOsLevel.puml
 
-class BinManInt
-{
+class BinManInt {
     - bool _valueOut
     - string _valueStateFalseText
     - string _valueStateTrueText
@@ -13,8 +14,8 @@ class BinManInt
     - bool _valueFeedback
 --
     + BinManInt(const string &dp)
-    + WQC getWQC()
-    + OSLevel getOSLevel()
+    + MtpQualityCode getWqc()
+    + MtpOsLevel getOsLevel()
     + bool getValueOut()
     + string getValueStateTrueText()
     + string getValueStateFalseText()
@@ -45,9 +46,9 @@ class BinManInt
 
 MtpViewModelBase <|-- BinManInt
 ' DPE: WQC
-WQC "1" --* "1" BinManInt : _wqc
+MtpQualityCode "1" --* "1" BinManInt : _wqc
 ' DPE: OSLevel
-OSLevel "1" --* "1" BinManInt : _osLevel
+MtpOsLevel"1" --* "1" BinManInt : _osLevel
 ' DPE: SrcChannel, SrcManAut, SrcIntAut, SrcManOp, SrcIntOp, SrcManAct, SrcIntAct
 MtpSource "1" --* "1" BinManInt : _source
 @enduml

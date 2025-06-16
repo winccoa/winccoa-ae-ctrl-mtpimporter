@@ -1,7 +1,6 @@
-@startuml MtpState
+@startuml
 
-class MtpState
-{
+class MtpState {
     - bool _channel
     - bool _offAutomatic
     - bool _operatorAutomatic
@@ -12,6 +11,9 @@ class MtpState
     - bool _operatorActive
     - bool _automaticActive
     - bool _offActive
+    - string _dpeOffOperator
+    - string _dpeOperatorOperator
+    - string _dpeAutomaticOperator
 --
     + MtpState(
         const string &dpeChannel,

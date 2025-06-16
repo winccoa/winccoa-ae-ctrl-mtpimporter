@@ -1,0 +1,14 @@
+@startuml
+class MtpQualityCode {
+    - bit32 _value
+    - bool _invalid
+--
+    + MtpQualityCode(const string &dpeQc)
+    + bool getInvalid()
+    + bool getQualityGood()
+    - void setQcCB(const string &dpe, const bit32 &value)
+
+    ..events..
+    + void qualityGoodChanged(const bool &qualityGood)
+}
+@enduml

@@ -1,7 +1,6 @@
-@startuml MtpSource
+@startuml
 
-class MtpSource
-{
+class MtpSource {
     - bool _channel
     - bool _manualAutomatic
     - bool _internalAutomatic
@@ -9,6 +8,8 @@ class MtpSource
     - bool _internalOperator
     - bool _manualActive
     - bool _internalActive
+    - string _dpeManualOperator
+    - string _dpeInternalOperator
 --
     + MtpSource(
         const string &dpeChannel, 
@@ -28,18 +29,18 @@ class MtpSource
     + bool getInternalActive()
     + void setManualOperator(const bool &manualOperator)
     + void setInternalOperator(const bool &internalOperator)
-    - void setManualActiveCB(const string &dpe, const bool &manualActive)
-    - void setInternalActiveCB(const string &dpe, const bool &internalActive)
     - void setChannelCB(const string &dpe, const bool &channel)
     - void setManualAutomaticCB(const string &dpe, const bool &manualAutomatic)
     - void setInternalAutomaticCB(const string &dpe, const bool &internalAutomatic)
+    - void setManualActiveCB(const string &dpe, const bool &manualActive)
+    - void setInternalActiveCB(const string &dpe, const bool &internalActive)
 
     ..events..
-    + void manualActiveChanged(const bool &manualActive)
-    + void internalActiveChanged(const bool &internalActive)
-    + void manualActiveChanged(const bool &manualActive)
-    + void internalActiveChanged(const bool &internalActive)
     + void channelChanged(const bool &channel)
+    + void manualAutomaticChanged(const bool &manualAutomatic)
+    + void internalAutomaticChanged(const bool &internalAutomatic)
+    + void manualActiveChanged(const bool &manualActive)
+    + void internalActiveChanged(const bool &internalActive)
 }
 
 @enduml

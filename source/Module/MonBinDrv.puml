@@ -1,11 +1,13 @@
-@startuml MonBinDrv
-!include source/Hilfsklassen/MtpViewModelBase.puml
-!include source/Hilfsklassen/MtpState.puml
-!include source/Hilfsklassen/MtpMonitor.puml
-!include source/Hilfsklassen/MtpSecurity.puml
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/ViewModel/MtpState.puml
+!include source/Hilfsklassen/ViewModel/MtpMonitor.puml
+!include source/Hilfsklassen/ViewModel/MtpSecurity.puml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
+!include source/Hilfsklassen/ViewModel/MtpOsLevel.puml
 
-class MonBinDrv
-{
+
+class MonBinDrv {
     - bool _safetyposition
     - bool _safetypositionActive
     - bool _forwardEnabled
@@ -27,8 +29,8 @@ class MonBinDrv
     - bool _resetAutomatic
 --
     + MonBinDrv(const string &dp)
-    + WQC getWQC()
-    + OSLevel getOSLevel()
+    + MtpQualityCode getWqc()
+    + MtpOsLevel getOsLevel()
     + State getState()
     + Monitor getMonitor()
     + bool getSafetyPosition()
@@ -95,9 +97,9 @@ class MonBinDrv
 
 MtpViewModelBase <|-- MonBinDrv
 ' DPE: WQC
-WQC "1" --* "1" MonBinDrv : _wqc
+MtpQualityCode "1" --* "1" MonBinDrv : _wqc
 ' DPE: OSLevel
-OSLevel "1" --* "1" MonBinDrv : _osLevel
+MtpOsLevel"1" --* "1" MonBinDrv : _osLevel
 ' DPE: StateChannel, StateOffAut, StateOpAut, StateAutAut, StateOffOp, StateOpOp, StateAutOp, StateOpAct, StateAutAct, StateOffAct
 MtpState "1" --* "1" MonBinDrv : _state
 ' DPE: MonEn, MonSafePos, MonStatErr, MonDynErr, MonStatTi, MonDynTi

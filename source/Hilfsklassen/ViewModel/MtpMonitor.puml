@@ -1,13 +1,13 @@
-@startuml MtpMonitor
+@startuml
 
-class MtpMonitor
-{
+class MtpMonitor {
     - bool _enabled
     - bool _safePosition
     - bool _staticError
     - bool _dynamicError
     - float _staticTime
     - float _dynamicTime
+    - string _dpeEnabled
 --
     + MtpMonitor(
         const string &dpeEnabled,
@@ -23,7 +23,7 @@ class MtpMonitor
     + bool getDynamicError()
     + float getStaticTime()
     + float getDynamicTime()
-    + void setEnabled(const bool &monitorEnabled)
+    + void setEnabled(const bool &enabled)
     - void setStaticErrorCB(const string &dpe, const bool &staticError)
     - void setDynamicErrorCB(const string &dpe, const bool &dynamicError)
     - void setSafePositionCB(const string &dpe, const bool &safePosition)

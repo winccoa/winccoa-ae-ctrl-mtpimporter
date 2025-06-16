@@ -1,37 +1,37 @@
-@startuml LockView4
-!include source/Hilfsklassen/MtpViewModelBase.puml
-!include source/Hilfsklassen/MtpInput.puml
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/ViewModel/MtpInput.puml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
 
-class LockView4
-{
+class LockView4 {
     - bool _logic
     - bool _output
 --
     + LockView4(const string &dp)
     + bool getLogic()
     + bool getOutput()
-    + WQC getWQC()
+    + MtpQualityCode getWqc()
     + MtpInput getInput1()
     + MtpInput getInput2()
     + MtpInput getInput3()
     + MtpInput getInput4()
-    + QualityCode getOutputQualityCode()
+    +MtpQualityCode getOutputQualityCode()
     ' DPE: Out
     - void setOutputCB(const string &dpe, const bool &output)
     ' DPE: Logic
     - void setLogicCB(const string &dpe, const bool &logic)
     ' DPE: OutQC
-    - void setOutputQualityCodeCB(const string &dpe, const QualityCode &qualityCode)
+    - void setOutputQualityCodeCB(const string &dpe, constMtpQualityCode &qualityCode)
 
     ...events..
     + void outputChanged(const bool &output)
     + void logicChanged(const bool &logic)
-    + void outputQualityCodeChanged(const QualityCode &qualityCode)
+    + void outputQualityCodeChanged(constMtpQualityCode &qualityCode)
 }
 
 MtpViewModelBase <|-- LockView4
 ' DPE: WQC
-WQC "1" --* "1" LockView4 : _wqc
+MtpQualityCode "1" --* "1" LockView4 : _wqc
 ' DPE: In1En, In1, In1QC, In1Inv, In1Txt
 MtpInput "1" --* "1" LockView4 : _input1
 ' DPE: In2En, In2, In2QC, In2Inv, In2Txt

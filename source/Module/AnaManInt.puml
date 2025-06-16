@@ -1,10 +1,12 @@
-@startuml AnaManInt
-!include source/Hilfsklassen/MtpViewModelBase.puml
-!include source/Hilfsklassen/MtpSource.puml
-!include source/Hilfsklassen/MtpUnit.puml
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/ViewModel/MtpSource.puml
+!include source/Hilfsklassen/ViewModel/MtpUnit.puml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
+!include source/Hilfsklassen/ViewModel/MtpOsLevel.puml
 
-class AnaManInt
-{
+
+class AnaManInt {
     - float _valueOut
     - float _valueScaleMin
     - float _valueScaleMax
@@ -16,8 +18,8 @@ class AnaManInt
     - bool _valueMaxExceeded
 --
     + AnaManInt(const string &dp)
-    + WQC getWQC()
-    + OSLevel getOSLevel()
+    + MtpQualityCode getWqc()
+    + MtpOsLevel getOsLevel()
     + float getValueOut()
     + float getValueScaleMin()
     + float getValueScaleMax()
@@ -57,9 +59,9 @@ class AnaManInt
 
 MtpViewModelBase <|-- AnaManInt
 ' DPE: WQC
-WQC "1" --* "1" AnaManInt : _wqc
+MtpQualityCode "1" --* "1" AnaManInt : _wqc
 ' DPE: OSLevel
-OSLevel "1" --* "1" AnaManInt : _osLevel
+MtpOsLevel"1" --* "1" AnaManInt : _osLevel
 ' DPE: SrcChannel, SrcManAut, SrcIntAut, SrcManOp, SrcIntOp, SrcManAct, SrcIntAct
 MtpSource "1" --* "1" AnaManInt : _source
 ' DPE: VUnit

@@ -1,0 +1,15 @@
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+
+class MtpViewBase{
+    - mapping _shapes
+--
+    # MtpViewBase(MtpViewModelBase viewModel, const mapping &shapes)
+    # MtpViewModelBase getViewModel()
+    # shape extractShape(const string &shapeName)
+    # {abstract} void initializeShapes()
+}
+
+MtpViewModelBase "1" --* "1" MtpViewBase : _viewModel
+
+@enduml

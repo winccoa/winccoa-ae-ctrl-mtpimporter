@@ -1,21 +1,25 @@
-@startuml AnaMon
-!include source/Hilfsklassen/MtpViewModelBase.puml
-!include source/Hilfsklassen/MtpUnit.puml
-!include source/Hilfsklassen/MtpValueLimit.puml
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/ViewModel/MtpUnit.puml
+!include source/Hilfsklassen/ViewModel/MtpValueLimit.puml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
+!include source/Hilfsklassen/ViewModel/MtpOsLevel.puml
+!include source/Hilfsklassen/View/MtpViewBase.puml
+!include source/Hilfsklassen/View/MtpFaceplateAlarm.puml
+!include source/Hilfsklassen/View/MtpFaceplateTrendBase.puml
 
-class AnaMon
-{
+class AnaMon {
     - float _value
     - float _valueScaleMin
     - float _valueScaleMax
 --
     + AnaMon(const string &dp)
-    + WQC getWQC()
-    + OSLevel getOSLevel()
+    + MtpQualityCode getWqc()
+    + MtpOsLevel getOsLevel()
     + float getValue()
     + float getValueScaleMin()
     + float getValueScaleMax()
-    + MtpUnit getValueUnit()
+    + MtpUnit getUnit()
     + MtpValueLimitFloat getAlertHighLimit()
     + MtpValueLimitFloat getWarningHighLimit()
     + MtpValueLimitFloat getToleranceHighLimit()
@@ -31,11 +35,11 @@ class AnaMon
 
 MtpViewModelBase <|-- AnaMon
 ' DPE: WQC
-WQC "1" --* "1" AnaMon : _wqc
+MtpQualityCode "1" --* "1" AnaMon : _wqc
 ' DPE: OSLevel
-OSLevel "1" --* "1" AnaMon : _osLevel
+MtpOsLevel"1" --* "1" AnaMon : _osLevel
 ' DPE: VUnit
-MtpUnit "1" --* "1" AnaMon : _valueUnit
+MtpUnit "1" --* "1" AnaMon : _unit
 ' DPE: VAHLim, VAHEn, VAHAct
 MtpValueLimitFloat "1" --* "1" AnaMon : _alertHighLimit
 ' DPE: VWHLim, VWHEn, VWHAct
@@ -49,55 +53,26 @@ MtpValueLimitFloat "1" --* "1" AnaMon : _warningLowLimit
 ' DPE: VALLim, VALEn, VALAct
 MtpValueLimitFloat "1" --* "1" AnaMon : _alertLowLimit
 
-class MtpViewBase
-{
-    - mapping _shapes
-
-    # MtpViewBase(MtpViewModelBase viewModel, const mapping &shapes)
-    # MtpViewModelBase getViewModel()
-    # shape extractShape(const string &shapeName)
-    # {abstract} void initializeShapes()
+class AnaMonFaceplateHome {
+    
 }
 
-MtpViewModelBase "1" --* "1" MtpViewBase : _viewModel
-
-class AnaMonFaceplateHome
-{
-}
-
-class AnaMonFaceplateSettings1
-{
+class AnaMonFaceplateSettings1 {
 
 }
 
-class AnaMonFaceplateSettings2
-{
+class AnaMonFaceplateSettings2 {
 
 }
 
-class MtpFaceplateAlarmBase
-{
+class AnaMonFaceplateAlarm {
 
 }
 
-MtpViewBase <|-- MtpFacePlateAlarmBase
+MtpFaceplateAlarm <|-- AnaMonFaceplateAlarm
 
-class AnaMonFaceplateAlarm
-{
 
-}
-
-MtpFacePlateAlarmBase <|-- AnaMonFaceplateAlarm
-
-class MtpFaceplateTrendBase
-{
-
-}
-
-MtpViewBase <|-- MtpFaceplateTrendBase
-
-class AnaMonFaceplateTrend
-{
+class AnaMonFaceplateTrend {
 
 }
 
@@ -113,9 +88,23 @@ AnaMon "1" --* "1" AnaMonFaceplateAlarm : _viewModel
 AnaMon "1" --* "1" AnaMonFaceplateTrend : _viewModel
 
 
-class AnaMonRef 
-{
-
+class AnaMonRef {
+    - shape _txtValue
+    - shape _txtUnit
+    - shape _rectStatus
+    - bool _alertHighActive
+    - bool _warningHighActive
+    - bool _toleranceHighActive
+    - bool _toleranceLowActive
+    - bool _warningLowActive
+    - bool _alertLowActive
+--
+    + AnaMonRef(shared_ptr<Anamon> viewModel, const mapping &shapes)
+    + void openFaceplate()
+    # void initializeShapes()
+    - void setValueCB(const float &value)
+    - void setUnit(shared_ptr<MtpUnit> unit)
+    - void setStatusCB(const string &varName, const bool &active)
 }
 
 MtpViewBase <|-- AnaMonRef

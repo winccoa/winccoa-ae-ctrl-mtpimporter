@@ -1,13 +1,14 @@
-@startuml MonAnaDrv
-!include source/Hilfsklassen/MtpViewModelBase.puml
-!include source/Hilfsklassen/MtpSource.puml
-!include source/Hilfsklassen/MtpState.puml
-!include source/Hilfsklassen/MtpMonitor.puml
-!include source/Hilfsklassen/MtpUnit.puml
-!include source/Hilfsklassen/MtpSecurity.puml
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/ViewModel/MtpSource.puml
+!include source/Hilfsklassen/ViewModel/MtpState.puml
+!include source/Hilfsklassen/ViewModel/MtpMonitor.puml
+!include source/Hilfsklassen/ViewModel/MtpUnit.puml
+!include source/Hilfsklassen/ViewModel/MtpSecurity.puml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
+!include source/Hilfsklassen/ViewModel/MtpOsLevel.puml
 
-class MonAnaDrv
-{
+class MonAnaDrv {
     - bool _safetyposition
     - bool _safetypositionActive
     - bool _forwardEnabled
@@ -46,8 +47,8 @@ class MonAnaDrv
     - float _rpmAlarmLowLimit
 --
     + MonAnaDrv(const string &dp)
-    + WQC getWQC()
-    + OSLevel getOSLevel()
+    + MtpQualityCode getWqc()
+    + MtpOsLevel getOsLevel()
     + State getState()
     + Monitor getMonitor()
     + Source getSource()
@@ -152,9 +153,9 @@ class MonAnaDrv
 
 MtpViewModelBase <|-- MonAnaDrv
 ' DPE: WQC
-WQC "1" --* "1" MonAnaDrv : _wqc
+MtpQualityCode "1" --* "1" MonAnaDrv : _wqc
 ' DPE: OSLevel
-OSLevel "1" --* "1" MonAnaDrv : _osLevel
+MtpOsLevel"1" --* "1" MonAnaDrv : _osLevel
 ' DPE: StateChannel, StateOffAut, StateOpAut, StateAutAut, StateOffOp, StateOpOp, StateAutOp, StateOpAct, StateAutAct, StateOffAct
 MtpState "1" --* "1" MonAnaDrv : _state
 ' DPE: MonEn, MonSafePos, MonStatErr, MonDynErr, MonStatTi, MonDynTi
