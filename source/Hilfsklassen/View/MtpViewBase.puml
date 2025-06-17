@@ -12,4 +12,10 @@ class MtpViewBase{
 
 MtpViewModelBase "1" --* "1" MtpViewBase : _viewModel
 
+class MtpViewRef {
+    # MtpViewRef(MtpViewModelBase viewModel, const mapping &shapes)
+    + void openFaceplate()
+}
+
+MtpViewBase <|-- MtpViewRef
 @enduml

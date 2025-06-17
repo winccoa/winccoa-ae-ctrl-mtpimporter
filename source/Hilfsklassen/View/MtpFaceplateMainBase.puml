@@ -1,0 +1,26 @@
+@startuml
+!include source/Hilfsklassen/View/MtpViewBase.puml
+!include source/Hilfsklassen/View/MtpNavigationButton.puml
+
+class MtpFaceplateMainBase {
+    - shape _title
+    - shape _navigation
+--
+    # MtpFaceplateMainBase(shared_ptr<MtpViewModelBase> &viewModel, const mapping &shapes)
+    + void close()
+    + void clickNavigation(const string &name)
+    # initializeShapes()
+    # {abstract} vector<shared_ptr<MtpNavigationButton> > getNavigationPanels()
+    - void setTitle()
+    - void setNavigation()
+}
+
+class MtpFaceplateBaseFactory
+{
+    + static shared_ptr<MtpFaceplateMainBase> create(const string &dp, const mapping &shapes)
+}
+
+MtpFaceplateBaseFactory --> MtpFaceplateMainBase
+MtpViewBase <|-- MtpFaceplateMainBase
+MtpNavigationButton "1" --* "n" MtpFaceplateMainBase : _navigationButtons
+@enduml

@@ -5,8 +5,8 @@
 !include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
 !include source/Hilfsklassen/ViewModel/MtpOsLevel.puml
 !include source/Hilfsklassen/View/MtpViewBase.puml
-!include source/Hilfsklassen/View/MtpFaceplateAlarm.puml
 !include source/Hilfsklassen/View/MtpFaceplateTrendBase.puml
+!include source/Hilfsklassen/View/MtpFaceplateMainBase.puml
 
 class AnaMon {
     - float _value
@@ -53,6 +53,11 @@ MtpValueLimitFloat "1" --* "1" AnaMon : _warningLowLimit
 ' DPE: VALLim, VALEn, VALAct
 MtpValueLimitFloat "1" --* "1" AnaMon : _alertLowLimit
 
+class AnaMonFaceplateMain {
+    + AnaMonFaceplateMain(shared_ptr<AnaMon> viewModel, const mapping &shapes)
+    # vector<shared_ptr<MtpNavigationButton> > getNavigationPanels()
+}
+MtpFaceplateMainBase <|-- AnaMonFaceplateMain
 class AnaMonFaceplateHome {
     
 }
@@ -65,15 +70,9 @@ class AnaMonFaceplateSettings2 {
 
 }
 
-class AnaMonFaceplateAlarm {
-
-}
-
-MtpFaceplateAlarm <|-- AnaMonFaceplateAlarm
-
-
 class AnaMonFaceplateTrend {
-
+    + AnaMonFaceplateTrend(shared_ptr<AnaMon> viewModel, const mapping &shapes)
+    # dyn_string getTrendDpes()
 }
 
 MtpFaceplateTrendBase <|-- AnaMonFaceplateTrend
@@ -84,8 +83,8 @@ MtpViewBase <|-- AnaMonFaceplateSettings1
 AnaMon "1" --* "1" AnaMonFaceplateSettings1 : _viewModel
 MtpViewBase <|-- AnaMonFaceplateSettings2
 AnaMon "1" --* "1" AnaMonFaceplateSettings2 : _viewModel
-AnaMon "1" --* "1" AnaMonFaceplateAlarm : _viewModel
 AnaMon "1" --* "1" AnaMonFaceplateTrend : _viewModel
+AnaMon "1" --* "1" AnaMonFaceplateMain : _viewModel
 
 
 class AnaMonRef {
@@ -107,6 +106,6 @@ class AnaMonRef {
     - void setStatusCB(const string &varName, const bool &active)
 }
 
-MtpViewBase <|-- AnaMonRef
+MtpViewRef <|-- AnaMonRef
 AnaMon "1" --* "1" AnaMonRef : _viewModel
 @enduml

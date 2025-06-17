@@ -2,9 +2,19 @@
 !include source/Hilfsklassen/View/MtpViewBase.puml
 
 class MtpFaceplateAlarm {
-    + MtpFaceplateAlarm()
+    - shape _table
+--
+    + MtpFaceplateAlarm(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes)
+    + void clickRow(const string &column, const int &row, const string &value)
     # initializeShapes()
+    - void acknowledgeAlert(const int &row, const string &value)
+    - void connectAlerts()
+    - void alertCB(const string &dp, const dyn_dyn_anytype &result)
+    - void alertCBUpdate(const dyn_anytype &result, dyn_dyn_anytype &updateList, const bool &alertIsAckable, dyn_dyn_anytype &deleteList)
+    - void alertCBDelete(const dyn_anytype &result, dyn_dyn_anytype &deleteList)
+    - void appendEmptyAlert(dyn_dyn_anytype &list, const int &size)
 }
 
 MtpViewBase <|-- MtpFaceplateAlarm
+
 @enduml

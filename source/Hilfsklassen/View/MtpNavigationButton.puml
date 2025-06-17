@@ -1,0 +1,12 @@
+@startuml
+class MtpNavigationButton {
+    - string _picture
+    - string _name
+    - string _fileName
+--
+    + MtpNavigationButton(const string &picture, const string &name, const string &fileName)
+    + string getPicture()
+    + string getName()
+    + string getFileName()
+}
+@enduml

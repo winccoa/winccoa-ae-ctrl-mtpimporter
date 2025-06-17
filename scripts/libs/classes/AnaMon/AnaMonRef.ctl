@@ -6,11 +6,11 @@
   @author m.woegrath
 */
 
+#uses "classes/MtpView/MtpViewRef"
 #uses "classes/MtpValueLimit/MtpValueLimitFloat"
 #uses "classes/MtpUnit/MtpUnit"
-#uses "classes/MtpView/MtpViewBase"
 
-class AnaMonRef : MtpViewBase
+class AnaMonRef : MtpViewRef
 {
   private shape _txtValue;
   private shape _txtUnit;
@@ -22,37 +22,32 @@ class AnaMonRef : MtpViewBase
   private bool _warningLowActive;
   private bool _alertLowActive;
 
-  public AnaMonRef(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
+  public AnaMonRef(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes) : MtpViewRef(viewModel, shapes)
   {
-    classConnectUserData(this, setStatusCB, "_alertHighActive", MtpViewBase::getViewModel().getAlertHighLimit(), MtpValueLimitFloat::activeChanged);
-    classConnectUserData(this, setStatusCB, "_warningHighActive", MtpViewBase::getViewModel().getWarningHighLimit(), MtpValueLimitFloat::activeChanged);
-    classConnectUserData(this, setStatusCB, "_toleranceHighActive", MtpViewBase::getViewModel().getToleranceHighLimit(), MtpValueLimitFloat::activeChanged);
-    classConnectUserData(this, setStatusCB, "_toleranceLowActive", MtpViewBase::getViewModel().getToleranceLowLimit(), MtpValueLimitFloat::activeChanged);
-    classConnectUserData(this, setStatusCB, "_warningLowActive", MtpViewBase::getViewModel().getWarningLowLimit(), MtpValueLimitFloat::activeChanged);
-    classConnectUserData(this, setStatusCB, "_alertLowActive", MtpViewBase::getViewModel().getAlertLowLimit(), MtpValueLimitFloat::activeChanged);
-    classConnect(this, setValueCB, MtpViewBase::getViewModel().getValue(), AnaMon::valueChanged);
+    classConnectUserData(this, setStatusCB, "_alertHighActive", MtpViewRef::getViewModel().getAlertHighLimit(), MtpValueLimitFloat::activeChanged);
+    classConnectUserData(this, setStatusCB, "_warningHighActive", MtpViewRef::getViewModel().getWarningHighLimit(), MtpValueLimitFloat::activeChanged);
+    classConnectUserData(this, setStatusCB, "_toleranceHighActive", MtpViewRef::getViewModel().getToleranceHighLimit(), MtpValueLimitFloat::activeChanged);
+    classConnectUserData(this, setStatusCB, "_toleranceLowActive", MtpViewRef::getViewModel().getToleranceLowLimit(), MtpValueLimitFloat::activeChanged);
+    classConnectUserData(this, setStatusCB, "_warningLowActive", MtpViewRef::getViewModel().getWarningLowLimit(), MtpValueLimitFloat::activeChanged);
+    classConnectUserData(this, setStatusCB, "_alertLowActive", MtpViewRef::getViewModel().getAlertLowLimit(), MtpValueLimitFloat::activeChanged);
+    classConnect(this, setValueCB, MtpViewRef::getViewModel().getValue(), AnaMon::valueChanged);
 
-    _alertHighActive = MtpViewBase::getViewModel().getAlertHighLimit().getActive();
-    _warningHighActive = MtpViewBase::getViewModel().getWarningHighLimit().getActive();
-    _toleranceHighActive = MtpViewBase::getViewModel().getToleranceHighLimit().getActive();
-    _toleranceLowActive = MtpViewBase::getViewModel().getToleranceLowLimit().getActive();
-    _warningLowActive = MtpViewBase::getViewModel().getWarningLowLimit().getActive();
+    _alertHighActive = MtpViewRef::getViewModel().getAlertHighLimit().getActive();
+    _warningHighActive = MtpViewRef::getViewModel().getWarningHighLimit().getActive();
+    _toleranceHighActive = MtpViewRef::getViewModel().getToleranceHighLimit().getActive();
+    _toleranceLowActive = MtpViewRef::getViewModel().getToleranceLowLimit().getActive();
+    _warningLowActive = MtpViewRef::getViewModel().getWarningLowLimit().getActive();
 
-    setStatusCB("_alertLowActive", MtpViewBase::getViewModel().getAlertLowLimit().getActive());
-    setUnit(MtpViewBase::getViewModel().getUnit());
-    setValueCB(MtpViewBase::getViewModel().getValue());
+    setStatusCB("_alertLowActive", MtpViewRef::getViewModel().getAlertLowLimit().getActive());
+    setUnit(MtpViewRef::getViewModel().getUnit());
+    setValueCB(MtpViewRef::getViewModel().getValue());
   }
 
-  public void openFaceplate()
+  protected void initializeShapes() override
   {
-    // TODO.
-  }
-
-  protected void initializeShapes()
-  {
-    _txtValue = MtpViewBase::extractShape("_txtValue");
-    _txtUnit = MtpViewBase::extractShape("_txtUnit");
-    _rectStatus = MtpViewBase::extractShape("_rectStatus");
+    _txtValue = MtpViewRef::extractShape("_txtValue");
+    _txtUnit = MtpViewRef::extractShape("_txtUnit");
+    _rectStatus = MtpViewRef::extractShape("_rectStatus");
   }
 
   private void setUnit(shared_ptr<MtpUnit> unit)
