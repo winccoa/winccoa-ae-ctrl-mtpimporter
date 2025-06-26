@@ -14,7 +14,6 @@ class AnaMonFaceplateMain : MtpFaceplateMainBase
 {
   public AnaMonFaceplateMain(shared_ptr<AnaMon> viewModel, const mapping &shapes, const string &layoutNavigation) : MtpFaceplateMainBase(viewModel, shapes, layoutNavigation)
   {
-
   }
 
   protected vector<shared_ptr<MtpNavigationButton> > getNavigationButtons() override
@@ -22,6 +21,7 @@ class AnaMonFaceplateMain : MtpFaceplateMainBase
     vector<shared_ptr<MtpNavigationButton> > buttons = MtpFaceplateMainBase::getNavigationButtons();
 
     buttons.append(new MtpNavigationButton("MTP_Icones/Home.svg", "Home", "object_parts/AnaMon/AnaMonFaceplateHome.xml"));
+    buttons.append(new MtpNavigationButton("MTP_Icones/Param.svg", "HighLimit", "object_parts/AnaMon/AnaMonFaceplateSettingsHighLimit.xml"));
     buttons.append(new MtpNavigationButton("MTP_Icones/Alarms.svg", "Alarm", "object_parts/MtpFaceplate/AlarmTable.xml"));
     buttons.append(new MtpNavigationButton("MTP_Icones/Trend.svg", "Trend", "object_parts/MtpFaceplate/Trend.xml"));
 
