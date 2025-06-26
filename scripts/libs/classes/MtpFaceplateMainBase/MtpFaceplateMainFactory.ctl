@@ -16,12 +16,12 @@ class MtpFaceplateMainFactory
 
   }
 
-  public static shared_ptr<MtpFaceplateMainBase> create(const string &dp, const mapping &shapes, const string &layoutNavigation)
+  public static shared_ptr<MtpFaceplateMainBase> create(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes, const string &layoutNavigation)
   {
 
-    switch (dpTypeName(dp))
+    switch (getTypeName(viewModel))
     {
-      case "AnaMon": return new AnaMonFaceplateMain(new AnaMon(dp), shapes, layoutNavigation);
+      case "AnaMon": return new AnaMonFaceplateMain(viewModel, shapes, layoutNavigation);
 
       default: throw (makeError("", PRIO_SEVERE, ERR_PARAM, ErrCode::UNEXPECTEDSTATE, "datapoint type not defined '" + dpTypeName(dp) + "'"));
     }

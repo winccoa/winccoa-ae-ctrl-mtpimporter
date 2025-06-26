@@ -16,9 +16,11 @@ class AnaMonFaceplateTrend : MtpFaceplateTrendBase
 
   }
 
-  protected dyn_string getTrendDpes()
+  protected dyn_string getTrendDpes() override
   {
+    dyn_string dpes = MtpFaceplateTrendBase::getTrendDpes();
     string dp = MtpFaceplateTrendBase::getViewModel().getDp();
-    return makeDynString(dp + ".V");
+    dpes.append(dp + ".V");
+    return dpes;
   }
 };

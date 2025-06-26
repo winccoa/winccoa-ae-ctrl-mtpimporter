@@ -25,7 +25,8 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
 {
   mapping shapes = makeMapping(&quot;_trend&quot;, getShape(&quot;trend&quot;));
   faceplate = MtpFaceplateTrendFactory::create(viewModel, shapes);
-}]]></script>
+}
+]]></script>
  </events>
  <shapes>
   <shape Name="trend" layerId="0" shapeType="TREND">

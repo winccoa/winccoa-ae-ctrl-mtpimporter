@@ -17,12 +17,13 @@ class AnaMonFaceplateMain : MtpFaceplateMainBase
 
   }
 
-  protected vector<shared_ptr<MtpNavigationButton> > getNavigationButtons()
+  protected vector<shared_ptr<MtpNavigationButton> > getNavigationButtons() override
   {
-    vector<shared_ptr<MtpNavigationButton> > buttons;
+    vector<shared_ptr<MtpNavigationButton> > buttons = MtpFaceplateMainBase::getNavigationButtons();
 
-    buttons.append(new MtpNavigationButton("picture", "Alarm", "object_parts/MtpFaceplate/AlarmTable.xml"));
-    buttons.append(new MtpNavigationButton("picture", "Trend", "object_parts/MtpFaceplate/Trend.xml"));
+    buttons.append(new MtpNavigationButton("MTP_Icones/Home.svg", "Home", "object_parts/AnaMon/AnaMonFaceplateHome.xml"));
+    buttons.append(new MtpNavigationButton("MTP_Icones/Alarms.svg", "Alarm", "object_parts/MtpFaceplate/AlarmTable.xml"));
+    buttons.append(new MtpNavigationButton("MTP_Icones/Trend.svg", "Trend", "object_parts/MtpFaceplate/Trend.xml"));
 
     return buttons;
   }

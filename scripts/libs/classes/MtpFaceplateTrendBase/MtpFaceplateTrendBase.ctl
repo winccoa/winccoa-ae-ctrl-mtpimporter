@@ -12,6 +12,7 @@
 class MtpFaceplateTrendBase : MtpViewBase
 {
   private shape _trend;
+
   protected MtpFaceplateTrendBase(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     connectTrend();
@@ -22,7 +23,10 @@ class MtpFaceplateTrendBase : MtpViewBase
     _trend = MtpViewBase::extractShape("_trend");
   }
 
-  protected dyn_string getTrendDpes() = 0;
+  protected dyn_string getTrendDpes()
+  {
+    return makeDynString();
+  }
 
   private void connectTrend()
   {

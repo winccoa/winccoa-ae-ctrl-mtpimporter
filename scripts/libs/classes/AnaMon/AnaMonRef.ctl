@@ -6,6 +6,7 @@
   @author m.woegrath
 */
 
+#uses "classes/AnaMon/AnaMon"
 #uses "classes/MtpView/MtpViewRef"
 #uses "classes/MtpValueLimit/MtpValueLimitFloat"
 #uses "classes/MtpUnit/MtpUnit"
@@ -22,7 +23,7 @@ class AnaMonRef : MtpViewRef
   private bool _warningLowActive;
   private bool _alertLowActive;
 
-  public AnaMonRef(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes) : MtpViewRef(viewModel, shapes)
+  public AnaMonRef(shared_ptr<AnaMon> viewModel, const mapping &shapes) : MtpViewRef(viewModel, shapes)
   {
     classConnectUserData(this, setStatusCB, "_alertHighActive", MtpViewRef::getViewModel().getAlertHighLimit(), MtpValueLimitFloat::activeChanged);
     classConnectUserData(this, setStatusCB, "_warningHighActive", MtpViewRef::getViewModel().getWarningHighLimit(), MtpValueLimitFloat::activeChanged);
@@ -30,7 +31,7 @@ class AnaMonRef : MtpViewRef
     classConnectUserData(this, setStatusCB, "_toleranceLowActive", MtpViewRef::getViewModel().getToleranceLowLimit(), MtpValueLimitFloat::activeChanged);
     classConnectUserData(this, setStatusCB, "_warningLowActive", MtpViewRef::getViewModel().getWarningLowLimit(), MtpValueLimitFloat::activeChanged);
     classConnectUserData(this, setStatusCB, "_alertLowActive", MtpViewRef::getViewModel().getAlertLowLimit(), MtpValueLimitFloat::activeChanged);
-    classConnect(this, setValueCB, MtpViewRef::getViewModel().getValue(), AnaMon::valueChanged);
+    classConnect(this, setValueCB, MtpViewRef::getViewModel(), AnaMon::valueChanged);
 
     _alertHighActive = MtpViewRef::getViewModel().getAlertHighLimit().getActive();
     _warningHighActive = MtpViewRef::getViewModel().getWarningHighLimit().getActive();
@@ -91,22 +92,25 @@ class AnaMonRef : MtpViewRef
 
     if (_alertHighActive || _alertLowActive)
     {
-      // TODO.
+      _rectStatus.fill = "[pattern,[tile,any,MTP_Icones/Error.svg]]";
+      _rectStatus.visible = TRUE;
       return;
     }
 
     if (_warningHighActive || _warningLowActive)
     {
-      // TODO.
+      _rectStatus.fill = "[pattern,[tile,any,MTP_Icones/Mainenance.svg]]";
+      _rectStatus.visible = TRUE;
       return;
     }
 
     if (_toleranceHighActive || _toleranceLowActive)
     {
-      // TODO.
+      _rectStatus.fill = "[pattern,[tile,any,MTP_Icones/Tolerance.svg]]";
+      _rectStatus.visible = TRUE;
       return;
     }
 
-    // TODO.
+    _rectStatus.visible = FALSE;
   }
 };
