@@ -5,7 +5,7 @@
    <prop name="en_US.utf8"></prop>
   </prop>
   <prop name="Size">419 437</prop>
-  <prop name="BackColor">_3DFace</prop>
+  <prop name="BackColor">mtpBackground2</prop>
   <prop name="RefPoint">0 0</prop>
   <prop name="InitAndTermRef">True</prop>
   <prop name="SendClick">False</prop>
@@ -33,7 +33,7 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
    <properties>
     <prop name="serialId">0</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">20 25</prop>
+    <prop name="RefPoint">30 18</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -50,7 +50,7 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">20 25</prop>
+    <prop name="Location">30 18</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -70,7 +70,7 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
    <properties>
     <prop name="serialId">1</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">20 77</prop>
+    <prop name="RefPoint">30 77</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -87,7 +87,7 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">20 77</prop>
+    <prop name="Location">30 77</prop>
     <prop name="Font">
      <prop name="en_US.utf8">Roboto,-1,13,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
@@ -109,7 +109,7 @@ bis zur Flattererkennung</prop>
    <properties>
     <prop name="serialId">3</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">20 142</prop>
+    <prop name="RefPoint">30 142</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -126,7 +126,7 @@ bis zur Flattererkennung</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">20 142</prop>
+    <prop name="Location">30 142</prop>
     <prop name="Font">
      <prop name="en_US.utf8">Roboto,-1,13,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
@@ -168,7 +168,7 @@ der Flattererkennung
     <prop name="BorderStyle">Normal</prop>
     <prop name="Editable">True</prop>
     <prop name="ClearButtonEnabled">False</prop>
-    <prop name="TextFormat">[0.2f,False,False,AlignLeft,False]</prop>
+    <prop name="TextFormat">[0d,False,False,AlignHCenter|AlignVCenter,False]</prop>
     <prop name="AllowEmptyNumeric">False</prop>
     <prop name="ulcClientSideWidget">False</prop>
    </properties>
@@ -202,7 +202,7 @@ der Flattererkennung
     <prop name="BorderStyle">Normal</prop>
     <prop name="Editable">True</prop>
     <prop name="ClearButtonEnabled">False</prop>
-    <prop name="TextFormat">[0.2f,False,False,AlignLeft,False]</prop>
+    <prop name="TextFormat">[0.2f,False,False,AlignHCenter|AlignVCenter,False]</prop>
     <prop name="AllowEmptyNumeric">False</prop>
     <prop name="ulcClientSideWidget">False</prop>
    </properties>

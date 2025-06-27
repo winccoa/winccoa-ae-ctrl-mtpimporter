@@ -64,6 +64,7 @@ main()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1 0 0 1 0 1</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">25 20</prop>
     <prop name="Size">366 46</prop>
@@ -75,7 +76,7 @@ main()
    <properties>
     <prop name="serialId">3</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">25 40</prop>
+    <prop name="RefPoint">28.5 45</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">_ButtonText</prop>
@@ -89,11 +90,11 @@ main()
     <prop name="Font">
      <prop name="de_AT.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
     </prop>
-    <prop name="Location">25 21</prop>
-    <prop name="Size">41 51</prop>
+    <prop name="Location">28.5 26</prop>
+    <prop name="Size">37 37</prop>
     <prop name="BorderStyle">Styled</prop>
-    <prop name="Text">
-     <prop name="de_AT.utf8">Left</prop>
+    <prop SharedPixmap="1" name="Image">
+     <prop name="BackgroundPixmap">MTP_Icones/BackDis.svg</prop>
     </prop>
    </properties>
    <events>
@@ -107,7 +108,7 @@ main()
    <properties>
     <prop name="serialId">4</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">350 40</prop>
+    <prop name="RefPoint">350 45</prop>
     <prop name="Enable">False</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">_ButtonText</prop>
@@ -121,11 +122,11 @@ main()
     <prop name="Font">
      <prop name="de_AT.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
     </prop>
-    <prop name="Location">350 21</prop>
-    <prop name="Size">41 51</prop>
+    <prop name="Location">350 26</prop>
+    <prop name="Size">37 37</prop>
     <prop name="BorderStyle">Styled</prop>
-    <prop name="Text">
-     <prop name="de_AT.utf8">Right</prop>
+    <prop SharedPixmap="1" name="Image">
+     <prop name="BackgroundPixmap">MTP_Icones/NextEn.svg</prop>
     </prop>
    </properties>
   </shape>
@@ -133,7 +134,7 @@ main()
    <properties>
     <prop name="serialId">5</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">55 190</prop>
+    <prop name="RefPoint">31 156</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -150,8 +151,9 @@ main()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">55 190</prop>
+    <prop name="Location">31 156</prop>
     <prop name="Font">
+     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
@@ -169,7 +171,7 @@ main()
    <properties>
     <prop name="serialId">6</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">55 235</prop>
+    <prop name="RefPoint">30.5 232</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -186,8 +188,9 @@ main()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">55 235</prop>
+    <prop name="Location">30.5 232</prop>
     <prop name="Font">
+     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
@@ -205,7 +208,7 @@ main()
    <properties>
     <prop name="serialId">7</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">50 290</prop>
+    <prop name="RefPoint">31 305</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -222,8 +225,9 @@ main()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">50 290</prop>
+    <prop name="Location">31 305</prop>
     <prop name="Font">
+     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
@@ -241,7 +245,7 @@ main()
    <properties>
     <prop name="serialId">8</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">50 165</prop>
+    <prop name="RefPoint">31 138</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -258,8 +262,9 @@ main()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">50 165</prop>
+    <prop name="Location">31 138</prop>
     <prop name="Font">
+     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
@@ -277,7 +282,7 @@ main()
    <properties>
     <prop name="serialId">9</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">35 220</prop>
+    <prop name="RefPoint">31 214</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -294,8 +299,9 @@ main()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">35 220</prop>
+    <prop name="Location">31 214</prop>
     <prop name="Font">
+     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
@@ -313,7 +319,7 @@ main()
    <properties>
     <prop name="serialId">10</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">45 265</prop>
+    <prop name="RefPoint">31 287</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -330,8 +336,9 @@ main()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">45 265</prop>
+    <prop name="Location">31 287</prop>
     <prop name="Font">
+     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
@@ -349,7 +356,7 @@ main()
    <properties>
     <prop name="serialId">11</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">42 85</prop>
+    <prop name="RefPoint">31 88</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -366,7 +373,7 @@ main()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">42 85</prop>
+    <prop name="Location">31 88</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -385,7 +392,7 @@ main()
    <properties>
     <prop name="serialId">13</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">265 157</prop>
+    <prop name="RefPoint">255 154</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpInputText</prop>
@@ -399,12 +406,12 @@ main()
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,21,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
-    <prop name="Location">265 140</prop>
-    <prop name="Size">116 31</prop>
+    <prop name="Location">255 136</prop>
+    <prop name="Size">126 40</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Editable">True</prop>
     <prop name="ClearButtonEnabled">False</prop>
-    <prop name="TextFormat">[0.2f,False,False,AlignLeft,False]</prop>
+    <prop name="TextFormat">[0.2f,False,False,AlignHCenter|AlignVCenter,False]</prop>
     <prop name="AllowEmptyNumeric">False</prop>
     <prop name="ulcClientSideWidget">False</prop>
    </properties>
@@ -419,7 +426,7 @@ main()
    <properties>
     <prop name="serialId">14</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">260 215</prop>
+    <prop name="RefPoint">255 229</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpInputText</prop>
@@ -433,12 +440,12 @@ main()
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,21,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
-    <prop name="Location">260 198</prop>
-    <prop name="Size">116 31</prop>
+    <prop name="Location">255 212</prop>
+    <prop name="Size">126 40</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Editable">True</prop>
     <prop name="ClearButtonEnabled">False</prop>
-    <prop name="TextFormat">[0.2f,False,False,AlignLeft,False]</prop>
+    <prop name="TextFormat">[0.2f,False,False,AlignHCenter|AlignVCenter,False]</prop>
     <prop name="AllowEmptyNumeric">False</prop>
     <prop name="ulcClientSideWidget">False</prop>
    </properties>
@@ -453,7 +460,7 @@ main()
    <properties>
     <prop name="serialId">15</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">265 280</prop>
+    <prop name="RefPoint">255 301.5</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpInputText</prop>
@@ -467,12 +474,12 @@ main()
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,21,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
-    <prop name="Location">265 263</prop>
-    <prop name="Size">116 31</prop>
+    <prop name="Location">255 285</prop>
+    <prop name="Size">126 40</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Editable">True</prop>
     <prop name="ClearButtonEnabled">False</prop>
-    <prop name="TextFormat">[0.2f,False,False,AlignLeft,False]</prop>
+    <prop name="TextFormat">[0.2f,False,False,AlignHCenter|AlignVCenter,False]</prop>
     <prop name="AllowEmptyNumeric">False</prop>
     <prop name="ulcClientSideWidget">False</prop>
    </properties>
@@ -487,7 +494,7 @@ main()
    <properties>
     <prop name="serialId">16</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">170 25</prop>
+    <prop name="RefPoint">172 26</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -504,7 +511,7 @@ main()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">170 25</prop>
+    <prop name="Location">172 26</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -523,7 +530,7 @@ main()
    <properties>
     <prop name="serialId">17</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">195 50</prop>
+    <prop name="RefPoint">193 46</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -540,8 +547,9 @@ main()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">195 50</prop>
+    <prop name="Location">193 46</prop>
     <prop name="Font">
+     <prop name="en_US.utf8">Roboto,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular</prop>
      <prop name="de_AT.utf8">Roboto,-1,13,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
