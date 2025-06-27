@@ -34,13 +34,13 @@ class MtpValueLimit
       throw (makeError("", PRIO_SEVERE, ERR_PARAM, (int)ErrCode::DPNOTEXISTENT, dpeActive));
     }
 
-    dpGet(_dpeLimit, _value,
-          dpeEnabled, _enabled);
+    dpGet(dpeEnabled, _enabled);
 
     dpConnect(this, setActiveCB, dpeActive);
+    dpConnect(this, setLimitCB, _dpeLimit);
   }
 
-  #event activeChanged(const bool &active)
+#event activeChanged(const bool &active)
 
   public bool getActive()
   {
@@ -54,8 +54,7 @@ class MtpValueLimit
 
   protected void setLimit(const anytype &value)
   {
-    _value = value;
-    dpSet(_dpeLimit, getLimit());
+    dpSet(_dpeLimit, value);
   }
 
   protected anytype getLimit()
@@ -67,5 +66,10 @@ class MtpValueLimit
   {
     _active = active;
     activeChanged(getActive());
+  }
+
+  private void setLimitCB(const string &dpe, const anytype &value)
+  {
+    _value = value;
   }
 };

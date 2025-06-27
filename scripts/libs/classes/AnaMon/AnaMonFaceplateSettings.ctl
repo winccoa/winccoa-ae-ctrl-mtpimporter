@@ -6,11 +6,11 @@
   @author m.woegrath
 */
 
+#uses "classes/MtpView/MtpViewFaceplateSettings"
 #uses "classes/MtpUnit/MtpUnit"
 #uses "classes/AnaMon/AnaMon"
-#uses "classes/MtpView/MtpViewBase"
 
-class AnaMonFaceplateSettings : MtpViewBase
+class AnaMonFaceplateSettings : MtpViewFaceplateSettings
 {
   private shape _txtUnitAlert;
   private shape _txtUnitWarning;
@@ -20,9 +20,9 @@ class AnaMonFaceplateSettings : MtpViewBase
   private shape _txtTolerance;
   private bool _init;
 
-  public AnaMonFaceplateSettings(shared_ptr<AnaMon> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
+  public AnaMonFaceplateSettings(shared_ptr<AnaMon> viewModel, const mapping &shapes) : MtpViewFaceplateSettings(viewModel, shapes)
   {
-    setUnit(MtpViewBase::getViewModel().getUnit());
+    setUnit(MtpViewFaceplateSettings::getViewModel().getUnit());
   }
 
   public void setAlertLimit(const float &alertLimit) = 0;
@@ -35,12 +35,12 @@ class AnaMonFaceplateSettings : MtpViewBase
 
   protected void initializeShapes()
   {
-    _txtUnitAlert = MtpViewBase::extractShape("_txtUnitAlert");
-    _txtUnitWarning = MtpViewBase::extractShape("_txtUnitWarning");
-    _txtUnitTolerance = MtpViewBase::extractShape("_txtUnitTolerance");
-    _txtAlert = MtpViewBase::extractShape("_txtAlert");
-    _txtWarning = MtpViewBase::extractShape("_txtWarning");
-    _txtTolerance = MtpViewBase::extractShape("_txtTolerance");
+    _txtUnitAlert = MtpViewFaceplateSettings::extractShape("_txtUnitAlert");
+    _txtUnitWarning = MtpViewFaceplateSettings::extractShape("_txtUnitWarning");
+    _txtUnitTolerance = MtpViewFaceplateSettings::extractShape("_txtUnitTolerance");
+    _txtAlert = MtpViewFaceplateSettings::extractShape("_txtAlert");
+    _txtWarning = MtpViewFaceplateSettings::extractShape("_txtWarning");
+    _txtTolerance = MtpViewFaceplateSettings::extractShape("_txtTolerance");
     _init = TRUE;
   }
 
@@ -64,25 +64,10 @@ class AnaMonFaceplateSettings : MtpViewBase
     return _txtTolerance;
   }
 
-  protected void loadPanel(const string &fileName, const string &panelName)
-  {
-    string moduleName = myModuleName();
-
-    if (isModuleOpen(moduleName) && !isPanelOpen(panelName, moduleName))
-    {
-      string uiDp = myUiDpName() + ".";
-
-      dpSetWait(uiDp + "RootPanelOrigOn.ModuleName:_original.._value", moduleName,
-                uiDp + "RootPanelOrigOn.FileName:_original.._value", fileName,
-                uiDp + "RootPanelOrigOn.PanelName:_original.._value", panelName,
-                uiDp + "RootPanelOrigOn.Parameter:_original.._value", makeDynString("$dp:" + MtpViewBase::getViewModel().getDp()));
-    }
-  }
-
   private void setUnit(shared_ptr<MtpUnit> unit)
   {
-    _txtUnitAlert.text = unit.toString();
-    _txtUnitWarning.text = unit.toString();
-    _txtUnitTolerance.text = unit.toString();
+    _txtUnitAlert.text = "[" + unit.toString() + "]";
+    _txtUnitWarning.text = "[" + unit.toString() + "]";
+    _txtUnitTolerance.text = "[" + unit.toString() + "]";
   }
 };
