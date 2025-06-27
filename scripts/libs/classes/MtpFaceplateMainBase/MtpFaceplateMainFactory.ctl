@@ -6,6 +6,7 @@
   @author m.woegrath
 */
 
+#uses "classes/BinMon/BinMonFaceplateMain"
 #uses "classes/AnaMon/AnaMonFaceplateMain"
 #uses "classes/MtpFaceplateMainBase/MtpFaceplateMainBase"
 
@@ -22,6 +23,8 @@ class MtpFaceplateMainFactory
     switch (getTypeName(viewModel))
     {
       case "AnaMon": return new AnaMonFaceplateMain(viewModel, shapes, layoutNavigation);
+
+      case "BinMon": return new BinMonFaceplateMain(viewModel, shapes, layoutNavigation);
 
       default: throw (makeError("", PRIO_SEVERE, ERR_PARAM, ErrCode::UNEXPECTEDSTATE, "datapoint type not defined '" + dpTypeName(dp) + "'"));
     }

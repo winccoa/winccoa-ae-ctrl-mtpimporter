@@ -9,6 +9,7 @@
 
 #uses "classes/MtpViewModel/MtpViewModelBase"
 #uses "classes/AnaMon/AnaMonFaceplateTrend"
+#uses "classes/BinMon/BinMonFaceplateTrend"
 #uses "classes/MtpFaceplateTrendBase/MtpFaceplateTrendBase"
 class MtpFaceplateTrendFactory
 {
@@ -22,6 +23,8 @@ class MtpFaceplateTrendFactory
     switch (getTypeName(viewModel))
     {
       case "AnaMon": return new AnaMonFaceplateTrend(viewModel, shapes);
+
+      case "BinMon": return new BinMonFaceplateTrend(viewModel, shapes);
 
       default: throw (makeError("", PRIO_SEVERE, ERR_PARAM, ErrCode::UNEXPECTEDSTATE, "viewModel not defined '" + getTypeName(viewModel) + "'"));
     }
