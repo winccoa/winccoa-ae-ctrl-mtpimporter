@@ -20,7 +20,6 @@ class MtpViewRef : MtpViewBase
   {
     string dp = MtpViewBase::getViewModel().getDp();
     openChildPanel("object_parts/MtpFaceplate/Main.xml", dpGetDescription(dp));
-    // delay(1);
     invokeMethod(getShape(myModuleName(), dpGetDescription(dp), ""), "initialize", MtpViewBase::getViewModel());
   }
 
