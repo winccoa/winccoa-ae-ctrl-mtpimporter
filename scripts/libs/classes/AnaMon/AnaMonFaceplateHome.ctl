@@ -98,6 +98,7 @@ class AnaMonFaceplateHome : MtpViewBase
     if (_alertHighActive)
     {
       _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
+      _rectLimitHigh.sizeAsDyn = makeDynInt(25, 25);
       _txtLimitHigh.text = "Alarm hoch";
       return;
     }
@@ -105,6 +106,7 @@ class AnaMonFaceplateHome : MtpViewBase
     if (_warningHighActive)
     {
       _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Mainenance.svg]]";
+      _rectLimitHigh.sizeAsDyn = makeDynInt(25, 25);
       _txtLimitHigh.text = "Warnung hoch";
       return;
     }
@@ -112,11 +114,13 @@ class AnaMonFaceplateHome : MtpViewBase
     if (_toleranceHighActive)
     {
       _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Tolerance.svg]]";
+      _rectLimitHigh.sizeAsDyn = makeDynInt(25, 25);
       _txtLimitHigh.text = "Toleranz hoch";
       return;
     }
 
     _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
+    _rectLimitHigh.sizeAsDyn = makeDynInt(30, 25);
     _txtLimitHigh.text = "Grenze hoch";
   }
 
@@ -140,6 +144,7 @@ class AnaMonFaceplateHome : MtpViewBase
     if (_alertLowActive)
     {
       _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
+      _rectLimitLow.sizeAsDyn = makeDynInt(25, 25);
       _txtLimitLow.text = "Alarm niedrig";
       return;
     }
@@ -147,6 +152,7 @@ class AnaMonFaceplateHome : MtpViewBase
     if (_warningLowActive)
     {
       _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Mainenance.svg]]";
+      _rectLimitLow.sizeAsDyn = makeDynInt(25, 25);
       _txtLimitLow.text = "Warnung niedrig";
       return;
     }
@@ -154,11 +160,13 @@ class AnaMonFaceplateHome : MtpViewBase
     if (_toleranceLowActive)
     {
       _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Tolerance.svg]]";
+      _rectLimitLow.sizeAsDyn = makeDynInt(25, 25);
       _txtLimitLow.text = "Toleranz niedrig";
       return;
     }
 
     _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
+    _rectLimitLow.sizeAsDyn = makeDynInt(30, 25);
     _txtLimitLow.text = "Grenze niedrig";
   }
 };

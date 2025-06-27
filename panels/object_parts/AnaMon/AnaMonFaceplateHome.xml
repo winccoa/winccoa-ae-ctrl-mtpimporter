@@ -37,7 +37,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
    <properties>
     <prop name="serialId">4</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">180 145</prop>
+    <prop name="RefPoint">210 169</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -54,11 +54,12 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">180 145</prop>
+    <prop name="Location">210 169</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
+     <prop name="en_US.utf8">00.00</prop>
      <prop name="de_AT.utf8">0</prop>
     </prop>
     <prop name="Distance">2</prop>
@@ -66,14 +67,14 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="Bordered">False</prop>
     <prop name="Fit">True</prop>
     <prop name="Transformable">False</prop>
-    <prop name="TextFormat">[0.2f,False,False,AlignRight,False,False]</prop>
+    <prop name="TextFormat">[0.2f,False,False,AlignHCenter|AlignVCenter,False,False]</prop>
    </properties>
   </shape>
   <shape Name="txtUnit" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>
     <prop name="serialId">5</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">160 180</prop>
+    <prop name="RefPoint">209.75 242</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -90,7 +91,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">160 180</prop>
+    <prop name="Location">209.75 242</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -102,14 +103,14 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="Bordered">False</prop>
     <prop name="Fit">True</prop>
     <prop name="Transformable">False</prop>
-    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+    <prop name="TextFormat">[0s,,,AlignHCenter|AlignVCenter]</prop>
    </properties>
   </shape>
   <shape Name="PRIMITIVE_TEXT2" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>
     <prop name="serialId">7</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">20 20</prop>
+    <prop name="RefPoint">22 22</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -126,7 +127,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">20 20</prop>
+    <prop name="Location">22 22</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -145,7 +146,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
    <properties>
     <prop name="serialId">8</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">35 250</prop>
+    <prop name="RefPoint">0 275</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpBorder</prop>
@@ -161,15 +162,15 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop name="Start">35 250</prop>
-    <prop name="End">257 250</prop>
+    <prop name="Start">0 275</prop>
+    <prop name="End">420 275</prop>
    </properties>
   </shape>
   <shape Name="rectLimitHigh" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">9</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">190 80</prop>
+    <prop name="RefPoint">183.5 79.14615384615388</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">_Transparent</prop>
@@ -178,7 +179,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="ToolTipText">
      <prop name="de_AT.utf8"></prop>
     </prop>
-    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
     <prop name="snapMode">Point</prop>
     <prop name="DashBackColor">_Transparent</prop>
     <prop name="AntiAliased">False</prop>
@@ -186,10 +187,10 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok.svg]]</prop>
-    <prop name="Geometry">1 0 0 1.354166666666667 20 201.6666666666666</prop>
+    <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 61.48614540466393 207.6155753968253</prop>
     <prop name="BorderStyle">Normal</prop>
-    <prop name="Location">190 80</prop>
-    <prop name="Size">21 16</prop>
+    <prop name="Location">183.5 79.14615384615388</prop>
+    <prop name="Size">27.5 16.85384615384612</prop>
     <prop name="CornerRadius">0</prop>
     <prop name="Transformable">True</prop>
    </properties>
@@ -198,7 +199,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
    <properties>
     <prop name="serialId">10</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">215 270</prop>
+    <prop name="RefPoint">226.75 291</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -215,8 +216,9 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">215 270</prop>
+    <prop name="Location">226.75 291</prop>
     <prop name="Font">
+     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
@@ -234,7 +236,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
    <properties>
     <prop name="serialId">11</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">50 265</prop>
+    <prop name="RefPoint">23.375 291</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -251,8 +253,9 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">50 265</prop>
+    <prop name="Location">23.375 291</prop>
     <prop name="Font">
+     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
@@ -270,6 +273,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
    <properties>
     <prop name="FileName">objects/MtpFaceplate/WQC.xml</prop>
     <prop name="Location">40 305</prop>
+    <prop name="Geometry">1 0 0 1 -19 18.8515625</prop>
     <prop name="TabOrder">10</prop>
     <prop name="layoutAlignment">AlignNone</prop>
    </properties>
@@ -278,7 +282,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
    <properties>
     <prop name="serialId">14</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">190 80</prop>
+    <prop name="RefPoint">183 77.04615384615389</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">_Transparent</prop>
@@ -287,7 +291,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="ToolTipText">
      <prop name="de_AT.utf8"></prop>
     </prop>
-    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
     <prop name="snapMode">Point</prop>
     <prop name="DashBackColor">_Transparent</prop>
     <prop name="AntiAliased">False</prop>
@@ -295,10 +299,10 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok.svg]]</prop>
-    <prop name="Geometry">1 0 0 1.354166666666667 20 226.6666666666666</prop>
+    <prop name="Geometry">0.888888888888889 0 0 1.354166666666667 62.33333333333333 265.6666666666666</prop>
     <prop name="BorderStyle">Normal</prop>
-    <prop name="Location">190 80</prop>
-    <prop name="Size">21 16</prop>
+    <prop name="Location">183 77.04615384615389</prop>
+    <prop name="Size">28 18.95384615384611</prop>
     <prop name="CornerRadius">0</prop>
     <prop name="Transformable">True</prop>
    </properties>
@@ -307,7 +311,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
    <properties>
     <prop name="serialId">15</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">235 310</prop>
+    <prop name="RefPoint">266 327.078125</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -324,7 +328,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">235 310</prop>
+    <prop name="Location">266 327.078125</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -343,7 +347,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
    <properties>
     <prop name="serialId">16</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">235 335</prop>
+    <prop name="RefPoint">265.75 373.15625</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -360,7 +364,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">235 335</prop>
+    <prop name="Location">265.75 373.15625</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -379,7 +383,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
    <properties>
     <prop name="serialId">17</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">155 280</prop>
+    <prop name="RefPoint">210 275</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpBorder</prop>
@@ -395,8 +399,8 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop name="Start">155 280</prop>
-    <prop name="End">155 398</prop>
+    <prop name="Start">210 275</prop>
+    <prop name="End">210 440</prop>
    </properties>
   </shape>
  </shapes>

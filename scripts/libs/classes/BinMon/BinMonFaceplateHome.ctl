@@ -42,11 +42,13 @@ class BinMonFaceplateHome : MtpViewBase
     {
       _rectValue.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
       _txtValue.text = MtpViewBase::getViewModel().getValueStateTrueText();
+      _rectValue.sizeAsDyn = makeDynInt(50, 40);
     }
     else
     {
       _rectValue.fill = "[pattern,[fit,any,MTP_Icones/Close.svg]]";
       _txtValue.text = MtpViewBase::getViewModel().getValueStateFalseText();
+      _rectValue.sizeAsDyn = makeDynInt(40, 40);
     }
   }
 
@@ -60,10 +62,12 @@ class BinMonFaceplateHome : MtpViewBase
     if (active)
     {
       _rectFlutterActive.fill = "[pattern,[fit,any,MTP_Icones/Mainenance.svg]]";
+      _rectFlutterActive.sizeAsDyn = makeDynInt(25, 25);
     }
     else
     {
       _rectFlutterActive.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
+      _rectFlutterActive.sizeAsDyn = makeDynInt(30, 25);
     }
   }
 
