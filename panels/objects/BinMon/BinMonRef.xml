@@ -2,7 +2,7 @@
 <panel version="14">
  <properties>
   <prop name="Name">
-   <prop name="en_US.utf8"></prop>
+   <prop name="de_AT.utf8"></prop>
   </prop>
   <prop name="Size">500 400</prop>
   <prop name="BackColor">_3DFace</prop>
@@ -74,7 +74,7 @@ public void initialize()
     <prop name="BackColor">{255,255,255}</prop>
     <prop name="TabOrder">4</prop>
     <prop name="ToolTipText">
-     <prop name="en_US.utf8"></prop>
+     <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>

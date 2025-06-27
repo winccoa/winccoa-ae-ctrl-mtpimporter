@@ -153,8 +153,7 @@ main()
     <prop name="FillType">[outline]</prop>
     <prop name="Location">31 156</prop>
     <prop name="Font">
-     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
-     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+     <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">unit</prop>
@@ -190,8 +189,7 @@ main()
     <prop name="FillType">[outline]</prop>
     <prop name="Location">30.75 232.5</prop>
     <prop name="Font">
-     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
-     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+     <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">unit</prop>
@@ -227,8 +225,7 @@ main()
     <prop name="FillType">[outline]</prop>
     <prop name="Location">30.5 305.25</prop>
     <prop name="Font">
-     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
-     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+     <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">unit</prop>
@@ -264,8 +261,7 @@ main()
     <prop name="FillType">[outline]</prop>
     <prop name="Location">31 137.75</prop>
     <prop name="Font">
-     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
-     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+     <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Alarm-Obergrenze</prop>
@@ -301,8 +297,7 @@ main()
     <prop name="FillType">[outline]</prop>
     <prop name="Location">31 213.5</prop>
     <prop name="Font">
-     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
-     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+     <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Warn-Obergrenze</prop>
@@ -338,8 +333,7 @@ main()
     <prop name="FillType">[outline]</prop>
     <prop name="Location">31 287</prop>
     <prop name="Font">
-     <prop name="en_US.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
-     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+     <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Toleranz-Obergrenze</prop>
@@ -378,8 +372,7 @@ main()
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
-     <prop name="en_US.utf8">Obergrenzen</prop>
-     <prop name="de_AT.utf8">Oberrenzen</prop>
+     <prop name="de_AT.utf8">Obergrenzen</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -550,8 +543,7 @@ main()
     <prop name="FillType">[outline]</prop>
     <prop name="Location">192.75 46</prop>
     <prop name="Font">
-     <prop name="en_US.utf8">Roboto,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular</prop>
-     <prop name="de_AT.utf8">Roboto,-1,13,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+     <prop name="de_AT.utf8">Roboto,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular</prop>
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">1/2</prop>
