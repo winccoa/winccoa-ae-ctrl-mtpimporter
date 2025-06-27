@@ -4,7 +4,7 @@
   <prop name="Name">
    <prop name="de_AT.utf8"></prop>
   </prop>
-  <prop name="Size">1563 728</prop>
+  <prop name="Size">419 437</prop>
   <prop name="BackColor">_3DFace</prop>
   <prop name="RefPoint">240 90.31598512614659</prop>
   <prop name="InitAndTermRef">True</prop>
@@ -32,15 +32,15 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
    <properties>
     <prop name="serialId">1</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">-640 -125</prop>
+    <prop name="RefPoint">-306.4366689143587 -39.63198758060389</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">_WindowText</prop>
     <prop name="BackColor">_Window</prop>
     <prop name="TabOrder">0</prop>
     <prop name="ToolTipText">
-     <prop name="de_AT.utf8"></prop>
      <prop name="en_US.utf8"></prop>
+     <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Preferred" vertical="Preferred"/>
@@ -48,17 +48,16 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
     <prop name="Font">
-     <prop name="de_AT.utf8">Lucida Sans Unicode,-1,16,5,400,0,0,0,0,0,0,0,0,0,0,1,Standard</prop>
-     <prop name="en_US.utf8">Lucida Sans Unicode,-1,16,5,50,0,0,0,0,0,Standard</prop>
+     <prop name="en_US.utf8">Roboto,-1,15,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular</prop>
     </prop>
-    <prop name="Location">23.51540756864416 26.99469080718285</prop>
-    <prop name="Size">1380 482</prop>
+    <prop name="Location">30 77</prop>
+    <prop name="Size">361 215</prop>
     <prop name="ShowColumnHeader">True</prop>
     <prop name="ShowRowHeader">False</prop>
     <prop name="SortOnClick">True</prop>
     <prop name="TabKeyCellFocus">False</prop>
     <prop name="EditOnKeyNavigation">False</prop>
-    <prop name="RowHeight">20</prop>
+    <prop name="RowHeight">25</prop>
     <prop name="RowHeaderWidth">10</prop>
     <prop name="GridType">Cross</prop>
     <prop name="VScrollBarMode">AlwaysOn</prop>
@@ -69,12 +68,12 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
      <prop name="Visible">False</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">Quittieren</prop>
       <prop name="en_US.utf8">Acknowledge</prop>
+      <prop name="de_AT.utf8">Quittieren</prop>
      </prop>
      <prop name="ToolTipText">
-      <prop name="de_AT.utf8"></prop>
       <prop name="en_US.utf8"></prop>
+      <prop name="de_AT.utf8"></prop>
      </prop>
     </prop>
     <prop name="Column">
@@ -83,12 +82,12 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
      <prop name="Visible">False</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">Quittierbar</prop>
       <prop name="en_US.utf8">Acknowledgeable</prop>
+      <prop name="de_AT.utf8">Quittierbar</prop>
      </prop>
      <prop name="ToolTipText">
-      <prop name="de_AT.utf8"></prop>
       <prop name="en_US.utf8"></prop>
+      <prop name="de_AT.utf8"></prop>
      </prop>
     </prop>
     <prop name="Column">
@@ -97,12 +96,12 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
      <prop name="Visible">False</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">Priorität</prop>
       <prop name="en_US.utf8">Priority</prop>
+      <prop name="de_AT.utf8">Priorität</prop>
      </prop>
      <prop name="ToolTipText">
-      <prop name="de_AT.utf8"></prop>
       <prop name="en_US.utf8"></prop>
+      <prop name="de_AT.utf8"></prop>
      </prop>
     </prop>
     <prop name="Column">
@@ -111,12 +110,12 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
      <prop name="Visible">False</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">DPE/Beschreibung</prop>
       <prop name="en_US.utf8">DPE/Description</prop>
+      <prop name="de_AT.utf8">DPE/Beschreibung</prop>
      </prop>
      <prop name="ToolTipText">
-      <prop name="de_AT.utf8"></prop>
       <prop name="en_US.utf8"></prop>
+      <prop name="de_AT.utf8"></prop>
      </prop>
     </prop>
     <prop name="Column">
@@ -125,12 +124,12 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
      <prop name="Visible">True</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">Alarmzeit</prop>
       <prop name="en_US.utf8">Alarm time</prop>
+      <prop name="de_AT.utf8">Alarmzeit</prop>
      </prop>
      <prop name="ToolTipText">
-      <prop name="de_AT.utf8"></prop>
       <prop name="en_US.utf8"></prop>
+      <prop name="de_AT.utf8"></prop>
      </prop>
     </prop>
     <prop name="Column">
@@ -139,12 +138,12 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
      <prop name="Visible">True</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">DPE/Beschreibung</prop>
       <prop name="en_US.utf8">DPE/Description</prop>
+      <prop name="de_AT.utf8">DPE/Beschreibung</prop>
      </prop>
      <prop name="ToolTipText">
-      <prop name="de_AT.utf8"></prop>
       <prop name="en_US.utf8"></prop>
+      <prop name="de_AT.utf8"></prop>
      </prop>
     </prop>
     <prop name="Column">
@@ -153,12 +152,12 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
      <prop name="Visible">True</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">Alarm Text</prop>
       <prop name="en_US.utf8">Alarm text</prop>
+      <prop name="de_AT.utf8">Alarm Text</prop>
      </prop>
      <prop name="ToolTipText">
-      <prop name="de_AT.utf8"></prop>
       <prop name="en_US.utf8"></prop>
+      <prop name="de_AT.utf8"></prop>
      </prop>
     </prop>
     <prop name="Column">
@@ -167,12 +166,12 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
      <prop name="Visible">True</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">Wert</prop>
       <prop name="en_US.utf8">Value</prop>
+      <prop name="de_AT.utf8">Wert</prop>
      </prop>
      <prop name="ToolTipText">
-      <prop name="de_AT.utf8"></prop>
       <prop name="en_US.utf8"></prop>
+      <prop name="de_AT.utf8"></prop>
      </prop>
     </prop>
     <prop name="Column">
@@ -181,12 +180,12 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
      <prop name="Visible">True</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">Ri.</prop>
       <prop name="en_US.utf8">Dir.</prop>
+      <prop name="de_AT.utf8">Ri.</prop>
      </prop>
      <prop name="ToolTipText">
-      <prop name="de_AT.utf8"></prop>
       <prop name="en_US.utf8"></prop>
+      <prop name="de_AT.utf8"></prop>
      </prop>
     </prop>
     <prop name="Column">
@@ -195,12 +194,12 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
      <prop name="Visible">True</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">Quit</prop>
       <prop name="en_US.utf8">Ack</prop>
+      <prop name="de_AT.utf8">Quit</prop>
      </prop>
      <prop name="ToolTipText">
-      <prop name="de_AT.utf8"></prop>
       <prop name="en_US.utf8"></prop>
+      <prop name="de_AT.utf8"></prop>
      </prop>
     </prop>
     <prop name="Column">
@@ -209,12 +208,12 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
      <prop name="Visible">False</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">...</prop>
       <prop name="en_US.utf8">...</prop>
+      <prop name="de_AT.utf8">...</prop>
      </prop>
      <prop name="ToolTipText">
-      <prop name="de_AT.utf8"></prop>
       <prop name="en_US.utf8"></prop>
+      <prop name="de_AT.utf8"></prop>
      </prop>
     </prop>
     <prop name="Column">
@@ -223,19 +222,19 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
      <prop name="Visible">False</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">Count</prop>
       <prop name="en_US.utf8">Count</prop>
+      <prop name="de_AT.utf8">Count</prop>
      </prop>
      <prop name="ToolTipText">
-      <prop name="de_AT.utf8"></prop>
       <prop name="en_US.utf8"></prop>
+      <prop name="de_AT.utf8"></prop>
      </prop>
     </prop>
     <prop name="Row">
      <prop name="Name"></prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">#1</prop>
       <prop name="en_US.utf8">#1</prop>
+      <prop name="de_AT.utf8">#1</prop>
      </prop>
     </prop>
    </properties>
@@ -245,6 +244,43 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
   faceplate.clickRow(column, row, value);
 }]]></script>
    </events>
+  </shape>
+  <shape Name="Title_Text" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">3</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">30.01733351472455 18</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">30.01733351472455 18</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="en_US.utf8">Alarmübersicht</prop>
+     <prop name="de_AT.utf8">Prozesssignal</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
   </shape>
  </shapes>
 </panel>
