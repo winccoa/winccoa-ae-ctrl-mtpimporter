@@ -2,7 +2,7 @@
 <panel version="14">
  <properties>
   <prop name="Name">
-   <prop name="en_US.utf8"></prop>
+   <prop name="de_AT.utf8"></prop>
   </prop>
   <prop name="Size">419 437</prop>
   <prop name="BackColor">mtpBackground</prop>
@@ -190,8 +190,7 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
-     <prop name="en_US.utf8">Fluttererkennung</prop>
-     <prop name="de_AT.utf8">Grenze niedrig</prop>
+     <prop name="de_AT.utf8">Flattererkennung</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -224,12 +223,10 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
     <prop name="FillType">[outline]</prop>
     <prop name="Location">210 192.5</prop>
     <prop name="Font">
-     <prop name="en_US.utf8">Roboto,-1,21,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
-     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+     <prop name="de_AT.utf8">Roboto,-1,21,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
-     <prop name="en_US.utf8">true</prop>
-     <prop name="de_AT.utf8">0</prop>
+     <prop name="de_AT.utf8">wahr</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
