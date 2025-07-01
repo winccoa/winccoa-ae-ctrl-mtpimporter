@@ -17,6 +17,7 @@ class AnaMonFaceplateSettingsLowLimit : AnaMonFaceplateSettings
     {
       delay(0, 50);
     }
+
     shape txtAlert = AnaMonFaceplateSettings::getTxtAlert();
     shape txtWarning = AnaMonFaceplateSettings::getTxtWarning();
     shape txtTolerance = AnaMonFaceplateSettings::getTxtTolerance();

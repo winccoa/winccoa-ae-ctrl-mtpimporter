@@ -21,12 +21,45 @@ class AnaMonFaceplateHome : MtpViewBase
   private shape _rectLimitLow;
   private shape _txtLimitHigh;
   private shape _txtLimitLow;
+
+  private shape _body1;
+  private shape _circleAH1;
+  private shape _circleAL1;
+  private shape _circlePV1;
+  private shape _circleTH1;
+  private shape _circleTL1;
+  private shape _circleWH1;
+  private shape _circleWL1;
+
+  private shape _body2;
+  private shape _circlePV2;
+  private shape _circleValue;
+
+  private shape _txtHalfMax;
+  private shape _txtMax;
+
   private bool _alertHighActive;
   private bool _warningHighActive;
   private bool _toleranceHighActive;
   private bool _toleranceLowActive;
   private bool _warningLowActive;
   private bool _alertLowActive;
+
+  private float _ahValue;
+  private float _alValue;
+  private float _whValue;
+  private float _wlValue;
+  private float _thValue;
+  private float _tlValue;
+  private bool _ahEnabled;
+  private bool _alEnabled;
+  private bool _whEnabled;
+  private bool _wlEnabled;
+  private bool _thEnabled;
+  private bool _tlEnabled;
+  private float _minV;
+  private float _maxV;
+  private string _unit;
 
   public AnaMonFaceplateHome(shared_ptr<AnaMon> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
@@ -44,12 +77,35 @@ class AnaMonFaceplateHome : MtpViewBase
     _toleranceHighActive = MtpViewBase::getViewModel().getToleranceHighLimit().getActive();
     _toleranceLowActive = MtpViewBase::getViewModel().getToleranceLowLimit().getActive();
     _warningLowActive = MtpViewBase::getViewModel().getWarningLowLimit().getActive();
+    _alertLowActive = MtpViewBase::getViewModel().getAlertLowLimit().getActive();
+
+    _ahValue = MtpViewBase::getViewModel().getAlertHighLimit().getLimit();
+    _alValue = MtpViewBase::getViewModel().getAlertLowLimit().getLimit();
+    _whValue = MtpViewBase::getViewModel().getWarningHighLimit().getLimit();
+    _wlValue = MtpViewBase::getViewModel().getWarningLowLimit().getLimit();
+    _thValue = MtpViewBase::getViewModel().getToleranceHighLimit().getLimit();
+    _tlValue = MtpViewBase::getViewModel().getToleranceLowLimit().getLimit();
+
+    _ahEnabled = MtpViewBase::getViewModel().getAlertHighLimit().getEnabled();
+    _alEnabled = MtpViewBase::getViewModel().getAlertLowLimit().getEnabled();
+    _whEnabled = MtpViewBase::getViewModel().getWarningHighLimit().getEnabled();
+    _wlEnabled = MtpViewBase::getViewModel().getWarningLowLimit().getEnabled();
+    _thEnabled = MtpViewBase::getViewModel().getToleranceHighLimit().getEnabled();
+    _tlEnabled = MtpViewBase::getViewModel().getToleranceLowLimit().getEnabled();
+
+    _minV = MtpViewBase::getViewModel().getValueScaleMin();
+    _maxV = MtpViewBase::getViewModel().getValueScaleMax();
+    _unit = MtpViewBase::getViewModel().getUnit().toString();
 
     setUnit(MtpViewBase::getViewModel().getUnit());
     setWqcCB(MtpViewBase::getViewModel().getWqc().getQualityGood());
     setValueCB(MtpViewBase::getViewModel().getValue());
     setStatusHighCB("_alertHighActive", MtpViewBase::getViewModel().getAlertHighLimit().getActive());
     setStatusLowCB("_alertLowActive", MtpViewBase::getViewModel().getAlertLowLimit().getActive());
+
+    setScaleTexts(MtpViewBase::getViewModel().getValueScaleMax());
+
+    updateBars();
   }
 
   protected void initializeShapes()
@@ -61,16 +117,71 @@ class AnaMonFaceplateHome : MtpViewBase
     _rectLimitLow = MtpViewBase::extractShape("_rectLimitLow");
     _txtLimitHigh = MtpViewBase::extractShape("_txtLimitHigh");
     _txtLimitLow = MtpViewBase::extractShape("_txtLimitLow");
+
+    _body1 = MtpViewBase::extractShape("_body1");
+    _circleAH1 = MtpViewBase::extractShape("_circleAH1");
+    _circleAL1 = MtpViewBase::extractShape("_circleAL1");
+    _circlePV1 = MtpViewBase::extractShape("_circlePV1");
+    _circleTH1 = MtpViewBase::extractShape("_circleTH1");
+    _circleTL1 = MtpViewBase::extractShape("_circleTL1");
+    _circleWH1 = MtpViewBase::extractShape("_circleWH1");
+    _circleWL1 = MtpViewBase::extractShape("_circleWL1");
+
+    _body2 = MtpViewBase::extractShape("_body2");
+    _circlePV2 = MtpViewBase::extractShape("_circlePV2");
+    _circleValue = MtpViewBase::extractShape("_circleValue");
+
+    _txtHalfMax = MtpViewBase::extractShape("_txtHalfMax");
+    _txtMax = MtpViewBase::extractShape("_txtMax");
   }
 
   private void setValueCB(const float &value)
   {
     _txtValue.text = value;
+
+    // Clamp value to min/max
+    float clampedValue = value;
+
+    if (clampedValue < _minV)
+      clampedValue = _minV;
+
+    if (clampedValue > _maxV)
+      clampedValue = _maxV;
+
+    // Update second indicator
+    _circlePV2.angle2 = 180; // Full gauge range
+    _circleValue.angle2 = 180; // Overlay arc covers from angle1 to 180
+    _circleValue.angle1 = (_maxV != _minV) ? ((calculateCircleDeg(clampedValue, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(clampedValue, _minV, _maxV)) : 180;
+
+    // Set _circlePV2 color based on limit ranges
+    if ((_ahEnabled && value >= _ahValue) || (_alEnabled && value <= _alValue))
+    {
+      _circleValue.backCol = "mtpRed";
+    }
+    else if ((_whEnabled && value >= _whValue) || (_wlEnabled && value <= _wlValue))
+    {
+      _circleValue.backCol = "mtpYellow";
+    }
+    else if ((_thEnabled && value >= _thValue) || (_tlEnabled && value <= _tlValue))
+    {
+      _circleValue.backCol = "mtpSidebar";
+    }
+    else
+    {
+      _circleValue.backCol = "mtpGreen";
+    }
   }
+
 
   private void setUnit(shared_ptr<MtpUnit> unit)
   {
     _txtUnit.text = unit.toString();
+  }
+
+  private void setScaleTexts(const float &scaleMax)
+  {
+    _txtHalfMax.text = scaleMax / 2;
+    _txtMax.text = scaleMax;
   }
 
   private void setWqcCB(const bool &qualityGoodChanged)
@@ -122,6 +233,8 @@ class AnaMonFaceplateHome : MtpViewBase
     _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
     _rectLimitHigh.sizeAsDyn = makeDynInt(30, 25);
     _txtLimitHigh.text = "Grenze hoch";
+
+    updateBars();
   }
 
   private void setStatusLowCB(const string &varName, const bool &active)
@@ -168,5 +281,35 @@ class AnaMonFaceplateHome : MtpViewBase
     _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
     _rectLimitLow.sizeAsDyn = makeDynInt(30, 25);
     _txtLimitLow.text = "Grenze niedrig";
+
+    updateBars();
+  }
+
+  private void updateBars()
+  {
+    _circleAH1.angle2 = (_ahEnabled) ? ((calculateCircleDeg(_ahValue, _minV, _maxV) > 180) ? 180 : calculateCircleDeg(_ahValue, _minV, _maxV)) : 0;
+    _circleWH1.angle2 = (_whEnabled) ? ((calculateCircleDeg(_whValue, _minV, _maxV) > 180) ? 180 : calculateCircleDeg(_whValue, _minV, _maxV)) : 0;
+    _circleTH1.angle2 = (_thEnabled) ? ((calculateCircleDeg(_thValue, _minV, _maxV) > 180) ? 180 : calculateCircleDeg(_thValue, _minV, _maxV)) : 0;
+
+    _circleAL1.angle2 = 180;
+    _circleWL1.angle2 = 180;
+    _circleTL1.angle2 = 180;
+    _circleAL1.angle1 = (_alEnabled) ? ((calculateCircleDeg(_alValue, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(_alValue, _minV, _maxV)) : 180;
+    _circleWL1.angle1 = (_wlEnabled) ? ((calculateCircleDeg(_wlValue, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(_wlValue, _minV, _maxV)) : 180;
+    _circleTL1.angle1 = (_tlEnabled) ? ((calculateCircleDeg(_tlValue, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(_tlValue, _minV, _maxV)) : 180;
+  }
+
+  private float calculatePvDeg(float value, float minV, float maxV)
+  {
+    float pvk = (180.0 / (minV - maxV));
+    float pvd = (360.0 - minV * pvk);
+    return value * pvk + pvd;
+  }
+
+  private float calculateCircleDeg(float value, float minV, float maxV)
+  {
+    float ck = (180.0 / (minV - maxV));
+    float cd = (180.0 - minV * ck);
+    return value * ck + cd;
   }
 };

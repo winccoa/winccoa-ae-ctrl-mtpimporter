@@ -446,7 +446,7 @@ main()
    <events>
     <script isEscaped="1" name="Command"><![CDATA[main()
 {
-  _faceplate.setAlertLimit(this.text());
+  _faceplate.setWarningLimit(this.text());
 }]]></script>
    </events>
   </shape>
@@ -480,7 +480,7 @@ main()
    <events>
     <script isEscaped="1" name="Command"><![CDATA[main()
 {
-  _faceplate.setAlertLimit(this.text());
+  _faceplate.setToleranceLimit(this.text());
 }]]></script>
    </events>
   </shape>
