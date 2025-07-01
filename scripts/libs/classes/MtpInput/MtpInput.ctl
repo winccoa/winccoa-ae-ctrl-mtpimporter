@@ -41,15 +41,17 @@ class MtpInput
 
     _qualityCode = new MtpQualityCode(dpeQualityCode);
 
-    dpGet(dpeInverted, _inverted,
-          dpeText, _text);
+    dpGet(dpeText, _text);
 
     dpConnect(this, setEnabledCB, dpeEnabled);
     dpConnect(this, setValueCB, dpeValue);
+    dpConnect(this, setInvertedCB, dpeInverted);
   }
 
 #event enabledChanged(const bool &enabled)
 #event valueChanged(const bool &value)
+#event invertedChanged(const bool &inverted)
+
 
   public bool getEnabled()
   {
@@ -86,5 +88,11 @@ class MtpInput
   {
     _value = value;
     valueChanged(getValue());
+  }
+
+  private void setInvertedCB(const string &dpe, const bool &inverted)
+  {
+    _inverted = inverted;
+    invertedChanged(getInverted());
   }
 };

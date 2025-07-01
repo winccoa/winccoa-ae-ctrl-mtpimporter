@@ -1,4 +1,4 @@
-8
+10
 "mtpText" N {181,181,181}
 "mtpTitlebar" N {0,161,209}
 "mtpBackground" N {255,255,255}
@@ -7,3 +7,5 @@
 "mtpBackground2" N {240,242,243}
 "mtpBorder" N {206,206,206}
 "mtpInputText" N {79,79,79}
+"mtpGreen" N {45,243,177}
+"mtpRed" N {231,0,0}
