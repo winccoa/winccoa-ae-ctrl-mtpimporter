@@ -31,9 +31,10 @@ class AnaMonFaceplateHome : MtpViewBase
   private shape _circleWH1;
   private shape _circleWL1;
 
-  private shape _body2;
-  private shape _circlePV2;
+  private shape _body;
+  private shape _circlePV;
   private shape _circleValue;
+  private shape _pvPointer;
 
   private shape _txtHalfMax;
   private shape _txtMax;
@@ -127,9 +128,10 @@ class AnaMonFaceplateHome : MtpViewBase
     _circleWH1 = MtpViewBase::extractShape("_circleWH1");
     _circleWL1 = MtpViewBase::extractShape("_circleWL1");
 
-    _body2 = MtpViewBase::extractShape("_body2");
-    _circlePV2 = MtpViewBase::extractShape("_circlePV2");
+    _body = MtpViewBase::extractShape("_body");
+    _circlePV = MtpViewBase::extractShape("_circlePV");
     _circleValue = MtpViewBase::extractShape("_circleValue");
+    _pvPointer = MtpViewBase::extractShape("_pvPointer");
 
     _txtHalfMax = MtpViewBase::extractShape("_txtHalfMax");
     _txtMax = MtpViewBase::extractShape("_txtMax");
@@ -139,7 +141,6 @@ class AnaMonFaceplateHome : MtpViewBase
   {
     _txtValue.text = value;
 
-    // Clamp value to min/max
     float clampedValue = value;
 
     if (clampedValue < _minV)
@@ -148,12 +149,10 @@ class AnaMonFaceplateHome : MtpViewBase
     if (clampedValue > _maxV)
       clampedValue = _maxV;
 
-    // Update second indicator
-    _circlePV2.angle2 = 180; // Full gauge range
-    _circleValue.angle2 = 180; // Overlay arc covers from angle1 to 180
+    _circlePV.angle2 = 180;
+    _circleValue.angle2 = 180;
     _circleValue.angle1 = (_maxV != _minV) ? ((calculateCircleDeg(clampedValue, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(clampedValue, _minV, _maxV)) : 180;
 
-    // Set _circlePV2 color based on limit ranges
     if ((_ahEnabled && value >= _ahValue) || (_alEnabled && value <= _alValue))
     {
       _circleValue.backCol = "mtpRed";
@@ -170,6 +169,8 @@ class AnaMonFaceplateHome : MtpViewBase
     {
       _circleValue.backCol = "mtpGreen";
     }
+
+    _pvPointer.rotation = (calculatePvDeg(value, _minV, _maxV) < 180) ? 180 : calculatePvDeg(value, _minV, _maxV);
   }
 
 
