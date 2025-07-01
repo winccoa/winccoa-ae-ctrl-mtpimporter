@@ -46,12 +46,12 @@ class AnaMonFaceplateHome : MtpViewBase
   private bool _warningLowActive;
   private bool _alertLowActive;
 
-  private float _ahValue;
-  private float _alValue;
-  private float _whValue;
-  private float _wlValue;
-  private float _thValue;
-  private float _tlValue;
+  private float _ahLimit;
+  private float _alLimit;
+  private float _whLimit;
+  private float _wlLimit;
+  private float _thLimit;
+  private float _tlLimit;
   private bool _ahEnabled;
   private bool _alEnabled;
   private bool _whEnabled;
@@ -80,12 +80,12 @@ class AnaMonFaceplateHome : MtpViewBase
     _warningLowActive = MtpViewBase::getViewModel().getWarningLowLimit().getActive();
     _alertLowActive = MtpViewBase::getViewModel().getAlertLowLimit().getActive();
 
-    _ahValue = MtpViewBase::getViewModel().getAlertHighLimit().getLimit();
-    _alValue = MtpViewBase::getViewModel().getAlertLowLimit().getLimit();
-    _whValue = MtpViewBase::getViewModel().getWarningHighLimit().getLimit();
-    _wlValue = MtpViewBase::getViewModel().getWarningLowLimit().getLimit();
-    _thValue = MtpViewBase::getViewModel().getToleranceHighLimit().getLimit();
-    _tlValue = MtpViewBase::getViewModel().getToleranceLowLimit().getLimit();
+    _ahLimit = MtpViewBase::getViewModel().getAlertHighLimit().getLimit();
+    _alLimit = MtpViewBase::getViewModel().getAlertLowLimit().getLimit();
+    _whLimit = MtpViewBase::getViewModel().getWarningHighLimit().getLimit();
+    _wlLimit = MtpViewBase::getViewModel().getWarningLowLimit().getLimit();
+    _thLimit = MtpViewBase::getViewModel().getToleranceHighLimit().getLimit();
+    _tlLimit = MtpViewBase::getViewModel().getToleranceLowLimit().getLimit();
 
     _ahEnabled = MtpViewBase::getViewModel().getAlertHighLimit().getEnabled();
     _alEnabled = MtpViewBase::getViewModel().getAlertLowLimit().getEnabled();
@@ -153,15 +153,15 @@ class AnaMonFaceplateHome : MtpViewBase
     _circleValue.angle2 = 180;
     _circleValue.angle1 = (_maxV != _minV) ? ((calculateCircleDeg(clampedValue, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(clampedValue, _minV, _maxV)) : 180;
 
-    if ((_ahEnabled && value >= _ahValue) || (_alEnabled && value <= _alValue))
+    if ((_ahEnabled && value >= _ahLimit) || (_alEnabled && value <= _alLimit))
     {
       _circleValue.backCol = "mtpRed";
     }
-    else if ((_whEnabled && value >= _whValue) || (_wlEnabled && value <= _wlValue))
+    else if ((_whEnabled && value >= _whLimit) || (_wlEnabled && value <= _wlLimit))
     {
       _circleValue.backCol = "mtpYellow";
     }
-    else if ((_thEnabled && value >= _thValue) || (_tlEnabled && value <= _tlValue))
+    else if ((_thEnabled && value >= _thLimit) || (_tlEnabled && value <= _tlLimit))
     {
       _circleValue.backCol = "mtpSidebar";
     }
@@ -288,16 +288,16 @@ class AnaMonFaceplateHome : MtpViewBase
 
   private void updateBars()
   {
-    _circleAH1.angle2 = (_ahEnabled) ? ((calculateCircleDeg(_ahValue, _minV, _maxV) > 180) ? 180 : calculateCircleDeg(_ahValue, _minV, _maxV)) : 0;
-    _circleWH1.angle2 = (_whEnabled) ? ((calculateCircleDeg(_whValue, _minV, _maxV) > 180) ? 180 : calculateCircleDeg(_whValue, _minV, _maxV)) : 0;
-    _circleTH1.angle2 = (_thEnabled) ? ((calculateCircleDeg(_thValue, _minV, _maxV) > 180) ? 180 : calculateCircleDeg(_thValue, _minV, _maxV)) : 0;
+    _circleAH1.angle2 = (_ahEnabled) ? ((calculateCircleDeg(_ahLimit, _minV, _maxV) > 180) ? 180 : calculateCircleDeg(_ahLimit, _minV, _maxV)) : 0;
+    _circleWH1.angle2 = (_whEnabled) ? ((calculateCircleDeg(_whLimit, _minV, _maxV) > 180) ? 180 : calculateCircleDeg(_whLimit, _minV, _maxV)) : 0;
+    _circleTH1.angle2 = (_thEnabled) ? ((calculateCircleDeg(_thLimit, _minV, _maxV) > 180) ? 180 : calculateCircleDeg(_thLimit, _minV, _maxV)) : 0;
 
     _circleAL1.angle2 = 180;
     _circleWL1.angle2 = 180;
     _circleTL1.angle2 = 180;
-    _circleAL1.angle1 = (_alEnabled) ? ((calculateCircleDeg(_alValue, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(_alValue, _minV, _maxV)) : 180;
-    _circleWL1.angle1 = (_wlEnabled) ? ((calculateCircleDeg(_wlValue, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(_wlValue, _minV, _maxV)) : 180;
-    _circleTL1.angle1 = (_tlEnabled) ? ((calculateCircleDeg(_tlValue, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(_tlValue, _minV, _maxV)) : 180;
+    _circleAL1.angle1 = (_alEnabled) ? ((calculateCircleDeg(_alLimit, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(_alLimit, _minV, _maxV)) : 180;
+    _circleWL1.angle1 = (_wlEnabled) ? ((calculateCircleDeg(_wlLimit, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(_wlLimit, _minV, _maxV)) : 180;
+    _circleTL1.angle1 = (_tlEnabled) ? ((calculateCircleDeg(_tlLimit, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(_tlLimit, _minV, _maxV)) : 180;
   }
 
   private float calculatePvDeg(float value, float minV, float maxV)
