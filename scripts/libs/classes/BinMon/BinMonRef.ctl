@@ -25,22 +25,22 @@ class BinMonRef : MtpViewRef
     setValueCB(MtpViewRef::getViewModel().getValue());
   }
 
-  private void setValueCB(const bool &value)
-  {
-    if(value)
-    {
-        _rectValue.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
-    }
-    else
-    {
-        _rectValue.fill = "[pattern,[fit,any,MTP_Icones/Close.svg]]";
-      }
-  }
-
   protected void initializeShapes() override
   {
     _rectValue = MtpViewRef::extractShape("_rectValue");
     _rectStatus = MtpViewRef::extractShape("_rectStatus");
+  }
+
+  private void setValueCB(const bool &value)
+  {
+    if (value)
+    {
+      _rectValue.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
+    }
+    else
+    {
+      _rectValue.fill = "[pattern,[fit,any,MTP_Icones/Close.svg]]";
+    }
   }
 
   private void setStatusCB(const bool &active)
