@@ -262,9 +262,74 @@ class TstLockView4 : OaTest
     assertEqual(lockView.getOutput(), true, "AND mode: Output should be true with no enabled inputs");
     assertEqual(outValue, true, "AND mode: .Out DPE should be true");
 
+    // Test OR mode with Input3 enabled
+    _eventOutput = false;
+    dpSetWait(_DpExists + ".Logic", false,
+              _DpExists + ".In1En", false, _DpExists + ".In1", false, _DpExists + ".In1Inv", false,
+              _DpExists + ".In2En", false, _DpExists + ".In2", false, _DpExists + ".In2Inv", false,
+              _DpExists + ".In3En", true, _DpExists + ".In3", true, _DpExists + ".In3Inv", false,
+              _DpExists + ".In4En", false, _DpExists + ".In4", false, _DpExists + ".In4Inv", false);
+    delay(0, 200);
+    dpGet(_DpExists + ".Out", outValue);
+    assertEqual(lockView.getOutput(), true, "OR mode: Output should be true when In3 is true");
+    assertEqual(outValue, true, "OR mode: .Out DPE should be true");
+
+    // Test OR mode with Input3 enabled and inverted
+    _eventOutput = false;
+    dpSetWait(_DpExists + ".In3", true, _DpExists + ".In3Inv", true);
+    delay(0, 200);
+    dpGet(_DpExists + ".Out", outValue);
+    assertEqual(lockView.getInput3().getInverted(), true, "OR mode: In3Inv should be true");
+    assertEqual(lockView.getOutput(), false, "OR mode: Output should be false when In3 (inverted) is false");
+    assertEqual(outValue, false, "OR mode: .Out DPE should be false");
+
+    // Test AND mode with Input3 enabled
+    _eventOutput = false;
+    dpSetWait(_DpExists + ".Logic", true,
+              _DpExists + ".In1En", false, _DpExists + ".In1", false, _DpExists + ".In1Inv", false,
+              _DpExists + ".In2En", false, _DpExists + ".In2", false, _DpExists + ".In2Inv", false,
+              _DpExists + ".In3En", true, _DpExists + ".In3", true, _DpExists + ".In3Inv", false,
+              _DpExists + ".In4En", false, _DpExists + ".In4", false, _DpExists + ".In4Inv", false);
+    delay(0, 200);
+    dpGet(_DpExists + ".Out", outValue);
+    assertEqual(lockView.getOutput(), true, "AND mode: Output should be true when In3 is true");
+    assertEqual(outValue, true, "AND mode: .Out DPE should be true");
+
+    // Test OR mode with Input4 enabled
+    _eventOutput = false;
+    dpSetWait(_DpExists + ".Logic", false,
+              _DpExists + ".In1En", false, _DpExists + ".In1", false, _DpExists + ".In1Inv", false,
+              _DpExists + ".In2En", false, _DpExists + ".In2", false, _DpExists + ".In2Inv", false,
+              _DpExists + ".In3En", false, _DpExists + ".In3", false, _DpExists + ".In3Inv", false,
+              _DpExists + ".In4En", true, _DpExists + ".In4", true, _DpExists + ".In4Inv", false);
+    delay(0, 200);
+    dpGet(_DpExists + ".Out", outValue);
+    assertEqual(lockView.getOutput(), true, "OR mode: Output should be true when In4 is true");
+    assertEqual(outValue, true, "OR mode: .Out DPE should be true");
+
+    // Test OR mode with Input4 enabled and inverted
+    _eventOutput = false;
+    dpSetWait(_DpExists + ".In4", true, _DpExists + ".In4Inv", true);
+    delay(0, 200);
+    dpGet(_DpExists + ".Out", outValue);
+    assertEqual(lockView.getInput4().getInverted(), true, "OR mode: In4Inv should be true");
+    assertEqual(lockView.getOutput(), false, "OR mode: Output should be false when In4 (inverted) is false");
+    assertEqual(outValue, false, "OR mode: .Out DPE should be false");
+
+    // Test AND mode with Input4 enabled
+    _eventOutput = false;
+    dpSetWait(_DpExists + ".Logic", true,
+              _DpExists + ".In1En", false, _DpExists + ".In1", false, _DpExists + ".In1Inv", false,
+              _DpExists + ".In2En", false, _DpExists + ".In2", false, _DpExists + ".In2Inv", false,
+              _DpExists + ".In3En", false, _DpExists + ".In3", false, _DpExists + ".In3Inv", false,
+              _DpExists + ".In4En", true, _DpExists + ".In4", true, _DpExists + ".In4Inv", false);
+    delay(0, 200);
+    dpGet(_DpExists + ".Out", outValue);
+    assertEqual(lockView.getOutput(), true, "AND mode: Output should be true when In4 is true");
+    assertEqual(outValue, true, "AND mode: .Out DPE should be true");
+
     return 0;
   }
-
 
   private void setOutputChangedCB(const bool &output)
   {
