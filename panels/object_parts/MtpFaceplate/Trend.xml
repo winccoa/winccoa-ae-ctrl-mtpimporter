@@ -4,8 +4,8 @@
   <prop name="Name">
    <prop name="de_AT.utf8"></prop>
   </prop>
-  <prop name="Size">419 437</prop>
-  <prop name="BackColor">_3DFace</prop>
+  <prop name="Size">840 437</prop>
+  <prop name="BackColor">mtpBackground2</prop>
   <prop name="RefPoint">105 90</prop>
   <prop name="InitAndTermRef">True</prop>
   <prop name="SendClick">False</prop>
@@ -33,7 +33,7 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
    <properties>
     <prop name="serialId">1</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">42 56</prop>
+    <prop name="RefPoint">20 49.99999999999999</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">_WindowText</prop>
@@ -47,8 +47,8 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
     <prop name="Font">
      <prop name="de_AT.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
     </prop>
-    <prop name="Location">30 77</prop>
-    <prop name="Size">361 215</prop>
+    <prop name="Location">20 49.99999999999999</prop>
+    <prop name="Size">801 366</prop>
     <prop name="TimeTrend">True</prop>
     <prop name="Logarithmic">False</prop>
     <prop name="ShowToolBox">False</prop>
@@ -84,7 +84,7 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
    <properties>
     <prop name="serialId">3</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">29.99999999999999 18</prop>
+    <prop name="RefPoint">19.99999999999999 20</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -101,7 +101,7 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">29.99999999999999 18</prop>
+    <prop name="Location">19.99999999999999 20</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>

@@ -77,6 +77,9 @@ class MtpFaceplateMainBase : MtpViewBase
   {
     if (isModuleOpen(moduleName) && !isPanelOpen(panelName, moduleName))
     {
+      dyn_int orgSize = getPanelSize("object_parts/MtpFaceplate/Main.xml");
+      dyn_int size = getPanelSize(fileName);
+      setPanelSize(myModuleName(), myPanelName(), FALSE, size.at(0)+2, orgSize.at(1));
       string uiDp = myUiDpName() + ".";
 
       dpSetWait(uiDp + "RootPanelOrigOn.ModuleName:_original.._value", moduleName,
