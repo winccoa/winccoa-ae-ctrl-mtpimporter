@@ -275,7 +275,7 @@ class LockView4FaceplateHome : MtpViewBase
       circle.backCol = "mtpRed";
       lineHor.foreCol = "mtpRed";
       lineVert.foreCol = "mtpRed";
-      circleInv.backCol = "mtpGreen";
+      circleInv.backCol = "mtpRed";
     }
   }
 
