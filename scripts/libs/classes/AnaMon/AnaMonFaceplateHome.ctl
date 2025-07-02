@@ -209,15 +209,15 @@ class AnaMonFaceplateHome : MtpViewBase
 
     if (_alertHighActive)
     {
-      _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
-      _rectLimitHigh.sizeAsDyn = makeDynInt(25, 25);
+      _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/StaticErr.svg]]";
+      _rectLimitHigh.sizeAsDyn = makeDynInt(30, 25);
       _txtLimitHigh.text = "Alarm hoch";
       return;
     }
 
     if (_warningHighActive)
     {
-      _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Mainenance.svg]]";
+      _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Mainenance_2.svg]]";
       _rectLimitHigh.sizeAsDyn = makeDynInt(25, 25);
       _txtLimitHigh.text = "Warnung hoch";
       return;
@@ -257,15 +257,15 @@ class AnaMonFaceplateHome : MtpViewBase
 
     if (_alertLowActive)
     {
-      _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
-      _rectLimitLow.sizeAsDyn = makeDynInt(25, 25);
+      _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/StaticErr.svg]]";
+      _rectLimitLow.sizeAsDyn = makeDynInt(30, 25);
       _txtLimitLow.text = "Alarm niedrig";
       return;
     }
 
     if (_warningLowActive)
     {
-      _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Mainenance.svg]]";
+      _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Mainenance_2.svg]]";
       _rectLimitLow.sizeAsDyn = makeDynInt(25, 25);
       _txtLimitLow.text = "Warnung niedrig";
       return;
