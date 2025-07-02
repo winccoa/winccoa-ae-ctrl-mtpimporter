@@ -1,0 +1,29 @@
+# ascii dump of database
+
+# DpType
+TypeName
+LockView4.LockView4	1#1
+	WQC	24#3
+	Logic	23#4
+	In1En	23#5
+	In1	23#6
+	In1QC	24#7
+	In1Inv	23#8
+	In1Txt	25#9
+	In2En	23#10
+	In2	23#11
+	In2QC	24#12
+	In2Inv	23#13
+	In2Txt	25#14
+	In3En	23#15
+	In3	23#16
+	In3QC	24#17
+	In3Inv	23#18
+	In3Txt	25#19
+	In4En	23#25
+	In4	23#26
+	In4QC	24#27
+	In4Inv	23#28
+	In4Txt	25#29
+	Out	23#30
+	OutQC	24#31
