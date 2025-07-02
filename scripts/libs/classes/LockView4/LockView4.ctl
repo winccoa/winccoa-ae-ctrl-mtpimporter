@@ -33,15 +33,16 @@ class LockView4 : MtpViewModelBase
       throw (makeError("", PRIO_SEVERE, ERR_PARAM, (int)ErrCode::DPNOTEXISTENT, getDp() + ".Out"));
     }
 
-    dpConnect(this, setOutputCB, getDp() + ".Out");
-    dpConnect(this, setLogicCB, getDp() + ".Logic");
-
     _wqc = new MtpQualityCode(getDp() + ".WQC");
     _outputQualityCode = new MtpQualityCode(getDp() + ".OutQC");
     _input1 = new MtpInput(getDp() + ".In1En", getDp() + ".In1", getDp() + ".In1Inv", getDp() + ".In1Txt", getDp() + ".In1QC");
     _input2 = new MtpInput(getDp() + ".In2En", getDp() + ".In2", getDp() + ".In2Inv", getDp() + ".In2Txt",  getDp() + ".In2QC");
     _input3 = new MtpInput(getDp() + ".In3En", getDp() + ".In3", getDp() + ".In3Inv", getDp() + ".In3Txt", getDp() + ".In3QC");
     _input4 = new MtpInput(getDp() + ".In4En", getDp() + ".In4", getDp() + ".In4Inv", getDp() + ".In4Txt", getDp() + ".In4QC");
+
+    dpConnect(this, setOutputCB, getDp() + ".Out");
+    dpConnect(this, setLogicCB, getDp() + ".Logic");
+
 
     classConnect(this, inputChangedCB, _input1, MtpInput::enabledChanged);
     classConnect(this, inputChangedCB, _input1, MtpInput::valueChanged);
