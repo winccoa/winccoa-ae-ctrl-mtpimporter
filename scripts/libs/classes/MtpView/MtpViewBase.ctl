@@ -28,6 +28,11 @@ class MtpViewBase
 
   protected shape extractShape(const string &key)
   {
+    if (!_shapes.contains(key))
+    {
+      throw (makeError("", PRIO_SEVERE, ERR_PARAM, 0, "key '" + key + "' doesn't exist"));
+    }
+
     if (shapeExists(_shapes.value(key)))
     {
       return _shapes.value(key);
