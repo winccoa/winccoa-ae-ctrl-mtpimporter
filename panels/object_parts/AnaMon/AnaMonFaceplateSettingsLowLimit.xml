@@ -94,7 +94,7 @@ main()
     <prop name="Size">37 37</prop>
     <prop name="BorderStyle">Styled</prop>
     <prop SharedPixmap="1" name="Image">
-     <prop name="BackgroundPixmap">MTP_Icones/BackDis.svg</prop>
+     <prop name="BackgroundPixmap">MTP_Icones/BackEn.svg</prop>
     </prop>
    </properties>
    <events>
@@ -126,7 +126,7 @@ main()
     <prop name="Size">37 37</prop>
     <prop name="BorderStyle">Styled</prop>
     <prop SharedPixmap="1" name="Image">
-     <prop name="BackgroundPixmap">MTP_Icones/NextEn.svg</prop>
+     <prop name="BackgroundPixmap">MTP_Icones/NextDis.svg</prop>
     </prop>
    </properties>
   </shape>

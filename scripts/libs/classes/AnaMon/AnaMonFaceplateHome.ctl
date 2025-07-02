@@ -225,7 +225,7 @@ class AnaMonFaceplateHome : MtpViewBase
 
     if (_toleranceHighActive)
     {
-      _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Tolerance.svg]]";
+      _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Tolerance_2.svg]]";
       _rectLimitHigh.sizeAsDyn = makeDynInt(25, 25);
       _txtLimitHigh.text = "Toleranz hoch";
       return;
@@ -273,7 +273,7 @@ class AnaMonFaceplateHome : MtpViewBase
 
     if (_toleranceLowActive)
     {
-      _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Tolerance.svg]]";
+      _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Tolerance_2.svg]]";
       _rectLimitLow.sizeAsDyn = makeDynInt(25, 25);
       _txtLimitLow.text = "Toleranz niedrig";
       return;
