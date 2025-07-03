@@ -52,16 +52,16 @@ class AnaMonFaceplateHome : MtpViewBase
     setStatusHighCB("_alertHighActive", MtpViewBase::getViewModel().getAlertHighLimit().getActive());
     setStatusLowCB("_alertLowActive", MtpViewBase::getViewModel().getAlertLowLimit().getActive());
 
-    _barIndicator.setScale(viewModel.getValueScaleMin(), viewModel.getValueScaleMax());
-    _barIndicator.setUnit(viewModel.getUnit());
+    _barIndicator.setScale(MtpViewBase::getViewModel().getValueScaleMin(), MtpViewBase::getViewModel().getValueScaleMax());
+    _barIndicator.setUnit(MtpViewBase::getViewModel().getUnit());
 
-    _barIndicator.setAlertHighShape(viewModel.getAlertHighLimit().getEnabled(), viewModel.getAlertHighLimit().getLimit());
-    _barIndicator.setWarningHighShape(viewModel.getWarningHighLimit().getEnabled(), viewModel.getWarningHighLimit().getLimit());
-    _barIndicator.setToleranceHighShape(viewModel.getToleranceHighLimit().getEnabled(), viewModel.getToleranceHighLimit().getLimit());
+    _barIndicator.setAlertHighShape(MtpViewBase::getViewModel().getAlertHighLimit().getEnabled(), MtpViewBase::getViewModel().getAlertHighLimit().getLimit());
+    _barIndicator.setWarningHighShape(MtpViewBase::getViewModel().getWarningHighLimit().getEnabled(), MtpViewBase::getViewModel().getWarningHighLimit().getLimit());
+    _barIndicator.setToleranceHighShape(MtpViewBase::getViewModel().getToleranceHighLimit().getEnabled(), MtpViewBase::getViewModel().getToleranceHighLimit().getLimit());
 
-    _barIndicator.setAlertLowShape(viewModel.getAlertLowLimit().getEnabled(), viewModel.getAlertLowLimit().getLimit());
-    _barIndicator.setWarningLowShape(viewModel.getWarningLowLimit().getEnabled(), viewModel.getWarningLowLimit().getLimit());
-    _barIndicator.setToleranceLowShape(viewModel.getToleranceLowLimit().getEnabled(), viewModel.getToleranceLowLimit().getLimit());
+    _barIndicator.setAlertLowShape(MtpViewBase::getViewModel().getAlertLowLimit().getEnabled(), MtpViewBase::getViewModel().getAlertLowLimit().getLimit());
+    _barIndicator.setWarningLowShape(MtpViewBase::getViewModel().getWarningLowLimit().getEnabled(), MtpViewBase::getViewModel().getWarningLowLimit().getLimit());
+    _barIndicator.setToleranceLowShape(MtpViewBase::getViewModel().getToleranceLowLimit().getEnabled(), MtpViewBase::getViewModel().getToleranceLowLimit().getLimit());
 
     setValueCB(MtpViewBase::getViewModel().getValue());
   }
