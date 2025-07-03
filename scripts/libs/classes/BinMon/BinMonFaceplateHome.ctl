@@ -64,7 +64,7 @@ class BinMonFaceplateHome : MtpViewBase
     }
     else
     {
-      _rectFlutterActive.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
+      _rectFlutterActive.fill = "[pattern,[fit,any,MTP_Icones/Ok_2.svg]]";
       _rectFlutterActive.sizeAsDyn = makeDynInt(30, 25);
     }
   }

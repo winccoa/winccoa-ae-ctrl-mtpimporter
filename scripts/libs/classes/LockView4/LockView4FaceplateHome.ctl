@@ -182,7 +182,7 @@ class LockView4FaceplateHome : MtpViewBase
     }
     else
     {
-      _rectOutQC.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
+      _rectOutQC.fill = "[pattern,[fit,any,MTP_Icones/Ok_2.svg]]";
       _rectOutQC.sizeAsDyn = makeDynInt(30, 25);
     }
   }
@@ -323,7 +323,7 @@ class LockView4FaceplateHome : MtpViewBase
 
     if (qualityGood)
     {
-      rectQC.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
+      rectQC.fill = "[pattern,[fit,any,MTP_Icones/Ok_2.svg]]";
       rectQC.sizeAsDyn = makeDynInt(30, 25);
     }
     else

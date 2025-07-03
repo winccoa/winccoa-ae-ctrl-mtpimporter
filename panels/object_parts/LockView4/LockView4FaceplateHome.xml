@@ -176,7 +176,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok_2.svg]]</prop>
     <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 -143.5138545953361 -54.1411210317461</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183.5 79.14615384615388</prop>
@@ -205,7 +205,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok_2.svg]]</prop>
     <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 -143.5138545953361 -11.14112103174608</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183.5 79.14615384615388</prop>
@@ -234,7 +234,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok_2.svg]]</prop>
     <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 -143.5138545953361 30.85887896825392</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183.5 79.14615384615388</prop>
@@ -263,7 +263,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok_2.svg]]</prop>
     <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 -143.5138545953361 76.85887896825392</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183.5 79.14615384615388</prop>
@@ -763,7 +763,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok_2.svg]]</prop>
     <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 204.4861454046639 19.85887896825392</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183.5 79.14615384615388</prop>

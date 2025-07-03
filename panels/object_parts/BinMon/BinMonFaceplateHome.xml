@@ -155,7 +155,7 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok_2.svg]]</prop>
     <prop name="Geometry">1.2 0 0 1.625 -207.6 251.9999999999999</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>

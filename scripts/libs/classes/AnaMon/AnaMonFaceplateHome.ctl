@@ -231,7 +231,7 @@ class AnaMonFaceplateHome : MtpViewBase
       return;
     }
 
-    _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
+    _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Ok_2.svg]]";
     _rectLimitHigh.sizeAsDyn = makeDynInt(30, 25);
     _txtLimitHigh.text = "Grenze hoch";
 
@@ -279,7 +279,7 @@ class AnaMonFaceplateHome : MtpViewBase
       return;
     }
 
-    _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
+    _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Ok_2.svg]]";
     _rectLimitLow.sizeAsDyn = makeDynInt(30, 25);
     _txtLimitLow.text = "Grenze niedrig";
 

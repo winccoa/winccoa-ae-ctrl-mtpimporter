@@ -164,7 +164,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok_2.svg]]</prop>
     <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 66.48614540466393 207.6155753968253</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183.5 79.14615384615388</prop>
@@ -274,7 +274,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok_2.svg]]</prop>
     <prop name="Geometry">0.888888888888889 0 0 1.354166666666667 67.33333333333333 265.6666666666666</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183 77.04615384615389</prop>
