@@ -6,7 +6,7 @@
   </prop>
   <prop name="Size">500 400</prop>
   <prop name="BackColor">_3DFace</prop>
-  <prop name="RefPoint">155 98</prop>
+  <prop name="RefPoint">228 175</prop>
   <prop name="InitAndTermRef">True</prop>
   <prop name="SendClick">False</prop>
   <prop name="RefFileName"></prop>
@@ -113,7 +113,7 @@ public void initialize()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[solid]</prop>
-    <prop name="Geometry">1.533333333333332 0 0 1.672727272727273 -70.99999999999986 46.02556818181817</prop>
+    <prop name="Geometry">0.7422862807900551 0 0 1.594010695187166 82.52276366964088 47.32941176470587</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">165 55</prop>
     <prop name="Size">61 51</prop>
