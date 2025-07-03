@@ -39,11 +39,11 @@ class BinManIntRef : MtpViewRef
   {
     if (value)
     {
-      _rectValue.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
+      _rectValue.fill = "[pattern,[fit,any,MTP_Icones/True.svg]]";
     }
     else
     {
-      _rectValue.fill = "[pattern,[fit,any,MTP_Icones/Close.svg]]";
+      _rectValue.fill = "[pattern,[fit,any,MTP_Icones/False.svg]]";
     }
   }
 
