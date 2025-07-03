@@ -9,15 +9,32 @@
 #uses "classes/MtpViewModel/MtpViewModelBase"
 #uses "classes/MtpView/MtpViewBase"
 
+/**
+ * @class MtpFaceplateAlarm
+ * @brief Represents the alarm faceplate functionality in the MTP library.
+ */
 class MtpFaceplateAlarm : MtpViewBase
 {
-  private shape _table;
+  private shape _table; //!< The table shape used in the faceplate for displaying alarms.
 
+  /**
+   * @brief Constructor for MtpFaceplateAlarm.
+   *
+   * @param viewModel A shared pointer to the view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   */
   public MtpFaceplateAlarm(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     connectAlerts();
   }
 
+  /**
+   * @brief Handles row click events in the alarm table.
+   *
+   * @param column The column that was clicked.
+   * @param row The row that was clicked.
+   * @param value The value of the clicked cell.
+   */
   public void clickRow(const string &column, const int &row, const string &value)
   {
     switch (column)
@@ -32,11 +49,21 @@ class MtpFaceplateAlarm : MtpViewBase
     }
   }
 
+  /**
+   * @brief Initializes the shapes used in the faceplate.
+   * @details This method overrides the base class method to extract the table shape.
+   */
   protected void initializeShapes() override
   {
     _table = MtpViewBase::extractShape("_table");
   }
 
+  /**
+   * @brief Acknowledges an alert in the alarm table.
+   *
+   * @param row The row of the alert to acknowledge.
+   * @param value The value of the alert.
+   */
   private void acknowledgeAlert(const int &row, const string &value)
   {
     string token = UDA_noAck_Token;
@@ -49,6 +76,9 @@ class MtpFaceplateAlarm : MtpViewBase
     ep_acknowledgeTableFunction(_table.name(), "1", "dpekey", "time", "count", "ackable", row, row);
   }
 
+  /**
+   * @brief Connects the alert signals to their respective slots.
+   */
   private void connectAlerts()
   {
     string dp = MtpViewBase::getViewModel().getDp();
@@ -65,6 +95,12 @@ class MtpFaceplateAlarm : MtpViewBase
     dpQueryConnectSingle("alertCB", TRUE, dp, query);
   }
 
+  /**
+   * @brief Callback function for alert updates.
+   *
+   * @param dp The data point associated with the alert.
+   * @param result The result set containing alert information.
+   */
   private void alertCB(const string &dp, const dyn_dyn_anytype &result)
   {
     dyn_dyn_anytype updateList, deleteList;
@@ -106,6 +142,14 @@ class MtpFaceplateAlarm : MtpViewBase
     setValue(_table, "sort", makeDynBool(FALSE, FALSE), "time", "quitt"); //first alert is : youngest, ackable
   }
 
+  /**
+   * @brief Updates the alert information in the alarm table.
+   *
+   * @param result The result set containing the updated alert information.
+   * @param updateList The list of alerts to update.
+   * @param alertIsAckable Indicates if the alert is ackable.
+   * @param deleteList The list of alerts to delete.
+   */
   private void alertCBUpdate(const dyn_anytype &result, dyn_dyn_anytype &updateList, const bool &alertIsAckable, dyn_dyn_anytype &deleteList)
   {
     if (result.at(8) == "") //no alert color
@@ -162,6 +206,12 @@ class MtpFaceplateAlarm : MtpViewBase
     updateList.at(13).at(i) = result.at(14);
   }
 
+  /**
+   * @brief Callback function for alert deletion.
+   *
+   * @param result The result set containing alert information.
+   * @param deleteList The list of alerts to delete.
+   */
   private void alertCBDelete(const dyn_anytype &result, dyn_dyn_anytype &deleteList)
   {
     int i = -1;
@@ -182,6 +232,12 @@ class MtpFaceplateAlarm : MtpViewBase
     deleteList.at(2).at(i) = getACount(result.at(1));
   }
 
+  /**
+   * @brief Appends an empty alert to the specified list.
+   *
+   * @param list The list to append the empty alert to.
+   * @param size The size of the alert.
+   */
   private void appendEmptyAlert(dyn_dyn_anytype &list, const int &size)
   {
     while (list.count() < size)
@@ -195,5 +251,4 @@ class MtpFaceplateAlarm : MtpViewBase
       list.at(i).append(temp);
     }
   }
-
 };

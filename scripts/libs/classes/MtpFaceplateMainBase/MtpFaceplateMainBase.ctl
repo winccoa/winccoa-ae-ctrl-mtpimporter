@@ -10,26 +10,46 @@
 #uses "classes/MtpView/MtpViewBase"
 #uses "classes/MtpNavigationButton/MtpNavigationButton"
 
+/**
+ * @class MtpFaceplateMainBase
+ * @brief A base class for faceplate main components in the MTP library.
+ */
 class MtpFaceplateMainBase : MtpViewBase
 {
-  private shape _txtTitle;
-  private shape _panel;
-  private shape _module;
-  private string _layoutNavigation;
-  private vector<shared_ptr<MtpNavigationButton> > _navigationButtons;
+  private shape _txtTitle; //!< The title text shape used in the faceplate.
+  private shape _panel; //!< The panel shape used in the faceplate.
+  private shape _module; //!< The module shape used in the faceplate.
+  private string _layoutNavigation; //!< The layout for navigation buttons.
+  private vector<shared_ptr<MtpNavigationButton> > _navigationButtons; //!< A vector of navigation buttons used in the faceplate.
 
+  /**
+   * @brief Constructor for the MtpFaceplateMainBase class.
+   *
+   * @param viewModel A shared pointer to the view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   * @param layoutNavigation The layout for navigation buttons.
+   */
   protected MtpFaceplateMainBase(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes, const string &layoutNavigation) : MtpViewBase(viewModel, shapes)
   {
     _layoutNavigation = layoutNavigation;
     setNavigation();
-    setTitle();;
+    setTitle();
   }
 
+
+  /**
+   * @brief Closes the current faceplate.
+   */
   public void close()
   {
     panelOff();
   }
 
+  /**
+   * @brief Handles the click event for a navigation button.
+   *
+   * @param name The name of the navigation button that was clicked.
+   */
   public void clickNavigation(const string &name)
   {
     shared_ptr<MtpNavigationButton> button = _navigationButtons.at(_navigationButtons.indexListOf("_name", name).at(0));
@@ -37,6 +57,10 @@ class MtpFaceplateMainBase : MtpViewBase
     invokeMethod(getShape(_module.ModuleName(), button.getName(), ""), "initialize", MtpViewBase::getViewModel());
   }
 
+  /**
+   * @brief Initializes the shapes used in the faceplate.
+   * @details This method overrides the base class method.
+   */
   protected initializeShapes() override
   {
     _txtTitle = MtpViewBase::extractShape("_txtTitle");
@@ -44,16 +68,27 @@ class MtpFaceplateMainBase : MtpViewBase
     _module = MtpViewBase::extractShape("_module");
   }
 
+  /**
+   * @brief Retrieves the navigation buttons used in the faceplate.
+   *
+   * @return A vector of shared pointers to the navigation buttons.
+   */
   protected vector<shared_ptr<MtpNavigationButton> > getNavigationButtons()
   {
     return _navigationButtons;
   }
 
+  /**
+   * @brief Sets the title text for the faceplate.
+   */
   private void setTitle()
   {
     _txtTitle.text = dpGetDescription(MtpViewBase::getViewModel().getDp());
   }
 
+  /**
+   * @brief Sets up the navigation buttons for the faceplate.
+   */
   private void setNavigation()
   {
     _navigationButtons = getNavigationButtons();
@@ -73,6 +108,13 @@ class MtpFaceplateMainBase : MtpViewBase
     }
   }
 
+  /**
+   * @brief Loads a panel in a given module.
+   *
+   * @param fileName The file name of the panel to be loaded.
+   * @param panelName The name of the panel to be loaded.
+   * @param moduleName The name of the module in which the panel should be loaded.
+   */
   private void loadPanel(const string &fileName, const string &panelName, const string &moduleName)
   {
     if (isModuleOpen(moduleName) && !isPanelOpen(panelName, moduleName))

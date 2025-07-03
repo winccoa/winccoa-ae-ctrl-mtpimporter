@@ -8,13 +8,29 @@
 
 #uses "classes/MtpView/MtpViewBase"
 
+/**
+ * @class MtpViewFaceplateSettings
+ * @brief A class that represents the faceplate settings view.
+ */
 class MtpViewFaceplateSettings  : MtpViewBase
 {
+  /**
+   * @brief Constructor for MtpViewFaceplateSettings.
+   *
+   * @param viewModel A shared pointer to the view model.
+   * @param shapes A mapping of shapes used in the view.
+   */
   public MtpViewFaceplateSettings(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
 
   }
 
+  /**
+   * @brief Loads a panel in it's own module.
+   * 
+   * @param fileName The file name of the panel to be loaded.
+   * @param panelName The name of the panel to be loaded.
+   */
   protected void loadPanel(const string &fileName, const string &panelName)
   {
     string moduleName = myModuleName();

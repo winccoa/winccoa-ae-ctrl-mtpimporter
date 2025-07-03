@@ -8,10 +8,19 @@
 
 #uses "std"
 
+/**
+ * @class MtpViewModelBase
+ * @brief Base class for MTP View Models.
+ */
 class MtpViewModelBase
 {
-  private string _dp;
+  private string _dp; //!< The data point associated with this view model.
 
+  /**
+   * @brief Constructor for MtpViewModelBase.
+   * 
+   * @param dp The data point of the view model.
+   */
   protected MtpViewModelBase(const string &dp)
   {
     _dp = dp;
@@ -22,6 +31,11 @@ class MtpViewModelBase
     }
   }
 
+  /**
+   * @brief Retrieves the data point of the view model.
+   * 
+   * @return The data point as a string.
+   */
   public string getDp()
   {
     return _dp;

@@ -12,13 +12,32 @@
 #uses "classes/AnaMon/AnaMonFaceplateTrend"
 #uses "classes/BinMon/BinMonFaceplateTrend"
 #uses "classes/MtpFaceplateTrendBase/MtpFaceplateTrendBase"
+
+/**
+ * @class MtpFaceplateTrendFactory
+ * @brief Factory class for creating and managing MTP faceplate trend instances.
+ */
 class MtpFaceplateTrendFactory
 {
+
+  /**
+   * @brief Private constructor for the MtpFaceplateTrendFactory class.
+   *
+   * This constructor is declared private to prevent direct instantiation
+   * of the MtpFaceplateTrendFactory class.
+   */
   private MtpFaceplateTrendFactory()
   {
 
   }
 
+  /**
+   * @brief Creates a new instance of a faceplate trend.
+   *
+   * @param viewModel A shared pointer to the view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   * @return A shared pointer to the created faceplate trend instance.
+   */
   public static shared_ptr<MtpFaceplateTrendBase> create(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes)
   {
     switch (getTypeName(viewModel))

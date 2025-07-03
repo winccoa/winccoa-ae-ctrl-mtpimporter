@@ -9,13 +9,26 @@
 #uses "classes/MtpViewModel/MtpViewModelBase"
 #uses "classes/MtpView/MtpViewBase"
 
+/**
+ * @class MtpViewRef
+ * @brief A class that extends the functionality of MtpViewBase.
+ */
 class MtpViewRef : MtpViewBase
 {
+  /**
+   * @brief Constructor for the MtpViewRef class.
+   * 
+   * @param viewModel A shared pointer to the view model.
+   * @param shapes A mapping of shapes used in the view.
+   */
   protected MtpViewRef(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes): MtpViewBase(viewModel, shapes)
   {
 
   }
 
+  /**
+   * @brief Opens the main MTP faceplate.
+   */
   public void openFaceplate()
   {
     string dp = MtpViewBase::getViewModel().getDp();
@@ -23,6 +36,12 @@ class MtpViewRef : MtpViewBase
     invokeMethod(getShape(myModuleName(), dpGetDescription(dp), ""), "initialize", MtpViewBase::getViewModel());
   }
 
+  /**
+   * @brief Opens a child panel.
+   * 
+   * @param fileName The file name of the child panel to be opened.
+   * @param panelName The name of the panel to be displayed.
+   */
   private void openChildPanel(const string &fileName, const string &panelName)
   {
     int panelWidth, panelHeight, x, y;

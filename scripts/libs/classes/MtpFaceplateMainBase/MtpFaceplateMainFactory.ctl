@@ -11,13 +11,31 @@
 #uses "classes/AnaMon/AnaMonFaceplateMain"
 #uses "classes/MtpFaceplateMainBase/MtpFaceplateMainBase"
 
+/**
+ * @class MtpFaceplateMainFactory
+ * @brief Factory class for creating instances of MtpFaceplateMainBase objects.
+ */
 class MtpFaceplateMainFactory
 {
+  /**
+   * @brief Private constructor for the MtpFaceplateMainFactory class.
+   *
+   * This constructor is declared private to prevent direct instantiation
+   * of the MtpFaceplateMainFactory class.
+   */
   private MtpFaceplateMainFactory()
   {
 
   }
 
+  /**
+   * @brief Creates an instance of MtpFaceplateMainBase.
+   *
+   * @param viewModel A shared pointer to the view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   * @param layoutNavigation The layout for navigation buttons.
+   * @return A shared pointer to the created MtpFaceplateMainBase instance.
+   */
   public static shared_ptr<MtpFaceplateMainBase> create(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes, const string &layoutNavigation)
   {
 
