@@ -59,7 +59,7 @@ class BinMonFaceplateHome : MtpViewBase
   {
     if (active)
     {
-      _rectFlutterActive.fill = "[pattern,[fit,any,MTP_Icones/Mainenance.svg]]";
+      _rectFlutterActive.fill = "[pattern,[fit,any,MTP_Icones/Mainenance_2.svg]]";
       _rectFlutterActive.sizeAsDyn = makeDynInt(25, 25);
     }
     else

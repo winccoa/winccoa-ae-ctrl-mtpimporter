@@ -335,6 +335,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
    <properties>
     <prop name="FileName">objects/MtpBarIndicator/MtpBarIndicator.xml</prop>
     <prop name="Location">208.9706829052491 207.0770661471861</prop>
+    <prop name="Geometry">1.122927539883648 0 0 1.122927539883648 -25.9184346708453 -14.03254045498321</prop>
     <prop name="TabOrder">93</prop>
     <prop name="layoutAlignment">AlignNone</prop>
    </properties>
