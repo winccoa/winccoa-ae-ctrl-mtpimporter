@@ -10,13 +10,23 @@
 #uses "classes/MtpView/MtpViewBase"
 #uses "classes/BinMon/BinMon"
 
+/**
+ * @class BinMonFaceplateHome
+ * @brief Represents the home faceplate for BinMon objects.
+ */
 class BinMonFaceplateHome : MtpViewBase
 {
-  private shape _txtValue;
-  private shape _rectValue;
-  private shape _refWqc;
-  private shape _rectFlutterActive;
+  private shape _txtValue; //!< Reference to the value text shape.
+  private shape _rectValue; //!< Reference to the value rectangle shape.
+  private shape _refWqc; //!< Reference to the quality code shape.
+  private shape _rectFlutterActive; //!< Reference to the flutter active rectangle shape.
 
+  /**
+   * @brief Constructor for BinMonFaceplateHome.
+   *
+   * @param viewModel A shared pointer to the BinMon view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   */
   public BinMonFaceplateHome(shared_ptr<BinMon> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     classConnect(this, setValueCB, MtpViewBase::getViewModel(), BinMon::valueChanged);
@@ -28,6 +38,10 @@ class BinMonFaceplateHome : MtpViewBase
     setFlutterActiveCB(MtpViewBase::getViewModel().getFlutterActive());
   }
 
+  /**
+   * @brief Initializes the shapes used in the faceplate.
+   * @details This method overrides the base class method to extract the table shape.
+   */
   protected void initializeShapes()
   {
     _txtValue = MtpViewBase::extractShape("_txtValue");
@@ -36,6 +50,11 @@ class BinMonFaceplateHome : MtpViewBase
     _rectFlutterActive = MtpViewBase::extractShape("_rectFlutterActive");
   }
 
+  /**
+   * @brief Sets the value for the faceplate.
+   *
+   * @param value The boolean value to be set.
+   */
   private void setValueCB(const bool &value)
   {
     if (value)
@@ -50,11 +69,21 @@ class BinMonFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Sets the WQC status for the faceplate.
+   *
+   * @param qualityGoodChanged The new quality status.
+   */
   private void setWqcCB(const bool &qualityGoodChanged)
   {
     _refWqc.setStatus(qualityGoodChanged);
   }
 
+  /**
+   * @brief Sets the flutter active status for the faceplate.
+   *
+   * @param active The new flutter active status.
+   */
   private void setFlutterActiveCB(const bool &active)
   {
     if (active)

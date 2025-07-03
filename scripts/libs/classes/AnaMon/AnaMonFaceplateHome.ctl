@@ -13,23 +13,33 @@
 #uses "classes/AnaMon/AnaMon"
 #uses "classes/MtpView/MtpViewBase"
 
+/**
+ * @class AnaMonFaceplateHome
+ * @brief Represents the home faceplate for AnaMon objects.
+ */
 class AnaMonFaceplateHome : MtpViewBase
 {
-  private shape _refWqc;
-  private shape _rectLimitHigh;
-  private shape _rectLimitLow;
-  private shape _txtLimitHigh;
-  private shape _txtLimitLow;
+  private shape _refWqc; //!< Reference to the quality code shape.
+  private shape _rectLimitHigh; //!< Reference to the high limit rectangle shape.
+  private shape _rectLimitLow; //!< Reference to the low limit rectangle shape.
+  private shape _txtLimitHigh; //!< Reference to the high limit text shape.
+  private shape _txtLimitLow; //!< Reference to the low limit text shape.
 
-  private bool _alertHighActive;
-  private bool _warningHighActive;
-  private bool _toleranceHighActive;
-  private bool _toleranceLowActive;
-  private bool _warningLowActive;
-  private bool _alertLowActive;
+  private bool _alertHighActive; //!< Indicates if the alert high limit is active.
+  private bool _warningHighActive; //!< Indicates if the warning high limit is active.
+  private bool _toleranceHighActive; //!< Indicates if the tolerance high limit is active.
+  private bool _toleranceLowActive; //!< Indicates if the tolerance low limit is active.
+  private bool _warningLowActive; //!< Indicates if the warning low limit is active.
+  private bool _alertLowActive; //!< Indicates if the alert low limit is active.
 
-  private shared_ptr<MtpBarIndicator> _barIndicator;
+  private shared_ptr<MtpBarIndicator> _barIndicator; //!< Reference to the bar indicator for displaying values.
 
+  /**
+   * @brief Constructor for AnaMonFaceplateHome.
+   *
+   * @param viewModel A shared pointer to the AnaMon view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   */
   public AnaMonFaceplateHome(shared_ptr<AnaMon> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     classConnect(this, setValueCB, MtpViewBase::getViewModel(), AnaMon::valueChanged);
@@ -66,7 +76,11 @@ class AnaMonFaceplateHome : MtpViewBase
     setValueCB(MtpViewBase::getViewModel().getValue());
   }
 
-  protected void initializeShapes()
+  /**
+   * @brief Initializes the shapes used in the faceplate.
+   * @details This method overrides the base class method to extract the table shape.
+   */
+  protected void initializeShapes() override
   {
     _refWqc = MtpViewBase::extractShape("_refWqc");
     _rectLimitHigh = MtpViewBase::extractShape("_rectLimitHigh");
@@ -77,16 +91,33 @@ class AnaMonFaceplateHome : MtpViewBase
     _barIndicator = MtpViewBase::extractShape("_barIndicator").getMtpBarIndicator();
   }
 
+
+  /**
+   * @brief Callback function to set the current value in the bar indicator.
+   * 
+   * @param value The float value to be set.
+   */
   private void setValueCB(const float &value)
   {
     _barIndicator.setValue(value);
   }
 
+  /**
+   * @brief Callback function to update the quality code status.
+   * 
+   * @param qualityGoodChanged Indicates if the quality good status has changed.
+   */
   private void setWqcCB(const bool &qualityGoodChanged)
   {
     _refWqc.setStatus(qualityGoodChanged);
   }
 
+  /**
+   * @brief Sets the status of the high and low limits based on the active state.
+   * 
+   * @param varName The name of the variable to set.
+   * @param active The active state of the limit.
+   */
   private void setStatusHighCB(const string &varName, const bool &active)
   {
     switch (varName)
@@ -134,6 +165,12 @@ class AnaMonFaceplateHome : MtpViewBase
 
   }
 
+  /**
+   * @brief Sets the status of the low limit based on the active state.
+   * 
+   * @param varName The name of the variable to set.
+   * @param active The active state of the limit.
+   */
   private void setStatusLowCB(const string &varName, const bool &active)
   {
     switch (varName)

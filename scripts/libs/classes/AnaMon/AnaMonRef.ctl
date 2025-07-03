@@ -11,18 +11,28 @@
 #uses "classes/MtpValueLimit/MtpValueLimitFloat"
 #uses "classes/MtpUnit/MtpUnit"
 
+/**
+ * @class AnaMonRef
+ * @brief Represents the reference implementation for the AnaMon objects.
+ */
 class AnaMonRef : MtpViewRef
 {
-  private shape _txtValue;
-  private shape _txtUnit;
-  private shape _rectStatus;
-  private bool _alertHighActive;
-  private bool _warningHighActive;
-  private bool _toleranceHighActive;
-  private bool _toleranceLowActive;
-  private bool _warningLowActive;
-  private bool _alertLowActive;
+  private shape _txtValue; //!< Reference to the value text shape.
+  private shape _txtUnit; //!< Reference to the unit text shape.
+  private shape _rectStatus; //!< Reference to the status rectangle shape.
+  private bool _alertHighActive; //!< Indicates if the alert high limit is active.
+  private bool _warningHighActive; //!< Indicates if the warning high limit is active.
+  private bool _toleranceHighActive; //!< Indicates if the tolerance high limit is active.
+  private bool _toleranceLowActive; //!< Indicates if the tolerance low limit is active.
+  private bool _warningLowActive; //!< Indicates if the warning low limit is active.
+  private bool _alertLowActive; //!< Indicates if the alert low limit is active.
 
+  /**
+   * @brief Constructor for AnaMonRef.
+   *
+   * @param viewModel A shared pointer to the AnaMon view model.
+   * @param shapes A mapping of shapes used in the reference.
+   */
   public AnaMonRef(shared_ptr<AnaMon> viewModel, const mapping &shapes) : MtpViewRef(viewModel, shapes)
   {
     classConnectUserData(this, setStatusCB, "_alertHighActive", MtpViewRef::getViewModel().getAlertHighLimit(), MtpValueLimitFloat::activeChanged);
@@ -44,6 +54,10 @@ class AnaMonRef : MtpViewRef
     setValueCB(MtpViewRef::getViewModel().getValue());
   }
 
+  /**
+   * @brief Initializes the shapes used in the faceplate.
+   * @details This method overrides the base class method to extract the table shape.
+   */
   protected void initializeShapes() override
   {
     _txtValue = MtpViewRef::extractShape("_txtValue");
@@ -51,16 +65,32 @@ class AnaMonRef : MtpViewRef
     _rectStatus = MtpViewRef::extractShape("_rectStatus");
   }
 
+  /**
+   * @brief Sets the unit for the reference.
+   *
+   * @param unit A shared pointer to the MtpUnit object representing the unit.
+   */
   private void setUnit(shared_ptr<MtpUnit> unit)
   {
     _txtUnit.text = unit.toString();
   }
 
+  /**
+   * @brief Sets the value for the reference.
+   *
+   * @param value The float value to be set.
+   */
   private void setValueCB(const float &value)
   {
     _txtValue.text = value;
   }
 
+  /**
+   * @brief Sets the status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param active The active state to be set.
+   */
   private void setStatusCB(const string &varName, const bool &active)
   {
     switch (varName)

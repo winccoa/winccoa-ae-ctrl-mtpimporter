@@ -8,8 +8,18 @@
 
 #uses "classes/AnaMon/AnaMonFaceplateSettings"
 
+/**
+ * @class AnaMonFaceplateSettingsHighLimit
+ * @brief Represents the high limit settings faceplate for the AnaMon objects.
+ */
 class AnaMonFaceplateSettingsHighLimit : AnaMonFaceplateSettings
 {
+  /**
+   * @brief Constructor for AnaMonFaceplateSettingsHighLimit.
+   *
+   * @param viewModel A shared pointer to the AnaMon view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   */
   public AnaMonFaceplateSettingsHighLimit(shared_ptr<AnaMon> viewModel, const mapping &shapes) : AnaMonFaceplateSettings(viewModel, shapes)
   {
     // we need to slow down a little.
@@ -26,22 +36,43 @@ class AnaMonFaceplateSettingsHighLimit : AnaMonFaceplateSettings
     txtWarning.text = AnaMonFaceplateSettings::getViewModel().getWarningHighLimit().getLimit();
     txtTolerance.text = AnaMonFaceplateSettings::getViewModel().getToleranceHighLimit().getLimit();
   }
-
+  /**
+   * @brief Sets the alert limit for the high limit settings.
+   * @details This method overrides the base class method to set the alert limit for the high limit settings.
+   *
+   * @param alertLimit The alert limit value to be set.
+   */
   public void setAlertLimit(const float &alertLimit)override
   {
     AnaMonFaceplateSettings::getViewModel().getAlertHighLimit().setLimit(alertLimit);
   }
 
+  /**
+   * @brief Sets the warning limit for the high limit settings.
+   * @details This method overrides the base class method to set the warning limit for the high limit settings.
+   *
+   * @param warningLimit The warning limit value to be set.
+   */
   public void setWarningLimit(const float &warningLimit)override
   {
     AnaMonFaceplateSettings::getViewModel().getWarningHighLimit().setLimit(warningLimit);
   }
 
+  /**
+   * @brief Sets the tolerance limit for the high limit settings.
+   * @details This method overrides the base class method to set the tolerance limit for the high limit settings.
+   *
+   * @param toleranceLimit The tolerance limit value to be set.
+   */
   public void setToleranceLimit(const float &toleranceLimit)override
   {
     AnaMonFaceplateSettings::getViewModel().getToleranceHighLimit().setLimit(toleranceLimit);
   }
 
+  /**
+   * @brief Switches the page to the low limit settings.
+   * @details This method overrides the base class method to load the low limit settings panel.
+   */
   public void switchPage()override
   {
     loadPanel("object_parts/AnaMon/AnaMonFaceplateSettingsLowLimit.xml", "LowLimit");
