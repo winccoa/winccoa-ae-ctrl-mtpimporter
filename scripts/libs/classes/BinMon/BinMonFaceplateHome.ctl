@@ -45,7 +45,7 @@ class BinMonFaceplateHome : MtpViewBase
     }
     else
     {
-      _rectValue.fill = "[pattern,[fit,any,MTP_Icones/Close.svg]]";
+      _rectValue.fill = "[pattern,[fit,any,MTP_Icones/False.svg]]";
       _txtValue.text = MtpViewBase::getViewModel().getValueStateFalseText();
     }
   }
