@@ -40,15 +40,13 @@ class BinMonFaceplateHome : MtpViewBase
   {
     if (value)
     {
-      _rectValue.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
+      _rectValue.fill = "[pattern,[fit,any,MTP_Icones/True.svg]]";
       _txtValue.text = MtpViewBase::getViewModel().getValueStateTrueText();
-      _rectValue.sizeAsDyn = makeDynInt(50, 40);
     }
     else
     {
       _rectValue.fill = "[pattern,[fit,any,MTP_Icones/Close.svg]]";
       _txtValue.text = MtpViewBase::getViewModel().getValueStateFalseText();
-      _rectValue.sizeAsDyn = makeDynInt(40, 40);
     }
   }
 

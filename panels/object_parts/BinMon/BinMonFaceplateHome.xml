@@ -204,7 +204,7 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
    <properties>
     <prop name="serialId">8</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">210 192.5</prop>
+    <prop name="RefPoint">210.4999999999999 204</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -221,7 +221,7 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">210 192.5</prop>
+    <prop name="Location">210.4999999999999 204</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,21,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -256,8 +256,8 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok.svg]]</prop>
-    <prop name="Geometry">0.9533333333333331 0 0 1.354166666666667 9.061666666666731 17.32291666666659</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/True.svg]]</prop>
+    <prop name="Geometry">1.222731481481481 0 0 1.71123903508772 -46.57929398148143 -7.985356359649188</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>

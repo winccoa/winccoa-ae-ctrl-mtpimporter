@@ -35,7 +35,7 @@ class BinMonRef : MtpViewRef
   {
     if (value)
     {
-      _rectValue.fill = "[pattern,[fit,any,MTP_Icones/Ok.svg]]";
+      _rectValue.fill = "[pattern,[fit,any,MTP_Icones/True.svg]]";
     }
     else
     {
