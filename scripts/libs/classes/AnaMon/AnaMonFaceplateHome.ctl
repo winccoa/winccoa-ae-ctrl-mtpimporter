@@ -6,6 +6,7 @@
   @author m.woegrath
 */
 
+#uses "classes/MtpBarIndicator/MtpBarIndicator"
 #uses "classes/MtpValueLimit/MtpValueLimitFloat"
 #uses "classes/MtpQualityCode/MtpQualityCode"
 #uses "classes/MtpUnit/MtpUnit"
@@ -14,30 +15,11 @@
 
 class AnaMonFaceplateHome : MtpViewBase
 {
-  private shape _txtValue;
-  private shape _txtUnit;
   private shape _refWqc;
   private shape _rectLimitHigh;
   private shape _rectLimitLow;
   private shape _txtLimitHigh;
   private shape _txtLimitLow;
-
-  private shape _body1;
-  private shape _circleAH1;
-  private shape _circleAL1;
-  private shape _circlePV1;
-  private shape _circleTH1;
-  private shape _circleTL1;
-  private shape _circleWH1;
-  private shape _circleWL1;
-
-  private shape _body;
-  private shape _circlePV;
-  private shape _circleValue;
-  private shape _pvPointer;
-
-  private shape _txtHalfMax;
-  private shape _txtMax;
 
   private bool _alertHighActive;
   private bool _warningHighActive;
@@ -46,21 +28,7 @@ class AnaMonFaceplateHome : MtpViewBase
   private bool _warningLowActive;
   private bool _alertLowActive;
 
-  private float _ahLimit;
-  private float _alLimit;
-  private float _whLimit;
-  private float _wlLimit;
-  private float _thLimit;
-  private float _tlLimit;
-  private bool _ahEnabled;
-  private bool _alEnabled;
-  private bool _whEnabled;
-  private bool _wlEnabled;
-  private bool _thEnabled;
-  private bool _tlEnabled;
-  private float _minV;
-  private float _maxV;
-  private string _unit;
+  private shared_ptr<MtpBarIndicator> _barIndicator;
 
   public AnaMonFaceplateHome(shared_ptr<AnaMon> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
@@ -80,109 +48,38 @@ class AnaMonFaceplateHome : MtpViewBase
     _warningLowActive = MtpViewBase::getViewModel().getWarningLowLimit().getActive();
     _alertLowActive = MtpViewBase::getViewModel().getAlertLowLimit().getActive();
 
-    _ahLimit = MtpViewBase::getViewModel().getAlertHighLimit().getLimit();
-    _alLimit = MtpViewBase::getViewModel().getAlertLowLimit().getLimit();
-    _whLimit = MtpViewBase::getViewModel().getWarningHighLimit().getLimit();
-    _wlLimit = MtpViewBase::getViewModel().getWarningLowLimit().getLimit();
-    _thLimit = MtpViewBase::getViewModel().getToleranceHighLimit().getLimit();
-    _tlLimit = MtpViewBase::getViewModel().getToleranceLowLimit().getLimit();
-
-    _ahEnabled = MtpViewBase::getViewModel().getAlertHighLimit().getEnabled();
-    _alEnabled = MtpViewBase::getViewModel().getAlertLowLimit().getEnabled();
-    _whEnabled = MtpViewBase::getViewModel().getWarningHighLimit().getEnabled();
-    _wlEnabled = MtpViewBase::getViewModel().getWarningLowLimit().getEnabled();
-    _thEnabled = MtpViewBase::getViewModel().getToleranceHighLimit().getEnabled();
-    _tlEnabled = MtpViewBase::getViewModel().getToleranceLowLimit().getEnabled();
-
-    _minV = MtpViewBase::getViewModel().getValueScaleMin();
-    _maxV = MtpViewBase::getViewModel().getValueScaleMax();
-    _unit = MtpViewBase::getViewModel().getUnit().toString();
-
-    setUnit(MtpViewBase::getViewModel().getUnit());
     setWqcCB(MtpViewBase::getViewModel().getWqc().getQualityGood());
-    setValueCB(MtpViewBase::getViewModel().getValue());
     setStatusHighCB("_alertHighActive", MtpViewBase::getViewModel().getAlertHighLimit().getActive());
     setStatusLowCB("_alertLowActive", MtpViewBase::getViewModel().getAlertLowLimit().getActive());
 
-    setScaleTexts(MtpViewBase::getViewModel().getValueScaleMax());
+    _barIndicator.setScale(MtpViewBase::getViewModel().getValueScaleMin(), MtpViewBase::getViewModel().getValueScaleMax());
+    _barIndicator.setUnit(MtpViewBase::getViewModel().getUnit());
 
-    updateBars();
+    _barIndicator.setAlertHighShape(MtpViewBase::getViewModel().getAlertHighLimit().getEnabled(), MtpViewBase::getViewModel().getAlertHighLimit().getLimit());
+    _barIndicator.setWarningHighShape(MtpViewBase::getViewModel().getWarningHighLimit().getEnabled(), MtpViewBase::getViewModel().getWarningHighLimit().getLimit());
+    _barIndicator.setToleranceHighShape(MtpViewBase::getViewModel().getToleranceHighLimit().getEnabled(), MtpViewBase::getViewModel().getToleranceHighLimit().getLimit());
+
+    _barIndicator.setAlertLowShape(MtpViewBase::getViewModel().getAlertLowLimit().getEnabled(), MtpViewBase::getViewModel().getAlertLowLimit().getLimit());
+    _barIndicator.setWarningLowShape(MtpViewBase::getViewModel().getWarningLowLimit().getEnabled(), MtpViewBase::getViewModel().getWarningLowLimit().getLimit());
+    _barIndicator.setToleranceLowShape(MtpViewBase::getViewModel().getToleranceLowLimit().getEnabled(), MtpViewBase::getViewModel().getToleranceLowLimit().getLimit());
+
+    setValueCB(MtpViewBase::getViewModel().getValue());
   }
 
   protected void initializeShapes()
   {
-    _txtValue = MtpViewBase::extractShape("_txtValue");
-    _txtUnit = MtpViewBase::extractShape("_txtUnit");
     _refWqc = MtpViewBase::extractShape("_refWqc");
     _rectLimitHigh = MtpViewBase::extractShape("_rectLimitHigh");
     _rectLimitLow = MtpViewBase::extractShape("_rectLimitLow");
     _txtLimitHigh = MtpViewBase::extractShape("_txtLimitHigh");
     _txtLimitLow = MtpViewBase::extractShape("_txtLimitLow");
 
-    _body1 = MtpViewBase::extractShape("_body1");
-    _circleAH1 = MtpViewBase::extractShape("_circleAH1");
-    _circleAL1 = MtpViewBase::extractShape("_circleAL1");
-    _circlePV1 = MtpViewBase::extractShape("_circlePV1");
-    _circleTH1 = MtpViewBase::extractShape("_circleTH1");
-    _circleTL1 = MtpViewBase::extractShape("_circleTL1");
-    _circleWH1 = MtpViewBase::extractShape("_circleWH1");
-    _circleWL1 = MtpViewBase::extractShape("_circleWL1");
-
-    _body = MtpViewBase::extractShape("_body");
-    _circlePV = MtpViewBase::extractShape("_circlePV");
-    _circleValue = MtpViewBase::extractShape("_circleValue");
-    _pvPointer = MtpViewBase::extractShape("_pvPointer");
-
-    _txtHalfMax = MtpViewBase::extractShape("_txtHalfMax");
-    _txtMax = MtpViewBase::extractShape("_txtMax");
+    _barIndicator = MtpViewBase::extractShape("_barIndicator").getMtpBarIndicator();
   }
 
   private void setValueCB(const float &value)
   {
-    _txtValue.text = value;
-
-    float clampedValue = value;
-
-    if (clampedValue < _minV)
-      clampedValue = _minV;
-
-    if (clampedValue > _maxV)
-      clampedValue = _maxV;
-
-    _circlePV.angle2 = 180;
-    _circleValue.angle2 = 180;
-    _circleValue.angle1 = (_maxV != _minV) ? ((calculateCircleDeg(clampedValue, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(clampedValue, _minV, _maxV)) : 180;
-
-    if ((_ahEnabled && value >= _ahLimit) || (_alEnabled && value <= _alLimit))
-    {
-      _circleValue.backCol = "mtpRed";
-    }
-    else if ((_whEnabled && value >= _whLimit) || (_wlEnabled && value <= _wlLimit))
-    {
-      _circleValue.backCol = "mtpYellow";
-    }
-    else if ((_thEnabled && value >= _thLimit) || (_tlEnabled && value <= _tlLimit))
-    {
-      _circleValue.backCol = "mtpGrey";
-    }
-    else
-    {
-      _circleValue.backCol = "mtpGreen";
-    }
-
-    _pvPointer.rotation = (calculatePvDeg(value, _minV, _maxV) < 180) ? 180 : calculatePvDeg(value, _minV, _maxV);
-  }
-
-
-  private void setUnit(shared_ptr<MtpUnit> unit)
-  {
-    _txtUnit.text = unit.toString();
-  }
-
-  private void setScaleTexts(const float &scaleMax)
-  {
-    _txtHalfMax.text = scaleMax / 2;
-    _txtMax.text = scaleMax;
+    _barIndicator.setValue(value);
   }
 
   private void setWqcCB(const bool &qualityGoodChanged)
@@ -235,7 +132,6 @@ class AnaMonFaceplateHome : MtpViewBase
     _rectLimitHigh.sizeAsDyn = makeDynInt(30, 25);
     _txtLimitHigh.text = "Grenze hoch";
 
-    updateBars();
   }
 
   private void setStatusLowCB(const string &varName, const bool &active)
@@ -282,35 +178,5 @@ class AnaMonFaceplateHome : MtpViewBase
     _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Ok_2.svg]]";
     _rectLimitLow.sizeAsDyn = makeDynInt(30, 25);
     _txtLimitLow.text = "Grenze niedrig";
-
-    updateBars();
-  }
-
-  private void updateBars()
-  {
-    _circleAH1.angle2 = (_ahEnabled) ? ((calculateCircleDeg(_ahLimit, _minV, _maxV) > 180) ? 180 : calculateCircleDeg(_ahLimit, _minV, _maxV)) : 0;
-    _circleWH1.angle2 = (_whEnabled) ? ((calculateCircleDeg(_whLimit, _minV, _maxV) > 180) ? 180 : calculateCircleDeg(_whLimit, _minV, _maxV)) : 0;
-    _circleTH1.angle2 = (_thEnabled) ? ((calculateCircleDeg(_thLimit, _minV, _maxV) > 180) ? 180 : calculateCircleDeg(_thLimit, _minV, _maxV)) : 0;
-
-    _circleAL1.angle2 = 180;
-    _circleWL1.angle2 = 180;
-    _circleTL1.angle2 = 180;
-    _circleAL1.angle1 = (_alEnabled) ? ((calculateCircleDeg(_alLimit, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(_alLimit, _minV, _maxV)) : 180;
-    _circleWL1.angle1 = (_wlEnabled) ? ((calculateCircleDeg(_wlLimit, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(_wlLimit, _minV, _maxV)) : 180;
-    _circleTL1.angle1 = (_tlEnabled) ? ((calculateCircleDeg(_tlLimit, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(_tlLimit, _minV, _maxV)) : 180;
-  }
-
-  private float calculatePvDeg(float value, float minV, float maxV)
-  {
-    float pvk = (180.0 / (minV - maxV));
-    float pvd = (360.0 - minV * pvk);
-    return value * pvk + pvd;
-  }
-
-  private float calculateCircleDeg(float value, float minV, float maxV)
-  {
-    float ck = (180.0 / (minV - maxV));
-    float cd = (180.0 - minV * ck);
-    return value * ck + cd;
   }
 };

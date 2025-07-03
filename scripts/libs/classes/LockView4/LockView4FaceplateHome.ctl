@@ -48,14 +48,14 @@ class LockView4FaceplateHome : MtpViewBase
 
   public LockView4FaceplateHome(shared_ptr<LockView4> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
-    if (viewModel.getInput1().getEnabled())
+    if (MtpViewBase::getViewModel().getInput1().getEnabled())
     {
-      classConnectUserData(this, setInputChangedCB, "_in1", viewModel.getInput1(), MtpInput::valueChanged);
-      classConnectUserData(this, setInputChangedCB, "_in1", viewModel.getInput1(), MtpInput::invertedChanged);
-      classConnectUserData(this, setQualityCodeCB, "_rectIn1QC", viewModel.getInput1().getQualityCode(), MtpQualityCode::qualityGoodChanged);
+      classConnectUserData(this, setInputChangedCB, "_in1", MtpViewBase::getViewModel().getInput1(), MtpInput::valueChanged);
+      classConnectUserData(this, setInputChangedCB, "_in1", MtpViewBase::getViewModel().getInput1(), MtpInput::invertedChanged);
+      classConnectUserData(this, setQualityCodeCB, "_rectIn1QC", MtpViewBase::getViewModel().getInput1().getQualityCode(), MtpQualityCode::qualityGoodChanged);
       setInputChangedCB("_in1", true);
       setInputTexts("_In1Txt", MtpViewBase::getViewModel().getInput1());
-      setQualityCodeCB("_rectIn1QC", viewModel.getInput1().getQualityCode().getQualityGood());
+      setQualityCodeCB("_rectIn1QC", MtpViewBase::getViewModel().getInput1().getQualityCode().getQualityGood());
     }
     else
     {
@@ -68,14 +68,14 @@ class LockView4FaceplateHome : MtpViewBase
       _circleIn1Inv.visible = false;
     }
 
-    if (viewModel.getInput2().getEnabled())
+    if (MtpViewBase::getViewModel().getInput2().getEnabled())
     {
-      classConnectUserData(this, setInputChangedCB, "_in2", viewModel.getInput2(), MtpInput::valueChanged);
-      classConnectUserData(this, setInputChangedCB, "_in2", viewModel.getInput2(), MtpInput::invertedChanged);
-      classConnectUserData(this, setQualityCodeCB, "_rectIn2QC", viewModel.getInput2().getQualityCode(), MtpQualityCode::qualityGoodChanged);
+      classConnectUserData(this, setInputChangedCB, "_in2", MtpViewBase::getViewModel().getInput2(), MtpInput::valueChanged);
+      classConnectUserData(this, setInputChangedCB, "_in2", MtpViewBase::getViewModel().getInput2(), MtpInput::invertedChanged);
+      classConnectUserData(this, setQualityCodeCB, "_rectIn2QC", MtpViewBase::getViewModel().getInput2().getQualityCode(), MtpQualityCode::qualityGoodChanged);
       setInputChangedCB("_in2", true);
       setInputTexts("_In2Txt", MtpViewBase::getViewModel().getInput2());
-      setQualityCodeCB("_rectIn2QC", viewModel.getInput2().getQualityCode().getQualityGood());
+      setQualityCodeCB("_rectIn2QC", MtpViewBase::getViewModel().getInput2().getQualityCode().getQualityGood());
     }
     else
     {
@@ -88,14 +88,14 @@ class LockView4FaceplateHome : MtpViewBase
       _circleIn2Inv.visible = false;
     }
 
-    if (viewModel.getInput3().getEnabled())
+    if (MtpViewBase::getViewModel().getInput3().getEnabled())
     {
-      classConnectUserData(this, setInputChangedCB, "_in3", viewModel.getInput3(), MtpInput::valueChanged);
-      classConnectUserData(this, setInputChangedCB, "_in3", viewModel.getInput3(), MtpInput::invertedChanged);
-      classConnectUserData(this, setQualityCodeCB, "_rectIn3QC", viewModel.getInput3().getQualityCode(), MtpQualityCode::qualityGoodChanged);
+      classConnectUserData(this, setInputChangedCB, "_in3", MtpViewBase::getViewModel().getInput3(), MtpInput::valueChanged);
+      classConnectUserData(this, setInputChangedCB, "_in3", MtpViewBase::getViewModel().getInput3(), MtpInput::invertedChanged);
+      classConnectUserData(this, setQualityCodeCB, "_rectIn3QC", MtpViewBase::getViewModel().getInput3().getQualityCode(), MtpQualityCode::qualityGoodChanged);
       setInputChangedCB("_in3", true);
       setInputTexts("_In3Txt", MtpViewBase::getViewModel().getInput3());
-      setQualityCodeCB("_rectIn3QC", viewModel.getInput3().getQualityCode().getQualityGood());
+      setQualityCodeCB("_rectIn3QC", MtpViewBase::getViewModel().getInput3().getQualityCode().getQualityGood());
     }
     else
     {
@@ -108,14 +108,14 @@ class LockView4FaceplateHome : MtpViewBase
       _circleIn3Inv.visible = false;
     }
 
-    if (viewModel.getInput4().getEnabled())
+    if (MtpViewBase::getViewModel().getInput4().getEnabled())
     {
-      classConnectUserData(this, setInputChangedCB, "_in4", viewModel.getInput4(), MtpInput::valueChanged);
-      classConnectUserData(this, setInputChangedCB, "_in4", viewModel.getInput4(), MtpInput::invertedChanged);
-      classConnectUserData(this, setQualityCodeCB, "_rectIn4QC", viewModel.getInput4().getQualityCode(), MtpQualityCode::qualityGoodChanged);
+      classConnectUserData(this, setInputChangedCB, "_in4", MtpViewBase::getViewModel().getInput4(), MtpInput::valueChanged);
+      classConnectUserData(this, setInputChangedCB, "_in4", MtpViewBase::getViewModel().getInput4(), MtpInput::invertedChanged);
+      classConnectUserData(this, setQualityCodeCB, "_rectIn4QC", MtpViewBase::getViewModel().getInput4().getQualityCode(), MtpQualityCode::qualityGoodChanged);
       setInputChangedCB("_in4", true);
       setInputTexts("_In4Txt", MtpViewBase::getViewModel().getInput4());
-      setQualityCodeCB("_rectIn4QC", viewModel.getInput4().getQualityCode().getQualityGood());
+      setQualityCodeCB("_rectIn4QC", MtpViewBase::getViewModel().getInput4().getQualityCode().getQualityGood());
     }
     else
     {
@@ -128,13 +128,13 @@ class LockView4FaceplateHome : MtpViewBase
       _circleIn4Inv.visible = false;
     }
 
-    classConnect(this, setOutqcCB, viewModel.getOutputQualityCode(), MtpQualityCode::qualityGoodChanged);
-    classConnect(this, setOutputCB, viewModel, LockView4::outputChanged);
-    classConnect(this, setLogicCB, viewModel, LockView4::logicChanged);
+    classConnect(this, setOutqcCB, MtpViewBase::getViewModel().getOutputQualityCode(), MtpQualityCode::qualityGoodChanged);
+    classConnect(this, setOutputCB, MtpViewBase::getViewModel(), LockView4::outputChanged);
+    classConnect(this, setLogicCB, MtpViewBase::getViewModel(), LockView4::logicChanged);
 
-    setOutputCB(viewModel.getOutput());
-    setLogicCB(viewModel.getLogic());
-    setOutqcCB(viewModel.getOutputQualityCode().getQualityGood());
+    setOutputCB(MtpViewBase::getViewModel().getOutput());
+    setLogicCB(MtpViewBase::getViewModel().getLogic());
+    setOutqcCB(MtpViewBase::getViewModel().getOutputQualityCode().getQualityGood());
   }
 
   protected void initializeShapes()
