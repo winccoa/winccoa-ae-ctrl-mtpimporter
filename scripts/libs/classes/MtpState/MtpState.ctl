@@ -14,7 +14,7 @@
  */
 class MtpState
 {
-  private bool _channel; //!< The source channel of the MTP object.
+  private bool _channel; //!< The state channel of the MTP object.
   private bool _offAutomatic; //!< Indicates if the MTP object is in off automatic mode.
   private bool _operatorAutomatic; //!< Indicates if the MTP object is in operator automatic mode.
   private bool _automaticAutomatic; //!< Indicates if the MTP object is in automatic automatic mode.
@@ -122,7 +122,7 @@ class MtpState
   /**
    * @brief Retrieves the current channel state.
    * 
-   * @return bool True if the channel is automatic, false if the channel is operator.
+   * @return True if the channel is automatic, false if the channel is operator.
    */
   public bool getChannel()
   {
