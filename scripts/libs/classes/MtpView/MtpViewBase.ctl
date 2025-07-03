@@ -13,7 +13,7 @@
  * @class MtpViewBase
  * @brief Base class for MTP view components.
  */
-class MtpViewBase
+class MtpViewBase : MtpRefBase
 {
   private shared_ptr<MtpViewModelBase> _viewModel; //!< The view model associated with this view.
 
@@ -30,7 +30,7 @@ class MtpViewBase
 
   /**
    * @brief Retrieves the view model associated with this view.
-   * 
+   *
    * @return The shared pointer to the MtpViewModelBase instance.
    */
   protected shared_ptr<MtpViewModelBase> getViewModel()
