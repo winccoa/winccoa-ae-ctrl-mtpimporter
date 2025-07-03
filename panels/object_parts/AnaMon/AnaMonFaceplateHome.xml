@@ -387,7 +387,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">_Transparent</prop>
-    <prop name="BackColor">mtpSidebar</prop>
+    <prop name="BackColor">mtpGrey</prop>
     <prop name="TabOrder">40</prop>
     <prop name="ToolTipText">
      <prop name="de_AT.utf8"></prop>
@@ -419,7 +419,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">_Transparent</prop>
-    <prop name="BackColor">mtpSidebar</prop>
+    <prop name="BackColor">mtpGrey</prop>
     <prop name="TabOrder">43</prop>
     <prop name="ToolTipText">
      <prop name="de_AT.utf8"></prop>
@@ -683,7 +683,7 @@ public void initialize(shared_ptr&lt;AnaMon&gt; viewModel)
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">_Transparent</prop>
-    <prop name="BackColor">mtpSidebar</prop>
+    <prop name="BackColor">mtpGrey</prop>
     <prop name="TabOrder">81</prop>
     <prop name="ToolTipText">
      <prop name="de_AT.utf8"></prop>

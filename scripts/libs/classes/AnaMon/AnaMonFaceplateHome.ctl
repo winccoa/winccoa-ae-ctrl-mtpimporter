@@ -163,7 +163,7 @@ class AnaMonFaceplateHome : MtpViewBase
     }
     else if ((_thEnabled && value >= _thLimit) || (_tlEnabled && value <= _tlLimit))
     {
-      _circleValue.backCol = "mtpSidebar";
+      _circleValue.backCol = "mtpGrey";
     }
     else
     {
