@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="de_AT.utf8"></prop>
+  </prop>
+  <prop name="Size">400 400</prop>
+  <prop name="BackColor">_3DFace</prop>
+  <prop name="RefPoint">180 153</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">96</prop>
+  <prop name="PDPI">94.11039611039611</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/MtpBarIndicator/MtpBarIndicator&quot;
+
+shared_ptr&lt;MtpBarIndicator&gt; _barIndicator;
+
+public void initialize()
+{
+  mapping shapes;
+  shapes.insert(&quot;_txtValue&quot;, getShape(&quot;txtValue&quot;));
+  shapes.insert(&quot;_txtUnit&quot;, getShape(&quot;txtUnit&quot;));
+
+  shapes.insert(&quot;_body1&quot;, getShape(&quot;body1&quot;));
+  shapes.insert(&quot;_circleAH1&quot;, getShape(&quot;circleAH1&quot;));
+  shapes.insert(&quot;_circleAL1&quot;, getShape(&quot;circleAL1&quot;));
+  shapes.insert(&quot;_circlePV1&quot;, getShape(&quot;circlePV1&quot;));
+  shapes.insert(&quot;_circleTH1&quot;, getShape(&quot;circleTH1&quot;));
+  shapes.insert(&quot;_circleTL1&quot;, getShape(&quot;circleTL1&quot;));
+  shapes.insert(&quot;_circleWH1&quot;, getShape(&quot;circleWH1&quot;));
+  shapes.insert(&quot;_circleWL1&quot;, getShape(&quot;circleWL1&quot;));
+
+  shapes.insert(&quot;_body&quot;, getShape(&quot;body&quot;));
+  shapes.insert(&quot;_circlePV&quot;, getShape(&quot;circlePV&quot;));
+  shapes.insert(&quot;_circleValue&quot;, getShape(&quot;circleValue&quot;));
+  shapes.insert(&quot;_pvPointer&quot;, getShape(&quot;pvPointer&quot;));
+
+  shapes.insert(&quot;_txtHalfMax&quot;, getShape(&quot;txtHalfMax&quot;));
+  shapes.insert(&quot;_txtMax&quot;, getShape(&quot;txtMax&quot;));
+
+  _barIndicator = new MtpBarIndicator(shapes);
+}
+
+public shared_ptr&lt;MtpBarIndicator&gt; getMtpBarIndicator()
+{
+  return _barIndicator;
+}]]></script>
+  <script isEscaped="1" name="Initialize"><![CDATA[main()
+{
+  initialize();
+}]]></script>
+ </events>
+ <shapes>
+  <shape Name="circlePV1" layerId="0" shapeType="ARC">
+   <properties>
+    <prop name="serialId">2</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">455 275</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpGreen</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="da_DK.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinRound,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1.393093093093093 0 0 1.393093093093093 -452.9857357357354 -231.5954526110898</prop>
+    <prop name="Center">455 275</prop>
+    <prop name="X-Radius">90</prop>
+    <prop name="Y-Radius">90</prop>
+    <prop name="Start">545 275</prop>
+    <prop name="End">370 275</prop>
+    <prop name="Closed">1</prop>
+   </properties>
+  </shape>
+  <shape Name="circleTH1" layerId="0" shapeType="ARC">
+   <properties>
+    <prop name="serialId">3</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">455 275</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpGrey</prop>
+    <prop name="TabOrder">2</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="da_DK.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinRound,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1.393093093093093 -3.86661006849557e-16 3.86661006849557e-16 1.393093093093093 -452.9857357357357 -231.5954526110897</prop>
+    <prop name="Center">455 275</prop>
+    <prop name="X-Radius">90</prop>
+    <prop name="Y-Radius">90</prop>
+    <prop name="Start">545 275</prop>
+    <prop name="End">545 255</prop>
+    <prop name="Closed">1</prop>
+   </properties>
+  </shape>
+  <shape Name="circleTL1" layerId="0" shapeType="ARC">
+   <properties>
+    <prop name="serialId">4</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">455 275</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpGrey</prop>
+    <prop name="TabOrder">3</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="da_DK.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinRound,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1.393093093093093 -2.319966041097343e-16 2.319966041097343e-16 1.393093093093093 -452.9857357357357 -231.59545261109</prop>
+    <prop name="Center">455 275</prop>
+    <prop name="X-Radius">90</prop>
+    <prop name="Y-Radius">90</prop>
+    <prop name="Start">545 275</prop>
+    <prop name="End">545 255</prop>
+    <prop name="Closed">1</prop>
+   </properties>
+  </shape>
+  <shape Name="circleWH1" layerId="0" shapeType="ARC">
+   <properties>
+    <prop name="serialId">5</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">455 275</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpYellow</prop>
+    <prop name="TabOrder">4</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="da_DK.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinRound,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1.393093093093093 2.319966041097343e-16 -2.319966041097343e-16 1.393093093093093 -452.9857357357354 -231.59545261109</prop>
+    <prop name="Center">455 275</prop>
+    <prop name="X-Radius">90</prop>
+    <prop name="Y-Radius">90</prop>
+    <prop name="Start">545 275</prop>
+    <prop name="End">545 255</prop>
+    <prop name="Closed">1</prop>
+   </properties>
+  </shape>
+  <shape Name="circleWL1" layerId="0" shapeType="ARC">
+   <properties>
+    <prop name="serialId">6</prop>
+    <prop name="Type">c</prop>
+    <prop name="RefPoint">455 275</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpYellow</prop>
+    <prop name="TabOrder">5</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="da_DK.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinRound,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1.393093093093092 -8.506542150690256e-16 8.506542150690255e-16 1.393093093093092 -452.9857357357356 -231.5954526110893</prop>
+    <prop name="Center">455 275</prop>
+    <prop name="X-Radius">90</prop>
+    <prop name="Y-Radius">90</prop>
+    <prop name="Start">545 275</prop>
+    <prop name="End">545 255</prop>
+    <prop name="Closed">1</prop>
+   </properties>
+  </shape>
+  <shape Name="circleAH1" layerId="0" shapeType="ARC">
+   <properties>
+    <prop name="serialId">7</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">455 275</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpRed</prop>
+    <prop name="TabOrder">6</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="da_DK.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinRound,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1.393093093093093 -6.186576109592914e-16 6.186576109592914e-16 1.393093093093093 -452.9857357357356 -231.5954526110895</prop>
+    <prop name="Center">455 275</prop>
+    <prop name="X-Radius">90</prop>
+    <prop name="Y-Radius">90</prop>
+    <prop name="Start">545 275</prop>
+    <prop name="End">545 255</prop>
+    <prop name="Closed">1</prop>
+   </properties>
+  </shape>
+  <shape Name="circleAL1" layerId="0" shapeType="ARC">
+   <properties>
+    <prop name="serialId">8</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">455 275</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpRed</prop>
+    <prop name="TabOrder">7</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="da_DK.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinRound,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1.393093093093093 6.371250023312105e-16 -6.186576109592914e-16 1.434677961543633 -452.9857357357344 -241.6954596106125</prop>
+    <prop name="Center">455 275</prop>
+    <prop name="X-Radius">90</prop>
+    <prop name="Y-Radius">90</prop>
+    <prop name="Start">545 275</prop>
+    <prop name="End">545 255</prop>
+    <prop name="Closed">1</prop>
+   </properties>
+  </shape>
+  <shape Name="body1" layerId="0" shapeType="ARC">
+   <properties>
+    <prop name="serialId">9</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">455 275</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpBackground</prop>
+    <prop name="TabOrder">8</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="da_DK.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinRound,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1.393093093093093 0 0 1.393093093093093 -452.9857357357354 -230.5954526110898</prop>
+    <prop name="Center">455 275</prop>
+    <prop name="X-Radius">80</prop>
+    <prop name="Y-Radius">80</prop>
+    <prop name="Start">535 275</prop>
+    <prop name="End">375 275</prop>
+    <prop name="Closed">1</prop>
+   </properties>
+  </shape>
+  <shape Name="txtHalfMax" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">10</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">179.5 74.90742747704024</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpInputText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">9</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">179.5 74.90742747704024</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">50.0</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0.1f,False,False,AlignHCenter|AlignVCenter,False,False]</prop>
+   </properties>
+  </shape>
+  <shape Name="txtMax" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">11</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">268.5 142.9074274770402</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpInputText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">10</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">268.5 142.9074274770402</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">100.0</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0.1f,False,False,AlignHCenter|AlignVCenter,False,False]</prop>
+   </properties>
+  </shape>
+  <shape Name="circlePV" layerId="0" shapeType="ARC">
+   <properties>
+    <prop name="serialId">12</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">455 275</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpGrey</prop>
+    <prop name="TabOrder">11</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="da_DK.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinRound,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">0.7019998815469971 0 0 0.7019998815469971 -138.3806290091328 -41.54481943591351</prop>
+    <prop name="Center">455 275</prop>
+    <prop name="X-Radius">90</prop>
+    <prop name="Y-Radius">90</prop>
+    <prop name="Start">545 275</prop>
+    <prop name="End">370 275</prop>
+    <prop name="Closed">1</prop>
+   </properties>
+  </shape>
+  <shape Name="circleValue" layerId="0" shapeType="ARC">
+   <properties>
+    <prop name="serialId">13</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">455 275</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpGreen</prop>
+    <prop name="TabOrder">12</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="da_DK.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinRound,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">0.7019998815469971 -1.169064647666413e-16 1.169064647666413e-16 0.7019998815469971 -138.380629009133 -41.5448194359136</prop>
+    <prop name="Center">455 275</prop>
+    <prop name="X-Radius">90</prop>
+    <prop name="Y-Radius">90</prop>
+    <prop name="Start">545 275</prop>
+    <prop name="End">545 255</prop>
+    <prop name="Closed">1</prop>
+   </properties>
+  </shape>
+  <shape Name="pvPointer" layerId="0" shapeType="ARC">
+   <properties>
+    <prop name="serialId">14</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">455 275</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpInputText</prop>
+    <prop name="TabOrder">13</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="da_DK.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinRound,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">0.7019998815469971 -2.58894336594492e-16 2.588943365944921e-16 0.7019998815469968 -138.3806290091329 -41.54481943591331</prop>
+    <prop name="Center">360 275</prop>
+    <prop name="X-Radius">95.13148795220225</prop>
+    <prop name="Y-Radius">95.13148795220225</prop>
+    <prop name="Start">455 280</prop>
+    <prop name="End">455 270</prop>
+    <prop name="Closed">1</prop>
+   </properties>
+  </shape>
+  <shape Name="RECTANGLE1" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">15</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">75.24324324324334 205.5977205124705</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpBackground</prop>
+    <prop name="BackColor">mtpBackground</prop>
+    <prop name="TabOrder">14</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1 0 0 1 -30.5 -54.09257252295976</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">75.24324324324334 205.5977205124705</prop>
+    <prop name="Size">273.7567567567567 16.40227948752954</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="body" layerId="0" shapeType="ARC">
+   <properties>
+    <prop name="serialId">16</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">455 275</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpBackground</prop>
+    <prop name="TabOrder">15</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="da_DK.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinRound,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">0.7019998815469971 0 0 0.7019998815469971 -138.3806290091328 -41.54481943591351</prop>
+    <prop name="Center">455 275</prop>
+    <prop name="X-Radius">80</prop>
+    <prop name="Y-Radius">80</prop>
+    <prop name="Start">535 275</prop>
+    <prop name="End">375 275</prop>
+    <prop name="Closed">1</prop>
+   </properties>
+  </shape>
+  <shape Name="txtUnit" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">17</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">179.8716216216217 151.5051479895107</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">16</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">179.8716216216217 151.5051479895107</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">unit</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignHCenter|AlignVCenter]</prop>
+   </properties>
+  </shape>
+  <shape Name="txtValue" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">18</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">179.7567567567569 125.4484575377959</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">17</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">179.7567567567569 125.4484575377959</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">00.00</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0.2f,False,False,AlignHCenter|AlignVCenter,False,False]</prop>
+   </properties>
+  </shape>
+ </shapes>
+</panel>
