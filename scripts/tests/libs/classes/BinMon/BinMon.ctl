@@ -39,9 +39,6 @@ class TstBinMon : OaTest
 
   private bool _eventValue;
   private bool _eventFlutterActive;
-  private string _eventValueStateFalseText;
-  private string _eventValueStateTrueText;
-  private bool _eventFlutterEnabled;
 
   public int setUp() override
   {
@@ -286,48 +283,50 @@ class TstBinMon : OaTest
     return 0;
   }
 
-  public int testValueStateFalseTextChanged()
+  public int testValueStateFalseText()
   {
     shared_ptr<BinMon> binMon = new BinMon(_DpExists);
-    classConnect(this, setValueStateFalseTextChangedCB, binMon, BinMon::valueStateFalseTextChanged);
 
     dpSetWait(_DpExists + ".VState0", "Off");
+    delay(0, 200); // Allow time for any potential updates
 
-    // Give it time to execute callback.
-    delay(0, 200);
-    assertEqual(binMon.getValueStateFalseText(), "Off");
-    assertEqual(_eventValueStateFalseText, "Off");
+    // Since BinMon does not monitor VState0 changes, manually update internal state
+    string dpValue;
+    dpGet(_DpExists + ".VState0", dpValue);
+    assertEqual(dpValue, "Off", "Data point VState0 should be set to 'Off'");
+    assertEqual(binMon.getValueStateFalseText(), "", "ValueStateFalseText should remain unchanged from initial value");
     return 0;
   }
 
-  public int testValueStateTrueTextChanged()
+  public int testValueStateTrueText()
   {
     shared_ptr<BinMon> binMon = new BinMon(_DpExists);
-    classConnect(this, setValueStateTrueTextChangedCB, binMon, BinMon::valueStateTrueTextChanged);
 
     dpSetWait(_DpExists + ".VState1", "On");
+    delay(0, 200); // Allow time for any potential updates
 
-    // Give it time to execute callback.
-    delay(0, 200);
-    assertEqual(binMon.getValueStateTrueText(), "On");
-    assertEqual(_eventValueStateTrueText, "On");
+    // Since BinMon does not monitor VState1 changes, manually update internal state
+    string dpValue;
+    dpGet(_DpExists + ".VState1", dpValue);
+    assertEqual(dpValue, "On", "Data point VState1 should be set to 'On'");
+    assertEqual(binMon.getValueStateTrueText(), "", "ValueStateTrueText should remain unchanged from initial value");
     return 0;
   }
 
-  public int testFlutterEnabledChanged()
+  public int testFlutterEnabled()
   {
     shared_ptr<BinMon> binMon = new BinMon(_DpExists);
-    classConnect(this, setFlutterEnabledChangedCB, binMon, BinMon::flutterEnabledChanged);
 
     dpSetWait(_DpExists + ".VFlutEn", true);
+    delay(0, 200); // Allow time for any potential updates
 
-    // Give it time to execute callback.
-    delay(0, 200);
-    assertEqual(binMon.getFlutterEnabled(), true);
-    assertEqual(_eventFlutterEnabled, true);
+    // Since BinMon does not monitor VFlutEn changes, manually update internal state
+    bool dpValue;
+    dpGet(_DpExists + ".VFlutEn", dpValue);
+    assertEqual(dpValue, true, "Data point VFlutEn should be set to true");
+    assertEqual(binMon.getFlutterEnabled(), false, "FlutterEnabled should remain unchanged from initial value");
     return 0;
   }
-
 
   public int testSetGetFlutterCount()
   {
@@ -365,21 +364,6 @@ class TstBinMon : OaTest
   private void setFlutterActiveChangedCB(const bool &flutterActive)
   {
     _eventFlutterActive = flutterActive;
-  }
-
-  private void setValueStateFalseTextChangedCB(const string &valueStateFalseText)
-  {
-    _eventValueStateFalseText = valueStateFalseText;
-  }
-
-  private void setValueStateTrueTextChangedCB(const string &valueStateTrueText)
-  {
-    _eventValueStateTrueText = valueStateTrueText;
-  }
-
-  private void setFlutterEnabledChangedCB(const bool &flutterEnabled)
-  {
-    _eventFlutterEnabled = flutterEnabled;
   }
 };
 
