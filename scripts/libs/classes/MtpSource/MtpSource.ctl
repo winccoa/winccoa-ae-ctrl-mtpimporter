@@ -23,6 +23,8 @@ class MtpSource
   private bool _internalActive; //!< Indicates if the MTP object is in internal active mode.
   private string _dpeManualOperator; //!< Data point element for manual operator state.
   private string _dpeInternalOperator; //!< Data point element for internal operator state.
+  private string _dpeManualActive; //!< Data point element for manual active state.
+  private string _dpeInternalActive; //!< Data point element for internal active state.
 
   /**
    * @brief Constructor for MtpSource.
@@ -74,6 +76,8 @@ class MtpSource
 
     _dpeManualOperator = dpeManualOperator;
     _dpeInternalOperator = dpeInternalOperator;
+    _dpeManualActive = dpeManualActive;
+    _dpeInternalActive = dpeInternalActive;
 
     dpGet(_dpeManualOperator, _manualOperator,
           _dpeInternalOperator, _internalOperator);
@@ -93,7 +97,7 @@ class MtpSource
 
   /**
    * @brief Retrieves the current channel state.
-   * 
+   *
    * @return True if the channel is automatic, false if the channel is operator.
    */
   public bool getChannel()
@@ -103,7 +107,7 @@ class MtpSource
 
   /**
    * @brief Retrieves the current manual automatic state.
-   * 
+   *
    * @return True if manual automatic, false otherwise.
    */
   public bool getManualAutomatic()
@@ -113,7 +117,7 @@ class MtpSource
 
   /**
    * @brief Retrieves the current internal automatic state.
-   * 
+   *
    * @return True if internal automatic, false otherwise.
    */
   public bool getInternalAutomatic()
@@ -123,7 +127,7 @@ class MtpSource
 
   /**
    * @brief Retrieves the current manual operator state.
-   * 
+   *
    * @return True if manual operator, false otherwise.
    */
   public bool getManualOperator()
@@ -133,7 +137,7 @@ class MtpSource
 
   /**
    * @brief Retrieves the current internal operator state.
-   * 
+   *
    * @return True if internal operator, false otherwise.
    */
   public bool getInternalOperator()
@@ -143,7 +147,7 @@ class MtpSource
 
   /**
    * @brief Retrieves the current manual active state.
-   * 
+   *
    * @return True if manual active, false otherwise.
    */
   public bool getManualActive()
@@ -153,7 +157,7 @@ class MtpSource
 
   /**
    * @brief Retrieves the current internal active state.
-   * 
+   *
    * @return True if internal active, false otherwise.
    */
   public bool getInternalActive()
@@ -170,6 +174,28 @@ class MtpSource
   {
     _manualOperator = manualOperator;
     dpSet(_dpeManualOperator, _manualOperator);
+  }
+
+  /**
+  * @brief Sets the manual active state.
+  *
+  * @param manualActive True to set manual active state, false otherwise.
+  */
+  public void setManualActive(const bool &manualActive)
+  {
+    _manualActive = manualActive;
+    dpSet(_dpeManualActive, _manualActive);
+  }
+
+  /**
+  * @brief Sets the internal active state.
+  *
+  * @param internalActive True to set internal active state, false otherwise.
+  */
+  public void setInternalActive(const bool &internalActive)
+  {
+    _internalActive = internalActive;
+    dpSet(_dpeInternalActive, _internalActive);
   }
 
   /**
@@ -199,7 +225,7 @@ class MtpSource
   /**
    * @brief Sets the state of the manual automatic mode.
    * @details Triggers the manualAutomaticChanged event.
-   * 
+   *
    * @param dpe The data point element.
    * @param manualAutomatic The new manual automatic state to set.
    */
@@ -212,7 +238,7 @@ class MtpSource
   /**
    * @brief Sets the state of the internal automatic mode.
    * @details Triggers the internalAutomaticChanged event.
-   * 
+   *
    * @param dpe The data point element.
    * @param internalAutomatic The new internal automatic state to set.
    */

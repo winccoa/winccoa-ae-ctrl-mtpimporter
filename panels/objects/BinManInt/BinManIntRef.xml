@@ -55,7 +55,7 @@ public void initialize()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/Manual__2.svg]]</prop>
-    <prop name="Geometry">1 0 0 1.354166666666667 2 36.66666666666664</prop>
+    <prop name="Geometry">1 0 0 1.354166666666667 15.50000000000006 71.35416666666664</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">21 16</prop>
@@ -83,8 +83,8 @@ public void initialize()
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok.svg]]</prop>
-    <prop name="Geometry">1 0 0 1 29.5 15.00000000000003</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/True.svg]]</prop>
+    <prop name="Geometry">3.266666666666667 0 0 3.266666666666667 -347.9999999999999 -223</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">165 105</prop>
     <prop name="Size">16 16</prop>
@@ -116,7 +116,7 @@ public void initialize()
     <prop name="Geometry">0.9166666666666654 0 0 0.9999999999999998 23.75000000000028 65.00000000000004</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">165 55</prop>
-    <prop name="Size">61 51</prop>
+    <prop name="Size">89.3636363636364 90</prop>
     <prop name="CornerRadius">0</prop>
     <prop name="Transformable">True</prop>
    </properties>

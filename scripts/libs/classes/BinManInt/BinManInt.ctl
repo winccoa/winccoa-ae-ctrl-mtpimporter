@@ -114,6 +114,12 @@ class BinManInt : MtpViewModelBase
     return _valueFeedback;
   }
 
+  public void setValueOut(const bool &value)
+  {
+    _valueOut = value;
+    dpSet(getDp() + ".VOut", value);
+  }
+
   public shared_ptr<MtpQualityCode> getWqc()
   {
     return _wqc;
