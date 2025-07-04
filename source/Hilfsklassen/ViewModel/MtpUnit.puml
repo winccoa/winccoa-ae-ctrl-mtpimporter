@@ -2,11 +2,9 @@
 
 class MtpUnit {
     - int _value
-    - bool _invalid
 --
-    + Unit(const string &dpeUnit)
+    + MtpUnit(const string &dpeUnit)
     + string toString()
-    + bool getInvalid()
 }
 
 @enduml
