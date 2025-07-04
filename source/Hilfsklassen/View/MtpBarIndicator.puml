@@ -1,0 +1,55 @@
+@startuml
+!include source/Hilfsklassen/View/MtpRefBase.puml
+
+class MtpBarIndicator{
+    - shape _txtValue
+    - shape _txtUnit
+    - shape _body1
+    - shape _circleAH1
+    - shape _circleAL1
+    - shape _circlePV1
+    - shape _circleTH1
+    - shape _circleTL1
+    - shape _circleWH1
+    - shape _circleWL1
+    - shape _body
+    - shape _circlePV
+    - shape _circleValue
+    - shape _pvPointer
+    - shape _txtHalfMax
+    - shape _txtMax
+    - float _value
+    - float _ahLimit
+    - float _alLimit
+    - float _thLimit
+    - float _tlLimit
+    - float _whLimit
+    - float _wlLimit
+    - bool _ahEnabled
+    - bool _alEnabled
+    - bool _thEnabled
+    - bool _tlEnabled
+    - bool _whEnabled
+    - bool _wlEnabled
+    - float _minV
+    - float _maxV
+    - string _unit
+--
+    # MtpBarIndicator(const mapping &shapes)
+    + void setScale(const float &min, const float &max)
+    + void setAlertHighShape(const bool &ahEnabled, const float &ahLimit)
+    + void setWarningHighShape(const bool &whEnabled, const float &whLimit)
+    + void setToleranceHighShape(const bool &thEnabled, const float &thLimit)
+    + void setAlertLowShape(const bool &alEnabled, const float &alLimit)
+    + void setWarningLowShape(const bool &wlEnabled, const float &wlLimit)
+    + void setToleranceLowShape(const bool &tlEnabled, const float &tlLimit)
+    + void setValue(const float &value)
+    + void setUnit(shared_ptr<MtpUnit> unit)
+    # void initializeShapes()
+    - float calculatePvDeg(float value, float minV, float maxV)
+    - float calculateCircleDeg(float value, float minV, float maxV)
+}
+
+MtpBarIndicator <|-- MtpRefBase
+
+@enduml

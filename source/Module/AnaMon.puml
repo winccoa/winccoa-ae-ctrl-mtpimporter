@@ -7,6 +7,7 @@
 !include source/Hilfsklassen/View/MtpViewBase.puml
 !include source/Hilfsklassen/View/MtpFaceplateTrendBase.puml
 !include source/Hilfsklassen/View/MtpFaceplateMainBase.puml
+!include source/Hilfsklassen/View/MtpBarIndicator.puml
 
 class AnaMon {
     - float _value
@@ -58,34 +59,80 @@ class AnaMonFaceplateMain {
     # vector<shared_ptr<MtpNavigationButton> > getNavigationPanels()
 }
 MtpFaceplateMainBase <|-- AnaMonFaceplateMain
+
 class AnaMonFaceplateHome {
-    
+    - shape _refWqc
+    - shape _rectLimitHigh
+    - shape _rectLimitLow
+    - shape _txtLimitHigh
+    - shape _txtLimitLow
+    - bool _alertHighActive
+    - bool _warningHighActive
+    - bool _toleranceHighActive
+    - bool _toleranceLowActive
+    - bool _warningLowActive
+    - bool _alertLowActive
+    - shape _barIndicator
+--
+    + AnaMonFaceplateHome(shared_ptr<AnaMon> viewModel, const mapping &shapes)
+    # void initializeShapes()
+    - void setValueCB(const float &value)
+    - void setWqcCB(const bool &qualityGoodChanged)
+    - void setStatusHighCB(const string &varName, const bool &active)
+    - void setStatusLowCB(const string &varName, const bool &active)
 }
+MtpViewBase <|-- AnaMonFaceplateHome
+MtpBarIndicator "1" --* "1" AnaMonFaceplateHome : _barIndicator
 
-class AnaMonFaceplateSettings1 {
-
+class AnaMonFaceplateSettings {
+    - shape _txtUnitAlert
+    - shape _txtUnitWarning
+    - shape _txtUnitTolerance
+    - shape _txtAlert
+    - shape _txtWarning
+    - shape _txtTolerance
+    - bool _init
+--
+    + AnaMonFaceplateSettings(shared_ptr<AnaMon> viewModel, const mapping &shapes)
+    + {abstract} void setAlertLimit(const float &alertLimit)
+    + {abstract} void setWarningLimit(const float &warningLimit)
+    + {abstract} void setToleranceLimit(const float &toleranceLimit)
+    + {abstract} void switchPage()
+    # void initializeShapes()
+    # bool getInit()
+    # shape getTxtAlert()
+    # shape getTxtWarning()
+    # shape getTxtTolerance()
+    - void setUnit(shared_ptr<MtpUnit> unit)
 }
+MtpViewFaceplateSettings <|-- AnaMonFaceplateSettings
 
-class AnaMonFaceplateSettings2 {
 
+class AnaMonFaceplateSettingsHighLimit {
+    + AnaMonFaceplateSettingsHighLimit(shared_ptr<AnaMon> viewModel, const mapping &shapes)
+    + void setAlertLimit(const float &alertLimit)
+    + void setWarningLimit(const float &warningLimit)
+    + void setToleranceLimit(const float &toleranceLimit)
+    + void switchPage()
 }
+AnaMonFaceplateSettings <|-- AnaMonFaceplateSettingsHighLimit
+
+
+class AnaMonFaceplateSettingsLowLimit {
+    + AnaMonFaceplateSettingsLowLimit(shared_ptr<AnaMon> viewModel, const mapping &shapes)
+    + void setAlertLimit(const float &alertLimit)
+    + void setWarningLimit(const float &warningLimit)
+    + void setToleranceLimit(const float &toleranceLimit)
+    + void switchPage()
+}
+AnaMonFaceplateSettings <|-- AnaMonFaceplateSettingsLowLimit
+
 
 class AnaMonFaceplateTrend {
     + AnaMonFaceplateTrend(shared_ptr<AnaMon> viewModel, const mapping &shapes)
     # dyn_string getTrendDpes()
 }
-
 MtpFaceplateTrendBase <|-- AnaMonFaceplateTrend
-
-MtpViewBase <|-- AnaMonFaceplateHome
-AnaMon "1" --* "1" AnaMonFaceplateHome : _viewModel
-MtpViewBase <|-- AnaMonFaceplateSettings1
-AnaMon "1" --* "1" AnaMonFaceplateSettings1 : _viewModel
-MtpViewBase <|-- AnaMonFaceplateSettings2
-AnaMon "1" --* "1" AnaMonFaceplateSettings2 : _viewModel
-AnaMon "1" --* "1" AnaMonFaceplateTrend : _viewModel
-AnaMon "1" --* "1" AnaMonFaceplateMain : _viewModel
-
 
 class AnaMonRef {
     - shape _txtValue
@@ -105,7 +152,12 @@ class AnaMonRef {
     - void setUnit(shared_ptr<MtpUnit> unit)
     - void setStatusCB(const string &varName, const bool &active)
 }
-
 MtpViewRef <|-- AnaMonRef
+
+
 AnaMon "1" --* "1" AnaMonRef : _viewModel
+AnaMon "1" --* "1" AnaMonFaceplateHome : _viewModel
+AnaMon "1" --* "1" AnaMonFaceplateSettings : _viewModel
+AnaMon "1" --* "1" AnaMonFaceplateTrend : _viewModel
+AnaMon "1" --* "1" AnaMonFaceplateMain : _viewModel
 @enduml

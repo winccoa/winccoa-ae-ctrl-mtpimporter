@@ -1,5 +1,6 @@
 @startuml
 !include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/View/MtpRefBase.puml
 
 class MtpViewBase{
     - mapping _shapes
@@ -11,6 +12,7 @@ class MtpViewBase{
 }
 
 MtpViewModelBase "1" --* "1" MtpViewBase : _viewModel
+MtpViewBase <|-- MtpRefBase
 
 class MtpViewRef {
     # MtpViewRef(MtpViewModelBase viewModel, const mapping &shapes)
@@ -18,4 +20,10 @@ class MtpViewRef {
 }
 
 MtpViewBase <|-- MtpViewRef
+
+class MtpViewFaceplateSettings{
+    + MtpViewFaceplateSettings(MtpViewModelBase viewModel, const mapping &shapes)
+    # void loadPanel(const string &fileName, const string &panelName)
+}
+MtpViewBase <|-- MtpViewFaceplateSettings
 @enduml
