@@ -55,7 +55,7 @@ MtpValueLimitFloat "1" --* "1" AnaMon : _warningLowLimit
 MtpValueLimitFloat "1" --* "1" AnaMon : _alertLowLimit
 
 class AnaMonFaceplateMain {
-    + AnaMonFaceplateMain(shared_ptr<AnaMon> viewModel, const mapping &shapes)
+    + AnaMonFaceplateMain(shared_ptr<AnaMon> viewModel, const mapping &shapes, const string &layoutNavigation)
     # vector<shared_ptr<MtpNavigationButton> > getNavigationPanels()
 }
 MtpFaceplateMainBase <|-- AnaMonFaceplateMain
@@ -74,7 +74,7 @@ class AnaMonFaceplateHome {
     - bool _alertLowActive
     - shape _barIndicator
 --
-    + AnaMonFaceplateMain(shared_ptr<AnaMon> viewModel, const mapping &shapes, const string &layoutNavigation)
+    + AnaMonFaceplateHome(shared_ptr<AnaMon> viewModel, const mapping &shapes)
     # void initializeShapes()
     - void setValueCB(const float &value)
     - void setWqcCB(const bool &qualityGoodChanged)
