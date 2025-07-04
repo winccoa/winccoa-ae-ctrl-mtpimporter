@@ -29,7 +29,7 @@ class MtpQualityCode
     dpConnect(this, setQcCB, dpeQc);
   }
 
-  #event qualityGoodChanged(const bool &qualityGood) //!< Event triggered when quality good state changes.
+#event qualityGoodChanged(const bool &qualityGood) //!< Event triggered when quality good state changes.
 
   /**
    * @brief Retrieves if the current quality code value is considered "good".
@@ -48,7 +48,7 @@ class MtpQualityCode
    * @param dpe The data point element.
    * @param value The new quality code value.
    */
-  private void setQcCB(const string &dpe, const bit32 value)
+  private void setQcCB(const string &dpe, const bit32 &value)
   {
     _value = value;
 

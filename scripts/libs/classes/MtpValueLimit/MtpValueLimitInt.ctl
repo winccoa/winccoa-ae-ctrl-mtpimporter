@@ -29,7 +29,7 @@ class MtpValueLimitInt : MtpValueLimit
   /**
    * @brief Retrieves the integer limit value.
    * @details This method overrides the base class method to return the limit as an integer.
-   * 
+   *
    * @return The integer limit value.
    */
   public int getLimit() override
@@ -43,8 +43,8 @@ class MtpValueLimitInt : MtpValueLimit
    *
    * @param limit The value to set as the limit.
    */
-  public void setLimit(const int &limit) override
+  public void setLimit(const int &value) override
   {
-    MtpValueLimit::setLimit(limit);
+    MtpValueLimit::setLimit(value);
   }
 };
