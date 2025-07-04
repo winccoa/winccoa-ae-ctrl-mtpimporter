@@ -10,6 +10,8 @@ class MtpSource {
     - bool _internalActive
     - string _dpeManualOperator
     - string _dpeInternalOperator
+    - string _dpeInternalActive
+    - string _dpeManualActive
 --
     + MtpSource(
         const string &dpeChannel, 
@@ -20,7 +22,7 @@ class MtpSource {
         const string &dpeManualActive, 
         const string &dpeInternalActive
         )  
-    + bool getChannel() 
+    + bool getChannel()
     + bool getManualAutomatic()
     + bool getInternalAutomatic()
     + bool getManualOperator()  
@@ -28,7 +30,9 @@ class MtpSource {
     + bool getManualActive()
     + bool getInternalActive()
     + void setManualOperator(const bool &manualOperator)
+    + void setManualActive(const bool &manualActive)
     + void setInternalOperator(const bool &internalOperator)
+    + void setInternalActive(const bool &internalActive)
     - void setChannelCB(const string &dpe, const bool &channel)
     - void setManualAutomaticCB(const string &dpe, const bool &manualAutomatic)
     - void setInternalAutomaticCB(const string &dpe, const bool &internalAutomatic)

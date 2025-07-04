@@ -43,7 +43,7 @@ MtpQualityCode "1" --* "1" BinMon : _wqc
 MtpOsLevel"1" --* "1" BinMon : _osLevel
 
 class BinMonFaceplateMain {
-    + BinMonFaceplateMain(shared_ptr<BinMon> viewModel, const mapping &shapes)
+    + BinMonFaceplateMain(shared_ptr<BinMon> viewModel, const mapping &shapes, const string &layoutNavigation)
     # vector<shared_ptr<MtpNavigationButton> > getNavigationPanels()
 }
 MtpFaceplateMainBase <|-- BinMonFaceplateMain

@@ -74,7 +74,7 @@ class AnaMonFaceplateHome {
     - bool _alertLowActive
     - shape _barIndicator
 --
-    + AnaMonFaceplateHome(shared_ptr<AnaMon> viewModel, const mapping &shapes)
+    + AnaMonFaceplateMain(shared_ptr<AnaMon> viewModel, const mapping &shapes, const string &layoutNavigation)
     # void initializeShapes()
     - void setValueCB(const float &value)
     - void setWqcCB(const bool &qualityGoodChanged)
