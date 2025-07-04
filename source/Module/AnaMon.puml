@@ -56,7 +56,7 @@ MtpValueLimitFloat "1" --* "1" AnaMon : _alertLowLimit
 
 class AnaMonFaceplateMain {
     + AnaMonFaceplateMain(shared_ptr<AnaMon> viewModel, const mapping &shapes, const string &layoutNavigation)
-    # vector<shared_ptr<MtpNavigationButton> > getNavigationPanels()
+    # vector<shared_ptr<MtpNavigationButton> > getNavigationButtons()
 }
 MtpFaceplateMainBase <|-- AnaMonFaceplateMain
 

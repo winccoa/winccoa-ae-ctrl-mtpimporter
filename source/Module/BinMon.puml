@@ -44,7 +44,7 @@ MtpOsLevel"1" --* "1" BinMon : _osLevel
 
 class BinMonFaceplateMain {
     + BinMonFaceplateMain(shared_ptr<BinMon> viewModel, const mapping &shapes, const string &layoutNavigation)
-    # vector<shared_ptr<MtpNavigationButton> > getNavigationPanels()
+    # vector<shared_ptr<MtpNavigationButton> > getNavigationButtons()
 }
 MtpFaceplateMainBase <|-- BinMonFaceplateMain
 
