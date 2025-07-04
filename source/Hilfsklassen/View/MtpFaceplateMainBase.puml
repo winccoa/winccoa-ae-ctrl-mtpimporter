@@ -3,24 +3,28 @@
 !include source/Hilfsklassen/View/MtpNavigationButton.puml
 
 class MtpFaceplateMainBase {
-    - shape _title
-    - shape _navigation
+    - shape _txtTitle
+    - shape _panel
+    - shape _module
+    - string _layoutNavigation
 --
-    # MtpFaceplateMainBase(shared_ptr<MtpViewModelBase> &viewModel, const mapping &shapes)
+    # MtpFaceplateMainBase(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes, const string &layoutNavigation)
     + void close()
     + void clickNavigation(const string &name)
     # initializeShapes()
-    # {abstract} vector<shared_ptr<MtpNavigationButton> > getNavigationPanels()
+    # vector<shared_ptr<MtpNavigationButton> > getNavigationButtons()
     - void setTitle()
     - void setNavigation()
+    - void loadPanel(const string &fileName, const string &panelName, const string &moduleName)
 }
-
-class MtpFaceplateBaseFactory
-{
-    + static shared_ptr<MtpFaceplateMainBase> create(const string &dp, const mapping &shapes)
-}
-
-MtpFaceplateBaseFactory --> MtpFaceplateMainBase
 MtpViewBase <|-- MtpFaceplateMainBase
 MtpNavigationButton "1" --* "n" MtpFaceplateMainBase : _navigationButtons
+
+class MtpFaceplateMainFactory
+{
+    - MtpFaceplateMainFactory()
+    + static shared_ptr<MtpFaceplateMainBase> create(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes, const string &layoutNavigation)
+}
+
+MtpFaceplateMainFactory --> MtpFaceplateMainBase
 @enduml
