@@ -145,8 +145,7 @@ class AnaMonRef {
     - bool _warningLowActive
     - bool _alertLowActive
 --
-    + AnaMonRef(shared_ptr<Anamon> viewModel, const mapping &shapes)
-    + void openFaceplate()
+    + AnaMonRef(shared_ptr<AnaMon> viewModel, const mapping &shapes)
     # void initializeShapes()
     - void setValueCB(const float &value)
     - void setUnit(shared_ptr<MtpUnit> unit)

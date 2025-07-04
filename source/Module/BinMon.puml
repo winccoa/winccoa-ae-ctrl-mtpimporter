@@ -2,6 +2,9 @@
 !include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
 !include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
 !include source/Hilfsklassen/ViewModel/MtpOsLevel.puml
+!include source/Hilfsklassen/View/MtpViewBase.puml
+!include source/Hilfsklassen/View/MtpFaceplateTrendBase.puml
+!include source/Hilfsklassen/View/MtpFaceplateMainBase.puml
 
 class BinMon {
     - bool _value
@@ -28,24 +31,69 @@ class BinMon {
     - void setValueCB(const string &dpe, const bool &value)
     ' DPE: VFlutAct
     - void setFlutterActiveCB(const string &dpe, const bool &flutterActive)
-    ' DPE: VState0
-    - void setValueStateFalseTextCB(const string &dpe, const string &valueStateFalseText)
-    ' DPE: VState1
-    - void setValueStateTrueTextCB(const string &dpe, const string &valueStateTrueText)
-    ' DPE: VFlutEn
-    - void setFlutterEnabledCB(const string &dpe, const bool &flutterEnabled)
 
     ..events..
     + void valueChanged(const bool &value)
     + void flutterActiveChanged(const bool &flutterActive)
-    + void valueStateFalseTextChanged(const string &valueStateFalseText)
-    + void valueStateTrueTextChanged(const string &valueStateTrueText)
-    + void flutterEnabledChanged(const bool &flutterEnabled)
 }
-
 MtpViewModelBase <|-- BinMon
 ' DPE: WQC
 MtpQualityCode "1" --* "1" BinMon : _wqc
 ' DPE: OSLevel
 MtpOsLevel"1" --* "1" BinMon : _osLevel
+
+class BinMonFaceplateMain {
+    + BinMonFaceplateMain(shared_ptr<BinMon> viewModel, const mapping &shapes)
+    # vector<shared_ptr<MtpNavigationButton> > getNavigationPanels()
+}
+MtpFaceplateMainBase <|-- BinMonFaceplateMain
+
+class BinMonFaceplateHome {
+    - shape _refWqc
+    - shape _txtValue
+    - shape rectValue
+    - shape _rectFlutterActive
+--
+    + BinMonFaceplateHome(shared_ptr<BinMon> viewModel, const mapping &shapes)
+    # void initializeShapes()
+    - void setValueCB(const float &value)
+    - void setWqcCB(const bool &qualityGoodChanged)
+    - void setFlutterActiveCB(const bool &active)
+}
+MtpViewBase <|-- BinMonFaceplateHome
+
+class BinMonFaceplateSettings {
+    - shape _txtVFlutTi
+    - shape _txtVFlutCnt
+--
+    + BinMonFaceplateSettings(shared_ptr<BinMon> viewModel, const mapping &shapes)
+    + void setFlutterTime(const float &flutterTime)
+    + void setFlutterCount(const int &flutterCount)
+    # void initializeShapes()
+}
+MtpViewFaceplateSettings <|-- BinMonFaceplateSettings
+
+class BinMonFaceplateTrend {
+    + BinMonFaceplateTrend(shared_ptr<BinMon> viewModel, const mapping &shapes)
+    # dyn_string getTrendDpes()
+}
+MtpFaceplateTrendBase <|-- BinMonFaceplateTrend
+
+class BinMonRef {
+    - shape _rectValue
+    - shape _rectStatus
+    - bool _flutterActive
+--
+    + BinMonRef(shared_ptr<BinMon> viewModel, const mapping &shapes)
+    # void initializeShapes()
+    - void setValueCB(const bool &value)
+    - void setStatusCB(const bool &active)
+}
+MtpViewRef <|-- BinMonRef
+
+BinMon "1" --* "1" BinMonRef : _viewModel
+BinMon "1" --* "1" BinMonFaceplateHome : _viewModel
+BinMon "1" --* "1" BinMonFaceplateSettings : _viewModel
+BinMon "1" --* "1" BinMonFaceplateTrend : _viewModel
+BinMon "1" --* "1" BinMonFaceplateMain : _viewModel
 @enduml
