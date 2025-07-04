@@ -12,7 +12,7 @@ class MtpFaceplateMainBase {
     + void close()
     + void clickNavigation(const string &name)
     # initializeShapes()
-    # vector<shared_ptr<MtpNavigationButton> > getNavigationButtons()
+    # {abstract} vector<shared_ptr<MtpNavigationButton> > getNavigationButtons()
     - void setTitle()
     - void setNavigation()
     - void loadPanel(const string &fileName, const string &panelName, const string &moduleName)
