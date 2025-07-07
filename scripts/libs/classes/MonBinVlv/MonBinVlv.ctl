@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "std"
 #uses "classes/MtpMonitor/MtpMonitor"
 #uses "classes/MtpSecurity/MtpSecurity"
 #uses "classes/MtpState/MtpState"
