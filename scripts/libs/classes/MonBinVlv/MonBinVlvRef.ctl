@@ -208,7 +208,7 @@ class MonBinVlvRef : MtpViewRef
       _rectValve.fill = "[pattern,[tile,any,MTP_Icones/ValvMfwdStopped.svg]]";
       _rectValve.visible = TRUE;
     }
-    else if ((_openCheckbackSignal && _closeCheckbackSignal) || _dynamicError || !_staticError)
+    else if ((_openCheckbackSignal && _closeCheckbackSignal) || _dynamicError || _staticError)
     {
       _rectValve.fill = "[pattern,[tile,any,MTP_Icones/ValvUknownState.svg]]";
       _rectValve.visible = TRUE;
