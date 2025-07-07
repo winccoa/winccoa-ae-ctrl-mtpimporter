@@ -952,10 +952,10 @@ class TstMonBinVlv : OaTest
     return 0;
   }
 
-  public int testOpenCheckBackSignalChanged()
+  public int testOpenCheckbackSignalChanged()
   {
     shared_ptr<MonBinVlv> monBinVlv = new MonBinVlv(_DpExists);
-    classConnect(this, setOpenCheckbackSignalChangedCB, monBinVlv, MonBinVlv::openCheckBackSignalChanged);
+    classConnect(this, setOpenCheckbackSignalChangedCB, monBinVlv, MonBinVlv::openCheckbackSignalChanged);
 
     dpSetWait(_DpExists + ".OpenFbk", true);
 
@@ -966,10 +966,10 @@ class TstMonBinVlv : OaTest
     return 0;
   }
 
-  public int testCloseCheckBackSignalChanged()
+  public int testCloseCheckbackSignalChanged()
   {
     shared_ptr<MonBinVlv> monBinVlv = new MonBinVlv(_DpExists);
-    classConnect(this, setCloseCheckbackSignalChangedCB, monBinVlv, MonBinVlv::closeCheckBackSignalChanged);
+    classConnect(this, setCloseCheckbackSignalChangedCB, monBinVlv, MonBinVlv::closeCheckbackSignalChanged);
 
     dpSetWait(_DpExists + ".CloseFbk", true);
 

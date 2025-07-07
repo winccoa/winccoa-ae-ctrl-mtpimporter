@@ -132,9 +132,9 @@ class MonBinVlv : MtpViewModelBase
     _monitor = new MtpMonitor(getDp() + ".MonEn", getDp() + ".MonSafePos", getDp() + ".MonStatErr", getDp() + ".MonDynErr", getDp() + ".MonStatTi", getDp() + ".MonDynTi");
   }
 
-#event openCheckBackSignalChanged(const bool &openCheckbackSignal)
+#event openCheckbackSignalChanged(const bool &openCheckbackSignal)
 #event valveControlChanged(const bool &valveControl)
-#event closeCheckBackSignalChanged(const bool &closeCheckbackSignal)
+#event closeCheckbackSignalChanged(const bool &closeCheckbackSignal)
 #event safetyPositionActiveChanged(const bool &safetyPositionActive)
 #event safetyPositionEnabledChanged(const bool &safetyPositionEnabled)
 #event safetyPositionChanged(const bool &safetyPosition)
@@ -268,13 +268,13 @@ class MonBinVlv : MtpViewModelBase
   private void setOpenCheckbackSignalCB(const string &dpe, const bool &openCheckbackSignal)
   {
     _openCheckbackSignal = openCheckbackSignal;
-    openCheckBackSignalChanged(_openCheckbackSignal);
+    openCheckbackSignalChanged(_openCheckbackSignal);
   }
 
   private void setCloseCheckbackSignalCB(const string &dpe, const bool &closeCheckbackSignal)
   {
     _closeCheckbackSignal = closeCheckbackSignal;
-    closeCheckBackSignalChanged(_closeCheckbackSignal);
+    closeCheckbackSignalChanged(_closeCheckbackSignal);
   }
 
   private void setSafetyPositionCB(const string &dpe, const bool &safetyPosition)
