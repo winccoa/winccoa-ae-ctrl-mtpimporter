@@ -74,8 +74,6 @@ class MonBinDrv {
     - void setForwardAutomaticCB(const string &dpe, const bool &forwardAutomatic)
     ' DPE: RevAut
     - void setReverseAutomaticCB(const string &dpe, const bool &reverseAutomatic)
-    ' DPE: RevAut
-    - void setReverseAutomaticCB(const string &dpe, const bool &reverseAutomatic)
     ' DPE: StopAut
     - void setStopAutomaticCB(const string &dpe, const bool &stopAutomatic)
     ' DPE: ResetAut
