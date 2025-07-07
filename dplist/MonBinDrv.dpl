@@ -1,0 +1,48 @@
+# ascii dump of database
+
+# DpType
+TypeName
+MonBinDrv.MonBinDrv	1#1
+	WQC	24#5
+	OSLevel	21#6
+	StateChannel	23#42
+	StateOffAut	23#43
+	StateOpAut	23#44
+	StateAutAut	23#45
+	StateOffOp	23#46
+	StateOpOp	23#47
+	StateAutOp	23#48
+	StateOpAct	23#49
+	StateAutAct	23#50
+	StateOffAct	23#51
+	SafePos	23#52
+	SafePosAct	23#54
+	FwdEn	23#55
+	RevEn	23#56
+	StopOp	23#57
+	FwdOp	23#58
+	RevOp	23#59
+	StopAut	23#60
+	FwdAut	23#61
+	RevAut	23#62
+	FwdCtrl	23#63
+	PermEn	23#64
+	Permit	23#65
+	IntEn	23#66
+	Interlock	23#67
+	ProtEn	23#68
+	Protect	23#69
+	ResetOp	23#70
+	ResetAut	23#71
+	MonEn	23#72
+	MonSafePos	23#73
+	MonStatErr	23#74
+	MonDynErr	23#75
+	MonStatTi	22#76
+	MonDynTi	22#77
+	RevCtrl	23#78
+	RevFbkCalc	23#79
+	RevFbk	23#80
+	FwdFbkCalc	23#81
+	FwdFbk	23#82
+	Trip	23#83
