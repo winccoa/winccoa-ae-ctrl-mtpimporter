@@ -515,6 +515,11 @@ class MonAnaDrv : MtpViewModelBase
     return _source;
   }
 
+  public shared_ptr<MtpSecurity> getSecurity()
+  {
+    return _security;
+  }
+
   public shared_ptr<MtpUnit> getRpmUnit()
   {
     return _rpmUnit;

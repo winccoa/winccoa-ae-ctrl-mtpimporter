@@ -1540,6 +1540,7 @@ class TstMonAnaDrv : OaTest
     assertTrue(drv.getOsLevel() != nullptr);
     assertTrue(drv.getState() != nullptr);
     assertTrue(drv.getMonitor() != nullptr);
+    assertTrue(drv.getSecurity() != nullptr);
     assertTrue(drv.getRpmUnit() != nullptr);
     assertTrue(drv.getSource() != nullptr);
     return 0;
