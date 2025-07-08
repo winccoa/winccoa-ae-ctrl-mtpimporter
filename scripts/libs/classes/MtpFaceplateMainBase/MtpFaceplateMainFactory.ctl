@@ -6,6 +6,7 @@
   @author m.woegrath
 */
 
+#uses "classes/AnaManInt/AnaManIntFaceplateMain"
 #uses "classes/BinManInt/BinManIntFaceplateMain"
 #uses "classes/LockView4/LockView4FaceplateMain"
 #uses "classes/BinMon/BinMonFaceplateMain"
@@ -49,6 +50,8 @@ class MtpFaceplateMainFactory
       case "LockView4": return new LockView4FaceplateMain(viewModel, shapes, layoutNavigation);
 
       case "BinManInt": return new BinManIntFaceplateMain(viewModel, shapes, layoutNavigation);
+
+      case "AnaManInt": return new AnaManIntFaceplateMain(viewModel, shapes, layoutNavigation);
 
       default: throw (makeError("", PRIO_SEVERE, ERR_PARAM, ErrCode::UNEXPECTEDSTATE, "datapoint type not defined '" + dpTypeName(dp) + "'"));
     }

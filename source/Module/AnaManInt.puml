@@ -14,8 +14,8 @@ class AnaManInt {
     - float _valueInternal
     - float _valueReadback
     - float _valueFeedback
-    - bool _valueMinExceeded
-    - bool _valueMaxExceeded
+    - float _valueMin
+    - float _valueMax
 --
     + AnaManInt(const string &dp)
     + MtpQualityCode getWqc()
@@ -27,19 +27,19 @@ class AnaManInt {
     + float getValueInternal()
     + float getValueReadback()
     + float getValueFeedback()
-    + Source getSource()
-    + Unit getValueUnit()
-    + bool getValueMinExceeded()
-    + bool getValueMaxExceeded()
+    + MtpSource getSource()
+    + MtpUnit getValueUnit()
+    + float getValueMin()
+    + float getValueMax()
     + void setValueManual(const float &valueManual)
     ' DPE: VOut
     - void setValueOutCB(const string &dpe, const float &valueOut)
     ' DPE: VFbk
     - void setValueFeedbackCB(const string &dpe, const float &valueFeedback)
     ' DPE: VMin
-    - void setValueMinExceededCB(const string &dpe, const bool &minExceeded)
+    - void setValueMinCB(const string &dpe, const float &min)
     ' DPE: VMax
-    - void setValueMaxExceededCB(const string &dpe, const bool &maxExceeded)
+    - void setValueMaxCB(const string &dpe, const float &max)
     ' DPE: VInt
     - void setValueInternalCB(const string &dpe, const float &valueInternal)
     ' DPE: VSclMin
@@ -48,10 +48,10 @@ class AnaManInt {
     - void setValueScaleMaxCB(const string &dpe, const float &valueScaleMax)
 
     ..events..
-    + void valueOutChanged(const bool &value)
-    + void valueFeedbackChanged(const bool &value)
-    + void valueMinExceededChanged(const bool &minExceeded)
-    + void valueMaxExceededChanged(const bool &maxExceeded)
+    + void valueOutChanged(const float &value)
+    + void valueFeedbackChanged(const float &value)
+    + void valueMinChanged(const float &minExceeded)
+    + void valueMaxChanged(const float &maxExceeded)
     + void valueInternalChanged(const float &valueInternal)
     + void valueScaleMinChanged(const float &valueScaleMin)
     + void valueScaleMaxChanged(const float &valueScaleMax)

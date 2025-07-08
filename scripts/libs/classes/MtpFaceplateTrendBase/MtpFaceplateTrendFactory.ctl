@@ -7,6 +7,7 @@
   @author m.woegrath
 */
 
+#uses "classes/AnaManInt/AnaManIntFaceplateTrend"
 #uses "classes/BinManInt/BinManIntFaceplateTrend"
 #uses "classes/LockView4/LockView4FaceplateTrend"
 #uses "classes/MtpViewModel/MtpViewModelBase"
@@ -50,6 +51,8 @@ class MtpFaceplateTrendFactory
       case "LockView4": return new LockView4FaceplateTrend(viewModel, shapes);
 
       case "BinManInt": return new BinManIntFaceplateTrend(viewModel, shapes);
+
+      case "AnaManInt": return new AnaManIntFaceplateTrend(viewModel, shapes);
 
       default: throw (makeError("", PRIO_SEVERE, ERR_PARAM, ErrCode::UNEXPECTEDSTATE, "viewModel not defined '" + getTypeName(viewModel) + "'"));
     }
