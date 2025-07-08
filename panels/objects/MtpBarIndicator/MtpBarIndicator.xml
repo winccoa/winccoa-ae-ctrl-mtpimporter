@@ -61,7 +61,7 @@ public shared_ptr&lt;MtpBarIndicator&gt; getMtpBarIndicator()
     <prop name="Type"></prop>
     <prop name="RefPoint">455 275</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
     <prop name="BackColor">mtpGreen</prop>
     <prop name="TabOrder">1</prop>
@@ -93,7 +93,7 @@ public shared_ptr&lt;MtpBarIndicator&gt; getMtpBarIndicator()
     <prop name="Type"></prop>
     <prop name="RefPoint">455 275</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
     <prop name="BackColor">mtpGrey</prop>
     <prop name="TabOrder">2</prop>
@@ -125,7 +125,7 @@ public shared_ptr&lt;MtpBarIndicator&gt; getMtpBarIndicator()
     <prop name="Type"></prop>
     <prop name="RefPoint">455 275</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
     <prop name="BackColor">mtpGrey</prop>
     <prop name="TabOrder">3</prop>
@@ -157,7 +157,7 @@ public shared_ptr&lt;MtpBarIndicator&gt; getMtpBarIndicator()
     <prop name="Type"></prop>
     <prop name="RefPoint">455 275</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
     <prop name="BackColor">mtpYellow</prop>
     <prop name="TabOrder">4</prop>
@@ -189,7 +189,7 @@ public shared_ptr&lt;MtpBarIndicator&gt; getMtpBarIndicator()
     <prop name="Type">c</prop>
     <prop name="RefPoint">455 275</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
     <prop name="BackColor">mtpYellow</prop>
     <prop name="TabOrder">5</prop>
@@ -221,7 +221,7 @@ public shared_ptr&lt;MtpBarIndicator&gt; getMtpBarIndicator()
     <prop name="Type"></prop>
     <prop name="RefPoint">455 275</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
     <prop name="BackColor">mtpRed</prop>
     <prop name="TabOrder">6</prop>
@@ -253,7 +253,7 @@ public shared_ptr&lt;MtpBarIndicator&gt; getMtpBarIndicator()
     <prop name="Type"></prop>
     <prop name="RefPoint">455 275</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
     <prop name="BackColor">mtpRed</prop>
     <prop name="TabOrder">7</prop>
@@ -285,7 +285,7 @@ public shared_ptr&lt;MtpBarIndicator&gt; getMtpBarIndicator()
     <prop name="Type"></prop>
     <prop name="RefPoint">455 275</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
     <prop name="BackColor">mtpBackground</prop>
     <prop name="TabOrder">8</prop>

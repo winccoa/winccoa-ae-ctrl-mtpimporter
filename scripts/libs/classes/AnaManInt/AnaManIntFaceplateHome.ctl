@@ -29,7 +29,7 @@ class AnaManIntFaceplateHome : MtpViewBase
 
   public AnaManIntFaceplateHome(shared_ptr<AnaManInt> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
-    classConnect(this, setValueOutCB, MtpViewBase::getViewModel(), AnaManInt::valueOutChanged);
+    classConnect(_refBarIndicator, MtpBarIndicator::setValueCustomLimit, MtpViewBase::getViewModel(), AnaManInt::valueOutChanged);
     classConnect(this, setWqcCB, MtpViewBase::getViewModel().getWqc(), MtpQualityCode::qualityGoodChanged);
     classConnect(this, setValueFeedbackCB, MtpViewBase::getViewModel(), AnaManInt::valueFeedbackChanged);
     classConnect(this, setValueInternalCB, MtpViewBase::getViewModel(), AnaManInt::valueInternalChanged);
@@ -41,11 +41,13 @@ class AnaManIntFaceplateHome : MtpViewBase
     _internalActive =  MtpViewBase::getViewModel().getSource().getInternalActive();
     _channel =  MtpViewBase::getViewModel().getSource().getChannel();
 
+    _refBarIndicator.setAlertHighShape(FALSE, MtpViewBase::getViewModel().getValueMax());
+    _refBarIndicator.setAlertLowShape(FALSE, MtpViewBase::getViewModel().getValueMin());
     _refBarIndicator.setScale(MtpViewBase::getViewModel().getValueScaleMin(), MtpViewBase::getViewModel().getValueScaleMax());
     _refBarIndicator.setUnit(MtpViewBase::getViewModel().getValueUnit());
 
     setValueManualText(MtpViewBase::getViewModel().getValueManual());
-    setValueOutCB(MtpViewBase::getViewModel().getValueOut());
+    _refBarIndicator.setValueCustomLimit(MtpViewBase::getViewModel().getValueOut());
     setWqcCB(MtpViewBase::getViewModel().getWqc().getQualityGood());
     setUnit(MtpViewBase::getViewModel().getValueUnit());
     setValueFeedbackCB(MtpViewBase::getViewModel().getValueFeedback());
@@ -99,11 +101,6 @@ class AnaManIntFaceplateHome : MtpViewBase
   private void setUnit(shared_ptr<MtpUnit> unit)
   {
     _refBarIndicator.setUnit(unit);
-  }
-
-  private void setValueOutCB(const float &value)
-  {
-    _refBarIndicator.setValue(value);
   }
 
   private void setValueManualText(const float &valueManual)

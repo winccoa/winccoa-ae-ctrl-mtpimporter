@@ -42,7 +42,7 @@ class AnaMonFaceplateHome : MtpViewBase
    */
   public AnaMonFaceplateHome(shared_ptr<AnaMon> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
-    classConnect(this, setValueCB, MtpViewBase::getViewModel(), AnaMon::valueChanged);
+    classConnect(_barIndicator, MtpBarIndicator::setValueLimit, MtpViewBase::getViewModel(), AnaMon::valueChanged);
     classConnect(this, setWqcCB, MtpViewBase::getViewModel().getWqc(), MtpQualityCode::qualityGoodChanged);
     classConnectUserData(this, setStatusHighCB, "_alertHighActive", MtpViewBase::getViewModel().getAlertHighLimit(), MtpValueLimitFloat::activeChanged);
     classConnectUserData(this, setStatusHighCB, "_warningHighActive", MtpViewBase::getViewModel().getWarningHighLimit(), MtpValueLimitFloat::activeChanged);
@@ -62,6 +62,7 @@ class AnaMonFaceplateHome : MtpViewBase
     setStatusHighCB("_alertHighActive", MtpViewBase::getViewModel().getAlertHighLimit().getActive());
     setStatusLowCB("_alertLowActive", MtpViewBase::getViewModel().getAlertLowLimit().getActive());
 
+    _barIndicator.showLimitIndicator();
     _barIndicator.setScale(MtpViewBase::getViewModel().getValueScaleMin(), MtpViewBase::getViewModel().getValueScaleMax());
     _barIndicator.setUnit(MtpViewBase::getViewModel().getUnit());
 
@@ -73,7 +74,7 @@ class AnaMonFaceplateHome : MtpViewBase
     _barIndicator.setWarningLowShape(MtpViewBase::getViewModel().getWarningLowLimit().getEnabled(), MtpViewBase::getViewModel().getWarningLowLimit().getLimit());
     _barIndicator.setToleranceLowShape(MtpViewBase::getViewModel().getToleranceLowLimit().getEnabled(), MtpViewBase::getViewModel().getToleranceLowLimit().getLimit());
 
-    setValueCB(MtpViewBase::getViewModel().getValue());
+    _barIndicator.setValueLimit(MtpViewBase::getViewModel().getValue());
   }
 
   /**
@@ -91,20 +92,9 @@ class AnaMonFaceplateHome : MtpViewBase
     _barIndicator = MtpViewBase::extractShape("_barIndicator").getMtpBarIndicator();
   }
 
-
-  /**
-   * @brief Callback function to set the current value in the bar indicator.
-   * 
-   * @param value The float value to be set.
-   */
-  private void setValueCB(const float &value)
-  {
-    _barIndicator.setValue(value);
-  }
-
   /**
    * @brief Callback function to update the quality code status.
-   * 
+   *
    * @param qualityGoodChanged Indicates if the quality good status has changed.
    */
   private void setWqcCB(const bool &qualityGoodChanged)
@@ -114,7 +104,7 @@ class AnaMonFaceplateHome : MtpViewBase
 
   /**
    * @brief Sets the status of the high and low limits based on the active state.
-   * 
+   *
    * @param varName The name of the variable to set.
    * @param active The active state of the limit.
    */
@@ -167,7 +157,7 @@ class AnaMonFaceplateHome : MtpViewBase
 
   /**
    * @brief Sets the status of the low limit based on the active state.
-   * 
+   *
    * @param varName The name of the variable to set.
    * @param active The active state of the limit.
    */

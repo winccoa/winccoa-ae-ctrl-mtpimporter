@@ -62,8 +62,23 @@ class MtpBarIndicator : MtpRefBase
 
 
   /**
+  * @brief Sets the shapes of the Limit Indicator to visible for the MtpBarIndicator.
+  */
+  public void showLimitIndicator()
+  {
+    _body1.visible = TRUE;
+    _circleAH1.visible = TRUE;
+    _circleAL1.visible = TRUE;
+    _circlePV1.visible = TRUE;
+    _circleTH1.visible = TRUE;
+    _circleTL1.visible = TRUE;
+    _circleWH1.visible = TRUE;
+    _circleWL1.visible = TRUE;
+  }
+
+  /**
    * @brief Sets the scale values for the MtpBarIndicator.
-   * 
+   *
    * @param min The minimum value of the scale.
    * @param max The maximum value of the scale.
    */
@@ -179,6 +194,13 @@ class MtpBarIndicator : MtpRefBase
     _circleValue.angle2 = 180;
     _circleValue.angle1 = (_maxV != _minV) ? ((calculateCircleDeg(clampedValue, _minV, _maxV) < 0) ? 0 : calculateCircleDeg(clampedValue, _minV, _maxV)) : 180;
 
+    _pvPointer.rotation = (calculatePvDeg(value, _minV, _maxV) < 180) ? 180 : calculatePvDeg(value, _minV, _maxV);
+  }
+
+  public void setValueLimit(const float &value)
+  {
+    setValue(value);
+
     if ((_ahEnabled && value >= _ahLimit) || (_alEnabled && value <= _alLimit))
     {
       _circleValue.backCol = "mtpRed";
@@ -195,8 +217,20 @@ class MtpBarIndicator : MtpRefBase
     {
       _circleValue.backCol = "mtpGreen";
     }
+  }
 
-    _pvPointer.rotation = (calculatePvDeg(value, _minV, _maxV) < 180) ? 180 : calculatePvDeg(value, _minV, _maxV);
+  public void setValueCustomLimit(const float &value)
+  {
+    setValue(value);
+
+    if (value > _ahLimit || value < _alLimit)
+    {
+      _circleValue.backCol = "mtpRed";
+    }
+    else
+    {
+      _circleValue.backCol = "mtpGreen";
+    }
   }
 
   /**
@@ -246,9 +280,16 @@ class MtpBarIndicator : MtpRefBase
    */
   private float calculatePvDeg(float value, float minV, float maxV)
   {
-    float pvk = (180.0 / (minV - maxV));
-    float pvd = (360.0 - minV * pvk);
-    return value * pvk + pvd;
+    if (minV - maxV != 0)
+    {
+      float pvk = (180.0 / (minV - maxV));
+      float pvd = (360.0 - minV * pvk);
+      return value * pvk + pvd;
+    }
+    else
+    {
+      return 0;
+    }
   }
 
   /**
