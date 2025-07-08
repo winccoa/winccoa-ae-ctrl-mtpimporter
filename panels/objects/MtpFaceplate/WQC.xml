@@ -21,7 +21,9 @@ private const string g_pictureOK = &quot;MTP_Icones/GreyOk.svg&quot;;
 public setStatus(const bool &amp;ok)
 {
   string picture = (ok) ? g_pictureOK : g_pictureNOK;
+  dyn_int size = (ok) ? makeDynInt(30, 25) : makeDynInt(25, 25);
   rectStatus.fill(&quot;[pattern,[fit,any,&quot; + picture + &quot;]]&quot;);
+  rectStatus.sizeAsDyn = size;
 }
 ]]></script>
  </events>
