@@ -171,7 +171,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
    <properties>
     <prop name="serialId">7</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">61.93918918918899 391.078125</prop>
+    <prop name="RefPoint">69.93918918918899 391.078125</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -188,7 +188,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">61.93918918918899 391.078125</prop>
+    <prop name="Location">69.93918918918899 391.078125</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
