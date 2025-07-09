@@ -295,7 +295,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/internal_1_rounded.svg]]</prop>
-    <prop name="Geometry">1.222731481481481 0 0 1.71123903508772 -9.839606481481226 231.2970500959429</prop>
+    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 -5.202814351851598 231.2970500959429</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>
