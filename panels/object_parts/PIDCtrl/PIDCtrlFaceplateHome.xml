@@ -37,8 +37,8 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
   shapes.insert(&quot;_txtUnitMV&quot;, getShape(&quot;txtUnitMV&quot;));
   shapes.insert(&quot;_txtUnitPV&quot;, getShape(&quot;txtUnitPV&quot;));
   shapes.insert(&quot;_txtUnitSP&quot;, getShape(&quot;txtUnitSP&quot;));
-  shapes.insert(&quot;_txtValueInternal&quot;, getShape(&quot;txtValueInternal&quot;));
-  shapes.insert(&quot;_txtValueManual&quot;, getShape(&quot;txtValueManual&quot;));
+  shapes.insert(&quot;_txtSPInternal&quot;, getShape(&quot;txtSPInternal&quot;));
+  shapes.insert(&quot;_txtSPManual&quot;, getShape(&quot;txtSPManual&quot;));
 
   faceplate = new PIDCtrlFaceplateHome(viewModel, shapes);
 }
@@ -309,7 +309,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
 }]]></script>
    </events>
   </shape>
-  <shape Name="txtValueManual" layerId="0" shapeType="TEXT_FIELD">
+  <shape Name="txtSPManual" layerId="0" shapeType="TEXT_FIELD">
    <properties>
     <prop name="serialId">13</prop>
     <prop name="Type"></prop>
@@ -339,11 +339,11 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
    <events>
     <script isEscaped="1" name="Command"><![CDATA[main()
 {
-  faceplate.setValueManual(this.text());
+  faceplate.setSetpointManual(this.text());
 }]]></script>
    </events>
   </shape>
-  <shape Name="txtValueInternal" layerId="0" shapeType="PRIMITIVE_TEXT">
+  <shape Name="txtSPInternal" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>
     <prop name="serialId">14</prop>
     <prop name="Type"></prop>
@@ -622,7 +622,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
    <events>
     <script isEscaped="1" name="Command"><![CDATA[main()
 {
-  faceplate.setValueManual(this.text());
+  faceplate.setProcessValue(this.text());
 }]]></script>
    </events>
   </shape>
@@ -656,7 +656,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
    <events>
     <script isEscaped="1" name="Command"><![CDATA[main()
 {
-  faceplate.setValueManual(this.text());
+  faceplate.setSetpoint(this.text());
 }]]></script>
    </events>
   </shape>
@@ -690,7 +690,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
    <events>
     <script isEscaped="1" name="Command"><![CDATA[main()
 {
-  faceplate.setValueManual(this.text());
+  faceplate.setManipulatedValue(this.text());
 }]]></script>
    </events>
   </shape>

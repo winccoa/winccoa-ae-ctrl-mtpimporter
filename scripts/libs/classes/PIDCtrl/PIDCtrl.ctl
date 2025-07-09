@@ -371,6 +371,24 @@ class PIDCtrl : MtpViewModelBase
     dpSet(getDp() + ".P", _proportionalParameter);
   }
 
+  public void setProcessValue(const float &processValue)
+  {
+    _processValue = processValue;
+    dpSet(getDp() + ".PV", _processValue);
+  }
+
+  public void setSetpoint(const float &setpoint)
+  {
+    _setpoint = setpoint;
+    dpSet(getDp() + ".SP", _setpoint);
+  }
+
+  public void setManipulatedValue(const float &manipulatedValue)
+  {
+    _manipulatedValue = manipulatedValue;
+    dpSet(getDp() + ".MV", _manipulatedValue);
+  }
+
   public void setIntegrationParameter(const float &integrationParameter)
   {
     _integrationParameter = integrationParameter;
