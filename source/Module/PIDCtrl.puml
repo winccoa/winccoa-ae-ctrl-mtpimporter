@@ -34,6 +34,9 @@ class PidCtrl {
     + MtpOsLevel getOsLevel()
     + MtpState getState()
     + MtpSource getSource()
+    + MtpUnit getProcessValueUnit()
+    + MtpUnit getSetpointUnit()
+    + MtpUnit getManipulatedValueUnit()
     + float getProcessValue()
     + float getProcessValueScaleMin()
     + float getProcessValueScaleMax()
@@ -55,9 +58,6 @@ class PidCtrl {
     + float getProportionalParameter()
     + float getIntegrationParameter()
     + float getDerivationParameter()
-    + MtpUnit getProcessValueUnit()
-    + MtpUnit getSetpointUnit()
-    + MtpUnit getManipulatedValueUnit()
     + void setSetpointManual(const float &setpointManual)
     + void setManipulatedValueManual(const float &manipulatedValueManual)
     + void setSetpointManualMin(const float &setpointManualMin)
@@ -65,8 +65,6 @@ class PidCtrl {
     + void setProportionalParameter(const float &proportionalParameter)
     + void setIntegrationParameter(const float &integrationParameter)
     + void setDerivationParameter(const float &derivationParameter)
-    + void setSetpointManualMin(const float &setpointManualMin)
-    + void setSetpointManualMax(const float &setpointManualMax)
     ' DPE: PV
     - void setProcessValueCB(const string &dpe, const float &processValue)
     ' DPE: SPInt
