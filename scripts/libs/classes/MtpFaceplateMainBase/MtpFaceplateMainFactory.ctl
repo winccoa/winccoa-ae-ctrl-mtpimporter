@@ -6,6 +6,7 @@
   @author m.woegrath
 */
 
+#uses "classes/PIDCtrl/PIDCtrlFaceplateMain"
 #uses "classes/AnaManInt/AnaManIntFaceplateMain"
 #uses "classes/BinManInt/BinManIntFaceplateMain"
 #uses "classes/LockView4/LockView4FaceplateMain"
@@ -52,6 +53,8 @@ class MtpFaceplateMainFactory
       case "BinManInt": return new BinManIntFaceplateMain(viewModel, shapes, layoutNavigation);
 
       case "AnaManInt": return new AnaManIntFaceplateMain(viewModel, shapes, layoutNavigation);
+
+      case "PIDCtrl": return new PIDCtrlFaceplateMain(viewModel, shapes, layoutNavigation);
 
       default: throw (makeError("", PRIO_SEVERE, ERR_PARAM, ErrCode::UNEXPECTEDSTATE, "datapoint type not defined '" + dpTypeName(dp) + "'"));
     }
