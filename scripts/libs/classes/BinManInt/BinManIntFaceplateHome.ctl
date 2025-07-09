@@ -110,14 +110,14 @@ class BinManIntFaceplateHome : MtpViewBase
       _txtValue.text = MtpViewBase::getViewModel().getValueStateTrueText();
 
       _btnTrue.backCol = "mtpTitlebar";
-      _btnFalse.backCol = "mtpBackground2";
+      _btnFalse.backCol = "mtpBorder";
     }
     else
     {
       _rectValue.fill = "[pattern,[fit,any,MTP_Icones/False.svg]]";
       _txtValue.text = MtpViewBase::getViewModel().getValueStateFalseText();
 
-      _btnTrue.backCol = "mtpBackground2";
+      _btnTrue.backCol = "mtpBorder";
       _btnFalse.backCol = "mtpTitlebar";
     }
   }
