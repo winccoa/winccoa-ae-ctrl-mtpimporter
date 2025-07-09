@@ -6,6 +6,8 @@
   @author m.woegrath
 */
 
+#uses "classes/MonBinVlv/MonBinVlvFaceplateMain"
+#uses "classes/MonBinDrv/MonBinDrvFaceplateMain"
 #uses "classes/PIDCtrl/PIDCtrlFaceplateMain"
 #uses "classes/AnaManInt/AnaManIntFaceplateMain"
 #uses "classes/BinManInt/BinManIntFaceplateMain"
@@ -55,6 +57,10 @@ class MtpFaceplateMainFactory
       case "AnaManInt": return new AnaManIntFaceplateMain(viewModel, shapes, layoutNavigation);
 
       case "PIDCtrl": return new PIDCtrlFaceplateMain(viewModel, shapes, layoutNavigation);
+
+      case "MonBinDrv": return new MonBinDrvFaceplateMain(viewModel, shapes, layoutNavigation);
+
+      case "MonBinVlv": return new MonBinVlvFaceplateMain(viewModel, shapes, layoutNavigation);
 
       default: throw (makeError("", PRIO_SEVERE, ERR_PARAM, ErrCode::UNEXPECTEDSTATE, "datapoint type not defined '" + dpTypeName(dp) + "'"));
     }

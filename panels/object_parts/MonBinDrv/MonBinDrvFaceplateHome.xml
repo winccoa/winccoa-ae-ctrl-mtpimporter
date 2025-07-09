@@ -14,6 +14,43 @@
   <prop name="PDPI">94.11039611039611</prop>
   <prop name="layoutType">None</prop>
  </properties>
+ <events>
+  <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/MonBinDrv/MonBinDrv&quot;
+#uses &quot;classes/MonBinDrv/MonBinDrvFaceplateHome&quot;
+
+shared_ptr&lt;MonBinDrvFaceplateHome&gt; faceplate;
+
+public void initialize(shared_ptr&lt;MonBinDrv&gt; viewModel)
+{
+  mapping shapes;
+  shapes.insert(&quot;_refWqc&quot;, getShape(&quot;refWqc&quot;));
+  shapes.insert(&quot;_rectAutomatic&quot;, getShape(&quot;rectAutomatic&quot;));
+  shapes.insert(&quot;_rectError&quot;, getShape(&quot;rectError&quot;));
+  shapes.insert(&quot;_rectErrorInformation&quot;, getShape(&quot;rectErrorInformation&quot;));
+  shapes.insert(&quot;_rectForward&quot;, getShape(&quot;rectForward&quot;));
+  shapes.insert(&quot;_rectLock&quot;, getShape(&quot;rectLock&quot;));
+  shapes.insert(&quot;_rectMotor&quot;, getShape(&quot;rectMotor&quot;));
+  shapes.insert(&quot;_rectMotorProtection&quot;, getShape(&quot;rectMotorProtection&quot;));
+  shapes.insert(&quot;_rectOff&quot;, getShape(&quot;rectOff&quot;));
+  shapes.insert(&quot;_rectOperator&quot;, getShape(&quot;rectOperator&quot;));
+  shapes.insert(&quot;_rectPermission&quot;, getShape(&quot;rectPermission&quot;));
+  shapes.insert(&quot;_rectProtection&quot;, getShape(&quot;rectProtection&quot;));
+  shapes.insert(&quot;_rectReset&quot;, getShape(&quot;rectReset&quot;));
+  shapes.insert(&quot;_rectReverse&quot;, getShape(&quot;rectReverse&quot;));
+  shapes.insert(&quot;_rectSafetyPosition&quot;, getShape(&quot;rectSafetyPosition&quot;));
+  shapes.insert(&quot;_rectSafetyPositionInformation&quot;, getShape(&quot;rectSafetyPositionInformation&quot;));
+  shapes.insert(&quot;_rectStop&quot;, getShape(&quot;rectStop&quot;));
+  shapes.insert(&quot;_txtError&quot;, getShape(&quot;txtError&quot;));
+  shapes.insert(&quot;_txtLock&quot;, getShape(&quot;txtLock&quot;));
+  shapes.insert(&quot;_txtMotorProtection&quot;, getShape(&quot;txtMotorProtection&quot;));
+  shapes.insert(&quot;_txtPermission&quot;, getShape(&quot;txtPermission&quot;));
+  shapes.insert(&quot;_txtProtection&quot;, getShape(&quot;txtProtection&quot;));
+  shapes.insert(&quot;_txtSafetyPosition&quot;, getShape(&quot;txtSafetyPosition&quot;));
+
+  faceplate = new MonBinDrvFaceplateHome(viewModel, shapes);
+}
+]]></script>
+ </events>
  <shapes>
   <shape Name="LINE2" layerId="0" shapeType="LINE">
    <properties>
@@ -149,7 +186,7 @@
     <prop name="TextFormat">[0s,,,AlignLeft]</prop>
    </properties>
   </shape>
-  <shape Name="RECTANGLE1" layerId="0" shapeType="RECTANGLE">
+  <shape Name="rectMotorProtection" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">37</prop>
     <prop name="Type"></prop>
@@ -178,7 +215,7 @@
     <prop name="Transformable">True</prop>
    </properties>
   </shape>
-  <shape Name="PRIMITIVE_TEXT5" layerId="0" shapeType="PRIMITIVE_TEXT">
+  <shape Name="txtMotorProtection" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>
     <prop name="serialId">38</prop>
     <prop name="Type"></prop>
@@ -214,7 +251,7 @@
     <prop name="TextFormat">[0s,,,AlignLeft]</prop>
    </properties>
   </shape>
-  <shape Name="RECTANGLE2" layerId="0" shapeType="RECTANGLE">
+  <shape Name="rectSafetyPosition" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">39</prop>
     <prop name="Type"></prop>
@@ -243,7 +280,7 @@
     <prop name="Transformable">True</prop>
    </properties>
   </shape>
-  <shape Name="PRIMITIVE_TEXT6" layerId="0" shapeType="PRIMITIVE_TEXT">
+  <shape Name="txtSafetyPosition" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>
     <prop name="serialId">40</prop>
     <prop name="Type"></prop>
@@ -328,7 +365,7 @@ position</prop>
     <prop name="End">209.5 254.8749999999999</prop>
    </properties>
   </shape>
-  <shape Name="rectValue" layerId="0" shapeType="RECTANGLE">
+  <shape Name="rectMotor" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">43</prop>
     <prop name="Type"></prop>
@@ -393,7 +430,7 @@ position</prop>
     <prop name="TextFormat">[0s,,,AlignLeft]</prop>
    </properties>
   </shape>
-  <shape Name="RECTANGLE3" layerId="0" shapeType="RECTANGLE">
+  <shape Name="rectErrorInformation" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">45</prop>
     <prop name="Type"></prop>
@@ -422,7 +459,7 @@ position</prop>
     <prop name="Transformable">True</prop>
    </properties>
   </shape>
-  <shape Name="RECTANGLE4" layerId="0" shapeType="RECTANGLE">
+  <shape Name="rectSafetyPositionInformation" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">46</prop>
     <prop name="Type"></prop>
@@ -592,7 +629,7 @@ position</prop>
 }]]></script>
    </events>
   </shape>
-  <shape Name="RECTANGLE5" layerId="0" shapeType="RECTANGLE">
+  <shape Name="rectReverse" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">51</prop>
     <prop name="Type"></prop>
@@ -627,7 +664,7 @@ position</prop>
 }]]></script>
    </events>
   </shape>
-  <shape Name="RECTANGLE6" layerId="0" shapeType="RECTANGLE">
+  <shape Name="rectStop" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">52</prop>
     <prop name="Type"></prop>
@@ -662,7 +699,7 @@ position</prop>
 }]]></script>
    </events>
   </shape>
-  <shape Name="RECTANGLE8" layerId="0" shapeType="RECTANGLE">
+  <shape Name="rectReset" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">53</prop>
     <prop name="Type"></prop>
@@ -733,7 +770,7 @@ position</prop>
     <prop name="TextFormat">[0s,,,AlignLeft]</prop>
    </properties>
   </shape>
-  <shape Name="RECTANGLE11" layerId="0" shapeType="RECTANGLE">
+  <shape Name="rectPermission" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">55</prop>
     <prop name="Type"></prop>
@@ -762,7 +799,7 @@ position</prop>
     <prop name="Transformable">True</prop>
    </properties>
   </shape>
-  <shape Name="PRIMITIVE_TEXT9" layerId="0" shapeType="PRIMITIVE_TEXT">
+  <shape Name="txtPermission" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>
     <prop name="serialId">56</prop>
     <prop name="Type"></prop>
@@ -798,7 +835,7 @@ position</prop>
     <prop name="TextFormat">[0s,,,AlignLeft]</prop>
    </properties>
   </shape>
-  <shape Name="RECTANGLE12" layerId="0" shapeType="RECTANGLE">
+  <shape Name="rectLock" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">57</prop>
     <prop name="Type"></prop>
@@ -827,7 +864,7 @@ position</prop>
     <prop name="Transformable">True</prop>
    </properties>
   </shape>
-  <shape Name="PRIMITIVE_TEXT10" layerId="0" shapeType="PRIMITIVE_TEXT">
+  <shape Name="txtLock" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>
     <prop name="serialId">58</prop>
     <prop name="Type"></prop>
@@ -863,7 +900,7 @@ position</prop>
     <prop name="TextFormat">[0s,,,AlignLeft]</prop>
    </properties>
   </shape>
-  <shape Name="RECTANGLE13" layerId="0" shapeType="RECTANGLE">
+  <shape Name="rectProtection" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">59</prop>
     <prop name="Type"></prop>
@@ -892,7 +929,7 @@ position</prop>
     <prop name="Transformable">True</prop>
    </properties>
   </shape>
-  <shape Name="PRIMITIVE_TEXT11" layerId="0" shapeType="PRIMITIVE_TEXT">
+  <shape Name="txtProtection" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>
     <prop name="serialId">60</prop>
     <prop name="Type"></prop>
@@ -928,7 +965,7 @@ position</prop>
     <prop name="TextFormat">[0s,,,AlignLeft]</prop>
    </properties>
   </shape>
-  <shape Name="RECTANGLE14" layerId="0" shapeType="RECTANGLE">
+  <shape Name="rectForward" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">61</prop>
     <prop name="Type"></prop>
