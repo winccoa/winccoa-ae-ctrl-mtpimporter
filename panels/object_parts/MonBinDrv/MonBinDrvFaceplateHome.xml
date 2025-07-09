@@ -371,7 +371,7 @@ position</prop>
     <prop name="Type"></prop>
     <prop name="RefPoint">190 80</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
     <prop name="BackColor">{255,255,255}</prop>
     <prop name="TabOrder">40</prop>

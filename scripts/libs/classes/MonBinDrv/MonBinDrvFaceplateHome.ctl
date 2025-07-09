@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "classes/MtpMonitor/MtpMonitor"
 #uses "classes/MonBinDrv/MonBinDrv"
 #uses "classes/MtpView/MtpViewBase"
 
@@ -35,8 +36,30 @@ class MonBinDrvFaceplateHome : MtpViewBase
   private shape _txtProtection;
   private shape _txtSafetyPosition;
 
+  private bool _forwardFeedbackSignal;
+  private bool _reverseFeedbackSignal;
+  private bool _forwardControl;
+  private bool _reverseControl;
+  private bool _staticError;
+  private bool _dynamicError;
+
   public MonBinDrvFaceplateHome(shared_ptr<MonBinDrv> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
+    classConnectUserData(this, setMotorCB, "_forwardFeedbackSignal", MtpViewBase::getViewModel(), MonBinDrv::forwardFeedbackSignalChanged);
+    classConnectUserData(this, setMotorCB, "_reverseFeedbackSignal", MtpViewBase::getViewModel(), MonBinDrv::reverseFeedbackSignalChanged);
+    classConnectUserData(this, setMotorCB, "_forwardControl", MtpViewBase::getViewModel(), MonBinDrv::forwardControlChanged);
+    classConnectUserData(this, setMotorCB, "_reverseControl", MtpViewBase::getViewModel(), MonBinDrv::reverseControlChanged);
+    classConnectUserData(this, setMotorCB, "_staticError", MtpViewBase::getViewModel().getMonitor(), MtpMonitor::staticErrorChanged);
+    classConnectUserData(this, setMotorCB, "_dynamicError", MtpViewBase::getViewModel().getMonitor(), MtpMonitor::dynamicErrorChanged);
+
+    _staticError =  MtpViewBase::getViewModel().getMonitor().getStaticError();
+    _dynamicError =  MtpViewBase::getViewModel().getMonitor().getDynamicError();
+    _forwardFeedbackSignal =  MtpViewBase::getViewModel().getForwardFeedbackSignal();
+    _reverseFeedbackSignal =  MtpViewBase::getViewModel().getReverseFeedbackSignal();
+    _forwardControl =  MtpViewBase::getViewModel().getForwardControl();
+    _reverseControl =  MtpViewBase::getViewModel().getReverseControl();
+
+    setMotorCB("_forwardFeedbackSignal", _forwardFeedbackSignal);
   }
 
   protected void initializeShapes()
@@ -64,5 +87,66 @@ class MonBinDrvFaceplateHome : MtpViewBase
     _txtPermission = MtpViewBase::extractShape("_txtPermission");
     _txtProtection = MtpViewBase::extractShape("_txtProtection");
     _txtSafetyPosition = MtpViewBase::extractShape("_txtSafetyPosition");
+  }
+
+  private void setMotorCB(const string &varName, const bool &motor)
+  {
+    switch (varName)
+    {
+      case "_forwardFeedbackSignal":
+        _forwardFeedbackSignal = motor;
+        break;
+
+      case "_reverseFeedbackSignal":
+        _reverseFeedbackSignal = motor;
+        break;
+
+      case "_forwardControl":
+        _forwardControl = motor;
+        break;
+
+      case "_reverseControl":
+        _reverseControl = motor;
+        break;
+
+      case "_staticError":
+        _staticError = motor;
+        break;
+
+      case "_dynamicError":
+        _dynamicError = motor;
+        break;
+    }
+
+    if (((_forwardFeedbackSignal && _forwardControl) || (_reverseFeedbackSignal && _reverseControl)) && !_dynamicError && !_staticError)
+    {
+      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorRun.svg]]";
+      _rectMotor.visible = TRUE;
+      return;
+    }
+    else if (!_forwardFeedbackSignal && !_forwardControl && !_reverseFeedbackSignal && !_reverseControl && !_dynamicError && !_staticError)
+    {
+      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorStopped.svg]]";
+      _rectMotor.visible = TRUE;
+    }
+    else if (((_forwardFeedbackSignal && !_reverseFeedbackSignal) || (!_forwardFeedbackSignal && _reverseFeedbackSignal)) && !_forwardControl && !_reverseControl && !_dynamicError && !_staticError)
+    {
+      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorMfwdStopped.svg]]";
+      _rectMotor.visible = TRUE;
+    }
+    else if (((_forwardControl && !_reverseControl) || (!_forwardControl && _reverseControl)) && !_forwardFeedbackSignal && !_reverseFeedbackSignal && !_dynamicError && !_staticError)
+    {
+      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorMfwdStarted.svg]]";
+      _rectMotor.visible = TRUE;
+    }
+    else if ((_forwardFeedbackSignal && _reverseFeedbackSignal) || _dynamicError || _staticError)
+    {
+      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorUnknown.svg]]";
+      _rectMotor.visible = TRUE;
+    }
+    else
+    {
+      _rectMotor.visible = FALSE;
+    }
   }
 };
