@@ -26,8 +26,8 @@ class BinMonFaceplateSettings : MtpViewFaceplateSettings
    */
   public BinMonFaceplateSettings(shared_ptr<BinMon> viewModel, const mapping &shapes) : MtpViewFaceplateSettings(viewModel, shapes)
   {
-    _txtVFlutTi.text = getViewModel().getFlutterTime();
-    _txtVFlutCnt.text = getViewModel().getFlutterCount();
+    _txtVFlutTi.text = MtpViewFaceplateSettings::getViewModel().getFlutterTime();
+    _txtVFlutCnt.text = MtpViewFaceplateSettings::getViewModel().getFlutterCount();
   }
 
   /**
@@ -37,7 +37,7 @@ class BinMonFaceplateSettings : MtpViewFaceplateSettings
    */
   public void setFlutterTime(const float &flutterTime)
   {
-    getViewModel().setFlutterTime(flutterTime);
+    MtpViewFaceplateSettings::getViewModel().setFlutterTime(flutterTime);
   }
 
   /**
@@ -47,7 +47,7 @@ class BinMonFaceplateSettings : MtpViewFaceplateSettings
    */
   public void setFlutterCount(const int &flutterCount)
   {
-    getViewModel().setFlutterCount(flutterCount);
+    MtpViewFaceplateSettings::getViewModel().setFlutterCount(flutterCount);
   }
 
   /**
