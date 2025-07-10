@@ -210,6 +210,8 @@ class BinManIntFaceplateHome : MtpViewBase
     {
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_3_rounded.svg]]";
     }
+
+    _rectManual.transparentForMouse = (_rectManual.fill == "[pattern,[fit,any,MTP_Icones/Manual_1_2_rounded.svg]]");
   }
 
   private void setInternalActiveCB(const string &varName, const bool &internalActive)
@@ -237,5 +239,7 @@ class BinManIntFaceplateHome : MtpViewBase
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_3_rounded.svg]]";
     }
+
+    _rectInternal.transparentForMouse = (_rectInternal.fill == "[pattern,[fit,any,MTP_Icones/internal_2_rounded.svg]]");
   }
 };
