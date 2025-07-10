@@ -20,8 +20,10 @@ class MonAnaDrvFaceplateMain : MtpFaceplateMainBase
   {
     vector<shared_ptr<MtpNavigationButton> > buttons = MtpFaceplateMainBase::getNavigationButtons();
 
-    buttons.append(new MtpNavigationButton("MTP_Icones/Home.svg", "Home", "object_parts/MonAnaDrv/MonAnaDrvFaceplateHome.xml"));
-    buttons.append(new MtpNavigationButton("MTP_Icones/Param.svg", "HighLimit", "object_parts/MonAnaDrv/MonAnaDrvFaceplateSettingsHighLimit.xml"));
+    buttons.append(new MtpNavigationButton("MTP_Icones/Home.svg", "Home1", "object_parts/MonAnaDrv/MonAnaDrvFaceplateHome1.xml"));
+    buttons.append(new MtpNavigationButton("MTP_Icones/Home.svg", "Home2", "object_parts/MonAnaDrv/MonAnaDrvFaceplateHome2.xml"));
+    buttons.append(new MtpNavigationButton("MTP_Icones/Home.svg", "Home3", "object_parts/MonAnaDrv/MonAnaDrvFaceplateHome3.xml"));
+    buttons.append(new MtpNavigationButton("MTP_Icones/Param.svg", "Settings", "object_parts/MonAnaDrv/MonAnaDrvFaceplateSettings1.xml"));
     buttons.append(new MtpNavigationButton("MTP_Icones/Alarms.svg", "Alarm", "object_parts/MtpFaceplate/AlarmTable.xml"));
     buttons.append(new MtpNavigationButton("MTP_Icones/Trend.svg", "Trend", "object_parts/MtpFaceplate/Trend.xml"));
 

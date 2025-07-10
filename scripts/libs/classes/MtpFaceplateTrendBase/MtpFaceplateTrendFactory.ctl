@@ -7,6 +7,7 @@
   @author m.woegrath
 */
 
+#uses "classes/MonAnaDrv/MonAnaDrvFaceplateTrend"
 #uses "classes/MonBinVlv/MonBinVlvFaceplateTrend"
 #uses "classes/MonBinDrv/MonBinDrvFaceplateTrend"
 #uses "classes/PIDCtrl/PIDCtrlFaceplateTrend"
@@ -62,6 +63,8 @@ class MtpFaceplateTrendFactory
       case "MonBinDrv": return new MonBinDrvFaceplateTrend(viewModel, shapes);
 
       case "MonBinVlv": return new MonBinVlvFaceplateTrend(viewModel, shapes);
+
+      case "MonAnaDrv": return new MonAnaDrvFaceplateTrend(viewModel, shapes);
 
       default: throw (makeError("", PRIO_SEVERE, ERR_PARAM, ErrCode::UNEXPECTEDSTATE, "viewModel not defined '" + getTypeName(viewModel) + "'"));
     }

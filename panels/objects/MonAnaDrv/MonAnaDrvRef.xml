@@ -426,7 +426,7 @@ public void initialize()
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  monbindrvRef.openFaceplate();
+  monanadrvRef.openFaceplate();
 }]]></script>
    </events>
   </shape>
