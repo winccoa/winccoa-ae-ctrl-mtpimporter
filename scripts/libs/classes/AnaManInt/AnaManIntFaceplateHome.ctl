@@ -34,8 +34,10 @@ class AnaManIntFaceplateHome : MtpViewBase
     classConnect(this, setValueFeedbackCB, MtpViewBase::getViewModel(), AnaManInt::valueFeedbackChanged);
     classConnect(this, setValueInternalCB, MtpViewBase::getViewModel(), AnaManInt::valueInternalChanged);
 
-    classConnect(this, setManualActiveCB, MtpViewBase::getViewModel().getSource(), MtpSource::manualActiveChanged);
-    classConnect(this, setInternalActiveCB, MtpViewBase::getViewModel().getSource(), MtpSource::internalActiveChanged);
+    classConnectUserData(this, setManualActiveCB, "_manualActive", MtpViewBase::getViewModel().getSource(), MtpSource::manualActiveChanged);
+    classConnectUserData(this, setManualActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
+    classConnectUserData(this, setInternalActiveCB, "_internalActive", MtpViewBase::getViewModel().getSource(), MtpSource::internalActiveChanged);
+    classConnectUserData(this, setInternalActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
 
     _manualActive =  MtpViewBase::getViewModel().getSource().getManualActive();
     _internalActive =  MtpViewBase::getViewModel().getSource().getInternalActive();
@@ -53,32 +55,18 @@ class AnaManIntFaceplateHome : MtpViewBase
     setValueFeedbackCB(MtpViewBase::getViewModel().getValueFeedback());
     setValueInternalCB(MtpViewBase::getViewModel().getValueInternal());
 
-    setManualActiveCB(_manualActive);
-    setInternalActiveCB(_internalActive);
+    setManualActiveCB("_manualActive", _manualActive);
+    setInternalActiveCB("_internalActive", _internalActive);
   }
 
   public void changeManual()
   {
-    if (_manualActive)
-    {
-      MtpViewBase::getViewModel().getSource().setManualActive(false);
-    }
-    else
-    {
-      MtpViewBase::getViewModel().getSource().setManualActive(true);
-    }
+    MtpViewBase::getViewModel().getSource().setManualOperator(TRUE);
   }
 
   public void changeInternal()
   {
-    if (_internalActive)
-    {
-      MtpViewBase::getViewModel().getSource().setInternalActive(false);
-    }
-    else
-    {
-      MtpViewBase::getViewModel().getSource().setInternalActive(true);
-    }
+    MtpViewBase::getViewModel().getSource().setInternalOperator(TRUE);
   }
 
   public void setValueManual(const float &valueManual)
@@ -123,13 +111,26 @@ class AnaManIntFaceplateHome : MtpViewBase
     _refWqc.setStatus(qualityGoodChanged);
   }
 
-  private void setManualActiveCB(const bool &manualActive)
+  private void setManualActiveCB(const string &varName, const bool &manualActive)
   {
-    _manualActive = manualActive;
+    switch (varName)
+    {
+      case "_manualActive":
+        _manualActive = manualActive;
+        break;
+
+      case "_channel":
+        _channel = manualActive;
+        break;
+    }
 
     if (manualActive && !_channel)
     {
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_2_rounded.svg]]";
+    }
+    else if (_manualActive && _channel)
+    {
+      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]";
     }
     else
     {
@@ -137,13 +138,26 @@ class AnaManIntFaceplateHome : MtpViewBase
     }
   }
 
-  private void setInternalActiveCB(const bool &internalActive)
+  private void setInternalActiveCB(const string &varName, const bool &internalActive)
   {
-    _internalActive = internalActive;
+    switch (varName)
+    {
+      case "_internalActive":
+        _internalActive = internalActive;
+        break;
+
+      case "_channel":
+        _channel = internalActive;
+        break;
+    }
 
     if (internalActive && !_channel)
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_2_rounded.svg]]";
+    }
+    else if (internalActive && _channel)
+    {
+      _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_1_rounded.svg]]";
     }
     else
     {
