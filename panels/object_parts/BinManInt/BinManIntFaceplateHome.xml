@@ -425,7 +425,7 @@ public void initialize(shared_ptr&lt;BinManInt&gt; viewModel)
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-faceplate.changeValueOut();
+faceplate.changeValueTrue();
 }]]></script>
    </events>
   </shape>
@@ -453,7 +453,7 @@ faceplate.changeValueOut();
     <prop name="Geometry">0.915314938673111 0.4027388273333466 -0.4027388273333466 0.915314938673111 128.2736749447464 -20.30784702362852</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">248.2035380344478 296.8914534397122</prop>
-    <prop name="Size">80.45163599562392 11.48637241354754</prop>
+    <prop name="Size">80.45163599562395 11.48637241354754</prop>
     <prop name="CornerRadius">0</prop>
     <prop name="Transformable">True</prop>
    </properties>
@@ -521,7 +521,7 @@ faceplate.changeValueOut();
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeValueOut();
+  faceplate.changeValueFalse();
 }]]></script>
    </events>
   </shape>

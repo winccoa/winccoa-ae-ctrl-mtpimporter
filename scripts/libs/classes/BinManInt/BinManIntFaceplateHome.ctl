@@ -35,56 +35,49 @@ class BinManIntFaceplateHome : MtpViewBase
     classConnect(this, setValueInternalCB, MtpViewBase::getViewModel(), BinManInt::valueInternalChanged);
     classConnect(this, setWqcCB, MtpViewBase::getViewModel().getWqc(), MtpQualityCode::qualityGoodChanged);
 
-    classConnect(this, setManualActiveCB, MtpViewBase::getViewModel().getSource(), MtpSource::manualActiveChanged);
-    classConnect(this, setInternalActiveCB, MtpViewBase::getViewModel().getSource(), MtpSource::internalActiveChanged);
+    classConnectUserData(this, setManualActiveCB, "_manualActive", MtpViewBase::getViewModel().getSource(), MtpSource::manualActiveChanged);
+    classConnectUserData(this, setManualActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
+
+    classConnectUserData(this, setInternalActiveCB, "_internalActive", MtpViewBase::getViewModel().getSource(), MtpSource::internalActiveChanged);
+    classConnectUserData(this, setInternalActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
+
+    classConnectUserData(this, setValueManualCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
+    classConnectUserData(this, setValueManualCB, "_valueOut", MtpViewBase::getViewModel(), BinManInt::valueOutChanged);
+    classConnectUserData(this, setValueManualCB, "_internalActive", MtpViewBase::getViewModel().getSource(), MtpSource::internalActiveChanged);
 
     _manualActive =  MtpViewBase::getViewModel().getSource().getManualActive();
     _internalActive =  MtpViewBase::getViewModel().getSource().getInternalActive();
     _channel =  MtpViewBase::getViewModel().getSource().getChannel();
+    _valueOut = MtpViewBase::getViewModel().getValueOut();
 
     setWqcCB(MtpViewBase::getViewModel().getWqc().getQualityGood());
-    setValueOutCB(MtpViewBase::getViewModel().getValueOut());
+    setValueOutCB(_valueOut);
     setValueFeedbackCB(MtpViewBase::getViewModel().getValueFeedback());
     setValueInternalCB(MtpViewBase::getViewModel().getValueInternal());
 
-    setManualActiveCB(_manualActive);
-    setInternalActiveCB(_internalActive);
+    setManualActiveCB("_manualActive", _manualActive);
+    setInternalActiveCB("_internalActive", _internalActive);
+    setValueManualCB("_valueOut", _valueOut);
   }
 
   public void changeManual()
   {
-    if (_manualActive)
-    {
-      MtpViewBase::getViewModel().getSource().setManualActive(false);
-    }
-    else
-    {
-      MtpViewBase::getViewModel().getSource().setManualActive(true);
-    }
+    MtpViewBase::getViewModel().getSource().setManualOperator(TRUE);
   }
 
   public void changeInternal()
   {
-    if (_internalActive)
-    {
-      MtpViewBase::getViewModel().getSource().setInternalActive(false);
-    }
-    else
-    {
-      MtpViewBase::getViewModel().getSource().setInternalActive(true);
-    }
+    MtpViewBase::getViewModel().getSource().setInternalOperator(TRUE);
   }
 
-  public void changeValueOut()
+  public void changeValueTrue()
   {
-    if (_valueOut)
-    {
-      MtpViewBase::getViewModel().setValueOut(false);
-    }
-    else
-    {
-      MtpViewBase::getViewModel().setValueOut(true);
-    }
+    MtpViewBase::getViewModel().setValueMan(true);
+  }
+
+  public void changeValueFalse()
+  {
+    MtpViewBase::getViewModel().setValueMan(false);
   }
 
   protected void initializeShapes()
@@ -100,25 +93,65 @@ class BinManIntFaceplateHome : MtpViewBase
     _rectVInt = MtpViewBase::extractShape("_rectVInt");
   }
 
+  private void setValueManualCB(const string &varName, const bool &valueManual)
+  {
+    switch (varName)
+    {
+      case "_channel":
+        _channel = valueManual;
+        break;
+
+      case "_valueOut":
+        _valueOut = valueManual;
+        break;
+
+      case "_internalActive":
+        _internalActive = valueManual;
+        break;
+    }
+
+    if (_channel && _internalActive && _valueOut)
+    {
+      _btnTrue.backCol = "mtpSidebar";
+    }
+    else if (!_channel && _internalActive && _valueOut)
+    {
+      _btnTrue.backCol = "mtpTitlebar";
+    }
+    else
+    {
+      _btnTrue.backCol = "mtpBorder";
+    }
+
+    _btnTrue.transparentForMouse = (_btnTrue.backCol == "mtpSidebar");
+
+    if (_channel && _internalActive && !_valueOut)
+    {
+      _btnFalse.backCol = "mtpSidebar";
+    }
+    else if (!_channel && _internalActive && !_valueOut)
+    {
+      _btnFalse.backCol = "mtpTitlebar";
+    }
+    else
+    {
+      _btnFalse.backCol = "mtpBorder";
+    }
+
+    _btnFalse.transparentForMouse = (_btnFalse.backCol == "mtpSidebar");
+  }
+
   private void setValueOutCB(const bool &value)
   {
-    _valueOut = value;
-
     if (value)
     {
       _rectValue.fill = "[pattern,[fit,any,MTP_Icones/True.svg]]";
       _txtValue.text = MtpViewBase::getViewModel().getValueStateTrueText();
-
-      _btnTrue.backCol = "mtpTitlebar";
-      _btnFalse.backCol = "mtpBorder";
     }
     else
     {
       _rectValue.fill = "[pattern,[fit,any,MTP_Icones/False.svg]]";
       _txtValue.text = MtpViewBase::getViewModel().getValueStateFalseText();
-
-      _btnTrue.backCol = "mtpBorder";
-      _btnFalse.backCol = "mtpTitlebar";
     }
   }
 
@@ -134,6 +167,7 @@ class BinManIntFaceplateHome : MtpViewBase
     }
   }
 
+  //TODO Linie
   private void setValueInternalCB(const bool &value)
   {
     if (value)
@@ -151,25 +185,26 @@ class BinManIntFaceplateHome : MtpViewBase
     _refWqc.setStatus(qualityGoodChanged);
   }
 
-  private void setManual()
+  private void setManualActiveCB(const string &varName, const bool &manualActive)
   {
-    if (value)
+    switch (varName)
     {
-      _rectVInt.visible = true;
-    }
-    else
-    {
-      _rectVInt.visible = false;
-    }
-  }
+      case "_manualActive":
+        _manualActive = manualActive;
+        break;
 
-  private void setManualActiveCB(const bool &manualActive)
-  {
-    _manualActive = manualActive;
+      case "_channel":
+        _channel = manualActive;
+        break;
+    }
 
     if (manualActive && !_channel)
     {
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_2_rounded.svg]]";
+    }
+    else if (_manualActive && _channel)
+    {
+      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]";
     }
     else
     {
@@ -177,13 +212,26 @@ class BinManIntFaceplateHome : MtpViewBase
     }
   }
 
-  private void setInternalActiveCB(const bool &internalActive)
+  private void setInternalActiveCB(const string &varName, const bool &internalActive)
   {
-    _internalActive = internalActive;
+    switch (varName)
+    {
+      case "_internalActive":
+        _internalActive = internalActive;
+        break;
+
+      case "_channel":
+        _channel = internalActive;
+        break;
+    }
 
     if (internalActive && !_channel)
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_2_rounded.svg]]";
+    }
+    else if (internalActive && _channel)
+    {
+      _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_1_rounded.svg]]";
     }
     else
     {
