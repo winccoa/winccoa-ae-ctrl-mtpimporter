@@ -5,7 +5,7 @@
    <prop name="de_AT.utf8"></prop>
   </prop>
   <prop name="Size">419 437</prop>
-  <prop name="BackColor">_3DFace</prop>
+  <prop name="BackColor">mtpBackground</prop>
   <prop name="RefPoint">-5.000000000000013 -7.999999999999886</prop>
   <prop name="InitAndTermRef">True</prop>
   <prop name="SendClick">False</prop>
@@ -18,7 +18,7 @@
   <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/MonBinDrv/MonBinDrv&quot;
 #uses &quot;classes/MonBinDrv/MonBinDrvFaceplateHome&quot;
 
-shared_ptr&lt;MonBinDrvFaceplateHome&gt; faceplate;
+shared_ptr&lt;MonBinDrvFaceplateHome&gt; _faceplate;
 
 public void initialize(shared_ptr&lt;MonBinDrv&gt; viewModel)
 {
@@ -28,6 +28,7 @@ public void initialize(shared_ptr&lt;MonBinDrv&gt; viewModel)
   shapes.insert(&quot;_rectError&quot;, getShape(&quot;rectError&quot;));
   shapes.insert(&quot;_rectErrorInformation&quot;, getShape(&quot;rectErrorInformation&quot;));
   shapes.insert(&quot;_rectForward&quot;, getShape(&quot;rectForward&quot;));
+  shapes.insert(&quot;_rectForwardAut&quot;, getShape(&quot;rectForwardAut&quot;));
   shapes.insert(&quot;_rectLock&quot;, getShape(&quot;rectLock&quot;));
   shapes.insert(&quot;_rectMotor&quot;, getShape(&quot;rectMotor&quot;));
   shapes.insert(&quot;_rectMotorProtection&quot;, getShape(&quot;rectMotorProtection&quot;));
@@ -37,9 +38,11 @@ public void initialize(shared_ptr&lt;MonBinDrv&gt; viewModel)
   shapes.insert(&quot;_rectProtection&quot;, getShape(&quot;rectProtection&quot;));
   shapes.insert(&quot;_rectReset&quot;, getShape(&quot;rectReset&quot;));
   shapes.insert(&quot;_rectReverse&quot;, getShape(&quot;rectReverse&quot;));
+  shapes.insert(&quot;_rectReverseAut&quot;, getShape(&quot;rectReverseAut&quot;));
   shapes.insert(&quot;_rectSafetyPosition&quot;, getShape(&quot;rectSafetyPosition&quot;));
   shapes.insert(&quot;_rectSafetyPositionInformation&quot;, getShape(&quot;rectSafetyPositionInformation&quot;));
   shapes.insert(&quot;_rectStop&quot;, getShape(&quot;rectStop&quot;));
+  shapes.insert(&quot;_rectStopAut&quot;, getShape(&quot;rectStopAut&quot;));
   shapes.insert(&quot;_txtError&quot;, getShape(&quot;txtError&quot;));
   shapes.insert(&quot;_txtLock&quot;, getShape(&quot;txtLock&quot;));
   shapes.insert(&quot;_txtMotorProtection&quot;, getShape(&quot;txtMotorProtection&quot;));
@@ -47,11 +50,98 @@ public void initialize(shared_ptr&lt;MonBinDrv&gt; viewModel)
   shapes.insert(&quot;_txtProtection&quot;, getShape(&quot;txtProtection&quot;));
   shapes.insert(&quot;_txtSafetyPosition&quot;, getShape(&quot;txtSafetyPosition&quot;));
 
-  faceplate = new MonBinDrvFaceplateHome(viewModel, shapes);
+  _faceplate = new MonBinDrvFaceplateHome(viewModel, shapes);
 }
 ]]></script>
  </events>
  <shapes>
+  <shape Name="rectForwardAut" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">65</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">339 196</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpBackground2</prop>
+    <prop name="TabOrder">59</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1 0 0 0.5 15.41912031249996 -1.500000000000028</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">339 196</prop>
+    <prop name="Size">16 91</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="rectStopAut" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">66</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">339 196</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpBackground2</prop>
+    <prop name="TabOrder">60</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">0.4664546515615513 0.7632675727110282 -0.3828162518291034 0.230256072835639 276.1993665117715 -210.3115585078376</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">339 196</prop>
+    <prop name="Size">17.68279308997791 151.0261857405004</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="rectReverseAut" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">67</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">339 196</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">mtpBackground2</prop>
+    <prop name="TabOrder">61</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">0.3365319511459092 0.8287964619697168 -0.4150833124841279 0.1651423187416794 320.5316024573832 -228.886114645169</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">339 196</prop>
+    <prop name="Size">18.51124844030795 258.1399392594943</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
   <shape Name="LINE2" layerId="0" shapeType="LINE">
    <properties>
     <prop name="serialId">31</prop>
@@ -458,6 +548,12 @@ position</prop>
     <prop name="CornerRadius">0</prop>
     <prop name="Transformable">True</prop>
    </properties>
+   <events>
+    <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
+{
+  _faceplate.openErrorInformation();
+}]]></script>
+   </events>
   </shape>
   <shape Name="rectSafetyPositionInformation" layerId="0" shapeType="RECTANGLE">
    <properties>
@@ -555,7 +651,7 @@ position</prop>
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.changeOff();
 }]]></script>
    </events>
   </shape>
@@ -776,7 +872,7 @@ position</prop>
     <prop name="Type"></prop>
     <prop name="RefPoint">183.5 79.14615384615388</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
     <prop name="BackColor">{255,255,255}</prop>
     <prop name="TabOrder">52</prop>
@@ -805,7 +901,7 @@ position</prop>
     <prop name="Type"></prop>
     <prop name="RefPoint">276.2967945312499 309.2901785714285</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">mtpText</prop>
     <prop name="BackColor">_Window</prop>
     <prop name="TabOrder">53</prop>
@@ -841,7 +937,7 @@ position</prop>
     <prop name="Type"></prop>
     <prop name="RefPoint">183.5 79.14615384615388</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
     <prop name="BackColor">{255,255,255}</prop>
     <prop name="TabOrder">54</prop>
@@ -870,7 +966,7 @@ position</prop>
     <prop name="Type"></prop>
     <prop name="RefPoint">276.4291250098767 350.7578124999999</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">mtpText</prop>
     <prop name="BackColor">_Window</prop>
     <prop name="TabOrder">55</prop>
@@ -906,7 +1002,7 @@ position</prop>
     <prop name="Type"></prop>
     <prop name="RefPoint">183.5 79.14615384615388</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
     <prop name="BackColor">{255,255,255}</prop>
     <prop name="TabOrder">56</prop>
@@ -935,7 +1031,7 @@ position</prop>
     <prop name="Type"></prop>
     <prop name="RefPoint">276.2967945312499 394.2901785714285</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">mtpText</prop>
     <prop name="BackColor">_Window</prop>
     <prop name="TabOrder">57</prop>
