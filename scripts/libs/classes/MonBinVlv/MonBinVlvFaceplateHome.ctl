@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "classes/MtpState/MtpState"
 #uses "classes/MtpMonitor/MtpMonitor"
 #uses "classes/MonBinVlv/MonBinVlv"
 #uses "classes/MtpView/MtpViewBase"
@@ -58,6 +59,9 @@ class MonBinVlvFaceplateHome : MtpViewBase
   private bool _protectionEnabled;
   private bool _protection;
 
+  private bool _stateOffActive;
+  private bool _stateChannel;
+
   public MonBinVlvFaceplateHome(shared_ptr<MonBinVlv> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     classConnectUserData(this, setValveCB, "_openCheckbackSignal", MtpViewBase::getViewModel(), MonBinVlv::openCheckbackSignalChanged);
@@ -84,6 +88,13 @@ class MonBinVlvFaceplateHome : MtpViewBase
     classConnectUserData(this, setSecurityCB, "_protectionEnabled", MtpViewBase::getViewModel().getSecurity(), MtpSecurity::protectionEnabledChanged);
     classConnectUserData(this, setSecurityCB, "_protection", MtpViewBase::getViewModel().getSecurity(), MtpSecurity::protectionChanged);
 
+    //Buttons:
+    classConnectUserData(this, setStateOffActiveCB, "_stateOffActive", MtpViewBase::getViewModel().getState(), MtpState::offActiveChanged);
+    classConnectUserData(this, setStateOffActiveCB, "_stateChannel", MtpViewBase::getViewModel().getState(), MtpState::channelChanged);
+
+    _stateOffActive =  MtpViewBase::getViewModel().getState().getOffActive();
+    _stateChannel =  MtpViewBase::getViewModel().getState().getChannel();
+
     _staticError =  MtpViewBase::getViewModel().getMonitor().getStaticError();
     _dynamicError =  MtpViewBase::getViewModel().getMonitor().getDynamicError();
     _openCheckbackSignal = MtpViewBase::getViewModel().getOpenCheckbackSignal();
@@ -107,6 +118,13 @@ class MonBinVlvFaceplateHome : MtpViewBase
     setSafetyPositionActiveCB("_safetypositionActive", _safetypositionActive);
     setAutomaticPreviewLineCB("_stateAutomaticActive", _stateAutomaticActive);
     setSecurityCB("_permissionEnabled", _permissionEnabled);
+
+    setStateOffActiveCB("_stateOffActive", _stateOffActive);
+  }
+
+  public void changeStateOff()
+  {
+    MtpViewBase::getViewModel().getState().setOffOperator(TRUE);
   }
 
   protected void initializeShapes()
@@ -140,6 +158,35 @@ class MonBinVlvFaceplateHome : MtpViewBase
   private void setWqcCB(const bool &qualityGoodChanged)
   {
     _refWqc.setStatus(qualityGoodChanged);
+  }
+
+  private void setStateOffActiveCB(const string &varName, const bool &state)
+  {
+    switch (varName)
+    {
+      case "_stateOffActive":
+        _stateOffActive = state;
+        break;
+
+      case "_stateChannel":
+        _stateChannel = state;
+        break;
+    }
+
+    if (_stateOffActive && _stateChannel)
+    {
+      _rectOff.fill = "[pattern,[fit,any,MTP_Icones/Power_2_rounded.svg]]";
+    }
+    else if (_stateOffActive && !_stateChannel)
+    {
+      _rectOff.fill = "[pattern,[fit,any,MTP_Icones/Power_3_rounded.svg]]";
+    }
+    else
+    {
+      _rectOff.fill = "[pattern,[fit,any,MTP_Icones/Power_1_rounded.svg]]";
+    }
+
+    _rectOff.transparentForMouse = (_rectOff.fill == "[pattern,[fit,any,MTP_Icones/Power_2_rounded.svg]]");
   }
 
   private void setSecurityCB(const string &varName, const bool &security)

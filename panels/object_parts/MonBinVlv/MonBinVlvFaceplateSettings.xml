@@ -25,6 +25,7 @@ public void initialize(shared_ptr&lt;MonBinVlv&gt; viewModel)
   mapping shapes;
   shapes.insert(&quot;_btnMonitorDisabled&quot;, getShape(&quot;btnMonitorDisabled&quot;));
   shapes.insert(&quot;_btnMonitorEnabled&quot;, getShape(&quot;btnMonitorEnabled&quot;));
+
   _faceplate = new MonBinVlvFaceplateSettings(viewModel, shapes);
 }]]></script>
  </events>

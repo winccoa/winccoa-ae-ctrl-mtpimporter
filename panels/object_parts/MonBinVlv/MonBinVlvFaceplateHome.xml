@@ -18,7 +18,7 @@
   <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/MonBinVlv/MonBinVlvFaceplateHome&quot;
 #uses &quot;classes/MonBinVlv/MonBinVlv&quot;
 
-shared_ptr&lt;MonBinVlvFaceplateHome&gt; faceplate;
+shared_ptr&lt;MonBinVlvFaceplateHome&gt; _faceplate;
 
 public void initialize(shared_ptr&lt;MonBinVlv&gt; viewModel)
 {
@@ -48,7 +48,7 @@ public void initialize(shared_ptr&lt;MonBinVlv&gt; viewModel)
   shapes.insert(&quot;_txtProtection&quot;, getShape(&quot;txtProtection&quot;));
   shapes.insert(&quot;_txtSafetyPosition&quot;, getShape(&quot;txtSafetyPosition&quot;));
 
-  faceplate = new MonBinVlvFaceplateHome(viewModel, shapes);
+  _faceplate = new MonBinVlvFaceplateHome(viewModel, shapes);
 }
 ]]></script>
  </events>
@@ -614,7 +614,7 @@ position</prop>
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.changeStateOff();
 }]]></script>
    </events>
   </shape>
