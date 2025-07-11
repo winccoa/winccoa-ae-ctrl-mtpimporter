@@ -651,7 +651,7 @@ position</prop>
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  _faceplate.changeOff();
+  _faceplate.activateStateOff();
 }]]></script>
    </events>
   </shape>
@@ -686,7 +686,7 @@ position</prop>
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateStateOperator();
 }]]></script>
    </events>
   </shape>
@@ -721,7 +721,7 @@ position</prop>
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateStateAutomatic();
 }]]></script>
    </events>
   </shape>
@@ -826,7 +826,7 @@ position</prop>
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateReset();
 }]]></script>
    </events>
   </shape>
