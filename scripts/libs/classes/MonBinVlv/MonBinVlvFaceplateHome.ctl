@@ -100,6 +100,18 @@ class MonBinVlvFaceplateHome : MtpViewBase
     classConnectUserData(this, setAutomaticActiveCB, "_stateAutomaticActive", MtpViewBase::getViewModel().getState(), MtpState::automaticActiveChanged);
     classConnectUserData(this, setAutomaticActiveCB, "_stateChannel", MtpViewBase::getViewModel().getState(), MtpState::channelChanged);
 
+    classConnectUserData(this, setValveCloseCB, "_stateAutomaticActive", MtpViewBase::getViewModel().getState(), MtpState::automaticActiveChanged);
+    classConnectUserData(this, setValveCloseCB, "_stateOperatorActive", MtpViewBase::getViewModel().getState(), MtpState::operatorActiveChanged);
+    classConnectUserData(this, setValveCloseCB, "_openCheckbackSignal", MtpViewBase::getViewModel(), MonBinVlv::openCheckbackSignalChanged);
+    classConnectUserData(this, setValveCloseCB, "_closeCheckbackSignal", MtpViewBase::getViewModel(), MonBinVlv::closeCheckbackSignalChanged);
+    classConnectUserData(this, setValveCloseCB, "_valveControl", MtpViewBase::getViewModel(), MonBinVlv::valveControlChanged);
+
+    classConnectUserData(this, setValveOpenCB, "_stateAutomaticActive", MtpViewBase::getViewModel().getState(), MtpState::automaticActiveChanged);
+    classConnectUserData(this, setValveOpenCB, "_stateOperatorActive", MtpViewBase::getViewModel().getState(), MtpState::operatorActiveChanged);
+    classConnectUserData(this, setValveOpenCB, "_openCheckbackSignal", MtpViewBase::getViewModel(), MonBinVlv::openCheckbackSignalChanged);
+    classConnectUserData(this, setValveOpenCB, "_closeCheckbackSignal", MtpViewBase::getViewModel(), MonBinVlv::closeCheckbackSignalChanged);
+    classConnectUserData(this, setValveOpenCB, "_valveControl", MtpViewBase::getViewModel(), MonBinVlv::valveControlChanged);
+
     classConnectUserData(this, setResetCB, "_stateOperatorActive", MtpViewBase::getViewModel().getState(), MtpState::operatorActiveChanged);
     classConnectUserData(this, setResetCB, "_protectionEnabled", MtpViewBase::getViewModel().getSecurity(), MtpSecurity::protectionEnabledChanged);
     classConnectUserData(this, setResetCB, "_protection", MtpViewBase::getViewModel().getSecurity(), MtpSecurity::protectionChanged);
@@ -138,6 +150,8 @@ class MonBinVlvFaceplateHome : MtpViewBase
     setOperatorActiveCB("_stateOperatorActive", _stateOperatorActive);
     setAutomaticActiveCB("_stateAutomaticActive", _stateAutomaticActive);
     setResetCB("_stateOperatorActive", _stateOperatorActive);
+    setValveCloseCB("_stateAutomaticActive", _stateAutomaticActive);
+    setValveOpenCB("_stateAutomaticActive", _stateAutomaticActive);
   }
 
   public void activateStateOff()
@@ -158,6 +172,16 @@ class MonBinVlvFaceplateHome : MtpViewBase
   public void activateReset()
   {
     MtpViewBase::getViewModel().setResetOperator(TRUE);
+  }
+
+  public void activateValveClose()
+  {
+    MtpViewBase::getViewModel().setCloseOperator(TRUE);
+  }
+
+  public void activateValveOpen()
+  {
+    MtpViewBase::getViewModel().setOpenOperator(TRUE);
   }
 
   protected void initializeShapes()
@@ -186,6 +210,104 @@ class MonBinVlvFaceplateHome : MtpViewBase
     _txtPermission = MtpViewBase::extractShape("_txtPermission");
     _txtProtection = MtpViewBase::extractShape("_txtProtection");
     _txtSafetyPosition = MtpViewBase::extractShape("_txtSafetyPosition");
+  }
+
+  private void setValveOpenCB(const string &varName, const bool &open)
+  {
+    switch (varName)
+    {
+      case "_stateAutomaticActive":
+        _stateAutomaticActive = open;
+        break;
+
+      case "_stateOperatorActive":
+        _stateOperatorActive = open;
+        break;
+
+      case "_openCheckbackSignal":
+        _openCheckbackSignal = open;
+        break;
+
+      case "_closeCheckbackSignal":
+        _closeCheckbackSignal = open;
+        break;
+
+      case "_valveControl":
+        _valveControl = open;
+        break;
+    }
+
+    if (_stateAutomaticActive && !_closeCheckbackSignal && _openCheckbackSignal)
+    {
+      _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen1_rounded.svg]]";
+    }
+    else if (_stateOperatorActive && !_closeCheckbackSignal && _openCheckbackSignal)
+    {
+      _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen3_rounded.svg]]";
+    }
+    else if (_stateAutomaticActive && _valveControl && !_openCheckbackSignal)
+    {
+      _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen4_rounded.svg]]";
+    }
+    else if (_stateOperatorActive && _valveControl && !_openCheckbackSignal)
+    {
+      _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen5_rounded.svg]]";
+    }
+    else
+    {
+      _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen2_rounded.svg]]";
+    }
+
+    _rectValveOpen.transparentForMouse = (_rectValveOpen.fill == "[pattern,[fit,any,MTP_Icones/ValveOpen1_rounded.svg]]");
+  }
+
+  private void setValveCloseCB(const string &varName, const bool &close)
+  {
+    switch (varName)
+    {
+      case "_stateAutomaticActive":
+        _stateAutomaticActive = close;
+        break;
+
+      case "_stateOperatorActive":
+        _stateOperatorActive = close;
+        break;
+
+      case "_openCheckbackSignal":
+        _openCheckbackSignal = close;
+        break;
+
+      case "_closeCheckbackSignal":
+        _closeCheckbackSignal = close;
+        break;
+
+      case "_valveControl":
+        _valveControl = close;
+        break;
+    }
+
+    if (_stateAutomaticActive && _closeCheckbackSignal && !_openCheckbackSignal)
+    {
+      _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose1_rounded.svg]]";
+    }
+    else if (_stateOperatorActive && _closeCheckbackSignal && !_openCheckbackSignal)
+    {
+      _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose3_rounded.svg]]";
+    }
+    else if ((_stateAutomaticActive && !_valveControl && !_closeCheckbackSignal))
+    {
+      _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose2_rounded.svg]]";
+    }
+    else if ((_stateOperatorActive && !_valveControl && !_closeCheckbackSignal))
+    {
+      _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose5_rounded.svg]]";
+    }
+    else
+    {
+      _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose2_rounded.svg]]";
+    }
+
+    _rectValveClose.transparentForMouse = (_rectValveClose.fill == "[pattern,[fit,any,MTP_Icones/ValveClose1_rounded.svg]]");
   }
 
   private void setResetCB(const string &varName, const bool &reset)

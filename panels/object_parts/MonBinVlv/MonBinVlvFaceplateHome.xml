@@ -719,7 +719,7 @@ position</prop>
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateValveClose();
 }]]></script>
    </events>
   </shape>
@@ -754,7 +754,7 @@ position</prop>
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateValveOpen();
 }]]></script>
    </events>
   </shape>
