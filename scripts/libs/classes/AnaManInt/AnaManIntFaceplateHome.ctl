@@ -59,12 +59,12 @@ class AnaManIntFaceplateHome : MtpViewBase
     setInternalActiveCB("_internalActive", _internalActive);
   }
 
-  public void changeManual()
+  public void activateManual()
   {
     MtpViewBase::getViewModel().getSource().setManualOperator(TRUE);
   }
 
-  public void changeInternal()
+  public void activateInternal()
   {
     MtpViewBase::getViewModel().getSource().setInternalOperator(TRUE);
   }
@@ -111,35 +111,6 @@ class AnaManIntFaceplateHome : MtpViewBase
     _refWqc.setStatus(qualityGoodChanged);
   }
 
-  private void setManualActiveCB(const string &varName, const bool &manualActive)
-  {
-    switch (varName)
-    {
-      case "_manualActive":
-        _manualActive = manualActive;
-        break;
-
-      case "_channel":
-        _channel = manualActive;
-        break;
-    }
-
-    if (manualActive && !_channel)
-    {
-      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_2_rounded.svg]]";
-    }
-    else if (_manualActive && _channel)
-    {
-      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]";
-    }
-    else
-    {
-      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_3_rounded.svg]]";
-    }
-
-    _rectManual.transparentForMouse = (_rectManual.fill == "[pattern,[fit,any,MTP_Icones/Manual_1_2_rounded.svg]]");
-  }
-
   private void setInternalActiveCB(const string &varName, const bool &internalActive)
   {
     switch (varName)
@@ -153,19 +124,48 @@ class AnaManIntFaceplateHome : MtpViewBase
         break;
     }
 
-    if (internalActive && !_channel)
-    {
-      _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_2_rounded.svg]]";
-    }
-    else if (internalActive && _channel)
+    if (internalActive && _channel)
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_1_rounded.svg]]";
+    }
+    else if (internalActive && !_channel)
+    {
+      _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_2_rounded.svg]]";
     }
     else
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_3_rounded.svg]]";
     }
 
-    _rectInternal.transparentForMouse = (_rectInternal.fill == "[pattern,[fit,any,MTP_Icones/internal_2_rounded.svg]]");
+    _rectInternal.transparentForMouse = (_rectInternal.fill == "[pattern,[fit,any,MTP_Icones/internal_1_rounded.svg]]");
+  }
+
+  private void setManualActiveCB(const string &varName, const bool &manualActive)
+  {
+    switch (varName)
+    {
+      case "_manualActive":
+        _manualActive = manualActive;
+        break;
+
+      case "_channel":
+        _channel = manualActive;
+        break;
+    }
+
+    if (manualActive && _channel)
+    {
+      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]";
+    }
+    else if (_manualActive && !_channel)
+    {
+      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_2_rounded.svg]]";
+    }
+    else
+    {
+      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_3_rounded.svg]]";
+    }
+
+    _rectManual.transparentForMouse = (_rectManual.fill == "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]");
   }
 };

@@ -18,7 +18,7 @@
   <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/AnaManInt/AnaManInt&quot;
 #uses &quot;classes/AnaManInt/AnaManIntFaceplateHome&quot;
 
-shared_ptr&lt;AnaManIntFaceplateHome&gt; faceplate;
+shared_ptr&lt;AnaManIntFaceplateHome&gt; _faceplate;
 
 public void initialize(shared_ptr&lt;AnaManInt&gt; viewModel)
 {
@@ -31,7 +31,7 @@ public void initialize(shared_ptr&lt;AnaManInt&gt; viewModel)
   shapes.insert(&quot;_txtValueInternal&quot;, getShape(&quot;txtValueInternal&quot;));
   shapes.insert(&quot;_txtValueManual&quot;, getShape(&quot;txtValueManual&quot;));
 
-  faceplate = new AnaManIntFaceplateHome(viewModel, shapes);
+  _faceplate = new AnaManIntFaceplateHome(viewModel, shapes);
 }
 ]]></script>
  </events>
@@ -337,7 +337,7 @@ public void initialize(shared_ptr&lt;AnaManInt&gt; viewModel)
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateManual();
 }]]></script>
    </events>
   </shape>
@@ -372,7 +372,7 @@ public void initialize(shared_ptr&lt;AnaManInt&gt; viewModel)
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeInternal();
+  _faceplate.activateInternal();
 }]]></script>
    </events>
   </shape>

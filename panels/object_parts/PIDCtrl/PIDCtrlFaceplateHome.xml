@@ -270,7 +270,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateManual();
 }]]></script>
    </events>
   </shape>
@@ -305,7 +305,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeInternal();
+  _faceplate.activateInternal();
 }]]></script>
    </events>
   </shape>

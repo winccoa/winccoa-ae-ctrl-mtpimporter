@@ -18,7 +18,7 @@
   <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/BinManInt/BinManIntFaceplateHome&quot;
 #uses &quot;classes/BinManInt/BinManInt&quot;
 
-shared_ptr&lt;BinManIntFaceplateHome&gt; faceplate;
+shared_ptr&lt;BinManIntFaceplateHome&gt; _faceplate;
 public void initialize(shared_ptr&lt;BinManInt&gt; viewModel)
 {
   mapping shapes;
@@ -32,7 +32,7 @@ public void initialize(shared_ptr&lt;BinManInt&gt; viewModel)
   shapes.insert(&quot;_rectInternal&quot;, getShape(&quot;rectInternal&quot;));
   shapes.insert(&quot;_rectVInt&quot;, getShape(&quot;rectVInt&quot;));
 
-  faceplate = new BinManIntFaceplateHome(viewModel, shapes);
+  _faceplate = new BinManIntFaceplateHome(viewModel, shapes);
 }]]></script>
  </events>
  <shapes>
@@ -393,7 +393,7 @@ public void initialize(shared_ptr&lt;BinManInt&gt; viewModel)
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateManual();
 }]]></script>
    </events>
   </shape>
@@ -425,7 +425,7 @@ public void initialize(shared_ptr&lt;BinManInt&gt; viewModel)
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-faceplate.changeValueTrue();
+  _faceplate.changeValueTrue();
 }]]></script>
    </events>
   </shape>
@@ -489,7 +489,7 @@ faceplate.changeValueTrue();
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeInternal();
+  _faceplate.activateInternal();
 }]]></script>
    </events>
   </shape>
@@ -521,7 +521,7 @@ faceplate.changeValueTrue();
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeValueFalse();
+  _faceplate.changeValueFalse();
 }]]></script>
    </events>
   </shape>
