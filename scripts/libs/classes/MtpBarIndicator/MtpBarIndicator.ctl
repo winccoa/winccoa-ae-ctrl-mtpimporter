@@ -243,6 +243,17 @@ class MtpBarIndicator : MtpRefBase
     _txtUnit.text = unit.toString();
   }
 
+  public void hideUnit()
+  {
+    _txtUnit.visible = FALSE;
+  }
+
+  public void hideValue()
+  {
+    _txtValue.visible = FALSE;
+  }
+
+
   /**
    * @brief Initializes the shapes used in the bar indicator.
    * @details This method overrides the base class method to extract the shapes.

@@ -31,6 +31,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
   shapes.insert(&quot;_rectForward&quot;, getShape(&quot;rectForward&quot;));
   shapes.insert(&quot;_rectForwardAut&quot;, getShape(&quot;rectForwardAut&quot;));
   shapes.insert(&quot;_rectLock&quot;, getShape(&quot;rectLock&quot;));
+  shapes.insert(&quot;_rectMotor&quot;, getShape(&quot;rectMotor&quot;));
   shapes.insert(&quot;_rectMotorProtection&quot;, getShape(&quot;rectMotorProtection&quot;));
   shapes.insert(&quot;_rectOff&quot;, getShape(&quot;rectOff&quot;));
   shapes.insert(&quot;_rectOperator&quot;, getShape(&quot;rectOperator&quot;));
@@ -55,30 +56,6 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
 ]]></script>
  </events>
  <shapes>
-  <shape Name="LINE2" layerId="0" shapeType="LINE">
-   <properties>
-    <prop name="serialId">1</prop>
-    <prop name="Type"></prop>
-    <prop name="RefPoint">209.5 0</prop>
-    <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
-    <prop name="ForeColor">mtpBorder</prop>
-    <prop name="BackColor">{255,255,255}</prop>
-    <prop name="TabOrder">1</prop>
-    <prop name="ToolTipText">
-     <prop name="de_AT.utf8"></prop>
-    </prop>
-    <prop name="layoutAlignment">AlignNone</prop>
-    <prop name="snapMode">Point</prop>
-    <prop name="DashBackColor">_Transparent</prop>
-    <prop name="AntiAliased">True</prop>
-    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
-    <prop name="BorderZoomable">False</prop>
-    <prop name="BorderScalable">False</prop>
-    <prop name="Start">209.5 0</prop>
-    <prop name="End">209.5 449.9999999999999</prop>
-   </properties>
-  </shape>
   <shape Name="PRIMITIVE_TEXT4" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>
     <prop name="serialId">2</prop>
@@ -407,7 +384,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  _faceplate.changeOff();
+  _faceplate.activateStateOff();
 }]]></script>
    </events>
   </shape>
@@ -442,7 +419,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateStateOperator();
 }]]></script>
    </events>
   </shape>
@@ -477,7 +454,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateStateAutomatic();
 }]]></script>
    </events>
   </shape>
@@ -582,7 +559,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateReset();
 }]]></script>
    </events>
   </shape>
@@ -1072,6 +1049,59 @@ position</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183.5 79.14615384615388</prop>
     <prop name="Size">27.5 16.85384615384612</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="LINE2" layerId="0" shapeType="LINE">
+   <properties>
+    <prop name="serialId">1</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">209.5 0</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpBorder</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">True</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="Start">209.5 0</prop>
+    <prop name="End">209.5 449.9999999999999</prop>
+   </properties>
+  </shape>
+  <shape Name="rectMotor" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">96</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">165 105</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">54</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/MotorRun.svg]]</prop>
+    <prop name="Geometry">3.266666666666666 0 0 3.266666666666666 -460.7499999999999 -238.9470792900722</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">165 105</prop>
+    <prop name="Size">16 16</prop>
     <prop name="CornerRadius">0</prop>
     <prop name="Transformable">True</prop>
    </properties>
