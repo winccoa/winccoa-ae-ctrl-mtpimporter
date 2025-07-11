@@ -278,7 +278,6 @@ class TstBinManInt : OaTest
     catch
     {
       dyn_errClass err = getLastException();
-
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
       assertTrue(getErrorText(err).contains("Datapoint does not exist"));
       assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingVState0 + ".VState0"));
@@ -408,16 +407,22 @@ class TstBinManInt : OaTest
     return 0;
   }
 
-  public int testSetValueOut()
+  public int testSetValueManual()
   {
     shared_ptr<BinManInt> binManInt = new BinManInt(_DpExists);
 
-    binManInt.setValueOut(true);
+    binManInt.setValueManual(true);
 
     bool dpValue;
-    dpGet(_DpExists + ".VOut", dpValue);
-    assertEqual(dpValue, true, "Data point VOut should be set to true");
+    dpGet(_DpExists + ".VMan", dpValue);
+    assertEqual(dpValue, true, "Data point VMan should be set to true");
     assertEqual(binManInt.getValueOut(), true, "ValueOut should be set to true");
+
+    binManInt.setValueManual(false);
+
+    dpGet(_DpExists + ".VMan", dpValue);
+    assertEqual(dpValue, false, "Data point VMan should be set to false");
+    assertEqual(binManInt.getValueOut(), false, "ValueOut should be set to false");
 
     return 0;
   }

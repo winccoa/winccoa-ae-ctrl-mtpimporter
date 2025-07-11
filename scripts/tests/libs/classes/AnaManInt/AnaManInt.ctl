@@ -588,6 +588,14 @@ class TstAnaManInt : OaTest
     return 0;
   }
 
+  public int testGetValueUnit()
+  {
+    shared_ptr<AnaManInt> anaManInt = new AnaManInt(_DpExists);
+    shared_ptr<MtpUnit> unit = anaManInt.getValueUnit();
+    assertTrue(unit != nullptr, "getValueUnit should return a non-null MtpUnit pointer");
+    return 0;
+  }
+
   private void setValueOutChangedCB(const float &value)
   {
     _eventValueOut = value;

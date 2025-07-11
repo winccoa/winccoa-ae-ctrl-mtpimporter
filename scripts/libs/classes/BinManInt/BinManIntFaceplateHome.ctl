@@ -72,12 +72,12 @@ class BinManIntFaceplateHome : MtpViewBase
 
   public void changeValueTrue()
   {
-    MtpViewBase::getViewModel().setValueMan(true);
+    MtpViewBase::getViewModel().setValueManual(true);
   }
 
   public void changeValueFalse()
   {
-    MtpViewBase::getViewModel().setValueMan(false);
+    MtpViewBase::getViewModel().setValueManual(false);
   }
 
   protected void initializeShapes()

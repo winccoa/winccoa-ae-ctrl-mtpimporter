@@ -114,7 +114,7 @@ class BinManInt : MtpViewModelBase
     return _valueFeedback;
   }
 
-  public void setValueMan(const bool &value)
+  public void setValueManual(const bool &value)
   {
     _valueOut = value;
     dpSet(getDp() + ".VMan", value);
