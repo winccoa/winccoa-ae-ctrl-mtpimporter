@@ -39,6 +39,9 @@ class PIDCtrlFaceplateHome : MtpViewBase
   private bool _internalActive;
   private bool _channel;
 
+  private bool _stateOffActive;
+  private bool _stateChannel;
+
   public PIDCtrlFaceplateHome(shared_ptr<PIDCtrl> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     classConnect(this, setProcessValueCB, MtpViewBase::getViewModel(), PIDCtrl::processValueChanged);
@@ -50,11 +53,23 @@ class PIDCtrlFaceplateHome : MtpViewBase
     classConnectUserData(this, setStateCB, "_stateAutomaticActive", MtpViewBase::getViewModel().getState(), MtpState::automaticActiveChanged);
     classConnectUserData(this, setStateCB, "_stateOperatorActive", MtpViewBase::getViewModel().getState(), MtpState::operatorActiveChanged);
 
+    //Buttons:
     classConnectUserData(this, setManualActiveCB, "_manualActive", MtpViewBase::getViewModel().getSource(), MtpSource::manualActiveChanged);
     classConnectUserData(this, setManualActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
     classConnectUserData(this, setInternalActiveCB, "_internalActive", MtpViewBase::getViewModel().getSource(), MtpSource::internalActiveChanged);
     classConnectUserData(this, setInternalActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
 
+    classConnectUserData(this, setStateOffActiveCB, "_stateOffActive", MtpViewBase::getViewModel().getState(), MtpState::offActiveChanged);
+    classConnectUserData(this, setStateOffActiveCB, "_stateChannel", MtpViewBase::getViewModel().getState(), MtpState::channelChanged);
+
+    classConnectUserData(this, setOperatorActiveCB, "_stateOperatorActive", MtpViewBase::getViewModel().getState(), MtpState::operatorActiveChanged);
+    classConnectUserData(this, setOperatorActiveCB, "_stateChannel", MtpViewBase::getViewModel().getState(), MtpState::channelChanged);
+
+    classConnectUserData(this, setAutomaticActiveCB, "_stateAutomaticActive", MtpViewBase::getViewModel().getState(), MtpState::automaticActiveChanged);
+    classConnectUserData(this, setAutomaticActiveCB, "_stateChannel", MtpViewBase::getViewModel().getState(), MtpState::channelChanged);
+
+    _stateOffActive =  MtpViewBase::getViewModel().getState().getOffActive();
+    _stateChannel =  MtpViewBase::getViewModel().getState().getChannel();
     _stateAutomaticActive = MtpViewBase::getViewModel().getState().getAutomaticActive();
     _stateOperatorActive = MtpViewBase::getViewModel().getState().getOperatorActive();
 
@@ -71,6 +86,9 @@ class PIDCtrlFaceplateHome : MtpViewBase
     setSetpointManualText(MtpViewBase::getViewModel().getSetpointManual());
     setManualActiveCB("_manualActive", _manualActive);
     setInternalActiveCB("_internalActive", _internalActive);
+    setStateOffActiveCB("_stateOffActive", _stateOffActive);
+    setOperatorActiveCB("_stateOperatorActive", _stateOperatorActive);
+    setAutomaticActiveCB("_stateAutomaticActive", _stateAutomaticActive);
   }
 
   public void setProcessValue(const float &value)
@@ -101,6 +119,21 @@ class PIDCtrlFaceplateHome : MtpViewBase
   public void activateInternal()
   {
     MtpViewBase::getViewModel().getSource().setInternalOperator(TRUE);
+  }
+
+  public void activateStateOff()
+  {
+    MtpViewBase::getViewModel().getState().setOffOperator(TRUE);
+  }
+
+  public void activateStateOperator()
+  {
+    MtpViewBase::getViewModel().getState().setOperatorOperator(TRUE);
+  }
+
+  public void activateStateAutomatic()
+  {
+    MtpViewBase::getViewModel().getState().setAutomaticOperator(TRUE);
   }
 
   protected void initializeShapes()
@@ -152,6 +185,95 @@ class PIDCtrlFaceplateHome : MtpViewBase
   {
     _txtSPManual.text = value;
   }
+
+  private void setAutomaticActiveCB(const string &varName, const bool &state)
+  {
+    switch (varName)
+    {
+      case "_stateAutomaticActive":
+        _stateAutomaticActive = state;
+        break;
+
+      case "_stateChannel":
+        _stateChannel = state;
+        break;
+    }
+
+    if (_stateAutomaticActive && _stateChannel)
+    {
+      _rectAutomatic.fill = "[pattern,[fit,any,MTP_Icones/automatic_1_rounded.svg]]";
+    }
+    else if (_stateAutomaticActive && !_stateChannel)
+    {
+      _rectAutomatic.fill = "[pattern,[fit,any,MTP_Icones/automatic_2_rounded.svg]]";
+    }
+    else
+    {
+      _rectAutomatic.fill = "[pattern,[fit,any,MTP_Icones/automatic_3_rounded.svg]]";
+    }
+
+    _rectAutomatic.transparentForMouse = (_rectAutomatic.fill == "[pattern,[fit,any,MTP_Icones/automatic_1_rounded.svg]]");
+  }
+
+
+  private void setOperatorActiveCB(const string &varName, const bool &state)
+  {
+    switch (varName)
+    {
+      case "_stateOperatorActive":
+        _stateOperatorActive = state;
+        break;
+
+      case "_stateChannel":
+        _stateChannel = state;
+        break;
+    }
+
+    if (_stateOperatorActive && _stateChannel)
+    {
+      _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/operator_1.svg]]";
+    }
+    else if (_stateOperatorActive && !_stateChannel)
+    {
+      _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/operator_2.svg]]";
+    }
+    else
+    {
+      _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/operator_3.svg]]";
+    }
+
+    _rectOperator.transparentForMouse = (_rectOperator.fill == "[pattern,[fit,any,MTP_Icones/operator_1.svg]]");
+  }
+
+  private void setStateOffActiveCB(const string &varName, const bool &state)
+  {
+    switch (varName)
+    {
+      case "_stateOffActive":
+        _stateOffActive = state;
+        break;
+
+      case "_stateChannel":
+        _stateChannel = state;
+        break;
+    }
+
+    if (_stateOffActive && _stateChannel)
+    {
+      _rectOff.fill = "[pattern,[fit,any,MTP_Icones/Power_2_rounded.svg]]";
+    }
+    else if (_stateOffActive && !_stateChannel)
+    {
+      _rectOff.fill = "[pattern,[fit,any,MTP_Icones/Power_3_rounded.svg]]";
+    }
+    else
+    {
+      _rectOff.fill = "[pattern,[fit,any,MTP_Icones/Power_1_rounded.svg]]";
+    }
+
+    _rectOff.transparentForMouse = (_rectOff.fill == "[pattern,[fit,any,MTP_Icones/Power_2_rounded.svg]]");
+  }
+
 
   private void setInternalActiveCB(const string &varName, const bool &internalActive)
   {
