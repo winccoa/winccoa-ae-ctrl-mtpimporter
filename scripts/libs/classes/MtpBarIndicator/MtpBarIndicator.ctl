@@ -313,8 +313,15 @@ class MtpBarIndicator : MtpRefBase
    */
   private float calculateCircleDeg(float value, float minV, float maxV)
   {
-    float ck = (180.0 / (minV - maxV));
-    float cd = (180.0 - minV * ck);
-    return value * ck + cd;
+    if (minV - maxV != 0)
+    {
+      float ck = (180.0 / (minV - maxV));
+      float cd = (180.0 - minV * ck);
+      return value * ck + cd;
+    }
+    else
+    {
+      return 0;
+    }
   }
 };
