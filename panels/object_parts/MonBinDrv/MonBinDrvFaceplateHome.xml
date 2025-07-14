@@ -745,7 +745,7 @@ position</prop>
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/revers_5_rounded.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/revers_5_rounded.svg]]</prop>
     <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 12.92098721064833 -17.89912280701762</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
@@ -756,7 +756,7 @@ position</prop>
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateReverse();
 }]]></script>
    </events>
   </shape>
@@ -791,7 +791,7 @@ position</prop>
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateStop();
 }]]></script>
    </events>
   </shape>
@@ -1092,7 +1092,7 @@ position</prop>
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  faceplate.changeManual();
+  _faceplate.activateForward();
 }]]></script>
    </events>
   </shape>

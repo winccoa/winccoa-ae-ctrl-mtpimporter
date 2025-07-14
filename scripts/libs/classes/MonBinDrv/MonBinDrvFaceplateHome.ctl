@@ -111,6 +111,25 @@ class MonBinDrvFaceplateHome : MtpViewBase
     classConnectUserData(this, setResetCB, "_dynamicError", MtpViewBase::getViewModel().getMonitor(), MtpMonitor::dynamicErrorChanged);
     classConnectUserData(this, setResetCB, "_driveSafetyIndicator",  MtpViewBase::getViewModel(), MonBinDrv::driveSafetyIndicatorChanged);
 
+    classConnectUserData(this, setReverseCB, "_stateOperatorActive", MtpViewBase::getViewModel().getState(), MtpState::operatorActiveChanged);
+    classConnectUserData(this, setReverseCB, "_stateAutomaticActive", MtpViewBase::getViewModel().getState(), MtpState::automaticActiveChanged);
+    classConnectUserData(this, setReverseCB, "_forwardFeedbackSignal", MtpViewBase::getViewModel(), MonBinDrv::forwardFeedbackSignalChanged);
+    classConnectUserData(this, setReverseCB, "_reverseFeedbackSignal", MtpViewBase::getViewModel(), MonBinDrv::reverseFeedbackSignalChanged);
+    classConnectUserData(this, setReverseCB, "_reverseControl", MtpViewBase::getViewModel(), MonBinDrv::reverseControlChanged);
+
+    classConnectUserData(this, setStopCB, "_stateOperatorActive", MtpViewBase::getViewModel().getState(), MtpState::operatorActiveChanged);
+    classConnectUserData(this, setStopCB, "_stateAutomaticActive", MtpViewBase::getViewModel().getState(), MtpState::automaticActiveChanged);
+    classConnectUserData(this, setStopCB, "_forwardFeedbackSignal", MtpViewBase::getViewModel(), MonBinDrv::forwardFeedbackSignalChanged);
+    classConnectUserData(this, setStopCB, "_reverseFeedbackSignal", MtpViewBase::getViewModel(), MonBinDrv::reverseFeedbackSignalChanged);
+    classConnectUserData(this, setStopCB, "_reverseControl", MtpViewBase::getViewModel(), MonBinDrv::reverseControlChanged);
+    classConnectUserData(this, setStopCB, "_forwardControl", MtpViewBase::getViewModel(), MonBinDrv::forwardControlChanged);
+
+    classConnectUserData(this, setForwardCB, "_stateOperatorActive", MtpViewBase::getViewModel().getState(), MtpState::operatorActiveChanged);
+    classConnectUserData(this, setForwardCB, "_stateAutomaticActive", MtpViewBase::getViewModel().getState(), MtpState::automaticActiveChanged);
+    classConnectUserData(this, setForwardCB, "_forwardFeedbackSignal", MtpViewBase::getViewModel(), MonBinDrv::forwardFeedbackSignalChanged);
+    classConnectUserData(this, setForwardCB, "_reverseFeedbackSignal", MtpViewBase::getViewModel(), MonBinDrv::reverseFeedbackSignalChanged);
+    classConnectUserData(this, setForwardCB, "_forwardControl", MtpViewBase::getViewModel(), MonBinDrv::forwardControlChanged);
+
     _stateOffActive =  MtpViewBase::getViewModel().getState().getOffActive();
     _stateChannel =  MtpViewBase::getViewModel().getState().getChannel();
     _stateOperatorActive =  MtpViewBase::getViewModel().getState().getOperatorActive();
@@ -147,6 +166,9 @@ class MonBinDrvFaceplateHome : MtpViewBase
     setOperatorActiveCB("_stateOperatorActive", _stateOperatorActive);
     setAutomaticActiveCB("_stateAutomaticActive", _stateAutomaticActive);
     setResetCB("_stateOperatorActive", _stateOperatorActive);
+    setReverseCB("_stateOperatorActive", _stateOperatorActive);
+    setStopCB("_stateOperatorActive", _stateOperatorActive);
+    setForwardCB("_stateOperatorActive", _stateOperatorActive);
   }
 
   public void activateStateOff()
@@ -167,6 +189,21 @@ class MonBinDrvFaceplateHome : MtpViewBase
   public void activateReset()
   {
     MtpViewBase::getViewModel().setResetOperator(TRUE);
+  }
+
+  public void activateReverse()
+  {
+    MtpViewBase::getViewModel().setReverseOperator(TRUE);
+  }
+
+  public void activateStop()
+  {
+    MtpViewBase::getViewModel().setStopOperator(TRUE);
+  }
+
+  public void activateForward()
+  {
+    MtpViewBase::getViewModel().setForwardOperator(TRUE);
   }
 
   protected void initializeShapes()
@@ -421,8 +458,8 @@ class MonBinDrvFaceplateHome : MtpViewBase
     }
     else
     {
-      _rectMotorProtection.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
-      _rectMotorProtection.sizeAsDyn = makeDynInt(25, 25);
+      _rectMotorProtection.fill = "[pattern,[fit,any,MTP_Icones/StaticErr.svg]]";
+      _rectMotorProtection.sizeAsDyn = makeDynInt(30, 25);
     }
   }
 
@@ -518,7 +555,7 @@ class MonBinDrvFaceplateHome : MtpViewBase
       _rectError.visible = TRUE;
       _txtError.visible = TRUE;
       _rectErrorInformation.visible = TRUE;
-      _rectError.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
+      _rectError.fill = "[pattern,[fit,any,MTP_Icones/StaticErr.svg]]";
       _rectError.sizeAsDyn = makeDynInt(30, 25);
     }
     else if (!_monitorEnabled)
@@ -587,5 +624,156 @@ class MonBinDrvFaceplateHome : MtpViewBase
     {
       _rectMotor.visible = FALSE;
     }
+  }
+
+  private void setReverseCB(const string &varName, const bool &state)
+  {
+    switch (varName)
+    {
+      case "_stateOperatorActive":
+        _stateOperatorActive = state;
+        break;
+
+      case "_stateAutomaticActive":
+        _stateAutomaticActive = state;
+        break;
+
+      case "_forwardFeedbackSignal":
+        _forwardFeedbackSignal = state;
+        break;
+
+      case "_reverseFeedbackSignal":
+        _reverseFeedbackSignal = state;
+        break;
+
+      case "_reverseControl":
+        _reverseControl = state;
+        break;
+    }
+
+    if (_stateAutomaticActive && _reverseFeedbackSignal && !_forwardFeedbackSignal)
+    {
+      _rectReverse.fill = "[pattern,[fit,any,MTP_Icones/revers_1_rounded.svg]]";
+    }
+    else if (_stateOperatorActive && _reverseFeedbackSignal && !_forwardFeedbackSignal)
+    {
+      _rectReverse.fill = "[pattern,[fit,any,MTP_Icones/revers_2_rounded.svg]]";
+    }
+    else if (_stateAutomaticActive && _reverseControl && !_reverseFeedbackSignal)
+    {
+      _rectReverse.fill = "[pattern,[fit,any,MTP_Icones/revers_3_rounded.svg]]";
+    }
+    else if (_stateOperatorActive && _reverseControl && !_reverseFeedbackSignal)
+    {
+      _rectReverse.fill = "[pattern,[fit,any,MTP_Icones/revers_4_rounded.svg]]";
+    }
+    else
+    {
+      _rectReverse.fill = "[pattern,[fit,any,MTP_Icones/revers_5_rounded.svg]]";
+    }
+
+    _rectReverse.transparentForMouse = (_rectReverse.fill == "[pattern,[fit,any,MTP_Icones/revers_1_rounded.svg]]");
+  }
+
+  private void setStopCB(const string &varName, const bool &state)
+  {
+    switch (varName)
+    {
+      case "_stateOperatorActive":
+        _stateOperatorActive = state;
+        break;
+
+      case "_stateAutomaticActive":
+        _stateAutomaticActive = state;
+        break;
+
+      case "_forwardFeedbackSignal":
+        _forwardFeedbackSignal = state;
+        break;
+
+      case "_reverseFeedbackSignal":
+        _reverseFeedbackSignal = state;
+        break;
+
+      case "_reverseControl":
+        _reverseControl = state;
+        break;
+
+      case "_forwardControl":
+        _forwardControl = state;
+        break;
+    }
+
+    if (_stateAutomaticActive && !_reverseFeedbackSignal && !_forwardFeedbackSignal)
+    {
+      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_1.svg]]";
+    }
+    else if (_stateOperatorActive && !_reverseFeedbackSignal && !_forwardFeedbackSignal)
+    {
+      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_2.svg]]";
+    }
+    else if (_stateAutomaticActive && !_reverseControl && !_forwardControl)
+    {
+      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_3.svg]]";
+    }
+    else if (_stateOperatorActive && !_reverseControl && !_forwardControl)
+    {
+      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_4.svg]]";
+    }
+    else
+    {
+      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_5.svg]]";
+    }
+
+    _rectStop.transparentForMouse = (_rectStop.fill == "[pattern,[fit,any,MTP_Icones/stop_1.svg]]");
+  }
+
+  private void setForwardCB(const string &varName, const bool &state)
+  {
+    switch (varName)
+    {
+      case "_stateOperatorActive":
+        _stateOperatorActive = state;
+        break;
+
+      case "_stateAutomaticActive":
+        _stateAutomaticActive = state;
+        break;
+
+      case "_forwardFeedbackSignal":
+        _forwardFeedbackSignal = state;
+        break;
+
+      case "_reverseFeedbackSignal":
+        _reverseFeedbackSignal = state;
+        break;
+
+      case "_forwardControl":
+        _forwardControl = state;
+        break;
+    }
+
+    if (_stateAutomaticActive && !_reverseFeedbackSignal && _forwardFeedbackSignal)
+    {
+      _rectForward.fill = "[pattern,[fit,any,MTP_Icones/forward_1_rounded.svg]]";
+    }
+    else if (_stateOperatorActive && !_reverseFeedbackSignal && _forwardFeedbackSignal)
+    {
+      _rectForward.fill = "[pattern,[fit,any,MTP_Icones/forward_2_rounded.svg]]";
+    }
+    else if (_stateAutomaticActive && _forwardControl && !_forwardFeedbackSignal)
+    {
+      _rectForward.fill = "[pattern,[fit,any,MTP_Icones/forward_3_rounded.svg]]";
+    }
+    else if (_stateOperatorActive && _forwardControl && !_forwardFeedbackSignal)
+    {
+      _rectForward.fill = "[pattern,[fit,any,MTP_Icones/forward_4_rounded.svg]]";
+    }
+    else
+    {
+      _rectForward.fill = "[pattern,[fit,any,MTP_Icones/forward_5_rounded.svg]]";
+    }
+
+    _rectForward.transparentForMouse = (_rectForward.fill == "[pattern,[fit,any,MTP_Icones/forward_1_rounded.svg]]");
   }
 };
