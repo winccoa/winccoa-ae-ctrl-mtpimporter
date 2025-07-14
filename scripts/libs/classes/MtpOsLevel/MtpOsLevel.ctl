@@ -43,6 +43,11 @@ class MtpOsLevel
     return _level;
   }
 
+  public bool getStationLevel()
+  {
+    return (_level > 0);
+  }
+
   /**
    * @brief Sets the operating system level.
    * @details Triggers the osLevelChanged event.

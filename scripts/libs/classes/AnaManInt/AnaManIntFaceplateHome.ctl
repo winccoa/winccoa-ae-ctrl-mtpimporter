@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "classes/MtpOsLevel/MtpOsLevel"
 #uses "classes/MtpBarIndicator/MtpBarIndicator"
 #uses "classes/AnaManInt/AnaManInt"
 #uses "classes/MtpSource/MtpSource"
@@ -24,6 +25,7 @@ class AnaManIntFaceplateHome : MtpViewBase
   private bool _manualActive;
   private bool _internalActive;
   private bool _channel;
+  private bool _osLevelStation;
 
   private shared_ptr<MtpBarIndicator> _refBarIndicator; //!< Reference to the bar indicator for displaying values.
 
@@ -36,12 +38,16 @@ class AnaManIntFaceplateHome : MtpViewBase
 
     classConnectUserData(this, setManualActiveCB, "_manualActive", MtpViewBase::getViewModel().getSource(), MtpSource::manualActiveChanged);
     classConnectUserData(this, setManualActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
+    classConnectUserData(this, setManualActiveCB, "_osLevelStation", MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osLevelChanged);
+
     classConnectUserData(this, setInternalActiveCB, "_internalActive", MtpViewBase::getViewModel().getSource(), MtpSource::internalActiveChanged);
     classConnectUserData(this, setInternalActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
+    classConnectUserData(this, setInternalActiveCB, "_osLevelStation", MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osLevelChanged);
 
     _manualActive =  MtpViewBase::getViewModel().getSource().getManualActive();
     _internalActive =  MtpViewBase::getViewModel().getSource().getInternalActive();
     _channel =  MtpViewBase::getViewModel().getSource().getChannel();
+    _osLevelStation = MtpViewBase::getViewModel().getOsLevel().getStationLevel();
 
     _refBarIndicator.setAlertHighShape(FALSE, MtpViewBase::getViewModel().getValueMax());
     _refBarIndicator.setAlertLowShape(FALSE, MtpViewBase::getViewModel().getValueMin());
@@ -122,13 +128,17 @@ class AnaManIntFaceplateHome : MtpViewBase
       case "_channel":
         _channel = internalActive;
         break;
+
+      case "_osLevelStation":
+        _osLevelStation = internalActive;
+        break;
     }
 
-    if (internalActive && _channel)
+    if ((!_osLevelStation && internalActive && !_channel) || (internalActive && _channel))
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_1_rounded.svg]]";
     }
-    else if (internalActive && !_channel)
+    else if (_osLevelStation && internalActive && !_channel)
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_2_rounded.svg]]";
     }
@@ -151,13 +161,18 @@ class AnaManIntFaceplateHome : MtpViewBase
       case "_channel":
         _channel = manualActive;
         break;
+
+      case "_osLevelStation":
+        _osLevelStation = manualActive;
+        break;
     }
 
-    if (manualActive && _channel)
+    DebugTN(_osLevelStation);
+    if ((!_osLevelStation && !_channel && manualActive) || (manualActive && _channel))
     {
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]";
     }
-    else if (_manualActive && !_channel)
+    else if (_osLevelStation && _manualActive && !_channel)
     {
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_2_rounded.svg]]";
     }
