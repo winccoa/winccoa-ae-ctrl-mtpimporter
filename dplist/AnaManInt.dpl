@@ -1,0 +1,24 @@
+# ascii dump of database
+
+# DpType
+TypeName
+AnaManInt.AnaManInt	1#1
+	WQC	24#2
+	OSLevel	21#3
+	VOut	22#4
+	VSclMin	22#5
+	VSclMax	22#6
+	VUnit	21#7
+	VMan	22#8
+	VInt	22#9
+	VRbk	22#10
+	VFbk	22#11
+	VMin	22#12
+	VMax	22#13
+	SrcChannel	23#14
+	SrcManAut	23#15
+	SrcIntAut	23#16
+	SrcManOp	23#17
+	SrcIntOp	23#18
+	SrcManAct	23#19
+	SrcIntAct	23#20
