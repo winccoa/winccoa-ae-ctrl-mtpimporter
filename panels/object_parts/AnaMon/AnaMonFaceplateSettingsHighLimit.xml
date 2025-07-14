@@ -265,6 +265,7 @@ main()
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Alarm-Obergrenze</prop>
+     <prop name="en_US.utf8">Alarm upper limit</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -301,6 +302,7 @@ main()
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Warn-Obergrenze</prop>
+     <prop name="en_US.utf8">Warning upper limit</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -337,6 +339,7 @@ main()
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Toleranz-Obergrenze</prop>
+     <prop name="en_US.utf8">Tolerance upper limit</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -373,6 +376,7 @@ main()
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Obergrenzen</prop>
+     <prop name="en_US.utf8">Upper Limits</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -511,6 +515,7 @@ main()
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Grenzen</prop>
+     <prop name="en_US.utf8">Limits</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>

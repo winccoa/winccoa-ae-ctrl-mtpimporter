@@ -57,6 +57,7 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Prozesssignal</prop>
+     <prop name="en_US.utf8">Process signal</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -191,6 +192,7 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Flattererkennung</prop>
+     <prop name="en_US.utf8">Flutter detection</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>

@@ -159,11 +159,11 @@ class BinManIntFaceplateHome : MtpViewBase
   {
     if (value)
     {
-      _txtVFbk.text = "true";
+      _txtVFbk.text =  getCatStr("BinManInt", "True");
     }
     else
     {
-      _txtVFbk.text = "false";
+      _txtVFbk.text =  getCatStr("BinManInt", "False");
     }
   }
 

@@ -121,7 +121,7 @@ public void initialize(shared_ptr&lt;MonBinVlv&gt; viewModel)
    <properties>
     <prop name="serialId">4</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">20.74803664921471 129.75</prop>
+    <prop name="RefPoint">19.74803664921471 150</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -138,20 +138,22 @@ public void initialize(shared_ptr&lt;MonBinVlv&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">20.74803664921471 129.75</prop>
+    <prop name="Location">19.74803664921471 150</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Überwachung
 aktivieren</prop>
+     <prop name="en_US.utf8">Monitor enable
+</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
     <prop name="Bordered">False</prop>
     <prop name="Fit">True</prop>
     <prop name="Transformable">False</prop>
-    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft|AlignVCenter]</prop>
    </properties>
   </shape>
   <shape Name="PRIMITIVE_TEXT7" layerId="0" shapeType="PRIMITIVE_TEXT">
@@ -181,6 +183,7 @@ aktivieren</prop>
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Einstellungen</prop>
+     <prop name="en_US.utf8">Settings</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -249,6 +252,7 @@ aktivieren</prop>
     <prop name="BorderStyle">None</prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Aus</prop>
+     <prop name="en_US.utf8">Off</prop>
     </prop>
    </properties>
    <events>
@@ -281,6 +285,7 @@ _faceplate.changeMonitorDisabled();
     <prop name="BorderStyle">None</prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Ein</prop>
+     <prop name="en_US.utf8">On</prop>
     </prop>
    </properties>
    <events>
@@ -317,6 +322,7 @@ _faceplate.changeMonitorEnabled();
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Rückmeldeüberwachung</prop>
+     <prop name="en_US.utf8">Feedback monitoring</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>

@@ -295,7 +295,7 @@ class LockView4FaceplateHome : MtpViewBase
 
   private void setLogicCB(const bool &logic)
   {
-    _txtLogic.text = logic ? "UND" : "ODER";
+    _txtLogic.text = logic ?  getCatStr("LockView4", "AND") :  getCatStr("LockView4", "OR");
   }
 
   private void setQualityCodeCB(const string &varName, const bool &qualityGood)

@@ -56,6 +56,7 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Flattererkennung</prop>
+     <prop name="en_US.utf8">Flutter detection</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -93,6 +94,8 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
     <prop name="Text">
      <prop name="de_AT.utf8">Max. Signalwechsel
 bis zur Flattererkennung</prop>
+     <prop name="en_US.utf8">Max. signal changes
+up to flutter detection</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -130,7 +133,10 @@ bis zur Flattererkennung</prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Zeit zum Zurücksetzen
 der Flattererkennung
-[h]</prop>
+[s]</prop>
+     <prop name="en_US.utf8">Time to reset
+flutter detection
+[s]</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>

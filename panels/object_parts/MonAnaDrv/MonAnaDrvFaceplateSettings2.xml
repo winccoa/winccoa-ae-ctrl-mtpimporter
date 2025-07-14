@@ -140,6 +140,7 @@ main()
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Alarm-Obergrenze</prop>
+     <prop name="en_US.utf8">Alarm upper limit</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -176,6 +177,7 @@ main()
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Alarm-Untergrenze</prop>
+     <prop name="en_US.utf8">Alarm lower limit</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -212,6 +214,7 @@ main()
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Drehzahlüberwachung</prop>
+     <prop name="en_US.utf8">Revolution speed monitoring</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -409,6 +412,7 @@ main()
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Einstellungen</prop>
+     <prop name="en_US.utf8">Settings</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>

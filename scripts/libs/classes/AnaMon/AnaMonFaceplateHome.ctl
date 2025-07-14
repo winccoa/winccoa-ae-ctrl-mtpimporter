@@ -129,7 +129,7 @@ class AnaMonFaceplateHome : MtpViewBase
     {
       _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/StaticErr.svg]]";
       _rectLimitHigh.sizeAsDyn = makeDynInt(30, 25);
-      _txtLimitHigh.text = "Alarm hoch";
+      _txtLimitHigh.text =  getCatStr("AnaMon", "AlarmHigh");
       return;
     }
 
@@ -137,7 +137,7 @@ class AnaMonFaceplateHome : MtpViewBase
     {
       _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Mainenance_2.svg]]";
       _rectLimitHigh.sizeAsDyn = makeDynInt(25, 25);
-      _txtLimitHigh.text = "Warnung hoch";
+      _txtLimitHigh.text =  getCatStr("AnaMon", "WarningHigh");
       return;
     }
 
@@ -145,13 +145,13 @@ class AnaMonFaceplateHome : MtpViewBase
     {
       _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Tolerance_2.svg]]";
       _rectLimitHigh.sizeAsDyn = makeDynInt(25, 25);
-      _txtLimitHigh.text = "Toleranz hoch";
+      _txtLimitHigh.text =  getCatStr("AnaMon", "ToleranceHigh");
       return;
     }
 
     _rectLimitHigh.fill = "[pattern,[fit,any,MTP_Icones/Ok_2.svg]]";
     _rectLimitHigh.sizeAsDyn = makeDynInt(30, 25);
-    _txtLimitHigh.text = "Grenze hoch";
+    _txtLimitHigh.text =  getCatStr("AnaMon", "LimitHigh");
 
   }
 
@@ -182,7 +182,7 @@ class AnaMonFaceplateHome : MtpViewBase
     {
       _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/StaticErr.svg]]";
       _rectLimitLow.sizeAsDyn = makeDynInt(30, 25);
-      _txtLimitLow.text = "Alarm niedrig";
+      _txtLimitLow.text =  getCatStr("AnaMon", "AlarmLow");
       return;
     }
 
@@ -190,7 +190,7 @@ class AnaMonFaceplateHome : MtpViewBase
     {
       _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Mainenance_2.svg]]";
       _rectLimitLow.sizeAsDyn = makeDynInt(25, 25);
-      _txtLimitLow.text = "Warnung niedrig";
+      _txtLimitLow.text = getCatStr("AnaMon", "WarningLow");
       return;
     }
 
@@ -198,12 +198,12 @@ class AnaMonFaceplateHome : MtpViewBase
     {
       _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Tolerance_2.svg]]";
       _rectLimitLow.sizeAsDyn = makeDynInt(25, 25);
-      _txtLimitLow.text = "Toleranz niedrig";
+      _txtLimitLow.text = getCatStr("AnaMon", "ToleranceLow");
       return;
     }
 
     _rectLimitLow.fill = "[pattern,[fit,any,MTP_Icones/Ok_2.svg]]";
     _rectLimitLow.sizeAsDyn = makeDynInt(30, 25);
-    _txtLimitLow.text = "Grenze niedrig";
+    _txtLimitLow.text = getCatStr("AnaMon", "LimitLow");
   }
 };

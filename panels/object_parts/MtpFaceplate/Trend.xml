@@ -107,6 +107,7 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Trendübersicht</prop>
+     <prop name="en_US.utf8">Trend overview</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
