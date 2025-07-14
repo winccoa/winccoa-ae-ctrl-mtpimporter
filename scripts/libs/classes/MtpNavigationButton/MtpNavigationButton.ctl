@@ -12,9 +12,11 @@
  */
 class MtpNavigationButton
 {
-  private string _picture; //!< The picture associated with the navigation button.
+  private dyn_string _picture; //!< The picture associated with the navigation button.
   private string _name; //!< The name of the navigation button.
-  private string _fileName; //!< The file name associated with the navigation button.
+  private dyn_string _fileName; //!< The file name associated with the navigation button.
+  private int _index;
+  private shape _button;
 
   /**
    * @brief Constructor for MtpNavigationButton.
@@ -23,21 +25,17 @@ class MtpNavigationButton
    * @param name The name of the navigation button.
    * @param fileName The file name associated with the navigation button.
    */
-  public MtpNavigationButton(const string &picture, const string &name, const string &fileName)
+  public MtpNavigationButton(const dyn_string &picture, const string &name, const dyn_string &fileName)
   {
     _picture = picture;
     _name = name;
     _fileName = fileName;
+    resetIndex();
   }
 
-  /**
-   * @brief Retrieves the picture associated with the navigation button.
-   *
-   * @return The picture associated with the navigation button.
-   */
-  public string getPicture()
+  public void setPicture()
   {
-    return _picture;
+    _button.setPicture(_picture.at(_index));
   }
 
   /**
@@ -57,6 +55,26 @@ class MtpNavigationButton
    */
   public string getFileName()
   {
-    return _fileName;
+    return _fileName.at(_index);
+  }
+
+  public void nextIndex()
+  {
+    _index++;
+
+    if (_index >= _fileName.count())
+    {
+      _index = 0;
+    }
+  }
+
+  public void resetIndex()
+  {
+    _index = 0;
+  }
+
+  public void setButton(const shape &button)
+  {
+    _button= button;
   }
 };

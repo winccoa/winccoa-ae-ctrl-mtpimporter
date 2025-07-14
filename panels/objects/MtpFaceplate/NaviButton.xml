@@ -25,15 +25,11 @@
  <events>
   <script isEscaped="1" name="ScopeLib"><![CDATA[#event clickNavigationEvent(const string &amp;name)
 
-public void initialize()
+public void setPicture(const string &amp;picture)
 {
-  string picture = $picture;
   button.fill(&quot;[pattern,[fit,any,&quot; + picture + &quot;]]&quot;);
-}]]></script>
-  <script isEscaped="1" name="Initialize"><![CDATA[main()
-{
-  initialize();
-}]]></script>
+}
+]]></script>
  </events>
  <shapes>
   <shape Name="button" layerId="0" shapeType="RECTANGLE">

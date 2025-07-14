@@ -53,7 +53,7 @@ class MtpFaceplateMainBase : MtpViewBase
   public void clickNavigation(const string &name)
   {
     shared_ptr<MtpNavigationButton> button = _navigationButtons.at(_navigationButtons.indexListOf("_name", name).at(0));
-    loadPanel(button.getFileName(), button.getName(), _module.ModuleName());
+    loadPanel(button);
     invokeMethod(getShape(_module.ModuleName(), button.getName(), ""), "initialize", MtpViewBase::getViewModel());
   }
 
@@ -98,7 +98,9 @@ class MtpFaceplateMainBase : MtpViewBase
     for (int i = 0; i < size; i++)
     {
       shared_ptr<MtpNavigationButton> button = _navigationButtons.at(i);
-      addSymbol(_panel, "/objects/MtpFaceplate/NaviButton.xml", button.getName(), i, _layoutNavigation, makeDynString("$picture:" + button.getPicture()));
+      addSymbol(_panel, "/objects/MtpFaceplate/NaviButton.xml", button.getName(), i, _layoutNavigation, makeDynString());
+      button.setButton(getShape(_panel, button.getName()));
+      button.setPicture();
       uiConnect(this, clickNavigation, getShape(_panel, button.getName()), "clickNavigationEvent");
 
       if (i == 0)
@@ -115,13 +117,29 @@ class MtpFaceplateMainBase : MtpViewBase
    * @param panelName The name of the panel to be loaded.
    * @param moduleName The name of the module in which the panel should be loaded.
    */
-  private void loadPanel(const string &fileName, const string &panelName, const string &moduleName)
+  private void loadPanel(shared_ptr<MtpNavigationButton> button)
   {
-    if (isModuleOpen(moduleName) && !isPanelOpen(panelName, moduleName))
+    string moduleName = _module.ModuleName();
+    string panelName = button.getName();
+
+    if (isPanelOpen(panelName, moduleName))
+    {
+      button.nextIndex();
+    }
+    else
+    {
+      button.resetIndex();
+    }
+
+    button.setPicture();
+
+    string fileName = button.getFileName();
+
+    if (isModuleOpen(moduleName))
     {
       dyn_int orgSize = getPanelSize("object_parts/MtpFaceplate/Main.xml");
       dyn_int size = getPanelSize(fileName);
-      setPanelSize(myModuleName(), myPanelName(), FALSE, size.at(0)+2, orgSize.at(1));
+      setPanelSize(myModuleName(), myPanelName(), FALSE, size.at(0) + 2, orgSize.at(1));
       string uiDp = myUiDpName() + ".";
 
       dpSetWait(uiDp + "RootPanelOrigOn.ModuleName:_original.._value", moduleName,
