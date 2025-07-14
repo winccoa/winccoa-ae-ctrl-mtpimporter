@@ -206,6 +206,16 @@ class MonBinDrvFaceplateHome : MtpViewBase
     MtpViewBase::getViewModel().setForwardOperator(TRUE);
   }
 
+  public void openErrorInformation()
+  {
+    MtpViewBase::openChildPanel("object_parts/MonBinDrv/MonBinDrvFaceplateErrorInformation.xml", "Error Information");
+  }
+
+  public void openSafetyPositionInformation()
+  {
+    MtpViewBase::openChildPanel("object_parts/MonBinDrv/MonBinDrvFaceplateSafetyPositionInformation.xml", "SafetyPosition Information");
+  }
+
   protected void initializeShapes()
   {
     _refWqc = MtpViewBase::extractShape("_refWqc");

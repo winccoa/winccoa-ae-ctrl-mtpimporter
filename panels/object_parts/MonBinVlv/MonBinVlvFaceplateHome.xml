@@ -522,6 +522,12 @@ position</prop>
     <prop name="CornerRadius">0</prop>
     <prop name="Transformable">True</prop>
    </properties>
+   <events>
+    <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
+{
+  _faceplate.openErrorInformation();
+}]]></script>
+   </events>
   </shape>
   <shape Name="rectSafetyPositionInformation" layerId="0" shapeType="RECTANGLE">
    <properties>
@@ -551,6 +557,12 @@ position</prop>
     <prop name="CornerRadius">0</prop>
     <prop name="Transformable">True</prop>
    </properties>
+   <events>
+    <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
+{
+  _faceplate.openSafetyPositionInformation();
+}]]></script>
+   </events>
   </shape>
   <shape Name="PRIMITIVE_TEXT7" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>

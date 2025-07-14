@@ -121,6 +121,8 @@ class MonBinVlvFaceplateHome : MtpViewBase
     _stateOffActive =  MtpViewBase::getViewModel().getState().getOffActive();
     _stateChannel =  MtpViewBase::getViewModel().getState().getChannel();
     _stateOperatorActive =  MtpViewBase::getViewModel().getState().getOperatorActive();
+    _safetypositionEnabled = MtpViewBase::getViewModel().getSafetyPositionEnabled();
+    _safetypositionActive = MtpViewBase::getViewModel().getSafetyPositionActive();
 
     _staticError =  MtpViewBase::getViewModel().getMonitor().getStaticError();
     _dynamicError =  MtpViewBase::getViewModel().getMonitor().getDynamicError();
@@ -182,6 +184,16 @@ class MonBinVlvFaceplateHome : MtpViewBase
   public void activateValveOpen()
   {
     MtpViewBase::getViewModel().setOpenOperator(TRUE);
+  }
+
+  public void openErrorInformation()
+  {
+    MtpViewBase::openChildPanel("object_parts/MonBinVlv/MonBinVlvFaceplateErrorInformation.xml", "Error Information");
+  }
+
+  public void openSafetyPositionInformation()
+  {
+    MtpViewBase::openChildPanel("object_parts/MonBinVlv/MonBinVlvFaceplateSafetyPositionInformation.xml", "SafetyPosition Information");
   }
 
   protected void initializeShapes()
