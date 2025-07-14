@@ -30,12 +30,42 @@ public void initialize(shared_ptr&lt;BinManInt&gt; viewModel)
   shapes.insert(&quot;_txtVFbk&quot;, getShape(&quot;txtVFbk&quot;));
   shapes.insert(&quot;_rectManual&quot;, getShape(&quot;rectManual&quot;));
   shapes.insert(&quot;_rectInternal&quot;, getShape(&quot;rectInternal&quot;));
-  shapes.insert(&quot;_rectVInt&quot;, getShape(&quot;rectVInt&quot;));
+  shapes.insert(&quot;_rectVIntFalse&quot;, getShape(&quot;rectVIntFalse&quot;));
+  shapes.insert(&quot;_rectVIntTrue&quot;, getShape(&quot;rectVIntTrue&quot;));
 
   _faceplate = new BinManIntFaceplateHome(viewModel, shapes);
 }]]></script>
  </events>
  <shapes>
+  <shape Name="rectVIntTrue" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">26</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">248.2035380344478 296.8914534397122</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">mtpBackground</prop>
+    <prop name="BackColor">mtpBackground2</prop>
+    <prop name="TabOrder">19</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">0.9454117927221913 -0.3258781093933933 0.3258781093933933 0.9454117927221913 -178.6683609551468 183.5690284746994</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">248.2035380344478 296.8914534397122</prop>
+    <prop name="Size">100.5695941403362 10.60210266656804</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
   <shape Name="PRIMITIVE_TEXT2" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>
     <prop name="serialId">0</prop>
@@ -432,7 +462,7 @@ public void initialize(shared_ptr&lt;BinManInt&gt; viewModel)
 }]]></script>
    </events>
   </shape>
-  <shape Name="rectVInt" layerId="0" shapeType="RECTANGLE">
+  <shape Name="rectVIntFalse" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">22</prop>
     <prop name="Type"></prop>

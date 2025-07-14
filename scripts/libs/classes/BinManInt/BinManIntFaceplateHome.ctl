@@ -21,18 +21,19 @@ class BinManIntFaceplateHome : MtpViewBase
   private shape _txtVFbk;
   private shape _rectManual;
   private shape _rectInternal;
-  private shape _rectVInt;
+  private shape _rectVIntFalse;
+  private shape _rectVIntTrue;
 
   private bool _manualActive;
   private bool _internalActive;
   private bool _channel;
   private bool _valueOut;
+  private bool _valueInternal;
 
   public BinManIntFaceplateHome(shared_ptr<BinManInt> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     classConnect(this, setValueOutCB, MtpViewBase::getViewModel(), BinManInt::valueOutChanged);
     classConnect(this, setValueFeedbackCB, MtpViewBase::getViewModel(), BinManInt::valueFeedbackChanged);
-    classConnect(this, setValueInternalCB, MtpViewBase::getViewModel(), BinManInt::valueInternalChanged);
     classConnect(this, setWqcCB, MtpViewBase::getViewModel().getWqc(), MtpQualityCode::qualityGoodChanged);
 
     classConnectUserData(this, setManualActiveCB, "_manualActive", MtpViewBase::getViewModel().getSource(), MtpSource::manualActiveChanged);
@@ -45,16 +46,20 @@ class BinManIntFaceplateHome : MtpViewBase
     classConnectUserData(this, setValueManualCB, "_valueOut", MtpViewBase::getViewModel(), BinManInt::valueOutChanged);
     classConnectUserData(this, setValueManualCB, "_internalActive", MtpViewBase::getViewModel().getSource(), MtpSource::internalActiveChanged);
 
+    classConnectUserData(this, setValueInternalCB, "_valueInternal", MtpViewBase::getViewModel(), BinManInt::valueInternalChanged);
+    classConnectUserData(this, setValueInternalCB, "_internalActive", MtpViewBase::getViewModel().getSource(), MtpSource::internalActiveChanged);
+
     _manualActive =  MtpViewBase::getViewModel().getSource().getManualActive();
     _internalActive =  MtpViewBase::getViewModel().getSource().getInternalActive();
     _channel =  MtpViewBase::getViewModel().getSource().getChannel();
     _valueOut = MtpViewBase::getViewModel().getValueOut();
+    _valueInternal = MtpViewBase::getViewModel().getValueInternal();
 
     setWqcCB(MtpViewBase::getViewModel().getWqc().getQualityGood());
     setValueOutCB(_valueOut);
     setValueFeedbackCB(MtpViewBase::getViewModel().getValueFeedback());
-    setValueInternalCB(MtpViewBase::getViewModel().getValueInternal());
 
+    setValueInternalCB("_valueInternal", _valueInternal);
     setManualActiveCB("_manualActive", _manualActive);
     setInternalActiveCB("_internalActive", _internalActive);
     setValueManualCB("_valueOut", _valueOut);
@@ -90,7 +95,8 @@ class BinManIntFaceplateHome : MtpViewBase
     _txtVFbk = MtpViewBase::extractShape("_txtVFbk");
     _rectManual = MtpViewBase::extractShape("_rectManual");
     _rectInternal = MtpViewBase::extractShape("_rectInternal");
-    _rectVInt = MtpViewBase::extractShape("_rectVInt");
+    _rectVIntTrue = MtpViewBase::extractShape("_rectVIntTrue");
+    _rectVIntFalse = MtpViewBase::extractShape("_rectVIntFalse");
   }
 
   private void setValueManualCB(const string &varName, const bool &valueManual)
@@ -167,16 +173,33 @@ class BinManIntFaceplateHome : MtpViewBase
     }
   }
 
-  //TODO Linie
-  private void setValueInternalCB(const bool &value)
+  private void setValueInternalCB(const string &varName, const bool &value)
   {
-    if (value)
+    switch (varName)
     {
-      _rectVInt.visible = true;
+      case "_valueInternal":
+        _valueInternal = value;
+        break;
+
+      case "_internalActive":
+        _internalActive = value;
+        break;
+    }
+
+    if (!_internalActive && _valueInternal)
+    {
+      _rectVIntTrue.visible = true;
+      _rectVIntFalse.visible = false;
+    }
+    else if (!_internalActive && !_valueInternal)
+    {
+      _rectVIntTrue.visible = false;
+      _rectVIntFalse.visible = true;
     }
     else
     {
-      _rectVInt.visible = false;
+      _rectVIntTrue.visible = false;
+      _rectVIntFalse.visible = false;
     }
   }
 
