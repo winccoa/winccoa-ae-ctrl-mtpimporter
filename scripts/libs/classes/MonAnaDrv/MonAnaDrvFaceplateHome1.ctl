@@ -213,6 +213,16 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     MtpViewBase::getViewModel().setForwardOperator(TRUE);
   }
 
+  public void openErrorInformation()
+  {
+    MtpViewBase::openChildPanel("object_parts/MonAnaDrv/MonAnaDrvFaceplateErrorInformation.xml", "Error Information");
+  }
+
+  public void openSafetyPositionInformation()
+  {
+    MtpViewBase::openChildPanel("object_parts/MonAnaDrv/MonAnaDrvFaceplateSafetyPositionInformation.xml", "SafetyPosition Information");
+  }
+
   protected void initializeShapes()
   {
     _refBarIndicator = MtpViewBase::extractShape("_refBarIndicator").getMtpBarIndicator();
@@ -338,7 +348,7 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     }
     else
     {
-      _rectMotorProtection.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
+      _rectMotorProtection.fill = "[pattern,[fit,any,MTP_Icones/StaticErr.svg]]";
       _rectMotorProtection.sizeAsDyn = makeDynInt(25, 25);
     }
   }
@@ -432,8 +442,8 @@ class MonAnaDrvFaceplateHome : MtpViewBase
       _rectError.visible = TRUE;
       _txtError.visible = TRUE;
       _rectErrorInformation.visible = TRUE;
-      _rectError.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
-      _rectError.sizeAsDyn = makeDynInt(25, 25);
+      _rectError.fill = "[pattern,[fit,any,MTP_Icones/StaticErr.svg]]";
+      _rectError.sizeAsDyn = makeDynInt(30, 25);
     }
     else if (!_monitorEnabled)
     {
