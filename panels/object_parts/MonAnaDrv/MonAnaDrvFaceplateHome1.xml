@@ -411,7 +411,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/operator_2.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Operator_2_rounded.svg]]</prop>
     <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 61.23655104503543 -81.67001713734311</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>

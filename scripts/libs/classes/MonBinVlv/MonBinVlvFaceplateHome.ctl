@@ -426,18 +426,18 @@ class MonBinVlvFaceplateHome : MtpViewBase
 
     if ((_stateOperatorActive && _stateChannel) || (!_stateChannel && _stateOperatorActive && !_osLevelStation))
     {
-      _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/operator_1.svg]]";
+      _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/Operator_1_rounded.svg]]";
     }
     else if (_stateOperatorActive && !_stateChannel && _osLevelStation)
     {
-      _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/operator_2.svg]]";
+      _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/Operator_2_rounded.svg]]";
     }
     else
     {
-      _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/operator_3.svg]]";
+      _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/Operator_3_rounded.svg]]";
     }
 
-    _rectOperator.transparentForMouse = (_rectOperator.fill == "[pattern,[fit,any,MTP_Icones/operator_1.svg]]");
+    _rectOperator.transparentForMouse = (_rectOperator.fill == "[pattern,[fit,any,MTP_Icones/Operator_1_rounded.svg]]");
   }
 
   private void setStateOffActiveCB(const string &varName, const bool &state)
