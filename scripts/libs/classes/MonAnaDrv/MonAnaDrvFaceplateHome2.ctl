@@ -23,6 +23,7 @@ class MonAnaDrvFaceplateHome2 : MtpViewBase
   private bool _manualActive;
   private bool _internalActive;
   private bool _channel;
+  private bool _osLevelStation;
 
   private shared_ptr<MtpBarIndicator> _refBarIndicator; //!< Reference to the bar indicator for displaying values.
 
@@ -31,13 +32,18 @@ class MonAnaDrvFaceplateHome2 : MtpViewBase
     classConnect(_refBarIndicator, MtpBarIndicator::setValueCustomLimit, MtpViewBase::getViewModel(), MonAnaDrv::rpmChanged);
     classConnect(this, setRpmFeedbackValueCB, MtpViewBase::getViewModel(), MonAnaDrv::rpmFeedbackSignalChanged);
     classConnect(this, setRpmValueInternalCB, MtpViewBase::getViewModel(), MonAnaDrv::rpmInternalChanged);
+    classConnect(this, setOsLevelCB, MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osStationLevelChanged);
 
-    classConnect(this, setManualActiveCB, MtpViewBase::getViewModel().getSource(), MtpSource::manualActiveChanged);
-    classConnect(this, setInternalActiveCB, MtpViewBase::getViewModel().getSource(), MtpSource::internalActiveChanged);
+    classConnectUserData(this, setManualActiveCB, "_manualActive", MtpViewBase::getViewModel().getSource(), MtpSource::manualActiveChanged);
+    classConnectUserData(this, setManualActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
+
+    classConnectUserData(this, setInternalActiveCB, "_internalActive", MtpViewBase::getViewModel().getSource(), MtpSource::internalActiveChanged);
+    classConnectUserData(this, setInternalActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
 
     _manualActive =  MtpViewBase::getViewModel().getSource().getManualActive();
     _internalActive =  MtpViewBase::getViewModel().getSource().getInternalActive();
     _channel =  MtpViewBase::getViewModel().getSource().getChannel();
+    _osLevelStation = MtpViewBase::getViewModel().getOsLevel().getStationLevel();
 
     _refBarIndicator.setAlertHighShape(FALSE, MtpViewBase::getViewModel().getRpmMax());
     _refBarIndicator.setAlertLowShape(FALSE, MtpViewBase::getViewModel().getRpmMin());
@@ -50,8 +56,9 @@ class MonAnaDrvFaceplateHome2 : MtpViewBase
     setRpmFeedbackValueCB(MtpViewBase::getViewModel().getRpmFeedbackSignal());
     setRpmValueInternalCB(MtpViewBase::getViewModel().getRpmInternal());
 
-    setManualActiveCB(_manualActive);
-    setInternalActiveCB(_internalActive);
+    setManualActiveCB("_manualActive", _manualActive);
+    setInternalActiveCB("_internalActive", _internalActive);
+    setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
 
   public void changeManual()
@@ -80,6 +87,14 @@ class MonAnaDrvFaceplateHome2 : MtpViewBase
     _refBarIndicator = MtpViewBase::extractShape("_refBarIndicator").getMtpBarIndicator();
   }
 
+  private void setOsLevelCB(const bool &oslevel)
+  {
+    _osLevelStation = oslevel;
+
+    setInternalActiveCB("", FALSE);
+    setManualActiveCB("", FALSE);
+  }
+
   private void setUnit(shared_ptr<MtpUnit> unit)
   {
     _refBarIndicator.setUnit(unit);
@@ -100,39 +115,61 @@ class MonAnaDrvFaceplateHome2 : MtpViewBase
     _txtRpmValueInternal.text = valueInternal;
   }
 
-  private void setManualActiveCB(const bool &manualActive)
+  private void setInternalActiveCB(const string &varName, const bool &internalActive)
   {
-    _manualActive = manualActive;
+    switch (varName)
+    {
+      case "_internalActive":
+        _internalActive = internalActive;
+        break;
 
-    if (manualActive && !_channel)
-    {
-      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_2_rounded.svg]]";
+      case "_channel":
+        _channel = internalActive;
+        break;
     }
-    else if (_manualActive && _channel)
-    {
-      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]";
-    }
-    else
-    {
-      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_3_rounded.svg]]";
-    }
-  }
 
-  private void setInternalActiveCB(const bool &internalActive)
-  {
-    _internalActive = internalActive;
-
-    if (internalActive && !_channel)
-    {
-      _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_2_rounded.svg]]";
-    }
-    else if (internalActive && _channel)
+    if ((!_osLevelStation && _internalActive && !_channel) || (_internalActive && _channel))
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_1_rounded.svg]]";
+    }
+    else if (_osLevelStation && _internalActive && !_channel)
+    {
+      _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_2_rounded.svg]]";
     }
     else
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_3_rounded.svg]]";
     }
+
+    _rectInternal.transparentForMouse = (_rectInternal.fill == "[pattern,[fit,any,MTP_Icones/internal_1_rounded.svg]]");
+  }
+
+  private void setManualActiveCB(const string &varName, const bool &manualActive)
+  {
+    switch (varName)
+    {
+      case "_manualActive":
+        _manualActive = manualActive;
+        break;
+
+      case "_channel":
+        _channel = manualActive;
+        break;
+    }
+
+    if ((!_osLevelStation && !_channel && _manualActive) || (_manualActive && _channel))
+    {
+      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]";
+    }
+    else if (_osLevelStation && _manualActive && !_channel)
+    {
+      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_2_rounded.svg]]";
+    }
+    else
+    {
+      _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_3_rounded.svg]]";
+    }
+
+    _rectManual.transparentForMouse = (_rectManual.fill == "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]");
   }
 };

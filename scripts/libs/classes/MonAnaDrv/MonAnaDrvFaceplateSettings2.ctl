@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "classes/MtpOsLevel/MtpOsLevel"
 #uses "classes/MtpUnit/MtpUnit"
 #uses "classes/MonAnaDrv/MonAnaDrv"
 #uses "classes/MtpView/MtpViewFaceplateSettings"
@@ -22,6 +23,12 @@ class MonAnaDrvFaceplateSettings2 : MtpViewFaceplateSettings
     setUnit(MtpViewFaceplateSettings::getViewModel().getRpmUnit());
     _txtRpmAlarmHighLimit.text = MtpViewFaceplateSettings::getViewModel().getRpmAlarmHighLimit();
     _txtRpmAlarmLowLimit.text = MtpViewFaceplateSettings::getViewModel().getRpmAlarmLowLimit();
+
+    classConnect(this, setOsLevelCB, MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osStationLevelChanged);
+
+    setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
+    setRpmAlarmHighEnabled(MtpViewBase::getViewModel().getRpmAlarmHighEnabled());
+    setRpmAlarmLowEnabled(MtpViewBase::getViewModel().getRpmAlarmLowEnabled());
   }
 
   public void switchPageForward()
@@ -56,5 +63,43 @@ class MonAnaDrvFaceplateSettings2 : MtpViewFaceplateSettings
   {
     _txtRpmUnit1.text = "[" + unit.toString() + "]";
     _txtRpmUnit2.text = "[" + unit.toString() + "]";
+  }
+
+  private void setOsLevelCB(const bool &oslevel)
+  {
+    if (oslevel)
+    {
+      _txtRpmAlarmHighLimit.editable = TRUE;
+      _txtRpmAlarmLowLimit.editable = TRUE;
+    }
+    else
+    {
+      _txtRpmAlarmHighLimit.editable = FALSE;
+      _txtRpmAlarmLowLimit.editable = FALSE;
+    }
+  }
+
+  private void setRpmAlarmHighEnabled(const bool &enabled)
+  {
+    if (enabled)
+    {
+      _txtRpmAlarmHighLimit.visible = TRUE;
+    }
+    else
+    {
+      _txtRpmAlarmHighLimit.visible = FALSE;
+    }
+  }
+
+  private void setRpmAlarmLowEnabled(const bool &enabled)
+  {
+    if (enabled)
+    {
+      _txtRpmAlarmLowLimit.visible = TRUE;
+    }
+    else
+    {
+      _txtRpmAlarmLowLimit.visible = FALSE;
+    }
   }
 };

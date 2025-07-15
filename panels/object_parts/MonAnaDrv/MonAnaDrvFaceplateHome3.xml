@@ -195,7 +195,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
    <properties>
     <prop name="serialId">40</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">45.61371742112496 329.3574512113368</prop>
+    <prop name="RefPoint">60 330</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -212,7 +212,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">45.61371742112496 329.3574512113368</prop>
+    <prop name="Location">60 330</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -232,7 +232,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
    <properties>
     <prop name="serialId">41</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">57.25000000000006 373.539216677097</prop>
+    <prop name="RefPoint">60 375</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -249,7 +249,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">57.25000000000006 373.539216677097</prop>
+    <prop name="Location">60 375</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
