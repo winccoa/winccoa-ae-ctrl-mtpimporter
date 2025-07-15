@@ -31,7 +31,8 @@ class MtpOsLevel
     dpConnect(this, setLevelCB, dpeOsLevel);
   }
 
-#event osLevelChanged(const int &level) //!< Event triggered when the OS level changes.
+#event osStationLevelChanged(const bool &level) //!< Event triggered when the OS level changes.
+
 
   /**
    * @brief Retrieves the current operating system level.
@@ -50,7 +51,7 @@ class MtpOsLevel
 
   /**
    * @brief Sets the operating system level.
-   * @details Triggers the osLevelChanged event.
+   * @details Triggers the osStationLevelChanged event.
    *
    * @param dpe The data point element.
    * @param level The new operating system level.
@@ -58,6 +59,6 @@ class MtpOsLevel
   private void setLevelCB(const string &dpe, const int &level)
   {
     _level = level;
-    osLevelChanged(getLevel());
+    osStationLevelChanged(getStationLevel());
   }
 };

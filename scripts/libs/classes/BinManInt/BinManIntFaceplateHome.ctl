@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "classes/MtpOsLevel/MtpOsLevel"
 #uses "classes/MtpSource/MtpSource"
 #uses "classes/MtpQualityCode/MtpQualityCode"
 #uses "classes/MtpView/MtpViewBase"
@@ -29,12 +30,14 @@ class BinManIntFaceplateHome : MtpViewBase
   private bool _channel;
   private bool _valueOut;
   private bool _valueInternal;
+  private bool _osLevelStation;
 
   public BinManIntFaceplateHome(shared_ptr<BinManInt> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     classConnect(this, setValueOutCB, MtpViewBase::getViewModel(), BinManInt::valueOutChanged);
     classConnect(this, setValueFeedbackCB, MtpViewBase::getViewModel(), BinManInt::valueFeedbackChanged);
     classConnect(this, setWqcCB, MtpViewBase::getViewModel().getWqc(), MtpQualityCode::qualityGoodChanged);
+    classConnect(this, setOsLevelCB, MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osStationLevelChanged);
 
     classConnectUserData(this, setManualActiveCB, "_manualActive", MtpViewBase::getViewModel().getSource(), MtpSource::manualActiveChanged);
     classConnectUserData(this, setManualActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
@@ -63,6 +66,7 @@ class BinManIntFaceplateHome : MtpViewBase
     setManualActiveCB("_manualActive", _manualActive);
     setInternalActiveCB("_internalActive", _internalActive);
     setValueManualCB("_valueOut", _valueOut);
+    setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
 
   public void activateManual()
@@ -99,6 +103,15 @@ class BinManIntFaceplateHome : MtpViewBase
     _rectVIntFalse = MtpViewBase::extractShape("_rectVIntFalse");
   }
 
+  private void setOsLevelCB(const bool &oslevel)
+  {
+    _osLevelStation = oslevel;
+
+    setValueManualCB("", FALSE);
+    setInternalActiveCB("", FALSE);
+    setManualActiveCB("", FALSE);
+  }
+
   private void setValueManualCB(const string &varName, const bool &valueManual)
   {
     switch (varName)
@@ -116,11 +129,11 @@ class BinManIntFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_channel && _internalActive && _valueOut)
+    if ((!_osLevelStation && !_channel && _internalActive && _valueOut) || (_channel && _internalActive && _valueOut))
     {
       _btnTrue.backCol = "mtpSidebar";
     }
-    else if (!_channel && _internalActive && _valueOut)
+    else if (_osLevelStation && !_channel && _internalActive && _valueOut)
     {
       _btnTrue.backCol = "mtpTitlebar";
     }
@@ -131,11 +144,11 @@ class BinManIntFaceplateHome : MtpViewBase
 
     _btnTrue.transparentForMouse = (_btnTrue.backCol == "mtpSidebar");
 
-    if (_channel && _internalActive && !_valueOut)
+    if ((!_osLevelStation && !_channel && _internalActive && !_valueOut) || (_channel && _internalActive && !_valueOut))
     {
       _btnFalse.backCol = "mtpSidebar";
     }
-    else if (!_channel && _internalActive && !_valueOut)
+    else if (_osLevelStation && !_channel && _internalActive && !_valueOut)
     {
       _btnFalse.backCol = "mtpTitlebar";
     }
@@ -221,11 +234,11 @@ class BinManIntFaceplateHome : MtpViewBase
         break;
     }
 
-    if (internalActive && _channel)
+    if ((!_osLevelStation && _internalActive && !_channel) || (_internalActive && _channel))
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_1_rounded.svg]]";
     }
-    else if (internalActive && !_channel)
+    else if (_osLevelStation && _internalActive && !_channel)
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_2_rounded.svg]]";
     }
@@ -250,11 +263,11 @@ class BinManIntFaceplateHome : MtpViewBase
         break;
     }
 
-    if (manualActive && _channel)
+    if ((!_osLevelStation && !_channel && _manualActive) || (_manualActive && _channel))
     {
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]";
     }
-    else if (_manualActive && !_channel)
+    else if (_osLevelStation && _manualActive && !_channel)
     {
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_2_rounded.svg]]";
     }

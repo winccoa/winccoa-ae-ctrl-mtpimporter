@@ -35,14 +35,13 @@ class AnaManIntFaceplateHome : MtpViewBase
     classConnect(this, setWqcCB, MtpViewBase::getViewModel().getWqc(), MtpQualityCode::qualityGoodChanged);
     classConnect(this, setValueFeedbackCB, MtpViewBase::getViewModel(), AnaManInt::valueFeedbackChanged);
     classConnect(this, setValueInternalCB, MtpViewBase::getViewModel(), AnaManInt::valueInternalChanged);
+    classConnect(this, setOsLevelCB, MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osStationLevelChanged);
 
     classConnectUserData(this, setManualActiveCB, "_manualActive", MtpViewBase::getViewModel().getSource(), MtpSource::manualActiveChanged);
     classConnectUserData(this, setManualActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
-    classConnectUserData(this, setManualActiveCB, "_osLevelStation", MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osLevelChanged);
 
     classConnectUserData(this, setInternalActiveCB, "_internalActive", MtpViewBase::getViewModel().getSource(), MtpSource::internalActiveChanged);
     classConnectUserData(this, setInternalActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
-    classConnectUserData(this, setInternalActiveCB, "_osLevelStation", MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osLevelChanged);
 
     _manualActive =  MtpViewBase::getViewModel().getSource().getManualActive();
     _internalActive =  MtpViewBase::getViewModel().getSource().getInternalActive();
@@ -63,6 +62,7 @@ class AnaManIntFaceplateHome : MtpViewBase
 
     setManualActiveCB("_manualActive", _manualActive);
     setInternalActiveCB("_internalActive", _internalActive);
+    setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
 
   public void activateManual()
@@ -90,6 +90,14 @@ class AnaManIntFaceplateHome : MtpViewBase
     _txtFeedbackValue = MtpViewBase::extractShape("_txtFeedbackValue");
 
     _refBarIndicator = MtpViewBase::extractShape("_refBarIndicator").getMtpBarIndicator();
+  }
+
+  private void setOsLevelCB(const bool &oslevel)
+  {
+    _osLevelStation = oslevel;
+
+    setInternalActiveCB("", FALSE);
+    setManualActiveCB("", FALSE);
   }
 
   private void setUnit(shared_ptr<MtpUnit> unit)
@@ -128,17 +136,13 @@ class AnaManIntFaceplateHome : MtpViewBase
       case "_channel":
         _channel = internalActive;
         break;
-
-      case "_osLevelStation":
-        _osLevelStation = internalActive;
-        break;
     }
 
-    if ((!_osLevelStation && internalActive && !_channel) || (internalActive && _channel))
+    if ((!_osLevelStation && _internalActive && !_channel) || (_internalActive && _channel))
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_1_rounded.svg]]";
     }
-    else if (_osLevelStation && internalActive && !_channel)
+    else if (_osLevelStation && _internalActive && !_channel)
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_2_rounded.svg]]";
     }
@@ -161,14 +165,9 @@ class AnaManIntFaceplateHome : MtpViewBase
       case "_channel":
         _channel = manualActive;
         break;
-
-      case "_osLevelStation":
-        _osLevelStation = manualActive;
-        break;
     }
 
-    DebugTN(_osLevelStation);
-    if ((!_osLevelStation && !_channel && manualActive) || (manualActive && _channel))
+    if ((!_osLevelStation && !_channel && _manualActive) || (_manualActive && _channel))
     {
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]";
     }
