@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "classes/MtpOsLevel/MtpOsLevel"
 #uses "classes/BinMon/BinMon"
 #uses "classes/MtpView/MtpViewFaceplateSettings"
 
@@ -28,6 +29,9 @@ class BinMonFaceplateSettings : MtpViewFaceplateSettings
   {
     _txtVFlutTi.text = MtpViewFaceplateSettings::getViewModel().getFlutterTime();
     _txtVFlutCnt.text = MtpViewFaceplateSettings::getViewModel().getFlutterCount();
+
+    classConnect(this, setOsLevelCB, MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osStationLevelChanged);
+    setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
 
   /**
@@ -58,5 +62,19 @@ class BinMonFaceplateSettings : MtpViewFaceplateSettings
   {
     _txtVFlutTi = MtpViewFaceplateSettings::extractShape("_txtVFlutTi");
     _txtVFlutCnt = MtpViewFaceplateSettings::extractShape("_txtVFlutCnt");
+  }
+
+  private void setOsLevelCB(const bool &oslevel)
+  {
+    if (oslevel)
+    {
+      _txtVFlutTi.editable = TRUE;
+      _txtVFlutCnt.editable = TRUE;
+    }
+    else
+    {
+      _txtVFlutTi.editable = FALSE;
+      _txtVFlutCnt.editable = FALSE;
+    }
   }
 };

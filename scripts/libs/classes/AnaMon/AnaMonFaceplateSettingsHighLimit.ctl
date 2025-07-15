@@ -6,6 +6,7 @@
   @author m.woegrath
 */
 
+#uses "classes/MtpOsLevel/MtpOsLevel"
 #uses "classes/AnaMon/AnaMonFaceplateSettings"
 
 /**
@@ -35,6 +36,9 @@ class AnaMonFaceplateSettingsHighLimit : AnaMonFaceplateSettings
     txtAlert.text = AnaMonFaceplateSettings::getViewModel().getAlertHighLimit().getLimit();
     txtWarning.text = AnaMonFaceplateSettings::getViewModel().getWarningHighLimit().getLimit();
     txtTolerance.text = AnaMonFaceplateSettings::getViewModel().getToleranceHighLimit().getLimit();
+
+    classConnect(this, setOsLevelCB, MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osStationLevelChanged);
+    setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
   /**
    * @brief Sets the alert limit for the high limit settings.
@@ -76,5 +80,21 @@ class AnaMonFaceplateSettingsHighLimit : AnaMonFaceplateSettings
   public void switchPage()override
   {
     loadPanel("object_parts/AnaMon/AnaMonFaceplateSettingsLowLimit.xml", "LowLimit");
+  }
+
+  private void setOsLevelCB(const bool &oslevel)
+  {
+    if (oslevel)
+    {
+      txtAlert.editable = TRUE;
+      txtWarning.editable = TRUE;
+      txtTolerance.editable = TRUE;
+    }
+    else
+    {
+      txtAlert.editable = FALSE;
+      txtWarning.editable = FALSE;
+      txtTolerance.editable = FALSE;
+    }
   }
 };
