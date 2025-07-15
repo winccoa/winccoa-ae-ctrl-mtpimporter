@@ -272,19 +272,19 @@ class MonBinVlvFaceplateHome : MtpViewBase
     }
     else if (_stateOperatorActive && !_closeCheckbackSignal && _openCheckbackSignal && _osLevelStation)
     {
-      _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen3_rounded.svg]]";
+      _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen2_rounded.svg]]";
     }
     else if ((_stateAutomaticActive && _valveControl && !_openCheckbackSignal) || (_stateOperatorActive && _valveControl && !_openCheckbackSignal && !_osLevelStation))
     {
-      _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen4_rounded.svg]]";
+      _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen3_rounded.svg]]";
     }
     else if (_stateOperatorActive && _valveControl && !_openCheckbackSignal && _osLevelStation)
     {
-      _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen5_rounded.svg]]";
+      _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen4_rounded.svg]]";
     }
     else
     {
-      _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen2_rounded.svg]]";
+      _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen5_rounded.svg]]";
     }
 
     _rectValveOpen.transparentForMouse = (_rectValveOpen.fill == "[pattern,[fit,any,MTP_Icones/ValveOpen1_rounded.svg]]");
@@ -321,19 +321,19 @@ class MonBinVlvFaceplateHome : MtpViewBase
     }
     else if (_stateOperatorActive && _closeCheckbackSignal && !_openCheckbackSignal && _osLevelStation)
     {
-      _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose3_rounded.svg]]";
+      _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose2_rounded.svg]]";
     }
     else if ((_stateAutomaticActive && !_valveControl && !_closeCheckbackSignal) || (_stateOperatorActive && !_valveControl && !_closeCheckbackSignal && !_osLevelStation))
     {
-      _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose2_rounded.svg]]";
+      _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose3_rounded.svg]]";
     }
     else if (_stateOperatorActive && !_valveControl && !_closeCheckbackSignal && _osLevelStation)
     {
-      _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose5_rounded.svg]]";
+      _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose4_rounded.svg]]";
     }
     else
     {
-      _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose2_rounded.svg]]";
+      _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose5_rounded.svg]]";
     }
 
     _rectValveClose.transparentForMouse = (_rectValveClose.fill == "[pattern,[fit,any,MTP_Icones/ValveClose1_rounded.svg]]");

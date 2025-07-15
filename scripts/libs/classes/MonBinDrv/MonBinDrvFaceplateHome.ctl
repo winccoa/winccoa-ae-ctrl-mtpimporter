@@ -733,26 +733,26 @@ class MonBinDrvFaceplateHome : MtpViewBase
 
     if ((_stateAutomaticActive && !_reverseFeedbackSignal && !_forwardFeedbackSignal) || (_stateOperatorActive && !_reverseFeedbackSignal && !_forwardFeedbackSignal && !_osLevelStation))
     {
-      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_1.svg]]";
+      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_1_rounded.svg]]";
     }
     else if (_stateOperatorActive && !_reverseFeedbackSignal && !_forwardFeedbackSignal && _osLevelStation)
     {
-      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_2.svg]]";
+      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_2_rounded.svg]]";
     }
     else if ((_stateAutomaticActive && !_reverseControl && !_forwardControl) || (_stateOperatorActive && !_reverseControl && !_forwardControl && !_osLevelStation))
     {
-      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_3.svg]]";
+      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_3_rounded.svg]]";
     }
     else if (_stateOperatorActive && !_reverseControl && !_forwardControl && _osLevelStation)
     {
-      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_4.svg]]";
+      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_4_rounded.svg]]";
     }
     else
     {
-      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_5.svg]]";
+      _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_5_rounded.svg]]";
     }
 
-    _rectStop.transparentForMouse = (_rectStop.fill == "[pattern,[fit,any,MTP_Icones/stop_1.svg]]");
+    _rectStop.transparentForMouse = (_rectStop.fill == "[pattern,[fit,any,MTP_Icones/stop_1_rounded.svg]]");
   }
 
   private void setForwardCB(const string &varName, const bool &state)

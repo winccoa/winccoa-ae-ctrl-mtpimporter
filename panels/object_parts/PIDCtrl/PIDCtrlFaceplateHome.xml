@@ -435,7 +435,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Operator_2_rounded.svg]]</prop>
-    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 64.20119971064837 -81.87106668037285</prop>
+    <prop name="Geometry">1.223240952932098 0 0 1.71123903508772 60.45539137128689 -81.87106668037285</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>
@@ -470,7 +470,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/automatic_3_rounded.svg]]</prop>
-    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 112.7314122106484 -81.87106668037285</prop>
+    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 115.7314122106484 -81.87106668037285</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>

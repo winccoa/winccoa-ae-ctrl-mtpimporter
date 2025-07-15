@@ -260,7 +260,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/Manual_1_2_rounded.svg]]</prop>
-    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 -1.817527222027181 142.4716186951754</prop>
+    <prop name="Geometry">1.223240952932098 0 0 1.71123903508772 -6.563725705819397 142.4716186951754</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>
@@ -295,7 +295,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/internal_1_rounded.svg]]</prop>
-    <prop name="Geometry">1.222731481481481 0 0 1.71123903508772 -6.959113101656882 210.6397354714912</prop>
+    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 -2.319930839623741 210.6397354714912</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>

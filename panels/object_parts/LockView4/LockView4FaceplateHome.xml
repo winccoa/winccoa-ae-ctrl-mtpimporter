@@ -264,7 +264,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok_2.svg]]</prop>
-    <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 -143.5138545953361 76.85887896825392</prop>
+    <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 -143.5138545953361 75.85887896825392</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183.5 79.14615384615388</prop>
     <prop name="Size">27.5 16.85384615384612</prop>
@@ -276,7 +276,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
    <properties>
     <prop name="serialId">6</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">108 74.83482142857142</prop>
+    <prop name="RefPoint">108 73.83482142857142</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -293,7 +293,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">108 74.83482142857142</prop>
+    <prop name="Location">108 73.83482142857142</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -312,7 +312,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
    <properties>
     <prop name="serialId">7</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">108.5 118.3214285714286</prop>
+    <prop name="RefPoint">108.5 117.3214285714286</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -329,7 +329,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">108.5 118.3214285714286</prop>
+    <prop name="Location">108.5 117.3214285714286</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -348,7 +348,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
    <properties>
     <prop name="serialId">8</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">108 159.8348214285714</prop>
+    <prop name="RefPoint">108 158.8348214285714</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -365,7 +365,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">108 159.8348214285714</prop>
+    <prop name="Location">108 158.8348214285714</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -384,7 +384,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
    <properties>
     <prop name="serialId">9</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">108 205.8348214285714</prop>
+    <prop name="RefPoint">108 204.8348214285714</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -401,7 +401,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">108 205.8348214285714</prop>
+    <prop name="Location">108 204.8348214285714</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -737,7 +737,7 @@ public void initialize(shared_ptr&lt;LockView4&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[solid]</prop>
-    <prop name="Geometry">1 0 0 1 80.5 61.5</prop>
+    <prop name="Geometry">1 0 0 1 80.5 62.5</prop>
     <prop name="Center">252.5 87.5</prop>
     <prop name="X-Radius">12.5</prop>
     <prop name="Y-Radius">12.5</prop>

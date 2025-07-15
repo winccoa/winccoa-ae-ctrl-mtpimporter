@@ -134,7 +134,7 @@ public void initialize(shared_ptr&lt;MonBinDrv&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[solid]</prop>
-    <prop name="Geometry">0.3365319511459092 0.8287964619697168 -0.4150833124841279 0.1651423187416794 320.5316024573832 -228.886114645169</prop>
+    <prop name="Geometry">0.3351129675574118 0.7188843219506869 -0.4133331178703073 0.1432417116644427 320.6944479237259 -179.7771606275136</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">339 196</prop>
     <prop name="Size">18.51124844030795 258.1399392594943</prop>
@@ -653,7 +653,7 @@ position</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/Power_1_rounded.svg]]</prop>
-    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 12.92098721064833 -80.87106668037291</prop>
+    <prop name="Geometry">1.223240952932098 0 0 1.71123903508772 8.169341110870185 -80.87106668037291</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>
@@ -688,7 +688,7 @@ position</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Operator_2_rounded.svg]]</prop>
-    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 61.45119971064834 -80.87106668037291</prop>
+    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 64.45119971064834 -80.87106668037291</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>
@@ -723,7 +723,7 @@ position</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/automatic_3_rounded.svg]]</prop>
-    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 109.9814122106484 -80.87106668037291</prop>
+    <prop name="Geometry">1.223240952932098 0 0 1.71123903508772 109.2310249650369 -80.87106668037291</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>
@@ -758,7 +758,7 @@ position</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/revers_5_rounded.svg]]</prop>
-    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 12.92098721064833 -17.89912280701762</prop>
+    <prop name="Geometry">1.223240952932098 0 0 1.71123903508772 8.169341110870185 -17.89912280701762</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>
@@ -792,8 +792,8 @@ position</prop>
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/stop_2.svg]]</prop>
-    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 61.45119971064834 -17.89912280701762</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/stop_2_rounded.svg]]</prop>
+    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 64.45119971064834 -17.89912280701762</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>
@@ -827,8 +827,8 @@ position</prop>
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/reset_1.svg]]</prop>
-    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 12.92098721064833 46.55776041666655</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/reset_1.svg]]</prop>
+    <prop name="Geometry">1.223240952932098 0 0 1.677014254385966 8.169341110870185 49.28660520833322</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>
@@ -1098,7 +1098,7 @@ position</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/forward_5_rounded.svg]]</prop>
-    <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 109.9814122106483 -17.89912280701762</prop>
+    <prop name="Geometry">1.223240952932098 0 0 1.71123903508772 109.2310249650368 -17.89912280701762</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>
