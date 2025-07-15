@@ -41,6 +41,7 @@ class PIDCtrlFaceplateHome : MtpViewBase
 
   private bool _stateOffActive;
   private bool _stateChannel;
+  private bool _osLevelStation;
 
   public PIDCtrlFaceplateHome(shared_ptr<PIDCtrl> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
@@ -49,6 +50,7 @@ class PIDCtrlFaceplateHome : MtpViewBase
     classConnect(this, setManipulatedValueCB, MtpViewBase::getViewModel(), PIDCtrl::manipulatedValueChanged);
     classConnect(this, setWqcCB, MtpViewBase::getViewModel().getWqc(), MtpQualityCode::qualityGoodChanged);
     classConnect(this, setSetpointInternalCB, MtpViewBase::getViewModel(), PIDCtrl::setpointInternalChanged);
+    classConnect(this, setOsLevelCB, MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osStationLevelChanged);
 
     classConnectUserData(this, setStateCB, "_stateAutomaticActive", MtpViewBase::getViewModel().getState(), MtpState::automaticActiveChanged);
     classConnectUserData(this, setStateCB, "_stateOperatorActive", MtpViewBase::getViewModel().getState(), MtpState::operatorActiveChanged);
@@ -89,6 +91,7 @@ class PIDCtrlFaceplateHome : MtpViewBase
     setStateOffActiveCB("_stateOffActive", _stateOffActive);
     setOperatorActiveCB("_stateOperatorActive", _stateOperatorActive);
     setAutomaticActiveCB("_stateAutomaticActive", _stateAutomaticActive);
+    setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
 
   public void setProcessValue(const float &value)
@@ -156,6 +159,17 @@ class PIDCtrlFaceplateHome : MtpViewBase
     _txtSPManual = MtpViewBase::extractShape("_txtSPManual");
   }
 
+  private void setOsLevelCB(const bool &oslevel)
+  {
+    _osLevelStation = oslevel;
+
+    setStateOffActiveCB("", FALSE);
+    setOperatorActiveCB("", FALSE);
+    setAutomaticActiveCB("", FALSE);
+    setInternalActiveCB("", FALSE);
+    setManualActiveCB("", FALSE);
+  }
+
   private void setWqcCB(const bool &qualityGoodChanged)
   {
     _refWqc.setStatus(qualityGoodChanged);
@@ -199,11 +213,11 @@ class PIDCtrlFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateAutomaticActive && _stateChannel)
+    if ((_stateAutomaticActive && _stateChannel) || (!_stateChannel && _stateAutomaticActive && !_osLevelStation))
     {
       _rectAutomatic.fill = "[pattern,[fit,any,MTP_Icones/automatic_1_rounded.svg]]";
     }
-    else if (_stateAutomaticActive && !_stateChannel)
+    else if (_stateAutomaticActive && !_stateChannel && _osLevelStation)
     {
       _rectAutomatic.fill = "[pattern,[fit,any,MTP_Icones/automatic_2_rounded.svg]]";
     }
@@ -229,11 +243,11 @@ class PIDCtrlFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateOperatorActive && _stateChannel)
+    if ((_stateOperatorActive && _stateChannel) || (!_stateChannel && _stateOperatorActive && !_osLevelStation))
     {
       _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/operator_1.svg]]";
     }
-    else if (_stateOperatorActive && !_stateChannel)
+    else if (_stateOperatorActive && !_stateChannel && _osLevelStation)
     {
       _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/operator_2.svg]]";
     }
@@ -258,11 +272,11 @@ class PIDCtrlFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateOffActive && _stateChannel)
+    if ((_stateOffActive && _stateChannel) || (!_stateChannel && _stateOffActive && !_osLevelStation))
     {
       _rectOff.fill = "[pattern,[fit,any,MTP_Icones/Power_2_rounded.svg]]";
     }
-    else if (_stateOffActive && !_stateChannel)
+    else if (_stateOffActive && !_stateChannel && _osLevelStation)
     {
       _rectOff.fill = "[pattern,[fit,any,MTP_Icones/Power_3_rounded.svg]]";
     }
@@ -288,11 +302,11 @@ class PIDCtrlFaceplateHome : MtpViewBase
         break;
     }
 
-    if (internalActive && _channel)
+    if ((_internalActive && _channel) || (!_osLevelStation && !_channel && _internalActive))
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_1_rounded.svg]]";
     }
-    else if (internalActive && !_channel)
+    else if (_internalActive && !_channel && _osLevelStation)
     {
       _rectInternal.fill = "[pattern,[fit,any,MTP_Icones/internal_2_rounded.svg]]";
     }
@@ -317,11 +331,11 @@ class PIDCtrlFaceplateHome : MtpViewBase
         break;
     }
 
-    if (manualActive && _channel)
+    if ((_manualActive && _channel) || (!_osLevelStation && !_channel && _manualActive))
     {
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]";
     }
-    else if (_manualActive && !_channel)
+    else if (_manualActive && !_channel && _osLevelStation)
     {
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_2_rounded.svg]]";
     }
