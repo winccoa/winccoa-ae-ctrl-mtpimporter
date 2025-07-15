@@ -6,6 +6,8 @@
   @author d.schermann
 */
 
+#uses "classes/MtpQualityCode/MtpQualityCode"
+#uses "classes/MtpOsLevel/MtpOsLevel"
 #uses "classes/MtpSecurity/MtpSecurity"
 #uses "classes/MtpState/MtpState"
 #uses "classes/MtpMonitor/MtpMonitor"
@@ -63,6 +65,7 @@ class MonBinVlvFaceplateHome : MtpViewBase
   private bool _stateOffActive;
   private bool _stateChannel;
   private bool _stateOperatorActive;
+  private bool _osLevelStation;
 
   public MonBinVlvFaceplateHome(shared_ptr<MonBinVlv> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
@@ -76,6 +79,7 @@ class MonBinVlvFaceplateHome : MtpViewBase
     classConnectUserData(this, setErrorCB, "_dynamicError", MtpViewBase::getViewModel().getMonitor(), MtpMonitor::dynamicErrorChanged);
 
     classConnect(this, setWqcCB, MtpViewBase::getViewModel().getWqc(), MtpQualityCode::qualityGoodChanged);
+    classConnect(this, setOsLevelCB, MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osStationLevelChanged);
     classConnectUserData(this, setSafetyPositionActiveCB, "_safetypositionActive", MtpViewBase::getViewModel(), MonBinVlv::safetyPositionActiveChanged);
     classConnectUserData(this, setSafetyPositionActiveCB, "_safetypositionEnabled", MtpViewBase::getViewModel(), MonBinVlv::safetyPositionEnabledChanged);
 
@@ -154,6 +158,7 @@ class MonBinVlvFaceplateHome : MtpViewBase
     setResetCB("_stateOperatorActive", _stateOperatorActive);
     setValveCloseCB("_stateAutomaticActive", _stateAutomaticActive);
     setValveOpenCB("_stateAutomaticActive", _stateAutomaticActive);
+    setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
 
   public void activateStateOff()
@@ -224,6 +229,18 @@ class MonBinVlvFaceplateHome : MtpViewBase
     _txtSafetyPosition = MtpViewBase::extractShape("_txtSafetyPosition");
   }
 
+  private void setOsLevelCB(const bool &oslevel)
+  {
+    _osLevelStation = oslevel;
+
+    setStateOffActiveCB("", FALSE);
+    setOperatorActiveCB("", FALSE);
+    setAutomaticActiveCB("", FALSE);
+    setValveOpenCB("", FALSE);
+    setValveCloseCB("", FALSE);
+    setResetCB("", FALSE);
+  }
+
   private void setValveOpenCB(const string &varName, const bool &open)
   {
     switch (varName)
@@ -249,19 +266,19 @@ class MonBinVlvFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateAutomaticActive && !_closeCheckbackSignal && _openCheckbackSignal)
+    if ((_stateAutomaticActive && !_closeCheckbackSignal && _openCheckbackSignal) || (_stateOperatorActive && _openCheckbackSignal && !_closeCheckbackSignal && !_osLevelStation))
     {
       _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen1_rounded.svg]]";
     }
-    else if (_stateOperatorActive && !_closeCheckbackSignal && _openCheckbackSignal)
+    else if (_stateOperatorActive && !_closeCheckbackSignal && _openCheckbackSignal && _osLevelStation)
     {
       _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen3_rounded.svg]]";
     }
-    else if (_stateAutomaticActive && _valveControl && !_openCheckbackSignal)
+    else if ((_stateAutomaticActive && _valveControl && !_openCheckbackSignal) || (_stateOperatorActive && _valveControl && !_openCheckbackSignal && !_osLevelStation))
     {
       _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen4_rounded.svg]]";
     }
-    else if (_stateOperatorActive && _valveControl && !_openCheckbackSignal)
+    else if (_stateOperatorActive && _valveControl && !_openCheckbackSignal && _osLevelStation)
     {
       _rectValveOpen.fill = "[pattern,[fit,any,MTP_Icones/ValveOpen5_rounded.svg]]";
     }
@@ -298,19 +315,19 @@ class MonBinVlvFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateAutomaticActive && _closeCheckbackSignal && !_openCheckbackSignal)
+    if ((_stateAutomaticActive && _closeCheckbackSignal && !_openCheckbackSignal) || (_stateOperatorActive && _closeCheckbackSignal && !_openCheckbackSignal && !_osLevelStation))
     {
       _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose1_rounded.svg]]";
     }
-    else if (_stateOperatorActive && _closeCheckbackSignal && !_openCheckbackSignal)
+    else if (_stateOperatorActive && _closeCheckbackSignal && !_openCheckbackSignal && _osLevelStation)
     {
       _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose3_rounded.svg]]";
     }
-    else if ((_stateAutomaticActive && !_valveControl && !_closeCheckbackSignal))
+    else if ((_stateAutomaticActive && !_valveControl && !_closeCheckbackSignal) || (_stateOperatorActive && !_valveControl && !_closeCheckbackSignal && !_osLevelStation))
     {
       _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose2_rounded.svg]]";
     }
-    else if ((_stateOperatorActive && !_valveControl && !_closeCheckbackSignal))
+    else if (_stateOperatorActive && !_valveControl && !_closeCheckbackSignal && _osLevelStation)
     {
       _rectValveClose.fill = "[pattern,[fit,any,MTP_Icones/ValveClose5_rounded.svg]]";
     }
@@ -347,7 +364,7 @@ class MonBinVlvFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateOperatorActive && ((_protectionEnabled && !_protection) || _staticError || _dynamicError))
+    if (_stateOperatorActive && _osLevelStation && ((_protectionEnabled && !_protection) || _staticError || _dynamicError))
     {
       _rectReset.fill = "[pattern,[fit,any,MTP_Icones/reset_2.svg]]";
     }
@@ -377,11 +394,11 @@ class MonBinVlvFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateAutomaticActive && _stateChannel)
+    if ((_stateAutomaticActive && _stateChannel) || (!_stateChannel && _stateAutomaticActive && !_osLevelStation))
     {
       _rectAutomatic.fill = "[pattern,[fit,any,MTP_Icones/automatic_1_rounded.svg]]";
     }
-    else if (_stateAutomaticActive && !_stateChannel)
+    else if (_stateAutomaticActive && !_stateChannel && _osLevelStation)
     {
       _rectAutomatic.fill = "[pattern,[fit,any,MTP_Icones/automatic_2_rounded.svg]]";
     }
@@ -407,11 +424,11 @@ class MonBinVlvFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateOperatorActive && _stateChannel)
+    if ((_stateOperatorActive && _stateChannel) || (!_stateChannel && _stateOperatorActive && !_osLevelStation))
     {
       _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/operator_1.svg]]";
     }
-    else if (_stateOperatorActive && !_stateChannel)
+    else if (_stateOperatorActive && !_stateChannel && _osLevelStation)
     {
       _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/operator_2.svg]]";
     }
@@ -436,11 +453,11 @@ class MonBinVlvFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateOffActive && _stateChannel)
+    if ((_stateOffActive && _stateChannel) || (!_stateChannel && _stateOffActive && !_osLevelStation))
     {
       _rectOff.fill = "[pattern,[fit,any,MTP_Icones/Power_2_rounded.svg]]";
     }
-    else if (_stateOffActive && !_stateChannel)
+    else if (_stateOffActive && !_stateChannel && _osLevelStation)
     {
       _rectOff.fill = "[pattern,[fit,any,MTP_Icones/Power_3_rounded.svg]]";
     }
