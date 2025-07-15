@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "classes/MtpOsLevel/MtpOsLevel"
 #uses "classes/MtpSecurity/MtpSecurity"
 #uses "classes/MtpState/MtpState"
 #uses "classes/MtpQualityCode/MtpQualityCode"
@@ -65,6 +66,7 @@ class MonBinDrvFaceplateHome : MtpViewBase
   private bool _stateChannel;
   private bool _stateOperatorActive;
   private bool _driveSafetyIndicator;
+  private bool _osLevelStation;
 
   public MonBinDrvFaceplateHome(shared_ptr<MonBinDrv> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
@@ -76,6 +78,7 @@ class MonBinDrvFaceplateHome : MtpViewBase
     classConnectUserData(this, setMotorCB, "_dynamicError", MtpViewBase::getViewModel().getMonitor(), MtpMonitor::dynamicErrorChanged);
 
     classConnect(this, setWqcCB, MtpViewBase::getViewModel().getWqc(), MtpQualityCode::qualityGoodChanged);
+    classConnect(this, setOsLevelCB, MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osStationLevelChanged);
     classConnectUserData(this, setErrorCB, "_staticError", MtpViewBase::getViewModel().getMonitor(), MtpMonitor::staticErrorChanged);
     classConnectUserData(this, setErrorCB, "_dynamicError", MtpViewBase::getViewModel().getMonitor(), MtpMonitor::dynamicErrorChanged);
 
@@ -169,6 +172,7 @@ class MonBinDrvFaceplateHome : MtpViewBase
     setReverseCB("_stateOperatorActive", _stateOperatorActive);
     setStopCB("_stateOperatorActive", _stateOperatorActive);
     setForwardCB("_stateOperatorActive", _stateOperatorActive);
+    setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
 
   public void activateStateOff()
@@ -246,6 +250,19 @@ class MonBinDrvFaceplateHome : MtpViewBase
     _txtSafetyPosition = MtpViewBase::extractShape("_txtSafetyPosition");
   }
 
+  private void setOsLevelCB(const bool &oslevel)
+  {
+    _osLevelStation = oslevel;
+
+    setStateOffActiveCB("", FALSE);
+    setOperatorActiveCB("", FALSE);
+    setAutomaticActiveCB("", FALSE);
+    setReverseCB("", FALSE);
+    setStopCB("", FALSE);
+    setForwardCB("", FALSE);
+    setResetCB("", FALSE);
+  }
+
   private void setResetCB(const string &varName, const bool &reset)
   {
     switch (varName)
@@ -275,7 +292,7 @@ class MonBinDrvFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateOperatorActive && ((_protectionEnabled && !_protection) || _staticError || _dynamicError || !_driveSafetyIndicator))
+    if (_stateOperatorActive && _osLevelStation && ((_protectionEnabled && !_protection) || _staticError || _dynamicError || !_driveSafetyIndicator))
     {
       _rectReset.fill = "[pattern,[fit,any,MTP_Icones/reset_2.svg]]";
     }
@@ -300,11 +317,11 @@ class MonBinDrvFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateAutomaticActive && _stateChannel)
+    if ((_stateAutomaticActive && _stateChannel) || (!_stateChannel && _stateAutomaticActive && !_osLevelStation))
     {
       _rectAutomatic.fill = "[pattern,[fit,any,MTP_Icones/automatic_1_rounded.svg]]";
     }
-    else if (_stateAutomaticActive && !_stateChannel)
+    else if (_stateAutomaticActive && !_stateChannel && _osLevelStation)
     {
       _rectAutomatic.fill = "[pattern,[fit,any,MTP_Icones/automatic_2_rounded.svg]]";
     }
@@ -330,11 +347,11 @@ class MonBinDrvFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateOperatorActive && _stateChannel)
+    if ((_stateOperatorActive && _stateChannel) || (!_stateChannel && _stateOperatorActive && !_osLevelStation))
     {
       _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/operator_1.svg]]";
     }
-    else if (_stateOperatorActive && !_stateChannel)
+    else if (_stateOperatorActive && !_stateChannel && _osLevelStation)
     {
       _rectOperator.fill = "[pattern,[fit,any,MTP_Icones/operator_2.svg]]";
     }
@@ -359,11 +376,11 @@ class MonBinDrvFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateOffActive && _stateChannel)
+    if ((_stateOffActive && _stateChannel) || (!_stateChannel && _stateOffActive && !_osLevelStation))
     {
       _rectOff.fill = "[pattern,[fit,any,MTP_Icones/Power_2_rounded.svg]]";
     }
-    else if (_stateOffActive && !_stateChannel)
+    else if (_stateOffActive && !_stateChannel && _osLevelStation)
     {
       _rectOff.fill = "[pattern,[fit,any,MTP_Icones/Power_3_rounded.svg]]";
     }
@@ -661,19 +678,19 @@ class MonBinDrvFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateAutomaticActive && _reverseFeedbackSignal && !_forwardFeedbackSignal)
+    if ((_stateAutomaticActive && _reverseFeedbackSignal && !_forwardFeedbackSignal) || (_stateOperatorActive && _reverseFeedbackSignal && !_forwardFeedbackSignal && !_osLevelStation))
     {
       _rectReverse.fill = "[pattern,[fit,any,MTP_Icones/revers_1_rounded.svg]]";
     }
-    else if (_stateOperatorActive && _reverseFeedbackSignal && !_forwardFeedbackSignal)
+    else if (_stateOperatorActive && _reverseFeedbackSignal && !_forwardFeedbackSignal && _osLevelStation)
     {
       _rectReverse.fill = "[pattern,[fit,any,MTP_Icones/revers_2_rounded.svg]]";
     }
-    else if (_stateAutomaticActive && _reverseControl && !_reverseFeedbackSignal)
+    else if ((_stateAutomaticActive && _reverseControl && !_reverseFeedbackSignal) || (_stateOperatorActive && _reverseControl && !_reverseFeedbackSignal && !_osLevelStation))
     {
       _rectReverse.fill = "[pattern,[fit,any,MTP_Icones/revers_3_rounded.svg]]";
     }
-    else if (_stateOperatorActive && _reverseControl && !_reverseFeedbackSignal)
+    else if (_stateOperatorActive && _reverseControl && !_reverseFeedbackSignal && _osLevelStation)
     {
       _rectReverse.fill = "[pattern,[fit,any,MTP_Icones/revers_4_rounded.svg]]";
     }
@@ -714,19 +731,19 @@ class MonBinDrvFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateAutomaticActive && !_reverseFeedbackSignal && !_forwardFeedbackSignal)
+    if ((_stateAutomaticActive && !_reverseFeedbackSignal && !_forwardFeedbackSignal) || (_stateOperatorActive && !_reverseFeedbackSignal && !_forwardFeedbackSignal && !_osLevelStation))
     {
       _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_1.svg]]";
     }
-    else if (_stateOperatorActive && !_reverseFeedbackSignal && !_forwardFeedbackSignal)
+    else if (_stateOperatorActive && !_reverseFeedbackSignal && !_forwardFeedbackSignal && _osLevelStation)
     {
       _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_2.svg]]";
     }
-    else if (_stateAutomaticActive && !_reverseControl && !_forwardControl)
+    else if ((_stateAutomaticActive && !_reverseControl && !_forwardControl) || (_stateOperatorActive && !_reverseControl && !_forwardControl && !_osLevelStation))
     {
       _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_3.svg]]";
     }
-    else if (_stateOperatorActive && !_reverseControl && !_forwardControl)
+    else if (_stateOperatorActive && !_reverseControl && !_forwardControl && _osLevelStation)
     {
       _rectStop.fill = "[pattern,[fit,any,MTP_Icones/stop_4.svg]]";
     }
@@ -763,19 +780,19 @@ class MonBinDrvFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateAutomaticActive && !_reverseFeedbackSignal && _forwardFeedbackSignal)
+    if ((_stateAutomaticActive && !_reverseFeedbackSignal && _forwardFeedbackSignal) || (_stateOperatorActive && _forwardFeedbackSignal && !_osLevelStation))
     {
       _rectForward.fill = "[pattern,[fit,any,MTP_Icones/forward_1_rounded.svg]]";
     }
-    else if (_stateOperatorActive && !_reverseFeedbackSignal && _forwardFeedbackSignal)
+    else if (_stateOperatorActive && !_reverseFeedbackSignal && _forwardFeedbackSignal && _osLevelStation)
     {
       _rectForward.fill = "[pattern,[fit,any,MTP_Icones/forward_2_rounded.svg]]";
     }
-    else if (_stateAutomaticActive && _forwardControl && !_forwardFeedbackSignal)
+    else if ((_stateAutomaticActive && _forwardControl && !_forwardFeedbackSignal) || (_stateOperatorActive && _forwardControl && !_forwardFeedbackSignal && !_osLevelStation))
     {
       _rectForward.fill = "[pattern,[fit,any,MTP_Icones/forward_3_rounded.svg]]";
     }
-    else if (_stateOperatorActive && _forwardControl && !_forwardFeedbackSignal)
+    else if (_stateOperatorActive && _forwardControl && !_forwardFeedbackSignal && _osLevelStation)
     {
       _rectForward.fill = "[pattern,[fit,any,MTP_Icones/forward_4_rounded.svg]]";
     }
