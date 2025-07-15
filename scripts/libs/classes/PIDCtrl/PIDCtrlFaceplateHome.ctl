@@ -107,7 +107,7 @@ class PIDCtrlFaceplateHome : MtpViewBase
 
   public void setManipulatedValue(const float &value)
   {
-    MtpViewBase::getViewModel().setManipulatedValue(value);
+    MtpViewBase::getViewModel().setManipulatedValueManual(value);
   }
 
   public void setSetpointManual(const float &setpointManual)
@@ -188,7 +188,10 @@ class PIDCtrlFaceplateHome : MtpViewBase
 
   private void setManipulatedValueCB(const float &value)
   {
-    _txtMV.text = value;
+    if (_stateAutomaticActive)
+    {
+      _txtMV.text = value;
+    }
   }
 
   private void setSetpointInternalCB(const float &value)
@@ -361,15 +364,15 @@ class PIDCtrlFaceplateHome : MtpViewBase
         break;
     }
 
-    if (_stateAutomaticActive)
-    {
-      _txtMV.editable = FALSE;
-      return;
-    }
-    else if (_stateOperatorActive)
+    if (_stateOperatorActive)
     {
       _txtMV.editable = TRUE;
-      return;
+      _txtMV.text = MtpViewBase::getViewModel().getManipulatedValueManual();
+    }
+    else
+    {
+      _txtMV.editable = FALSE;
+      _txtMV.text = MtpViewBase::getViewModel().getManipulatedValue();
     }
   }
 };
