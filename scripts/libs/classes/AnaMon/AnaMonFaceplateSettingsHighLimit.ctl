@@ -6,6 +6,8 @@
   @author m.woegrath
 */
 
+#uses "classes/MtpValueLimit/MtpValueLimitFloat"
+#uses "classes/AnaMon/AnaMon"
 #uses "classes/MtpOsLevel/MtpOsLevel"
 #uses "classes/AnaMon/AnaMonFaceplateSettings"
 
@@ -38,6 +40,7 @@ class AnaMonFaceplateSettingsHighLimit : AnaMonFaceplateSettings
     txtTolerance.text = AnaMonFaceplateSettings::getViewModel().getToleranceHighLimit().getLimit();
 
     classConnect(this, setOsLevelCB, MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osStationLevelChanged);
+    setValueLimitsEnabled(MtpViewBase::getViewModel().getAlertHighLimit(), MtpViewBase::getViewModel().getWarningHighLimit(), MtpViewBase::getViewModel().getToleranceHighLimit());
     setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
   /**
@@ -95,6 +98,36 @@ class AnaMonFaceplateSettingsHighLimit : AnaMonFaceplateSettings
       txtAlert.editable = FALSE;
       txtWarning.editable = FALSE;
       txtTolerance.editable = FALSE;
+    }
+  }
+
+  private void setValueLimitsEnabled(shared_ptr<MtpValueLimitFloat> alarmHigh, shared_ptr<MtpValueLimitFloat> warningHigh, shared_ptr<MtpValueLimitFloat> toleranceHigh)
+  {
+    if (alarmHigh.getEnabled())
+    {
+      txtAlert.visible = TRUE;
+    }
+    else
+    {
+      txtAlert.visible = FALSE;
+    }
+
+    if (warningHigh.getEnabled())
+    {
+      txtWarning.visible = TRUE;
+    }
+    else
+    {
+      txtWarning.visible = FALSE;
+    }
+
+    if (toleranceHigh.getEnabled())
+    {
+      txtTolerance.visible = TRUE;
+    }
+    else
+    {
+      txtTolerance.visible = FALSE;
     }
   }
 };
