@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "classes/MtpOsLevel/MtpOsLevel"
 #uses "classes/MtpSource/MtpSource"
 #uses "classes/MtpMonitor/MtpMonitor"
 #uses "classes/MtpQualityCode/MtpQualityCode"
