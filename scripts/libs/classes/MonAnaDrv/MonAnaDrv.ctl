@@ -257,7 +257,6 @@ class MonAnaDrv : MtpViewModelBase
           getDp() + ".RpmSclMax", _rpmScaleMax,
           getDp() + ".RpmMin", _rpmMin,
           getDp() + ".RpmMax", _rpmMax,
-          getDp() + ".RpmMan", _rpmManual,
           getDp() + ".RpmFbkCalc", _rpmFeedbackSource,
           getDp() + ".RpmAHEn", _rpmAlarmHighEnabled,
           getDp() + ".RpmALEn", _rpmAlarmLowEnabled,
@@ -282,6 +281,7 @@ class MonAnaDrv : MtpViewModelBase
     dpConnect(this, setSafetyPositionCB, getDp() + ".SafePos");
     dpConnect(this, setResetAutomaticCB, getDp() + ".ResetAut");
     dpConnect(this, setRpmInternalCB, getDp() + ".RpmInt");
+    dpConnect(this, setRpmManualCB, getDp() + ".RpmMan");
 
     _wqc = new MtpQualityCode(getDp() + ".WQC");
     _osLevel = new MtpOsLevel(getDp() + ".OSLevel");
@@ -299,6 +299,7 @@ class MonAnaDrv : MtpViewModelBase
 #event rpmFeedbackSignalChanged(const float &rpmFeedbackSignal)
 #event rpmChanged(const float &rpm)
 #event rpmInternalChanged(const float &rpmInternal)
+#event rpmManualChanged(const float &rpmManual)
 #event driveSafetyIndicatorChanged(const bool &driveSafetyIndicator)
 #event rpmAlarmHighActiveChanged(const bool &enabled)
 #event rpmAlarmLowActiveChanged(const bool &enabled)
@@ -667,5 +668,11 @@ class MonAnaDrv : MtpViewModelBase
   {
     _rpmInternal = rpmInternal;
     rpmInternalChanged(_rpmInternal);
+  }
+
+    private void setRpmManualCB(const string &dpe, const float &rpmManual)
+  {
+    _rpmManual = rpmManual;
+    rpmManualChanged(_rpmManual);
   }
 };

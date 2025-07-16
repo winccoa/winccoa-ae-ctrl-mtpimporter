@@ -48,6 +48,9 @@ class MonAnaDrvFaceplateHome : MtpViewBase
   private bool _stateChannel;
   private bool _stateOperatorActive;
   private bool _stateAutomaticActive;
+  private bool _forwardAutomatic;
+  private bool _stopAutomatic;
+  private bool _reverseAutomatic;
 
   private bool _forwardFeedbackSignal;
   private bool _reverseFeedbackSignal;
@@ -74,7 +77,7 @@ class MonAnaDrvFaceplateHome : MtpViewBase
 
   public MonAnaDrvFaceplateHome(shared_ptr<MonAnaDrv> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
-    classConnect(_refBarIndicator, MtpBarIndicator::setValueCustomLimit, MtpViewBase::getViewModel(), MonAnaDrv::rpmChanged);
+    classConnect(_refBarIndicator, MtpBarIndicator::setValueCustomLimit, MtpViewBase::getViewModel(), MonAnaDrv::rpmFeedbackSignalChanged);
     classConnectUserData(this, setErrorCB, "_staticError", MtpViewBase::getViewModel().getMonitor(), MtpMonitor::staticErrorChanged);
     classConnectUserData(this, setErrorCB, "_dynamicError", MtpViewBase::getViewModel().getMonitor(), MtpMonitor::dynamicErrorChanged);
     classConnect(this, setSafetyPositionActiveCB, MtpViewBase::getViewModel(), MonAnaDrv::safetyPositionActiveChanged);
@@ -97,6 +100,12 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     classConnectUserData(this, setMotorCB, "_reverseControl", MtpViewBase::getViewModel(), MonAnaDrv::reverseControlChanged);
     classConnectUserData(this, setMotorCB, "_staticError", MtpViewBase::getViewModel().getMonitor(), MtpMonitor::staticErrorChanged);
     classConnectUserData(this, setMotorCB, "_dynamicError", MtpViewBase::getViewModel().getMonitor(), MtpMonitor::dynamicErrorChanged);
+
+    //LINE:
+    classConnectUserData(this, setAutomaticPreviewLineCB, "_stateAutomaticActive", MtpViewBase::getViewModel().getState(), MtpState::automaticActiveChanged);
+    classConnectUserData(this, setAutomaticPreviewLineCB, "_forwardAutomatic", MtpViewBase::getViewModel(), MonAnaDrv::forwardAutomaticChanged);
+    classConnectUserData(this, setAutomaticPreviewLineCB, "_stopAutomatic", MtpViewBase::getViewModel(), MonAnaDrv::stopAutomaticChanged);
+    classConnectUserData(this, setAutomaticPreviewLineCB, "_reverseAutomatic", MtpViewBase::getViewModel(), MonAnaDrv::reverseAutomaticChanged);
 
     //Buttons:
     classConnectUserData(this, setStateOffActiveCB, "_stateOffActive", MtpViewBase::getViewModel().getState(), MtpState::offActiveChanged);
@@ -152,6 +161,9 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     _stateChannel =  MtpViewBase::getViewModel().getState().getChannel();
     _stateOperatorActive =  MtpViewBase::getViewModel().getState().getOperatorActive();
     _stateAutomaticActive = MtpViewBase::getViewModel().getState().getAutomaticActive();
+    _forwardAutomatic =  MtpViewBase::getViewModel().getForwardAutomatic();
+    _stopAutomatic =  MtpViewBase::getViewModel().getStopAutomatic();
+    _reverseAutomatic =  MtpViewBase::getViewModel().getReverseAutomatic();
 
     _permissionEnabled =  MtpViewBase::getViewModel().getSecurity().getPermissionEnabled();
     _permit =  MtpViewBase::getViewModel().getSecurity().getPermit();
@@ -166,7 +178,7 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     _refBarIndicator.hideUnit();
     _refBarIndicator.hideValue();
 
-    _refBarIndicator.setValueCustomLimit(MtpViewBase::getViewModel().getRpm());
+    _refBarIndicator.setValueCustomLimit(MtpViewBase::getViewModel().getRpmFeedbackSignal());
     setSafetyPositionActiveCB(MtpViewBase::getViewModel().getSafetyPositionActive());
     setMotorProtectionCB(_driveSafetyIndicator);
     setStateOffActiveCB("_stateOffActive", _stateOffActive);
@@ -180,6 +192,7 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     setReverseCB("_stateOperatorActive", _stateOperatorActive);
     setStopCB("_stateOperatorActive", _stateOperatorActive);
     setForwardCB("_stateOperatorActive", _stateOperatorActive);
+    setAutomaticPreviewLineCB("_stateAutomaticActive", _stateAutomaticActive);
     setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
 
@@ -271,6 +284,53 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     setStopCB("", FALSE);
     setForwardCB("", FALSE);
     setResetCB("", FALSE);
+  }
+
+  private void setAutomaticPreviewLineCB(const string &varName, const bool &state)
+  {
+    switch (varName)
+    {
+      case "_stateAutomaticActive":
+        _stateAutomaticActive = state;
+        break;
+
+      case "_forwardAutomatic":
+        _forwardAutomatic = state;
+        break;
+
+      case "_stopAutomatic":
+        _stopAutomatic = state;
+        break;
+
+      case "_reverseAutomatic":
+        _reverseAutomatic = state;
+        break;
+    }
+
+    if (!_stateAutomaticActive && _forwardAutomatic)
+    {
+      _rectForwardAut.visible = TRUE;
+      _rectStopAut.visible = FALSE;
+      _rectReverseAut.visible = FALSE;
+    }
+    else if (!_stateAutomaticActive && _stopAutomatic)
+    {
+      _rectForwardAut.visible = FALSE;
+      _rectStopAut.visible = TRUE;
+      _rectReverseAut.visible = FALSE;
+    }
+    else if (!_stateAutomaticActive && _reverseAutomatic)
+    {
+      _rectForwardAut.visible = FALSE;
+      _rectStopAut.visible = FALSE;
+      _rectReverseAut.visible = TRUE;
+    }
+    else
+    {
+      _rectForwardAut.visible = FALSE;
+      _rectStopAut.visible = FALSE;
+      _rectReverseAut.visible = FALSE;
+    }
   }
 
   private void setSecurityCB(const string &varName, const bool &security)

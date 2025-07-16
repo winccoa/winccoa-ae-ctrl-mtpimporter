@@ -33,6 +33,7 @@ class MonAnaDrvFaceplateHome2 : MtpViewBase
     classConnect(this, setRpmFeedbackValueCB, MtpViewBase::getViewModel(), MonAnaDrv::rpmFeedbackSignalChanged);
     classConnect(this, setRpmValueInternalCB, MtpViewBase::getViewModel(), MonAnaDrv::rpmInternalChanged);
     classConnect(this, setOsLevelCB, MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osStationLevelChanged);
+    classConnect(this, setRpmManualCB, MtpViewBase::getViewModel(), MonAnaDrv::rpmManualChanged);
 
     classConnectUserData(this, setManualActiveCB, "_manualActive", MtpViewBase::getViewModel().getSource(), MtpSource::manualActiveChanged);
     classConnectUserData(this, setManualActiveCB, "_channel", MtpViewBase::getViewModel().getSource(), MtpSource::channelChanged);
@@ -50,7 +51,7 @@ class MonAnaDrvFaceplateHome2 : MtpViewBase
     _refBarIndicator.setScale(MtpViewBase::getViewModel().getRpmScaleMin(), MtpViewBase::getViewModel().getRpmScaleMax());
     _refBarIndicator.setUnit(MtpViewBase::getViewModel().getRpmUnit());
 
-    setValueManualText(MtpViewBase::getViewModel().getRpmManual());
+    setRpmManualCB(MtpViewBase::getViewModel().getRpmManual());
     _refBarIndicator.setValueCustomLimit(MtpViewBase::getViewModel().getRpm());
     setUnit(MtpViewBase::getViewModel().getRpmUnit());
     setRpmFeedbackValueCB(MtpViewBase::getViewModel().getRpmFeedbackSignal());
@@ -100,7 +101,7 @@ class MonAnaDrvFaceplateHome2 : MtpViewBase
     _refBarIndicator.setUnit(unit);
   }
 
-  private void setValueManualText(const float &valueManual)
+  private void setRpmManualCB(const float &valueManual)
   {
     _txtRpmValueManual.text = valueManual;
   }
