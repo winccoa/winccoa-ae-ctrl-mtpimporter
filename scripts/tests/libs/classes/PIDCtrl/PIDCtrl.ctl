@@ -1330,6 +1330,42 @@ class TstPIDCtrl : OaTest
     return 0;
   }
 
+  public int testSetProcessValue()
+  {
+    shared_ptr<PIDCtrl> pidCtrl = new PIDCtrl(_DpExists);
+    float testValue = 50.0;
+    pidCtrl.setProcessValue(testValue);
+    delay(0, 100); // Wait for dpSet to complete
+    float dpValue; dpGet(_DpExists + ".PV", dpValue);
+    assertEqual(pidCtrl.getProcessValue(), testValue, "ProcessValue internal value");
+    assertEqual(dpValue, testValue, "ProcessValue data point value");
+    return 0;
+  }
+
+  public int testSetSetpoint()
+  {
+    shared_ptr<PIDCtrl> pidCtrl = new PIDCtrl(_DpExists);
+    float testValue = 75.0;
+    pidCtrl.setSetpoint(testValue);
+    delay(0, 100); // Wait for dpSet to complete
+    float dpValue; dpGet(_DpExists + ".SP", dpValue);
+    assertEqual(pidCtrl.getSetpoint(), testValue, "Setpoint internal value");
+    assertEqual(dpValue, testValue, "Setpoint data point value");
+    return 0;
+  }
+
+  public int testSetManipulatedValue()
+  {
+    shared_ptr<PIDCtrl> pidCtrl = new PIDCtrl(_DpExists);
+    float testValue = 25.0;
+    pidCtrl.setManipulatedValue(testValue);
+    delay(0, 100); // Wait for dpSet to complete
+    float dpValue; dpGet(_DpExists + ".MV", dpValue);
+    assertEqual(pidCtrl.getManipulatedValue(), testValue, "ManipulatedValue internal value");
+    assertEqual(dpValue, testValue, "ManipulatedValue data point value");
+    return 0;
+  }
+
   public int testSetProportionalParameter()
   {
     shared_ptr<PIDCtrl> pidCtrl = new PIDCtrl(_DpExists);

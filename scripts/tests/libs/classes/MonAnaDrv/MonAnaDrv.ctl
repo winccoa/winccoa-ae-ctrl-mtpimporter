@@ -1548,7 +1548,6 @@ class TstMonAnaDrv : OaTest
 
   public int testSetters()
   {
-    DebugN("Starting testSetters");
     shared_ptr<MonAnaDrv> drv = new MonAnaDrv(_DpExists);
 
     // Test setRpmAlarmHighLimit
@@ -1573,11 +1572,9 @@ class TstMonAnaDrv : OaTest
     assertEqual(rpmManual, 500.0, "Datapoint RpmMan should be 500.0");
 
     // Test setStopOperator
-    DebugN("Setting StopOperator to true");
     drv.setStopOperator(true);
     bool stopOperator;
     dpGet(_DpExists + ".StopOp", stopOperator);
-    DebugN("After setStopOperator: getStopOperator=", drv.getStopOperator(), "dpGet StopOp=", stopOperator);
     assertEqual(drv.getStopOperator(), true, "StopOperator should be true");
     assertEqual(stopOperator, true, "Datapoint StopOp should be true");
 
@@ -2088,7 +2085,6 @@ class TstMonAnaDrv : OaTest
     dpSetWait(_DpExists + ".FwdEn", true, _DpExists + ".RevEn", true);
 
     // Test forward control
-    DebugN("Setting FwdCtrl to true");
     dpSetWait(_DpExists + ".FwdCtrl", true);
     delay(0, 200);
 
@@ -2096,7 +2092,6 @@ class TstMonAnaDrv : OaTest
     assertEqual(drv.getForwardControl(), true, "Forward control should be true");
 
     // Test reverse control
-    DebugN("Setting RevCtrl to true");
     dpSetWait(_DpExists + ".RevCtrl", true);
     delay(0, 200);
     assertTrue(_eventReverseControl, "Reverse control signal should be active");
