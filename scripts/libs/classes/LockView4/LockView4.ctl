@@ -110,9 +110,6 @@ class LockView4 : MtpViewModelBase
       _output = output;
       outputChanged(_output);
     }
-    else
-    {
-    }
   }
 
   private void setLogicCB(const string &dpe, const bool &logic)
@@ -122,9 +119,6 @@ class LockView4 : MtpViewModelBase
       _logic = logic;
       logicChanged(_logic);
       updateOutput();
-    }
-    else
-    {
     }
   }
 
