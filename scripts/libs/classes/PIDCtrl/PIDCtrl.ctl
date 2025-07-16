@@ -164,6 +164,7 @@ class PIDCtrl : MtpViewModelBase
 
     dpConnect(this, setProcessValueCB, getDp() + ".PV");
     dpConnect(this, setSetpointInternalCB, getDp() + ".SPInt");
+    dpConnect(this, setSetpointManualCB, getDp() + ".SPMan");
     dpConnect(this, setManipulatedValueCB, getDp() + ".MV");
     dpConnect(this, setManipulatedValueMinCB, getDp() + ".MVMin");
     dpConnect(this, setManipulatedValueMaxCB, getDp() + ".MVMax");
@@ -192,6 +193,7 @@ class PIDCtrl : MtpViewModelBase
 #event  manipulatedValueMinChanged(const float &manipulatedValueMin)
 #event  manipulatedValueMaxChanged(const float &manipulatedValueMax)
 #event  setpointInternalChanged(const float &setpointInternal)
+#event  setpointManualChanged(const float &setpointManual)
 #event  setpointInternalMinChanged(const float &setpointInternalMin)
 #event  setpointInternalMaxChanged(const float &setpointInternalMax)
 #event  processValueScaleMinChanged(const float &processValueScaleMin)
@@ -411,6 +413,12 @@ class PIDCtrl : MtpViewModelBase
   {
     _setpointInternal = setpointInternal;
     setpointInternalChanged(_setpointInternal);
+  }
+
+  private void setSetpointManualCB(const string &dpe, const float &setpointManual)
+  {
+    _setpointManual = setpointManual;
+    setpointManualChanged(_setpointManual);
   }
 
   private void setManipulatedValueCB(const string &dpe, const float &manipulatedValue)

@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "classes/MtpUnit/MtpUnit"
 #uses "classes/MtpOsLevel/MtpOsLevel"
 #uses "classes/MtpSource/MtpSource"
 #uses "classes/MtpMonitor/MtpMonitor"
@@ -52,6 +53,7 @@ class PIDCtrlFaceplateHome : MtpViewBase
     classConnect(this, setWqcCB, MtpViewBase::getViewModel().getWqc(), MtpQualityCode::qualityGoodChanged);
     classConnect(this, setSetpointInternalCB, MtpViewBase::getViewModel(), PIDCtrl::setpointInternalChanged);
     classConnect(this, setOsLevelCB, MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osStationLevelChanged);
+    classConnect(this, setSetpointManualCB, MtpViewBase::getViewModel(), PIDCtrl::setpointManualChanged);
 
     classConnectUserData(this, setStateCB, "_stateAutomaticActive", MtpViewBase::getViewModel().getState(), MtpState::automaticActiveChanged);
     classConnectUserData(this, setStateCB, "_stateOperatorActive", MtpViewBase::getViewModel().getState(), MtpState::operatorActiveChanged);
@@ -80,13 +82,15 @@ class PIDCtrlFaceplateHome : MtpViewBase
     _internalActive =  MtpViewBase::getViewModel().getSource().getInternalActive();
     _channel =  MtpViewBase::getViewModel().getSource().getChannel();
 
+    setUnit(MtpViewBase::getViewModel().getProcessValueUnit(), MtpViewBase::getViewModel().getSetpointUnit(), MtpViewBase::getViewModel().getManipulatedValueUnit());
+
     setWqcCB(MtpViewBase::getViewModel().getWqc().getQualityGood());
     setProcessValueCB(MtpViewBase::getViewModel().getProcessValue());
     setSetpointCB(MtpViewBase::getViewModel().getSetpoint());
     setManipulatedValueCB(MtpViewBase::getViewModel().getManipulatedValue());
     setStateCB("_stateAutomaticActive", _stateAutomaticActive);
     setSetpointInternalCB(MtpViewBase::getViewModel().getSetpointInternal());
-    setSetpointManualText(MtpViewBase::getViewModel().getSetpointManual());
+    setSetpointManualCB(MtpViewBase::getViewModel().getSetpointManual());
     setManualActiveCB("_manualActive", _manualActive);
     setInternalActiveCB("_internalActive", _internalActive);
     setStateOffActiveCB("_stateOffActive", _stateOffActive);
@@ -160,6 +164,13 @@ class PIDCtrlFaceplateHome : MtpViewBase
     _txtSPManual = MtpViewBase::extractShape("_txtSPManual");
   }
 
+  private void setUnit(MtpUnit pvUnit, MtpUnit spUnit, MtpUnit mvUnit)
+  {
+    _txtUnitMV.text = getCatStr("PIDCtrl", "MV") + " [" + mvUnit.toString() + "]";
+    _txtUnitPV.text = getCatStr("PIDCtrl", "PV") + " [" + pvUnit.toString() + "]";
+    _txtUnitSP.text = getCatStr("PIDCtrl", "SP") + " [" + spUnit.toString() + "]";
+  }
+
   private void setOsLevelCB(const bool &oslevel)
   {
     _osLevelStation = oslevel;
@@ -199,7 +210,7 @@ class PIDCtrlFaceplateHome : MtpViewBase
     _txtSPInternal.text = value;
   }
 
-  private void setSetpointManualText(const float &value)
+  private void setSetpointManualCB(const float &value)
   {
     _txtSPManual.text = value;
   }
