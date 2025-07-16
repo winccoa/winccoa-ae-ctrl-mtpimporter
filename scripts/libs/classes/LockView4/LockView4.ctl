@@ -42,22 +42,6 @@ class LockView4 : MtpViewModelBase
 
     dpConnect(this, setOutputCB, getDp() + ".Out");
     dpConnect(this, setLogicCB, getDp() + ".Logic");
-
-
-    classConnect(this, inputChangedCB, _input1, MtpInput::enabledChanged);
-    classConnect(this, inputChangedCB, _input1, MtpInput::valueChanged);
-    classConnect(this, inputChangedCB, _input1, MtpInput::invertedChanged);
-    classConnect(this, inputChangedCB, _input2, MtpInput::enabledChanged);
-    classConnect(this, inputChangedCB, _input2, MtpInput::valueChanged);
-    classConnect(this, inputChangedCB, _input2, MtpInput::invertedChanged);
-    classConnect(this, inputChangedCB, _input3, MtpInput::enabledChanged);
-    classConnect(this, inputChangedCB, _input3, MtpInput::valueChanged);
-    classConnect(this, inputChangedCB, _input3, MtpInput::invertedChanged);
-    classConnect(this, inputChangedCB, _input4, MtpInput::enabledChanged);
-    classConnect(this, inputChangedCB, _input4, MtpInput::valueChanged);
-    classConnect(this, inputChangedCB, _input4, MtpInput::invertedChanged);
-
-    updateOutput();
   }
 
 #event outputChanged(const bool &output)
@@ -105,90 +89,13 @@ class LockView4 : MtpViewModelBase
 
   private void setOutputCB(const string &dpe, const bool &output)
   {
-    if (_output != output)
-    {
-      _output = output;
-      outputChanged(_output);
-    }
+    _output = output;
+    outputChanged(_output);
   }
 
   private void setLogicCB(const string &dpe, const bool &logic)
   {
-    if (_logic != logic)
-    {
-      _logic = logic;
-      logicChanged(_logic);
-      updateOutput();
-    }
-  }
-
-  private void inputChangedCB(const bool &value)
-  {
-    updateOutput();
-  }
-
-  private void updateOutput()
-  {
-    bool newOutput;
-    bool hasEnabledInputs = false;
-    dyn_bool effectiveValues;
-
-    if (_input1.getEnabled())
-    {
-      bool effective = _input1.getValue() != _input1.getInverted();
-      effectiveValues.append(effective);
-      hasEnabledInputs = true;
-    }
-
-    if (_input2.getEnabled())
-    {
-      bool effective = _input2.getValue() != _input2.getInverted();
-      effectiveValues.append(effective);
-      hasEnabledInputs = true;
-    }
-
-    if (_input3.getEnabled())
-    {
-      bool effective = _input3.getValue() != _input3.getInverted();
-      effectiveValues.append(effective);
-      hasEnabledInputs = true;
-    }
-
-    if (_input4.getEnabled())
-    {
-      bool effective = _input4.getValue() != _input4.getInverted();
-      effectiveValues.append(effective);
-      hasEnabledInputs = true;
-    }
-
-    if (!hasEnabledInputs)
-    {
-      newOutput = _logic ? true : false;
-    }
-    else if (_logic)
-    {
-      newOutput = true;
-
-      for (int i = 1; i <= effectiveValues.count(); i++)
-      {
-        newOutput = newOutput && effectiveValues[i];
-      }
-    }
-    else
-    {
-      newOutput = false;
-
-      for (int i = 1; i <= effectiveValues.count(); i++)
-      {
-        newOutput = newOutput || effectiveValues[i];
-      }
-    }
-
-    if (_output != newOutput)
-    {
-      _output = newOutput;
-      dpSetWait(getDp() + ".Out", _output);
-      outputChanged(_output);
-    }
+    _logic = logic;
+    logicChanged(_logic);
   }
 };
