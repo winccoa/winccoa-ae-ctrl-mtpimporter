@@ -657,6 +657,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Berechtigung</prop>
+     <prop name="en_US.utf8">Permit</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -722,6 +723,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Verriegelung</prop>
+     <prop name="en_US.utf8">Interlock</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -787,6 +789,7 @@ public void initialize(shared_ptr&lt;MonAnaDrv&gt; viewModel)
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Schutz</prop>
+     <prop name="en_US.utf8">Protect</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>

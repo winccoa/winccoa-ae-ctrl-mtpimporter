@@ -194,6 +194,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Fehler</prop>
+     <prop name="en_US.utf8">Error</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -230,6 +231,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Steuerungen</prop>
+     <prop name="en_US.utf8">Controls</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>

@@ -58,6 +58,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Regelungsalgorithmus</prop>
+     <prop name="en_US.utf8">Control algorithm</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -94,6 +95,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Proportionalverstärkung</prop>
+     <prop name="en_US.utf8">Proportional gain</prop>
     </prop>
     <prop name="Distance">2</prop>
     <prop name="BorderOffset">2</prop>
@@ -130,6 +132,8 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Integrationszeit
+[s]</prop>
+     <prop name="en_US.utf8">Integration time
 [s]</prop>
     </prop>
     <prop name="Distance">2</prop>
@@ -235,6 +239,8 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
     </prop>
     <prop name="Text">
      <prop name="de_AT.utf8">Differenzierzeit
+[s]</prop>
+     <prop name="en_US.utf8">Derivation time
 [s]</prop>
     </prop>
     <prop name="Distance">2</prop>
