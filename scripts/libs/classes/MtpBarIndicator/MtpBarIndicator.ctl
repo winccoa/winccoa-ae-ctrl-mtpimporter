@@ -87,7 +87,7 @@ class MtpBarIndicator : MtpRefBase
     _minV = min;
     _maxV = max;
 
-    _txtHalfMax.text = max / 2;
+    _txtHalfMax.text = (_minV + _maxV) / 2;
     _txtMax.text = max;
   }
 
