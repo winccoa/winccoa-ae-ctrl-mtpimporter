@@ -126,7 +126,7 @@ public void initialize()
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/error.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/error.svg]]</prop>
     <prop name="Geometry">1 0 0 1.354166666666667 -13 -28.33333333333336</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>

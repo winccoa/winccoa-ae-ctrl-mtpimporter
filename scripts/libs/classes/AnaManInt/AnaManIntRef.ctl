@@ -89,13 +89,13 @@ class AnaManIntRef : MtpViewRef
 
     if (_sourceManualActive && !_sourceChannel)
     {
-      _rectSource.fill = "[pattern,[tile,any,MTP_Icones/Manual__2.svg]]";
+      _rectSource.fill = "[pattern,[fit,any,MTP_Icones/Manual__2.svg]]";
       _rectSource.visible = TRUE;
       return;
     }
     else if (_sourceInternalActive && !_sourceChannel)
     {
-      _rectSource.fill = "[pattern,[tile,any,MTP_Icones/internal.svg]]";
+      _rectSource.fill = "[pattern,[fit,any,MTP_Icones/internal.svg]]";
       _rectSource.visible = TRUE;
     }
     else
@@ -119,7 +119,7 @@ class AnaManIntRef : MtpViewRef
 
     if (_valueMin == 1 || _valueMax == 1)
     {
-      _rectLimit.fill = "[pattern,[tile,any,MTP_Icones/Tolerance.svg]]";
+      _rectLimit.fill = "[pattern,[fit,any,MTP_Icones/Tolerance.svg]]";
       _rectLimit.visible = TRUE;
       return;
     }

@@ -54,7 +54,7 @@ public void initialize()
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/Mainenance.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Mainenance.svg]]</prop>
     <prop name="Geometry">1 0 0 1.354166666666667 27.99999999999989 81.51041666666664</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
@@ -83,7 +83,7 @@ public void initialize()
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/True.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/True.svg]]</prop>
     <prop name="Geometry">2.933333333333333 0 0 2.933333333333333 -278 -169.9744318181818</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">165 105</prop>

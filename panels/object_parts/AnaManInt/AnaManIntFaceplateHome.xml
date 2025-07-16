@@ -329,7 +329,7 @@ public void initialize(shared_ptr&lt;AnaManInt&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/Manual_1_2_rounded.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Manual_1_2_rounded.svg]]</prop>
     <prop name="Geometry">1.198276851851851 0 0 1.71123903508772 -1.698020601851525 142.4716186951754</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
@@ -364,7 +364,7 @@ public void initialize(shared_ptr&lt;AnaManInt&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/internal_1_rounded.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/internal_1_rounded.svg]]</prop>
     <prop name="Geometry">1.222731481481481 0 0 1.71123903508772 -6.839606481481226 210.6397354714912</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>

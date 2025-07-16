@@ -167,7 +167,7 @@ class MonAnaDrvRef : MtpViewRef
 
     if (!_driveSafetyIndicator || _staticError || _dynamicError || _rpmAlarmHighActive || _rpmAlarmLowActive)
     {
-      _rectError.fill = "[pattern,[tile,any,MTP_Icones/Error.svg]]";
+      _rectError.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
       _rectError.visible = TRUE;
       return;
     }
@@ -196,7 +196,7 @@ class MonAnaDrvRef : MtpViewRef
 
     if (!_permit || !_interlock || !_protection)
     {
-      _rectLocked.fill = "[pattern,[tile,any,MTP_Icones/locked_.svg]]";
+      _rectLocked.fill = "[pattern,[fit,any,MTP_Icones/locked_.svg]]";
       _rectLocked.visible = TRUE;
       return;
     }
@@ -221,13 +221,13 @@ class MonAnaDrvRef : MtpViewRef
 
     if (_forwardFeedbackSignal && !_reverseFeedbackSignal)
     {
-      _rectDirection.fill = "[pattern,[tile,any,MTP_Icones/Play.svg]]";
+      _rectDirection.fill = "[pattern,[fit,any,MTP_Icones/Play.svg]]";
       _rectDirection.visible = TRUE;
       return;
     }
     else if (_reverseFeedbackSignal && !_forwardFeedbackSignal)
     {
-      _rectDirection.fill = "[pattern,[tile,any,MTP_Icones/Play_2.svg]]";
+      _rectDirection.fill = "[pattern,[fit,any,MTP_Icones/Play_2.svg]]";
       _rectDirection.visible = TRUE;
       return;
     }
@@ -252,13 +252,13 @@ class MonAnaDrvRef : MtpViewRef
 
     if (_stateOffActive)
     {
-      _rectMode.fill = "[pattern,[tile,any,MTP_Icones/Power.svg]]";
+      _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Power.svg]]";
       _rectMode.visible = TRUE;
       return;
     }
     else if (_stateOperatorActive)
     {
-      _rectMode.fill = "[pattern,[tile,any,MTP_Icones/Manual_1.svg]]";
+      _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Manual_1.svg]]";
       _rectMode.visible = TRUE;
     }
     else
@@ -282,13 +282,13 @@ class MonAnaDrvRef : MtpViewRef
 
     if (_sourceManualActive)
     {
-      _rectSource.fill = "[pattern,[tile,any,MTP_Icones/Manual__2.svg]]";
+      _rectSource.fill = "[pattern,[fit,any,MTP_Icones/Manual__2.svg]]";
       _rectSource.visible = TRUE;
       return;
     }
     else if (_sourceInternalActive)
     {
-      _rectSource.fill = "[pattern,[tile,any,MTP_Icones/internal.svg]]";
+      _rectSource.fill = "[pattern,[fit,any,MTP_Icones/internal.svg]]";
       _rectSource.visible = TRUE;
     }
     else
@@ -328,28 +328,28 @@ class MonAnaDrvRef : MtpViewRef
 
     if (((_forwardFeedbackSignal && _forwardControl) || (_reverseFeedbackSignal && _reverseControl)) && !_dynamicError && !_staticError)
     {
-      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorRun.svg]]";
+      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorRun.svg]]";
       _rectMotor.visible = TRUE;
       return;
     }
     else if (!_forwardFeedbackSignal && !_forwardControl && !_reverseFeedbackSignal && !_reverseControl && !_dynamicError && !_staticError)
     {
-      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorStopped.svg]]";
+      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorStopped.svg]]";
       _rectMotor.visible = TRUE;
     }
     else if (((_forwardFeedbackSignal && !_reverseFeedbackSignal) || (!_forwardFeedbackSignal && _reverseFeedbackSignal)) && !_forwardControl && !_reverseControl && !_dynamicError && !_staticError)
     {
-      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorMfwdStopped.svg]]";
+      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorMfwdStopped.svg]]";
       _rectMotor.visible = TRUE;
     }
     else if (((_forwardControl && !_reverseControl) || (!_forwardControl && _reverseControl)) && !_forwardFeedbackSignal && !_reverseFeedbackSignal && !_dynamicError && !_staticError)
     {
-      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorMfwdStarted.svg]]";
+      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorMfwdStarted.svg]]";
       _rectMotor.visible = TRUE;
     }
     else if ((_forwardFeedbackSignal && _reverseFeedbackSignal) || _dynamicError || _staticError)
     {
-      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorUnknown.svg]]";
+      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorUnknown.svg]]";
       _rectMotor.visible = TRUE;
     }
     else

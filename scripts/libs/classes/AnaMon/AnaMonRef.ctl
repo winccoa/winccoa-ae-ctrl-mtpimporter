@@ -122,21 +122,21 @@ class AnaMonRef : MtpViewRef
 
     if (_alertHighActive || _alertLowActive)
     {
-      _rectStatus.fill = "[pattern,[tile,any,MTP_Icones/Error.svg]]";
+      _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
       _rectStatus.visible = TRUE;
       return;
     }
 
     if (_warningHighActive || _warningLowActive)
     {
-      _rectStatus.fill = "[pattern,[tile,any,MTP_Icones/Mainenance.svg]]";
+      _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Mainenance.svg]]";
       _rectStatus.visible = TRUE;
       return;
     }
 
     if (_toleranceHighActive || _toleranceLowActive)
     {
-      _rectStatus.fill = "[pattern,[tile,any,MTP_Icones/Tolerance.svg]]";
+      _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Tolerance.svg]]";
       _rectStatus.visible = TRUE;
       return;
     }

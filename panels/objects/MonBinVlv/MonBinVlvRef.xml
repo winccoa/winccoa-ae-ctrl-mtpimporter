@@ -56,7 +56,7 @@ public void initialize()
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/locked_.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/locked_.svg]]</prop>
     <prop name="Geometry">1 0 0 1.354166666666667 8.526512829121202e-14 81.51041666666663</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
@@ -85,7 +85,7 @@ public void initialize()
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/ValvStopped.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/ValvStopped.svg]]</prop>
     <prop name="Geometry">2.933333333333333 0 0 2.933333333333333 -295.9999999999999 -169.9744318181818</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">165 105</prop>
@@ -114,7 +114,7 @@ public void initialize()
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/Mainenance.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Mainenance.svg]]</prop>
     <prop name="Geometry">1 0 0 1.354166666666667 -21.99999999999994 81.51041666666663</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
@@ -143,7 +143,7 @@ public void initialize()
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[tile,any,pictures/MTP_Icones/Manual_1.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Manual_1.svg]]</prop>
     <prop name="Geometry">1.000000000000005 0 0 1.354166666666667 21.99999999999908 81.51041666666663</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>

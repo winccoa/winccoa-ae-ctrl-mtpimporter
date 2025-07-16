@@ -62,17 +62,17 @@ class BinManIntRef : MtpViewRef
 
     if (!MtpViewRef::getViewModel().getSource().getChannel() && _manualActive)
     {
-      _rectStatus.fill = "[pattern,[tile,any,MTP_Icones/Manual_1.svg]]";
+      _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Manual_1.svg]]";
       return;
     }
 
     if (!MtpViewRef::getViewModel().getSource().getChannel() && _internalActive)
     {
-      _rectStatus.fill = "[pattern,[tile,any,MTP_Icones/internal.svg]]";
+      _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/internal.svg]]";
       return;
     }
 
-    _rectStatus.fill = "[pattern,[tile,any,MTP_Icones/disabled.svg]]";
+    _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/disabled.svg]]";
   }
 
 };

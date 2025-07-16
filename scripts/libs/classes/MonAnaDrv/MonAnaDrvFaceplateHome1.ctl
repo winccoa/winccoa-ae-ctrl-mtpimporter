@@ -596,28 +596,28 @@ class MonAnaDrvFaceplateHome : MtpViewBase
 
     if (((_forwardFeedbackSignal && _forwardControl) || (_reverseFeedbackSignal && _reverseControl)) && !_dynamicError && !_staticError)
     {
-      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorRun.svg]]";
+      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorRun.svg]]";
       _rectMotor.visible = TRUE;
       return;
     }
     else if (!_forwardFeedbackSignal && !_forwardControl && !_reverseFeedbackSignal && !_reverseControl && !_dynamicError && !_staticError)
     {
-      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorStopped.svg]]";
+      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorStopped.svg]]";
       _rectMotor.visible = TRUE;
     }
     else if (((_forwardFeedbackSignal && !_reverseFeedbackSignal) || (!_forwardFeedbackSignal && _reverseFeedbackSignal)) && !_forwardControl && !_reverseControl && !_dynamicError && !_staticError)
     {
-      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorMfwdStopped.svg]]";
+      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorMfwdStopped.svg]]";
       _rectMotor.visible = TRUE;
     }
     else if (((_forwardControl && !_reverseControl) || (!_forwardControl && _reverseControl)) && !_forwardFeedbackSignal && !_reverseFeedbackSignal && !_dynamicError && !_staticError)
     {
-      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorMfwdStarted.svg]]";
+      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorMfwdStarted.svg]]";
       _rectMotor.visible = TRUE;
     }
     else if ((_forwardFeedbackSignal && _reverseFeedbackSignal) || _dynamicError || _staticError)
     {
-      _rectMotor.fill = "[pattern,[tile,any,MTP_Icones/MotorUnknown.svg]]";
+      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorUnknown.svg]]";
       _rectMotor.visible = TRUE;
     }
     else

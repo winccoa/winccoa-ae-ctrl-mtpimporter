@@ -106,13 +106,13 @@ class PIDCtrlRef : MtpViewRef
 
     if (_stateOffActive)
     {
-      _rectMode.fill = "[pattern,[tile,any,MTP_Icones/Power.svg]]";
+      _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Power.svg]]";
       _rectMode.visible = TRUE;
       return;
     }
     else if (_stateOperatorActive)
     {
-      _rectMode.fill = "[pattern,[tile,any,MTP_Icones/Manual_1.svg]]";
+      _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Manual_1.svg]]";
       _rectMode.visible = TRUE;
     }
     else
@@ -136,13 +136,13 @@ class PIDCtrlRef : MtpViewRef
 
     if (_sourceManualActive)
     {
-      _rectSource.fill = "[pattern,[tile,any,MTP_Icones/Manual__2.svg]]";
+      _rectSource.fill = "[pattern,[fit,any,MTP_Icones/Manual__2.svg]]";
       _rectSource.visible = TRUE;
       return;
     }
     else if (_sourceInternalActive)
     {
-      _rectSource.fill = "[pattern,[tile,any,MTP_Icones/internal.svg]]";
+      _rectSource.fill = "[pattern,[fit,any,MTP_Icones/internal.svg]]";
       _rectSource.visible = TRUE;
     }
     else

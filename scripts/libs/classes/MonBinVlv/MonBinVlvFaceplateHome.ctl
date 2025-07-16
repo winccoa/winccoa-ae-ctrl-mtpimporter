@@ -688,28 +688,28 @@ class MonBinVlvFaceplateHome : MtpViewBase
 
     if (_openCheckbackSignal && _valveControl && !_dynamicError && !_staticError)
     {
-      _rectValve.fill = "[pattern,[tile,any,MTP_Icones/ValvOpen.svg]]";
+      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvOpen.svg]]";
       _rectValve.visible = TRUE;
       return;
     }
     else if (_closeCheckbackSignal && !_valveControl && !_dynamicError && !_staticError)
     {
-      _rectValve.fill = "[pattern,[tile,any,MTP_Icones/ValvStopped.svg]]";
+      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvStopped.svg]]";
       _rectValve.visible = TRUE;
     }
     else if (!_openCheckbackSignal && !_closeCheckbackSignal && _valveControl && !_dynamicError && !_staticError)
     {
-      _rectValve.fill = "[pattern,[tile,any,MTP_Icones/ValvMfwdStarted.svg]]";
+      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvMfwdStarted.svg]]";
       _rectValve.visible = TRUE;
     }
     else if (!_openCheckbackSignal && !_closeCheckbackSignal && !_valveControl && !_dynamicError && !_staticError)
     {
-      _rectValve.fill = "[pattern,[tile,any,MTP_Icones/ValvMfwdStopped.svg]]";
+      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvMfwdStopped.svg]]";
       _rectValve.visible = TRUE;
     }
     else if ((_openCheckbackSignal && _closeCheckbackSignal) || _dynamicError || _staticError)
     {
-      _rectValve.fill = "[pattern,[tile,any,MTP_Icones/ValvUknownState.svg]]";
+      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvUknownState.svg]]";
       _rectValve.visible = TRUE;
     }
     else

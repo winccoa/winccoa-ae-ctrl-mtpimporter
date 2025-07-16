@@ -93,7 +93,7 @@ class MonBinVlvRef : MtpViewRef
 
     if (_staticError || _dynamicError)
     {
-      _rectError.fill = "[pattern,[tile,any,MTP_Icones/Error.svg]]";
+      _rectError.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
       _rectError.visible = TRUE;
       return;
     }
@@ -122,7 +122,7 @@ class MonBinVlvRef : MtpViewRef
 
     if (!_permit || !_interlock || !_protection)
     {
-      _rectLocked.fill = "[pattern,[tile,any,MTP_Icones/locked_.svg]]";
+      _rectLocked.fill = "[pattern,[fit,any,MTP_Icones/locked_.svg]]";
       _rectLocked.visible = TRUE;
       return;
     }
@@ -147,13 +147,13 @@ class MonBinVlvRef : MtpViewRef
 
     if (_stateOffActive)
     {
-      _rectMode.fill = "[pattern,[tile,any,MTP_Icones/Power.svg]]";
+      _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Power.svg]]";
       _rectMode.visible = TRUE;
       return;
     }
     else if (_stateOperatorActive)
     {
-      _rectMode.fill = "[pattern,[tile,any,MTP_Icones/Manual_1.svg]]";
+      _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Manual_1.svg]]";
       _rectMode.visible = TRUE;
     }
     else
@@ -189,28 +189,28 @@ class MonBinVlvRef : MtpViewRef
 
     if (_openCheckbackSignal && _valveControl && !_dynamicError && !_staticError)
     {
-      _rectValve.fill = "[pattern,[tile,any,MTP_Icones/ValvOpen.svg]]";
+      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvOpen.svg]]";
       _rectValve.visible = TRUE;
       return;
     }
     else if (_closeCheckbackSignal && !_valveControl && !_dynamicError && !_staticError)
     {
-      _rectValve.fill = "[pattern,[tile,any,MTP_Icones/ValvStopped.svg]]";
+      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvStopped.svg]]";
       _rectValve.visible = TRUE;
     }
     else if (!_openCheckbackSignal && !_closeCheckbackSignal && _valveControl && !_dynamicError && !_staticError)
     {
-      _rectValve.fill = "[pattern,[tile,any,MTP_Icones/ValvMfwdStarted.svg]]";
+      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvMfwdStarted.svg]]";
       _rectValve.visible = TRUE;
     }
     else if (!_openCheckbackSignal && !_closeCheckbackSignal && !_valveControl && !_dynamicError && !_staticError)
     {
-      _rectValve.fill = "[pattern,[tile,any,MTP_Icones/ValvMfwdStopped.svg]]";
+      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvMfwdStopped.svg]]";
       _rectValve.visible = TRUE;
     }
     else if ((_openCheckbackSignal && _closeCheckbackSignal) || _dynamicError || _staticError)
     {
-      _rectValve.fill = "[pattern,[tile,any,MTP_Icones/ValvUknownState.svg]]";
+      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvUknownState.svg]]";
       _rectValve.visible = TRUE;
     }
     else
