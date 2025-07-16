@@ -400,7 +400,7 @@ public void initialize(shared_ptr&lt;AnaManInt&gt; viewModel)
     <prop name="Location">289 292</prop>
     <prop name="Size">111 35</prop>
     <prop name="BorderStyle">Normal</prop>
-    <prop name="Editable">True</prop>
+    <prop name="Editable">False</prop>
     <prop name="ClearButtonEnabled">False</prop>
     <prop name="TextFormat">[0.2f,False,False,AlignHCenter|AlignVCenter,False]</prop>
     <prop name="AllowEmptyNumeric">False</prop>
@@ -409,7 +409,7 @@ public void initialize(shared_ptr&lt;AnaManInt&gt; viewModel)
    <events>
     <script isEscaped="1" name="Command"><![CDATA[main()
 {
-  faceplate.setValueManual(this.text());
+  _faceplate.setValueManual(this.text());
 }]]></script>
    </events>
   </shape>
