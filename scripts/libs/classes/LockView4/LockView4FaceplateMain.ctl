@@ -13,7 +13,7 @@
 class LockView4FaceplateMain : MtpFaceplateMainBase
 {
 
-  public LockView4FaceplateMain(shared_ptr<LockView4> viewModel, const mapping &shapes, const string &layoutNavigation) : MtpFaceplateMainBase(viewModel, shapes, layoutNavigation)
+  public LockView4FaceplateMain(shared_ptr<LockView4> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {
 
   }

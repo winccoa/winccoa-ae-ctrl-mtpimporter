@@ -42,28 +42,28 @@ class MtpFaceplateMainFactory
    * @param layoutNavigation The layout for navigation buttons.
    * @return A shared pointer to the created MtpFaceplateMainBase instance.
    */
-  public static shared_ptr<MtpFaceplateMainBase> create(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes, const string &layoutNavigation)
+  public static shared_ptr<MtpFaceplateMainBase> create(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes)
   {
 
     switch (getTypeName(viewModel))
     {
-      case "AnaMon": return new AnaMonFaceplateMain(viewModel, shapes, layoutNavigation);
+      case "AnaMon": return new AnaMonFaceplateMain(viewModel, shapes);
 
-      case "BinMon": return new BinMonFaceplateMain(viewModel, shapes, layoutNavigation);
+      case "BinMon": return new BinMonFaceplateMain(viewModel, shapes);
 
-      case "LockView4": return new LockView4FaceplateMain(viewModel, shapes, layoutNavigation);
+      case "LockView4": return new LockView4FaceplateMain(viewModel, shapes);
 
-      case "BinManInt": return new BinManIntFaceplateMain(viewModel, shapes, layoutNavigation);
+      case "BinManInt": return new BinManIntFaceplateMain(viewModel, shapes);
 
-      case "AnaManInt": return new AnaManIntFaceplateMain(viewModel, shapes, layoutNavigation);
+      case "AnaManInt": return new AnaManIntFaceplateMain(viewModel, shapes);
 
-      case "PIDCtrl": return new PIDCtrlFaceplateMain(viewModel, shapes, layoutNavigation);
+      case "PIDCtrl": return new PIDCtrlFaceplateMain(viewModel, shapes);
 
-      case "MonBinDrv": return new MonBinDrvFaceplateMain(viewModel, shapes, layoutNavigation);
+      case "MonBinDrv": return new MonBinDrvFaceplateMain(viewModel, shapes);
 
-      case "MonBinVlv": return new MonBinVlvFaceplateMain(viewModel, shapes, layoutNavigation);
+      case "MonBinVlv": return new MonBinVlvFaceplateMain(viewModel, shapes);
 
-      case "MonAnaDrv": return new MonAnaDrvFaceplateMain(viewModel, shapes, layoutNavigation);
+      case "MonAnaDrv": return new MonAnaDrvFaceplateMain(viewModel, shapes);
 
       default: throw (makeError("", PRIO_SEVERE, ERR_PARAM, ErrCode::UNEXPECTEDSTATE, "datapoint type not defined '" + dpTypeName(dp) + "'"));
     }

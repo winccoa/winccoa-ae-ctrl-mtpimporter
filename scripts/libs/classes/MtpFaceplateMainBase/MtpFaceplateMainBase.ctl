@@ -19,8 +19,9 @@ class MtpFaceplateMainBase : MtpViewBase
   private shape _txtTitle; //!< The title text shape used in the faceplate.
   private shape _panel; //!< The panel shape used in the faceplate.
   private shape _module; //!< The module shape used in the faceplate.
-  private string _layoutNavigation; //!< The layout for navigation buttons.
+  private shape _layoutNavigation; //!< The layout for navigation buttons.
   private vector<shared_ptr<MtpNavigationButton> > _navigationButtons; //!< A vector of navigation buttons used in the faceplate.
+  private dyn_shape _info;
 
   /**
    * @brief Constructor for the MtpFaceplateMainBase class.
@@ -29,11 +30,13 @@ class MtpFaceplateMainBase : MtpViewBase
    * @param shapes A mapping of shapes used in the faceplate.
    * @param layoutNavigation The layout for navigation buttons.
    */
-  protected MtpFaceplateMainBase(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes, const string &layoutNavigation) : MtpViewBase(viewModel, shapes)
+  protected MtpFaceplateMainBase(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
-    _layoutNavigation = layoutNavigation;
     setNavigation();
     setTitle();
+
+    classConnect(this, setEnabledCB, MtpViewBase::getViewModel(), MtpViewModelBase::enabledChanged);
+    setEnabledCB(MtpViewBase::getViewModel().getEnabled());
   }
 
 
@@ -66,6 +69,14 @@ class MtpFaceplateMainBase : MtpViewBase
     _txtTitle = MtpViewBase::extractShape("_txtTitle");
     _panel = MtpViewBase::extractShape("_panel");
     _module = MtpViewBase::extractShape("_module");
+    _layoutNavigation = MtpViewBase::extractShape("_layoutNavigation");
+
+    _info.append(MtpViewBase::extractShape("_infoTop"));
+    _info.append(MtpViewBase::extractShape("_infoTopBackground"));
+    _info.append(MtpViewBase::extractShape("_infoTopText"));
+    _info.append(MtpViewBase::extractShape("_infoBottom"));
+    _info.append(MtpViewBase::extractShape("_infoBottomBackground"));
+    _info.append(MtpViewBase::extractShape("_infoBottomText"));
   }
 
   /**
@@ -98,7 +109,7 @@ class MtpFaceplateMainBase : MtpViewBase
     for (int i = 0; i < size; i++)
     {
       shared_ptr<MtpNavigationButton> button = _navigationButtons.at(i);
-      addSymbol(_panel, "/objects/MtpFaceplate/NaviButton.xml", button.getName(), i, _layoutNavigation, makeDynString());
+      addSymbol(_panel, "/objects/MtpFaceplate/NaviButton.xml", button.getName(), i, _layoutNavigation.name(), makeDynString());
       button.setButton(getShape(_panel, button.getName()));
       button.setPicture();
       uiConnect(this, clickNavigation, getShape(_panel, button.getName()), "clickNavigationEvent");
@@ -146,6 +157,19 @@ class MtpFaceplateMainBase : MtpViewBase
                 uiDp + "RootPanelOrigOn.FileName:_original.._value", fileName,
                 uiDp + "RootPanelOrigOn.PanelName:_original.._value", panelName,
                 uiDp + "RootPanelOrigOn.Parameter:_original.._value", makeDynString());
+    }
+  }
+
+  private void setEnabledCB(const bool &enabled)
+  {
+    _module.visible = enabled;
+    _layoutNavigation.visible = enabled;
+
+    int size = _info.count();
+
+    for (int i = 0; i < size; i++)
+    {
+      _info.at(i).visible = !enabled;
     }
   }
 };

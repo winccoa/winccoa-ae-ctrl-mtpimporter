@@ -29,7 +29,14 @@ shared_ptr&lt;MtpFaceplateMainBase&gt; faceplate;
 public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
 {
   mapping shapes = makeMapping(&quot;_txtTitle&quot;, getShape(&quot;txtTitle&quot;), &quot;_panel&quot;, getShape(&quot;&quot;), &quot;_module&quot;, getShape(&quot;module&quot;));
-  faceplate = MtpFaceplateMainFactory::create(viewModel, shapes, &quot;layoutNavigation&quot;);
+  shapes.insert(&quot;_infoTop&quot;, getShape(&quot;infoTop&quot;));
+  shapes.insert(&quot;_infoTopBackground&quot;, getShape(&quot;infoTopBackground&quot;));
+  shapes.insert(&quot;_infoTopText&quot;, getShape(&quot;infoTopText&quot;));
+  shapes.insert(&quot;_infoBottom&quot;, getShape(&quot;infoBottom&quot;));
+  shapes.insert(&quot;_infoBottomBackground&quot;, getShape(&quot;infoBottomBackground&quot;));
+  shapes.insert(&quot;_infoBottomText&quot;, getShape(&quot;infoBottomText&quot;));
+  shapes.insert(&quot;_layoutNavigation&quot;, getShape(&quot;layoutNavigation&quot;));
+  faceplate = MtpFaceplateMainFactory::create(viewModel,  shapes);
 }
 ]]></script>
  </events>
@@ -56,7 +63,7 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[solid]</prop>
-    <prop name="Geometry">1 0 0 1 5 -60</prop>
+    <prop name="Geometry">1 0 0 1 -44 -98</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">65 110</prop>
     <prop name="Size">471 61</prop>
@@ -68,7 +75,7 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
    <properties>
     <prop name="serialId">1</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">90 75</prop>
+    <prop name="RefPoint">41 37</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpTitleText</prop>
@@ -85,7 +92,7 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">90 75</prop>
+    <prop name="Location">41 37</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -122,7 +129,7 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[solid]</prop>
-    <prop name="Geometry">1 0 0 1 25 85</prop>
+    <prop name="Geometry">1 0 0 1 -31 9</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">65 110</prop>
     <prop name="Size">471 61</prop>
@@ -134,7 +141,7 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
    <properties>
     <prop name="serialId">6</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">190 395</prop>
+    <prop name="RefPoint">75 205</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">_3DText</prop>
@@ -148,7 +155,7 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
     <prop name="Font">
      <prop name="de_AT.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
     </prop>
-    <prop name="Location">190 395</prop>
+    <prop name="Location">75 205</prop>
     <prop name="Size">291 71</prop>
     <extended>
      <prop name="newPanelAnimDuration" type="INT">0</prop>
@@ -168,7 +175,7 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
    <properties>
     <prop name="serialId">8</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">635 205</prop>
+    <prop name="RefPoint">89 149</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -183,9 +190,206 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">635 205</prop>
+    <prop name="Location">89 149</prop>
     <prop name="Size">221 21</prop>
     <prop name="Orientation">horizontal</prop>
+   </properties>
+  </shape>
+  <shape Name="infoTopBackground" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">13</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">47 384</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">mtpTitlebar</prop>
+    <prop name="BackColor">mtpTitlebar</prop>
+    <prop name="TabOrder">7</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1 0 0 0.5289256198347108 10 159.8925619834711</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">47 384</prop>
+    <prop name="Size">293 122</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="infoTopText" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">14</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">98 394</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">mtpTitleText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">8</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">98 394</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">XXX</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <shape Name="infoBottomBackground" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">15</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">47 384</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">mtpBackground2</prop>
+    <prop name="BackColor">mtpBackground</prop>
+    <prop name="TabOrder">9</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1 0 0 0.5289256198347108 10 223.8925619834711</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">47 384</prop>
+    <prop name="Size">293 122</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="infoBottomText" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">16</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">98 450</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">mtpText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">10</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">98 450</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">XXX</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <shape Name="infoTop" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">19</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">74 299</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">mtpBackground2</prop>
+    <prop name="BackColor">mtpBackground2</prop>
+    <prop name="TabOrder">13</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="minimumSize">-1 36</prop>
+    <prop name="maximumSize">-1 60</prop>
+    <prop name="sizePolicy">
+     <sizePolicy horizontal="Preferred" vertical="Expanding"/>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1.266666666666667 0 0 3.1 -19.73333333333333 -627.9</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">74 299</prop>
+    <prop name="Size">181 11</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="infoBottom" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">20</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">74 299</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">mtpBackground2</prop>
+    <prop name="BackColor">mtpBackground2</prop>
+    <prop name="TabOrder">14</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="minimumSize">-1 36</prop>
+    <prop name="sizePolicy">
+     <sizePolicy horizontal="Preferred" vertical="Expanding"/>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">1.266666666666667 0 0 3.1 -4.733333333333299 -435.9</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">74 299</prop>
+    <prop name="Size">181 11</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
    </properties>
   </shape>
  </shapes>
@@ -216,11 +420,31 @@ public void initialize(shared_ptr&lt;MtpViewModelBase&gt; viewModel)
     <prop name="layoutSpacing">0</prop>
    </properties>
   </layout>
+  <layout Name="LAYOUT_GROUP6" parentSerial="2" serial="4">
+   <properties>
+    <prop name="shapeSerial">15</prop>
+    <prop idx="0" name="shapeSerial">16</prop>
+    <prop name="isContainerShape">True</prop>
+    <prop name="layoutType">VBox</prop>
+   </properties>
+  </layout>
+  <layout Name="LAYOUT_GROUP5" parentSerial="2" serial="3">
+   <properties>
+    <prop name="shapeSerial">13</prop>
+    <prop idx="0" name="shapeSerial">14</prop>
+    <prop name="isContainerShape">True</prop>
+    <prop name="layoutType">VBox</prop>
+   </properties>
+  </layout>
   <layout Name="LAYOUT_GROUP2" parentSerial="-1" serial="2">
    <properties>
     <prop idx="2" name="shapeSerial">6</prop>
+    <prop idx="3" name="shapeSerial">19</prop>
+    <prop idx="6" name="shapeSerial">20</prop>
     <prop idx="1" name="groupSerial">0</prop>
     <prop idx="0" name="groupSerial">1</prop>
+    <prop idx="5" name="groupSerial">4</prop>
+    <prop idx="4" name="groupSerial">3</prop>
     <prop name="isContainerShape">False</prop>
     <prop name="layoutType">VBox</prop>
     <prop name="layoutSpacing">0</prop>

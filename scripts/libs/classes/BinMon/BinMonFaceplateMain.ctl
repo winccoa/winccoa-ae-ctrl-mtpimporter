@@ -23,7 +23,7 @@ class BinMonFaceplateMain : MtpFaceplateMainBase
    * @param shapes A mapping of shapes used in the faceplate.
    * @param layoutNavigation The layout for navigation buttons.
    */
-  public BinMonFaceplateMain(shared_ptr<BinMon> viewModel, const mapping &shapes, const string &layoutNavigation) : MtpFaceplateMainBase(viewModel, shapes, layoutNavigation)
+  public BinMonFaceplateMain(shared_ptr<BinMon> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {
 
   }

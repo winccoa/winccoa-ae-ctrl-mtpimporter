@@ -12,7 +12,7 @@
 
 class MonBinVlvFaceplateMain : MtpFaceplateMainBase
 {
-  public MonBinVlvFaceplateMain(shared_ptr<MonBinVlv> viewModel, const mapping &shapes, const string &layoutNavigation) : MtpFaceplateMainBase(viewModel, shapes, layoutNavigation)
+  public MonBinVlvFaceplateMain(shared_ptr<MonBinVlv> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {
   }
 

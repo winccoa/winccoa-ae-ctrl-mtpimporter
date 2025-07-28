@@ -12,7 +12,7 @@
 
 class MonAnaDrvFaceplateMain : MtpFaceplateMainBase
 {
-  public MonAnaDrvFaceplateMain(shared_ptr<MonAnaDrv> viewModel, const mapping &shapes, const string &layoutNavigation) : MtpFaceplateMainBase(viewModel, shapes, layoutNavigation)
+  public MonAnaDrvFaceplateMain(shared_ptr<MonAnaDrv> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {
   }
 

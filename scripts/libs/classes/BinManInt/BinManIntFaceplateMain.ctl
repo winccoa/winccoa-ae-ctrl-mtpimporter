@@ -12,7 +12,7 @@
 
 class BinManIntFaceplateMain : MtpFaceplateMainBase
 {
-  public BinManIntFaceplateMain(shared_ptr<BinManInt> viewModel, const mapping &shapes, const string &layoutNavigation) : MtpFaceplateMainBase(viewModel, shapes, layoutNavigation)
+  public BinManIntFaceplateMain(shared_ptr<BinManInt> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {
   }
 

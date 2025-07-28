@@ -12,7 +12,7 @@
 
 class AnaManIntFaceplateMain : MtpFaceplateMainBase
 {
-  public AnaManIntFaceplateMain(shared_ptr<AnaManInt> viewModel, const mapping &shapes, const string &layoutNavigation) : MtpFaceplateMainBase(viewModel, shapes, layoutNavigation)
+  public AnaManIntFaceplateMain(shared_ptr<AnaManInt> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {
   }
 

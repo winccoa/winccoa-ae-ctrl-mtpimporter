@@ -12,7 +12,7 @@
 
 class MonBinDrvFaceplateMain : MtpFaceplateMainBase
 {
-  public MonBinDrvFaceplateMain(shared_ptr<MonBinDrv> viewModel, const mapping &shapes, const string &layoutNavigation) : MtpFaceplateMainBase(viewModel, shapes, layoutNavigation)
+  public MonBinDrvFaceplateMain(shared_ptr<MonBinDrv> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {
   }
 
