@@ -46,3 +46,5 @@ PIDCtrl.PIDCtrl	1#1
 	P	22#42
 	Ti	22#43
 	Td	22#44
+	tagName	42#45
+	enabled	23#46

@@ -22,3 +22,5 @@ AnaManInt.AnaManInt	1#1
 	SrcIntOp	23#18
 	SrcManAct	23#19
 	SrcIntAct	23#20
+	tagName	42#21
+	enabled	23#22

@@ -46,3 +46,5 @@ MonBinDrv.MonBinDrv	1#1
 	FwdFbkCalc	23#81
 	FwdFbk	23#82
 	Trip	23#83
+	enabled	23#84
+	tagName	42#85

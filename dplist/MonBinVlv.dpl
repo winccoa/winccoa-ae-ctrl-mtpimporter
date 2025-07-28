@@ -41,3 +41,5 @@ MonBinVlv.MonBinVlv	1#1
 	MonDynErr	23#75
 	MonStatTi	22#76
 	MonDynTi	22#77
+	enabled	23#78
+	tagName	42#79

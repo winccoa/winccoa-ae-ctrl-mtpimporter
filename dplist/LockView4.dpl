@@ -27,3 +27,5 @@ LockView4.LockView4	1#1
 	In4Txt	25#29
 	Out	23#30
 	OutQC	24#31
+	enabled	23#32
+	tagName	42#33

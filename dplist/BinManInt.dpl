@@ -19,3 +19,5 @@ BinManInt.BinManInt	1#1
 	SrcIntOp	23#17
 	SrcManAct	23#18
 	SrcIntAct	23#19
+	enabled	23#20
+	tagName	42#21

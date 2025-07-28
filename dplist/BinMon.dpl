@@ -12,3 +12,5 @@ BinMon.BinMon	1#1
 	VFlutTi	22#9
 	VFlutCnt	21#10
 	VFlutAct	23#11
+	enabled	23#12
+	tagName	42#13
