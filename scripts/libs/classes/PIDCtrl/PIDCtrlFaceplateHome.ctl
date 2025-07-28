@@ -33,6 +33,9 @@ class PIDCtrlFaceplateHome : MtpViewBase
   private shape _txtUnitSP;
   private shape _txtSPInternal;
   private shape _txtSPManual;
+  private shape _rectPvViolated;
+  private shape _rectSpViolated;
+  private shape _rectMvViolated;
 
   private bool _stateAutomaticActive;
   private bool _stateOperatorActive;
@@ -45,6 +48,21 @@ class PIDCtrlFaceplateHome : MtpViewBase
   private bool _stateChannel;
   private bool _osLevelStation;
 
+  private float _pv;
+  private bool _pvLimitViolated;
+  private float _pvSclMin;
+  private float _pvSclMax;
+
+  private float _sp;
+  private bool _spLimitViolated;
+  private float _spSclMin;
+  private float _spSclMax;
+
+  private float _mv;
+  private bool _mvLimitViolated;
+  private float _mvSclMin;
+  private float _mvSclMax;
+
   public PIDCtrlFaceplateHome(shared_ptr<PIDCtrl> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     classConnect(this, setProcessValueCB, MtpViewBase::getViewModel(), PIDCtrl::processValueChanged);
@@ -54,6 +72,13 @@ class PIDCtrlFaceplateHome : MtpViewBase
     classConnect(this, setSetpointInternalCB, MtpViewBase::getViewModel(), PIDCtrl::setpointInternalChanged);
     classConnect(this, setOsLevelCB, MtpViewBase::getViewModel().getOsLevel(), MtpOsLevel::osStationLevelChanged);
     classConnect(this, setSetpointManualCB, MtpViewBase::getViewModel(), PIDCtrl::setpointManualChanged);
+
+    classConnectUserData(this, setProcessValueScaleCB, "min", MtpViewBase::getViewModel(), PIDCtrl::processValueScaleMinChanged);
+    classConnectUserData(this, setProcessValueScaleCB, "max", MtpViewBase::getViewModel(), PIDCtrl::processValueScaleMaxChanged);
+    classConnectUserData(this, setSetpointValueScaleCB, "min", MtpViewBase::getViewModel(), PIDCtrl::setpointScaleMinChanged);
+    classConnectUserData(this, setSetpointValueScaleCB, "max", MtpViewBase::getViewModel(), PIDCtrl::setpointScaleMaxChanged);
+    classConnectUserData(this, setManipulatedValueScaleCB, "min", MtpViewBase::getViewModel(), PIDCtrl::manipulatedValueScaleMinChanged);
+    classConnectUserData(this, setManipulatedValueScaleCB, "max", MtpViewBase::getViewModel(), PIDCtrl::manipulatedValueScaleMaxChanged);
 
     classConnectUserData(this, setStateCB, "_stateAutomaticActive", MtpViewBase::getViewModel().getState(), MtpState::automaticActiveChanged);
     classConnectUserData(this, setStateCB, "_stateOperatorActive", MtpViewBase::getViewModel().getState(), MtpState::operatorActiveChanged);
@@ -82,6 +107,18 @@ class PIDCtrlFaceplateHome : MtpViewBase
     _internalActive =  MtpViewBase::getViewModel().getSource().getInternalActive();
     _channel =  MtpViewBase::getViewModel().getSource().getChannel();
 
+    _pvSclMin =  MtpViewBase::getViewModel().getProcessValueScaleMin();
+    _pvSclMax =  MtpViewBase::getViewModel().getProcessValueScaleMax();
+    _pv = MtpViewBase::getViewModel().getProcessValue();
+
+    _spSclMin =  MtpViewBase::getViewModel().getSetpointScaleMin();
+    _spSclMax =  MtpViewBase::getViewModel().getSetpointScaleMax();
+    _sp = MtpViewBase::getViewModel().getSetpoint();
+
+    _mvSclMin =  MtpViewBase::getViewModel().getManipulatedValueScaleMin();
+    _mvSclMax =  MtpViewBase::getViewModel().getManipulatedValueScaleMax();
+    _mv = MtpViewBase::getViewModel().getManipulatedValue();
+
     setUnit(MtpViewBase::getViewModel().getProcessValueUnit(), MtpViewBase::getViewModel().getSetpointUnit(), MtpViewBase::getViewModel().getManipulatedValueUnit());
 
     setWqcCB(MtpViewBase::getViewModel().getWqc().getQualityGood());
@@ -97,6 +134,10 @@ class PIDCtrlFaceplateHome : MtpViewBase
     setOperatorActiveCB("_stateOperatorActive", _stateOperatorActive);
     setAutomaticActiveCB("_stateAutomaticActive", _stateAutomaticActive);
     setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
+
+    setProcessValueScaleCB("min", _pvSclMin);
+    setSetpointValueScaleCB("min", _spSclMin);
+    setManipulatedValueScaleCB("min", _mvSclMin);
   }
 
   public void setProcessValue(const float &value)
@@ -162,6 +203,9 @@ class PIDCtrlFaceplateHome : MtpViewBase
     _txtUnitSP = MtpViewBase::extractShape("_txtUnitSP");
     _txtSPInternal = MtpViewBase::extractShape("_txtSPInternal");
     _txtSPManual = MtpViewBase::extractShape("_txtSPManual");
+    _rectPvViolated = MtpViewBase::extractShape("_rectPvViolated");
+    _rectSpViolated = MtpViewBase::extractShape("_rectSpViolated");
+    _rectMvViolated = MtpViewBase::extractShape("_rectMvViolated");
   }
 
   private void setUnit(MtpUnit pvUnit, MtpUnit spUnit, MtpUnit mvUnit)
@@ -189,12 +233,82 @@ class PIDCtrlFaceplateHome : MtpViewBase
 
   private void setProcessValueCB(const float &value)
   {
+    _pv = value;
     _txtPV.text = value;
+    setProcessValueScaleCB("min", _pvSclMin);
+  }
+
+  private void setProcessValueScaleCB(const string &varName, const float &value)
+  {
+    switch (varName)
+    {
+      case "min":
+        _pvSclMin = value;
+        break;
+
+      case "max":
+        _pvSclMax = value;
+        break;
+    }
+
+    if (_pv < _pvSclMin || _pv > _pvSclMax)
+    {
+      _pvLimitViolated = TRUE;
+      _rectPvViolated.visible = TRUE;
+      errorShow();
+    }
+    else
+    {
+      _pvLimitViolated = FALSE;
+      _rectPvViolated.visible = FALSE;
+      errorShow();
+    }
+  }
+
+  private void errorShow()
+  {
+    if (_pvLimitViolated)
+    {
+      _rectError.fill = "[pattern,[fit,any,MTP_Icones/StaticErr.svg]]";
+    }
+    else
+    {
+      _rectError.fill = "[pattern,[fit,any,MTP_Icones/Ok_2.svg]]";
+    }
   }
 
   private void setSetpointCB(const float &value)
   {
     _txtSP.text = value;
+    _sp = value;
+    setSetpointValueScaleCB("min", _spSclMin);
+  }
+
+  private void setSetpointValueScaleCB(const string &varName, const float &value)
+  {
+    switch (varName)
+    {
+      case "min":
+        _spSclMin = value;
+        break;
+
+      case "max":
+        _spSclMax = value;
+        break;
+    }
+
+    if (_sp < _spSclMin || _sp > _spSclMax)
+    {
+      _spLimitViolated = TRUE;
+      _rectSpViolated.visible = TRUE;
+      errorShow();
+    }
+    else
+    {
+      _spLimitViolated = FALSE;
+      _rectSpViolated.visible = FALSE;
+      errorShow();
+    }
   }
 
   private void setManipulatedValueCB(const float &value)
@@ -202,6 +316,36 @@ class PIDCtrlFaceplateHome : MtpViewBase
     if (_stateAutomaticActive)
     {
       _txtMV.text = value;
+    }
+
+    _mv = value;
+    setManipulatedValueScaleCB("min", _mvSclMin);
+  }
+
+  private void setManipulatedValueScaleCB(const string &varName, const float &value)
+  {
+    switch (varName)
+    {
+      case "min":
+        _mvSclMin = value;
+        break;
+
+      case "max":
+        _mvSclMax = value;
+        break;
+    }
+
+    if (_mv < _mvSclMin || _mv > _mvSclMax)
+    {
+      _mvLimitViolated = TRUE;
+      _rectMvViolated.visible = TRUE;
+      errorShow();
+    }
+    else
+    {
+      _mvLimitViolated = FALSE;
+      _rectMvViolated.visible = FALSE;
+      errorShow();
     }
   }
 

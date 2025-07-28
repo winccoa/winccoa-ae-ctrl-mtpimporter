@@ -39,6 +39,9 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
   shapes.insert(&quot;_txtUnitSP&quot;, getShape(&quot;txtUnitSP&quot;));
   shapes.insert(&quot;_txtSPInternal&quot;, getShape(&quot;txtSPInternal&quot;));
   shapes.insert(&quot;_txtSPManual&quot;, getShape(&quot;txtSPManual&quot;));
+  shapes.insert(&quot;_rectPvViolated&quot;, getShape(&quot;rectPvViolated&quot;));
+  shapes.insert(&quot;_rectSpViolated&quot;, getShape(&quot;rectSpViolated&quot;));
+  shapes.insert(&quot;_rectMvViolated&quot;, getShape(&quot;rectMvViolated&quot;));
 
   _faceplate = new PIDCtrlFaceplateHome(viewModel, shapes);
 }
@@ -159,7 +162,7 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok_2.svg]]</prop>
-    <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 -137.5746654061469 271.6155753968253</prop>
+    <prop name="Geometry">1.115180612711477 0 0 1.544932208994709 -180.7117464383475 266.7245577050264</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183.5 79.14615384615388</prop>
     <prop name="Size">27.5 16.85384615384612</prop>
@@ -695,6 +698,93 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
   _faceplate.setManipulatedValue(this.text());
 }]]></script>
    </events>
+  </shape>
+  <shape Name="rectPvViolated" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">29</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">183.5 79.14615384615388</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">24</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Tolerance.svg]]</prop>
+    <prop name="Geometry">0.5197988111568359 0 0 0.8651620370370372 87.61691815272061 -1.332320601851887</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">183.5 79.14615384615388</prop>
+    <prop name="Size">27.5 16.85384615384612</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="rectSpViolated" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">30</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">183.5 79.14615384615388</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">25</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Tolerance.svg]]</prop>
+    <prop name="Geometry">0.5197988111568359 0 0 0.8651620370370372 87.61691815272061 78.66767939814812</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">183.5 79.14615384615388</prop>
+    <prop name="Size">27.5 16.85384615384612</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="rectMvViolated" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">31</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">183.5 79.14615384615388</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">26</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Tolerance.svg]]</prop>
+    <prop name="Geometry">0.5197988111568359 0 0 0.8651620370370372 87.61691815272061 166.6676793981481</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">183.5 79.14615384615388</prop>
+    <prop name="Size">27.5 16.85384615384612</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
   </shape>
  </shapes>
 </panel>
