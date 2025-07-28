@@ -252,7 +252,7 @@ public void initialize(shared_ptr&lt;MonBinVlv&gt; viewModel)
     <prop name="Type"></prop>
     <prop name="RefPoint">183.5 79.14615384615388</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
     <prop name="BackColor">{255,255,255}</prop>
     <prop name="TabOrder">5</prop>
@@ -267,7 +267,7 @@ public void initialize(shared_ptr&lt;MonBinVlv&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok_2.svg]]</prop>
-    <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 -145.5138545953361 217.5243365575396</prop>
+    <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 -145.5138545953361 274.4421657986111</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183.5 79.14615384615388</prop>
     <prop name="Size">27.5 16.85384615384612</prop>
@@ -279,9 +279,9 @@ public void initialize(shared_ptr&lt;MonBinVlv&gt; viewModel)
    <properties>
     <prop name="serialId">8</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">62.13233047862659 337.4545200892857</prop>
+    <prop name="RefPoint">62.13233047862659 394.3723493303572</prop>
     <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
+    <prop name="Visible">False</prop>
     <prop name="ForeColor">mtpText</prop>
     <prop name="BackColor">_Window</prop>
     <prop name="TabOrder">6</prop>
@@ -296,7 +296,7 @@ public void initialize(shared_ptr&lt;MonBinVlv&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">62.13233047862659 337.4545200892857</prop>
+    <prop name="Location">62.13233047862659 394.3723493303572</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -333,7 +333,7 @@ public void initialize(shared_ptr&lt;MonBinVlv&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Ok_2.svg]]</prop>
-    <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 -145.5138545953361 271.5243365575396</prop>
+    <prop name="Geometry">0.8910836762688614 0 0 1.483134920634921 -145.5138545953361 223.2352740575396</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183.5 79.14615384615388</prop>
     <prop name="Size">27.5 16.85384615384612</prop>
@@ -345,7 +345,7 @@ public void initialize(shared_ptr&lt;MonBinVlv&gt; viewModel)
    <properties>
     <prop name="serialId">10</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">61.99999999999983 381.9868861607143</prop>
+    <prop name="RefPoint">61.99999999999983 333.6978236607143</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">False</prop>
     <prop name="ForeColor">mtpText</prop>
@@ -362,7 +362,7 @@ public void initialize(shared_ptr&lt;MonBinVlv&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Location">61.99999999999983 381.9868861607143</prop>
+    <prop name="Location">61.99999999999983 333.6978236607143</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
@@ -550,7 +550,7 @@ position</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Information.svg]]</prop>
-    <prop name="Geometry">0.8910836762688614 0 0 0.5561755952380953 6.679286694101506 348.8611421130952</prop>
+    <prop name="Geometry">0.8910836762688614 0 0 0.5561755952380953 6.679286694101506 300.5720796130952</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183.5 79.14615384615388</prop>
     <prop name="Size">27.5 16.85384615384612</prop>
