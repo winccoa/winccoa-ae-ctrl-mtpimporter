@@ -31,17 +31,14 @@ class BinManInt {
     - void setValueFeedbackCB(const string &dpe, const bool &valueFeedback)
     ' DPE: VInt
     - void setValueInternalCB(const string &dpe, const bool &valueInternal)
-    ' DPE: VState0
-    - void setValueStateFalseTextCB(const string &dpe, const string &valueStateFalseText)
-    ' DPE: VState1
-    - void setValueStateTrueTextCB(const string &dpe, const string &valueStateTrueText)
+    ' DPE: VMan
+    - void setValueManualCB(const string &dpe, const bool &valueManual)
 
     ..events..
     + void valueOutChanged(const bool &valueOut)
     + void valueFeedbackChanged(const bool &valueFeedback)
     + void valueInternalChanged(const bool &valueInternal)
-    + void valueStateFalseTextChanged(const string &valueStateFalseText)
-    + void valueStateTrueTextChanged(const string &valueStateTrueText)
+    + void valueManualChanged(const bool &valueManual)
 }
 
 MtpViewModelBase <|-- BinManInt

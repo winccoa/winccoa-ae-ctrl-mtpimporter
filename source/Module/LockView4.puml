@@ -23,9 +23,7 @@ class LockView4 {
     - void setOutputCB(const string &dpe, const bool &output)
     ' DPE: Logic
     - void setLogicCB(const string &dpe, const bool &logic)
-    - void inputChangedCB(const bool &value)
-    - void updateOutput()
-    
+        
     ...events..
     + void outputChanged(const bool &output)
     + void logicChanged(const bool &logic)
