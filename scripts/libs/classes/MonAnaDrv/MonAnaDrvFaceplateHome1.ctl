@@ -15,66 +15,76 @@
 #uses "classes/MonAnaDrv/MonAnaDrv"
 #uses "classes/MtpView/MtpViewBase"
 
+/**
+ * @class MonAnaDrvFaceplateHome
+ * @brief Represents the home faceplate for MonAnaDrv objects.
+ */
 class MonAnaDrvFaceplateHome : MtpViewBase
 {
-  private shape _refWqc;
-  private shape _rectAutomatic;
-  private shape _rectError;
-  private shape _rectErrorInformation;
-  private shape _rectForward;
-  private shape _rectForwardAut;
-  private shape _rectLock;
-  private shape _rectMotor;
-  private shape _rectMotorProtection;
-  private shape _rectOff;
-  private shape _rectOperator;
-  private shape _rectPermission;
-  private shape _rectProtection;
-  private shape _rectReset;
-  private shape _rectReverse;
-  private shape _rectReverseAut;
-  private shape _rectSafetyPosition;
-  private shape _rectSafetyPositionInformation;
-  private shape _rectStop;
-  private shape _rectStopAut;
-  private shape _txtError;
-  private shape _txtLock;
-  private shape _txtMotorProtection;
-  private shape _txtPermission;
-  private shape _txtProtection;
-  private shape _txtSafetyPosition;
+  private shape _refWqc; //!< Reference to the quality code shape.
+  private shape _rectAutomatic; //!< Reference to the automatic mode rectangle shape.
+  private shape _rectError; //!< Reference to the error rectangle shape.
+  private shape _rectErrorInformation; //!< Reference to the error information rectangle shape.
+  private shape _rectForward; //!< Reference to the forward rectangle shape.
+  private shape _rectForwardAut; //!< Reference to the forward automatic rectangle shape.
+  private shape _rectLock; //!< Reference to the interlock rectangle shape.
+  private shape _rectMotor; //!< Reference to the motor rectangle shape.
+  private shape _rectMotorProtection; //!< Reference to the motor protection rectangle shape.
+  private shape _rectOff; //!< Reference to the off state rectangle shape.
+  private shape _rectOperator; //!< Reference to the operator mode rectangle shape.
+  private shape _rectPermission; //!< Reference to the permission rectangle shape.
+  private shape _rectProtection; //!< Reference to the protection rectangle shape.
+  private shape _rectReset; //!< Reference to the reset rectangle shape.
+  private shape _rectReverse; //!< Reference to the reverse rectangle shape.
+  private shape _rectReverseAut; //!< Reference to the reverse automatic rectangle shape.
+  private shape _rectSafetyPosition; //!< Reference to the safety position rectangle shape.
+  private shape _rectSafetyPositionInformation; //!< Reference to the safety position information rectangle shape.
+  private shape _rectStop; //!< Reference to the stop rectangle shape.
+  private shape _rectStopAut; //!< Reference to the stop automatic rectangle shape.
+  private shape _txtError; //!< Reference to the error text shape.
+  private shape _txtLock; //!< Reference to the interlock text shape.
+  private shape _txtMotorProtection; //!< Reference to the motor protection text shape.
+  private shape _txtPermission; //!< Reference to the permission text shape.
+  private shape _txtProtection; //!< Reference to the protection text shape.
+  private shape _txtSafetyPosition; //!< Reference to the safety position text shape.
 
-  private bool _stateOffActive;
-  private bool _stateChannel;
-  private bool _stateOperatorActive;
-  private bool _stateAutomaticActive;
-  private bool _forwardAutomatic;
-  private bool _stopAutomatic;
-  private bool _reverseAutomatic;
+  private bool _stateOffActive; //!< Indicates if the off state is active.
+  private bool _stateChannel; //!< Indicates the channel state.
+  private bool _stateOperatorActive; //!< Indicates if the operator mode is active.
+  private bool _stateAutomaticActive; //!< Indicates if the automatic mode is active.
+  private bool _forwardAutomatic; //!< Indicates if the forward automatic command is active.
+  private bool _stopAutomatic; //!< Indicates if the stop automatic command is active.
+  private bool _reverseAutomatic; //!< Indicates if the reverse automatic command is active.
 
-  private bool _forwardFeedbackSignal;
-  private bool _reverseFeedbackSignal;
-  private bool _forwardControl;
-  private bool _reverseControl;
-  private bool _staticError;
-  private bool _dynamicError;
-  private bool _monitorEnabled;
+  private bool _forwardFeedbackSignal; //!< Indicates the forward feedback signal state.
+  private bool _reverseFeedbackSignal; //!< Indicates the reverse feedback signal state.
+  private bool _forwardControl; //!< Indicates the forward control state.
+  private bool _reverseControl; //!< Indicates the reverse control state.
+  private bool _staticError; //!< Indicates if a static error is present.
+  private bool _dynamicError; //!< Indicates if a dynamic error is present.
+  private bool _monitorEnabled; //!< Indicates if the monitor is enabled.
 
-  private bool _permissionEnabled;
-  private bool _permit;
-  private bool _interlockEnabled;
-  private bool _interlock;
-  private bool _protectionEnabled;
-  private bool _protection;
+  private bool _permissionEnabled; //!< Indicates if permission is enabled.
+  private bool _permit; //!< Indicates the permit state.
+  private bool _interlockEnabled; //!< Indicates if interlock is enabled.
+  private bool _interlock; //!< Indicates the interlock state.
+  private bool _protectionEnabled; //!< Indicates if protection is enabled.
+  private bool _protection; //!< Indicates the protection state.
 
-  private bool _driveSafetyIndicator;
-  private bool _rpmAlarmHighActive;
-  private bool _rpmAlarmLowActive;
+  private bool _driveSafetyIndicator; //!< Indicates the drive safety indicator state.
+  private bool _rpmAlarmHighActive; //!< Indicates if the high RPM alarm is active.
+  private bool _rpmAlarmLowActive; //!< Indicates if the low RPM alarm is active.
 
-  private bool _osLevelStation;
+  private bool _osLevelStation; //!< Indicates the operational station level.
 
   private shared_ptr<MtpBarIndicator> _refBarIndicator;  //!< Reference to the bar indicator for displaying values.
 
+  /**
+   * @brief Constructor for MonAnaDrvFaceplateHome.
+   *
+   * @param viewModel A shared pointer to the MonAnaDrv view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   */
   public MonAnaDrvFaceplateHome(shared_ptr<MonAnaDrv> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     classConnect(_refBarIndicator, MtpBarIndicator::setValueCustomLimit, MtpViewBase::getViewModel(), MonAnaDrv::rpmFeedbackSignalChanged);
@@ -196,51 +206,91 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
 
+  /**
+   * @brief Activates the off state.
+   * @details Calls the setOffOperator method on the view model's state.
+   */
   public void activateStateOff()
   {
     MtpViewBase::getViewModel().getState().setOffOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the operator mode.
+   * @details Calls the setOperatorOperator method on the view model's state.
+   */
   public void activateStateOperator()
   {
     MtpViewBase::getViewModel().getState().setOperatorOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the automatic mode.
+   * @details Calls the setAutomaticOperator method on the view model's state.
+   */
   public void activateStateAutomatic()
   {
     MtpViewBase::getViewModel().getState().setAutomaticOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the reset command.
+   * @details Calls the setResetOperator method on the view model.
+   */
   public void activateReset()
   {
     MtpViewBase::getViewModel().setResetOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the reverse command.
+   * @details Calls the setReverseOperator method on the view model.
+   */
   public void activateReverse()
   {
     MtpViewBase::getViewModel().setReverseOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the stop command.
+   * @details Calls the setStopOperator method on the view model.
+   */
   public void activateStop()
   {
     MtpViewBase::getViewModel().setStopOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the forward command.
+   * @details Calls the setForwardOperator method on the view model.
+   */
   public void activateForward()
   {
     MtpViewBase::getViewModel().setForwardOperator(TRUE);
   }
 
+  /**
+   * @brief Opens the error information child panel.
+   * @details Opens the error information panel for the MonAnaDrv.
+   */
   public void openErrorInformation()
   {
     MtpViewBase::openChildPanel("object_parts/MonAnaDrv/MonAnaDrvFaceplateErrorInformation.xml", "Error Information");
   }
 
+  /**
+   * @brief Opens the safety position information child panel.
+   * @details Opens the safety position information panel for the MonAnaDrv.
+   */
   public void openSafetyPositionInformation()
   {
     MtpViewBase::openChildPanel("object_parts/MonAnaDrv/MonAnaDrvFaceplateSafetyPositionInformation.xml", "SafetyPosition Information");
   }
 
+  /**
+   * @brief Initializes the shapes used in the faceplate.
+   * @details This method overrides the base class method to extract the required shapes.
+   */
   protected void initializeShapes()
   {
     _refBarIndicator = MtpViewBase::extractShape("_refBarIndicator").getMtpBarIndicator();
@@ -273,6 +323,11 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     _txtSafetyPosition = MtpViewBase::extractShape("_txtSafetyPosition");
   }
 
+  /**
+   * @brief Callback function to update the operational station level and reset button states.
+   *
+   * @param oslevel The new operational station level state.
+   */
   private void setOsLevelCB(const bool &oslevel)
   {
     _osLevelStation = oslevel;
@@ -286,6 +341,12 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     setResetCB("", FALSE);
   }
 
+  /**
+   * @brief Callback function to update the automatic preview line visibility.
+   *
+   * @param varName The name of the variable to set.
+   * @param state The new state value.
+   */
   private void setAutomaticPreviewLineCB(const string &varName, const bool &state)
   {
     switch (varName)
@@ -333,6 +394,12 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update security-related shape visibility and icons.
+   *
+   * @param varName The name of the variable to set.
+   * @param security The new security state.
+   */
   private void setSecurityCB(const string &varName, const bool &security)
   {
     switch (varName)
@@ -417,6 +484,11 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the motor protection shape.
+   *
+   * @param driveSafetyIndicator The new drive safety indicator state.
+   */
   private void setMotorProtectionCB(const bool &_driveSafetyIndicator)
   {
     if (_driveSafetyIndicator)
@@ -431,6 +503,11 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the safety position shape.
+   *
+   * @param safetypositionActive The new safety position active state.
+   */
   private void setSafetyPositionActiveCB(const bool &safetypositionActive)
   {
     if (safetypositionActive)
@@ -445,6 +522,12 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the reset button state.
+   *
+   * @param varName The name of the variable to set.
+   * @param reset The new reset state.
+   */
   private void setResetCB(const string &varName, const bool &reset)
   {
     switch (varName)
@@ -494,6 +577,12 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     _rectReset.transparentForMouse = (_rectReset.fill == "[pattern,[fit,any,MTP_Icones/reset_1.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the error shape visibility and icon.
+   *
+   * @param varName The name of the variable to set.
+   * @param error The new error state.
+   */
   private void setErrorCB(const string &varName, const bool &error)
   {
     switch (varName)
@@ -531,11 +620,22 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the quality code status.
+   *
+   * @param qualityGoodChanged The new quality good status.
+   */
   private void setWqcCB(const bool &qualityGoodChanged)
   {
     _refWqc.setStatus(qualityGoodChanged);
   }
 
+  /**
+   * @brief Callback function to update the automatic mode button state.
+   *
+   * @param varName The name of the variable to set.
+   * @param state The new state value.
+   */
   private void setAutomaticActiveCB(const string &varName, const bool &state)
   {
     switch (varName)
@@ -565,6 +665,12 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     _rectAutomatic.transparentForMouse = (_rectAutomatic.fill == "[pattern,[fit,any,MTP_Icones/automatic_1_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the motor icon based on feedback and control states.
+   *
+   * @param varName The name of the variable to set.
+   * @param motor The new motor state.
+   */
   private void setMotorCB(const string &varName, const bool &motor)
   {
     switch (varName)
@@ -626,6 +732,12 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the operator mode button state.
+   *
+   * @param varName The name of the variable to set.
+   * @param state The new state value.
+   */
   private void setOperatorActiveCB(const string &varName, const bool &state)
   {
     switch (varName)
@@ -655,6 +767,12 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     _rectOperator.transparentForMouse = (_rectOperator.fill == "[pattern,[fit,any,MTP_Icones/Operator_1_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the off state button.
+   *
+   * @param varName The name of the variable to set.
+   * @param state The new state value.
+   */
   private void setStateOffActiveCB(const string &varName, const bool &state)
   {
     switch (varName)
@@ -684,6 +802,12 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     _rectOff.transparentForMouse = (_rectOff.fill == "[pattern,[fit,any,MTP_Icones/Power_2_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the reverse button state.
+   *
+   * @param varName The name of the variable to set.
+   * @param state The new state value.
+   */
   private void setReverseCB(const string &varName, const bool &state)
   {
     switch (varName)
@@ -733,6 +857,12 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     _rectReverse.transparentForMouse = (_rectReverse.fill == "[pattern,[fit,any,MTP_Icones/revers_1_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the stop button state.
+   *
+   * @param varName The name of the variable to set.
+   * @param state The new state value.
+   */
   private void setStopCB(const string &varName, const bool &state)
   {
     switch (varName)
@@ -786,6 +916,12 @@ class MonAnaDrvFaceplateHome : MtpViewBase
     _rectStop.transparentForMouse = (_rectStop.fill == "[pattern,[fit,any,MTP_Icones/stop_1_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the forward button state.
+   *
+   * @param varName The name of the variable to set.
+   * @param state The new state value.
+   */
   private void setForwardCB(const string &varName, const bool &state)
   {
     switch (varName)

@@ -12,25 +12,35 @@
 #uses "classes/MonBinVlv/MonBinVlv"
 #uses "classes/MtpView/MtpViewRef"
 
+/**
+ * @class MonBinVlvRef
+ * @brief Represents the reference implementation for the MonBinVlv objects.
+ */
 class MonBinVlvRef : MtpViewRef
 {
-  private shape _rectError;
-  private shape _rectLocked;
-  private shape _rectMode;
-  private shape _rectValve;
+  private shape _rectError; //!< Reference to the error rectangle shape.
+  private shape _rectLocked; //!< Reference to the locked rectangle shape.
+  private shape _rectMode; //!< Reference to the mode rectangle shape.
+  private shape _rectValve; //!< Reference to the valve rectangle shape.
 
-  private bool _staticError;
-  private bool _dynamicError;
-  private bool _permit;
-  private bool _interlock;
-  private bool _protection;
+  private bool _staticError; //!< Indicates if a static error is active.
+  private bool _dynamicError; //!< Indicates if a dynamic error is active.
+  private bool _permit; //!< Indicates if the permit is active.
+  private bool _interlock; //!< Indicates if the interlock is active.
+  private bool _protection; //!< Indicates if the protection is active.
 
-  private bool _stateOffActive;
-  private bool _stateOperatorActive;
-  private bool _openCheckbackSignal;
-  private bool _closeCheckbackSignal;
-  private bool _valveControl;
+  private bool _stateOffActive; //!< Indicates if the off state is active.
+  private bool _stateOperatorActive; //!< Indicates if the operator state is active.
+  private bool _openCheckbackSignal; //!< Indicates if the open checkback signal is active.
+  private bool _closeCheckbackSignal; //!< Indicates if the close checkback signal is active.
+  private bool _valveControl; //!< Indicates if the valve control is active.
 
+  /**
+   * @brief Constructor for MonBinVlvRef.
+   *
+   * @param viewModel A shared pointer to the MonBinVlv view model.
+   * @param shapes A mapping of shapes used in the reference.
+   */
   public MonBinVlvRef(shared_ptr<MonBinVlv> viewModel, const mapping &shapes) : MtpViewRef(viewModel, shapes)
   {
     classConnectUserData(this, setErrorCB, "_staticError", MtpViewRef::getViewModel().getMonitor(), MtpMonitor::staticErrorChanged);
@@ -78,6 +88,12 @@ class MonBinVlvRef : MtpViewRef
     _rectValve = MtpViewRef::extractShape("_rectValve");
   }
 
+  /**
+   * @brief Sets the error status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param error The error state to be set.
+   */
   private void setErrorCB(const string &varName, const bool &error)
   {
     switch (varName)
@@ -103,6 +119,12 @@ class MonBinVlvRef : MtpViewRef
     }
   }
 
+  /**
+   * @brief Sets the locked status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param locked The locked state to be set.
+   */
   private void setLockedCB(const string &varName, const bool &locked)
   {
     switch (varName)
@@ -132,6 +154,12 @@ class MonBinVlvRef : MtpViewRef
     }
   }
 
+  /**
+   * @brief Sets the mode status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param mode The mode state to be set.
+   */
   private void setModeCB(const string &varName, const bool &mode)
   {
     switch (varName)
@@ -162,6 +190,12 @@ class MonBinVlvRef : MtpViewRef
     }
   }
 
+  /**
+   * @brief Sets the valve status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param valve The valve state to be set.
+   */
   private void setValveCB(const string &varName, const bool &valve)
   {
     switch (varName)

@@ -39,7 +39,6 @@ class MtpFaceplateMainFactory
    *
    * @param viewModel A shared pointer to the view model.
    * @param shapes A mapping of shapes used in the faceplate.
-   * @param layoutNavigation The layout for navigation buttons.
    * @return A shared pointer to the created MtpFaceplateMainBase instance.
    */
   public static shared_ptr<MtpFaceplateMainBase> create(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes)
@@ -67,6 +66,5 @@ class MtpFaceplateMainFactory
 
       default: throw (makeError("", PRIO_SEVERE, ERR_PARAM, ErrCode::UNEXPECTEDSTATE, "datapoint type not defined '" + dpTypeName(dp) + "'"));
     }
-
   }
 };

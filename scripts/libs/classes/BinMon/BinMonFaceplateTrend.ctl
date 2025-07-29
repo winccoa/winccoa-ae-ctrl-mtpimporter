@@ -23,9 +23,8 @@ class BinMonFaceplateTrend : MtpFaceplateTrendBase
    */
   public BinMonFaceplateTrend(shared_ptr<BinMon> viewModel, const mapping &shapes) : MtpFaceplateTrendBase(viewModel, shapes)
   {
-
   }
-  
+
   /**
    * @brief Retrieves the dynamic list of trend DPEs.
    * @details This method overrides the base class method to include the specific DPEs for BinMon trends.

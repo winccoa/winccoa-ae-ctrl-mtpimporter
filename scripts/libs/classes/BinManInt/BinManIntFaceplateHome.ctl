@@ -12,26 +12,36 @@
 #uses "classes/MtpView/MtpViewBase"
 #uses "classes/BinManInt/BinManInt"
 
+/**
+ * @class BinManIntFaceplateHome
+ * @brief Represents the home faceplate for BinManInt objects.
+ */
 class BinManIntFaceplateHome : MtpViewBase
 {
-  private shape _txtValue;
-  private shape _rectValue;
-  private shape _refWqc;
-  private shape _btnFalse;
-  private shape _btnTrue;
-  private shape _txtVFbk;
-  private shape _rectManual;
-  private shape _rectInternal;
-  private shape _rectVIntFalse;
-  private shape _rectVIntTrue;
+  private shape _txtValue; //!< Reference to the value text shape.
+  private shape _rectValue; //!< Reference to the value rectangle shape.
+  private shape _refWqc; //!< Reference to the quality code shape.
+  private shape _btnFalse; //!< Reference to the false button shape.
+  private shape _btnTrue; //!< Reference to the true button shape.
+  private shape _txtVFbk; //!< Reference to the feedback value text shape.
+  private shape _rectManual; //!< Reference to the manual mode rectangle shape.
+  private shape _rectInternal; //!< Reference to the internal mode rectangle shape.
+  private shape _rectVIntFalse; //!< Reference to the internal false value rectangle shape.
+  private shape _rectVIntTrue; //!< Reference to the internal true value rectangle shape.
 
-  private bool _manualActive;
-  private bool _internalActive;
-  private bool _channel;
-  private bool _valueOut;
-  private bool _valueInternal;
-  private bool _osLevelStation;
+  private bool _manualActive; //!< Indicates if the manual mode is active.
+  private bool _internalActive; //!< Indicates if the internal mode is active.
+  private bool _channel; //!< Indicates the channel state.
+  private bool _valueOut; //!< The current output value.
+  private bool _valueInternal; //!< The current internal value.
+  private bool _osLevelStation; //!< Indicates the station-level operational state.
 
+  /**
+   * @brief Constructor for BinManIntFaceplateHome.
+   *
+   * @param viewModel A shared pointer to the BinManInt view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   */
   public BinManIntFaceplateHome(shared_ptr<BinManInt> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     classConnect(this, setValueOutCB, MtpViewBase::getViewModel(), BinManInt::valueOutChanged);
@@ -69,26 +79,46 @@ class BinManIntFaceplateHome : MtpViewBase
     setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
 
+  /**
+   * @brief Activates the manual mode.
+   * @details Sets the manual operator state to true.
+   */
   public void activateManual()
   {
     MtpViewBase::getViewModel().getSource().setManualOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the internal mode.
+   * @details Sets the internal operator state to true.
+   */
   public void activateInternal()
   {
     MtpViewBase::getViewModel().getSource().setInternalOperator(TRUE);
   }
 
+  /**
+   * @brief Sets the manual value to true.
+   * @details Updates the manual value in the view model to true.
+   */
   public void changeValueTrue()
   {
     MtpViewBase::getViewModel().setValueManual(true);
   }
 
+  /**
+   * @brief Sets the manual value to false.
+   * @details Updates the manual value in the view model to false.
+   */
   public void changeValueFalse()
   {
     MtpViewBase::getViewModel().setValueManual(false);
   }
 
+  /**
+   * @brief Initializes the shapes used in the faceplate.
+   * @details This method overrides the base class method to extract the required shapes.
+   */
   protected void initializeShapes()
   {
     _txtValue = MtpViewBase::extractShape("_txtValue");
@@ -103,6 +133,11 @@ class BinManIntFaceplateHome : MtpViewBase
     _rectVIntFalse = MtpViewBase::extractShape("_rectVIntFalse");
   }
 
+  /**
+   * @brief Callback function to update the operational state level.
+   *
+   * @param oslevel The new operational state level.
+   */
   private void setOsLevelCB(const bool &oslevel)
   {
     _osLevelStation = oslevel;
@@ -112,6 +147,12 @@ class BinManIntFaceplateHome : MtpViewBase
     setManualActiveCB("", FALSE);
   }
 
+  /**
+   * @brief Callback function to update the manual value and related states.
+   *
+   * @param varName The name of the variable to set.
+   * @param valueManual The new manual value, channel, or internal active state.
+   */
   private void setValueManualCB(const string &varName, const bool &valueManual)
   {
     switch (varName)
@@ -160,6 +201,11 @@ class BinManIntFaceplateHome : MtpViewBase
     _btnFalse.transparentForMouse = (_btnFalse.backCol == "mtpSidebar");
   }
 
+  /**
+   * @brief Callback function to update the output value and its display.
+   *
+   * @param value The new output value.
+   */
   private void setValueOutCB(const bool &value)
   {
     if (value)
@@ -174,6 +220,11 @@ class BinManIntFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the feedback value text.
+   *
+   * @param value The new feedback value.
+   */
   private void setValueFeedbackCB(const bool &value)
   {
     if (value)
@@ -186,6 +237,12 @@ class BinManIntFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the internal value and its display.
+   *
+   * @param varName The name of the variable to set.
+   * @param value The new internal value or internal active state.
+   */
   private void setValueInternalCB(const string &varName, const bool &value)
   {
     switch (varName)
@@ -216,11 +273,22 @@ class BinManIntFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the quality code status.
+   *
+   * @param qualityGoodChanged Indicates if the quality good status has changed.
+   */
   private void setWqcCB(const bool &qualityGoodChanged)
   {
     _refWqc.setStatus(qualityGoodChanged);
   }
 
+  /**
+   * @brief Callback function to update the internal active state and channel.
+   *
+   * @param varName The name of the variable to set.
+   * @param internalActive The new internal active state or channel value.
+   */
   private void setInternalActiveCB(const string &varName, const bool &internalActive)
   {
     switch (varName)
@@ -250,6 +318,12 @@ class BinManIntFaceplateHome : MtpViewBase
     _rectInternal.transparentForMouse = (_rectInternal.fill == "[pattern,[fit,any,MTP_Icones/internal_1_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the manual active state and channel.
+   *
+   * @param varName The name of the variable to set.
+   * @param manualActive The new manual active state or channel value.
+   */
   private void setManualActiveCB(const string &varName, const bool &manualActive)
   {
     switch (varName)

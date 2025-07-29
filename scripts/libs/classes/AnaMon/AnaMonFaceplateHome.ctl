@@ -103,7 +103,7 @@ class AnaMonFaceplateHome : MtpViewBase
   }
 
   /**
-   * @brief Sets the status of the high and low limits based on the active state.
+   * @brief Sets the status of the high limits based on the active state.
    *
    * @param varName The name of the variable to set.
    * @param active The active state of the limit.

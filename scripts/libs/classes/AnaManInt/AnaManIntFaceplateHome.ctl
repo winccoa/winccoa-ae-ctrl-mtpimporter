@@ -13,22 +13,32 @@
 #uses "classes/MtpQualityCode/MtpQualityCode"
 #uses "classes/MtpView/MtpViewBase"
 
+/**
+ * @class AnaManIntFaceplateHome
+ * @brief Represents the home faceplate for AnaManInt objects.
+ */
 class AnaManIntFaceplateHome : MtpViewBase
 {
-  private shape _refWqc;
-  private shape _txtValueManual;
-  private shape _txtValueInternal;
-  private shape _txtFeedbackValue;
-  private shape _rectManual;
-  private shape _rectInternal;
+  private shape _refWqc; //!< Reference to the quality code shape.
+  private shape _txtValueManual; //!< Reference to the manual value text shape.
+  private shape _txtValueInternal; //!< Reference to the internal value text shape.
+  private shape _txtFeedbackValue; //!< Reference to the feedback value text shape.
+  private shape _rectManual; //!< Reference to the manual mode rectangle shape.
+  private shape _rectInternal; //!< Reference to the internal mode rectangle shape.
 
-  private bool _manualActive;
-  private bool _internalActive;
-  private bool _channel;
-  private bool _osLevelStation;
+  private bool _manualActive; //!< Indicates if the manual mode is active.
+  private bool _internalActive; //!< Indicates if the internal mode is active.
+  private bool _channel; //!< Indicates the channel state.
+  private bool _osLevelStation; //!< Indicates the station-level operational state.
 
   private shared_ptr<MtpBarIndicator> _refBarIndicator; //!< Reference to the bar indicator for displaying values.
 
+  /**
+   * @brief Constructor for AnaManIntFaceplateHome.
+   *
+   * @param viewModel A shared pointer to the AnaManInt view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   */
   public AnaManIntFaceplateHome(shared_ptr<AnaManInt> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     classConnect(_refBarIndicator, MtpBarIndicator::setValueCustomLimit, MtpViewBase::getViewModel(), AnaManInt::valueOutChanged);
@@ -65,21 +75,39 @@ class AnaManIntFaceplateHome : MtpViewBase
     setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
 
+  /**
+   * @brief Activates the manual mode.
+   * @details Sets the manual operator state to true.
+   */
   public void activateManual()
   {
     MtpViewBase::getViewModel().getSource().setManualOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the internal mode.
+   * @details Sets the internal operator state to true.
+   */
   public void activateInternal()
   {
     MtpViewBase::getViewModel().getSource().setInternalOperator(TRUE);
   }
 
+  /**
+   * @brief Sets the manual value for the view model.
+   * @details Updates the manual value in the view model.
+   *
+   * @param valueManual The new manual value to set.
+   */
   public void setValueManual(const float &valueManual)
   {
     MtpViewBase::getViewModel().setValueManual(valueManual);
   }
 
+  /**
+   * @brief Initializes the shapes used in the faceplate.
+   * @details This method overrides the base class method to extract the required shapes.
+   */
   protected void initializeShapes()
   {
     _refWqc = MtpViewBase::extractShape("_refWqc");
@@ -92,6 +120,11 @@ class AnaManIntFaceplateHome : MtpViewBase
     _refBarIndicator = MtpViewBase::extractShape("_refBarIndicator").getMtpBarIndicator();
   }
 
+  /**
+   * @brief Callback function to update the operational state level.
+   *
+   * @param oslevel The new operational state level.
+   */
   private void setOsLevelCB(const bool &oslevel)
   {
     _osLevelStation = oslevel;
@@ -100,31 +133,62 @@ class AnaManIntFaceplateHome : MtpViewBase
     setManualActiveCB("", FALSE);
   }
 
+  /**
+   * @brief Sets the unit for the bar indicator.
+   *
+   * @param unit A shared pointer to the MtpUnit instance.
+   */
   private void setUnit(shared_ptr<MtpUnit> unit)
   {
     _refBarIndicator.setUnit(unit);
   }
 
+  /**
+   * @brief Sets the manual value text for the text shape.
+   *
+   * @param valueManual The manual value to display.
+   */
   private void setValueManualText(const float &valueManual)
   {
     _txtValueManual.text = valueManual;
   }
 
+  /**
+   * @brief Callback function to update the feedback value text.
+   *
+   * @param value The new feedback value to display.
+   */
   private void setValueFeedbackCB(const float &value)
   {
     _txtFeedbackValue.text = value;
   }
 
+  /**
+   * @brief Callback function to update the internal value text.
+   *
+   * @param valueInternal The new internal value to display.
+   */
   private void setValueInternalCB(const float &valueInternal)
   {
     _txtValueInternal.text = valueInternal;
   }
 
+  /**
+   * @brief Callback function to update the quality code status.
+   *
+   * @param qualityGoodChanged Indicates if the quality good status has changed.
+   */
   private void setWqcCB(const bool &qualityGoodChanged)
   {
     _refWqc.setStatus(qualityGoodChanged);
   }
 
+  /**
+   * @brief Callback function to update the internal active state and channel.
+   *
+   * @param varName The name of the variable to set.
+   * @param internalActive The new internal active state or channel value.
+   */
   private void setInternalActiveCB(const string &varName, const bool &internalActive)
   {
     switch (varName)
@@ -154,6 +218,12 @@ class AnaManIntFaceplateHome : MtpViewBase
     _rectInternal.transparentForMouse = (_rectInternal.fill == "[pattern,[fit,any,MTP_Icones/internal_1_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the manual active state and channel.
+   *
+   * @param varName The name of the variable to set.
+   * @param manualActive The new manual active state or channel value.
+   */
   private void setManualActiveCB(const string &varName, const bool &manualActive)
   {
     switch (varName)

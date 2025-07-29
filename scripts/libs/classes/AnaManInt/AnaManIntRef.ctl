@@ -10,20 +10,30 @@
 #uses "classes/AnaManInt/AnaManInt"
 #uses "classes/MtpView/MtpViewRef"
 
+/**
+ * @class AnaManIntRef
+ * @brief Represents the reference implementation for the AnaManInt objects.
+ */
 class AnaManIntRef : MtpViewRef
 {
-  private shape _rectLimit;
-  private shape _rectSource;
-  private shape _txtUnit;
-  private shape _txtValue;
+  private shape _rectLimit; //!< Reference to the limit rectangle shape.
+  private shape _rectSource; //!< Reference to the source rectangle shape.
+  private shape _txtUnit; //!< Reference to the unit text shape.
+  private shape _txtValue; //!< Reference to the value text shape.
 
-  private bool _sourceManualActive;
-  private bool _sourceInternalActive;
-  private bool _sourceChannel;
+  private bool _sourceManualActive; //!< Indicates if the manual source is active.
+  private bool _sourceInternalActive; //!< Indicates if the internal source is active.
+  private bool _sourceChannel; //!< Indicates if the channel source is active.
 
-  private float _valueMin;
-  private float _valueMax;
+  private float _valueMin; //!< Minimum value for the reference.
+  private float _valueMax; //!< Maximum value for the reference.
 
+  /**
+   * @brief Constructor for AnaManIntRef.
+   *
+   * @param viewModel A shared pointer to the AnaManInt view model.
+   * @param shapes A mapping of shapes used in the reference.
+   */
   public AnaManIntRef(shared_ptr<AnaManInt> viewModel, const mapping &shapes) : MtpViewRef(viewModel, shapes)
   {
     classConnect(this, setValueOutCB, MtpViewRef::getViewModel(), AnaManInt::valueOutChanged);
@@ -60,16 +70,32 @@ class AnaManIntRef : MtpViewRef
     _txtValue = MtpViewRef::extractShape("_txtValue");
   }
 
+  /**
+   * @brief Sets the unit for the reference.
+   *
+   * @param unit A shared pointer to the MtpUnit object representing the unit.
+   */
   private void setUnit(shared_ptr<MtpUnit> unit)
   {
     _txtUnit.text = unit.toString();
   }
 
+  /**
+   * @brief Sets the output value for the reference.
+   *
+   * @param valueOut The float value to be set.
+   */
   private void setValueOutCB(const float &valueOut)
   {
     _txtValue.text = valueOut;
   }
 
+  /**
+   * @brief Sets the source status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param source The source state to be set.
+   */
   private void setSourceCB(const string &varName, const bool &source)
   {
     switch (varName)
@@ -104,6 +130,12 @@ class AnaManIntRef : MtpViewRef
     }
   }
 
+  /**
+   * @brief Sets the minimum or maximum value for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param minMax The minimum or maximum value to be set.
+   */
   private void setValueMinMaxCB(const string &varName, const float &minMax)
   {
     switch (varName)

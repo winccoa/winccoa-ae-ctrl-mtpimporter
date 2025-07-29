@@ -15,6 +15,7 @@
  */
 class AnaMonFaceplateTrend : MtpFaceplateTrendBase
 {
+
   /**
    * @brief Constructor for AnaMonFaceplateTrend.
    *

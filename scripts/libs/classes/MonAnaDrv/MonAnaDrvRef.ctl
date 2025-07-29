@@ -14,39 +14,49 @@
 #uses "classes/MonAnaDrv/MonAnaDrv"
 #uses "classes/MtpView/MtpViewRef"
 
+/**
+ * @class MonAnaDrvRef
+ * @brief Represents the reference implementation for the MonAnaDrv objects.
+ */
 class MonAnaDrvRef : MtpViewRef
 {
-  private shape _rectError;
-  private shape _rectLocked;
-  private shape _rectMode;
-  private shape _rectMotor;
-  private shape _rectDirection;
-  private shape _rectSource;
-  private shape _txtUnit;
-  private shape _txtUnit2;
-  private shape _txtRpm;
-  private shape _txtRpmFbk;
+  private shape _rectError; //!< Reference to the error rectangle shape.
+  private shape _rectLocked; //!< Reference to the locked rectangle shape.
+  private shape _rectMode; //!< Reference to the mode rectangle shape.
+  private shape _rectMotor; //!< Reference to the motor rectangle shape.
+  private shape _rectDirection; //!< Reference to the direction rectangle shape.
+  private shape _rectSource; //!< Reference to the source rectangle shape.
+  private shape _txtUnit; //!< Reference to the first unit text shape.
+  private shape _txtUnit2; //!< Reference to the second unit text shape.
+  private shape _txtRpm; //!< Reference to the RPM text shape.
+  private shape _txtRpmFbk; //!< Reference to the RPM feedback text shape.
 
-  private bool _staticError;
-  private bool _dynamicError;
-  private bool _driveSafetyIndicator;
-  private bool _rpmAlarmHighActive;
-  private bool _rpmAlarmLowActive;
-  private bool _sourceManualActive;
-  private bool _sourceInternalActive;
+  private bool _staticError; //!< Indicates if a static error is active.
+  private bool _dynamicError; //!< Indicates if a dynamic error is active.
+  private bool _driveSafetyIndicator; //!< Indicates if the drive safety indicator is active.
+  private bool _rpmAlarmHighActive; //!< Indicates if the RPM high alarm is active.
+  private bool _rpmAlarmLowActive; //!< Indicates if the RPM low alarm is active.
+  private bool _sourceManualActive; //!< Indicates if the manual source is active.
+  private bool _sourceInternalActive; //!< Indicates if the internal source is active.
 
-  private bool _permit;
-  private bool _interlock;
-  private bool _protection;
+  private bool _permit; //!< Indicates if the permit is active.
+  private bool _interlock; //!< Indicates if the interlock is active.
+  private bool _protection; //!< Indicates if the protection is active.
 
-  private bool _stateOffActive;
-  private bool _stateOperatorActive;
+  private bool _stateOffActive; //!< Indicates if the off state is active.
+  private bool _stateOperatorActive; //!< Indicates if the operator state is active.
 
-  private bool _forwardFeedbackSignal;
-  private bool _reverseFeedbackSignal;
-  private bool _forwardControl;
-  private bool _reverseControl;
+  private bool _forwardFeedbackSignal; //!< Indicates if the forward feedback signal is active.
+  private bool _reverseFeedbackSignal; //!< Indicates if the reverse feedback signal is active.
+  private bool _forwardControl; //!< Indicates if the forward control is active.
+  private bool _reverseControl; //!< Indicates if the reverse control is active.
 
+  /**
+   * @brief Constructor for MonAnaDrvRef.
+   *
+   * @param viewModel A shared pointer to the MonAnaDrv view model.
+   * @param shapes A mapping of shapes used in the reference.
+   */
   public MonAnaDrvRef(shared_ptr<MonAnaDrv> viewModel, const mapping &shapes) : MtpViewRef(viewModel, shapes)
   {
     classConnect(this, setRpmFeedbackSignalCB, MtpViewRef::getViewModel(), MonAnaDrv::rpmFeedbackSignalChanged);
@@ -124,22 +134,43 @@ class MonAnaDrvRef : MtpViewRef
     _txtRpmFbk = MtpViewRef::extractShape("_txtRpmFbk");
   }
 
+  /**
+   * @brief Sets the unit for the reference.
+   *
+   * @param unit A shared pointer to the MtpUnit object representing the unit.
+   */
   private void setUnit(shared_ptr<MtpUnit> unit)
   {
     _txtUnit.text = unit.toString();
     _txtUnit2.text = unit.toString();
   }
 
+  /**
+   * @brief Sets the RPM feedback signal for the reference.
+   *
+   * @param rpmFbk The float RPM feedback value to be set.
+   */
   private void setRpmFeedbackSignalCB(const float &rpmFbk)
   {
     _txtRpmFbk.text = rpmFbk;
   }
 
+  /**
+   * @brief Sets the RPM value for the reference.
+   *
+   * @param rpm The float RPM value to be set.
+   */
   private void setRpmCB(const float &rpm)
   {
     _txtRpm.text = rpm;
   }
 
+  /**
+   * @brief Sets the error status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param error The error state to be set.
+   */
   private void setErrorCB(const string &varName, const bool &error)
   {
     switch (varName)
@@ -177,6 +208,12 @@ class MonAnaDrvRef : MtpViewRef
     }
   }
 
+  /**
+   * @brief Sets the locked status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param locked The locked state to be set.
+   */
   private void setLockedCB(const string &varName, const bool &locked)
   {
     switch (varName)
@@ -206,6 +243,12 @@ class MonAnaDrvRef : MtpViewRef
     }
   }
 
+  /**
+   * @brief Sets the direction status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param direction The direction state to be set.
+   */
   private void setDirectionCB(const string &varName, const bool &direction)
   {
     switch (varName)
@@ -237,6 +280,12 @@ class MonAnaDrvRef : MtpViewRef
     }
   }
 
+  /**
+   * @brief Sets the mode status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param mode The mode state to be set.
+   */
   private void setModeCB(const string &varName, const bool &mode)
   {
     switch (varName)
@@ -267,6 +316,12 @@ class MonAnaDrvRef : MtpViewRef
     }
   }
 
+  /**
+   * @brief Sets the source status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param source The source state to be set.
+   */
   private void setSourceCB(const string &varName, const bool &source)
   {
     switch (varName)
@@ -297,6 +352,12 @@ class MonAnaDrvRef : MtpViewRef
     }
   }
 
+  /**
+   * @brief Sets the motor status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param motor The motor state to be set.
+   */
   private void setMotorCB(const string &varName, const bool &motor)
   {
     switch (varName)

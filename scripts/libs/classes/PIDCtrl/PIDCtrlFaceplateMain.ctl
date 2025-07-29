@@ -10,15 +10,19 @@
 #uses "classes/PIDCtrl/PIDCtrl"
 #uses "classes/MtpFaceplateMainBase/MtpFaceplateMainBase"
 
+/**
+ * @class PIDCtrlFaceplateMain
+ * @brief Represents the main faceplate for PIDCtrl objects.
+ */
 class PIDCtrlFaceplateMain : MtpFaceplateMainBase
 {
   /**
-   * @brief Constructor for BinMonFaceplateMain.
-   *
-   * @param viewModel A shared pointer to the BinMon view model.
-   * @param shapes A mapping of shapes used in the faceplate.
-   * @param layoutNavigation The layout for navigation buttons.
-   */
+     * @brief Constructor for PIDCtrlFaceplateMain.
+     * @details Initializes the main faceplate for a PID controller by calling the base class constructor.
+     *
+     * @param viewModel A shared pointer to the PIDCtrl view model.
+     * @param shapes A mapping of shapes used in the faceplate.
+     */
   public PIDCtrlFaceplateMain(shared_ptr<PIDCtrl> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {
 

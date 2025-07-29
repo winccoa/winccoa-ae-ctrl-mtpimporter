@@ -12,28 +12,38 @@
 #uses "classes/MonBinDrv/MonBinDrv"
 #uses "classes/MtpView/MtpViewRef"
 
+/**
+ * @class MonBinDrvRef
+ * @brief Represents the reference implementation for the MonBinDrv objects.
+ */
 class MonBinDrvRef : MtpViewRef
 {
-  private shape _rectError;
-  private shape _rectLocked;
-  private shape _rectMode;
-  private shape _rectMotor;
-  private shape _rectDirection;
+  private shape _rectError; //!< Reference to the error rectangle shape.
+  private shape _rectLocked; //!< Reference to the locked rectangle shape.
+  private shape _rectMode; //!< Reference to the mode rectangle shape.
+  private shape _rectMotor; //!< Reference to the motor rectangle shape.
+  private shape _rectDirection; //!< Reference to the direction rectangle shape.
 
-  private bool _staticError;
-  private bool _dynamicError;
-  private bool _permit;
-  private bool _interlock;
-  private bool _protection;
+  private bool _staticError; //!< Indicates if a static error is active.
+  private bool _dynamicError; //!< Indicates if a dynamic error is active.
+  private bool _permit; //!< Indicates if the permit is active.
+  private bool _interlock; //!< Indicates if the interlock is active.
+  private bool _protection; //!< Indicates if the protection is active.
 
-  private bool _stateOffActive;
-  private bool _stateOperatorActive;
+  private bool _stateOffActive; //!< Indicates if the off state is active.
+  private bool _stateOperatorActive; //!< Indicates if the operator state is active.
 
-  private bool _forwardFeedbackSignal;
-  private bool _reverseFeedbackSignal;
-  private bool _forwardControl;
-  private bool _reverseControl;
+  private bool _forwardFeedbackSignal; //!< Indicates if the forward feedback signal is active.
+  private bool _reverseFeedbackSignal; //!< Indicates if the reverse feedback signal is active.
+  private bool _forwardControl; //!< Indicates if the forward control is active.
+  private bool _reverseControl; //!< Indicates if the reverse control is active.
 
+  /**
+   * @brief Constructor for MonBinDrvRef.
+   *
+   * @param viewModel A shared pointer to the MonBinDrv view model.
+   * @param shapes A mapping of shapes used in the reference.
+   */
   public MonBinDrvRef(shared_ptr<MonBinDrv> viewModel, const mapping &shapes) : MtpViewRef(viewModel, shapes)
   {
     classConnectUserData(this, setErrorCB, "_staticError", MtpViewRef::getViewModel().getMonitor(), MtpMonitor::staticErrorChanged);
@@ -88,6 +98,12 @@ class MonBinDrvRef : MtpViewRef
     _rectDirection = MtpViewRef::extractShape("_rectDirection");
   }
 
+  /**
+   * @brief Sets the error status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param error The error state to be set.
+   */
   private void setErrorCB(const string &varName, const bool &error)
   {
     switch (varName)
@@ -113,6 +129,12 @@ class MonBinDrvRef : MtpViewRef
     }
   }
 
+  /**
+   * @brief Sets the locked status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param locked The locked state to be set.
+   */
   private void setLockedCB(const string &varName, const bool &locked)
   {
     switch (varName)
@@ -142,6 +164,12 @@ class MonBinDrvRef : MtpViewRef
     }
   }
 
+  /**
+   * @brief Sets the direction status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param direction The direction state to be set.
+   */
   private void setDirectionCB(const string &varName, const bool &direction)
   {
     switch (varName)
@@ -173,6 +201,12 @@ class MonBinDrvRef : MtpViewRef
     }
   }
 
+  /**
+   * @brief Sets the mode status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param mode The mode state to be set.
+   */
   private void setModeCB(const string &varName, const bool &mode)
   {
     switch (varName)
@@ -203,6 +237,12 @@ class MonBinDrvRef : MtpViewRef
     }
   }
 
+  /**
+   * @brief Sets the motor status for the reference.
+   *
+   * @param varName The name of the variable to be set.
+   * @param motor The motor state to be set.
+   */
   private void setMotorCB(const string &varName, const bool &motor)
   {
     switch (varName)

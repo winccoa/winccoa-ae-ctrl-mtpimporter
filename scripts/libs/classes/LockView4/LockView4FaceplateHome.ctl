@@ -11,41 +11,51 @@
 #uses "classes/LockView4/LockView4"
 #uses "classes/MtpView/MtpViewBase"
 
+/**
+ * @class LockView4FaceplateHome
+ * @brief Represents the home faceplate for LockView4 objects.
+ */
 class LockView4FaceplateHome : MtpViewBase
 {
-  private shape _circleIn1En;
-  private shape _circleIn2En;
-  private shape _circleIn3En;
-  private shape _circleIn4En;
-  private shape _circleOut;
-  private shape _lineOut;
-  private shape _lineIn1Hor;
-  private shape _lineIn2Hor;
-  private shape _lineIn3Hor;
-  private shape _lineIn4Hor;
-  private shape _lineIn1Vert;
-  private shape _lineIn2Vert;
-  private shape _lineIn3Vert;
-  private shape _lineIn4Vert;
-  private shape _rectIn1QC;
-  private shape _rectIn2QC;
-  private shape _rectIn3QC;
-  private shape _rectIn4QC;
-  private shape _txtIn1Txt;
-  private shape _txtIn2Txt;
-  private shape _txtIn3Txt;
-  private shape _txtIn4Txt;
-  private shape _txtLogic;
-  private shape _txtIn1Label;
-  private shape _txtIn2Label;
-  private shape _txtIn3Label;
-  private shape _txtIn4Label;
-  private shape _rectOutQC;
-  private shape _circleIn1Inv;
-  private shape _circleIn2Inv;
-  private shape _circleIn3Inv;
-  private shape _circleIn4Inv;
+  private shape _circleIn1En; //!< Reference to the enable circle shape for input 1.
+  private shape _circleIn2En; //!< Reference to the enable circle shape for input 2.
+  private shape _circleIn3En; //!< Reference to the enable circle shape for input 3.
+  private shape _circleIn4En; //!< Reference to the enable circle shape for input 4.
+  private shape _circleOut; //!< Reference to the output circle shape.
+  private shape _lineOut; //!< Reference to the output line shape.
+  private shape _lineIn1Hor; //!< Reference to the horizontal line shape for input 1.
+  private shape _lineIn2Hor; //!< Reference to the horizontal line shape for input 2.
+  private shape _lineIn3Hor; //!< Reference to the horizontal line shape for input 3.
+  private shape _lineIn4Hor; //!< Reference to the horizontal line shape for input 4.
+  private shape _lineIn1Vert; //!< Reference to the vertical line shape for input 1.
+  private shape _lineIn2Vert; //!< Reference to the vertical line shape for input 2.
+  private shape _lineIn3Vert; //!< Reference to the vertical line shape for input 3.
+  private shape _lineIn4Vert; //!< Reference to the vertical line shape for input 4.
+  private shape _rectIn1QC; //!< Reference to the quality code rectangle shape for input 1.
+  private shape _rectIn2QC; //!< Reference to the quality code rectangle shape for input 2.
+  private shape _rectIn3QC; //!< Reference to the quality code rectangle shape for input 3.
+  private shape _rectIn4QC; //!< Reference to the quality code rectangle shape for input 4.
+  private shape _txtIn1Txt; //!< Reference to the text shape for input 1.
+  private shape _txtIn2Txt; //!< Reference to the text shape for input 2.
+  private shape _txtIn3Txt; //!< Reference to the text shape for input 3.
+  private shape _txtIn4Txt; //!< Reference to the text shape for input 4.
+  private shape _txtLogic; //!< Reference to the logic text shape.
+  private shape _txtIn1Label; //!< Reference to the label text shape for input 1.
+  private shape _txtIn2Label; //!< Reference to the label text shape for input 2.
+  private shape _txtIn3Label; //!< Reference to the label text shape for input 3.
+  private shape _txtIn4Label; //!< Reference to the label text shape for input 4.
+  private shape _rectOutQC; //!< Reference to the quality code rectangle shape for output.
+  private shape _circleIn1Inv; //!< Reference to the inversion circle shape for input 1.
+  private shape _circleIn2Inv; //!< Reference to the inversion circle shape for input 2.
+  private shape _circleIn3Inv; //!< Reference to the inversion circle shape for input 3.
+  private shape _circleIn4Inv; //!< Reference to the inversion circle shape for input 4.
 
+  /**
+   * @brief Constructor for LockView4FaceplateHome.
+   *
+   * @param viewModel A shared pointer to the LockView4 view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   */
   public LockView4FaceplateHome(shared_ptr<LockView4> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     if (MtpViewBase::getViewModel().getInput1().getEnabled())
@@ -137,6 +147,10 @@ class LockView4FaceplateHome : MtpViewBase
     setOutqcCB(MtpViewBase::getViewModel().getOutputQualityCode().getQualityGood());
   }
 
+  /**
+   * @brief Initializes the shapes used in the faceplate.
+   * @details This method overrides the base class method to extract the required shapes.
+   */
   protected void initializeShapes()
   {
     _circleIn1En = MtpViewBase::extractShape("_circleIn1En");
@@ -173,6 +187,11 @@ class LockView4FaceplateHome : MtpViewBase
     _circleIn4Inv = MtpViewBase::extractShape("_circleIn4Inv");
   }
 
+  /**
+   * @brief Callback function to update the output quality code status.
+   *
+   * @param qualityGoodChanged Indicates if the quality good status has changed.
+   */
   private void setOutqcCB(const bool &qualityGoodChanged)
   {
     if (!qualityGoodChanged)
@@ -187,6 +206,12 @@ class LockView4FaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Sets the text for input text shapes.
+   *
+   * @param varName The name of the variable to set.
+   * @param input A shared pointer to the MtpInput instance.
+   */
   private void setInputTexts(const string &varName, shared_ptr<MtpInput> input)
   {
     switch (varName)
@@ -209,6 +234,12 @@ class LockView4FaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the input state and its display.
+   *
+   * @param varName The name of the variable to set.
+   * @param value The new input value or inversion state.
+   */
   private void setInputChangedCB(const string &varName, const bool &value)
   {
     shape circle;
@@ -279,6 +310,11 @@ class LockView4FaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the output state and its display.
+   *
+   * @param output The new output value.
+   */
   private void setOutputCB(const bool &output)
   {
     if (output)
@@ -293,11 +329,22 @@ class LockView4FaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the logic text.
+   *
+   * @param logic The new logic state.
+   */
   private void setLogicCB(const bool &logic)
   {
     _txtLogic.text = logic ?  getCatStr("LockView4", "AND") :  getCatStr("LockView4", "OR");
   }
 
+  /**
+   * @brief Callback function to update the quality code status for inputs.
+   *
+   * @param varName The name of the variable to set.
+   * @param qualityGood Indicates if the quality good status has changed.
+   */
   private void setQualityCodeCB(const string &varName, const bool &qualityGood)
   {
     shape rectQC;
@@ -332,5 +379,4 @@ class LockView4FaceplateHome : MtpViewBase
       rectQC.sizeAsDyn = makeDynInt(25, 25);
     }
   }
-
 };

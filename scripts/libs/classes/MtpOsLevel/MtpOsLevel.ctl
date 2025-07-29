@@ -44,6 +44,12 @@ class MtpOsLevel
     return _level;
   }
 
+  /**
+   * @brief Checks if the operating system level is at station level.
+   * @details Returns true if the current level is greater than zero, indicating station level.
+   *
+   * @return True if at station level, false otherwise.
+   */
   public bool getStationLevel()
   {
     return (_level > 0);

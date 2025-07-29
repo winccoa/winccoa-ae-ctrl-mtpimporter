@@ -10,15 +10,25 @@
 #uses "classes/MtpView/MtpViewBase"
 #uses "classes/MtpBarIndicator/MtpBarIndicator"
 
+/**
+ * @class MonAnaDrvFaceplateHome3
+ * @brief Represents the third faceplate for MonAnaDrv objects, handling RPM alarm indicators and display.
+ */
 class MonAnaDrvFaceplateHome3 : MtpViewBase
 {
-  private shape _rectAlarmHighActive;
-  private shape _rectAlarmLowActive;
-  private shape _txtAlarmHighActive;
-  private shape _txtAlarmLowActive;
+  private shape _rectAlarmHighActive; //!< Reference to the high RPM alarm rectangle shape.
+  private shape _rectAlarmLowActive; //!< Reference to the low RPM alarm rectangle shape.
+  private shape _txtAlarmHighActive; //!< Reference to the high RPM alarm text shape.
+  private shape _txtAlarmLowActive; //!< Reference to the low RPM alarm text shape.
 
-  private shared_ptr<MtpBarIndicator> _barIndicator;
+  private shared_ptr<MtpBarIndicator> _barIndicator; //!< Reference to the bar indicator for displaying RPM values and limits.
 
+  /**
+   * @brief Constructor for MonAnaDrvFaceplateHome3.
+   *
+   * @param viewModel A shared pointer to the MonAnaDrv view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   */
   public MonAnaDrvFaceplateHome3(shared_ptr<MonAnaDrv> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     classConnect(_barIndicator, MtpBarIndicator::setValueLimit, MtpViewBase::getViewModel(), MonAnaDrv::rpmErrorChanged);
@@ -37,6 +47,10 @@ class MonAnaDrvFaceplateHome3 : MtpViewBase
     setRpmAlarmLowActiveCB(MtpViewBase::getViewModel().getRpmAlarmLowActive());
   }
 
+  /**
+   * @brief Initializes the shapes used in the faceplate.
+   * @details This method overrides the base class method to extract the required shapes.
+   */
   protected void initializeShapes() override
   {
     _rectAlarmHighActive = MtpViewBase::extractShape("_rectAlarmHighActive");
@@ -47,6 +61,11 @@ class MonAnaDrvFaceplateHome3 : MtpViewBase
     _barIndicator = MtpViewBase::extractShape("_refBarIndicator").getMtpBarIndicator();
   }
 
+  /**
+   * @brief Callback function to update the high RPM alarm shape.
+   *
+   * @param active The new state of the high RPM alarm.
+   */
   private void setRpmAlarmHighActiveCB(const bool &active)
   {
     if (active)
@@ -61,6 +80,11 @@ class MonAnaDrvFaceplateHome3 : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the low RPM alarm shape.
+   *
+   * @param active The new state of the low RPM alarm.
+   */
   private void setRpmAlarmLowActiveCB(const bool &active)
   {
     if (active)

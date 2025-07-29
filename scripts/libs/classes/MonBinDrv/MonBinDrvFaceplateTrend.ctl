@@ -9,22 +9,25 @@
 #uses "classes/MonBinDrv/MonBinDrv"
 #uses "classes/MtpFaceplateTrendBase/MtpFaceplateTrendBase"
 
+/**
+ * @class MonBinDrvFaceplateTrend
+ * @brief Represents a specialized faceplate trend for MonBinDrv objects.
+ */
 class MonBinDrvFaceplateTrend : MtpFaceplateTrendBase
 {
   /**
-   * @brief Constructor for BinMonFaceplateTrend.
+   * @brief Constructor for MonBinDrvFaceplateTrend.
    *
-   * @param viewModel A shared pointer to the BinMon view model.
+   * @param viewModel A shared pointer to the MonBinDrv view model.
    * @param shapes A mapping of shapes used in the faceplate.
    */
   public MonBinDrvFaceplateTrend(shared_ptr<MonBinDrv> viewModel, const mapping &shapes) : MtpFaceplateTrendBase(viewModel, shapes)
   {
-
   }
 
   /**
    * @brief Retrieves the dynamic list of trend DPEs.
-   * @details This method overrides the base class method to include the specific DPEs for BinMon trends.
+   * @details This method overrides the base class method to include the specific DPEs for MonBinDrv trends.
    *
    * @return A dynamic string containing the trend DPEs.
    */

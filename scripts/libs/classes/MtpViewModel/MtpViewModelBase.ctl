@@ -15,8 +15,8 @@
 class MtpViewModelBase
 {
   private string _dp; //!< The data point associated with this view model.
-  private bool _enabled;
-  private langString _tagName;
+  private bool _enabled; //!< Indicates if the view model is enabled.
+  private langString _tagName; //!< The tag name associated with the view model.
 
   /**
    * @brief Constructor for MtpViewModelBase.
@@ -46,7 +46,7 @@ class MtpViewModelBase
     dpConnect(this, setEnabledCB, dp + ".enabled");
   }
 
-#event enabledChanged(const bool &enabled)
+#event enabledChanged(const bool &enabled) //!< Event triggered when the enabled state changes.
 
   /**
    * @brief Retrieves the data point of the view model.
@@ -58,16 +58,35 @@ class MtpViewModelBase
     return _dp;
   }
 
+  /**
+   * @brief Retrieves the enabled state of the view model.
+   * @details Returns whether the view model is currently enabled.
+   *
+   * @return True if the view model is enabled, false otherwise.
+   */
   public bool getEnabled()
   {
     return _enabled;
   }
 
+  /**
+   * @brief Retrieves the tag name of the view model.
+   * @details Returns the tag name associated with the view model's data point.
+   *
+   * @return The tag name as a langString.
+   */
   public langString getTagName()
   {
     return _tagName;
   }
 
+  /**
+   * @brief Sets the enabled state of the view model.
+   * @details Updates the enabled state and triggers the enabledChanged event.
+   *
+   * @param dpe The data point element.
+   * @param enabled The new enabled state.
+   */
   private void setEnabledCB(const string &dpe, const bool &enabled)
   {
     _enabled = enabled;

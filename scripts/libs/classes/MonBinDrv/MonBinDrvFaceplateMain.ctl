@@ -10,12 +10,30 @@
 #uses "classes/MonBinDrv/MonBinDrv"
 #uses "classes/MtpFaceplateMainBase/MtpFaceplateMainBase"
 
+/**
+ * @class MonBinDrvFaceplateMain
+ * @brief Represents the main faceplate for MonBinDrv objects.
+ */
 class MonBinDrvFaceplateMain : MtpFaceplateMainBase
 {
+
+  /**
+  * @brief Constructor for MonBinDrvFaceplateMain.
+  *
+  * @param viewModel A shared pointer to the MonBinDrv view model.
+  * @param shapes A mapping of shapes used in the faceplate.
+  * @param layoutNavigation The layout for navigation buttons.
+  */
   public MonBinDrvFaceplateMain(shared_ptr<MonBinDrv> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {
   }
 
+  /**
+  * @brief Retrieves the navigation buttons for the MonBinDrv faceplate.
+  * @details This method overrides the base class method to provide specific navigation buttons for the MonBinDrv faceplate.
+  *
+  * @return A vector of shared pointers to the navigation buttons.
+  */
   protected vector<shared_ptr<MtpNavigationButton> > getNavigationButtons() override
   {
     vector<shared_ptr<MtpNavigationButton> > buttons = MtpFaceplateMainBase::getNavigationButtons();

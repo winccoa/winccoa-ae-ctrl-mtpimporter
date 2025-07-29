@@ -14,59 +14,70 @@
 #uses "classes/MonBinVlv/MonBinVlv"
 #uses "classes/MtpView/MtpViewBase"
 
+/**
+ * @class MonBinVlvFaceplateHome
+ * @brief A faceplate class for controlling and monitoring binary valve operations, including open/close commands, safety position, and security states.
+ */
 class MonBinVlvFaceplateHome : MtpViewBase
 {
-  private shape _refWqc;
-  private shape _rectAutomatic;
-  private shape _rectError;
-  private shape _rectErrorInformation;
-  private shape _rectLock;
-  private shape _rectMaintenance;
-  private shape _rectOff;
-  private shape _rectOperator;
-  private shape _rectPermission;
-  private shape _rectProtection;
-  private shape _rectReset;
-  private shape _rectSafetyPosition;
-  private shape _rectSafetyPositionInformation;
-  private shape _rectValve;
-  private shape _rectValveClose;
-  private shape _rectValveOpen;
-  private shape _rectValveCloseAut;
-  private shape _rectValveOpenAut;
-  private shape _txtError;
-  private shape _txtLock;
-  private shape _txtMaintenance;
-  private shape _txtPermission;
-  private shape _txtProtection;
-  private shape _txtSafetyPosition;
+  private shape _refWqc; //!< Reference to the shape for displaying quality code status.
+  private shape _rectAutomatic; //!< Reference to the rectangle shape for automatic mode control.
+  private shape _rectError; //!< Reference to the rectangle shape for error indication.
+  private shape _rectErrorInformation; //!< Reference to the rectangle shape for opening error information panel.
+  private shape _rectLock; //!< Reference to the rectangle shape for interlock status.
+  private shape _rectMaintenance; //!< Reference to the rectangle shape for maintenance mode status.
+  private shape _rectOff; //!< Reference to the rectangle shape for off state control.
+  private shape _rectOperator; //!< Reference to the rectangle shape for operator mode control.
+  private shape _rectPermission; //!< Reference to the rectangle shape for permission status.
+  private shape _rectProtection; //!< Reference to the rectangle shape for protection status.
+  private shape _rectReset; //!< Reference to the rectangle shape for reset control.
+  private shape _rectSafetyPosition; //!< Reference to the rectangle shape for safety position status.
+  private shape _rectSafetyPositionInformation; //!< Reference to the rectangle shape for opening safety position information panel.
+  private shape _rectValve; //!< Reference to the rectangle shape for valve status.
+  private shape _rectValveClose; //!< Reference to the rectangle shape for close control.
+  private shape _rectValveOpen; //!< Reference to the rectangle shape for open control.
+  private shape _rectValveCloseAut; //!< Reference to the rectangle shape for close automatic mode indication.
+  private shape _rectValveOpenAut; //!< Reference to the rectangle shape for open automatic mode indication.
+  private shape _txtError; //!< Reference to the text shape for error status label.
+  private shape _txtLock; //!< Reference to the text shape for interlock status label.
+  private shape _txtMaintenance; //!< Reference to the text shape for maintenance mode status label.
+  private shape _txtPermission; //!< Reference to the text shape for permission status label.
+  private shape _txtProtection; //!< Reference to the text shape for protection status label.
+  private shape _txtSafetyPosition; //!< Reference to the text shape for safety position status label.
 
-  private bool _openCheckbackSignal;
-  private bool _closeCheckbackSignal;
-  private bool _valveControl;
-  private bool _staticError;
-  private bool _dynamicError;
-  private bool _monitorEnabled;
+  private bool _openCheckbackSignal; //!< Indicates the open checkback signal state.
+  private bool _closeCheckbackSignal; //!< Indicates the close checkback signal state.
+  private bool _valveControl; //!< Indicates the valve control state.
+  private bool _staticError; //!< Indicates if a static error is present.
+  private bool _dynamicError; //!< Indicates if a dynamic error is present.
+  private bool _monitorEnabled; //!< Indicates if monitoring is enabled.
 
-  private bool _safetypositionActive;
-  private bool _safetypositionEnabled;
+  private bool _safetypositionActive; //!< Indicates if the safety position is active.
+  private bool _safetypositionEnabled; //!< Indicates if the safety position is enabled.
 
-  private bool _stateAutomaticActive;
-  private bool _openAutomatic;
-  private bool _closeAutomatic;
+  private bool _stateAutomaticActive; //!< Indicates if automatic mode is active.
+  private bool _openAutomatic; //!< Indicates if open automatic command is active.
+  private bool _closeAutomatic; //!< Indicates if close automatic command is active.
 
-  private bool _permissionEnabled;
-  private bool _permit;
-  private bool _interlockEnabled;
-  private bool _interlock;
-  private bool _protectionEnabled;
-  private bool _protection;
+  private bool _permissionEnabled; //!< Indicates if permission is enabled.
+  private bool _permit; //!< Indicates the permission state.
+  private bool _interlockEnabled; //!< Indicates if interlock is enabled.
+  private bool _interlock; //!< Indicates the interlock state.
+  private bool _protectionEnabled; //!< Indicates if protection is enabled.
+  private bool _protection; //!< Indicates the protection state.
 
-  private bool _stateOffActive;
-  private bool _stateChannel;
-  private bool _stateOperatorActive;
-  private bool _osLevelStation;
+  private bool _stateOffActive; //!< Indicates if off state is active.
+  private bool _stateChannel; //!< Indicates the channel state.
+  private bool _stateOperatorActive; //!< Indicates if operator mode is active.
+  private bool _osLevelStation; //!< Indicates the operational station level.
 
+  /**
+   * @brief Constructor for MonBinVlvFaceplateHome.
+   * @details Initializes the faceplate by connecting to the view model's signals and setting initial states for valve control and monitoring.
+   *
+   * @param viewModel A shared pointer to the MonBinVlv view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   */
   public MonBinVlvFaceplateHome(shared_ptr<MonBinVlv> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     classConnectUserData(this, setValveCB, "_openCheckbackSignal", MtpViewBase::getViewModel(), MonBinVlv::openCheckbackSignalChanged);
@@ -161,46 +172,82 @@ class MonBinVlvFaceplateHome : MtpViewBase
     setOsLevelCB(MtpViewBase::getViewModel().getOsLevel().getStationLevel());
   }
 
+  /**
+   * @brief Activates the off state.
+   * @details Calls the setOffOperator method on the view model's state to set the valve to off.
+   */
   public void activateStateOff()
   {
     MtpViewBase::getViewModel().getState().setOffOperator(TRUE);
   }
 
+  /**
+   * @brief Activates operator mode.
+   * @details Calls the setOperatorOperator method on the view model's state to enable operator control.
+   */
   public void activateStateOperator()
   {
     MtpViewBase::getViewModel().getState().setOperatorOperator(TRUE);
   }
 
+  /**
+   * @brief Activates automatic mode.
+   * @details Calls the setAutomaticOperator method on the view model's state to enable automatic control.
+   */
   public void activateStateAutomatic()
   {
     MtpViewBase::getViewModel().getState().setAutomaticOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the reset command.
+   * @details Calls the setResetOperator method on the view model to reset the valve.
+   */
   public void activateReset()
   {
     MtpViewBase::getViewModel().setResetOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the valve close command.
+   * @details Calls the setCloseOperator method on the view model to close the valve.
+   */
   public void activateValveClose()
   {
     MtpViewBase::getViewModel().setCloseOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the valve open command.
+   * @details Calls the setOpenOperator method on the view model to open the valve.
+   */
   public void activateValveOpen()
   {
     MtpViewBase::getViewModel().setOpenOperator(TRUE);
   }
 
+  /**
+   * @brief Opens the error information child panel.
+   * @details Opens the MonBinVlvFaceplateErrorInformation panel for detailed error information.
+   */
   public void openErrorInformation()
   {
     MtpViewBase::openChildPanel("object_parts/MonBinVlv/MonBinVlvFaceplateErrorInformation.xml", "Error Information");
   }
 
+  /**
+   * @brief Opens the safety position information child panel.
+   * @details Opens the MonBinVlvFaceplateSafetyPositionInformation panel for safety position details.
+   */
   public void openSafetyPositionInformation()
   {
     MtpViewBase::openChildPanel("object_parts/MonBinVlv/MonBinVlvFaceplateSafetyPositionInformation.xml", "SafetyPosition Information");
   }
 
+  /**
+   * @brief Initializes the shapes used in the faceplate.
+   * @details Initializes all shapes required for the valve faceplate by extracting them from the provided mapping.
+   */
   protected void initializeShapes()
   {
     _refWqc = MtpViewBase::extractShape("_refWqc");
@@ -229,6 +276,12 @@ class MonBinVlvFaceplateHome : MtpViewBase
     _txtSafetyPosition = MtpViewBase::extractShape("_txtSafetyPosition");
   }
 
+  /**
+   * @brief Callback function to update the operational station level.
+   * @details Updates the operational station level and triggers updates for dependent button states.
+   *
+   * @param oslevel The new operational station level state.
+   */
   private void setOsLevelCB(const bool &oslevel)
   {
     _osLevelStation = oslevel;
@@ -241,6 +294,13 @@ class MonBinVlvFaceplateHome : MtpViewBase
     setResetCB("", FALSE);
   }
 
+  /**
+   * @brief Callback function to update the valve open button state.
+   * @details Updates the valve open button appearance based on feedback, control, and operational states.
+   *
+   * @param varName The name of the variable to set.
+   * @param open The new open state.
+   */
   private void setValveOpenCB(const string &varName, const bool &open)
   {
     switch (varName)
@@ -290,6 +350,13 @@ class MonBinVlvFaceplateHome : MtpViewBase
     _rectValveOpen.transparentForMouse = (_rectValveOpen.fill == "[pattern,[fit,any,MTP_Icones/ValveOpen1_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the valve close button state.
+   * @details Updates the valve close button appearance based on feedback, control, and operational states.
+   *
+   * @param varName The name of the variable to set.
+   * @param close The new close state.
+   */
   private void setValveCloseCB(const string &varName, const bool &close)
   {
     switch (varName)
@@ -339,6 +406,13 @@ class MonBinVlvFaceplateHome : MtpViewBase
     _rectValveClose.transparentForMouse = (_rectValveClose.fill == "[pattern,[fit,any,MTP_Icones/ValveClose1_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the reset button state.
+   * @details Updates the reset button appearance based on operator mode, protection, and errors.
+   *
+   * @param varName The name of the variable to set.
+   * @param reset The new reset state.
+   */
   private void setResetCB(const string &varName, const bool &reset)
   {
     switch (varName)
@@ -376,11 +450,24 @@ class MonBinVlvFaceplateHome : MtpViewBase
     _rectReset.transparentForMouse = (_rectReset.fill == "[pattern,[fit,any,MTP_Icones/reset_1.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the quality code shape.
+   * @details Updates the quality code shape based on the quality good state.
+   *
+   * @param qualityGoodChanged The new quality good state.
+   */
   private void setWqcCB(const bool &qualityGoodChanged)
   {
     _refWqc.setStatus(qualityGoodChanged);
   }
 
+  /**
+   * @brief Callback function to update the automatic mode button state.
+   * @details Updates the automatic mode button appearance based on channel and station level states.
+   *
+   * @param varName The name of the variable to set.
+   * @param state The new automatic mode state.
+   */
   private void setAutomaticActiveCB(const string &varName, const bool &state)
   {
     switch (varName)
@@ -410,7 +497,13 @@ class MonBinVlvFaceplateHome : MtpViewBase
     _rectAutomatic.transparentForMouse = (_rectAutomatic.fill == "[pattern,[fit,any,MTP_Icones/automatic_1_rounded.svg]]");
   }
 
-
+  /**
+     * @brief Callback function to update the operator mode button state.
+     * @details Updates the operator mode button appearance based on channel and station level states.
+     *
+     * @param varName The name of the variable to set.
+     * @param state The new operator mode state.
+     */
   private void setOperatorActiveCB(const string &varName, const bool &state)
   {
     switch (varName)
@@ -440,6 +533,13 @@ class MonBinVlvFaceplateHome : MtpViewBase
     _rectOperator.transparentForMouse = (_rectOperator.fill == "[pattern,[fit,any,MTP_Icones/Operator_1_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the off state button state.
+   * @details Updates the off state button appearance based on channel and station level states.
+   *
+   * @param varName The name of the variable to set.
+   * @param state The new off state.
+   */
   private void setStateOffActiveCB(const string &varName, const bool &state)
   {
     switch (varName)
@@ -469,6 +569,13 @@ class MonBinVlvFaceplateHome : MtpViewBase
     _rectOff.transparentForMouse = (_rectOff.fill == "[pattern,[fit,any,MTP_Icones/Power_2_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update security-related shapes.
+   * @details Updates the visibility and appearance of security-related shapes based on permission, interlock, and protection states.
+   *
+   * @param varName The name of the variable to set.
+   * @param security The new security state.
+   */
   private void setSecurityCB(const string &varName, const bool &security)
   {
     switch (varName)
@@ -553,6 +660,13 @@ class MonBinVlvFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the automatic mode preview line shapes.
+   * @details Updates the visibility of open and close automatic mode shapes based on the automatic command states.
+   *
+   * @param varName The name of the variable to set.
+   * @param state The new automatic mode state.
+   */
   private void setAutomaticPreviewLineCB(const string &varName, const bool &state)
   {
     switch (varName)
@@ -587,6 +701,13 @@ class MonBinVlvFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the safety position shape.
+   * @details Updates the safety position shape and text visibility based on the safety position active and enabled states.
+   *
+   * @param varName The name of the variable to set.
+   * @param value The new safety position state.
+   */
   private void setSafetyPositionActiveCB(const string &varName, const bool &value)
   {
     switch (varName)
@@ -624,6 +745,13 @@ class MonBinVlvFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the error shape.
+   * @details Updates the error shape and related elements based on the monitor and error states.
+   *
+   * @param varName The name of the variable to set.
+   * @param error The new error state.
+   */
   private void setErrorCB(const string &varName, const bool &error)
   {
     switch (varName)
@@ -661,6 +789,13 @@ class MonBinVlvFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the valve status shape.
+   * @details Updates the valve status shape based on feedback, control, and error states.
+   *
+   * @param varName The name of the variable to set.
+   * @param valve The new valve state.
+   */
   private void setValveCB(const string &varName, const bool &valve)
   {
     switch (varName)

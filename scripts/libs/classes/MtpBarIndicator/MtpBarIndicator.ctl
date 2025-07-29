@@ -62,8 +62,9 @@ class MtpBarIndicator : MtpRefBase
 
 
   /**
-  * @brief Sets the shapes of the Limit Indicator to visible for the MtpBarIndicator.
-  */
+    * @brief Shows the limit indicator shapes.
+    * @details Sets the visibility of all limit indicator shapes to true.
+    */
   public void showLimitIndicator()
   {
     _body1.visible = TRUE;
@@ -77,11 +78,12 @@ class MtpBarIndicator : MtpRefBase
   }
 
   /**
-   * @brief Sets the scale values for the MtpBarIndicator.
-   *
-   * @param min The minimum value of the scale.
-   * @param max The maximum value of the scale.
-   */
+     * @brief Sets the scale range for the bar indicator.
+     * @details Updates the minimum and maximum scale values and sets the corresponding text shapes for half-maximum and maximum values.
+     *
+     * @param min The minimum value of the scale.
+     * @param max The maximum value of the scale.
+     */
   public void setScale(const float &min, const float &max)
   {
     _minV = min;
@@ -92,11 +94,12 @@ class MtpBarIndicator : MtpRefBase
   }
 
   /**
-   * @brief Sets the alert high shape for the MtpBarIndicator.
-   *
-   * @param ahEnabled Indicates if the alert high shape is enabled.
-   * @param ahLimit The limit value for the alert high shape.
-   */
+     * @brief Sets the alert high limit shape properties.
+     * @details Updates the alert high limit value and enables/disables the corresponding shape, adjusting its angle based on the scale.
+     *
+     * @param ahEnabled Indicates if the alert high limit is enabled.
+     * @param ahLimit The alert high limit value.
+     */
   public void setAlertHighShape(const bool &ahEnabled, const float &ahLimit)
   {
     _ahEnabled = ahEnabled;
@@ -105,11 +108,12 @@ class MtpBarIndicator : MtpRefBase
   }
 
   /**
-   * @brief Sets the warning high shape for the MtpBarIndicator.
-   *
-   * @param whEnabled Indicates if the warning high shape is enabled.
-   * @param whLimit The limit value for the warning high shape.
-   */
+     * @brief Sets the warning high limit shape properties.
+     * @details Updates the warning high limit value and enables/disables the corresponding shape, adjusting its angle based on the scale.
+     *
+     * @param whEnabled Indicates if the warning high limit is enabled.
+     * @param whLimit The warning high limit value.
+     */
   public void setWarningHighShape(const bool &whEnabled, const float &whLimit)
   {
     _whEnabled = whEnabled;
@@ -118,11 +122,12 @@ class MtpBarIndicator : MtpRefBase
   }
 
   /**
-   * @brief Sets the tolerance high shape for the MtpBarIndicator.
-   *
-   * @param thEnabled Indicates if the tolerance high shape is enabled.
-   * @param thLimit The limit value for the tolerance high shape.
-   */
+     * @brief Sets the tolerance high limit shape properties.
+     * @details Updates the tolerance high limit value and enables/disables the corresponding shape, adjusting its angle based on the scale.
+     *
+     * @param thEnabled Indicates if the tolerance high limit is enabled.
+     * @param thLimit The tolerance high limit value.
+     */
   public void setToleranceHighShape(const bool &thEnabled, const float &thLimit)
   {
     _thEnabled = thEnabled;
@@ -131,11 +136,12 @@ class MtpBarIndicator : MtpRefBase
   }
 
   /**
-   * @brief Sets the alert low shape for the MtpBarIndicator.
-   *
-   * @param alEnabled Indicates if the alert low shape is enabled.
-   * @param alLimit The limit value for the alert low shape.
-   */
+     * @brief Sets the alert low limit shape properties.
+     * @details Updates the alert low limit value and enables/disables the corresponding shape, adjusting its angle based on the scale.
+     *
+     * @param alEnabled Indicates if the alert low limit is enabled.
+     * @param alLimit The alert low limit value.
+     */
   public void setAlertLowShape(const bool &alEnabled, const float &alLimit)
   {
     _alEnabled = alEnabled;
@@ -145,11 +151,12 @@ class MtpBarIndicator : MtpRefBase
   }
 
   /**
-   * @brief Sets the warning low shape for the MtpBarIndicator.
-   *
-   * @param wlEnabled Indicates if the warning low shape is enabled.
-   * @param wlLimit The limit value for the warning low shape.
-   */
+     * @brief Sets the warning low limit shape properties.
+     * @details Updates the warning low limit value and enables/disables the corresponding shape, adjusting its angle based on the scale.
+     *
+     * @param wlEnabled Indicates if the warning low limit is enabled.
+     * @param wlLimit The warning low limit value.
+     */
   public void setWarningLowShape(const bool &wlEnabled, const float &wlLimit)
   {
     _wlEnabled = wlEnabled;
@@ -159,11 +166,12 @@ class MtpBarIndicator : MtpRefBase
   }
 
   /**
-   * @brief Sets the tolerance low shape for the MtpBarIndicator.
-   *
-   * @param tlEnabled Indicates if the tolerance low shape is enabled.
-   * @param tlLimit The limit value for the tolerance low shape.
-   */
+     * @brief Sets the tolerance low limit shape properties.
+     * @details Updates the tolerance low limit value and enables/disables the corresponding shape, adjusting its angle based on the scale.
+     *
+     * @param tlEnabled Indicates if the tolerance low limit is enabled.
+     * @param tlLimit The tolerance low limit value.
+     */
   public void setToleranceLowShape(const bool &tlEnabled, const float &tlLimit)
   {
     _tlEnabled = tlEnabled;
@@ -173,10 +181,11 @@ class MtpBarIndicator : MtpRefBase
   }
 
   /**
-   * @brief Sets the value for the MtpBarIndicator.
-   *
-   * @param value The value to set.
-   */
+     * @brief Sets the current value for the bar indicator.
+     * @details Updates the displayed value and adjusts the process value pointer and circle shapes based on the scale.
+     *
+     * @param value The current value to display.
+     */
   public void setValue(const float &value)
   {
     _value = value;
@@ -197,6 +206,12 @@ class MtpBarIndicator : MtpRefBase
     _pvPointer.rotation = (calculatePvDeg(value, _minV, _maxV) < 180) ? 180 : calculatePvDeg(value, _minV, _maxV);
   }
 
+  /**
+   * @brief Sets the value with limit-based coloring.
+   * @details Updates the value and sets the circle value background color based on alert, warning, or tolerance limits.
+   *
+   * @param value The current value to display.
+   */
   public void setValueLimit(const float &value)
   {
     setValue(value);
@@ -219,6 +234,12 @@ class MtpBarIndicator : MtpRefBase
     }
   }
 
+  /**
+   * @brief Sets the value with custom limit-based coloring.
+   * @details Updates the value and sets the circle value background color based on custom alert limits.
+   *
+   * @param value The current value to display.
+   */
   public void setValueCustomLimit(const float &value)
   {
     setValue(value);
@@ -234,20 +255,29 @@ class MtpBarIndicator : MtpRefBase
   }
 
   /**
-   * @brief Sets the unit for the MtpBarIndicator.
-   *
-   * @param unit A shared pointer to the MtpUnit object representing the unit.
-   */
+     * @brief Sets the unit text for the bar indicator.
+     * @details Updates the unit text shape with the string representation of the provided unit.
+     *
+     * @param unit A shared pointer to the MtpUnit object.
+     */
   public void setUnit(shared_ptr<MtpUnit> unit)
   {
     _txtUnit.text = unit.toString();
   }
 
+  /**
+   * @brief Hides the unit text shape.
+   * @details Sets the visibility of the unit text shape to false.
+   */
   public void hideUnit()
   {
     _txtUnit.visible = FALSE;
   }
 
+  /**
+   * @brief Hides the value text shape.
+   * @details Sets the visibility of the value text shape to false.
+   */
   public void hideValue()
   {
     _txtValue.visible = FALSE;
@@ -255,9 +285,9 @@ class MtpBarIndicator : MtpRefBase
 
 
   /**
-   * @brief Initializes the shapes used in the bar indicator.
-   * @details This method overrides the base class method to extract the shapes.
-   */
+     * @brief Initializes the shapes for the bar indicator.
+     * @details Overrides the base class method to extract the required shapes for the bar indicator.
+     */
   protected void initializeShapes()
   {
     _body1 = MtpRefBase::extractShape("_body1");
@@ -282,13 +312,14 @@ class MtpBarIndicator : MtpRefBase
   }
 
   /**
-   * @brief Calculates the proportional value degree for the MtpBarIndicator.
-   *
-   * @param value The value to convert.
-   * @param minV The minimum value.
-   * @param maxV The maximum value.
-   * @return The calculated proportional value degree.
-   */
+     * @brief Calculates the degree for the process value pointer.
+     * @details Computes the rotation angle for the process value pointer based on the provided value and scale.
+     *
+     * @param value The current value.
+     * @param minV The minimum scale value.
+     * @param maxV The maximum scale value.
+     * @return The calculated rotation angle in degrees.
+     */
   private float calculatePvDeg(float value, float minV, float maxV)
   {
     if (minV - maxV != 0)
@@ -304,13 +335,14 @@ class MtpBarIndicator : MtpRefBase
   }
 
   /**
-   * @brief Calculates the circle degree for the MtpBarIndicator.
-   *
-   * @param value The value to convert.
-   * @param minV The minimum value.
-   * @param maxV The maximum value.
-   * @return The calculated circle degree.
-   */
+     * @brief Calculates the degree for the circle shapes.
+     * @details Computes the angle for the limit circle shapes based on the provided value and scale.
+     *
+     * @param value The limit value.
+     * @param minV The minimum scale value.
+     * @param maxV The maximum scale value.
+     * @return The calculated angle in degrees.
+     */
   private float calculateCircleDeg(float value, float minV, float maxV)
   {
     if (minV - maxV != 0)

@@ -28,7 +28,6 @@ class MtpFaceplateMainBase : MtpViewBase
    *
    * @param viewModel A shared pointer to the view model.
    * @param shapes A mapping of shapes used in the faceplate.
-   * @param layoutNavigation The layout for navigation buttons.
    */
   protected MtpFaceplateMainBase(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
@@ -41,18 +40,20 @@ class MtpFaceplateMainBase : MtpViewBase
 
 
   /**
-   * @brief Closes the current faceplate.
-   */
+     * @brief Closes the current faceplate.
+     * @details Calls the panelOff function to close the faceplate panel.
+     */
   public void close()
   {
     panelOff();
   }
 
   /**
-   * @brief Handles the click event for a navigation button.
-   *
-   * @param name The name of the navigation button that was clicked.
-   */
+     * @brief Handles the click event for a navigation button.
+     * @details Loads the panel associated with the clicked navigation button and initializes it with the view model.
+     *
+     * @param name The name of the navigation button that was clicked.
+     */
   public void clickNavigation(const string &name)
   {
     shared_ptr<MtpNavigationButton> button = _navigationButtons.at(_navigationButtons.indexListOf("_name", name).at(0));
@@ -61,9 +62,9 @@ class MtpFaceplateMainBase : MtpViewBase
   }
 
   /**
-   * @brief Initializes the shapes used in the faceplate.
-   * @details This method overrides the base class method.
-   */
+     * @brief Initializes the shapes used in the faceplate.
+     * @details This method overrides the base class method.
+     */
   protected initializeShapes() override
   {
     _txtTitle = MtpViewBase::extractShape("_txtTitle");
@@ -80,26 +81,29 @@ class MtpFaceplateMainBase : MtpViewBase
   }
 
   /**
-   * @brief Retrieves the navigation buttons used in the faceplate.
-   *
-   * @return A vector of shared pointers to the navigation buttons.
-   */
+     * @brief Retrieves the navigation buttons used in the faceplate.
+     * @details Returns the vector of navigation buttons configured for the faceplate.
+     *
+     * @return A vector of shared pointers to the navigation buttons.
+     */
   protected vector<shared_ptr<MtpNavigationButton> > getNavigationButtons()
   {
     return _navigationButtons;
   }
 
   /**
-   * @brief Sets the title text for the faceplate.
-   */
+     * @brief Sets the title text for the faceplate.
+     * @details Updates the title text shape with the description from the view model's data point.
+     */
   private void setTitle()
   {
     _txtTitle.text = dpGetDescription(MtpViewBase::getViewModel().getDp());
   }
 
   /**
-   * @brief Sets up the navigation buttons for the faceplate.
-   */
+     * @brief Sets up the navigation buttons for the faceplate.
+     * @details Initializes navigation buttons by adding them to the panel, setting their appearance, and connecting click events.
+     */
   private void setNavigation()
   {
     _navigationButtons = getNavigationButtons();
@@ -122,12 +126,11 @@ class MtpFaceplateMainBase : MtpViewBase
   }
 
   /**
-   * @brief Loads a panel in a given module.
-   *
-   * @param fileName The file name of the panel to be loaded.
-   * @param panelName The name of the panel to be loaded.
-   * @param moduleName The name of the module in which the panel should be loaded.
-   */
+     * @brief Loads a panel in a given module.
+     * @details Loads the specified panel into the module, adjusting the panel size and updating data points as needed.
+     *
+     * @param button A shared pointer to the navigation button associated with the panel.
+     */
   private void loadPanel(shared_ptr<MtpNavigationButton> button)
   {
     string moduleName = _module.ModuleName();
@@ -160,6 +163,12 @@ class MtpFaceplateMainBase : MtpViewBase
     }
   }
 
+  /**
+   * @brief Updates the visibility of faceplate elements based on enabled state.
+   * @details Sets the visibility of the module and navigation layout, and toggles the visibility of info shapes based on the enabled state.
+   *
+   * @param enabled The enabled state of the faceplate.
+   */
   private void setEnabledCB(const bool &enabled)
   {
     _module.visible = enabled;

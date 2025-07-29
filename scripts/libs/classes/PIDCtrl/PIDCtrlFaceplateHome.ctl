@@ -15,54 +15,63 @@
 #uses "classes/PIDCtrl/PIDCtrl"
 #uses "classes/MtpView/MtpViewBase"
 
+/**
+ * @class PIDCtrlFaceplateHome
+ * @brief Represents the home faceplate for PIDCtrl objects.
+ */
 class PIDCtrlFaceplateHome : MtpViewBase
 {
-  private shape _refWqc;
-  private shape _rectAutomatic;
-  private shape _rectError;
-  private shape _rectInternal;
-  private shape _rectManual;
-  private shape _rectOff;
-  private shape _rectOperator;
-  private shape _txtError;
-  private shape _txtMV;
-  private shape _txtPV;
-  private shape _txtSP;
-  private shape _txtUnitMV;
-  private shape _txtUnitPV;
-  private shape _txtUnitSP;
-  private shape _txtSPInternal;
-  private shape _txtSPManual;
-  private shape _rectPvViolated;
-  private shape _rectSpViolated;
-  private shape _rectMvViolated;
+  private shape _refWqc; //!< Reference to the quality code shape.
+  private shape _rectAutomatic; //!< Reference to the automatic state rectangle shape.
+  private shape _rectError; //!< Reference to the error state rectangle shape.
+  private shape _rectInternal; //!< Reference to the internal mode rectangle shape.
+  private shape _rectManual; //!< Reference to the manual mode rectangle shape.
+  private shape _rectOff; //!< Reference to the off state rectangle shape.
+  private shape _rectOperator; //!< Reference to the operator state rectangle shape.
+  private shape _txtError; //!< Reference to the error text shape.
+  private shape _txtMV; //!< Reference to the manipulated value text shape.
+  private shape _txtPV; //!< Reference to the process value text shape.
+  private shape _txtSP; //!< Reference to the setpoint text shape.
+  private shape _txtUnitMV; //!< Reference to the manipulated value unit text shape.
+  private shape _txtUnitPV; //!< Reference to the process value unit text shape.
+  private shape _txtUnitSP; //!< Reference to the setpoint unit text shape.
+  private shape _txtSPInternal; //!< Reference to the internal setpoint text shape.
+  private shape _txtSPManual; //!< Reference to the manual setpoint text shape.
+  private shape _rectPvViolated; //!< Reference to the process value violation rectangle shape.
+  private shape _rectSpViolated; //!< Reference to the setpoint violation rectangle shape.
+  private shape _rectMvViolated; //!< Reference to the manipulated value violation rectangle shape.
 
-  private bool _stateAutomaticActive;
-  private bool _stateOperatorActive;
+  private bool _stateAutomaticActive; //!< Indicates if the automatic state is active.
+  private bool _stateOperatorActive; //!< Indicates if the operator state is active.
+  private bool _manualActive; //!< Indicates if manual mode is active.
+  private bool _internalActive; //!< Indicates if internal mode is active.
+  private bool _channel; //!< Indicates the channel state for source modes.
+  private bool _stateOffActive; //!< Indicates if the off state is active.
+  private bool _stateChannel; //!< Indicates the channel state for PID states.
+  private bool _osLevelStation; //!< Indicates if the operating system is at station level.
 
-  private bool _manualActive;
-  private bool _internalActive;
-  private bool _channel;
+  private float _pv; //!< The current process value.
+  private bool _pvLimitViolated; //!< Indicates if the process value violates its limits.
+  private float _pvSclMin; //!< The minimum scale value for the process value.
+  private float _pvSclMax; //!< The maximum scale value for the process value.
 
-  private bool _stateOffActive;
-  private bool _stateChannel;
-  private bool _osLevelStation;
+  private float _sp; //!< The current setpoint value.
+  private bool _spLimitViolated; //!< Indicates if the setpoint violates its limits.
+  private float _spSclMin; //!< The minimum scale value for the setpoint.
+  private float _spSclMax; //!< The maximum scale value for the setpoint.
 
-  private float _pv;
-  private bool _pvLimitViolated;
-  private float _pvSclMin;
-  private float _pvSclMax;
+  private float _mv; //!< The current manipulated value.
+  private bool _mvLimitViolated; //!< Indicates if the manipulated value violates its limits.
+  private float _mvSclMin; //!< The minimum scale value for the manipulated value.
+  private float _mvSclMax; //!< The maximum scale value for the manipulated value.
 
-  private float _sp;
-  private bool _spLimitViolated;
-  private float _spSclMin;
-  private float _spSclMax;
-
-  private float _mv;
-  private bool _mvLimitViolated;
-  private float _mvSclMin;
-  private float _mvSclMax;
-
+  /**
+   * @brief Constructor for PIDCtrlFaceplateHome.
+   * @details Initializes the faceplate by connecting callbacks to view model events and setting initial values for states, values, and units.
+   *
+   * @param viewModel A shared pointer to the PIDCtrl view model.
+   * @param shapes A mapping of shapes used in the faceplate.
+   */
   public PIDCtrlFaceplateHome(shared_ptr<PIDCtrl> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     classConnect(this, setProcessValueCB, MtpViewBase::getViewModel(), PIDCtrl::processValueChanged);
@@ -140,51 +149,99 @@ class PIDCtrlFaceplateHome : MtpViewBase
     setManipulatedValueScaleCB("min", _mvSclMin);
   }
 
+  /**
+   * @brief Sets the process value in the view model.
+   * @details Updates the process value in the PID controller view model.
+   *
+   * @param value The new process value.
+   */
   public void setProcessValue(const float &value)
   {
     MtpViewBase::getViewModel().setProcessValue(value);
   }
 
+  /**
+   * @brief Sets the setpoint value in the view model.
+   * @details Updates the setpoint value in the PID controller view model.
+   *
+   * @param value The new setpoint value.
+   */
   public void setSetpoint(const float &value)
   {
     MtpViewBase::getViewModel().setSetpoint(value);
   }
 
+  /**
+   * @brief Sets the manipulated value manually in the view model.
+   * @details Updates the manipulated value in the PID controller view model for manual mode.
+   *
+   * @param value The new manipulated value.
+   */
   public void setManipulatedValue(const float &value)
   {
     MtpViewBase::getViewModel().setManipulatedValueManual(value);
   }
 
+  /**
+   * @brief Sets the manual setpoint value in the view model.
+   * @details Updates the manual setpoint value in the PID controller view model.
+   *
+   * @param setpointManual The new manual setpoint value.
+   */
   public void setSetpointManual(const float &setpointManual)
   {
     MtpViewBase::getViewModel().setSetpointManual(setpointManual);
   }
 
+  /**
+   * @brief Activates manual mode for the PID controller.
+   * @details Sets the manual operator mode to active in the view model's source.
+   */
   public void activateManual()
   {
     MtpViewBase::getViewModel().getSource().setManualOperator(TRUE);
   }
 
+  /**
+   * @brief Activates internal mode for the PID controller.
+   * @details Sets the internal operator mode to active in the view model's source.
+   */
   public void activateInternal()
   {
     MtpViewBase::getViewModel().getSource().setInternalOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the off state for the PID controller.
+   * @details Sets the off operator state to active in the view model's state.
+   */
   public void activateStateOff()
   {
     MtpViewBase::getViewModel().getState().setOffOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the operator state for the PID controller.
+   * @details Sets the operator state to active in the view model's state.
+   */
   public void activateStateOperator()
   {
     MtpViewBase::getViewModel().getState().setOperatorOperator(TRUE);
   }
 
+  /**
+   * @brief Activates the automatic state for the PID controller.
+   * @details Sets the automatic operator state to active in the view model's state.
+   */
   public void activateStateAutomatic()
   {
     MtpViewBase::getViewModel().getState().setAutomaticOperator(TRUE);
   }
 
+  /**
+   * @brief Initializes the shapes used in the faceplate.
+   * @details Overrides the base class method to extract shapes for the PID controller faceplate.
+   */
   protected void initializeShapes()
   {
     _refWqc = MtpViewBase::extractShape("_refWqc");
@@ -208,6 +265,14 @@ class PIDCtrlFaceplateHome : MtpViewBase
     _rectMvViolated = MtpViewBase::extractShape("_rectMvViolated");
   }
 
+  /**
+   * @brief Sets the units for process value, setpoint, and manipulated value.
+   * @details Updates the text shapes for unit display with formatted unit strings.
+   *
+   * @param pvUnit The unit for the process value.
+   * @param spUnit The unit for the setpoint.
+   * @param mvUnit The unit for the manipulated value.
+   */
   private void setUnit(MtpUnit pvUnit, MtpUnit spUnit, MtpUnit mvUnit)
   {
     _txtUnitMV.text = getCatStr("PIDCtrl", "MV") + " [" + mvUnit.toString() + "]";
@@ -215,6 +280,12 @@ class PIDCtrlFaceplateHome : MtpViewBase
     _txtUnitSP.text = getCatStr("PIDCtrl", "SP") + " [" + spUnit.toString() + "]";
   }
 
+  /**
+   * @brief Callback function to update the operating system level status.
+   * @details Updates the station level status and triggers state callbacks to refresh the UI.
+   *
+   * @param oslevel The new operating system level status.
+   */
   private void setOsLevelCB(const bool &oslevel)
   {
     _osLevelStation = oslevel;
@@ -226,11 +297,23 @@ class PIDCtrlFaceplateHome : MtpViewBase
     setManualActiveCB("", FALSE);
   }
 
+  /**
+   * @brief Callback function to update the quality code status.
+   * @details Updates the quality code shape based on the quality good status change.
+   *
+   * @param qualityGoodChanged Indicates if the quality good status has changed.
+   */
   private void setWqcCB(const bool &qualityGoodChanged)
   {
     _refWqc.setStatus(qualityGoodChanged);
   }
 
+  /**
+   * @brief Callback function to update the process value.
+   * @details Updates the process value text shape and triggers scale checking.
+   *
+   * @param value The new process value.
+   */
   private void setProcessValueCB(const float &value)
   {
     _pv = value;
@@ -238,6 +321,13 @@ class PIDCtrlFaceplateHome : MtpViewBase
     setProcessValueScaleCB("min", _pvSclMin);
   }
 
+  /**
+     * @brief Callback function to update the process value scale.
+     * @details Updates the process value scale and checks for limit violations, updating the UI accordingly.
+     *
+     * @param varName The variable name ("min" or "max") indicating which scale value is updated.
+     * @param value The new scale value.
+     */
   private void setProcessValueScaleCB(const string &varName, const float &value)
   {
     switch (varName)
@@ -265,6 +355,10 @@ class PIDCtrlFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Updates the error state display.
+   * @details Sets the error rectangle fill based on whether the process value violates its limits.
+   */
   private void errorShow()
   {
     if (_pvLimitViolated)
@@ -277,6 +371,12 @@ class PIDCtrlFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the setpoint value.
+   * @details Updates the setpoint text shape and triggers scale checking.
+   *
+   * @param value The new setpoint value.
+   */
   private void setSetpointCB(const float &value)
   {
     _txtSP.text = value;
@@ -284,6 +384,13 @@ class PIDCtrlFaceplateHome : MtpViewBase
     setSetpointValueScaleCB("min", _spSclMin);
   }
 
+  /**
+   * @brief Callback function to update the setpoint scale.
+   * @details Updates the setpoint scale and checks for limit violations, updating the UI accordingly.
+   *
+   * @param varName The variable name ("min" or "max") indicating which scale value is updated.
+   * @param value The new scale value.
+   */
   private void setSetpointValueScaleCB(const string &varName, const float &value)
   {
     switch (varName)
@@ -311,6 +418,12 @@ class PIDCtrlFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the manipulated value.
+   * @details Updates the manipulated value text shape in automatic mode and triggers scale checking.
+   *
+   * @param value The new manipulated value.
+   */
   private void setManipulatedValueCB(const float &value)
   {
     if (_stateAutomaticActive)
@@ -322,6 +435,13 @@ class PIDCtrlFaceplateHome : MtpViewBase
     setManipulatedValueScaleCB("min", _mvSclMin);
   }
 
+  /**
+   * @brief Callback function to update the manipulated value scale.
+   * @details Updates the manipulated value scale and checks for limit violations, updating the UI accordingly.
+   *
+   * @param varName The variable name ("min" or "max") indicating which scale value is updated.
+   * @param value The new scale value.
+   */
   private void setManipulatedValueScaleCB(const string &varName, const float &value)
   {
     switch (varName)
@@ -349,16 +469,35 @@ class PIDCtrlFaceplateHome : MtpViewBase
     }
   }
 
+  /**
+   * @brief Callback function to update the internal setpoint value.
+   * @details Updates the internal setpoint text shape with the new value.
+   *
+   * @param value The new internal setpoint value.
+   */
   private void setSetpointInternalCB(const float &value)
   {
     _txtSPInternal.text = value;
   }
 
+  /**
+   * @brief Callback function to update the manual setpoint value.
+   * @details Updates the manual setpoint text shape with the new value.
+   *
+   * @param value The new manual setpoint value.
+   */
   private void setSetpointManualCB(const float &value)
   {
     _txtSPManual.text = value;
   }
 
+  /**
+   * @brief Callback function to update the automatic state.
+   * @details Updates the automatic state and channel, adjusting the automatic rectangle's appearance and mouse interaction.
+   *
+   * @param varName The variable name ("_stateAutomaticActive" or "_stateChannel") indicating which state is updated.
+   * @param state The new state value.
+   */
   private void setAutomaticActiveCB(const string &varName, const bool &state)
   {
     switch (varName)
@@ -388,7 +527,13 @@ class PIDCtrlFaceplateHome : MtpViewBase
     _rectAutomatic.transparentForMouse = (_rectAutomatic.fill == "[pattern,[fit,any,MTP_Icones/automatic_1_rounded.svg]]");
   }
 
-
+  /**
+     * @brief Callback function to update the operator state.
+     * @details Updates the operator state and channel, adjusting the operator rectangle's appearance and mouse interaction.
+     *
+     * @param varName The variable name ("_stateOperatorActive" or "_stateChannel") indicating which state is updated.
+     * @param state The new state value.
+     */
   private void setOperatorActiveCB(const string &varName, const bool &state)
   {
     switch (varName)
@@ -418,6 +563,13 @@ class PIDCtrlFaceplateHome : MtpViewBase
     _rectOperator.transparentForMouse = (_rectOperator.fill == "[pattern,[fit,any,MTP_Icones/Operator_1_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the off state.
+   * @details Updates the off state and channel, adjusting the off rectangle's appearance and mouse interaction.
+   *
+   * @param varName The variable name ("_stateOffActive" or "_stateChannel") indicating which state is updated.
+   * @param state The new state value.
+   */
   private void setStateOffActiveCB(const string &varName, const bool &state)
   {
     switch (varName)
@@ -447,7 +599,13 @@ class PIDCtrlFaceplateHome : MtpViewBase
     _rectOff.transparentForMouse = (_rectOff.fill == "[pattern,[fit,any,MTP_Icones/Power_2_rounded.svg]]");
   }
 
-
+  /**
+     * @brief Callback function to update the internal mode.
+     * @details Updates the internal mode and channel, adjusting the internal rectangle's appearance and mouse interaction.
+     *
+     * @param varName The variable name ("_internalActive" or "_channel") indicating which state is updated.
+     * @param internalActive The new internal mode state.
+     */
   private void setInternalActiveCB(const string &varName, const bool &internalActive)
   {
     switch (varName)
@@ -477,6 +635,13 @@ class PIDCtrlFaceplateHome : MtpViewBase
     _rectInternal.transparentForMouse = (_rectInternal.fill == "[pattern,[fit,any,MTP_Icones/internal_1_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the manual mode.
+   * @details Updates the manual mode and channel, adjusting the manual rectangle's appearance and mouse interaction.
+   *
+   * @param varName The variable name ("_manualActive" or "_channel") indicating which state is updated.
+   * @param manualActive The new manual mode state.
+   */
   private void setManualActiveCB(const string &varName, const bool &manualActive)
   {
     switch (varName)
@@ -506,6 +671,13 @@ class PIDCtrlFaceplateHome : MtpViewBase
     _rectManual.transparentForMouse = (_rectManual.fill == "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]");
   }
 
+  /**
+   * @brief Callback function to update the PID controller state.
+   * @details Updates the automatic or operator state and adjusts the manipulated value text shape's editability and value.
+   *
+   * @param varName The variable name ("_stateAutomaticActive" or "_stateOperatorActive") indicating which state is updated.
+   * @param state The new state value.
+   */
   private void setStateCB(const string &varName, const bool &state)
   {
     switch (varName)
