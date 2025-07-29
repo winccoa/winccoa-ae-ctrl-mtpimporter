@@ -42,16 +42,16 @@ class TstAnaMon : OaTest
 
     dpCreate(_DpExists, _Dpt);
 
-    dyn_dyn_string dpes = makeDynAnytype(makeDynString(_DptInvalidMissingV), makeDynString("", "VSclMin"), makeDynString("", "VSclMax"));
-    dyn_dyn_int values = makeDynAnytype(makeDynInt(DPEL_STRUCT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+    dyn_dyn_string dpes = makeDynAnytype(makeDynString(_DptInvalidMissingV), makeDynString("", "VSclMin"), makeDynString("", "VSclMax"), makeDynString("", "enabled"), makeDynString("", "tagName"));
+    dyn_dyn_int values = makeDynAnytype(makeDynInt(DPEL_STRUCT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingV, _DptInvalidMissingV);
-    dyn_dyn_string dpes = makeDynAnytype(makeDynString(_DptInvalidMissingVSclMin), makeDynString("", "V"), makeDynString("", "VSclMax"));
-    dyn_dyn_int values = makeDynAnytype(makeDynInt(DPEL_STRUCT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+    dyn_dyn_string dpes = makeDynAnytype(makeDynString(_DptInvalidMissingVSclMin), makeDynString("", "V"), makeDynString("", "VSclMax"), makeDynString("", "enabled"), makeDynString("", "tagName"));
+    dyn_dyn_int values = makeDynAnytype(makeDynInt(DPEL_STRUCT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVSclMin, _DptInvalidMissingVSclMin);
-    dyn_dyn_string dpes = makeDynAnytype(makeDynString(_DptInvalidMissingVSclMax), makeDynString("", "V"), makeDynString("", "VSclMin"));
-    dyn_dyn_int values = makeDynAnytype(makeDynInt(DPEL_STRUCT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+    dyn_dyn_string dpes = makeDynAnytype(makeDynString(_DptInvalidMissingVSclMax), makeDynString("", "V"), makeDynString("", "VSclMin"), makeDynString("", "enabled"), makeDynString("", "tagName"));
+    dyn_dyn_int values = makeDynAnytype(makeDynInt(DPEL_STRUCT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVSclMax, _DptInvalidMissingVSclMax);
 

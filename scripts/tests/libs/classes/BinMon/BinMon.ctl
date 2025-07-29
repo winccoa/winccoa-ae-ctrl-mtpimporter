@@ -51,64 +51,64 @@ class TstBinMon : OaTest
 
     dyn_dyn_string dpes = makeDynAnytype(
                             makeDynString(_DptInvalidMissingV), makeDynString("", "VState0"), makeDynString("", "VState1"),
-                            makeDynString("", "VFlutEn"), makeDynString("", "VFlutTi"), makeDynString("", "VFlutCnt"), makeDynString("", "VFlutAct"));
+                            makeDynString("", "VFlutEn"), makeDynString("", "VFlutTi"), makeDynString("", "VFlutCnt"), makeDynString("", "VFlutAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     dyn_dyn_int values = makeDynAnytype(
                            makeDynInt(DPEL_STRUCT), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL));
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingV, _DptInvalidMissingV);
 
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVState0), makeDynString("", "V"), makeDynString("", "VState1"),
-             makeDynString("", "VFlutEn"), makeDynString("", "VFlutTi"), makeDynString("", "VFlutCnt"), makeDynString("", "VFlutAct"));
+             makeDynString("", "VFlutEn"), makeDynString("", "VFlutTi"), makeDynString("", "VFlutCnt"), makeDynString("", "VFlutAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL));
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVState0, _DptInvalidMissingVState0);
 
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVState1), makeDynString("", "V"), makeDynString("", "VState0"),
-             makeDynString("", "VFlutEn"), makeDynString("", "VFlutTi"), makeDynString("", "VFlutCnt"), makeDynString("", "VFlutAct"));
+             makeDynString("", "VFlutEn"), makeDynString("", "VFlutTi"), makeDynString("", "VFlutCnt"), makeDynString("", "VFlutAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL));
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVState1, _DptInvalidMissingVState1);
 
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVFlutEn), makeDynString("", "V"), makeDynString("", "VState0"),
-             makeDynString("", "VState1"), makeDynString("", "VFlutTi"), makeDynString("", "VFlutCnt"), makeDynString("", "VFlutAct"));
+             makeDynString("", "VState1"), makeDynString("", "VFlutTi"), makeDynString("", "VFlutCnt"), makeDynString("", "VFlutAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING),
-               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL));
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVFlutEn, _DptInvalidMissingVFlutEn);
 
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVFlutTi), makeDynString("", "V"), makeDynString("", "VState0"),
-             makeDynString("", "VState1"), makeDynString("", "VFlutEn"), makeDynString("", "VFlutCnt"), makeDynString("", "VFlutAct"));
+             makeDynString("", "VState1"), makeDynString("", "VFlutEn"), makeDynString("", "VFlutCnt"), makeDynString("", "VFlutAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING),
-               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL));
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVFlutTi, _DptInvalidMissingVFlutTi);
 
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVFlutCnt), makeDynString("", "V"), makeDynString("", "VState0"),
-             makeDynString("", "VState1"), makeDynString("", "VFlutEn"), makeDynString("", "VFlutTi"), makeDynString("", "VFlutAct"));
+             makeDynString("", "VState1"), makeDynString("", "VFlutEn"), makeDynString("", "VFlutTi"), makeDynString("", "VFlutAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING),
-               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL));
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVFlutCnt, _DptInvalidMissingVFlutCnt);
 
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVFlutAct), makeDynString("", "V"), makeDynString("", "VState0"),
-             makeDynString("", "VState1"), makeDynString("", "VFlutEn"), makeDynString("", "VFlutTi"), makeDynString("", "VFlutCnt"));
+             makeDynString("", "VState1"), makeDynString("", "VFlutEn"), makeDynString("", "VFlutTi"), makeDynString("", "VFlutCnt"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING),
-               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT));
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVFlutAct, _DptInvalidMissingVFlutAct);
 

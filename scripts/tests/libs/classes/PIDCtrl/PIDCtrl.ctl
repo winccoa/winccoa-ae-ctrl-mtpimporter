@@ -118,7 +118,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MV"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -130,10 +130,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingPV, _DptInvalidMissingPV);
-    DebugN("Created data point type", _DptInvalidMissingPV, "with elements:", dpTypeGet(_DptInvalidMissingPV));
 
     // _DptInvalidMissingPVSclMin
     dpes = makeDynAnytype(
@@ -147,7 +146,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MV"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -159,10 +158,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingPVSclMin, _DptInvalidMissingPVSclMin);
-    DebugN("Created data point type", _DptInvalidMissingPVSclMin, "with elements:", dpTypeGet(_DptInvalidMissingPVSclMin));
 
     // _DptInvalidMissingPVSclMax
     dpes = makeDynAnytype(
@@ -176,7 +174,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MV"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -188,10 +186,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingPVSclMax, _DptInvalidMissingPVSclMax);
-    DebugN("Created data point type", _DptInvalidMissingPVSclMax, "with elements:", dpTypeGet(_DptInvalidMissingPVSclMax));
 
     // _DptInvalidMissingSPMan
     dpes = makeDynAnytype(
@@ -205,7 +202,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MV"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -217,10 +214,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSPMan, _DptInvalidMissingSPMan);
-    DebugN("Created data point type", _DptInvalidMissingSPMan, "with elements:", dpTypeGet(_DptInvalidMissingSPMan));
 
     // _DptInvalidMissingSPInt
     dpes = makeDynAnytype(
@@ -234,7 +230,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MV"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -246,10 +242,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSPInt, _DptInvalidMissingSPInt);
-    DebugN("Created data point type", _DptInvalidMissingSPInt, "with elements:", dpTypeGet(_DptInvalidMissingSPInt));
 
     // _DptInvalidMissingSPSclMin
     dpes = makeDynAnytype(
@@ -263,7 +258,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MV"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -275,10 +270,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSPSclMin, _DptInvalidMissingSPSclMin);
-    DebugN("Created data point type", _DptInvalidMissingSPSclMin, "with elements:", dpTypeGet(_DptInvalidMissingSPSclMin));
 
     // _DptInvalidMissingSPSclMax
     dpes = makeDynAnytype(
@@ -292,7 +286,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MV"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -304,10 +298,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSPSclMax, _DptInvalidMissingSPSclMax);
-    DebugN("Created data point type", _DptInvalidMissingSPSclMax, "with elements:", dpTypeGet(_DptInvalidMissingSPSclMax));
 
     // _DptInvalidMissingSPIntMin
     dpes = makeDynAnytype(
@@ -321,7 +314,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MV"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -333,10 +326,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSPIntMin, _DptInvalidMissingSPIntMin);
-    DebugN("Created data point type", _DptInvalidMissingSPIntMin, "with elements:", dpTypeGet(_DptInvalidMissingSPIntMin));
 
     // _DptInvalidMissingSPIntMax
     dpes = makeDynAnytype(
@@ -350,7 +342,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MV"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -362,10 +354,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSPIntMax, _DptInvalidMissingSPIntMax);
-    DebugN("Created data point type", _DptInvalidMissingSPIntMax, "with elements:", dpTypeGet(_DptInvalidMissingSPIntMax));
 
     // _DptInvalidMissingSPManMin
     dpes = makeDynAnytype(
@@ -379,7 +370,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MV"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -391,10 +382,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSPManMin, _DptInvalidMissingSPManMin);
-    DebugN("Created data point type", _DptInvalidMissingSPManMin, "with elements:", dpTypeGet(_DptInvalidMissingSPManMin));
 
     // _DptInvalidMissingSPManMax
     dpes = makeDynAnytype(
@@ -408,7 +398,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MV"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -420,10 +410,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSPManMax, _DptInvalidMissingSPManMax);
-    DebugN("Created data point type", _DptInvalidMissingSPManMax, "with elements:", dpTypeGet(_DptInvalidMissingSPManMax));
 
     // _DptInvalidMissingSP
     dpes = makeDynAnytype(
@@ -437,7 +426,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MV"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -449,10 +438,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSP, _DptInvalidMissingSP);
-    DebugN("Created data point type", _DptInvalidMissingSP, "with elements:", dpTypeGet(_DptInvalidMissingSP));
 
     // _DptInvalidMissingMVMan
     dpes = makeDynAnytype(
@@ -466,7 +454,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MV"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -478,10 +466,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingMVMan, _DptInvalidMissingMVMan);
-    DebugN("Created data point type", _DptInvalidMissingMVMan, "with elements:", dpTypeGet(_DptInvalidMissingMVMan));
 
     // _DptInvalidMissingMV
     dpes = makeDynAnytype(
@@ -495,7 +482,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MVMan"), makeDynString("", "MVMin"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -507,10 +494,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingMV, _DptInvalidMissingMV);
-    DebugN("Created data point type", _DptInvalidMissingMV, "with elements:", dpTypeGet(_DptInvalidMissingMV));
 
     // _DptInvalidMissingMVMin
     dpes = makeDynAnytype(
@@ -524,7 +510,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MVMan"), makeDynString("", "MV"),
              makeDynString("", "MVMax"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -536,10 +522,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingMVMin, _DptInvalidMissingMVMin);
-    DebugN("Created data point type", _DptInvalidMissingMVMin, "with elements:", dpTypeGet(_DptInvalidMissingMVMin));
 
     // _DptInvalidMissingMVMax
     dpes = makeDynAnytype(
@@ -553,7 +538,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MVMan"), makeDynString("", "MV"),
              makeDynString("", "MVMin"), makeDynString("", "MVSclMin"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -565,10 +550,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingMVMax, _DptInvalidMissingMVMax);
-    DebugN("Created data point type", _DptInvalidMissingMVMax, "with elements:", dpTypeGet(_DptInvalidMissingMVMax));
 
     // _DptInvalidMissingMVSclMin
     dpes = makeDynAnytype(
@@ -582,7 +566,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MVMan"), makeDynString("", "MV"),
              makeDynString("", "MVMin"), makeDynString("", "MVMax"),
              makeDynString("", "MVSclMax"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -594,10 +578,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingMVSclMin, _DptInvalidMissingMVSclMin);
-    DebugN("Created data point type", _DptInvalidMissingMVSclMin, "with elements:", dpTypeGet(_DptInvalidMissingMVSclMin));
 
     // _DptInvalidMissingMVSclMax
     dpes = makeDynAnytype(
@@ -611,7 +594,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MVMan"), makeDynString("", "MV"),
              makeDynString("", "MVMin"), makeDynString("", "MVMax"),
              makeDynString("", "MVSclMin"), makeDynString("", "P"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -623,10 +606,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingMVSclMax, _DptInvalidMissingMVSclMax);
-    DebugN("Created data point type", _DptInvalidMissingMVSclMax, "with elements:", dpTypeGet(_DptInvalidMissingMVSclMax));
 
     // _DptInvalidMissingP
     dpes = makeDynAnytype(
@@ -640,7 +622,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MVMan"), makeDynString("", "MV"),
              makeDynString("", "MVMin"), makeDynString("", "MVMax"),
              makeDynString("", "MVSclMin"), makeDynString("", "MVSclMax"),
-             makeDynString("", "Ti"), makeDynString("", "Td"));
+             makeDynString("", "Ti"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -652,10 +634,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingP, _DptInvalidMissingP);
-    DebugN("Created data point type", _DptInvalidMissingP, "with elements:", dpTypeGet(_DptInvalidMissingP));
 
     // _DptInvalidMissingTi
     dpes = makeDynAnytype(
@@ -669,7 +650,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MVMan"), makeDynString("", "MV"),
              makeDynString("", "MVMin"), makeDynString("", "MVMax"),
              makeDynString("", "MVSclMin"), makeDynString("", "MVSclMax"),
-             makeDynString("", "P"), makeDynString("", "Td"));
+             makeDynString("", "P"), makeDynString("", "Td"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -681,10 +662,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingTi, _DptInvalidMissingTi);
-    DebugN("Created data point type", _DptInvalidMissingTi, "with elements:", dpTypeGet(_DptInvalidMissingTi));
 
     // _DptInvalidMissingTd
     dpes = makeDynAnytype(
@@ -698,7 +678,7 @@ class TstPIDCtrl : OaTest
              makeDynString("", "MVMan"), makeDynString("", "MV"),
              makeDynString("", "MVMin"), makeDynString("", "MVMax"),
              makeDynString("", "MVSclMin"), makeDynString("", "MVSclMax"),
-             makeDynString("", "P"), makeDynString("", "Ti"));
+             makeDynString("", "P"), makeDynString("", "Ti"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -710,10 +690,9 @@ class TstPIDCtrl : OaTest
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingTd, _DptInvalidMissingTd);
-    DebugN("Created data point type", _DptInvalidMissingTd, "with elements:", dpTypeGet(_DptInvalidMissingTd));
 
     return OaTest::setUp();
   }

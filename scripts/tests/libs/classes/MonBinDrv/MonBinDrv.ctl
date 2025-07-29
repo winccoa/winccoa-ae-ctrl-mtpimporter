@@ -104,7 +104,7 @@ class TstMonBinDrv : OaTest
                             makeDynString("", "ProtEn"), makeDynString("", "Protect"),
                             makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
                             makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-                            makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+                            makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     dyn_dyn_int values = makeDynAnytype(
                            makeDynInt(DPEL_STRUCT),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -125,9 +125,9 @@ class TstMonBinDrv : OaTest
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-                           makeDynInt(0, DPEL_FLOAT));
+                           makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSafePos, _DptInvalidMissingSafePos);
 
@@ -153,7 +153,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -174,9 +174,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSafePosAct, _DptInvalidMissingSafePosAct);
 
@@ -202,7 +202,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -223,9 +223,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingFwdEn, _DptInvalidMissingFwdEn);
 
@@ -251,30 +251,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
-    values = makeDynAnytype(
-               makeDynInt(DPEL_STRUCT),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynString("", "RevOp"),
-               makeDynString("", "StopAut"), makeDynString("", "FwdAut"),
-               makeDynString("", "RevAut"), makeDynString("", "FwdCtrl"),
-               makeDynString("", "RevCtrl"), makeDynString("", "RevFbkCalc"),
-               makeDynString("", "RevFbk"), makeDynString("", "FwdFbkCalc"),
-               makeDynString("", "FwdFbk"), makeDynString("", "Trip"),
-               makeDynString("", "ResetOp"), makeDynString("", "ResetAut"),
-               makeDynString("", "WQC"), makeDynString("", "OSLevel"),
-               makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
-               makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
-               makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
-               makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
-               makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
-               makeDynString("", "PermEn"), makeDynString("", "Permit"),
-               makeDynString("", "IntEn"), makeDynString("", "Interlock"),
-               makeDynString("", "ProtEn"), makeDynString("", "Protect"),
-               makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
-               makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-               makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -295,9 +272,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRevEn, _DptInvalidMissingRevEn);
 
@@ -323,7 +300,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -344,9 +321,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStopOp, _DptInvalidMissingStopOp);
 
@@ -372,7 +349,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -393,9 +370,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingFwdOp, _DptInvalidMissingFwdOp);
 
@@ -421,7 +398,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -442,9 +419,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRevOp, _DptInvalidMissingRevOp);
 
@@ -470,7 +447,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -491,9 +468,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStopAut, _DptInvalidMissingStopAut);
 
@@ -519,7 +496,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -540,9 +517,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingFwdAut, _DptInvalidMissingFwdAut);
 
@@ -568,7 +545,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -589,9 +566,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRevAut, _DptInvalidMissingRevAut);
 
@@ -617,7 +594,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -638,9 +615,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingFwdCtrl, _DptInvalidMissingFwdCtrl);
 
@@ -666,7 +643,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -687,9 +664,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRevCtrl, _DptInvalidMissingRevCtrl);
 
@@ -715,7 +692,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -736,9 +713,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRevFbkCalc, _DptInvalidMissingRevFbkCalc);
 
@@ -764,7 +741,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -785,9 +762,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRevFbk, _DptInvalidMissingRevFbk);
 
@@ -813,7 +790,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -834,9 +811,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingFwdFbkCalc, _DptInvalidMissingFwdFbkCalc);
 
@@ -862,7 +839,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -883,9 +860,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingFwdFbk, _DptInvalidMissingFwdFbk);
 
@@ -911,7 +888,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -932,9 +909,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingTrip, _DptInvalidMissingTrip);
 
@@ -960,7 +937,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -981,9 +958,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingResetOp, _DptInvalidMissingResetOp);
 
@@ -1009,7 +986,7 @@ class TstMonBinDrv : OaTest
              makeDynString("", "ProtEn"), makeDynString("", "Protect"),
              makeDynString("", "MonEn"), makeDynString("", "MonSafePos"),
              makeDynString("", "MonStatErr"), makeDynString("", "MonDynErr"),
-             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"));
+             makeDynString("", "MonStatTi"), makeDynString("", "MonDynTi"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -1030,9 +1007,9 @@ class TstMonBinDrv : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
-               makeDynInt(0, DPEL_FLOAT));
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingResetAut, _DptInvalidMissingResetAut);
 
@@ -1569,16 +1546,6 @@ class TstMonBinDrv : OaTest
   private void setSafetyPositionActiveChangedCB(const bool &safetyPositionActive)
   {
     _eventSafetyPositionActive = safetyPositionActive;
-  }
-
-  private void setForwardEnableChangedCB(const bool &forwardEnable)
-  {
-    _eventForwardEnable = forwardEnable;
-  }
-
-  private void setReverseEnableChangedCB(const bool &reverseEnable)
-  {
-    _eventReverseEnable = reverseEnable;
   }
 
   private void setForwardAutomaticChangedCB(const bool &forwardAutomatic)

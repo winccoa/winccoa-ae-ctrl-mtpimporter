@@ -67,7 +67,7 @@ class TstAnaManInt : OaTest
                             makeDynString("", "SrcChannel"), makeDynString("", "SrcManAut"),
                             makeDynString("", "SrcIntAut"), makeDynString("", "SrcManOp"),
                             makeDynString("", "SrcIntOp"), makeDynString("", "SrcManAct"),
-                            makeDynString("", "SrcIntAct"));
+                            makeDynString("", "SrcIntAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     dyn_dyn_int values = makeDynAnytype(
                            makeDynInt(DPEL_STRUCT),
                            makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -78,7 +78,7 @@ class TstAnaManInt : OaTest
                            makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL));
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVOut, _DptInvalidMissingVOut);
 
@@ -92,7 +92,7 @@ class TstAnaManInt : OaTest
              makeDynString("", "SrcChannel"), makeDynString("", "SrcManAut"),
              makeDynString("", "SrcIntAut"), makeDynString("", "SrcManOp"),
              makeDynString("", "SrcIntOp"), makeDynString("", "SrcManAct"),
-             makeDynString("", "SrcIntAct"));
+             makeDynString("", "SrcIntAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -103,7 +103,7 @@ class TstAnaManInt : OaTest
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL));
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVSclMin, _DptInvalidMissingVSclMin);
 
@@ -117,7 +117,7 @@ class TstAnaManInt : OaTest
              makeDynString("", "SrcChannel"), makeDynString("", "SrcManAut"),
              makeDynString("", "SrcIntAut"), makeDynString("", "SrcManOp"),
              makeDynString("", "SrcIntOp"), makeDynString("", "SrcManAct"),
-             makeDynString("", "SrcIntAct"));
+             makeDynString("", "SrcIntAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -128,7 +128,7 @@ class TstAnaManInt : OaTest
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL));
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVSclMax, _DptInvalidMissingVSclMax);
 
@@ -142,7 +142,7 @@ class TstAnaManInt : OaTest
              makeDynString("", "SrcChannel"), makeDynString("", "SrcManAut"),
              makeDynString("", "SrcIntAut"), makeDynString("", "SrcManOp"),
              makeDynString("", "SrcIntOp"), makeDynString("", "SrcManAct"),
-             makeDynString("", "SrcIntAct"));
+             makeDynString("", "SrcIntAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -153,7 +153,7 @@ class TstAnaManInt : OaTest
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL));
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVMan, _DptInvalidMissingVMan);
 
@@ -167,7 +167,7 @@ class TstAnaManInt : OaTest
              makeDynString("", "SrcChannel"), makeDynString("", "SrcManAut"),
              makeDynString("", "SrcIntAut"), makeDynString("", "SrcManOp"),
              makeDynString("", "SrcIntOp"), makeDynString("", "SrcManAct"),
-             makeDynString("", "SrcIntAct"));
+             makeDynString("", "SrcIntAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -178,7 +178,7 @@ class TstAnaManInt : OaTest
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL));
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVInt, _DptInvalidMissingVInt);
 
@@ -192,7 +192,7 @@ class TstAnaManInt : OaTest
              makeDynString("", "SrcChannel"), makeDynString("", "SrcManAut"),
              makeDynString("", "SrcIntAut"), makeDynString("", "SrcManOp"),
              makeDynString("", "SrcIntOp"), makeDynString("", "SrcManAct"),
-             makeDynString("", "SrcIntAct"));
+             makeDynString("", "SrcIntAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -203,7 +203,7 @@ class TstAnaManInt : OaTest
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL));
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVRbk, _DptInvalidMissingVRbk);
 
@@ -217,7 +217,7 @@ class TstAnaManInt : OaTest
              makeDynString("", "SrcChannel"), makeDynString("", "SrcManAut"),
              makeDynString("", "SrcIntAut"), makeDynString("", "SrcManOp"),
              makeDynString("", "SrcIntOp"), makeDynString("", "SrcManAct"),
-             makeDynString("", "SrcIntAct"));
+             makeDynString("", "SrcIntAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -228,7 +228,7 @@ class TstAnaManInt : OaTest
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL));
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVFbk, _DptInvalidMissingVFbk);
 
@@ -242,7 +242,7 @@ class TstAnaManInt : OaTest
              makeDynString("", "SrcChannel"), makeDynString("", "SrcManAut"),
              makeDynString("", "SrcIntAut"), makeDynString("", "SrcManOp"),
              makeDynString("", "SrcIntOp"), makeDynString("", "SrcManAct"),
-             makeDynString("", "SrcIntAct"));
+             makeDynString("", "SrcIntAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -253,7 +253,7 @@ class TstAnaManInt : OaTest
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL));
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVMin, _DptInvalidMissingVMin);
 
@@ -267,7 +267,7 @@ class TstAnaManInt : OaTest
              makeDynString("", "SrcChannel"), makeDynString("", "SrcManAut"),
              makeDynString("", "SrcIntAut"), makeDynString("", "SrcManOp"),
              makeDynString("", "SrcIntOp"), makeDynString("", "SrcManAct"),
-             makeDynString("", "SrcIntAct"));
+             makeDynString("", "SrcIntAct"), makeDynString("", "enabled"), makeDynString("", "tagName"));
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
@@ -278,7 +278,7 @@ class TstAnaManInt : OaTest
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL));
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVMax, _DptInvalidMissingVMax);
 

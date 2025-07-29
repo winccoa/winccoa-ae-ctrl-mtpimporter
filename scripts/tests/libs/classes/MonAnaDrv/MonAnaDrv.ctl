@@ -151,7 +151,12 @@ class TstMonAnaDrv : OaTest
                             makeDynString("", "Protect"), makeDynString("", "MonEn"),
                             makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
                             makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-                            makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+                            makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+                            makeDynString("", "SrcChannel"), makeDynString("", "SrcManAut"),
+                            makeDynString("", "SrcIntAut"), makeDynString("", "SrcManOp"),
+                            makeDynString("", "SrcIntOp"), makeDynString("", "SrcManAct"),
+                            makeDynString("", "SrcIntAct"), makeDynString("", "enabled"),
+                            makeDynString("", "tagName"));
     dyn_dyn_int values = makeDynAnytype(
                            makeDynInt(DPEL_STRUCT),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -170,20 +175,25 @@ class TstMonAnaDrv : OaTest
                            makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
                            makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
+                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
                            makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT),
-                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_STRING),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
-                           makeDynInt(0, DPEL_STRING));
+                           makeDynInt(0, DPEL_LANGSTRING));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSafePos, _DptInvalidMissingSafePos);
 
@@ -219,7 +229,12 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcManAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcManOp"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcManAct"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "enabled"),
+             makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSafePosAct, _DptInvalidMissingSafePosAct);
 
@@ -254,7 +269,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingFwdEn, _DptInvalidMissingFwdEn);
 
@@ -289,7 +305,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRevEn, _DptInvalidMissingRevEn);
 
@@ -324,7 +341,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStopOp, _DptInvalidMissingStopOp);
 
@@ -359,7 +377,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingFwdOp, _DptInvalidMissingFwdOp);
 
@@ -394,7 +413,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRevOp, _DptInvalidMissingRevOp);
 
@@ -429,7 +449,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStopAut, _DptInvalidMissingStopAut);
 
@@ -464,7 +485,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingFwdAut, _DptInvalidMissingFwdAut);
 
@@ -499,7 +521,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRevAut, _DptInvalidMissingRevAut);
 
@@ -534,7 +557,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingFwdCtrl, _DptInvalidMissingFwdCtrl);
 
@@ -569,7 +593,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRevCtrl, _DptInvalidMissingRevCtrl);
 
@@ -604,7 +629,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRevFbkCalc, _DptInvalidMissingRevFbkCalc);
 
@@ -639,7 +665,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRevFbk, _DptInvalidMissingRevFbk);
 
@@ -674,7 +701,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingFwdFbkCalc, _DptInvalidMissingFwdFbkCalc);
 
@@ -709,7 +737,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingFwdFbk, _DptInvalidMissingFwdFbk);
 
@@ -744,7 +773,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingTrip, _DptInvalidMissingTrip);
 
@@ -779,7 +809,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingResetOp, _DptInvalidMissingResetOp);
 
@@ -814,7 +845,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingResetAut, _DptInvalidMissingResetAut);
 
@@ -849,7 +881,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmFbk, _DptInvalidMissingRpmFbk);
 
@@ -884,7 +917,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpm, _DptInvalidMissingRpm);
 
@@ -919,7 +953,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmErr, _DptInvalidMissingRpmErr);
 
@@ -954,7 +989,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmAHAct, _DptInvalidMissingRpmAHAct);
 
@@ -989,7 +1025,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmALAct, _DptInvalidMissingRpmALAct);
 
@@ -1024,7 +1061,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmInt, _DptInvalidMissingRpmInt);
 
@@ -1059,7 +1097,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmSclMin, _DptInvalidMissingRpmSclMin);
 
@@ -1094,7 +1133,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmSclMax, _DptInvalidMissingRpmSclMax);
 
@@ -1129,7 +1169,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmRbk, _DptInvalidMissingRpmRbk);
 
@@ -1164,7 +1205,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmMin, _DptInvalidMissingRpmMin);
 
@@ -1199,7 +1241,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmMax, _DptInvalidMissingRpmMax);
 
@@ -1234,7 +1277,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmMan, _DptInvalidMissingRpmMan);
 
@@ -1269,7 +1313,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmFbkCalc, _DptInvalidMissingRpmFbkCalc);
 
@@ -1304,7 +1349,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmAHEn, _DptInvalidMissingRpmAHEn);
 
@@ -1339,7 +1385,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmALEn, _DptInvalidMissingRpmALEn);
 
@@ -1374,7 +1421,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmAHLim, _DptInvalidMissingRpmAHLim);
 
@@ -1409,7 +1457,8 @@ class TstMonAnaDrv : OaTest
              makeDynString("", "Protect"), makeDynString("", "MonEn"),
              makeDynString("", "MonSafePos"), makeDynString("", "MonStatErr"),
              makeDynString("", "MonDynErr"), makeDynString("", "MonStatTi"),
-             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"));
+             makeDynString("", "MonDynTi"), makeDynString("", "RpmUnit"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"));
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmALLim, _DptInvalidMissingRpmALLim);
 

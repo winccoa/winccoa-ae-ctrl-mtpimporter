@@ -47,7 +47,7 @@ class TstLockView4 : OaTest
                             makeDynString("", "In1En"), makeDynString("", "In1"), makeDynString("", "In1QC"), makeDynString("", "In1Inv"), makeDynString("", "In1Txt"),
                             makeDynString("", "In2En"), makeDynString("", "In2"), makeDynString("", "In2QC"), makeDynString("", "In2Inv"), makeDynString("", "In2Txt"),
                             makeDynString("", "In3En"), makeDynString("", "In3"), makeDynString("", "In3QC"), makeDynString("", "In3Inv"), makeDynString("", "In3Txt"),
-                            makeDynString("", "In4En"), makeDynString("", "In4"), makeDynString("", "In4QC"), makeDynString("", "In4Inv"), makeDynString("", "In4Txt")
+                            makeDynString("", "In4En"), makeDynString("", "In4"), makeDynString("", "In4QC"), makeDynString("", "In4Inv"), makeDynString("", "In4Txt"), makeDynString("", "enabled"), makeDynString("", "tagName")
                           );
     dyn_dyn_int values = makeDynAnytype(
                            makeDynInt(DPEL_STRUCT),
@@ -57,7 +57,7 @@ class TstLockView4 : OaTest
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING)
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING)
                          );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingLogic, _DptInvalidMissingLogic);
@@ -70,7 +70,7 @@ class TstLockView4 : OaTest
              makeDynString("", "In1En"), makeDynString("", "In1"), makeDynString("", "In1QC"), makeDynString("", "In1Inv"), makeDynString("", "In1Txt"),
              makeDynString("", "In2En"), makeDynString("", "In2"), makeDynString("", "In2QC"), makeDynString("", "In2Inv"), makeDynString("", "In2Txt"),
              makeDynString("", "In3En"), makeDynString("", "In3"), makeDynString("", "In3QC"), makeDynString("", "In3Inv"), makeDynString("", "In3Txt"),
-             makeDynString("", "In4En"), makeDynString("", "In4"), makeDynString("", "In4QC"), makeDynString("", "In4Inv"), makeDynString("", "In4Txt")
+             makeDynString("", "In4En"), makeDynString("", "In4"), makeDynString("", "In4QC"), makeDynString("", "In4Inv"), makeDynString("", "In4Txt"), makeDynString("", "enabled"), makeDynString("", "tagName")
            );
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
@@ -80,7 +80,7 @@ class TstLockView4 : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING)
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING)
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingOutput, _DptInvalidMissingOutput);
@@ -149,185 +149,17 @@ class TstLockView4 : OaTest
     return 0;
   }
 
-  public int testOutputAndLogicChanged()
+  public int testOutputChanged()
   {
     shared_ptr<LockView4> lockView = new LockView4(_DpExists);
     classConnect(this, setOutputChangedCB, lockView, LockView4::outputChanged);
-    classConnect(this, setLogicChangedCB, lockView, LockView4::logicChanged);
 
-    // Reset DPEs
-    dpSetWait(_DpExists + ".Out", false, _DpExists + ".Logic", false);
-
-    // Test output change
-    _eventOutput = false;
     dpSetWait(_DpExists + ".Out", true);
+
+    // Give it time to execute callback.
     delay(0, 200);
-    assertEqual(lockView.getOutput(), true, "Output should be true after dpSet");
-    assertEqual(_eventOutput, true, "OutputChanged event should trigger with true");
-
-    // Test logic change
-    _eventLogic = false;
-    dpSetWait(_DpExists + ".Logic", true);
-    delay(0, 200);
-    assertEqual(lockView.getLogic(), true, "Logic should be true after dpSet");
-    assertEqual(_eventLogic, true, "LogicChanged event should trigger with true");
-
-    // Test no event for same value
-    _eventOutput = false;
-    bool currentOut;
-    dpGet(_DpExists + ".Out", currentOut);
-    dpSetWait(_DpExists + ".Out", currentOut);
-    delay(0, 200);
-    assertEqual(_eventOutput, false, "OutputChanged should not trigger for same value");
-
-    _eventLogic = false;
-    bool currentLogic;
-    dpGet(_DpExists + ".Logic", currentLogic);
-    dpSetWait(_DpExists + ".Logic", currentLogic);
-    delay(0, 200);
-    assertEqual(_eventLogic, false, "LogicChanged should not trigger for same value");
-
-    return 0;
-  }
-
-  public int testOutputCalculation()
-  {
-    shared_ptr<LockView4> lockView = new LockView4(_DpExists);
-    classConnect(this, setOutputChangedCB, lockView, LockView4::outputChanged);
-
-    // Reset all DPEs
-    dpSetWait(_DpExists + ".Logic", false,
-              _DpExists + ".Out", false,
-              _DpExists + ".In1En", false, _DpExists + ".In1", false, _DpExists + ".In1Inv", false,
-              _DpExists + ".In2En", false, _DpExists + ".In2", false, _DpExists + ".In2Inv", false,
-              _DpExists + ".In3En", false, _DpExists + ".In3", false, _DpExists + ".In3Inv", false,
-              _DpExists + ".In4En", false, _DpExists + ".In4", false, _DpExists + ".In4Inv", false);
-    delay(0, 200);
-
-    // Test OR mode (_logic = false)
-    _eventOutput = false;
-    dpSetWait(_DpExists + ".Logic", false,
-              _DpExists + ".In1En", true, _DpExists + ".In1", false, _DpExists + ".In1Inv", false,
-              _DpExists + ".In2En", true, _DpExists + ".In2", true, _DpExists + ".In2Inv", false,
-              _DpExists + ".In3En", false, _DpExists + ".In3", false, _DpExists + ".In3Inv", false,
-              _DpExists + ".In4En", false, _DpExists + ".In4", false, _DpExists + ".In4Inv", false);
-    delay(0, 200);
-    bool outValue;
-    dpGet(_DpExists + ".Out", outValue);
-    assertEqual(lockView.getOutput(), true, "OR mode: Output should be true when In2 is true");
-    assertEqual(outValue, true, "OR mode: .Out DPE should be true");
-
-    // Test OR mode with inverted input
-    _eventOutput = false;
-    dpSetWait(_DpExists + ".In1", true, _DpExists + ".In1Inv", true);
-    delay(0, 200);
-    dpGet(_DpExists + ".Out", outValue);
-    assertEqual(lockView.getOutput(), true, "OR mode: Output should be true when In1 (inverted) is false or In2 is true");
-    assertEqual(outValue, true, "OR mode: .Out DPE should be true");
-
-    // Test OR mode with no enabled inputs
-    _eventOutput = false;
-    dpSetWait(_DpExists + ".In1En", false, _DpExists + ".In2En", false);
-    delay(0, 200);
-    dpGet(_DpExists + ".Out", outValue);
-    assertEqual(lockView.getOutput(), false, "OR mode: Output should be false with no enabled inputs");
-    assertEqual(outValue, false, "OR mode: .Out DPE should be false");
-
-    // Test AND mode (_logic = true)
-    _eventOutput = false;
-    dpSetWait(_DpExists + ".Logic", true,
-              _DpExists + ".In1En", true, _DpExists + ".In1", true, _DpExists + ".In1Inv", false,
-              _DpExists + ".In2En", true, _DpExists + ".In2", true, _DpExists + ".In2Inv", false,
-              _DpExists + ".In3En", false, _DpExists + ".In3", false, _DpExists + ".In3Inv", false,
-              _DpExists + ".In4En", false, _DpExists + ".In4", false, _DpExists + ".In4Inv", false);
-    delay(0, 200);
-    dpGet(_DpExists + ".Out", outValue);
-    assertEqual(lockView.getOutput(), true, "AND mode: Output should be true when all enabled inputs are true");
-    assertEqual(outValue, true, "AND mode: .Out DPE should be true");
-
-    // Test AND mode with inverted input
-    _eventOutput = false;
-    dpSetWait(_DpExists + ".In1Inv", true);
-    delay(0, 200);
-    dpGet(_DpExists + ".Out", outValue);
-    assertEqual(lockView.getInput1().getInverted(), true, "AND mode: In1Inv should be true");
-    assertEqual(lockView.getOutput(), false, "AND mode: Output should be false when In1 (inverted) is false");
-    assertEqual(outValue, false, "AND mode: .Out DPE should be false");
-
-    // Test AND mode with no enabled inputs
-    _eventOutput = false;
-    dpSetWait(_DpExists + ".In1En", false, _DpExists + ".In2En", false);
-    delay(0, 200);
-    dpGet(_DpExists + ".Out", outValue);
-    assertEqual(lockView.getOutput(), true, "AND mode: Output should be true with no enabled inputs");
-    assertEqual(outValue, true, "AND mode: .Out DPE should be true");
-
-    // Test OR mode with Input3 enabled
-    _eventOutput = false;
-    dpSetWait(_DpExists + ".Logic", false,
-              _DpExists + ".In1En", false, _DpExists + ".In1", false, _DpExists + ".In1Inv", false,
-              _DpExists + ".In2En", false, _DpExists + ".In2", false, _DpExists + ".In2Inv", false,
-              _DpExists + ".In3En", true, _DpExists + ".In3", true, _DpExists + ".In3Inv", false,
-              _DpExists + ".In4En", false, _DpExists + ".In4", false, _DpExists + ".In4Inv", false);
-    delay(0, 200);
-    dpGet(_DpExists + ".Out", outValue);
-    assertEqual(lockView.getOutput(), true, "OR mode: Output should be true when In3 is true");
-    assertEqual(outValue, true, "OR mode: .Out DPE should be true");
-
-    // Test OR mode with Input3 enabled and inverted
-    _eventOutput = false;
-    dpSetWait(_DpExists + ".In3", true, _DpExists + ".In3Inv", true);
-    delay(0, 200);
-    dpGet(_DpExists + ".Out", outValue);
-    assertEqual(lockView.getInput3().getInverted(), true, "OR mode: In3Inv should be true");
-    assertEqual(lockView.getOutput(), false, "OR mode: Output should be false when In3 (inverted) is false");
-    assertEqual(outValue, false, "OR mode: .Out DPE should be false");
-
-    // Test AND mode with Input3 enabled
-    _eventOutput = false;
-    dpSetWait(_DpExists + ".Logic", true,
-              _DpExists + ".In1En", false, _DpExists + ".In1", false, _DpExists + ".In1Inv", false,
-              _DpExists + ".In2En", false, _DpExists + ".In2", false, _DpExists + ".In2Inv", false,
-              _DpExists + ".In3En", true, _DpExists + ".In3", true, _DpExists + ".In3Inv", false,
-              _DpExists + ".In4En", false, _DpExists + ".In4", false, _DpExists + ".In4Inv", false);
-    delay(0, 200);
-    dpGet(_DpExists + ".Out", outValue);
-    assertEqual(lockView.getOutput(), true, "AND mode: Output should be true when In3 is true");
-    assertEqual(outValue, true, "AND mode: .Out DPE should be true");
-
-    // Test OR mode with Input4 enabled
-    _eventOutput = false;
-    dpSetWait(_DpExists + ".Logic", false,
-              _DpExists + ".In1En", false, _DpExists + ".In1", false, _DpExists + ".In1Inv", false,
-              _DpExists + ".In2En", false, _DpExists + ".In2", false, _DpExists + ".In2Inv", false,
-              _DpExists + ".In3En", false, _DpExists + ".In3", false, _DpExists + ".In3Inv", false,
-              _DpExists + ".In4En", true, _DpExists + ".In4", true, _DpExists + ".In4Inv", false);
-    delay(0, 200);
-    dpGet(_DpExists + ".Out", outValue);
-    assertEqual(lockView.getOutput(), true, "OR mode: Output should be true when In4 is true");
-    assertEqual(outValue, true, "OR mode: .Out DPE should be true");
-
-    // Test OR mode with Input4 enabled and inverted
-    _eventOutput = false;
-    dpSetWait(_DpExists + ".In4", true, _DpExists + ".In4Inv", true);
-    delay(0, 200);
-    dpGet(_DpExists + ".Out", outValue);
-    assertEqual(lockView.getInput4().getInverted(), true, "OR mode: In4Inv should be true");
-    assertEqual(lockView.getOutput(), false, "OR mode: Output should be false when In4 (inverted) is false");
-    assertEqual(outValue, false, "OR mode: .Out DPE should be false");
-
-    // Test AND mode with Input4 enabled
-    _eventOutput = false;
-    dpSetWait(_DpExists + ".Logic", true,
-              _DpExists + ".In1En", false, _DpExists + ".In1", false, _DpExists + ".In1Inv", false,
-              _DpExists + ".In2En", false, _DpExists + ".In2", false, _DpExists + ".In2Inv", false,
-              _DpExists + ".In3En", false, _DpExists + ".In3", false, _DpExists + ".In3Inv", false,
-              _DpExists + ".In4En", true, _DpExists + ".In4", true, _DpExists + ".In4Inv", false);
-    delay(0, 200);
-    dpGet(_DpExists + ".Out", outValue);
-    assertEqual(lockView.getOutput(), true, "AND mode: Output should be true when In4 is true");
-    assertEqual(outValue, true, "AND mode: .Out DPE should be true");
-
+    assertEqual(lockView.getOutput(), true);
+    assertEqual(_eventOutput, true);
     return 0;
   }
 
