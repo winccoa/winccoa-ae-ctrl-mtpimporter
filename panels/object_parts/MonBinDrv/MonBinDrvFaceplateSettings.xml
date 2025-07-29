@@ -112,7 +112,7 @@ public void initialize(shared_ptr&lt;MonBinDrv&gt; viewModel)
    <events>
     <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
 {
-  _faceplate.switchPage();
+  _faceplate.switchPageForward();
 }]]></script>
    </events>
   </shape>

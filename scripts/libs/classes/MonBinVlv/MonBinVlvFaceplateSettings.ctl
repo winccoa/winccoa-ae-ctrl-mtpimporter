@@ -55,6 +55,12 @@ class MonBinVlvFaceplateSettings : MtpViewFaceplateSettings
     }
   }
 
+  /**
+  * @brief Switches to the next settings faceplate (not implemented -> Maintenance).
+  */
+  public void switchPageForward()
+  {
+  }
   protected void initializeShapes() override
   {
     _btnMonitorDisabled = MtpViewFaceplateSettings::extractShape("_btnMonitorDisabled");
