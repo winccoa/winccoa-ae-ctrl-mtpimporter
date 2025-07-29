@@ -244,6 +244,56 @@ class TstMtpSource : OaTest
     return 0;
   }
 
+    public int testSetGetManualActive()
+  {
+    shared_ptr<MtpSource> src = new MtpSource(_DpExists + ".channel", _DpExists + ".manualAutomatic", _DpExists + ".internalAutomatic", _DpExists + ".manualOperator", _DpExists + ".internalOperator", _DpExists + ".manualActive", _DpExists + ".internalActive");
+    classConnect(this, setManualActiveCB, src, MtpSource::manualActiveChanged);
+
+    src.setManualActive(TRUE);
+    bool value;
+    dpGet(_DpExists + ".manualActive", value);
+    delay(0, 500); // Allow callback to execute
+    DebugTN("Testing setManualActive TRUE: getManualActive=" + src.getManualActive() + ", dpValue=" + value + ", _eventManualActive=" + _eventManualActive);
+    assertEqual(src.getManualActive(), TRUE, "ManualActive should be TRUE");
+    assertEqual(value, TRUE, "Data point manualActive should be TRUE");
+    assertEqual(_eventManualActive, TRUE, "Event manualActive should be TRUE");
+
+    src.setManualActive(FALSE);
+    dpGet(_DpExists + ".manualActive", value);
+    delay(0, 500); // Allow callback to execute
+    DebugTN("Testing setManualActive FALSE: getManualActive=" + src.getManualActive() + ", dpValue=" + value + ", _eventManualActive=" + _eventManualActive);
+    assertEqual(src.getManualActive(), FALSE, "ManualActive should be FALSE");
+    assertEqual(value, FALSE, "Data point manualActive should be FALSE");
+    assertEqual(_eventManualActive, FALSE, "Event manualActive should be FALSE");
+
+    return 0;
+  }
+
+  public int testSetGetInternalActive()
+  {
+    shared_ptr<MtpSource> src = new MtpSource(_DpExists + ".channel", _DpExists + ".manualAutomatic", _DpExists + ".internalAutomatic", _DpExists + ".manualOperator", _DpExists + ".internalOperator", _DpExists + ".manualActive", _DpExists + ".internalActive");
+    classConnect(this, setInternalActiveCB, src, MtpSource::internalActiveChanged);
+
+    src.setInternalActive(TRUE);
+    bool value;
+    dpGet(_DpExists + ".internalActive", value);
+    delay(0, 500); // Allow callback to execute
+    DebugTN("Testing setInternalActive TRUE: getInternalActive=" + src.getInternalActive() + ", dpValue=" + value + ", _eventInternalActive=" + _eventInternalActive);
+    assertEqual(src.getInternalActive(), TRUE, "InternalActive should be TRUE");
+    assertEqual(value, TRUE, "Data point internalActive should be TRUE");
+    assertEqual(_eventInternalActive, TRUE, "Event internalActive should be TRUE");
+
+    src.setInternalActive(FALSE);
+    dpGet(_DpExists + ".internalActive", value);
+    delay(0, 500); // Allow callback to execute
+    DebugTN("Testing setInternalActive FALSE: getInternalActive=" + src.getInternalActive() + ", dpValue=" + value + ", _eventInternalActive=" + _eventInternalActive);
+    assertEqual(src.getInternalActive(), FALSE, "InternalActive should be FALSE");
+    assertEqual(value, FALSE, "Data point internalActive should be FALSE");
+    assertEqual(_eventInternalActive, FALSE, "Event internalActive should be FALSE");
+
+    return 0;
+  }
+
   private void setChannelCB(const bool &value)
   {
     _eventChannel = value;
