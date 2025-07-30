@@ -2324,41 +2324,6 @@ class TstMonAnaDrv : OaTest
   {
     _eventResetAutomatic = value;
   }
-
-  private void setResetOperatorChangedCB(const bool &value)
-  {
-    _eventResetOperator = value;
-  }
-
-  private void setStateOffActChangedCB(const bool &value)
-  {
-    _eventStateOffAct = value;
-  }
-
-  private void setStateOpActChangedCB(const bool &value)
-  {
-    _eventStateOpAct = value;
-  }
-
-  private void setStateAutActChangedCB(const bool &value)
-  {
-    _eventStateAutAct = value;
-  }
-
-  private void setPermitChangedCB(const bool &value)
-  {
-    _eventPermit = value;
-  }
-
-  private void setInterlockChangedCB(const bool &value)
-  {
-    _eventInterlock = value;
-  }
-
-  private void setProtectChangedCB(const bool &value)
-  {
-    _eventProtect = value;
-  }
 };
 
 //-----------------------------------------------------------------------------
