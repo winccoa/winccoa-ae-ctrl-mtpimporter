@@ -4,7 +4,7 @@
   <prop name="Name">
    <prop name="de_AT.utf8"></prop>
   </prop>
-  <prop name="Size">494 432</prop>
+  <prop name="Size">420 258</prop>
   <prop name="BackColor">_3DFace</prop>
   <prop name="RefPoint">195 75</prop>
   <prop name="InitAndTermRef">True</prop>
@@ -26,6 +26,8 @@ public void initialize()
   shapes.insert(&quot;_txtValue&quot;, getShape(&quot;txtValue&quot;));
   shapes.insert(&quot;_txtUnit&quot;, getShape(&quot;txtUnit&quot;));
   shapes.insert(&quot;_rectStatus&quot;, getShape(&quot;rectStatus&quot;));
+  shapes.insert(&quot;_rectDisabled&quot;, getShape(&quot;rectDisabled&quot;));
+
   anamonRef = new AnaMonRef(new AnaMon($dp), shapes);
 }]]></script>
   <script isEscaped="1" name="Initialize"><![CDATA[main()
@@ -128,6 +130,35 @@ public void initialize()
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/error.svg]]</prop>
     <prop name="Geometry">1 0 0 1.354166666666667 -13 -28.33333333333336</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">190 80</prop>
+    <prop name="Size">21 16</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="rectDisabled" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">6</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">190 80</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">4</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/disabled.svg]]</prop>
+    <prop name="Geometry">1 0 0 1.354166666666667 20.00000000000009 -28.33333333333336</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">21 16</prop>

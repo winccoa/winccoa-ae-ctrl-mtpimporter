@@ -25,6 +25,7 @@ public void initialize()
   mapping shapes;
   shapes.insert(&quot;_rectValue&quot;, getShape(&quot;rectValue&quot;));
   shapes.insert(&quot;_rectStatus&quot;, getShape(&quot;rectStatus&quot;));
+  shapes.insert(&quot;_rectDisabled&quot;, getShape(&quot;rectDisabled&quot;));
   binmonRef = new BinMonRef(new BinMon($dp), shapes);
 }]]></script>
   <script isEscaped="1" name="Initialize"><![CDATA[main()
@@ -92,6 +93,35 @@ public void initialize()
     <prop name="Transformable">True</prop>
    </properties>
   </shape>
+  <shape Name="rectDisabled" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">6</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">190 80</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">5</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/disabled.svg]]</prop>
+    <prop name="Geometry">1 0 0 1.354166666666667 27.99999999999989 81.51041666666664</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">190 80</prop>
+    <prop name="Size">21 16</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
   <shape Name="clickbox" layerId="0" shapeType="RECTANGLE">
    <properties>
     <prop name="serialId">3</prop>
@@ -113,7 +143,7 @@ public void initialize()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[solid]</prop>
-    <prop name="Geometry">0.7422862807900551 0 0 1.594010695187166 82.52276366964088 47.32941176470587</prop>
+    <prop name="Geometry">1.2 0 0 1.594010695187166 -6.000000000000107 47.32941176470587</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">165 55</prop>
     <prop name="Size">61 51</prop>

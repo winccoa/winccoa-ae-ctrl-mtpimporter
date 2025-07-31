@@ -31,6 +31,7 @@ public void initialize()
   shapes.insert(&quot;_txtUnitSP&quot;, getShape(&quot;txtUnitSP&quot;));
   shapes.insert(&quot;_txtProcessValue&quot;, getShape(&quot;txtProcessValue&quot;));
   shapes.insert(&quot;_txtSetpoint&quot;, getShape(&quot;txtSetpoint&quot;));
+  shapes.insert(&quot;_rectDisabled&quot;, getShape(&quot;rectDisabled&quot;));
   pidctrlRef = new PIDCtrlRef(new PIDCtrl($dp), shapes);
 }]]></script>
   <script isEscaped="1" name="Initialize"><![CDATA[main()
@@ -333,6 +334,35 @@ public void initialize()
     <prop name="Fit">True</prop>
     <prop name="Transformable">False</prop>
     <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <shape Name="rectDisabled" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">14</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">190 80</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">12</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/disabled.svg]]</prop>
+    <prop name="Geometry">1.000000000000005 0 0 1.354166666666667 -13.00000000000112 111.379024621212</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">190 80</prop>
+    <prop name="Size">21 16</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
    </properties>
   </shape>
   <shape Name="clickbox" layerId="0" shapeType="RECTANGLE">
