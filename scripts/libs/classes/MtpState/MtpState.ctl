@@ -121,16 +121,17 @@ class MtpState
 
   /**
    * @brief Retrieves the current channel state.
-   * 
+   *
    * @return True if the channel is automatic, false if the channel is operator.
    */
   public bool getChannel()
   {
     return _channel;
   }
+
   /**
    * @brief Retrieves the operating mode off automatic.
-   * 
+   *
    * @return True if off automatic, false otherwise.
    */
   public bool getOffAutomatic()
@@ -140,7 +141,7 @@ class MtpState
 
   /**
    * @brief Retrieves the operating mode operator automatic.
-   * 
+   *
    * @return True if operator automatic, false otherwise.
    */
   public bool getOperatorAutomatic()
@@ -150,7 +151,7 @@ class MtpState
 
   /**
    * @brief Retrieves the operating mode automatic automatic.
-   * 
+   *
    * @return True if automatic automatic, false otherwise.
    */
   public bool getAutomaticAutomatic()
@@ -160,7 +161,7 @@ class MtpState
 
   /**
    * @brief Retrieves the operating mode off operator.
-   * 
+   *
    * @return True if off operator, false otherwise.
    */
   public bool getOffOperator()
@@ -170,7 +171,7 @@ class MtpState
 
   /**
    * @brief Retrieves the operating mode operator operator.
-   * 
+   *
    * @return True if operator operator, false otherwise.
    */
   public bool getOperatorOperator()
@@ -180,7 +181,7 @@ class MtpState
 
   /**
    * @brief Retrieves the operating mode automatic operator.
-   * 
+   *
    * @return True if automatic operator, false otherwise.
    */
   public bool getAutomaticOperator()
@@ -190,7 +191,7 @@ class MtpState
 
   /**
    * @brief Retrieves the active state of the operator mode.
-   * 
+   *
    * @return True if operator mode is active, false otherwise.
    */
   public bool getOperatorActive()
@@ -200,7 +201,7 @@ class MtpState
 
   /**
    * @brief Retrieves the active state of the automatic mode.
-   * 
+   *
    * @return True if automatic mode is active, false otherwise.
    */
   public bool getAutomaticActive()
@@ -210,7 +211,7 @@ class MtpState
 
   /**
    * @brief Retrieves the active state of the off mode.
-   * 
+   *
    * @return True if off mode is active, false otherwise.
    */
   public bool getOffActive()
@@ -220,7 +221,7 @@ class MtpState
 
   /**
    * @brief Sets the off operator mode.
-   * 
+   *
    * @param offOperator True to set off operator mode, false otherwise.
    */
   public void setOffOperator(const bool &offOperator)
@@ -231,7 +232,7 @@ class MtpState
 
   /**
    * @brief Sets the operator operator mode.
-   * 
+   *
    * @param operatorOperator True to set operator operator mode, false otherwise.
    */
   public void setOperatorOperator(const bool &operatorOperator)
@@ -242,7 +243,7 @@ class MtpState
 
   /**
    * @brief Sets the automatic operator mode.
-   * 
+   *
    * @param automaticOperator True to set automatic operator mode, false otherwise.
    */
   public void setAutomaticOperator(const bool &automaticOperator)
@@ -267,7 +268,7 @@ class MtpState
   /**
    * @brief Sets the state of the off automatic mode.
    * @details Triggers the offAutomaticChanged event.
-   * 
+   *
    * @param dpe The data point element.
    * @param offAutomatic The new off automatic state to set.
    */
@@ -280,7 +281,7 @@ class MtpState
   /**
    * @brief Sets the state of the operator automatic mode.
    * @details Triggers the operatorAutomaticChanged event.
-   * 
+   *
    * @param dpe The data point element.
    * @param operatorAutomatic The new operator automatic state to set.
    */
@@ -293,7 +294,7 @@ class MtpState
   /**
    * @brief Sets the state of the automatic automatic mode.
    * @details Triggers the automaticAutomaticChanged event.
-   * 
+   *
    * @param dpe The data point element.
    * @param automaticAutomatic The new automatic automatic state to set.
    */
@@ -306,7 +307,7 @@ class MtpState
   /**
    * @brief Sets the active state of the operator mode.
    * @details Triggers the operatorActiveChanged event.
-   * 
+   *
    * @param dpe The data point element.
    * @param operatorActive The new operator active state to set.
    */
@@ -319,7 +320,7 @@ class MtpState
   /**
    * @brief Sets the active state of the automatic mode.
    * @details Triggers the automaticActiveChanged event.
-   * 
+   *
    * @param dpe The data point element.
    * @param automaticActive The new automatic active state to set.
    */
@@ -332,7 +333,7 @@ class MtpState
   /**
    * @brief Sets the active state of the off mode.
    * @details Triggers the offActiveChanged event.
-   * 
+   *
    * @param dpe The data point element.
    * @param offActive The new off active state to set.
    */

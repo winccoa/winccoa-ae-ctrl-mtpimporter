@@ -32,7 +32,7 @@ public void initialize()
   shapes.insert(&quot;_txtUnit&quot;, getShape(&quot;txtUnit&quot;));
   shapes.insert(&quot;_txtUnit2&quot;, getShape(&quot;txtUnit2&quot;));
   shapes.insert(&quot;_txtRpm&quot;, getShape(&quot;txtRpm&quot;));
-    shapes.insert(&quot;_txtRpmFbk&quot;, getShape(&quot;txtRpmFbk&quot;));
+  shapes.insert(&quot;_txtRpmFbk&quot;, getShape(&quot;txtRpmFbk&quot;));
   monanadrvRef = new MonAnaDrvRef(new MonAnaDrv($dp), shapes);
 }]]></script>
   <script isEscaped="1" name="Initialize"><![CDATA[main()

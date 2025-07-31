@@ -29,8 +29,8 @@ class PIDCtrlFaceplateMain : MtpFaceplateMainBase
   }
 
   /**
-   * @brief Retrieves the navigation buttons for the BinMon faceplate.
-   * @details This method overrides the base class method to provide specific navigation buttons for the BinMon faceplate.
+   * @brief Retrieves the navigation buttons for the PIDCtrl faceplate.
+   * @details This method overrides the base class method to provide specific navigation buttons for the PIDCtrl faceplate.
    *
    * @return A vector of shared pointers to the navigation buttons.
    */

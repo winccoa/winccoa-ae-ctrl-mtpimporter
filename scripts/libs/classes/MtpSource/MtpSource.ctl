@@ -21,6 +21,7 @@ class MtpSource
   private bool _internalOperator; //!< Indicates if the MTP object is in internal operator mode.
   private bool _manualActive; //!< Indicates if the MTP object is in manual active mode.
   private bool _internalActive; //!< Indicates if the MTP object is in internal active mode.
+
   private string _dpeManualOperator; //!< Data point element for manual operator state.
   private string _dpeInternalOperator; //!< Data point element for internal operator state.
   private string _dpeManualActive; //!< Data point element for manual active state.
