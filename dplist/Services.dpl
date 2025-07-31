@@ -1,0 +1,50 @@
+# ascii dump of database
+
+# DpType
+TypeName
+Services.Services	1#1
+	WQC	24#3
+	OSLevel	21#4
+	CommandOp	54#5
+	CommandInt	54#6
+	CommandExt	54#7
+	ProcedureOp	54#8
+	ProcedureInt	54#9
+	ProcedureExt	54#10
+	StateCur	54#11
+	CommandEn	54#12
+	ProcedureCur	54#13
+	ProcedureReq	54#14
+	PosTextID	54#15
+	InteractQuestionID	54#16
+	InteractAddInfo	25#17
+	InteractAnswerID	54#18
+	StateChannel	23#19
+	StateOffAut	23#20
+	StateOpAut	23#21
+	StateAutAut	23#22
+	StateOffOp	23#23
+	StateOpOp	23#24
+	StateAutOp	23#25
+	StateOffAct	23#26
+	StateOpAct	23#27
+	StateAutAct	23#28
+	SrcChannel	23#29
+	SrcExtAut	23#30
+	SrcIntAut	23#31
+	SrcIntOp	23#32
+	SrcExtOp	23#33
+	SrcIntAct	23#34
+	SrcExtAct	23#35
+	ProcParamApplyEn	23#36
+	ProcParamApplyExt	23#37
+	ProcParamApplyOp	23#38
+	ProcParamApplyInt	23#39
+	ConfigParamApplyEn	23#40
+	ConfigParamApplyExt	23#41
+	ConfigParamApplyOp	23#42
+	ConfigParamApplyInt	23#43
+	ReportValueFreeze	23#44
+	tagName	42#45
+	enabled	23#46
+	numberOfProcedure	21#47
