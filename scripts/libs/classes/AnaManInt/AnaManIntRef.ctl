@@ -20,6 +20,7 @@ class AnaManIntRef : MtpViewRef
   private shape _rectSource; //!< Reference to the source rectangle shape.
   private shape _txtUnit; //!< Reference to the unit text shape.
   private shape _txtValue; //!< Reference to the value text shape.
+  private shape _rectDisabled; //!< Reference to the disabled rectangle shape.
 
   private bool _sourceManualActive; //!< Indicates if the manual source is active.
   private bool _sourceInternalActive; //!< Indicates if the internal source is active.
@@ -27,6 +28,7 @@ class AnaManIntRef : MtpViewRef
 
   private float _valueMin; //!< Minimum value for the reference.
   private float _valueMax; //!< Maximum value for the reference.
+  private bool _enabled; //!< Indicates if enabled is active.
 
   /**
    * @brief Constructor for AnaManIntRef.
@@ -37,6 +39,7 @@ class AnaManIntRef : MtpViewRef
   public AnaManIntRef(shared_ptr<AnaManInt> viewModel, const mapping &shapes) : MtpViewRef(viewModel, shapes)
   {
     classConnect(this, setValueOutCB, MtpViewRef::getViewModel(), AnaManInt::valueOutChanged);
+    classConnect(this, setEnabledCB, MtpViewRef::getViewModel(), AnaManInt::enabledChanged);
 
     classConnectUserData(this, setSourceCB, "_sourceManualActive", MtpViewRef::getViewModel().getSource(), MtpSource::manualActiveChanged);
     classConnectUserData(this, setSourceCB, "_sourceInternalActive", MtpViewRef::getViewModel().getSource(), MtpSource::internalActiveChanged);
@@ -52,10 +55,7 @@ class AnaManIntRef : MtpViewRef
     _valueMin = MtpViewRef::getViewModel().getValueMin();
     _valueMax = MtpViewRef::getViewModel().getValueMax();
 
-    setUnit(MtpViewRef::getViewModel().getValueUnit());
-    setValueOutCB(MtpViewRef::getViewModel().getValueOut());
-    setSourceCB("_sourceManualActive", _sourceManualActive);
-    setValueMinMaxCB("_valueMin", _valueMin);
+    setEnabledCB(MtpViewRef::getViewModel().getEnabled());
   }
 
   /**
@@ -68,6 +68,36 @@ class AnaManIntRef : MtpViewRef
     _rectSource = MtpViewRef::extractShape("_rectSource");
     _txtUnit = MtpViewRef::extractShape("_txtUnit");
     _txtValue = MtpViewRef::extractShape("_txtValue");
+    _rectDisabled = MtpViewRef::extractShape("_rectDisabled");
+  }
+
+  /**
+  * @brief Sets the enabled state for the reference.
+  *
+  * @param enabled The bool enabled value to be set.
+  */
+  private void setEnabledCB(const long &enabled)
+  {
+    _enabled = enabled;
+
+    if (!enabled)
+    {
+      _rectDisabled.visible = TRUE;
+
+      _rectLimit.visible = FALSE;
+      _rectSource.visible = FALSE;
+      _txtUnit.text = "undefined";
+      _txtValue.text = "0,00";
+    }
+    else
+    {
+      _rectDisabled.visible = FALSE;
+
+      setUnit(MtpViewRef::getViewModel().getValueUnit());
+      setValueOutCB(MtpViewRef::getViewModel().getValueOut());
+      setSourceCB("_sourceManualActive", _sourceManualActive);
+      setValueMinMaxCB("_valueMin", _valueMin);
+    }
   }
 
   /**
@@ -77,7 +107,10 @@ class AnaManIntRef : MtpViewRef
    */
   private void setUnit(shared_ptr<MtpUnit> unit)
   {
-    _txtUnit.text = unit.toString();
+    if (_enabled)
+    {
+      _txtUnit.text = unit.toString();
+    }
   }
 
   /**
@@ -87,7 +120,10 @@ class AnaManIntRef : MtpViewRef
    */
   private void setValueOutCB(const float &valueOut)
   {
-    _txtValue.text = valueOut;
+    if (_enabled)
+    {
+      _txtValue.text = valueOut;
+    }
   }
 
   /**
@@ -113,20 +149,23 @@ class AnaManIntRef : MtpViewRef
         break;
     }
 
-    if (_sourceManualActive && !_sourceChannel)
+    if (_enabled)
     {
-      _rectSource.fill = "[pattern,[fit,any,MTP_Icones/Manual__2.svg]]";
-      _rectSource.visible = TRUE;
-      return;
-    }
-    else if (_sourceInternalActive && !_sourceChannel)
-    {
-      _rectSource.fill = "[pattern,[fit,any,MTP_Icones/internal.svg]]";
-      _rectSource.visible = TRUE;
-    }
-    else
-    {
-      _rectSource.visible = FALSE;
+      if (_sourceManualActive && !_sourceChannel)
+      {
+        _rectSource.fill = "[pattern,[fit,any,MTP_Icones/Manual__2.svg]]";
+        _rectSource.visible = TRUE;
+        return;
+      }
+      else if (_sourceInternalActive && !_sourceChannel)
+      {
+        _rectSource.fill = "[pattern,[fit,any,MTP_Icones/internal.svg]]";
+        _rectSource.visible = TRUE;
+      }
+      else
+      {
+        _rectSource.visible = FALSE;
+      }
     }
   }
 
@@ -149,15 +188,18 @@ class AnaManIntRef : MtpViewRef
         break;
     }
 
-    if (_valueMin == 1 || _valueMax == 1)
+    if (_enabled)
     {
-      _rectLimit.fill = "[pattern,[fit,any,MTP_Icones/Tolerance.svg]]";
-      _rectLimit.visible = TRUE;
-      return;
-    }
-    else
-    {
-      _rectLimit.visible = FALSE;
+      if (_valueMin == 1 || _valueMax == 1)
+      {
+        _rectLimit.fill = "[pattern,[fit,any,MTP_Icones/Tolerance.svg]]";
+        _rectLimit.visible = TRUE;
+        return;
+      }
+      else
+      {
+        _rectLimit.visible = FALSE;
+      }
     }
   }
 };

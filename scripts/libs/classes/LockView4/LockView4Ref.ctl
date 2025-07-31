@@ -16,6 +16,8 @@
 class LockView4Ref : MtpViewRef
 {
   private shape _rectOutput; //!< Reference to the output rectangle shape.
+  private shape _rectDisabled; //!< Reference to the disabled rectangle shape.
+  private bool _enabled; //!< Indicates if enabled is active..
 
   /**
      * @brief Constructor for LockView4Ref.
@@ -26,8 +28,9 @@ class LockView4Ref : MtpViewRef
   public LockView4Ref(shared_ptr<LockView4> viewModel, const mapping &shapes) : MtpViewRef(viewModel, shapes)
   {
     classConnect(this, setOutputCB, MtpViewRef::getViewModel(), LockView4::outputChanged);
+    classConnect(this, setEnabledCB, MtpViewRef::getViewModel(), LockView4::enabledChanged);
 
-    setOutputCB(MtpViewRef::getViewModel().getOutput());
+    setEnabledCB(MtpViewRef::getViewModel().getEnabled());
   }
 
   /**
@@ -37,6 +40,28 @@ class LockView4Ref : MtpViewRef
   protected void initializeShapes() override
   {
     _rectOutput = MtpViewRef::extractShape("_rectOutput");
+    _rectDisabled = MtpViewRef::extractShape("_rectDisabled");
+  }
+
+  /**
+  * @brief Sets the enabled state for the reference.
+  *
+  * @param enabled The bool enabled value to be set.
+  */
+  private void setEnabledCB(const long &enabled)
+  {
+    _enabled = enabled;
+
+    if (!enabled)
+    {
+      _rectDisabled.visible = TRUE;
+      _rectOutput.backCol = "mtpBorder";
+    }
+    else
+    {
+      _rectDisabled.visible = FALSE;
+      setOutputCB(MtpViewRef::getViewModel().getOutput());
+    }
   }
 
   /**
@@ -46,11 +71,11 @@ class LockView4Ref : MtpViewRef
    */
   private void setOutputCB(const bool &output)
   {
-    if (output)
+    if (output && _enabled)
     {
       _rectOutput.backCol = "mtpGreen";
     }
-    else
+    else if (!output && _enabled)
     {
       _rectOutput.backCol = "mtpRed";
     }

@@ -23,6 +23,7 @@ class MonBinDrvRef : MtpViewRef
   private shape _rectMode; //!< Reference to the mode rectangle shape.
   private shape _rectMotor; //!< Reference to the motor rectangle shape.
   private shape _rectDirection; //!< Reference to the direction rectangle shape.
+  private shape _rectDisabled; //!< Reference to the disabled rectangle shape.
 
   private bool _staticError; //!< Indicates if a static error is active.
   private bool _dynamicError; //!< Indicates if a dynamic error is active.
@@ -37,6 +38,7 @@ class MonBinDrvRef : MtpViewRef
   private bool _reverseFeedbackSignal; //!< Indicates if the reverse feedback signal is active.
   private bool _forwardControl; //!< Indicates if the forward control is active.
   private bool _reverseControl; //!< Indicates if the reverse control is active.
+  private bool _enabled; //!< Indicates if enabled is active.
 
   /**
    * @brief Constructor for MonBinDrvRef.
@@ -48,6 +50,7 @@ class MonBinDrvRef : MtpViewRef
   {
     classConnectUserData(this, setErrorCB, "_staticError", MtpViewRef::getViewModel().getMonitor(), MtpMonitor::staticErrorChanged);
     classConnectUserData(this, setErrorCB, "_dynamicError", MtpViewRef::getViewModel().getMonitor(), MtpMonitor::dynamicErrorChanged);
+    classConnect(this, setEnabledCB, MtpViewRef::getViewModel(), MonBinDrv::enabledChanged);
 
     classConnectUserData(this, setLockedCB, "_permit", MtpViewRef::getViewModel().getSecurity(), MtpSecurity::permitChanged);
     classConnectUserData(this, setLockedCB, "_interlock", MtpViewRef::getViewModel().getSecurity(), MtpSecurity::interlockChanged);
@@ -78,11 +81,7 @@ class MonBinDrvRef : MtpViewRef
     _forwardControl =  MtpViewRef::getViewModel().getForwardControl();
     _reverseControl =  MtpViewRef::getViewModel().getReverseControl();
 
-    setErrorCB("_staticError", _staticError);
-    setLockedCB("_permit", _permit);
-    setModeCB("_stateOffActive", _stateOffActive);
-    setMotorCB("_forwardFeedbackSignal", _forwardFeedbackSignal);
-    setDirectionCB("_forwardFeedbackSignal", _forwardFeedbackSignal);
+    setEnabledCB(MtpViewRef::getViewModel().getEnabled());
   }
 
   /**
@@ -96,6 +95,38 @@ class MonBinDrvRef : MtpViewRef
     _rectMode = MtpViewRef::extractShape("_rectMode");
     _rectMotor = MtpViewRef::extractShape("_rectMotor");
     _rectDirection = MtpViewRef::extractShape("_rectDirection");
+    _rectDisabled = MtpViewRef::extractShape("_rectDisabled");
+  }
+
+  /**
+  * @brief Sets the enabled state for the reference.
+  *
+  * @param enabled The bool enabled value to be set.
+  */
+  private void setEnabledCB(const long &enabled)
+  {
+    _enabled = enabled;
+
+    if (!enabled)
+    {
+      _rectDisabled.visible = TRUE;
+
+      _rectError.visible = FALSE;
+      _rectLocked.visible = FALSE;
+      _rectMode.visible = FALSE;
+      _rectDirection.visible = FALSE;
+      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorStopped.svg]]";
+    }
+    else
+    {
+      _rectDisabled.visible = FALSE;
+
+      setErrorCB("_staticError", _staticError);
+      setLockedCB("_permit", _permit);
+      setModeCB("_stateOffActive", _stateOffActive);
+      setMotorCB("_forwardFeedbackSignal", _forwardFeedbackSignal);
+      setDirectionCB("_forwardFeedbackSignal", _forwardFeedbackSignal);
+    }
   }
 
   /**
@@ -117,15 +148,18 @@ class MonBinDrvRef : MtpViewRef
         break;
     }
 
-    if (_staticError || _dynamicError)
+    if (_enabled)
     {
-      _rectError.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
-      _rectError.visible = TRUE;
-      return;
-    }
-    else
-    {
-      _rectError.visible = FALSE;
+      if (_staticError || _dynamicError)
+      {
+        _rectError.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
+        _rectError.visible = TRUE;
+        return;
+      }
+      else
+      {
+        _rectError.visible = FALSE;
+      }
     }
   }
 
@@ -152,15 +186,18 @@ class MonBinDrvRef : MtpViewRef
         break;
     }
 
-    if (!_permit || !_interlock || !_protection)
+    if (_enabled)
     {
-      _rectLocked.fill = "[pattern,[fit,any,MTP_Icones/locked_.svg]]";
-      _rectLocked.visible = TRUE;
-      return;
-    }
-    else
-    {
-      _rectLocked.visible = FALSE;
+      if (!_permit || !_interlock || !_protection)
+      {
+        _rectLocked.fill = "[pattern,[fit,any,MTP_Icones/locked_.svg]]";
+        _rectLocked.visible = TRUE;
+        return;
+      }
+      else
+      {
+        _rectLocked.visible = FALSE;
+      }
     }
   }
 
@@ -183,21 +220,24 @@ class MonBinDrvRef : MtpViewRef
         break;
     }
 
-    if (_forwardFeedbackSignal && !_reverseFeedbackSignal)
+    if (_enabled)
     {
-      _rectDirection.fill = "[pattern,[fit,any,MTP_Icones/Play.svg]]";
-      _rectDirection.visible = TRUE;
-      return;
-    }
-    else if (_reverseFeedbackSignal && !_forwardFeedbackSignal)
-    {
-      _rectDirection.fill = "[pattern,[fit,any,MTP_Icones/Play_2.svg]]";
-      _rectDirection.visible = TRUE;
-      return;
-    }
-    else
-    {
-      _rectDirection.visible = FALSE;
+      if (_forwardFeedbackSignal && !_reverseFeedbackSignal)
+      {
+        _rectDirection.fill = "[pattern,[fit,any,MTP_Icones/Play.svg]]";
+        _rectDirection.visible = TRUE;
+        return;
+      }
+      else if (_reverseFeedbackSignal && !_forwardFeedbackSignal)
+      {
+        _rectDirection.fill = "[pattern,[fit,any,MTP_Icones/Play_2.svg]]";
+        _rectDirection.visible = TRUE;
+        return;
+      }
+      else
+      {
+        _rectDirection.visible = FALSE;
+      }
     }
   }
 
@@ -220,20 +260,23 @@ class MonBinDrvRef : MtpViewRef
         break;
     }
 
-    if (_stateOffActive)
+    if (_enabled)
     {
-      _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Power.svg]]";
-      _rectMode.visible = TRUE;
-      return;
-    }
-    else if (_stateOperatorActive)
-    {
-      _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Manual_1.svg]]";
-      _rectMode.visible = TRUE;
-    }
-    else
-    {
-      _rectMode.visible = FALSE;
+      if (_stateOffActive)
+      {
+        _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Power.svg]]";
+        _rectMode.visible = TRUE;
+        return;
+      }
+      else if (_stateOperatorActive)
+      {
+        _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Manual_1.svg]]";
+        _rectMode.visible = TRUE;
+      }
+      else
+      {
+        _rectMode.visible = FALSE;
+      }
     }
   }
 
@@ -272,35 +315,38 @@ class MonBinDrvRef : MtpViewRef
         break;
     }
 
-    if (((_forwardFeedbackSignal && _forwardControl) || (_reverseFeedbackSignal && _reverseControl)) && !_dynamicError && !_staticError)
+    if (_enabled)
     {
-      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorRun.svg]]";
-      _rectMotor.visible = TRUE;
-      return;
-    }
-    else if (!_forwardFeedbackSignal && !_forwardControl && !_reverseFeedbackSignal && !_reverseControl && !_dynamicError && !_staticError)
-    {
-      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorStopped.svg]]";
-      _rectMotor.visible = TRUE;
-    }
-    else if (((_forwardFeedbackSignal && !_reverseFeedbackSignal) || (!_forwardFeedbackSignal && _reverseFeedbackSignal)) && !_forwardControl && !_reverseControl && !_dynamicError && !_staticError)
-    {
-      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorMfwdStopped.svg]]";
-      _rectMotor.visible = TRUE;
-    }
-    else if (((_forwardControl && !_reverseControl) || (!_forwardControl && _reverseControl)) && !_forwardFeedbackSignal && !_reverseFeedbackSignal && !_dynamicError && !_staticError)
-    {
-      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorMfwdStarted.svg]]";
-      _rectMotor.visible = TRUE;
-    }
-    else if ((_forwardFeedbackSignal && _reverseFeedbackSignal) || _dynamicError || _staticError)
-    {
-      _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorUnknown.svg]]";
-      _rectMotor.visible = TRUE;
-    }
-    else
-    {
-      _rectMotor.visible = FALSE;
+      if (((_forwardFeedbackSignal && _forwardControl) || (_reverseFeedbackSignal && _reverseControl)) && !_dynamicError && !_staticError)
+      {
+        _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorRun.svg]]";
+        _rectMotor.visible = TRUE;
+        return;
+      }
+      else if (!_forwardFeedbackSignal && !_forwardControl && !_reverseFeedbackSignal && !_reverseControl && !_dynamicError && !_staticError)
+      {
+        _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorStopped.svg]]";
+        _rectMotor.visible = TRUE;
+      }
+      else if (((_forwardFeedbackSignal && !_reverseFeedbackSignal) || (!_forwardFeedbackSignal && _reverseFeedbackSignal)) && !_forwardControl && !_reverseControl && !_dynamicError && !_staticError)
+      {
+        _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorMfwdStopped.svg]]";
+        _rectMotor.visible = TRUE;
+      }
+      else if (((_forwardControl && !_reverseControl) || (!_forwardControl && _reverseControl)) && !_forwardFeedbackSignal && !_reverseFeedbackSignal && !_dynamicError && !_staticError)
+      {
+        _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorMfwdStarted.svg]]";
+        _rectMotor.visible = TRUE;
+      }
+      else if ((_forwardFeedbackSignal && _reverseFeedbackSignal) || _dynamicError || _staticError)
+      {
+        _rectMotor.fill = "[pattern,[fit,any,MTP_Icones/MotorUnknown.svg]]";
+        _rectMotor.visible = TRUE;
+      }
+      else
+      {
+        _rectMotor.visible = FALSE;
+      }
     }
   }
 };

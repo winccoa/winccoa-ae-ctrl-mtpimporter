@@ -20,12 +20,14 @@ class AnaMonRef : MtpViewRef
   private shape _txtValue; //!< Reference to the value text shape.
   private shape _txtUnit; //!< Reference to the unit text shape.
   private shape _rectStatus; //!< Reference to the status rectangle shape.
+  private shape _rectDisabled; //!< Reference to the disabled rectangle shape.
   private bool _alertHighActive; //!< Indicates if the alert high limit is active.
   private bool _warningHighActive; //!< Indicates if the warning high limit is active.
   private bool _toleranceHighActive; //!< Indicates if the tolerance high limit is active.
   private bool _toleranceLowActive; //!< Indicates if the tolerance low limit is active.
   private bool _warningLowActive; //!< Indicates if the warning low limit is active.
   private bool _alertLowActive; //!< Indicates if the alert low limit is active.
+  private bool _enabled; //!< Indicates if enabled is active.
 
   /**
    * @brief Constructor for AnaMonRef.
@@ -42,6 +44,7 @@ class AnaMonRef : MtpViewRef
     classConnectUserData(this, setStatusCB, "_warningLowActive", MtpViewRef::getViewModel().getWarningLowLimit(), MtpValueLimitFloat::activeChanged);
     classConnectUserData(this, setStatusCB, "_alertLowActive", MtpViewRef::getViewModel().getAlertLowLimit(), MtpValueLimitFloat::activeChanged);
     classConnect(this, setValueCB, MtpViewRef::getViewModel(), AnaMon::valueChanged);
+    classConnect(this, setEnabledCB, MtpViewRef::getViewModel(), AnaMon::enabledChanged);
 
     _alertHighActive = MtpViewRef::getViewModel().getAlertHighLimit().getActive();
     _warningHighActive = MtpViewRef::getViewModel().getWarningHighLimit().getActive();
@@ -49,9 +52,7 @@ class AnaMonRef : MtpViewRef
     _toleranceLowActive = MtpViewRef::getViewModel().getToleranceLowLimit().getActive();
     _warningLowActive = MtpViewRef::getViewModel().getWarningLowLimit().getActive();
 
-    setStatusCB("_alertLowActive", MtpViewRef::getViewModel().getAlertLowLimit().getActive());
-    setUnit(MtpViewRef::getViewModel().getUnit());
-    setValueCB(MtpViewRef::getViewModel().getValue());
+    setEnabledCB(MtpViewRef::getViewModel().getEnabled());
   }
 
   /**
@@ -63,6 +64,34 @@ class AnaMonRef : MtpViewRef
     _txtValue = MtpViewRef::extractShape("_txtValue");
     _txtUnit = MtpViewRef::extractShape("_txtUnit");
     _rectStatus = MtpViewRef::extractShape("_rectStatus");
+    _rectDisabled = MtpViewRef::extractShape("_rectDisabled");
+  }
+
+  /**
+  * @brief Sets the enabled state for the reference.
+  *
+  * @param enabled The bool enabled value to be set.
+  */
+  private void setEnabledCB(const long &enabled)
+  {
+    _enabled = enabled;
+
+    if (!enabled)
+    {
+      _rectDisabled.visible = TRUE;
+
+      _rectStatus.visible = FALSE;
+      _txtUnit.text = "undefined";
+      _txtValue.text = "0,00";
+    }
+    else
+    {
+      _rectDisabled.visible = FALSE;
+
+      setStatusCB("_alertLowActive", MtpViewRef::getViewModel().getAlertLowLimit().getActive());
+      setUnit(MtpViewRef::getViewModel().getUnit());
+      setValueCB(MtpViewRef::getViewModel().getValue());
+    }
   }
 
   /**
@@ -72,7 +101,10 @@ class AnaMonRef : MtpViewRef
    */
   private void setUnit(shared_ptr<MtpUnit> unit)
   {
-    _txtUnit.text = unit.toString();
+    if (_enabled)
+    {
+      _txtUnit.text = unit.toString();
+    }
   }
 
   /**
@@ -82,7 +114,10 @@ class AnaMonRef : MtpViewRef
    */
   private void setValueCB(const float &value)
   {
-    _txtValue.text = value;
+    if (_enabled)
+    {
+      _txtValue.text = value;
+    }
   }
 
   /**
@@ -120,25 +155,28 @@ class AnaMonRef : MtpViewRef
         break;
     }
 
-    if (_alertHighActive || _alertLowActive)
+    if (_enabled)
     {
-      _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
-      _rectStatus.visible = TRUE;
-      return;
-    }
+      if (_alertHighActive || _alertLowActive)
+      {
+        _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
+        _rectStatus.visible = TRUE;
+        return;
+      }
 
-    if (_warningHighActive || _warningLowActive)
-    {
-      _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Mainenance.svg]]";
-      _rectStatus.visible = TRUE;
-      return;
-    }
+      if (_warningHighActive || _warningLowActive)
+      {
+        _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Mainenance.svg]]";
+        _rectStatus.visible = TRUE;
+        return;
+      }
 
-    if (_toleranceHighActive || _toleranceLowActive)
-    {
-      _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Tolerance.svg]]";
-      _rectStatus.visible = TRUE;
-      return;
+      if (_toleranceHighActive || _toleranceLowActive)
+      {
+        _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Tolerance.svg]]";
+        _rectStatus.visible = TRUE;
+        return;
+      }
     }
 
     _rectStatus.visible = FALSE;

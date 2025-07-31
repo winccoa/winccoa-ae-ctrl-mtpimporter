@@ -18,9 +18,12 @@ class BinManIntRef : MtpViewRef
 {
   private shape _rectValue; //!< Reference to the value rectangle shape.
   private shape _rectStatus; //!< Reference to the status rectangle shape.
+  private shape _rectDisabled; //!< Reference to the disabled rectangle shape.
 
   private bool _manualActive; //!< Indicates if the manual source is active.
   private bool _internalActive; //!< Indicates if the internal source is active.
+  private bool _channel; //!< Indicates if the channel source is active.
+  private bool _enabled; //!< Indicates if enabled is active.
 
   /**
    * @brief Constructor for BinManIntRef.
@@ -31,12 +34,12 @@ class BinManIntRef : MtpViewRef
   public BinManIntRef(shared_ptr<BinManInt> viewModel, const mapping &shapes) : MtpViewRef(viewModel, shapes)
   {
     classConnect(this, setValueCB, MtpViewRef::getViewModel(), BinManInt::valueOutChanged);
+    classConnect(this, setEnabledCB, MtpViewRef::getViewModel(), BinManInt::enabledChanged);
     classConnectUserData(this, setStatusCB, "_manualActive", MtpViewRef::getViewModel().getSource(), MtpSource::manualActiveChanged);
     classConnectUserData(this, setStatusCB, "_internalActive", MtpViewRef::getViewModel().getSource(), MtpSource::internalActiveChanged);
+    classConnectUserData(this, setStatusCB, "_channel", MtpViewRef::getViewModel().getSource(), MtpSource::channelChanged);
 
-    setValueCB(MtpViewRef::getViewModel().getValueOut());
-    setStatusCB("_manualActive", MtpViewRef::getViewModel().getSource().getManualActive());
-    setStatusCB("_internalActive", MtpViewRef::getViewModel().getSource().getInternalActive());
+    setEnabledCB(MtpViewRef::getViewModel().getEnabled());
   }
 
   /**
@@ -47,6 +50,33 @@ class BinManIntRef : MtpViewRef
   {
     _rectValue = MtpViewRef::extractShape("_rectValue");
     _rectStatus = MtpViewRef::extractShape("_rectStatus");
+    _rectDisabled = MtpViewRef::extractShape("_rectDisabled");
+  }
+
+  /**
+  * @brief Sets the enabled state for the reference.
+  *
+  * @param enabled The bool enabled value to be set.
+  */
+  private void setEnabledCB(const long &enabled)
+  {
+    _enabled = enabled;
+
+    if (!enabled)
+    {
+      _rectDisabled.visible = TRUE;
+
+      _rectStatus.visible = FALSE;
+      _rectValue.fill = "[pattern,[fit,any,MTP_Icones/False.svg]]";
+    }
+    else
+    {
+      _rectDisabled.visible = FALSE;
+
+      setValueCB(MtpViewRef::getViewModel().getValueOut());
+      setStatusCB("_manualActive", MtpViewRef::getViewModel().getSource().getManualActive());
+      setStatusCB("_internalActive", MtpViewRef::getViewModel().getSource().getInternalActive());
+    }
   }
 
   /**
@@ -56,7 +86,7 @@ class BinManIntRef : MtpViewRef
    */
   private void setValueCB(const bool &value)
   {
-    if (value)
+    if (value && _enabled)
     {
       _rectValue.fill = "[pattern,[fit,any,MTP_Icones/True.svg]]";
     }
@@ -83,20 +113,30 @@ class BinManIntRef : MtpViewRef
       case "_internalActive":
         _internalActive = active;
         break;
+
+      case "_channel":
+        _channel = active;
+        break;
     }
 
-    if (!MtpViewRef::getViewModel().getSource().getChannel() && _manualActive)
+    if (_enabled)
     {
-      _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Manual_1.svg]]";
-      return;
+      if (!_channel && _manualActive)
+      {
+        _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Manual_1.svg]]";
+        _rectStatus.visible = TRUE;
+        return;
+      }
+      else if (!_channel && _internalActive)
+      {
+        _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/internal.svg]]";
+        _rectStatus.visible = TRUE;
+        return;
+      }
+      else
+      {
+        _rectStatus.visible = FALSE;
+      }
     }
-
-    if (!MtpViewRef::getViewModel().getSource().getChannel() && _internalActive)
-    {
-      _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/internal.svg]]";
-      return;
-    }
-
-    _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/disabled.svg]]";
   }
 };

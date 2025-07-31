@@ -22,6 +22,7 @@ class MonBinVlvRef : MtpViewRef
   private shape _rectLocked; //!< Reference to the locked rectangle shape.
   private shape _rectMode; //!< Reference to the mode rectangle shape.
   private shape _rectValve; //!< Reference to the valve rectangle shape.
+  private shape _rectDisabled; //!< Reference to the disabled rectangle shape.
 
   private bool _staticError; //!< Indicates if a static error is active.
   private bool _dynamicError; //!< Indicates if a dynamic error is active.
@@ -34,6 +35,7 @@ class MonBinVlvRef : MtpViewRef
   private bool _openCheckbackSignal; //!< Indicates if the open checkback signal is active.
   private bool _closeCheckbackSignal; //!< Indicates if the close checkback signal is active.
   private bool _valveControl; //!< Indicates if the valve control is active.
+  private bool _enabled; //!< Indicates if enabled is active.
 
   /**
    * @brief Constructor for MonBinVlvRef.
@@ -43,6 +45,7 @@ class MonBinVlvRef : MtpViewRef
    */
   public MonBinVlvRef(shared_ptr<MonBinVlv> viewModel, const mapping &shapes) : MtpViewRef(viewModel, shapes)
   {
+    classConnect(this, setEnabledCB, MtpViewRef::getViewModel(), MonBinVlv::enabledChanged);
     classConnectUserData(this, setErrorCB, "_staticError", MtpViewRef::getViewModel().getMonitor(), MtpMonitor::staticErrorChanged);
     classConnectUserData(this, setErrorCB, "_dynamicError", MtpViewRef::getViewModel().getMonitor(), MtpMonitor::dynamicErrorChanged);
 
@@ -70,10 +73,7 @@ class MonBinVlvRef : MtpViewRef
     _closeCheckbackSignal = MtpViewRef::getViewModel().getCloseCheckbackSignal();
     _valveControl = MtpViewRef::getViewModel().getValveControl();
 
-    setErrorCB("_staticError", _staticError);
-    setLockedCB("_permit", _permit);
-    setModeCB("_stateOffActive", _stateOffActive);
-    setValveCB("_openCheckbackSignal", _openCheckbackSignal);
+    setEnabledCB(MtpViewRef::getViewModel().getEnabled());
   }
 
   /**
@@ -86,7 +86,38 @@ class MonBinVlvRef : MtpViewRef
     _rectLocked = MtpViewRef::extractShape("_rectLocked");
     _rectMode = MtpViewRef::extractShape("_rectMode");
     _rectValve = MtpViewRef::extractShape("_rectValve");
+    _rectDisabled = MtpViewRef::extractShape("_rectDisabled");
   }
+
+  /**
+  * @brief Sets the enabled state for the reference.
+  *
+  * @param enabled The bool enabled value to be set.
+  */
+  private void setEnabledCB(const long &enabled)
+  {
+    _enabled = enabled;
+
+    if (!enabled)
+    {
+      _rectDisabled.visible = TRUE;
+
+      _rectError.visible = FALSE;
+      _rectLocked.visible = FALSE;
+      _rectMode.visible = FALSE;
+      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvClosed.svg]]";
+    }
+    else
+    {
+      _rectDisabled.visible = FALSE;
+
+      setErrorCB("_staticError", _staticError);
+      setLockedCB("_permit", _permit);
+      setModeCB("_stateOffActive", _stateOffActive);
+      setValveCB("_openCheckbackSignal", _openCheckbackSignal);
+    }
+  }
+
 
   /**
    * @brief Sets the error status for the reference.
@@ -107,15 +138,18 @@ class MonBinVlvRef : MtpViewRef
         break;
     }
 
-    if (_staticError || _dynamicError)
+    if (_enabled)
     {
-      _rectError.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
-      _rectError.visible = TRUE;
-      return;
-    }
-    else
-    {
-      _rectError.visible = FALSE;
+      if (_staticError || _dynamicError)
+      {
+        _rectError.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
+        _rectError.visible = TRUE;
+        return;
+      }
+      else
+      {
+        _rectError.visible = FALSE;
+      }
     }
   }
 
@@ -142,15 +176,18 @@ class MonBinVlvRef : MtpViewRef
         break;
     }
 
-    if (!_permit || !_interlock || !_protection)
+    if (_enabled)
     {
-      _rectLocked.fill = "[pattern,[fit,any,MTP_Icones/locked_.svg]]";
-      _rectLocked.visible = TRUE;
-      return;
-    }
-    else
-    {
-      _rectLocked.visible = FALSE;
+      if (!_permit || !_interlock || !_protection)
+      {
+        _rectLocked.fill = "[pattern,[fit,any,MTP_Icones/locked_.svg]]";
+        _rectLocked.visible = TRUE;
+        return;
+      }
+      else
+      {
+        _rectLocked.visible = FALSE;
+      }
     }
   }
 
@@ -173,20 +210,23 @@ class MonBinVlvRef : MtpViewRef
         break;
     }
 
-    if (_stateOffActive)
+    if (_enabled)
     {
-      _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Power.svg]]";
-      _rectMode.visible = TRUE;
-      return;
-    }
-    else if (_stateOperatorActive)
-    {
-      _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Manual_1.svg]]";
-      _rectMode.visible = TRUE;
-    }
-    else
-    {
-      _rectMode.visible = FALSE;
+      if (_stateOffActive)
+      {
+        _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Power.svg]]";
+        _rectMode.visible = TRUE;
+        return;
+      }
+      else if (_stateOperatorActive)
+      {
+        _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Manual_1.svg]]";
+        _rectMode.visible = TRUE;
+      }
+      else
+      {
+        _rectMode.visible = FALSE;
+      }
     }
   }
 
@@ -221,35 +261,38 @@ class MonBinVlvRef : MtpViewRef
         break;
     }
 
-    if (_openCheckbackSignal && _valveControl && !_dynamicError && !_staticError)
+    if (_enabled)
     {
-      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvOpen.svg]]";
-      _rectValve.visible = TRUE;
-      return;
-    }
-    else if (_closeCheckbackSignal && !_valveControl && !_dynamicError && !_staticError)
-    {
-      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvStopped.svg]]";
-      _rectValve.visible = TRUE;
-    }
-    else if (!_openCheckbackSignal && !_closeCheckbackSignal && _valveControl && !_dynamicError && !_staticError)
-    {
-      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvMfwdStarted.svg]]";
-      _rectValve.visible = TRUE;
-    }
-    else if (!_openCheckbackSignal && !_closeCheckbackSignal && !_valveControl && !_dynamicError && !_staticError)
-    {
-      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvMfwdStopped.svg]]";
-      _rectValve.visible = TRUE;
-    }
-    else if ((_openCheckbackSignal && _closeCheckbackSignal) || _dynamicError || _staticError)
-    {
-      _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvUknownState.svg]]";
-      _rectValve.visible = TRUE;
-    }
-    else
-    {
-      _rectValve.visible = FALSE;
+      if (_openCheckbackSignal && _valveControl && !_dynamicError && !_staticError)
+      {
+        _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvOpen.svg]]";
+        _rectValve.visible = TRUE;
+        return;
+      }
+      else if (_closeCheckbackSignal && !_valveControl && !_dynamicError && !_staticError)
+      {
+        _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvStopped.svg]]";
+        _rectValve.visible = TRUE;
+      }
+      else if (!_openCheckbackSignal && !_closeCheckbackSignal && _valveControl && !_dynamicError && !_staticError)
+      {
+        _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvMfwdStarted.svg]]";
+        _rectValve.visible = TRUE;
+      }
+      else if (!_openCheckbackSignal && !_closeCheckbackSignal && !_valveControl && !_dynamicError && !_staticError)
+      {
+        _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvMfwdStopped.svg]]";
+        _rectValve.visible = TRUE;
+      }
+      else if ((_openCheckbackSignal && _closeCheckbackSignal) || _dynamicError || _staticError)
+      {
+        _rectValve.fill = "[pattern,[fit,any,MTP_Icones/ValvUknownState.svg]]";
+        _rectValve.visible = TRUE;
+      }
+      else
+      {
+        _rectValve.visible = FALSE;
+      }
     }
   }
 };

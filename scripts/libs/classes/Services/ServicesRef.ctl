@@ -22,11 +22,11 @@ class ServicesRef : MtpViewRef
   private shape _rectDisabled; //!< Reference to the disabled rectangle shape.
   private shape _txtCurrentProcedure; //!< Reference to the current procedure text shape.
 
-  private bool _blinkingActive;
+  private bool _blinkingActive; //!< Indicates if blinking is active.
   private bool _stateOffActive; //!< Indicates if the off state is active.
   private bool _stateOperatorActive; //!< Indicates if the operator state is active.
   private bool _stateAutomaticActive; //!< Indicates if the automatic state is active.
-  private bool _enabled; //!< Indicates if the enabled state is active.
+  private bool _enabled; //!< Indicates if enabled is active.
 
   private bool _srcExternalActive; //!< Indicates if the external source is active.
   private bool _srcInternalActive; //!< Indicates if the internal source is active.
@@ -57,10 +57,7 @@ class ServicesRef : MtpViewRef
     _srcExternalActive =  MtpViewRef::getViewModel().getSrcExternalActive();
     _srcInternalActive =  MtpViewRef::getViewModel().getSrcInternalActive();
 
-    setCurrentStateCB(MtpViewRef::getViewModel().getCurrentState());
     setEnabledCB(MtpViewRef::getViewModel().getEnabled());
-    setModeCB("_stateOffActive", _stateOffActive);
-    setSourceCB("_srcExternalActive", _srcExternalActive);
   }
 
   /**
@@ -180,6 +177,11 @@ class ServicesRef : MtpViewRef
     }
   }
 
+  /**
+  * @brief Sets the enabled state for the reference.
+  *
+  * @param enabled The bool enabled value to be set.
+  */
   private void setEnabledCB(const long &enabled)
   {
     _enabled = enabled;
@@ -187,7 +189,6 @@ class ServicesRef : MtpViewRef
     if (!enabled)
     {
       _rectDisabled.visible = TRUE;
-      _rectMode.fill = "[pattern,[fit,any,MTP_Icones/disabled.svg]]";
       _rectMode.visible = FALSE;
       _rectSource.visible = FALSE;
       _blinkingActive = FALSE;
@@ -197,11 +198,12 @@ class ServicesRef : MtpViewRef
     }
     else
     {
-      setCurrentStateCB(MtpViewRef::getViewModel().getCurrentState());
-      setModeCB("", FALSE);
-      setSourceCB("", FALSE);
       _rectDisabled.visible = FALSE;
       _txtCurrentProcedure.visible = TRUE;
+
+      setModeCB("_stateOffActive", _stateOffActive);
+      setSourceCB("_srcExternalActive", _srcExternalActive);
+      setCurrentStateCB(MtpViewRef::getViewModel().getCurrentState());
     }
   }
 

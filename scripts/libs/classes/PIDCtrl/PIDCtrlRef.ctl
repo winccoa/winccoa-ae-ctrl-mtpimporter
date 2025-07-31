@@ -26,10 +26,12 @@ class PIDCtrlRef : MtpViewRef
   private shape _txtUnitSP; //!< Reference to the setpoint unit text shape.
   private shape _txtProcessValue; //!< Reference to the process value text shape.
   private shape _txtSetpoint; //!< Reference to the setpoint text shape.
+  private shape _rectDisabled; //!< Reference to the disabled rectangle shape.
   private bool _sourceManualActive; //!< Indicates if the manual source is active.
   private bool _sourceInternalActive; //!< Indicates if the internal source is active.
   private bool _stateOffActive; //!< Indicates if the off state is active.
   private bool _stateOperatorActive; //!< Indicates if the operator state is active.
+  private bool _enabled; //!< Indicates if enabled is active.
 
   /**
    * @brief Constructor for PIDCtrlRef.
@@ -41,6 +43,7 @@ class PIDCtrlRef : MtpViewRef
   {
     classConnect(this, setProcessValueCB, MtpViewRef::getViewModel(), PIDCtrl::processValueChanged);
     classConnect(this, setSetpointCB, MtpViewRef::getViewModel(), PIDCtrl::setpointChanged);
+    classConnect(this, setEnabledCB, MtpViewRef::getViewModel(), PIDCtrl::enabledChanged);
 
     classConnectUserData(this, setModeCB, "_stateOffActive", MtpViewRef::getViewModel().getState(), MtpState::offActiveChanged);
     classConnectUserData(this, setModeCB, "_stateOperatorActive", MtpViewRef::getViewModel().getState(), MtpState::operatorActiveChanged);
@@ -53,13 +56,7 @@ class PIDCtrlRef : MtpViewRef
     _sourceManualActive = MtpViewRef::getViewModel().getSource().getManualActive();
     _sourceInternalActive = MtpViewRef::getViewModel().getSource().getInternalActive();
 
-    setProcessValueCB(MtpViewRef::getViewModel().getProcessValue());
-    setSetpointCB(MtpViewRef::getViewModel().getSetpoint());
-
-    setUnitPV(MtpViewRef::getViewModel().getProcessValueUnit());
-    setUnitSP(MtpViewRef::getViewModel().getSetpointUnit());
-    setModeCB("_stateOffActive", _stateOffActive);
-    setSourceCB("_sourceManualActive", _sourceManualActive);
+    setEnabledCB(MtpViewRef::getViewModel().getEnabled());
   }
 
   /**
@@ -76,6 +73,42 @@ class PIDCtrlRef : MtpViewRef
     _txtUnitSP = MtpViewRef::extractShape("_txtUnitSP");
     _txtProcessValue = MtpViewRef::extractShape("_txtProcessValue");
     _txtSetpoint = MtpViewRef::extractShape("_txtSetpoint");
+    _rectDisabled = MtpViewRef::extractShape("_rectDisabled");
+  }
+
+  /**
+  * @brief Sets the enabled state for the reference.
+  *
+  * @param enabled The bool enabled value to be set.
+  */
+  private void setEnabledCB(const long &enabled)
+  {
+    _enabled = enabled;
+
+    if (!enabled)
+    {
+      _rectDisabled.visible = TRUE;
+
+      _rectError.visible = FALSE;
+      _rectLimits.visible = FALSE;
+      _rectMode.visible = FALSE;
+      _rectSource.visible = FALSE;
+      _txtUnitPV.text = "undefined";
+      _txtUnitSP.text = "undefined";
+      _txtProcessValue.text = "0,00";
+      _txtSetpoint.text = "0,00";
+    }
+    else
+    {
+      _rectDisabled.visible = FALSE;
+
+      setProcessValueCB(MtpViewRef::getViewModel().getProcessValue());
+      setSetpointCB(MtpViewRef::getViewModel().getSetpoint());
+      setUnitPV(MtpViewRef::getViewModel().getProcessValueUnit());
+      setUnitSP(MtpViewRef::getViewModel().getSetpointUnit());
+      setModeCB("_stateOffActive", _stateOffActive);
+      setSourceCB("_sourceManualActive", _sourceManualActive);
+    }
   }
 
   /**
@@ -85,7 +118,10 @@ class PIDCtrlRef : MtpViewRef
    */
   private void setUnitPV(shared_ptr<MtpUnit> unit)
   {
-    _txtUnitPV.text = unit.toString();
+    if (_enabled)
+    {
+      _txtUnitPV.text = unit.toString();
+    }
   }
 
   /**
@@ -95,7 +131,10 @@ class PIDCtrlRef : MtpViewRef
    */
   private void setUnitSP(shared_ptr<MtpUnit> unit)
   {
-    _txtUnitSP.text = unit.toString();
+    if (_enabled)
+    {
+      _txtUnitSP.text = unit.toString();
+    }
   }
 
   /**
@@ -105,7 +144,10 @@ class PIDCtrlRef : MtpViewRef
    */
   private void setProcessValueCB(const float &pv)
   {
-    _txtProcessValue.text = pv;
+    if (_enabled)
+    {
+      _txtProcessValue.text = pv;
+    }
   }
 
   /**
@@ -115,7 +157,11 @@ class PIDCtrlRef : MtpViewRef
    */
   private void setSetpointCB(const float &sp)
   {
-    _txtSetpoint.text = sp;
+    if (_enabled)
+    {
+      _txtSetpoint.text = sp;
+
+    }
   }
 
   /**
@@ -137,13 +183,13 @@ class PIDCtrlRef : MtpViewRef
         break;
     }
 
-    if (_stateOffActive)
+    if (_stateOffActive && _enabled)
     {
       _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Power.svg]]";
       _rectMode.visible = TRUE;
       return;
     }
-    else if (_stateOperatorActive)
+    else if (_stateOperatorActive && _enabled)
     {
       _rectMode.fill = "[pattern,[fit,any,MTP_Icones/Manual_1.svg]]";
       _rectMode.visible = TRUE;
@@ -173,13 +219,13 @@ class PIDCtrlRef : MtpViewRef
         break;
     }
 
-    if (_sourceManualActive)
+    if (_sourceManualActive && _enabled)
     {
       _rectSource.fill = "[pattern,[fit,any,MTP_Icones/Manual__2.svg]]";
       _rectSource.visible = TRUE;
       return;
     }
-    else if (_sourceInternalActive)
+    else if (_sourceInternalActive && _enabled)
     {
       _rectSource.fill = "[pattern,[fit,any,MTP_Icones/internal.svg]]";
       _rectSource.visible = TRUE;
