@@ -6,6 +6,7 @@
   @author m.woegrath
 */
 
+#uses "classes/Services/ServicesFaceplateMain"
 #uses "classes/MonAnaDrv/MonAnaDrvFaceplateMain"
 #uses "classes/MonBinVlv/MonBinVlvFaceplateMain"
 #uses "classes/MonBinDrv/MonBinDrvFaceplateMain"
@@ -63,6 +64,8 @@ class MtpFaceplateMainFactory
       case "MonBinVlv": return new MonBinVlvFaceplateMain(viewModel, shapes);
 
       case "MonAnaDrv": return new MonAnaDrvFaceplateMain(viewModel, shapes);
+
+      case "Services": return new ServicesFaceplateMain(viewModel, shapes);
 
       default: throw (makeError("", PRIO_SEVERE, ERR_PARAM, ErrCode::UNEXPECTEDSTATE, "datapoint type not defined '" + dpTypeName(dp) + "'"));
     }

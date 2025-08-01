@@ -104,6 +104,7 @@ class ServicesRef : MtpViewRef
 
         case 64:
           _blinkingActive = FALSE;
+          _rectCurrentState.visible = TRUE;
           _rectCurrentState.fill = "[pattern,[fit,any,MTP_Icones/ProcedureRunning.svg]]";
           break;
 
@@ -127,6 +128,7 @@ class ServicesRef : MtpViewRef
 
         case 4:
           _blinkingActive = FALSE;
+          _rectCurrentState.visible = TRUE;
           _rectCurrentState.fill = "[pattern,[fit,any,MTP_Icones/ProcedureStopped.svg]]";
           break;
 
@@ -138,6 +140,7 @@ class ServicesRef : MtpViewRef
 
         case 131072:
           _blinkingActive = FALSE;
+          _rectCurrentState.visible = TRUE;
           _rectCurrentState.fill = "[pattern,[fit,any,MTP_Icones/True.svg]]";
           break;
 
@@ -149,6 +152,7 @@ class ServicesRef : MtpViewRef
 
         case 32:
           _blinkingActive = FALSE;
+          _rectCurrentState.visible = TRUE;
           _rectCurrentState.fill = "[pattern,[fit,any,MTP_Icones/ProcedurePaused.svg]]";
           break;
 
@@ -160,6 +164,7 @@ class ServicesRef : MtpViewRef
 
         case 2048:
           _blinkingActive = FALSE;
+          _rectCurrentState.visible = TRUE;
           _rectCurrentState.fill = "[pattern,[fit,any,MTP_Icones/ProcedureHeld.svg]]";
           break;
 
@@ -171,8 +176,13 @@ class ServicesRef : MtpViewRef
 
         case 512:
           _blinkingActive = FALSE;
+          _rectCurrentState.visible = TRUE;
           _rectCurrentState.fill = "[pattern,[fit,any,MTP_Icones/ProcedureExecutionStopped.svg]]";
           break;
+
+        default:
+          _blinkingActive = FALSE;
+          _rectCurrentState.visible = FALSE;
       }
     }
   }
