@@ -123,7 +123,7 @@ class BinManIntRef : MtpViewRef
     {
       if (!_channel && _manualActive)
       {
-        _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Manual_1.svg]]";
+        _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Manual__2.svg]]";
         _rectStatus.visible = TRUE;
         return;
       }

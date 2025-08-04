@@ -68,6 +68,9 @@ class BinManIntFaceplateHome : MtpViewBase
     _valueOut = MtpViewBase::getViewModel().getValueOut();
     _valueInternal = MtpViewBase::getViewModel().getValueInternal();
 
+    _btnTrue.text = MtpViewBase::getViewModel().getValueStateTrueText();
+    _btnFalse.text = MtpViewBase::getViewModel().getValueStateFalseText();
+
     setWqcCB(MtpViewBase::getViewModel().getWqc().getQualityGood());
     setValueOutCB(_valueOut);
     setValueFeedbackCB(MtpViewBase::getViewModel().getValueFeedback());
@@ -170,11 +173,11 @@ class BinManIntFaceplateHome : MtpViewBase
         break;
     }
 
-    if ((!_osLevelStation && !_channel && _internalActive && _valueOut) || (_channel && _internalActive && _valueOut))
+    if ((!_osLevelStation && !_channel && !_internalActive && _valueOut) || (_channel && _internalActive && _valueOut))
     {
       _btnTrue.backCol = "mtpSidebar";
     }
-    else if (_osLevelStation && !_channel && _internalActive && _valueOut)
+    else if (_osLevelStation && !_channel && !_internalActive && _valueOut)
     {
       _btnTrue.backCol = "mtpTitlebar";
     }
@@ -185,11 +188,11 @@ class BinManIntFaceplateHome : MtpViewBase
 
     _btnTrue.transparentForMouse = (_btnTrue.backCol == "mtpSidebar");
 
-    if ((!_osLevelStation && !_channel && _internalActive && !_valueOut) || (_channel && _internalActive && !_valueOut))
+    if ((!_osLevelStation && !_channel && !_internalActive && !_valueOut) || (_channel && _internalActive && !_valueOut))
     {
       _btnFalse.backCol = "mtpSidebar";
     }
-    else if (_osLevelStation && !_channel && _internalActive && !_valueOut)
+    else if (_osLevelStation && !_channel && !_internalActive && !_valueOut)
     {
       _btnFalse.backCol = "mtpTitlebar";
     }
@@ -229,11 +232,11 @@ class BinManIntFaceplateHome : MtpViewBase
   {
     if (value)
     {
-      _txtVFbk.text =  getCatStr("BinManInt", "True");
+      _txtVFbk.text = MtpViewBase::getViewModel().getValueStateTrueText();
     }
     else
     {
-      _txtVFbk.text =  getCatStr("BinManInt", "False");
+      _txtVFbk.text = MtpViewBase::getViewModel().getValueStateFalseText();
     }
   }
 
