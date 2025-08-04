@@ -35,7 +35,7 @@ class MonAnaDrvFaceplateHome3 : MtpViewBase
     classConnect(this, setRpmAlarmHighActiveCB, MtpViewBase::getViewModel(), MonAnaDrv::rpmAlarmHighActiveChanged);
     classConnect(this, setRpmAlarmLowActiveCB, MtpViewBase::getViewModel(), MonAnaDrv::rpmAlarmLowActiveChanged);
 
-    _barIndicator.showLimitIndicator();
+    _barIndicator.showAlarmLimitIndicator();
     _barIndicator.setScale(MtpViewBase::getViewModel().getRpmScaleMin(), MtpViewBase::getViewModel().getRpmScaleMax());
     _barIndicator.setUnit(MtpViewBase::getViewModel().getRpmUnit());
 

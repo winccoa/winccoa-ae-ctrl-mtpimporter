@@ -60,7 +60,6 @@ class MtpBarIndicator : MtpRefBase
   {
   }
 
-
   /**
     * @brief Shows the limit indicator shapes.
     * @details Sets the visibility of all limit indicator shapes to true.
@@ -75,6 +74,18 @@ class MtpBarIndicator : MtpRefBase
     _circleTL1.visible = TRUE;
     _circleWH1.visible = TRUE;
     _circleWL1.visible = TRUE;
+  }
+
+  /**
+  * @brief Shows the alarm limit indicator shapes.
+  * @details Sets the visibility of alarm limit indicator shapes to true.
+  */
+  public void showAlarmLimitIndicator()
+  {
+    _body1.visible = TRUE;
+    _circleAH1.visible = TRUE;
+    _circleAL1.visible = TRUE;
+    _circlePV1.visible = TRUE;
   }
 
   /**

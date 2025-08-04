@@ -186,7 +186,7 @@ public shared_ptr&lt;MtpBarIndicator&gt; getMtpBarIndicator()
   <shape Name="circleWL1" layerId="0" shapeType="ARC">
    <properties>
     <prop name="serialId">6</prop>
-    <prop name="Type">c</prop>
+    <prop name="Type"></prop>
     <prop name="RefPoint">455 275</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">False</prop>
@@ -251,7 +251,7 @@ public shared_ptr&lt;MtpBarIndicator&gt; getMtpBarIndicator()
    <properties>
     <prop name="serialId">8</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">455 275</prop>
+    <prop name="RefPoint">455.092153481353 275.1108403351663</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">False</prop>
     <prop name="ForeColor">_Transparent</prop>
@@ -270,7 +270,7 @@ public shared_ptr&lt;MtpBarIndicator&gt; getMtpBarIndicator()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[solid]</prop>
-    <prop name="Geometry">1.393093093093093 3.726127227846432e-16 -3.462494424710355e-16 1.434677961543633 -453.9857357357345 -239.6954596106124</prop>
+    <prop name="Geometry">1.393093093093093 3.726127227846432e-16 -3.462494424710355e-16 1.434677961543633 -452.9857357357345 -242.6954596106124</prop>
     <prop name="Center">455 275</prop>
     <prop name="X-Radius">90</prop>
     <prop name="Y-Radius">90</prop>
