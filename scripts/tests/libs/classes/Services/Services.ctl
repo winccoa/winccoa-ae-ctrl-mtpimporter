@@ -68,7 +68,7 @@ class TstServices : OaTest
                             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
                             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
                             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
-                            makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct")
+                            makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"), makeDynString("", "enabled"), makeDynString("", "tagName")
                           );
     dyn_dyn_int values = makeDynAnytype(
                            makeDynInt(DPEL_STRUCT),
@@ -92,7 +92,7 @@ class TstServices : OaTest
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL)
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING)
                          );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingCommandOp, _DptInvalidMissingCommandOp);
@@ -120,7 +120,7 @@ class TstServices : OaTest
              makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
              makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
              makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
-             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct")
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"), makeDynString("", "enabled"), makeDynString("", "tagName")
            );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStateCur, _DptInvalidMissingStateCur);
@@ -143,15 +143,15 @@ class TstServices : OaTest
   {
     shared_ptr<Services> services = new Services(_DpExists);
     assertEqual(services.getDp(), _DpExists);
-    assertEqual(services.getCommandOperator(), 0);
-    assertEqual(services.getCommandInternal(), 0);
-    assertEqual(services.getCommandExternal(), 0);
-    assertEqual(services.getCurrentState(), 0);
-    assertEqual(services.getCommandEnabled(), 0);
-    assertEqual(services.getPositionTextId(), 0);
-    assertEqual(services.getInteractionQuestionId(), 0);
+    assertEqual(services.getCommandOperator(), 0L);
+    assertEqual(services.getCommandInternal(), 0L);
+    assertEqual(services.getCommandExternal(), 0L);
+    assertEqual(services.getCurrentState(), 0L);
+    assertEqual(services.getCommandEnabled(), 0L);
+    assertEqual(services.getPositionTextId(), 0L);
+    assertEqual(services.getInteractionQuestionId(), 0L);
     assertEqual(services.getInteractionAdditionalInfo(), "");
-    assertEqual(services.getInteractionAnswerId(), 0);
+    assertEqual(services.getInteractionAnswerId(), 0L);
     assertFalse(services.getSrcChannel());
     assertFalse(services.getSrcExternalAutomatic());
     assertFalse(services.getSrcInternalAutomatic());
@@ -178,10 +178,11 @@ class TstServices : OaTest
 
   public int testConstructor_MissingDpes()
   {
+    // Test missing CommandOp
     try
     {
       shared_ptr<Services> services = new Services(_DpExistsInvalidMissingCommandOp);
-      assertTrue(false, "shouldn't reach here");
+      assertTrue(false, "shouldn't reach here for missing CommandOp");
     }
     catch
     {
@@ -191,10 +192,83 @@ class TstServices : OaTest
       assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingCommandOp + ".CommandOp"));
     }
 
+    // Test missing CommandInt
+    string dptName = "ServicesInvalid_CommandInt";
+    string dpName = "ExistingTestDatapointInvalid_CommandInt";
+    dyn_dyn_string dpes = makeDynAnytype(
+                            makeDynString(dptName),
+                            makeDynString("", "CommandOp"), makeDynString("", "CommandExt"),
+                            makeDynString("", "ProcedureOp"), makeDynString("", "ProcedureInt"),
+                            makeDynString("", "ProcedureExt"), makeDynString("", "StateCur"),
+                            makeDynString("", "CommandEn"), makeDynString("", "ProcedureCur"),
+                            makeDynString("", "ProcedureReq"), makeDynString("", "PosTextID"),
+                            makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
+                            makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+                            makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+                            makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+                            makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+                            makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+                            makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+                            makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+                            makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+                            makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+                            makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+                            makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+                            makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+                            makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+                            makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+                            makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+                            makeDynString("", "enabled"), makeDynString("", "tagName")
+                          );
+    dyn_dyn_int values = makeDynAnytype(
+                           makeDynInt(DPEL_STRUCT),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING)
+                         );
+    dpTypeCreate(dpes, values);
+    dpCreate(dpName, dptName);
+
+    try
+    {
+      shared_ptr<Services> services = new Services(dpName);
+      assertTrue(false, "shouldn't reach here for missing CommandInt");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(dpName + ".CommandInt"));
+    }
+
+    dpDelete(dpName);
+    dpTypeDelete(dptName);
+
+    // Test missing StateCur
     try
     {
       shared_ptr<Services> services = new Services(_DpExistsInvalidMissingStateCur);
-      assertTrue(false, "shouldn't reach here");
+      assertTrue(false, "shouldn't reach here for missing StateCur");
     }
     catch
     {
@@ -207,17 +281,105 @@ class TstServices : OaTest
     return 0;
   }
 
+  public int testConstructor_MissingAllDpes()
+  {
+    dyn_string dpeNames = makeDynString(
+                            "CommandExt", "ProcedureOp", "ProcedureInt", "ProcedureExt",
+                            "CommandEn", "ProcedureCur", "ProcedureReq", "PosTextID", "InteractQuestionID",
+                            "InteractAddInfo", "InteractAnswerID", "SrcChannel", "SrcExtAut", "SrcIntAut",
+                            "SrcIntOp", "SrcExtOp", "SrcIntAct", "SrcExtAct", "ProcParamApplyEn",
+                            "ProcParamApplyExt", "ProcParamApplyOp", "ProcParamApplyInt", "ConfigParamApplyEn",
+                            "ConfigParamApplyExt", "ConfigParamApplyOp", "ConfigParamApplyInt", "ReportValueFreeze",
+                            "numberOfProcedure", "WQC", "OSLevel", "StateChannel", "StateOffAut", "StateOpAut",
+                            "StateAutAut", "StateOffOp", "StateOpOp", "StateAutOp", "StateOpAct", "StateAutAct",
+                            "StateOffAct", "enabled", "tagName"
+                          );
+    dyn_int dpeTypes = makeDynAnytype(
+                         DPEL_LONG, DPEL_LONG, DPEL_LONG, DPEL_LONG,
+                         DPEL_LONG, DPEL_LONG, DPEL_LONG, DPEL_LONG, DPEL_LONG,
+                         DPEL_STRING, DPEL_LONG, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL,
+                         DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL,
+                         DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL,
+                         DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_INT, DPEL_INT,
+                         DPEL_INT, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL,
+                         DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL,
+                         DPEL_BOOL, DPEL_BOOL, DPEL_LANGSTRING
+                       );
+
+    for (int i = 1; i <= dynlen(dpeNames); i++)
+    {
+      string dptName = "ServicesInvalid_" + dpeNames[i];
+      string dpName = "ExistingTestDatapointInvalid_" + dpeNames[i];
+
+      // Create data point type with one DPE missing
+      dyn_dyn_string dpes = makeDynAnytype(makeDynString(dptName));
+      dyn_dyn_int values = makeDynAnytype(makeDynInt(DPEL_STRUCT));
+
+      for (int j = 1; j <= dynlen(dpeNames); j++)
+      {
+        if (j != i)
+        {
+          dynAppend(dpes, makeDynString("", dpeNames[j]));
+          dynAppend(values, makeDynInt(0, dpeTypes[j]));
+        }
+      }
+
+      // Ensure CommandOp and StateCur are included to pass initial checks
+      if (dpeNames[i] != "CommandOp")
+      {
+        dynAppend(dpes, makeDynString("", "CommandOp"));
+        dynAppend(values, makeDynInt(0, DPEL_LONG));
+      }
+
+      if (dpeNames[i] != "StateCur")
+      {
+        dynAppend(dpes, makeDynString("", "StateCur"));
+        dynAppend(values, makeDynInt(0, DPEL_LONG));
+      }
+
+      // Ensure CommandInt is included to pass its check
+      if (dpeNames[i] != "CommandInt")
+      {
+        dynAppend(dpes, makeDynString("", "CommandInt"));
+        dynAppend(values, makeDynInt(0, DPEL_LONG));
+      }
+
+      dpTypeCreate(dpes, values);
+      dpCreate(dpName, dptName);
+      delay(0, 100); // Allow system to stabilize after data point creation
+
+      try
+      {
+        shared_ptr<Services> services = new Services(dpName);
+        assertTrue(false, "shouldn't reach here for missing DPE: " + dpeNames[i]);
+      }
+      catch
+      {
+        dyn_errClass err = getLastException();
+        assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+        assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+        assertTrue(getErrorText(err).contains(dpName + "." + dpeNames[i]));
+      }
+
+      dpDelete(dpName);
+      dpTypeDelete(dptName);
+      delay(0, 100); // Allow system to stabilize after deletion
+    }
+
+    return 0;
+  }
+
   public int testCommandInternalChanged()
   {
     shared_ptr<Services> services = new Services(_DpExists);
     classConnect(this, setCommandInternalChangedCB, services, Services::commandInternalChanged);
 
-    dpSetWait(_DpExists + ".CommandInt", 100);
+    dpSetWait(_DpExists + ".CommandInt", 100L);
 
     // Give it time to execute callback
     delay(0, 200);
-    assertEqual(services.getCommandInternal(), 100);
-    assertEqual(_eventCommandInternal, 100);
+    assertEqual(services.getCommandInternal(), 100L);
+    assertEqual(_eventCommandInternal, 100L);
     return 0;
   }
 
@@ -226,12 +388,117 @@ class TstServices : OaTest
     shared_ptr<Services> services = new Services(_DpExists);
     classConnect(this, setCurrentStateChangedCB, services, Services::currentStateChanged);
 
-    dpSetWait(_DpExists + ".StateCur", 200);
+    dpSetWait(_DpExists + ".StateCur", 200L);
 
     // Give it time to execute callback
     delay(0, 200);
-    assertEqual(services.getCurrentState(), 200);
-    assertEqual(_eventStateCurrent, 200);
+    assertEqual(services.getCurrentState(), 200L);
+    assertEqual(_eventStateCurrent, 200L);
+    return 0;
+  }
+
+  public int testSetConfigParamApplyOperator()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    services.setConfigParamApplyOperator(true);
+
+    // Give it time to write to the data point
+    delay(0, 200);
+
+    bool value;
+    dpGet(_DpExists + ".ConfigParamApplyOp", value);
+    assertTrue(services.getConfigParamApplyOperator());
+    assertTrue(value);
+
+    services.setConfigParamApplyOperator(false);
+    delay(0, 200);
+    dpGet(_DpExists + ".ConfigParamApplyOp", value);
+    assertFalse(services.getConfigParamApplyOperator());
+    assertFalse(value);
+    return 0;
+  }
+
+  public int testSetProcParamApplyOperator()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    services.setProcParamApplyOperator(true);
+
+    // Give it time to write to the data point
+    delay(0, 200);
+
+    bool value;
+    dpGet(_DpExists + ".ProcParamApplyOp", value);
+    assertTrue(services.getProcParamApplyOperator());
+    assertTrue(value);
+
+    services.setProcParamApplyOperator(false);
+    delay(0, 200);
+    dpGet(_DpExists + ".ProcParamApplyOp", value);
+    assertFalse(services.getProcParamApplyOperator());
+    assertFalse(value);
+    return 0;
+  }
+
+  public int testSetSrcExternalOperator()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    services.setSrcExternalOperator(true);
+
+    // Give it time to write to the data point
+    delay(0, 200);
+
+    bool value;
+    dpGet(_DpExists + ".SrcExtOp", value);
+    assertTrue(services.getSrcExternalOperator());
+    assertTrue(value);
+
+    services.setSrcExternalOperator(false);
+    delay(0, 200);
+    dpGet(_DpExists + ".SrcExtOp", value);
+    assertFalse(services.getSrcExternalOperator());
+    assertFalse(value);
+    return 0;
+  }
+
+  public int testSetSrcInternalOperator()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    services.setSrcInternalOperator(true);
+
+    // Give it time to write to the data point
+    delay(0, 200);
+
+    bool value;
+    dpGet(_DpExists + ".SrcIntOp", value);
+    assertTrue(services.getSrcInternalOperator());
+    assertTrue(value);
+
+    services.setSrcInternalOperator(false);
+    delay(0, 200);
+    dpGet(_DpExists + ".SrcIntOp", value);
+    assertFalse(services.getSrcInternalOperator());
+    assertFalse(value);
+    return 0;
+  }
+
+  public int testSetCommandOperator()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    services.setCommandOperator(500L);
+
+    // Give it time to write to the data point
+    delay(0, 200);
+
+    long value;
+    dpGet(_DpExists + ".CommandOp", value);
+    assertEqual(services.getCommandOperator(), 500L);
+    assertEqual(value, 500L);
+
+    services.setCommandOperator(0L);
+    delay(0, 200);
+    dpGet(_DpExists + ".CommandOp", value);
+    assertEqual(services.getCommandOperator(), 0L);
+    assertEqual(value, 0L);
     return 0;
   }
 
