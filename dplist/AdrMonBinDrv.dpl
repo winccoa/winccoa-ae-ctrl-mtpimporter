@@ -2,6 +2,7 @@
 
 # DistributionInfo
 ElementName	TypeName	_distrib.._type	_distrib.._driver
+MonBinDrv.WQC	MonBinDrv	56	\1
 InstMonBinDrvM0014.WQC	MonBinDrv	56	\1
 InstMonBinDrvM0014.OSLevel	MonBinDrv	56	\1
 InstMonBinDrvM0014.StateChannel	MonBinDrv	56	\1
@@ -55,9 +56,6 @@ InstMonBinDrvM0014.OSLevel	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrv
 InstMonBinDrvM0014.StateChannel	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StateChannel\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.StateOffAut	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StateOffAut\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.StateAutAut	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StateAutAut\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
-InstMonBinDrvM0014.StateOffOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StateOffOp\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
-InstMonBinDrvM0014.StateOpOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StateOpOp\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
-InstMonBinDrvM0014.StateAutOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StateAutOp\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.StateOpAct	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StateOpAct\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.StateAutAct	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StateAutAct\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.StateOffAct	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StateOffAct\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
@@ -65,20 +63,15 @@ InstMonBinDrvM0014.SafePos	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrv
 InstMonBinDrvM0014.SafePosAct	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"SafePosAct\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.FwdEn	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"FwdEn\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.RevEn	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"RevEn\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
-InstMonBinDrvM0014.StopOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StopOp\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
-InstMonBinDrvM0014.FwdOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"FwdOp\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
-InstMonBinDrvM0014.RevOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"RevOp\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.StopAut	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StopAut\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.FwdAut	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"FwdAut\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.RevAut	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"RevAut\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.FwdCtrl	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"FwdCtrl\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.PermEn	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"PermEn\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.Permit	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"Permit\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
-InstMonBinDrvM0014.IntEn	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"IntEn\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.Interlock	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"Interlock\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.ProtEn	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"ProtEn\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.Protect	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"Protect\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
-InstMonBinDrvM0014.ResetOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"ResetOp\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.ResetAut	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"ResetAut\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.MonEn	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"MonEn\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.MonSafePos	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"MonSafePos\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
@@ -93,3 +86,12 @@ InstMonBinDrvM0014.FwdFbkCalc	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBin
 InstMonBinDrvM0014.FwdFbk	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"FwdFbk\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.Trip	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"Trip\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
 InstMonBinDrvM0014.enabled	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"enabled\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
+MonBinDrv.WQC	MonBinDrv	16	""	 	 	0	0	\0	0	0	0	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	0	""
+InstMonBinDrvM0014.IntEn	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"IntlEn\""	 	 	0	0	\2	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
+InstMonBinDrvM0014.StateOffOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StateOffOp\""	 	 	0	0	\6	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
+InstMonBinDrvM0014.StateOpOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StateOpOp\""	 	 	0	0	\6	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
+InstMonBinDrvM0014.StateAutOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StateAutOp\""	 	 	0	0	\6	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
+InstMonBinDrvM0014.RevOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"RevOp\""	 	 	0	0	\6	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
+InstMonBinDrvM0014.FwdOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"FwdOp\""	 	 	0	0	\6	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
+InstMonBinDrvM0014.StopOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"StopOp\""	 	 	0	0	\6	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
+InstMonBinDrvM0014.ResetOp	MonBinDrv	16	"MTP$MTP_Data$1$1$ns=3;s=\"InstMonBinDrvM0014\".\"HMI\".\"mtpData\".\"ResetOp\""	 	 	0	0	\6	0	1	1	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	01.01.1970 00:00:00.000	750	"OPCUA"
