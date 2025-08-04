@@ -5,7 +5,7 @@
    <prop name="de_AT.utf8"></prop>
   </prop>
   <prop name="Size">419 437</prop>
-  <prop name="BackColor">mtpBackground</prop>
+  <prop name="BackColor">mtpBackground2</prop>
   <prop name="RefPoint">27 21</prop>
   <prop name="InitAndTermRef">True</prop>
   <prop name="SendClick">False</prop>
