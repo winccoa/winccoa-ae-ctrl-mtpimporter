@@ -239,14 +239,17 @@ class AnaManIntFaceplateHome : MtpViewBase
 
     if ((!_osLevelStation && !_channel && _manualActive) || (_manualActive && _channel))
     {
+      _txtValueManual.editable = FALSE;
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]";
     }
     else if (_osLevelStation && _manualActive && !_channel)
     {
+      _txtValueManual.editable = TRUE;
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_2_rounded.svg]]";
     }
     else
     {
+      _txtValueManual.editable = FALSE;
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_3_rounded.svg]]";
     }
 
