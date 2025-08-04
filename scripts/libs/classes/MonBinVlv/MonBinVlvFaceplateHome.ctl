@@ -778,8 +778,8 @@ class MonBinVlvFaceplateHome : MtpViewBase
       _rectError.visible = TRUE;
       _txtError.visible = TRUE;
       _rectErrorInformation.visible = TRUE;
-      _rectError.fill = "[pattern,[fit,any,MTP_Icones/Error.svg]]";
-      _rectError.sizeAsDyn = makeDynInt(25, 25);
+      _rectError.fill = "[pattern,[fit,any,MTP_Icones/StaticErr.svg]]";
+      _rectError.sizeAsDyn = makeDynInt(30, 25);
     }
     else if (!_monitorEnabled)
     {
