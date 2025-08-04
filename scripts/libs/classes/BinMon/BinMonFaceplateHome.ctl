@@ -20,6 +20,8 @@ class BinMonFaceplateHome : MtpViewBase
   private shape _rectValue; //!< Reference to the value rectangle shape.
   private shape _refWqc; //!< Reference to the quality code shape.
   private shape _rectFlutterActive; //!< Reference to the flutter active rectangle shape.
+  private shape _txtFlutterActive; //!< Reference to the flutter active text shape.
+  private bool _flutterEnabled; //!< Indicates if fluttering is enabled for the monitored value.
 
   /**
    * @brief Constructor for BinMonFaceplateHome.
@@ -32,6 +34,8 @@ class BinMonFaceplateHome : MtpViewBase
     classConnect(this, setValueCB, MtpViewBase::getViewModel(), BinMon::valueChanged);
     classConnect(this, setFlutterActiveCB, MtpViewBase::getViewModel(), BinMon::flutterActiveChanged);
     classConnect(this, setWqcCB, MtpViewBase::getViewModel().getWqc(), MtpQualityCode::qualityGoodChanged);
+
+    _flutterEnabled = MtpViewBase::getViewModel().getFlutterEnabled();
 
     setWqcCB(MtpViewBase::getViewModel().getWqc().getQualityGood());
     setValueCB(MtpViewBase::getViewModel().getValue());
@@ -48,6 +52,7 @@ class BinMonFaceplateHome : MtpViewBase
     _refWqc = MtpViewBase::extractShape("_refWqc");
     _rectValue = MtpViewBase::extractShape("_rectValue");
     _rectFlutterActive = MtpViewBase::extractShape("_rectFlutterActive");
+    _txtFlutterActive = MtpViewBase::extractShape("_txtFlutterActive");
   }
 
   /**
@@ -86,16 +91,24 @@ class BinMonFaceplateHome : MtpViewBase
    */
   private void setFlutterActiveCB(const bool &active)
   {
-    if (active)
+    if (active && _flutterEnabled)
     {
+      _rectFlutterActive.visible = TRUE;
       _rectFlutterActive.fill = "[pattern,[fit,any,MTP_Icones/Mainenance_2.svg]]";
       _rectFlutterActive.sizeAsDyn = makeDynInt(25, 25);
+      _txtFlutterActive.visible = TRUE;
+    }
+    else if (_flutterEnabled)
+    {
+      _rectFlutterActive.visible = TRUE;
+      _rectFlutterActive.fill = "[pattern,[fit,any,MTP_Icones/Ok_2.svg]]";
+      _rectFlutterActive.sizeAsDyn = makeDynInt(30, 25);
+      _txtFlutterActive.visible = TRUE;
     }
     else
     {
-      _rectFlutterActive.fill = "[pattern,[fit,any,MTP_Icones/Ok_2.svg]]";
-      _rectFlutterActive.sizeAsDyn = makeDynInt(30, 25);
+      _rectFlutterActive.visible = FALSE;
+      _txtFlutterActive.visible = FALSE;
     }
   }
-
 };

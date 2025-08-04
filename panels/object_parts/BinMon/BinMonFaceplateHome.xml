@@ -24,6 +24,7 @@ public void initialize(shared_ptr&lt;BinMon&gt; viewModel)
   shapes.insert(&quot;_txtValue&quot;, getShape(&quot;txtValue&quot;));
   shapes.insert(&quot;_rectValue&quot;, getShape(&quot;rectValue&quot;));
   shapes.insert(&quot;_refWqc&quot;, getShape(&quot;refWqc&quot;));
+  shapes.insert(&quot;_txtFlutterActive&quot;, getShape(&quot;txtFlutterActive&quot;));
   shapes.insert(&quot;_rectFlutterActive&quot;, getShape(&quot;rectFlutterActive&quot;));
 
   faceplate = new BinMonFaceplateHome(viewModel, shapes);
