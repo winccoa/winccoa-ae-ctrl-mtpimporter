@@ -658,14 +658,17 @@ class PIDCtrlFaceplateHome : MtpViewBase
     if ((_manualActive && _channel) || (!_osLevelStation && !_channel && _manualActive))
     {
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]";
+      _txtSPManual.editable = FALSE;
     }
     else if (_manualActive && !_channel && _osLevelStation)
     {
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_2_rounded.svg]]";
+      _txtSPManual.editable = TRUE;
     }
     else
     {
       _rectManual.fill = "[pattern,[fit,any,MTP_Icones/Manual_1_3_rounded.svg]]";
+      _txtSPManual.editable = FALSE;
     }
 
     _rectManual.transparentForMouse = (_rectManual.fill == "[pattern,[fit,any,MTP_Icones/Manual_1_1_rounded.svg]]");

@@ -597,74 +597,6 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
     <prop name="TextFormat">[0s,,,AlignLeft]</prop>
    </properties>
   </shape>
-  <shape Name="txtPV" layerId="0" shapeType="TEXT_FIELD">
-   <properties>
-    <prop name="serialId">21</prop>
-    <prop name="Type"></prop>
-    <prop name="RefPoint">364.4920117613637 314.3020374177631</prop>
-    <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
-    <prop name="ForeColor">mtpInputText</prop>
-    <prop name="BackColor">_Window</prop>
-    <prop name="TabOrder">19</prop>
-    <prop name="ToolTipText">
-     <prop name="de_AT.utf8"></prop>
-    </prop>
-    <prop name="layoutAlignment">AlignNone</prop>
-    <prop name="snapMode">Point</prop>
-    <prop name="Font">
-     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
-    </prop>
-    <prop name="Location">23 57</prop>
-    <prop name="Size">159 35</prop>
-    <prop name="BorderStyle">Normal</prop>
-    <prop name="Editable">True</prop>
-    <prop name="ClearButtonEnabled">False</prop>
-    <prop name="TextFormat">[0.2f,False,False,AlignHCenter|AlignVCenter,False]</prop>
-    <prop name="AllowEmptyNumeric">False</prop>
-    <prop name="ulcClientSideWidget">False</prop>
-   </properties>
-   <events>
-    <script isEscaped="1" name="Command"><![CDATA[main()
-{
-  _faceplate.setProcessValue(this.text());
-}]]></script>
-   </events>
-  </shape>
-  <shape Name="txtSP" layerId="0" shapeType="TEXT_FIELD">
-   <properties>
-    <prop name="serialId">24</prop>
-    <prop name="Type"></prop>
-    <prop name="RefPoint">364.4920117613637 394</prop>
-    <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
-    <prop name="ForeColor">mtpInputText</prop>
-    <prop name="BackColor">_Window</prop>
-    <prop name="TabOrder">22</prop>
-    <prop name="ToolTipText">
-     <prop name="de_AT.utf8"></prop>
-    </prop>
-    <prop name="layoutAlignment">AlignNone</prop>
-    <prop name="snapMode">Point</prop>
-    <prop name="Font">
-     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
-    </prop>
-    <prop name="Location">23 136.6979625822369</prop>
-    <prop name="Size">159 35</prop>
-    <prop name="BorderStyle">Normal</prop>
-    <prop name="Editable">True</prop>
-    <prop name="ClearButtonEnabled">False</prop>
-    <prop name="TextFormat">[0.2f,False,False,AlignHCenter|AlignVCenter,False]</prop>
-    <prop name="AllowEmptyNumeric">False</prop>
-    <prop name="ulcClientSideWidget">False</prop>
-   </properties>
-   <events>
-    <script isEscaped="1" name="Command"><![CDATA[main()
-{
-  _faceplate.setSetpoint(this.text());
-}]]></script>
-   </events>
-  </shape>
   <shape Name="txtMV" layerId="0" shapeType="TEXT_FIELD">
    <properties>
     <prop name="serialId">25</prop>
@@ -784,6 +716,78 @@ public void initialize(shared_ptr&lt;PIDCtrl&gt; viewModel)
     <prop name="Size">27.5 16.85384615384612</prop>
     <prop name="CornerRadius">0</prop>
     <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="txtPV" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">35</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">100.0503604463805 74.39938973410079</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">27</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">100.0503604463805 74.39938973410079</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">80,00</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0.2f,False,False,AlignHCenter|AlignVCenter,False,False]</prop>
+   </properties>
+  </shape>
+  <shape Name="txtSP" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">36</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">99.89213439625627 154.3993897341008</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">28</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">99.89213439625627 154.3993897341008</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">80,00</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0.2f,False,False,AlignHCenter|AlignVCenter,False,False]</prop>
    </properties>
   </shape>
  </shapes>
