@@ -74,7 +74,7 @@ class MtpProcedure
   /**
   * @brief Sets the operator mode.
   *
-  * @param operatorMode Sets Procedure using value of operator.
+  * @param operatorProcedure Sets Procedure using value of operator.
   */
   public void setOperator(const long &operatorProcedure)
   {

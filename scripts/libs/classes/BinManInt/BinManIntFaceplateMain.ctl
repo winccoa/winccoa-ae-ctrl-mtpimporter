@@ -21,7 +21,6 @@ class BinManIntFaceplateMain : MtpFaceplateMainBase
   *
   * @param viewModel A shared pointer to the BinManInt view model.
   * @param shapes A mapping of shapes used in the faceplate.
-  * @param layoutNavigation The layout for navigation buttons.
   */
   public BinManIntFaceplateMain(shared_ptr<BinManInt> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {

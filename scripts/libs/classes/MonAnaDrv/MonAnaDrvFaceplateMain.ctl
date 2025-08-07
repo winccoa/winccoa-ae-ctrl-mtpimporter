@@ -22,7 +22,6 @@ class MonAnaDrvFaceplateMain : MtpFaceplateMainBase
   *
   * @param viewModel A shared pointer to the MonAnaDrv view model.
   * @param shapes A mapping of shapes used in the faceplate.
-  * @param layoutNavigation The layout for navigation buttons.
   */
   public MonAnaDrvFaceplateMain(shared_ptr<MonAnaDrv> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {
