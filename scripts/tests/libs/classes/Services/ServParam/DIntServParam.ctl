@@ -50,17 +50,6 @@ class TstDIntServParam : OaTest
 
   public int setUp() override
   {
-    // Clean up existing data points and types
-    dyn_string existingDps = dpNames("*", _Dpt);
-
-    for (int i = 1; i <= dynlen(existingDps); i++) dpDelete(existingDps[i]);
-
-    dyn_string existingTypes = dpTypes(_Dpt + "Invalid*");
-
-    for (int i = 1; i <= dynlen(existingTypes); i++) dpTypeDelete(existingTypes[i]);
-
-    DebugN("Cleaned up existing data points: ", existingDps, "Types: ", existingTypes);
-
     if (dpTypes(_Dpt).count() == 0)
     {
       DebugN("Data point type " + _Dpt + " does not exist");
