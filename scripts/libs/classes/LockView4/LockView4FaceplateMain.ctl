@@ -22,7 +22,6 @@ class LockView4FaceplateMain : MtpFaceplateMainBase
   *
   * @param viewModel A shared pointer to the LockView4 view model.
   * @param shapes A mapping of shapes used in the faceplate.
-  * @param layoutNavigation The layout for navigation buttons.
   */
   public LockView4FaceplateMain(shared_ptr<LockView4> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {

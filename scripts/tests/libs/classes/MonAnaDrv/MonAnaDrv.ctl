@@ -116,6 +116,7 @@ class TstMonAnaDrv : OaTest
 
   public int setUp() override
   {
+    int ret = OaTest::setUp();
     if (dpTypes(_Dpt).count() == 0) { return -1; }
 
     dpCreate(_DpExists, _Dpt);
@@ -1462,7 +1463,7 @@ class TstMonAnaDrv : OaTest
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingRpmALLim, _DptInvalidMissingRpmALLim);
 
-    return 0;
+    return ret;
   }
 
   public int tearDown() override

@@ -21,7 +21,6 @@ class AnaMonFaceplateMain : MtpFaceplateMainBase
    *
    * @param viewModel A shared pointer to the AnaMon view model.
    * @param shapes A mapping of shapes used in the faceplate.
-   * @param layoutNavigation The layout for navigation buttons.
    */
   public AnaMonFaceplateMain(shared_ptr<AnaMon> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {

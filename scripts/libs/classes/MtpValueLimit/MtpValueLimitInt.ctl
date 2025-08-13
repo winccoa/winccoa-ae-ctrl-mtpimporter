@@ -41,7 +41,7 @@ class MtpValueLimitInt : MtpValueLimit
    * @brief Sets the limit for the integer value.
    * @details This method overrides the base class method to set the limit as an integer.
    *
-   * @param limit The value to set as the limit.
+   * @param value The value to set as the limit.
    */
   public void setLimit(const int &value) override
   {

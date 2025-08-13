@@ -22,7 +22,6 @@ class MonBinVlvFaceplateMain : MtpFaceplateMainBase
   *
   * @param viewModel A shared pointer to the MonBinVlv view model.
   * @param shapes A mapping of shapes used in the faceplate.
-  * @param layoutNavigation The layout for navigation buttons.
   */
   public MonBinVlvFaceplateMain(shared_ptr<MonBinVlv> viewModel, const mapping &shapes) : MtpFaceplateMainBase(viewModel, shapes)
   {
