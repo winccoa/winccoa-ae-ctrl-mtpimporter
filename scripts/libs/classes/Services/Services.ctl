@@ -6,6 +6,9 @@
   @author d.schermann
 */
 
+#uses "classes/Services/ServParamBaseFactory"
+#uses "classes/Services/ServParamBase"
+#uses "classes/Services/Procedure"
 #uses "classes/MtpProcedure/MtpProcedure"
 #uses "classes/MtpState/MtpState"
 #uses "classes/MtpOsLevel/MtpOsLevel"
@@ -49,6 +52,9 @@ class Services : MtpViewModelBase
   private shared_ptr<MtpOsLevel> _osLevel; //!< The operational state level of the monitored value.
   private shared_ptr<MtpState> _state; //!< The state associated with the monitored value.
   private shared_ptr<MtpProcedure> _procedure; //!< The procedure associated with the monitored value.
+
+  private vector<shared_ptr<Procedure> > _procedures;  //!< The procedures associated with the service.
+  private vector<shared_ptr<ServParamBase> > _configParameters;  //!< The config parameters associated with the service.
 
   /**
     * @brief Constructor for the Services object.
@@ -212,6 +218,19 @@ class Services : MtpViewModelBase
       throw (makeError("", PRIO_SEVERE, ERR_PARAM, (int)ErrCode::DPNOTEXISTENT, getDp() + ".numberOfProcedure"));
     }
 
+    if (!dpExists(getDp() + ".procedures"))
+    {
+      throw (makeError("", PRIO_SEVERE, ERR_PARAM, (int)ErrCode::DPNOTEXISTENT, getDp() + ".procedures"));
+    }
+
+    if (!dpExists(getDp() + ".configParameters"))
+    {
+      throw (makeError("", PRIO_SEVERE, ERR_PARAM, (int)ErrCode::DPNOTEXISTENT, getDp() + ".configParameters"));
+    }
+
+    dyn_string proceduresDPs;
+    dyn_string configParametersDPs;
+
     dpGet(getDp() + ".CommandOp", _commandOperator,
           getDp() + ".CommandEn", _commandEnabled,
           getDp() + ".PosTextID", _positionTextId,
@@ -222,7 +241,9 @@ class Services : MtpViewModelBase
           getDp() + ".SrcExtOp", _srcExternalOperator,
           getDp() + ".ProcParamApplyOp", _procParamApplyOperator,
           getDp() + ".ConfigParamApplyOp", _configParamApplyOperator,
-          getDp() + ".numberOfProcedure", _numberOfProcedure);
+          getDp() + ".numberOfProcedure", _numberOfProcedure,
+          getDp() + ".procedures", proceduresDPs,
+          getDp() + ".configParameters", configParametersDPs);
 
     dpConnect(this, setCommandInternalCB, getDp() + ".CommandInt");
     dpConnect(this, setCommandExternalCB, getDp() + ".CommandExt");
@@ -244,6 +265,16 @@ class Services : MtpViewModelBase
     _osLevel = new MtpOsLevel(getDp() + ".OSLevel");
     _state = new MtpState(getDp() + ".StateChannel", getDp() + ".StateOffAut", getDp() + ".StateOpAut", getDp() + ".StateAutAut", getDp() + ".StateOffOp", getDp() + ".StateOpOp", getDp() + ".StateAutOp", getDp() + ".StateOpAct", getDp() + ".StateAutAct", getDp() + ".StateOffAct");
     _procedure = new MtpProcedure(getDp() + ".ProcedureOp", getDp() + ".ProcedureInt", getDp() + ".ProcedureExt", getDp() + ".ProcedureCur", getDp() + ".ProcedureReq");
+
+    for (int i = 0; i < proceduresDPs.count(); i++)
+    {
+      _procedures.append(new Procedure(proceduresDPs.at(i)));
+    }
+
+    for (int i = 0; i < configParametersDPs.count(); i++)
+    {
+      _configParameters.append(ServParamBaseFactory::create(configParametersDPs.at(i)));
+    }
   }
 
 #event commandInternalChanged(const long &commandInternal) //!< Event triggered when the internal command value changes.
