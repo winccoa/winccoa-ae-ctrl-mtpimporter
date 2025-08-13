@@ -6,8 +6,8 @@
   @author d.schermann
 */
 
-#uses "classes/Services/ServParamBaseFactory"
-#uses "classes/Services/ServParamBase"
+#uses "classes/Services/ServParam/ServParamBaseFactory"
+#uses "classes/Services/ServParam/ServParamBase"
 #uses "classes/Services/Procedure"
 #uses "classes/MtpProcedure/MtpProcedure"
 #uses "classes/MtpState/MtpState"

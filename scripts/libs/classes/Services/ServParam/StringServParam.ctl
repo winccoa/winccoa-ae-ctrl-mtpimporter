@@ -6,7 +6,7 @@
   @author d.schermann
 */
 
-#uses "classes/Services/ServParamBase"
+#uses "classes/Services/ServParam/ServParamBase"
 
 /**
  * @class StringServParam

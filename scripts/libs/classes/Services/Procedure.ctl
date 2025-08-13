@@ -6,9 +6,9 @@
   @author d.schermann
 */
 
+#uses "classes/Services/ServParam/ServParamBaseFactory"
+#uses "classes/Services/ServParam/ServParamBase"
 #uses "std"
-#uses "classes/Services/ServParamBaseFactory"
-#uses "classes/Services/ServParamBase"
 
 class Procedure
 {

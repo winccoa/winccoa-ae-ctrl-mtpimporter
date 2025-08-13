@@ -6,12 +6,12 @@
   @author d.schermann
 */
 
+#uses "classes/Services/ServParam/StringServParam"
+#uses "classes/Services/ServParam/DIntServParam"
+#uses "classes/Services/ServParam/AnaServParam"
+#uses "classes/Services/ServParam/BinServParam"
+#uses "classes/Services/ServParam/ServParamBase"
 #uses "std"
-#uses "classes/Services/ServParamBase"
-#uses "classes/Services/StringServParam"
-#uses "classes/Services/DIntServParam"
-#uses "classes/Services/AnaServParam"
-#uses "classes/Services/BinServParam"
 
 class ServParamBaseFactory
 {
