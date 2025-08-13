@@ -189,10 +189,10 @@ class ServParamBase
 #event sourceInternalAutomaticChanged(const bool &sourceInternalAutomatic) //!< Event triggered when the sourceInternalAutomatic state changes.
 #event sourceInternalActiveChanged(const bool &sourceInternalActive) //!< Event triggered when the sourceInternalActive state changes.
 #event sourceExternalActiveChanged(const bool &sourceExternalActive) //!< Event triggered when the sourceExternalActive state changes.
-#event valueExternalChanged(const bool &valueExternal) //!< Event triggered when the valueExternal state changes.
-#event valueInternalChanged(const bool &valueInternal) //!< Event triggered when the valueInternal state changes.
-#event valueRequestedChanged(const bool &valueRequested) //!< Event triggered when the valueRequested state changes.
-#event valueFeedbackChanged(const bool &valueFeedback) //!< Event triggered when the valueFeedback state changes.
+#event valueExternalChanged(const anytype &valueExternal) //!< Event triggered when the valueExternal state changes.
+#event valueInternalChanged(const anytype &valueInternal) //!< Event triggered when the valueInternal state changes.
+#event valueRequestedChanged(const anytype &valueRequested) //!< Event triggered when the valueRequested state changes.
+#event valueFeedbackChanged(const anytype &valueFeedback) //!< Event triggered when the valueFeedback state changes.
 #event stateOffActiveChanged(const bool &active) //!< Event triggered when the off active state changes.
 #event stateOperatorActiveChanged(const bool &active) //!< Event triggered when the operator active state changes.
 #event stateAutomaticActiveChanged(const bool &active) //!< Event triggered when the automatic active state changes.
@@ -322,7 +322,7 @@ class ServParamBase
    * @brief Retrieves the name of the service parameter.
    * @return The name as a string.
    */
-  public string getName()
+  public langString getName()
   {
     return _name;
   }
@@ -452,9 +452,9 @@ class ServParamBase
    *
    * @param valueFeedback The new feedback value.
    */
-  protected void setValueFeedback(const anytype &_valueFeedback)
+  protected void setValueFeedback(const anytype &valueFeedback)
   {
-    _valueFeedback = _valueFeedback;
+    _valueFeedback = valueFeedback;
     dpSet(_dp + ".VFbk", _valueFeedback);
   }
 
@@ -569,7 +569,7 @@ class ServParamBase
    * @param dpe The data point element.
    * @param valueExternal The new external value.
    */
-  private void setValueExternalCB(const string &dpe, const bool &valueExternal)
+  private void setValueExternalCB(const string &dpe, const anytype &valueExternal)
   {
     _valueExternal = valueExternal;
     valueExternalChanged(_valueExternal);
@@ -582,7 +582,7 @@ class ServParamBase
    * @param dpe The data point element.
    * @param valueInternal The new internal value.
    */
-  private void setValueInternalCB(const string &dpe, const bool &valueInternal)
+  private void setValueInternalCB(const string &dpe, const anytype &valueInternal)
   {
     _valueInternal = valueInternal;
     valueInternalChanged(_valueInternal);
@@ -595,7 +595,7 @@ class ServParamBase
    * @param dpe The data point element.
    * @param valueRequested The new requested value.
    */
-  private void setValueRequestedCB(const string &dpe, const bool &valueRequested)
+  private void setValueRequestedCB(const string &dpe, const anytype &valueRequested)
   {
     _valueRequested = valueRequested;
     valueRequestedChanged(_valueRequested);
@@ -608,7 +608,7 @@ class ServParamBase
    * @param dpe The data point element.
    * @param valueFeedback The new feedback value.
    */
-  private void setValueFeedbackCB(const string &dpe, const bool &valueFeedback)
+  private void setValueFeedbackCB(const string &dpe, const anytype &valueFeedback)
   {
     _valueFeedback = valueFeedback;
     valueFeedbackChanged(_valueFeedback);

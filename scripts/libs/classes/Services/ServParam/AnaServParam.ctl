@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "std"
 #uses "classes/Services/ServParam/ServParamBase"
 
 /**
