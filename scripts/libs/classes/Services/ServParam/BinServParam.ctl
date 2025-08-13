@@ -93,30 +93,6 @@ class BinServParam : ServParamBase
   }
 
   /**
-   * @brief Sets the text representation for the false state of the binary parameter.
-   * @details Updates the false state text and writes it to the data point.
-   *
-   * @param valueStateFalseText The new false state text.
-   */
-  public void setValueStateFalseText(const string &valueStateFalseText)
-  {
-    _valueStateFalseText = valueStateFalseText;
-    dpSet(getDp() + ".VState0", _valueStateFalseText);
-  }
-
-  /**
-   * @brief Sets the text representation for the true state of the binary parameter.
-   * @details Updates the true state text and writes it to the data point.
-   *
-   * @param valueStateTrueText The new true state text.
-   */
-  public void setValueStateTrueText(const string &valueStateTrueText)
-  {
-    _valueStateTrueText = valueStateTrueText;
-    dpSet(getDp() + ".VState1", _valueStateTrueText);
-  }
-
-  /**
    * @brief Sets the external value of the binary parameter.
    * @details Updates the external value by calling the base class method.
    *
