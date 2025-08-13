@@ -1,11 +1,10 @@
 // $License: NOLICENSE
-
 /** Tests for the library: scripts/libs/classes/Services/Services.ctl.
 
-@file $relPath
-@test Unit tests for the library: scripts/libs/classes/Services/Services.ctl
-@copyright $copyright
-@author d.schermann
+   @file $relPath
+   @test Unit tests for the library: scripts/libs/classes/Services/Services.ctl
+   @copyright $copyright
+   @author d.schermann
 */
 
 //-----------------------------------------------------------------------------
@@ -29,71 +28,96 @@ class TstServices : OaTest
   private const string _Dpt = "Services";
   private const string _DptInvalidMissingCommandOp = "ServicesInvalid1";
   private const string _DptInvalidMissingStateCur = "ServicesInvalid2";
+  private const string _DptInvalidMissingCommandInt = "ServicesInvalid3";
   private const string _DpExists = "ExistingTestDatapoint";
   private const string _DpExistsInvalidMissingCommandOp = "ExistingTestDatapointInvalid1";
   private const string _DpExistsInvalidMissingStateCur = "ExistingTestDatapointInvalid2";
+  private const string _DpExistsInvalidMissingCommandInt = "ExistingTestDatapointInvalid3";
 
   private long _eventCommandInternal;
+  private long _eventCommandExternal;
   private long _eventStateCurrent;
+  private bool _eventSrcChannel;
+  private bool _eventSrcExternalAutomatic;
+  private bool _eventSrcInternalAutomatic;
+  private bool _eventSrcInternalActive;
+  private bool _eventSrcExternalActive;
+  private bool _eventProcParamApplyEnabled;
+  private bool _eventProcParamApplyExternal;
+  private bool _eventProcParamApplyInternal;
+  private bool _eventConfigParamApplyEnabled;
+  private bool _eventConfigParamApplyExternal;
+  private bool _eventConfigParamApplyInternal;
+  private bool _eventReportValueFreeze;
 
   public int setUp() override
   {
     if (dpTypes(_Dpt).count() == 0)
     {
+      DebugN("Data point type", _Dpt, "does not exist");
       return -1;
     }
 
     dpCreate(_DpExists, _Dpt);
 
+    // Create data point types for invalid cases
+    dyn_dyn_string dpes;
+    dyn_dyn_int values;
+
     // Create invalid data point type missing CommandOp
-    dyn_dyn_string dpes = makeDynAnytype(
-                            makeDynString(_DptInvalidMissingCommandOp),
-                            makeDynString("", "CommandInt"), makeDynString("", "CommandExt"),
-                            makeDynString("", "ProcedureOp"), makeDynString("", "ProcedureInt"),
-                            makeDynString("", "ProcedureExt"), makeDynString("", "StateCur"),
-                            makeDynString("", "CommandEn"), makeDynString("", "ProcedureCur"),
-                            makeDynString("", "ProcedureReq"), makeDynString("", "PosTextID"),
-                            makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
-                            makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
-                            makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
-                            makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
-                            makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
-                            makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
-                            makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
-                            makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
-                            makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
-                            makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
-                            makeDynString("", "WQC"), makeDynString("", "OSLevel"),
-                            makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
-                            makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
-                            makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
-                            makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
-                            makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"), makeDynString("", "enabled"), makeDynString("", "tagName")
-                          );
-    dyn_dyn_int values = makeDynAnytype(
-                           makeDynInt(DPEL_STRUCT),
-                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
-                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
-                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
-                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
-                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
-                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_STRING),
-                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
-                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING)
-                         );
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingCommandOp),
+             makeDynString("", "CommandInt"), makeDynString("", "CommandExt"),
+             makeDynString("", "ProcedureOp"), makeDynString("", "ProcedureInt"),
+             makeDynString("", "ProcedureExt"), makeDynString("", "StateCur"),
+             makeDynString("", "CommandEn"), makeDynString("", "ProcedureCur"),
+             makeDynString("", "ProcedureReq"), makeDynString("", "PosTextID"),
+             makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
+             makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_DPID),
+               makeDynInt(0, DPEL_DPID)
+             );
+
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingCommandOp, _DptInvalidMissingCommandOp);
 
@@ -120,10 +144,72 @@ class TstServices : OaTest
              makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
              makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
              makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
-             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"), makeDynString("", "enabled"), makeDynString("", "tagName")
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
            );
+
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStateCur, _DptInvalidMissingStateCur);
+
+    // Test missing CommandInt
+    string dptName = "ServicesInvalid_CommandInt";
+    string dpName = "ExistingTestDatapointInvalid_CommandInt";
+    dyn_dyn_string dpes = makeDynAnytype(
+                            makeDynString(dptName),
+                            makeDynString("", "CommandOp"), makeDynString("", "CommandExt"),
+                            makeDynString("", "ProcedureOp"), makeDynString("", "ProcedureInt"),
+                            makeDynString("", "ProcedureExt"), makeDynString("", "StateCur"),
+                            makeDynString("", "CommandEn"), makeDynString("", "ProcedureCur"),
+                            makeDynString("", "ProcedureReq"), makeDynString("", "PosTextID"),
+                            makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
+                            makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+                            makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+                            makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+                            makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+                            makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+                            makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+                            makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+                            makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+                            makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+                            makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+                            makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+                            makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+                            makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+                            makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+                            makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+                            makeDynString("", "enabled"), makeDynString("", "tagName"),
+                            makeDynString("", "procedures"), makeDynString("", "configParameters")
+                          );
+    dyn_dyn_int values = makeDynAnytype(
+                           makeDynInt(DPEL_STRUCT),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_DPID),
+                           makeDynInt(0, DPEL_DPID)
+                         );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingCommandInt, _DptInvalidMissingCommandInt);
 
     return OaTest::setUp();
   }
@@ -131,10 +217,13 @@ class TstServices : OaTest
   public int tearDown() override
   {
     dpDelete(_DpExists);
+    delay(0, 200);
     dpDelete(_DpExistsInvalidMissingCommandOp);
     dpTypeDelete(_DptInvalidMissingCommandOp);
+    delay(0, 200);
     dpDelete(_DpExistsInvalidMissingStateCur);
     dpTypeDelete(_DptInvalidMissingStateCur);
+    delay(0, 200);
 
     return OaTest::tearDown();
   }
@@ -193,64 +282,9 @@ class TstServices : OaTest
     }
 
     // Test missing CommandInt
-    string dptName = "ServicesInvalid_CommandInt";
-    string dpName = "ExistingTestDatapointInvalid_CommandInt";
-    dyn_dyn_string dpes = makeDynAnytype(
-                            makeDynString(dptName),
-                            makeDynString("", "CommandOp"), makeDynString("", "CommandExt"),
-                            makeDynString("", "ProcedureOp"), makeDynString("", "ProcedureInt"),
-                            makeDynString("", "ProcedureExt"), makeDynString("", "StateCur"),
-                            makeDynString("", "CommandEn"), makeDynString("", "ProcedureCur"),
-                            makeDynString("", "ProcedureReq"), makeDynString("", "PosTextID"),
-                            makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
-                            makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
-                            makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
-                            makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
-                            makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
-                            makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
-                            makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
-                            makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
-                            makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
-                            makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
-                            makeDynString("", "WQC"), makeDynString("", "OSLevel"),
-                            makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
-                            makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
-                            makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
-                            makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
-                            makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
-                            makeDynString("", "enabled"), makeDynString("", "tagName")
-                          );
-    dyn_dyn_int values = makeDynAnytype(
-                           makeDynInt(DPEL_STRUCT),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
-                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING)
-                         );
-    dpTypeCreate(dpes, values);
-    dpCreate(dpName, dptName);
-
     try
     {
-      shared_ptr<Services> services = new Services(dpName);
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingCommandInt);
       assertTrue(false, "shouldn't reach here for missing CommandInt");
     }
     catch
@@ -258,11 +292,8 @@ class TstServices : OaTest
       dyn_errClass err = getLastException();
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
       assertTrue(getErrorText(err).contains("Datapoint does not exist"));
-      assertTrue(getErrorText(err).contains(dpName + ".CommandInt"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingCommandInt + ".CommandInt"));
     }
-
-    dpDelete(dpName);
-    dpTypeDelete(dptName);
 
     // Test missing StateCur
     try
@@ -276,94 +307,6 @@ class TstServices : OaTest
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
       assertTrue(getErrorText(err).contains("Datapoint does not exist"));
       assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingStateCur + ".StateCur"));
-    }
-
-    return 0;
-  }
-
-  public int testConstructor_MissingAllDpes()
-  {
-    dyn_string dpeNames = makeDynString(
-                            "CommandExt", "ProcedureOp", "ProcedureInt", "ProcedureExt",
-                            "CommandEn", "ProcedureCur", "ProcedureReq", "PosTextID", "InteractQuestionID",
-                            "InteractAddInfo", "InteractAnswerID", "SrcChannel", "SrcExtAut", "SrcIntAut",
-                            "SrcIntOp", "SrcExtOp", "SrcIntAct", "SrcExtAct", "ProcParamApplyEn",
-                            "ProcParamApplyExt", "ProcParamApplyOp", "ProcParamApplyInt", "ConfigParamApplyEn",
-                            "ConfigParamApplyExt", "ConfigParamApplyOp", "ConfigParamApplyInt", "ReportValueFreeze",
-                            "numberOfProcedure", "WQC", "OSLevel", "StateChannel", "StateOffAut", "StateOpAut",
-                            "StateAutAut", "StateOffOp", "StateOpOp", "StateAutOp", "StateOpAct", "StateAutAct",
-                            "StateOffAct", "enabled", "tagName"
-                          );
-    dyn_int dpeTypes = makeDynAnytype(
-                         DPEL_LONG, DPEL_LONG, DPEL_LONG, DPEL_LONG,
-                         DPEL_LONG, DPEL_LONG, DPEL_LONG, DPEL_LONG, DPEL_LONG,
-                         DPEL_STRING, DPEL_LONG, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL,
-                         DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL,
-                         DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL,
-                         DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_INT, DPEL_INT,
-                         DPEL_INT, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL,
-                         DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL, DPEL_BOOL,
-                         DPEL_BOOL, DPEL_BOOL, DPEL_LANGSTRING
-                       );
-
-    for (int i = 1; i <= dynlen(dpeNames); i++)
-    {
-      string dptName = "ServicesInvalid_" + dpeNames[i];
-      string dpName = "ExistingTestDatapointInvalid_" + dpeNames[i];
-
-      // Create data point type with one DPE missing
-      dyn_dyn_string dpes = makeDynAnytype(makeDynString(dptName));
-      dyn_dyn_int values = makeDynAnytype(makeDynInt(DPEL_STRUCT));
-
-      for (int j = 1; j <= dynlen(dpeNames); j++)
-      {
-        if (j != i)
-        {
-          dynAppend(dpes, makeDynString("", dpeNames[j]));
-          dynAppend(values, makeDynInt(0, dpeTypes[j]));
-        }
-      }
-
-      // Ensure CommandOp and StateCur are included to pass initial checks
-      if (dpeNames[i] != "CommandOp")
-      {
-        dynAppend(dpes, makeDynString("", "CommandOp"));
-        dynAppend(values, makeDynInt(0, DPEL_LONG));
-      }
-
-      if (dpeNames[i] != "StateCur")
-      {
-        dynAppend(dpes, makeDynString("", "StateCur"));
-        dynAppend(values, makeDynInt(0, DPEL_LONG));
-      }
-
-      // Ensure CommandInt is included to pass its check
-      if (dpeNames[i] != "CommandInt")
-      {
-        dynAppend(dpes, makeDynString("", "CommandInt"));
-        dynAppend(values, makeDynInt(0, DPEL_LONG));
-      }
-
-      dpTypeCreate(dpes, values);
-      dpCreate(dpName, dptName);
-      delay(0, 100); // Allow system to stabilize after data point creation
-
-      try
-      {
-        shared_ptr<Services> services = new Services(dpName);
-        assertTrue(false, "shouldn't reach here for missing DPE: " + dpeNames[i]);
-      }
-      catch
-      {
-        dyn_errClass err = getLastException();
-        assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
-        assertTrue(getErrorText(err).contains("Datapoint does not exist"));
-        assertTrue(getErrorText(err).contains(dpName + "." + dpeNames[i]));
-      }
-
-      dpDelete(dpName);
-      dpTypeDelete(dptName);
-      delay(0, 100); // Allow system to stabilize after deletion
     }
 
     return 0;
@@ -383,6 +326,20 @@ class TstServices : OaTest
     return 0;
   }
 
+  public int testCommandExternalChanged()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    classConnect(this, setCommandExternalChangedCB, services, Services::commandExternalChanged);
+
+    dpSetWait(_DpExists + ".CommandExt", 150L);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    assertEqual(services.getCommandExternal(), 150L);
+    assertEqual(_eventCommandExternal, 150L);
+    return 0;
+  }
+
   public int testCurrentStateChanged()
   {
     shared_ptr<Services> services = new Services(_DpExists);
@@ -394,6 +351,174 @@ class TstServices : OaTest
     delay(0, 200);
     assertEqual(services.getCurrentState(), 200L);
     assertEqual(_eventStateCurrent, 200L);
+    return 0;
+  }
+
+  public int testSourceChannelChanged()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    classConnect(this, setSourceChannelChangedCB, services, Services::sourceChannelChanged);
+
+    dpSetWait(_DpExists + ".SrcChannel", true);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    assertTrue(services.getSrcChannel());
+    assertTrue(_eventSrcChannel);
+    return 0;
+  }
+
+  public int testSourceExternalAutomaticChanged()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    classConnect(this, setSourceExternalAutomaticChangedCB, services, Services::sourceExternalAutomaticChanged);
+
+    dpSetWait(_DpExists + ".SrcExtAut", true);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    assertTrue(services.getSrcExternalAutomatic());
+    assertTrue(_eventSrcExternalAutomatic);
+    return 0;
+  }
+
+  public int testSourceInternalAutomaticChanged()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    classConnect(this, setSourceInternalAutomaticChangedCB, services, Services::sourceInternalAutomaticChanged);
+
+    dpSetWait(_DpExists + ".SrcIntAut", true);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    assertTrue(services.getSrcInternalAutomatic());
+    assertTrue(_eventSrcInternalAutomatic);
+    return 0;
+  }
+
+  public int testSourceInternalActiveChanged()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    classConnect(this, setSourceInternalActiveChangedCB, services, Services::sourceInternalActiveChanged);
+
+    dpSetWait(_DpExists + ".SrcIntAct", true);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    assertTrue(services.getSrcInternalActive());
+    assertTrue(_eventSrcInternalActive);
+    return 0;
+  }
+
+  public int testSourceExternalActiveChanged()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    classConnect(this, setSourceExternalActiveChangedCB, services, Services::sourceExternalActiveChanged);
+
+    dpSetWait(_DpExists + ".SrcExtAct", true);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    assertTrue(services.getSrcExternalActive());
+    assertTrue(_eventSrcExternalActive);
+    return 0;
+  }
+
+  public int testProcParamApplyEnabledChanged()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    classConnect(this, setProcParamApplyEnabledChangedCB, services, Services::procParamApplyEnabledChanged);
+
+    dpSetWait(_DpExists + ".ProcParamApplyEn", true);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    assertTrue(services.getProcParamApplyEnabled());
+    assertTrue(_eventProcParamApplyEnabled);
+    return 0;
+  }
+
+  public int testProcParamApplyExternalChanged()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    classConnect(this, setProcParamApplyExternalChangedCB, services, Services::procParamApplyExternalChanged);
+
+    dpSetWait(_DpExists + ".ProcParamApplyExt", true);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    assertTrue(services.getProcParamApplyExternal());
+    assertTrue(_eventProcParamApplyExternal);
+    return 0;
+  }
+
+  public int testProcParamApplyInternalChanged()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    classConnect(this, setProcParamApplyInternalChangedCB, services, Services::procParamApplyInternalChanged);
+
+    dpSetWait(_DpExists + ".ProcParamApplyInt", true);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    assertTrue(services.getProcParamApplyInternal());
+    assertTrue(_eventProcParamApplyInternal);
+    return 0;
+  }
+
+  public int testConfigParamApplyEnabledChanged()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    classConnect(this, setConfigParamApplyEnabledChangedCB, services, Services::configParamApplyEnabledChanged);
+
+    dpSetWait(_DpExists + ".ConfigParamApplyEn", true);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    assertTrue(services.getConfigParamApplyEnabled());
+    assertTrue(_eventConfigParamApplyEnabled);
+    return 0;
+  }
+
+  public int testConfigParamApplyExternalChanged()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    classConnect(this, setConfigParamApplyExternalChangedCB, services, Services::configParamApplyExternalChanged);
+
+    dpSetWait(_DpExists + ".ConfigParamApplyExt", true);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    assertTrue(services.getConfigParamApplyExternal());
+    assertTrue(_eventConfigParamApplyExternal);
+    return 0;
+  }
+
+  public int testConfigParamApplyInternalChanged()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    classConnect(this, setConfigParamApplyInternalChangedCB, services, Services::configParamApplyInternalChanged);
+
+    dpSetWait(_DpExists + ".ConfigParamApplyInt", true);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    assertTrue(services.getConfigParamApplyInternal());
+    assertTrue(_eventConfigParamApplyInternal);
+    return 0;
+  }
+
+  public int testReportValueFreezeChanged()
+  {
+    shared_ptr<Services> services = new Services(_DpExists);
+    classConnect(this, setReportValueFreezeChangedCB, services, Services::reportValueFreezeChanged);
+
+    dpSetWait(_DpExists + ".ReportValueFreeze", true);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    assertTrue(services.getReportValueFreeze());
+    assertTrue(_eventReportValueFreeze);
     return 0;
   }
 
@@ -507,9 +632,74 @@ class TstServices : OaTest
     _eventCommandInternal = commandInternal;
   }
 
+  private void setCommandExternalChangedCB(const long &commandExternal)
+  {
+    _eventCommandExternal = commandExternal;
+  }
+
   private void setCurrentStateChangedCB(const long &stateCurrent)
   {
     _eventStateCurrent = stateCurrent;
+  }
+
+  private void setSourceChannelChangedCB(const bool &srcChannel)
+  {
+    _eventSrcChannel = srcChannel;
+  }
+
+  private void setSourceExternalAutomaticChangedCB(const bool &srcExternalAutomatic)
+  {
+    _eventSrcExternalAutomatic = srcExternalAutomatic;
+  }
+
+  private void setSourceInternalAutomaticChangedCB(const bool &srcInternalAutomatic)
+  {
+    _eventSrcInternalAutomatic = srcInternalAutomatic;
+  }
+
+  private void setSourceInternalActiveChangedCB(const bool &srcInternalActive)
+  {
+    _eventSrcInternalActive = srcInternalActive;
+  }
+
+  private void setSourceExternalActiveChangedCB(const bool &srcExternalActive)
+  {
+    _eventSrcExternalActive = srcExternalActive;
+  }
+
+  private void setProcParamApplyEnabledChangedCB(const bool &procParamApplyEnabled)
+  {
+    _eventProcParamApplyEnabled = procParamApplyEnabled;
+  }
+
+  private void setProcParamApplyExternalChangedCB(const bool &procParamApplyExternal)
+  {
+    _eventProcParamApplyExternal = procParamApplyExternal;
+  }
+
+  private void setProcParamApplyInternalChangedCB(const bool &procParamApplyInternal)
+  {
+    _eventProcParamApplyInternal = procParamApplyInternal;
+  }
+
+  private void setConfigParamApplyEnabledChangedCB(const bool &configParamApplyEnabled)
+  {
+    _eventConfigParamApplyEnabled = configParamApplyEnabled;
+  }
+
+  private void setConfigParamApplyExternalChangedCB(const bool &configParamApplyExternal)
+  {
+    _eventConfigParamApplyExternal = configParamApplyExternal;
+  }
+
+  private void setConfigParamApplyInternalChangedCB(const bool &configParamApplyInternal)
+  {
+    _eventConfigParamApplyInternal = configParamApplyInternal;
+  }
+
+  private void setReportValueFreezeChangedCB(const bool &reportValueFreeze)
+  {
+    _eventReportValueFreeze = reportValueFreeze;
   }
 };
 
