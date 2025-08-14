@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "classes/Services/Procedure"
 #uses "classes/MtpState/MtpState"
 #uses "classes/MtpOsLevel/MtpOsLevel"
 #uses "classes/MtpProcedure/MtpProcedure"
@@ -46,6 +47,8 @@ class ServicesFaceplateHome : MtpViewBase
   private bool _srcExternalActive; //!< Indicates if the external source mode is active.
   private bool _srcInternalActive; //!< Indicates if the internal source mode is active.
   private long _stateCurrent; //!< The current state value of the procedure.
+
+  private vector<shared_ptr<Procedure> > _procedures;
 
   /**
    * @brief Constructor for ServicesFaceplateHome.
@@ -123,6 +126,32 @@ class ServicesFaceplateHome : MtpViewBase
     setStopCB("_stateOperatorActive", _stateOperatorActive);
     setAbortCB("_stateOperatorActive", _stateOperatorActive);
     setResetCB("_stateOperatorActive", _stateOperatorActive);
+
+    _procedures = MtpViewBase::getViewModel().getProcedures();
+    _txtRequestedProcedure.text = "NOT_SELECTED";
+  }
+
+  public void proceduresPopUp()
+  {
+    int answer;
+    dyn_string proceduresNames;
+
+    proceduresNames.append("PUSH_BUTTON, NOT_SELECTED, 0, 1");
+
+    for (int i = 0; i < _procedures.count(); i++)
+    {
+      proceduresNames.append("PUSH_BUTTON, " + _procedures.at(i).getName() + ", " + (i + 1) + ", 1");
+    }
+
+    popupMenu(proceduresNames, answer);
+
+    if (answer == 0)
+    {
+      _txtRequestedProcedure.text = "NOT_SELECTED";
+      return;
+    }
+
+    _txtRequestedProcedure.text = _procedures.at(answer - 1).getName();
   }
 
   /**

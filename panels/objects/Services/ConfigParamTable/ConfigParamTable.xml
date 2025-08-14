@@ -43,7 +43,7 @@ public void Initialize(vector&lt;shared_ptr&lt;ServParamBase&gt; &gt; params)
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
     <prop name="Font">
-     <prop name="de_AT.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+     <prop name="de_AT.utf8">Roboto,-1,16,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular</prop>
     </prop>
     <prop name="Location">45 35</prop>
     <prop name="Size">786 226</prop>
@@ -52,7 +52,7 @@ public void Initialize(vector&lt;shared_ptr&lt;ServParamBase&gt; &gt; params)
     <prop name="SortOnClick">True</prop>
     <prop name="TabKeyCellFocus">False</prop>
     <prop name="EditOnKeyNavigation">False</prop>
-    <prop name="RowHeight">16</prop>
+    <prop name="RowHeight">31</prop>
     <prop name="RowHeaderWidth">0</prop>
     <prop name="GridType">Cross</prop>
     <prop name="VScrollBarMode">Auto</prop>
@@ -73,7 +73,7 @@ public void Initialize(vector&lt;shared_ptr&lt;ServParamBase&gt; &gt; params)
      <prop name="Name">required</prop>
      <prop name="Width">60</prop>
      <prop name="Visible">True</prop>
-     <prop name="Editable">False</prop>
+     <prop name="Editable">True</prop>
      <prop name="Label">
       <prop name="de_AT.utf8">Required</prop>
      </prop>
@@ -93,7 +93,54 @@ public void Initialize(vector&lt;shared_ptr&lt;ServParamBase&gt; &gt; params)
       <prop name="de_AT.utf8"></prop>
      </prop>
     </prop>
+    <prop name="Column">
+     <prop name="Name">unit</prop>
+     <prop name="Width">60</prop>
+     <prop name="Visible">True</prop>
+     <prop name="Editable">False</prop>
+     <prop name="Label">
+      <prop name="de_AT.utf8">Unit</prop>
+     </prop>
+     <prop name="ToolTipText">
+      <prop name="de_AT.utf8"></prop>
+     </prop>
+    </prop>
+    <prop name="Column">
+     <prop name="Name">wqc</prop>
+     <prop name="Width">60</prop>
+     <prop name="Visible">True</prop>
+     <prop name="Editable">False</prop>
+     <prop name="Label">
+      <prop name="de_AT.utf8">WQC</prop>
+     </prop>
+     <prop name="ToolTipText">
+      <prop name="de_AT.utf8"></prop>
+     </prop>
+    </prop>
+    <prop name="Column">
+     <prop name="Name">apply</prop>
+     <prop name="Width">60</prop>
+     <prop name="Visible">True</prop>
+     <prop name="Editable">False</prop>
+     <prop name="Label">
+      <prop name="de_AT.utf8">Apply</prop>
+     </prop>
+     <prop name="ToolTipText">
+      <prop name="de_AT.utf8"></prop>
+     </prop>
+    </prop>
    </properties>
+   <events>
+    <script isEscaped="1" name="Clicked"><![CDATA[main(int row, string column, anytype value, anytype oldValue)
+{
+  if(column == &quot;apply&quot; &amp;&amp; row &gt;= 0)
+  {
+    DebugTN(column, row);
+    DebugTN(_faceplate);
+    _faceplate.apply(row);
+  }
+}]]></script>
+   </events>
   </shape>
  </shapes>
 </panel>

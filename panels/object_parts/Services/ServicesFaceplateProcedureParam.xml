@@ -14,6 +14,22 @@
   <prop name="PDPI">94.11039611039611</prop>
   <prop name="layoutType">None</prop>
  </properties>
+ <events>
+  <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/Services/ServParam/ServicesFaceplateProcedureParam&quot;
+#uses &quot;classes/Services/Services&quot;
+
+shared_ptr&lt;ServicesFaceplateProcedureParam&gt; _faceplate;
+
+public void initialize(shared_ptr&lt;Services&gt; viewModel)
+{
+  mapping shapes;
+  shapes.insert(&quot;_tableRef&quot;, getShape(&quot;tableRef&quot;));
+  shapes.insert(&quot;_txtProcedure&quot;, getShape(&quot;txtProcedure&quot;));
+  shapes.insert(&quot;_rectProcedurePicker&quot;, getShape(&quot;rectProcedurePicker&quot;));
+
+  _faceplate = new ServicesFaceplateProcedureParam(viewModel, shapes);
+}]]></script>
+ </events>
  <shapes>
   <shape Name="Title_Text" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>
@@ -52,7 +68,7 @@
     <prop name="TextFormat">[0s,,,AlignLeft]</prop>
    </properties>
   </shape>
-  <reference Name="PANEL_REF1" parentSerial="-1" referenceId="0">
+  <reference Name="tableRef" parentSerial="-1" referenceId="0">
    <properties>
     <prop name="FileName">objects/Services/ConfigParamTable/ConfigParamTable.xml</prop>
     <prop name="Location">17.99999999999994 61</prop>
@@ -89,6 +105,12 @@
     <prop name="CornerRadius">0</prop>
     <prop name="Transformable">True</prop>
    </properties>
+   <events>
+    <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
+{
+  _faceplate.proceduresPopUp();
+}]]></script>
+   </events>
   </shape>
   <shape Name="txtProcedure" layerId="0" shapeType="TEXT_FIELD">
    <properties>

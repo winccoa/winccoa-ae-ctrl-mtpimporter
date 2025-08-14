@@ -14,8 +14,17 @@
   <prop name="PDPI">94.11039611039611</prop>
   <prop name="layoutType">None</prop>
  </properties>
+ <events>
+  <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/Services/Services&quot;
+
+public void initialize(shared_ptr&lt;Services&gt; viewModel)
+{
+  tableRef.Initialize(viewModel.getConfigParameters());
+}
+]]></script>
+ </events>
  <shapes>
-  <reference Name="PANEL_REF1" parentSerial="-1" referenceId="0">
+  <reference Name="tableRef" parentSerial="-1" referenceId="0">
    <properties>
     <prop name="FileName">objects/Services/ConfigParamTable/ConfigParamTable.xml</prop>
     <prop name="Location">27.5 20</prop>

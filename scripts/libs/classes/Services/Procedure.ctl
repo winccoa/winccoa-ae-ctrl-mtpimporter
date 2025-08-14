@@ -53,6 +53,6 @@ class Procedure
 
   public string getName()
   {
-    return _name;
+    return _name.text();
   }
 };

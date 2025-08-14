@@ -255,6 +255,12 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="CornerRadius">0</prop>
     <prop name="Transformable">True</prop>
    </properties>
+   <events>
+    <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
+{
+  _faceplate.proceduresPopUp();
+}]]></script>
+   </events>
   </shape>
   <shape Name="PRIMITIVE_TEXT7" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>
@@ -729,8 +735,8 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
     <prop name="Font">
-     <prop name="de_AT.utf8">MS Shell Dlg 2,8.25,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
-     <prop name="en_US.utf8">MS Shell Dlg 2,8.25,-1,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+     <prop name="de_AT.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+     <prop name="en_US.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
     </prop>
     <prop name="Location">20 304.1767896792763</prop>
     <prop name="Size">134 32</prop>

@@ -21,6 +21,14 @@ class ServParamFaceplate : MtpRefBase
     InitializeTable();
   }
 
+  public void apply(const int &rowNumber)
+  {
+    DebugTN(__FUNCTION__, rowNumber);
+    anytype required = _table.cellValueRC(rowNumber, "required");
+    shared_ptr<ServParamBase> param = _params.at(rowNumber);
+    param.setValueRequested(required);
+  }
+
   private void initializeShapes()
   {
     _table = MtpRefBase::extractShape("_table");
@@ -35,14 +43,22 @@ class ServParamFaceplate : MtpRefBase
 
     for (int i = 0; i < size; i++)
     {
-      AppendParam(_params.at(i));
+      AppendParam(i, _params.at(i));
     }
 
     _table.updatesEnabled = TRUE;
   }
 
-  private void AppendParam(shared_ptr<ServParamBase> param)
+  private void AppendParam(const int &rowNumber, shared_ptr<ServParamBase> param)
   {
-    _table.appendLine("name", param.getName(), "requested", param.getValueRequested(), "current", param.getValueFeedback());
+    _table.appendLine("name", param.getName(), "required", param.getValueRequested(), "current", param.getValueFeedback());
+    _table.cellWidgetRC(rowNumber, "apply", "PushButton", "Apply");
+    classConnectUserData(this, setCurrentCB, rowNumber, param, ServParamBase::valueFeedbackChanged);
+//     classConnectUserData(this, setWqcCB, rowNumber, param.getWqc(), MtpQualityCode::qualityGoodChanged);
+  }
+
+  private void setCurrentCB(const int &rowNumber, const anytype &value)
+  {
+    _table.cellValueRC(rowNumber, "current", value);
   }
 };
