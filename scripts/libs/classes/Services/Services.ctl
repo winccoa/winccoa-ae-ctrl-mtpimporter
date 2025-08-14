@@ -527,6 +527,16 @@ class Services : MtpViewModelBase
     return _interactionAnswerId;
   }
 
+  public vector<shared_ptr<Procedure> > getProcedures()
+  {
+    return _procedures;
+  }
+
+  public vector<shared_ptr<ServParamBase> >  getConfigParameters()
+  {
+    return _configParameters;
+  }
+
   /**
    * @brief Retrieves the quality code associated with the service.
    * @return The shared pointer to the MtpQualityCode instance.

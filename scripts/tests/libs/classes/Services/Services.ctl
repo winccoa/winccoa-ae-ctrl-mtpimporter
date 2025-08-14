@@ -29,10 +29,81 @@ class TstServices : OaTest
   private const string _DptInvalidMissingCommandOp = "ServicesInvalid1";
   private const string _DptInvalidMissingStateCur = "ServicesInvalid2";
   private const string _DptInvalidMissingCommandInt = "ServicesInvalid3";
+  private const string _DptInvalidMissingCommandExt = "ServicesInvalid4";
+  private const string _DptInvalidMissingProcedureOp = "ServicesInvalid5";
+  private const string _DptInvalidMissingProcedureInt = "ServicesInvalid6";
+  private const string _DptInvalidMissingProcedureExt = "ServicesInvalid7";
+  private const string _DptInvalidMissingCommandEn = "ServicesInvalid_CommandEn";
+  private const string _DptInvalidMissingProcedureCur = "ServicesInvalid_ProcedureCur";
+  private const string _DptInvalidMissingProcedureReq = "ServicesInvalid_ProcedureReq";
+  private const string _DptInvalidMissingPosTextID = "ServicesInvalid_PosTextID";
+  private const string _DptInvalidMissingInteractQuestionID = "ServicesInvalid_InteractQuestionID";
+  private const string _DptInvalidMissingInteractAddInfo = "ServicesInvalid_InteractAddInfo";
+  private const string _DptInvalidMissingInteractAnswerID = "ServicesInvalid_InteractAnswerID";
+  private const string _DptInvalidMissingSrcChannel = "ServicesInvalid_SrcChannel";
+  private const string _DptInvalidMissingSrcExtAut = "ServicesInvalid_SrcExtAut";
+  private const string _DptInvalidMissingSrcIntAut = "ServicesInvalid_SrcIntAut";
+  private const string _DptInvalidMissingSrcIntOp = "ServicesInvalid_SrcIntOp";
+  private const string _DptInvalidMissingSrcExtOp = "ServicesInvalid_SrcExtOp";
+  private const string _DptInvalidMissingSrcIntAct = "ServicesInvalid_SrcIntAct";
+  private const string _DptInvalidMissingSrcExtAct = "ServicesInvalid_SrcExtAct";
+  private const string _DptInvalidMissingProcParamApplyEn = "ServicesInvalid_ProcParamApplyEn";
+  private const string _DptInvalidMissingProcParamApplyExt = "ServicesInvalid_ProcParamApplyExt";
+  private const string _DptInvalidMissingProcParamApplyOp = "ServicesInvalid_ProcParamApplyOp";
+  private const string _DptInvalidMissingProcParamApplyInt = "ServicesInvalid_ProcParamApplyInt";
+  private const string _DptInvalidMissingConfigParamApplyEn = "ServicesInvalid_ConfigParamApplyEn";
+  private const string _DptInvalidMissingConfigParamApplyExt = "ServicesInvalid_ConfigParamApplyExt";
+  private const string _DptInvalidMissingConfigParamApplyOp = "ServicesInvalid_ConfigParamApplyOp";
+  private const string _DptInvalidMissingConfigParamApplyInt = "ServicesInvalid_ConfigParamApplyInt";
+  private const string _DptInvalidMissingReportValueFreeze = "ServicesInvalid_ReportValueFreeze";
+  private const string _DptInvalidMissingNumberOfProcedure = "ServicesInvalid_NumberOfProcedure";
+  private const string _DptInvalidMissingEnabled = "ServicesInvalid_Enabled";
+  private const string _DptInvalidMissingTagName = "ServicesInvalid_TagName";
+  private const string _DptInvalidMissingProcedures = "ServicesInvalid_Procedures";
+  private const string _DptInvalidMissingConfigParameters = "ServicesInvalid_ConfigParameters";
   private const string _DpExists = "ExistingTestDatapoint";
   private const string _DpExistsInvalidMissingCommandOp = "ExistingTestDatapointInvalid1";
   private const string _DpExistsInvalidMissingStateCur = "ExistingTestDatapointInvalid2";
   private const string _DpExistsInvalidMissingCommandInt = "ExistingTestDatapointInvalid3";
+  private const string _DpExistsInvalidMissingCommandExt = "ExistingTestDatapointInvalid4";
+  private const string _DpExistsInvalidMissingProcedureOp = "ExistingTestDatapointInvalid5";
+  private const string _DpExistsInvalidMissingProcedureInt = "ExistingTestDatapointInvalid6";
+  private const string _DpExistsInvalidMissingProcedureExt = "ExistingTestDatapointInvalid7";
+  private const string _DpExistsInvalidMissingCommandEn = "ExistingTestDatapointInvalid_CommandEn";
+  private const string _DpExistsInvalidMissingProcedureCur = "ExistingTestDatapointInvalid_ProcedureCur";
+  private const string _DpExistsInvalidMissingProcedureReq = "ExistingTestDatapointInvalid_ProcedureReq";
+  private const string _DpExistsInvalidMissingPosTextID = "ExistingTestDatapointInvalid_PosTextID";
+  private const string _DpExistsInvalidMissingInteractQuestionID = "ExistingTestDatapointInvalid_InteractQuestionID";
+  private const string _DpExistsInvalidMissingInteractAddInfo = "ExistingTestDatapointInvalid_InteractAddInfo";
+  private const string _DpExistsInvalidMissingInteractAnswerID = "ExistingTestDatapointInvalid_InteractAnswerID";
+  private const string _DpExistsInvalidMissingSrcChannel = "ExistingTestDatapointInvalid_SrcChannel";
+  private const string _DpExistsInvalidMissingSrcExtAut = "ExistingTestDatapointInvalid_SrcExtAut";
+  private const string _DpExistsInvalidMissingSrcIntAut = "ExistingTestDatapointInvalid_SrcIntAut";
+  private const string _DpExistsInvalidMissingSrcIntOp = "ExistingTestDatapointInvalid_SrcIntOp";
+  private const string _DpExistsInvalidMissingSrcExtOp = "ExistingTestDatapointInvalid_SrcExtOp";
+  private const string _DpExistsInvalidMissingSrcIntAct = "ExistingTestDatapointInvalid_SrcIntAct";
+  private const string _DpExistsInvalidMissingSrcExtAct = "ExistingTestDatapointInvalid_SrcExtAct";
+  private const string _DpExistsInvalidMissingProcParamApplyEn = "ExistingTestDatapointInvalid_ProcParamApplyEn";
+  private const string _DpExistsInvalidMissingProcParamApplyExt = "ExistingTestDatapointInvalid_ProcParamApplyExt";
+  private const string _DpExistsInvalidMissingProcParamApplyOp = "ExistingTestDatapointInvalid_ProcParamApplyOp";
+  private const string _DpExistsInvalidMissingProcParamApplyInt = "ExistingTestDatapointInvalid_ProcParamApplyInt";
+  private const string _DpExistsInvalidMissingConfigParamApplyEn = "ExistingTestDatapointInvalid_ConfigParamApplyEn";
+  private const string _DpExistsInvalidMissingConfigParamApplyExt = "ExistingTestDatapointInvalid_ConfigParamApplyExt";
+  private const string _DpExistsInvalidMissingConfigParamApplyOp = "ExistingTestDatapointInvalid_ConfigParamApplyOp";
+  private const string _DpExistsInvalidMissingConfigParamApplyInt = "ExistingTestDatapointInvalid_ConfigParamApplyInt";
+  private const string _DpExistsInvalidMissingReportValueFreeze = "ExistingTestDatapointInvalid_ReportValueFreeze";
+  private const string _DpExistsInvalidMissingNumberOfProcedure = "ExistingTestDatapointInvalid_NumberOfProcedure";
+  private const string _DpExistsInvalidMissingEnabled = "ExistingTestDatapointInvalid_Enabled";
+  private const string _DpExistsInvalidMissingTagName = "ExistingTestDatapointInvalid_TagName";
+  private const string _DpExistsInvalidMissingProcedures = "ExistingTestDatapointInvalid_Procedures";
+  private const string _DpExistsInvalidMissingConfigParameters = "ExistingTestDatapointInvalid_ConfigParameters";
+
+  private const string _DptProcedure = "Procedures";
+  private const string _DptServParam = "StringServParam";
+  private const string _DpProcedure1 = "Procedure_1";
+  private const string _DpProcedure2 = "Procedure_1";
+  private const string _DpConfigParam1 = "ConfigParam_1";
+  private const string _DpConfigParam2 = "ConfigParam_1";
 
   private long _eventCommandInternal;
   private long _eventCommandExternal;
@@ -58,7 +129,25 @@ class TstServices : OaTest
       return -1;
     }
 
+    if (dpTypes(_DptProcedure).count() == 0)
+    {
+      DebugN("Data point type", _DptProcedure, "does not exist");
+      return -1;
+    }
+
+    if (dpTypes(_DptServParam).count() == 0)
+    {
+      DebugN("Data point type", _DptServParam, "does not exist");
+      return -1;
+    }
+
     dpCreate(_DpExists, _Dpt);
+    dpCreate(_DpProcedure1, _DptProcedure);
+    dpCreate(_DpProcedure2, _DptProcedure);
+    dpCreate(_DpConfigParam1, _DptServParam);
+    dpCreate(_DpConfigParam2, _DptServParam);
+    dpSet(_DpExists + ".procedures", makeDynString(_DpProcedure1, _DpProcedure2));
+    dpSet(_DpExists + ".configParameters", makeDynString(_DpConfigParam1, _DpConfigParam2));
 
     // Create data point types for invalid cases
     dyn_dyn_string dpes;
@@ -114,8 +203,8 @@ class TstServices : OaTest
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_DPID),
-               makeDynInt(0, DPEL_DPID)
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
              );
 
     dpTypeCreate(dpes, values);
@@ -149,67 +238,1916 @@ class TstServices : OaTest
              makeDynString("", "procedures"), makeDynString("", "configParameters")
            );
 
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStateCur, _DptInvalidMissingStateCur);
 
     // Test missing CommandInt
-    string dptName = "ServicesInvalid_CommandInt";
-    string dpName = "ExistingTestDatapointInvalid_CommandInt";
-    dyn_dyn_string dpes = makeDynAnytype(
-                            makeDynString(dptName),
-                            makeDynString("", "CommandOp"), makeDynString("", "CommandExt"),
-                            makeDynString("", "ProcedureOp"), makeDynString("", "ProcedureInt"),
-                            makeDynString("", "ProcedureExt"), makeDynString("", "StateCur"),
-                            makeDynString("", "CommandEn"), makeDynString("", "ProcedureCur"),
-                            makeDynString("", "ProcedureReq"), makeDynString("", "PosTextID"),
-                            makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
-                            makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
-                            makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
-                            makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
-                            makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
-                            makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
-                            makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
-                            makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
-                            makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
-                            makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
-                            makeDynString("", "WQC"), makeDynString("", "OSLevel"),
-                            makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
-                            makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
-                            makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
-                            makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
-                            makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
-                            makeDynString("", "enabled"), makeDynString("", "tagName"),
-                            makeDynString("", "procedures"), makeDynString("", "configParameters")
-                          );
-    dyn_dyn_int values = makeDynAnytype(
-                           makeDynInt(DPEL_STRUCT),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
-                           makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
-                           makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
-                           makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_DPID),
-                           makeDynInt(0, DPEL_DPID)
-                         );
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingCommandInt),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandExt"),
+             makeDynString("", "ProcedureOp"), makeDynString("", "ProcedureInt"),
+             makeDynString("", "ProcedureExt"), makeDynString("", "StateCur"),
+             makeDynString("", "CommandEn"), makeDynString("", "ProcedureCur"),
+             makeDynString("", "ProcedureReq"), makeDynString("", "PosTextID"),
+             makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
+             makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
 
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingCommandInt, _DptInvalidMissingCommandInt);
+
+    // Test missing CommandExt
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingCommandExt),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "ProcedureOp"), makeDynString("", "ProcedureInt"),
+             makeDynString("", "ProcedureExt"), makeDynString("", "StateCur"),
+             makeDynString("", "CommandEn"), makeDynString("", "ProcedureCur"),
+             makeDynString("", "ProcedureReq"), makeDynString("", "PosTextID"),
+             makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
+             makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingCommandExt, _DptInvalidMissingCommandExt);
+
+    // Test missing ProcedureOp
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingProcedureOp),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureInt"),
+             makeDynString("", "ProcedureExt"), makeDynString("", "StateCur"),
+             makeDynString("", "CommandEn"), makeDynString("", "ProcedureCur"),
+             makeDynString("", "ProcedureReq"), makeDynString("", "PosTextID"),
+             makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
+             makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingProcedureOp, _DptInvalidMissingProcedureOp);
+
+    // Test missing ProcedureInt
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingProcedureInt),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureExt"), makeDynString("", "StateCur"),
+             makeDynString("", "CommandEn"), makeDynString("", "ProcedureCur"),
+             makeDynString("", "ProcedureReq"), makeDynString("", "PosTextID"),
+             makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
+             makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingProcedureInt, _DptInvalidMissingProcedureInt);
+
+// Test missing ProcedureExt
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingProcedureExt),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "StateCur"),
+             makeDynString("", "CommandEn"), makeDynString("", "ProcedureCur"),
+             makeDynString("", "ProcedureReq"), makeDynString("", "PosTextID"),
+             makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
+             makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingProcedureExt, _DptInvalidMissingProcedureExt);
+
+// Test missing CommandEn
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingCommandEn),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "ProcedureCur"),
+             makeDynString("", "ProcedureReq"), makeDynString("", "PosTextID"),
+             makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
+             makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingCommandEn, _DptInvalidMissingCommandEn);
+
+// Test missing ProcedureCur
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingProcedureCur),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureReq"), makeDynString("", "PosTextID"),
+             makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
+             makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingProcedureCur, _DptInvalidMissingProcedureCur);
+
+// Test missing ProcedureReq
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingProcedureReq),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "PosTextID"),
+             makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
+             makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingProcedureReq, _DptInvalidMissingProcedureReq);
+
+// Test missing PosTextID
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingPosTextID),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "InteractQuestionID"), makeDynString("", "InteractAddInfo"),
+             makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingPosTextID, _DptInvalidMissingPosTextID);
+
+// Test missing InteractQuestionID
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingInteractQuestionID),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractAddInfo"),
+             makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingInteractQuestionID, _DptInvalidMissingInteractQuestionID);
+
+// Test missing InteractAddInfo
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingInteractAddInfo),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAnswerID"), makeDynString("", "SrcChannel"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingInteractAddInfo, _DptInvalidMissingInteractAddInfo);
+
+// Test missing InteractAnswerID
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingInteractAnswerID),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "SrcChannel"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingInteractAnswerID, _DptInvalidMissingInteractAnswerID);
+
+    // Test missing SrcChannel
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingSrcChannel),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingSrcChannel, _DptInvalidMissingSrcChannel);
+
+    // Test missing SrcExtAut
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingSrcExtAut),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingSrcExtAut, _DptInvalidMissingSrcExtAut);
+
+    // Test missing SrcIntAut
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingSrcIntAut),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntOp"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingSrcIntAut, _DptInvalidMissingSrcIntAut);
+
+    // Test missing SrcIntOp
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingSrcIntOp),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcExtOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingSrcIntOp, _DptInvalidMissingSrcIntOp);
+
+    // Test missing SrcExtOp
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingSrcExtOp),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcIntAct"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingSrcExtOp, _DptInvalidMissingSrcExtOp);
+
+    // Test missing SrcIntAct
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingSrcIntAct),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcExtAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingSrcIntAct, _DptInvalidMissingSrcIntAct);
+
+    // Test missing SrcExtAct
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingSrcExtAct),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "ProcParamApplyEn"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingSrcExtAct, _DptInvalidMissingSrcExtAct);
+
+    // Test missing ProcParamApplyEn
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingProcParamApplyEn),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyExt"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingProcParamApplyEn, _DptInvalidMissingProcParamApplyEn);
+
+    // Test missing ProcParamApplyExt
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingProcParamApplyExt),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyEn"),
+             makeDynString("", "ProcParamApplyOp"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingProcParamApplyExt, _DptInvalidMissingProcParamApplyExt);
+
+    // Test missing ProcParamApplyOp
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingProcParamApplyOp),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyEn"),
+             makeDynString("", "ProcParamApplyExt"), makeDynString("", "ProcParamApplyInt"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingProcParamApplyOp, _DptInvalidMissingProcParamApplyOp);
+
+    // Test missing ProcParamApplyInt
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingProcParamApplyInt),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyEn"),
+             makeDynString("", "ProcParamApplyExt"), makeDynString("", "ProcParamApplyOp"),
+             makeDynString("", "ConfigParamApplyEn"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingProcParamApplyInt, _DptInvalidMissingProcParamApplyInt);
+
+    // Test missing ConfigParamApplyEn
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingConfigParamApplyEn),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyEn"),
+             makeDynString("", "ProcParamApplyExt"), makeDynString("", "ProcParamApplyOp"),
+             makeDynString("", "ProcParamApplyInt"), makeDynString("", "ConfigParamApplyExt"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingConfigParamApplyEn, _DptInvalidMissingConfigParamApplyEn);
+
+    // Test missing ConfigParamApplyExt
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingConfigParamApplyExt),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyEn"),
+             makeDynString("", "ProcParamApplyExt"), makeDynString("", "ProcParamApplyOp"),
+             makeDynString("", "ProcParamApplyInt"), makeDynString("", "ConfigParamApplyEn"),
+             makeDynString("", "ConfigParamApplyOp"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingConfigParamApplyExt, _DptInvalidMissingConfigParamApplyExt);
+
+    // Test missing ConfigParamApplyOp
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingConfigParamApplyOp),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyEn"),
+             makeDynString("", "ProcParamApplyExt"), makeDynString("", "ProcParamApplyOp"),
+             makeDynString("", "ProcParamApplyInt"), makeDynString("", "ConfigParamApplyEn"),
+             makeDynString("", "ConfigParamApplyExt"), makeDynString("", "ConfigParamApplyInt"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingConfigParamApplyOp, _DptInvalidMissingConfigParamApplyOp);
+
+    // Test missing ConfigParamApplyInt
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingConfigParamApplyInt),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyEn"),
+             makeDynString("", "ProcParamApplyExt"), makeDynString("", "ProcParamApplyOp"),
+             makeDynString("", "ProcParamApplyInt"), makeDynString("", "ConfigParamApplyEn"),
+             makeDynString("", "ConfigParamApplyExt"), makeDynString("", "ConfigParamApplyOp"),
+             makeDynString("", "ReportValueFreeze"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingConfigParamApplyInt, _DptInvalidMissingConfigParamApplyInt);
+
+    // Test missing ReportValueFreeze
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingReportValueFreeze),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyEn"),
+             makeDynString("", "ProcParamApplyExt"), makeDynString("", "ProcParamApplyOp"),
+             makeDynString("", "ProcParamApplyInt"), makeDynString("", "ConfigParamApplyEn"),
+             makeDynString("", "ConfigParamApplyExt"), makeDynString("", "ConfigParamApplyOp"),
+             makeDynString("", "ConfigParamApplyInt"), makeDynString("", "numberOfProcedure"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingReportValueFreeze, _DptInvalidMissingReportValueFreeze);
+
+    // Test missing numberOfProcedure
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingNumberOfProcedure),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyEn"),
+             makeDynString("", "ProcParamApplyExt"), makeDynString("", "ProcParamApplyOp"),
+             makeDynString("", "ProcParamApplyInt"), makeDynString("", "ConfigParamApplyEn"),
+             makeDynString("", "ConfigParamApplyExt"), makeDynString("", "ConfigParamApplyOp"),
+             makeDynString("", "ConfigParamApplyInt"), makeDynString("", "ReportValueFreeze"),
+             makeDynString("", "WQC"), makeDynString("", "OSLevel"),
+             makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"),
+             makeDynString("", "StateOffOp"), makeDynString("", "StateOpOp"),
+             makeDynString("", "StateAutOp"), makeDynString("", "StateOpAct"),
+             makeDynString("", "StateAutAct"), makeDynString("", "StateOffAct"),
+             makeDynString("", "enabled"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingNumberOfProcedure, _DptInvalidMissingNumberOfProcedure);
+
+// Test missing enabled
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingEnabled),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyEn"),
+             makeDynString("", "ProcParamApplyExt"), makeDynString("", "ProcParamApplyOp"),
+             makeDynString("", "ProcParamApplyInt"), makeDynString("", "ConfigParamApplyEn"),
+             makeDynString("", "ConfigParamApplyExt"), makeDynString("", "ConfigParamApplyOp"),
+             makeDynString("", "ConfigParamApplyInt"), makeDynString("", "ReportValueFreeze"),
+             makeDynString("", "numberOfProcedure"), makeDynString("", "WQC"),
+             makeDynString("", "OSLevel"), makeDynString("", "StateChannel"),
+             makeDynString("", "StateOffAut"), makeDynString("", "StateOpAut"),
+             makeDynString("", "StateAutAut"), makeDynString("", "StateOffOp"),
+             makeDynString("", "StateOpOp"), makeDynString("", "StateAutOp"),
+             makeDynString("", "StateOpAct"), makeDynString("", "StateAutAct"),
+             makeDynString("", "StateOffAct"), makeDynString("", "tagName"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_LANGSTRING),  makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_DPID), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingEnabled, _DptInvalidMissingEnabled);
+
+// Test missing tagName
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingTagName),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyEn"),
+             makeDynString("", "ProcParamApplyExt"), makeDynString("", "ProcParamApplyOp"),
+             makeDynString("", "ProcParamApplyInt"), makeDynString("", "ConfigParamApplyEn"),
+             makeDynString("", "ConfigParamApplyExt"), makeDynString("", "ConfigParamApplyOp"),
+             makeDynString("", "ConfigParamApplyInt"), makeDynString("", "ReportValueFreeze"),
+             makeDynString("", "numberOfProcedure"), makeDynString("", "WQC"),
+             makeDynString("", "OSLevel"), makeDynString("", "StateChannel"),
+             makeDynString("", "StateOffAut"), makeDynString("", "StateOpAut"),
+             makeDynString("", "StateAutAut"), makeDynString("", "StateOffOp"),
+             makeDynString("", "StateOpOp"), makeDynString("", "StateAutOp"),
+             makeDynString("", "StateOpAct"), makeDynString("", "StateAutAct"),
+             makeDynString("", "StateOffAct"), makeDynString("", "enabled"),
+             makeDynString("", "procedures"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_DPID),  makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingTagName, _DptInvalidMissingTagName);
+
+// Test missing procedures
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingProcedures),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyEn"),
+             makeDynString("", "ProcParamApplyExt"), makeDynString("", "ProcParamApplyOp"),
+             makeDynString("", "ProcParamApplyInt"), makeDynString("", "ConfigParamApplyEn"),
+             makeDynString("", "ConfigParamApplyExt"), makeDynString("", "ConfigParamApplyOp"),
+             makeDynString("", "ConfigParamApplyInt"), makeDynString("", "ReportValueFreeze"),
+             makeDynString("", "numberOfProcedure"), makeDynString("", "WQC"),
+             makeDynString("", "OSLevel"), makeDynString("", "StateChannel"),
+             makeDynString("", "StateOffAut"), makeDynString("", "StateOpAut"),
+             makeDynString("", "StateAutAut"), makeDynString("", "StateOffOp"),
+             makeDynString("", "StateOpOp"), makeDynString("", "StateAutOp"),
+             makeDynString("", "StateOpAct"), makeDynString("", "StateAutAct"),
+             makeDynString("", "StateOffAct"), makeDynString("", "enabled"),
+             makeDynString("", "tagName"), makeDynString("", "configParameters")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL),  makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_LANGSTRING), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingProcedures, _DptInvalidMissingProcedures);
+
+// Test missing configParameters
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingConfigParameters),
+             makeDynString("", "CommandOp"), makeDynString("", "CommandInt"),
+             makeDynString("", "CommandExt"), makeDynString("", "ProcedureOp"),
+             makeDynString("", "ProcedureInt"), makeDynString("", "ProcedureExt"),
+             makeDynString("", "StateCur"), makeDynString("", "CommandEn"),
+             makeDynString("", "ProcedureCur"), makeDynString("", "ProcedureReq"),
+             makeDynString("", "PosTextID"), makeDynString("", "InteractQuestionID"),
+             makeDynString("", "InteractAddInfo"), makeDynString("", "InteractAnswerID"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"),
+             makeDynString("", "SrcIntAut"), makeDynString("", "SrcIntOp"),
+             makeDynString("", "SrcExtOp"), makeDynString("", "SrcIntAct"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "ProcParamApplyEn"),
+             makeDynString("", "ProcParamApplyExt"), makeDynString("", "ProcParamApplyOp"),
+             makeDynString("", "ProcParamApplyInt"), makeDynString("", "ConfigParamApplyEn"),
+             makeDynString("", "ConfigParamApplyExt"), makeDynString("", "ConfigParamApplyOp"),
+             makeDynString("", "ConfigParamApplyInt"), makeDynString("", "ReportValueFreeze"),
+             makeDynString("", "numberOfProcedure"), makeDynString("", "WQC"),
+             makeDynString("", "OSLevel"), makeDynString("", "StateChannel"),
+             makeDynString("", "StateOffAut"), makeDynString("", "StateOpAut"),
+             makeDynString("", "StateAutAut"), makeDynString("", "StateOffOp"),
+             makeDynString("", "StateOpOp"), makeDynString("", "StateAutOp"),
+             makeDynString("", "StateOpAct"), makeDynString("", "StateAutAct"),
+             makeDynString("", "StateOffAct"), makeDynString("", "enabled"),
+             makeDynString("", "tagName"), makeDynString("", "procedures")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_LONG), makeDynString(0, DPEL_LONG),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LONG),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_LANGSTRING), makeDynInt(0, DPEL_DPID)
+             );
+
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingConfigParameters, _DptInvalidMissingConfigParameters);
 
     return OaTest::setUp();
   }
@@ -223,6 +2161,105 @@ class TstServices : OaTest
     delay(0, 200);
     dpDelete(_DpExistsInvalidMissingStateCur);
     dpTypeDelete(_DptInvalidMissingStateCur);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingCommandInt);
+    dpTypeDelete(_DptInvalidMissingCommandInt);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingCommandExt);
+    dpTypeDelete(_DptInvalidMissingCommandExt);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingProcedureOp);
+    dpTypeDelete(_DptInvalidMissingProcedureOp);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingProcedureInt);
+    dpTypeDelete(_DptInvalidMissingProcedureInt);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingProcedureExt);
+    dpTypeDelete(_DptInvalidMissingProcedureExt);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingCommandEn);
+    dpTypeDelete(_DptInvalidMissingCommandEn);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingProcedureCur);
+    dpTypeDelete(_DptInvalidMissingProcedureCur);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingProcedureReq);
+    dpTypeDelete(_DptInvalidMissingProcedureReq);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingPosTextID);
+    dpTypeDelete(_DptInvalidMissingPosTextID);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingInteractQuestionID);
+    dpTypeDelete(_DptInvalidMissingInteractQuestionID);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingInteractAddInfo);
+    dpTypeDelete(_DptInvalidMissingInteractAddInfo);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingInteractAnswerID);
+    dpTypeDelete(_DptInvalidMissingInteractAnswerID);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingSrcChannel);
+    dpTypeDelete(_DptInvalidMissingSrcChannel);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingSrcExtAut);
+    dpTypeDelete(_DptInvalidMissingSrcExtAut);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingSrcIntAut);
+    dpTypeDelete(_DptInvalidMissingSrcIntAut);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingSrcIntOp);
+    dpTypeDelete(_DptInvalidMissingSrcIntOp);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingSrcExtOp);
+    dpTypeDelete(_DptInvalidMissingSrcExtOp);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingSrcIntAct);
+    dpTypeDelete(_DptInvalidMissingSrcIntAct);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingSrcExtAct);
+    dpTypeDelete(_DptInvalidMissingSrcExtAct);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingProcParamApplyEn);
+    dpTypeDelete(_DptInvalidMissingProcParamApplyEn);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingProcParamApplyExt);
+    dpTypeDelete(_DptInvalidMissingProcParamApplyExt);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingProcParamApplyOp);
+    dpTypeDelete(_DptInvalidMissingProcParamApplyOp);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingProcParamApplyInt);
+    dpTypeDelete(_DptInvalidMissingProcParamApplyInt);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingConfigParamApplyEn);
+    dpTypeDelete(_DptInvalidMissingConfigParamApplyEn);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingConfigParamApplyExt);
+    dpTypeDelete(_DptInvalidMissingConfigParamApplyExt);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingConfigParamApplyOp);
+    dpTypeDelete(_DptInvalidMissingConfigParamApplyOp);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingConfigParamApplyInt);
+    dpTypeDelete(_DptInvalidMissingConfigParamApplyInt);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingReportValueFreeze);
+    dpTypeDelete(_DptInvalidMissingReportValueFreeze);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingNumberOfProcedure);
+    dpTypeDelete(_DptInvalidMissingNumberOfProcedure);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingEnabled);
+    dpTypeDelete(_DptInvalidMissingEnabled);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingTagName);
+    dpTypeDelete(_DptInvalidMissingTagName);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingProcedures);
+    dpTypeDelete(_DptInvalidMissingProcedures);
+    delay(0, 200);
+    dpDelete(_DpExistsInvalidMissingConfigParameters);
+    dpTypeDelete(_DptInvalidMissingConfigParameters);
     delay(0, 200);
 
     return OaTest::tearDown();
@@ -241,27 +2278,29 @@ class TstServices : OaTest
     assertEqual(services.getInteractionQuestionId(), 0L);
     assertEqual(services.getInteractionAdditionalInfo(), "");
     assertEqual(services.getInteractionAnswerId(), 0L);
-    assertFalse(services.getSrcChannel());
-    assertFalse(services.getSrcExternalAutomatic());
-    assertFalse(services.getSrcInternalAutomatic());
-    assertFalse(services.getSrcInternalOperator());
-    assertFalse(services.getSrcExternalOperator());
-    assertFalse(services.getSrcInternalActive());
-    assertFalse(services.getSrcExternalActive());
-    assertFalse(services.getProcParamApplyEnabled());
-    assertFalse(services.getProcParamApplyExternal());
-    assertFalse(services.getProcParamApplyOperator());
-    assertFalse(services.getProcParamApplyInternal());
-    assertFalse(services.getConfigParamApplyEnabled());
-    assertFalse(services.getConfigParamApplyExternal());
-    assertFalse(services.getConfigParamApplyOperator());
-    assertFalse(services.getConfigParamApplyInternal());
-    assertFalse(services.getReportValueFreeze());
+    assertEqual(services.getSrcChannel(), false);
+    assertEqual(services.getSrcExternalAutomatic(), false);
+    assertEqual(services.getSrcInternalAutomatic(), false);
+    assertEqual(services.getSrcInternalOperator(), false);
+    assertEqual(services.getSrcExternalOperator(), false);
+    assertEqual(services.getSrcInternalActive(), false);
+    assertEqual(services.getSrcExternalActive(), false);
+    assertEqual(services.getProcParamApplyEnabled(), false);
+    assertEqual(services.getProcParamApplyExternal(), false);
+    assertEqual(services.getProcParamApplyOperator(), false);
+    assertEqual(services.getProcParamApplyInternal(), false);
+    assertEqual(services.getConfigParamApplyEnabled(), false);
+    assertEqual(services.getConfigParamApplyExternal(), false);
+    assertEqual(services.getConfigParamApplyOperator(), false);
+    assertEqual(services.getConfigParamApplyInternal(), false);
+    assertEqual(services.getReportValueFreeze(), false);
     assertEqual(services.getNumberOfProcedure(), 0);
     assertTrue(services.getWqc() != nullptr);
     assertTrue(services.getOsLevel() != nullptr);
     assertTrue(services.getState() != nullptr);
     assertTrue(services.getProcedure() != nullptr);
+    assertEqual(services.getProcedures().count(), 2);
+    assertEqual(services.getConfigParameters().count(), 2);
     return 0;
   }
 
@@ -295,6 +2334,20 @@ class TstServices : OaTest
       assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingCommandInt + ".CommandInt"));
     }
 
+    // Test missing CommandExt
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingCommandExt);
+      assertTrue(false, "shouldn't reach here for missing CommandExt");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingCommandExt + ".CommandExt"));
+    }
+
     // Test missing StateCur
     try
     {
@@ -307,6 +2360,440 @@ class TstServices : OaTest
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
       assertTrue(getErrorText(err).contains("Datapoint does not exist"));
       assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingStateCur + ".StateCur"));
+    }
+
+    // Test missing ProcedureOp
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingProcedureOp);
+      assertTrue(false, "shouldn't reach here for missing ProcedureOp");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingProcedureOp + ".ProcedureOp"));
+    }
+
+    // Test missing ProcedureInt
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingProcedureInt);
+      assertTrue(false, "shouldn't reach here for missing ProcedureInt");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingProcedureInt + ".ProcedureInt"));
+    }
+
+    // Test missing ProcedureExt
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingProcedureExt);
+      assertTrue(false, "shouldn't reach here for missing ProcedureExt");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingProcedureExt + ".ProcedureExt"));
+    }
+
+    // Test missing CommandEn
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingCommandEn);
+      assertTrue(false, "shouldn't reach here for missing CommandEn");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingCommandEn + ".CommandEn"));
+    }
+
+    // Test missing ProcedureCur
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingProcedureCur);
+      assertTrue(false, "shouldn't reach here for missing ProcedureCur");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingProcedureCur + ".ProcedureCur"));
+    }
+
+    // Test missing ProcedureReq
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingProcedureReq);
+      assertTrue(false, "shouldn't reach here for missing ProcedureReq");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingProcedureReq + ".ProcedureReq"));
+    }
+
+    // Test missing PosTextID
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingPosTextID);
+      assertTrue(false, "shouldn't reach here for missing PosTextID");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingPosTextID + ".PosTextID"));
+    }
+
+    // Test missing InteractQuestionID
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingInteractQuestionID);
+      assertTrue(false, "shouldn't reach here for missing InteractQuestionID");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingInteractQuestionID + ".InteractQuestionID"));
+    }
+
+    // Test missing InteractAddInfo
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingInteractAddInfo);
+      assertTrue(false, "shouldn't reach here for missing InteractAddInfo");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingInteractAddInfo + ".InteractAddInfo"));
+    }
+
+    // Test missing InteractAnswerID
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingInteractAnswerID);
+      assertTrue(false, "shouldn't reach here for missing InteractAnswerID");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingInteractAnswerID + ".InteractAnswerID"));
+    }
+
+    // Test missing SrcChannel
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingSrcChannel);
+      assertTrue(false, "shouldn't reach here for missing SrcChannel");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingSrcChannel + ".SrcChannel"));
+    }
+
+    // Test missing SrcExtAut
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingSrcExtAut);
+      assertTrue(false, "shouldn't reach here for missing SrcExtAut");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingSrcExtAut + ".SrcExtAut"));
+    }
+
+    // Test missing SrcIntAut
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingSrcIntAut);
+      assertTrue(false, "shouldn't reach here for missing SrcIntAut");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingSrcIntAut + ".SrcIntAut"));
+    }
+
+    // Test missing SrcIntOp
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingSrcIntOp);
+      assertTrue(false, "shouldn't reach here for missing SrcIntOp");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingSrcIntOp + ".SrcIntOp"));
+    }
+
+    // Test missing SrcExtOp
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingSrcExtOp);
+      assertTrue(false, "shouldn't reach here for missing SrcExtOp");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingSrcExtOp + ".SrcExtOp"));
+    }
+
+    // Test missing SrcIntAct
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingSrcIntAct);
+      assertTrue(false, "shouldn't reach here for missing SrcIntAct");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingSrcIntAct + ".SrcIntAct"));
+    }
+
+    // Test missing SrcExtAct
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingSrcExtAct);
+      assertTrue(false, "shouldn't reach here for missing SrcExtAct");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingSrcExtAct + ".SrcExtAct"));
+    }
+
+    // Test missing ProcParamApplyEn
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingProcParamApplyEn);
+      assertTrue(false, "shouldn't reach here for missing ProcParamApplyEn");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingProcParamApplyEn + ".ProcParamApplyEn"));
+    }
+
+    // Test missing ProcParamApplyExt
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingProcParamApplyExt);
+      assertTrue(false, "shouldn't reach here for missing ProcParamApplyExt");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingProcParamApplyExt + ".ProcParamApplyExt"));
+    }
+
+    // Test missing ProcParamApplyOp
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingProcParamApplyOp);
+      assertTrue(false, "shouldn't reach here for missing ProcParamApplyOp");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingProcParamApplyOp + ".ProcParamApplyOp"));
+    }
+
+    // Test missing ProcParamApplyInt
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingProcParamApplyInt);
+      assertTrue(false, "shouldn't reach here for missing ProcParamApplyInt");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingProcParamApplyInt + ".ProcParamApplyInt"));
+    }
+
+    // Test missing ConfigParamApplyEn
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingConfigParamApplyEn);
+      assertTrue(false, "shouldn't reach here for missing ConfigParamApplyEn");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingConfigParamApplyEn + ".ConfigParamApplyEn"));
+    }
+
+    // Test missing ConfigParamApplyExt
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingConfigParamApplyExt);
+      assertTrue(false, "shouldn't reach here for missing ConfigParamApplyExt");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingConfigParamApplyExt + ".ConfigParamApplyExt"));
+    }
+
+    // Test missing ConfigParamApplyOp
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingConfigParamApplyOp);
+      assertTrue(false, "shouldn't reach here for missing ConfigParamApplyOp");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingConfigParamApplyOp + ".ConfigParamApplyOp"));
+    }
+
+    // Test missing ConfigParamApplyInt
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingConfigParamApplyInt);
+      assertTrue(false, "shouldn't reach here for missing ConfigParamApplyInt");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingConfigParamApplyInt + ".ConfigParamApplyInt"));
+    }
+
+    // Test missing ReportValueFreeze
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingReportValueFreeze);
+      assertTrue(false, "shouldn't reach here for missing ReportValueFreeze");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingReportValueFreeze + ".ReportValueFreeze"));
+    }
+
+    // Test missing numberOfProcedure
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingNumberOfProcedure);
+      assertTrue(false, "shouldn't reach here for missing numberOfProcedure");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingNumberOfProcedure + ".numberOfProcedure"));
+    }
+
+    // Test missing enabled
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingEnabled);
+      assertTrue(false, "shouldn't reach here for missing enabled");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingEnabled + ".enabled"));
+    }
+
+    // Test missing tagName
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingTagName);
+      assertTrue(false, "shouldn't reach here for missing tagName");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingTagName + ".tagName"));
+    }
+
+    // Test missing procedures
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingProcedures);
+      assertTrue(false, "shouldn't reach here for missing procedures");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingProcedures + ".procedures"));
+    }
+
+    // Test missing configParameters
+    try
+    {
+      shared_ptr<Services> services = new Services(_DpExistsInvalidMissingConfigParameters);
+      assertTrue(false, "shouldn't reach here for missing configParameters");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT);
+      assertTrue(getErrorText(err).contains("Datapoint does not exist"));
+      assertTrue(getErrorText(err).contains(_DpExistsInvalidMissingConfigParameters + ".configParameters"));
     }
 
     return 0;
