@@ -4,7 +4,7 @@
   <prop name="Name">
    <prop name="de_AT.utf8"></prop>
   </prop>
-  <prop name="Size">889 432</prop>
+  <prop name="Size">869 432</prop>
   <prop name="BackColor">_3DFace</prop>
   <prop name="RefPoint">45 35</prop>
   <prop name="InitAndTermRef">True</prop>
@@ -135,8 +135,6 @@ public void Initialize(vector&lt;shared_ptr&lt;ServParamBase&gt; &gt; params)
 {
   if(column == &quot;apply&quot; &amp;&amp; row &gt;= 0)
   {
-    DebugTN(column, row);
-    DebugTN(_faceplate);
     _faceplate.apply(row);
   }
 }]]></script>

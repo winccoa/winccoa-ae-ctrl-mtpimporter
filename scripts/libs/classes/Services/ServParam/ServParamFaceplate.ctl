@@ -6,6 +6,7 @@
   @author m.woegrath
 */
 
+#uses "classes/MtpQualityCode/MtpQualityCode"
 #uses "classes/MtpRef/MtpRefBase"
 #uses "classes/Services/ServParam/ServParamBase"
 
@@ -23,7 +24,6 @@ class ServParamFaceplate : MtpRefBase
 
   public void apply(const int &rowNumber)
   {
-    DebugTN(__FUNCTION__, rowNumber);
     anytype required = _table.cellValueRC(rowNumber, "required");
     shared_ptr<ServParamBase> param = _params.at(rowNumber);
     param.setValueRequested(required);
@@ -51,14 +51,27 @@ class ServParamFaceplate : MtpRefBase
 
   private void AppendParam(const int &rowNumber, shared_ptr<ServParamBase> param)
   {
-    _table.appendLine("name", param.getName(), "required", param.getValueRequested(), "current", param.getValueFeedback());
+    _table.appendLine("name", param.getName(), "required", param.getValueRequested(), "current", param.getValueFeedback(), "wqc", param.getWqc());
     _table.cellWidgetRC(rowNumber, "apply", "PushButton", "Apply");
     classConnectUserData(this, setCurrentCB, rowNumber, param, ServParamBase::valueFeedbackChanged);
-//     classConnectUserData(this, setWqcCB, rowNumber, param.getWqc(), MtpQualityCode::qualityGoodChanged);
+    classConnectUserData(this, setWqcCB, rowNumber, param.getWqc(), MtpQualityCode::qualityGoodChanged);
+    setWqcCB(rowNumber, param.getWqc().getQualityGood());
   }
 
   private void setCurrentCB(const int &rowNumber, const anytype &value)
   {
     _table.cellValueRC(rowNumber, "current", value);
+  }
+
+  private void setWqcCB(const int &rowNumber, const anytype &value)
+  {
+    if (value)
+    {
+      _table.cellFillRC(rowNumber, "wqc", "[pattern,[fit,any,MTP_Icones/GreyOk.svg]]");
+    }
+    else
+    {
+      _table.cellFillRC(rowNumber, "wqc", "[pattern,[fit,any,MTP_Icones/MTP_Icones/Close.svg]]");
+    }
   }
 };
