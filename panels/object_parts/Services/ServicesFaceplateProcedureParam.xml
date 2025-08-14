@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="de_AT.utf8"></prop>
+  </prop>
+  <prop name="Size">840 437</prop>
+  <prop name="BackColor">_3DFace</prop>
+  <prop name="RefPoint">18 22.00000000000004</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">96</prop>
+  <prop name="PDPI">94.11039611039611</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <shapes>
+  <shape Name="Title_Text" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">2</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">500 20.00000000000004</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">500 20.00000000000004</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">Prozedur</prop>
+     <prop name="en_US.utf8">Procedure</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+  <reference Name="PANEL_REF1" parentSerial="-1" referenceId="0">
+   <properties>
+    <prop name="FileName">objects/Services/ConfigParamTable/ConfigParamTable.xml</prop>
+    <prop name="Location">17.99999999999994 61</prop>
+    <prop name="Geometry">1.019108280254777 0 0 1.622222222222222 -0.3439490445859861 -37.95555555555556</prop>
+    <prop name="TabOrder">2</prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+  <shape Name="rectProcedurePicker" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">4</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">183.5 79.14615384615388</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">3</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Information.svg]]</prop>
+    <prop name="Geometry">0.8910836762688614 0 0 0.5561755952380953 630.8724279835391 -19.25113070762915</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">183.5 79.14615384615388</prop>
+    <prop name="Size">27.5 16.85384615384612</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="txtProcedure" layerId="0" shapeType="TEXT_FIELD">
+   <properties>
+    <prop name="serialId">5</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">604 23.67678967927628</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_WindowText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">4</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+     <prop name="en_US.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+    </prop>
+    <prop name="Location">604 13.67678967927628</prop>
+    <prop name="Size">178 32</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Editable">False</prop>
+    <prop name="ClearButtonEnabled">False</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+    <prop name="AllowEmptyNumeric">False</prop>
+    <prop name="ulcClientSideWidget">False</prop>
+   </properties>
+  </shape>
+ </shapes>
+</panel>

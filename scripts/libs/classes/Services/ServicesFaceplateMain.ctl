@@ -38,6 +38,8 @@ class ServicesFaceplateMain : MtpFaceplateMainBase
     vector<shared_ptr<MtpNavigationButton> > buttons = MtpFaceplateMainBase::getNavigationButtons();
 
     buttons.append(new MtpNavigationButton("MTP_Icones/Home.svg", "Home", "object_parts/Services/ServicesFaceplateHome.xml"));
+    buttons.append(new MtpNavigationButton("MTP_Icones/ConfigParam.svg", "ConfigParams", "object_parts/Services/ServicesFaceplateConfigParam.xml"));
+    buttons.append(new MtpNavigationButton("MTP_Icones/Procedures.svg", "Procedures", "object_parts/Services/ServicesFaceplateProcedureParam.xml"));
 
     return buttons;
   }

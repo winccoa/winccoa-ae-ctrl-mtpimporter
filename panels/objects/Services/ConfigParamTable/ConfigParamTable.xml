@@ -70,12 +70,12 @@ public void Initialize(vector&lt;shared_ptr&lt;ServParamBase&gt; &gt; params)
      </prop>
     </prop>
     <prop name="Column">
-     <prop name="Name">requested</prop>
+     <prop name="Name">required</prop>
      <prop name="Width">60</prop>
      <prop name="Visible">True</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
-      <prop name="de_AT.utf8">Requested</prop>
+      <prop name="de_AT.utf8">Required</prop>
      </prop>
      <prop name="ToolTipText">
       <prop name="de_AT.utf8"></prop>

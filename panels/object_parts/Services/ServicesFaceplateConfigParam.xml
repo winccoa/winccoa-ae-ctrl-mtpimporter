@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="de_AT.utf8"></prop>
+  </prop>
+  <prop name="Size">840 437</prop>
+  <prop name="BackColor">_3DFace</prop>
+  <prop name="RefPoint">27.5 20</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">96</prop>
+  <prop name="PDPI">94.11039611039611</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <shapes>
+  <reference Name="PANEL_REF1" parentSerial="-1" referenceId="0">
+   <properties>
+    <prop name="FileName">objects/Services/ConfigParamTable/ConfigParamTable.xml</prop>
+    <prop name="Location">27.5 20</prop>
+    <prop name="Geometry">1.017834394904459 0 0 1.755555555555556 -7.990445859872607 -15.11111111111111</prop>
+    <prop name="TabOrder">0</prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+ </shapes>
+</panel>
