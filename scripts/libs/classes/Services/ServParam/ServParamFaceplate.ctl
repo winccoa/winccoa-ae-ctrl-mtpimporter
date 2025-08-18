@@ -67,11 +67,11 @@ class ServParamFaceplate : MtpRefBase
   {
     if (value)
     {
-      _table.cellFillRC(rowNumber, "wqc", "[pattern,[fit,any,MTP_Icones/GreyOk.svg]]");
+      _table.cellFillRC(rowNumber, "wqc", "[pattern,[fit,any,MTP_Icones/GreyOk_smaller.svg]]");
     }
     else
     {
-      _table.cellFillRC(rowNumber, "wqc", "[pattern,[fit,any,MTP_Icones/MTP_Icones/Close.svg]]");
+      _table.cellFillRC(rowNumber, "wqc", "[pattern,[fit,any,MTP_Icones/Close_smaller.svg]]");
     }
   }
 };

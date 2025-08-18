@@ -52,14 +52,14 @@ public void Initialize(vector&lt;shared_ptr&lt;ServParamBase&gt; &gt; params)
     <prop name="SortOnClick">True</prop>
     <prop name="TabKeyCellFocus">False</prop>
     <prop name="EditOnKeyNavigation">False</prop>
-    <prop name="RowHeight">31</prop>
+    <prop name="RowHeight">45</prop>
     <prop name="RowHeaderWidth">0</prop>
-    <prop name="GridType">Cross</prop>
+    <prop name="GridType">Horizontal</prop>
     <prop name="VScrollBarMode">Auto</prop>
     <prop name="HScrollBarMode">Auto</prop>
     <prop name="Column">
      <prop name="Name">name</prop>
-     <prop name="Width">60</prop>
+     <prop name="Width">100</prop>
      <prop name="Visible">True</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
@@ -71,7 +71,7 @@ public void Initialize(vector&lt;shared_ptr&lt;ServParamBase&gt; &gt; params)
     </prop>
     <prop name="Column">
      <prop name="Name">required</prop>
-     <prop name="Width">60</prop>
+     <prop name="Width">100</prop>
      <prop name="Visible">True</prop>
      <prop name="Editable">True</prop>
      <prop name="Label">
@@ -83,7 +83,7 @@ public void Initialize(vector&lt;shared_ptr&lt;ServParamBase&gt; &gt; params)
     </prop>
     <prop name="Column">
      <prop name="Name">current</prop>
-     <prop name="Width">60</prop>
+     <prop name="Width">100</prop>
      <prop name="Visible">True</prop>
      <prop name="Editable">False</prop>
      <prop name="Label">
