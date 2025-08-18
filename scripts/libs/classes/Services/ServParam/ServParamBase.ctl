@@ -306,7 +306,7 @@ class ServParamBase
    */
   protected anytype getValueRequested()
   {
-    return _valueRequested;
+   return _valueRequested;
   }
 
   /**

@@ -6,6 +6,7 @@
   @author m.woegrath
 */
 
+#uses "classes/Services/ServParam/ServParamNumberRef"
 #uses "classes/MtpQualityCode/MtpQualityCode"
 #uses "classes/MtpRef/MtpRefBase"
 #uses "classes/Services/ServParam/ServParamBase"
@@ -13,65 +14,50 @@
 class ServParamFaceplate : MtpRefBase
 {
   private vector<shared_ptr<ServParamBase> > _params;
-  private shape _table;
+  private string _layout = "Layout";
+  private shape _panel;
 
   public ServParamFaceplate(vector<shared_ptr<ServParamBase> > params, const mapping &shapes) : MtpRefBase(shapes)
   {
     _params = params;
-
     InitializeTable();
-  }
-
-  public void apply(const int &rowNumber)
-  {
-    anytype required = _table.cellValueRC(rowNumber, "required");
-    shared_ptr<ServParamBase> param = _params.at(rowNumber);
-    param.setValueRequested(required);
   }
 
   private void initializeShapes()
   {
-    _table = MtpRefBase::extractShape("_table");
+    _panel = MtpRefBase::extractShape("_panel");
   }
 
   private void InitializeTable()
   {
-    _table.updatesEnabled = FALSE;
-    _table.deleteAllLines();
-
     int size = _params.count();
 
     for (int i = 0; i < size; i++)
     {
       AppendParam(i, _params.at(i));
     }
-
-    _table.updatesEnabled = TRUE;
   }
 
   private void AppendParam(const int &rowNumber, shared_ptr<ServParamBase> param)
   {
-    _table.appendLine("name", param.getName(), "required", param.getValueRequested(), "current", param.getValueFeedback(), "wqc", param.getWqc());
-    _table.cellWidgetRC(rowNumber, "apply", "PushButton", "Apply");
-    classConnectUserData(this, setCurrentCB, rowNumber, param, ServParamBase::valueFeedbackChanged);
-    classConnectUserData(this, setWqcCB, rowNumber, param.getWqc(), MtpQualityCode::qualityGoodChanged);
-    setWqcCB(rowNumber, param.getWqc().getQualityGood());
-  }
+    string referencePanel  = "";
 
-  private void setCurrentCB(const int &rowNumber, const anytype &value)
-  {
-    _table.cellValueRC(rowNumber, "current", value);
-  }
+    switch (getType(param.getValueFeedback()))
+    {
+      case BOOL_VAR:
+        referencePanel = "objects/Services/ServiceParamBoolean.xml";
+        break;
 
-  private void setWqcCB(const int &rowNumber, const anytype &value)
-  {
-    if (value)
-    {
-      _table.cellFillRC(rowNumber, "wqc", "[pattern,[fit,any,MTP_Icones/GreyOk_smaller.svg]]");
+      case STRING_VAR:
+        referencePanel = "objects/Services/ServiceParamString.xml";
+        break;
+
+      case INT_VAR:
+        referencePanel = "objects/Services/ServiceParamNumber.xml";
+        break;
     }
-    else
-    {
-      _table.cellFillRC(rowNumber, "wqc", "[pattern,[fit,any,MTP_Icones/Close_smaller.svg]]");
-    }
+
+    addSymbol(_panel, referencePanel, rowNumber, rowNumber, _layout, makeDynString());
+    invokeMethod(rowNumber, "initialize", param);
   }
 };
