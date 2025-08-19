@@ -15,24 +15,33 @@ class ServicesFaceplateProcedureParam : MtpViewBase
 {
   private shape _txtProcedure;
   private shape _rectProcedurePicker;
-  private shape _tableRef;
+  private string _layout = "Layout";
+  private shape _panel;
 
   private vector<shared_ptr<Procedure> > _procedures;
-  vector<shared_ptr<ServParamBase> > empty;
+  private vector<shared_ptr<ServParamBase> > _params;
+  private vector<shared_ptr<ServParamBase> > _empty;
+  private vector<shape> _paramsShapes;
 
   public ServicesFaceplateProcedureParam(shared_ptr<Services> viewModel, const mapping &shapes) : MtpViewBase(viewModel, shapes)
   {
     _procedures = MtpViewBase::getViewModel().getProcedures();
-
-    _tableRef.Initialize(empty);
     _txtProcedure.text = "NOT_SELECTED";
   }
 
   protected void initializeShapes() override
   {
-    _tableRef = MtpViewBase::extractShape("_tableRef");
+    _panel = MtpRefBase::extractShape("_panel");
     _rectProcedurePicker = MtpViewBase::extractShape("_rectProcedurePicker");
     _txtProcedure = MtpViewBase::extractShape("_txtProcedure");
+  }
+
+  public void applyAll()
+  {
+    for (int i = 0; i < _paramsShapes.count(); i++)
+    {
+      _paramsShapes.at(i).applyRow();
+    }
   }
 
   public void proceduresPopUp()
@@ -49,14 +58,61 @@ class ServicesFaceplateProcedureParam : MtpViewBase
 
     popupMenu(proceduresNames, answer);
 
+    deleteParams();
+
     if (answer == 0)
     {
-      _tableRef.Initialize(empty);
       _txtProcedure.text = "NOT_SELECTED";
+      _params = _empty;
       return;
     }
 
-    _tableRef.Initialize(_procedures[answer - 1].getParameters());
+    _params = _procedures[answer - 1].getParameters();
     _txtProcedure.text = _procedures.at(answer - 1).getName();
+    initializeTable();
+  }
+
+  private void initializeTable()
+  {
+    int size = _params.count();
+
+    for (int i = 0; i < size; i++)
+    {
+      appendParam(i, _params.at(i));
+    }
+  }
+
+  private void appendParam(const int &rowNumber, shared_ptr<ServParamBase> param)
+  {
+    string referencePanel  = "";
+
+    switch (getType(param.getValueFeedback()))
+    {
+      case BOOL_VAR:
+        referencePanel = "objects/Services/ServiceParamBoolean.xml";
+        break;
+
+      case STRING_VAR:
+        referencePanel = "objects/Services/ServiceParamString.xml";
+        break;
+
+      case INT_VAR:
+        referencePanel = "objects/Services/ServiceParamNumber.xml";
+        break;
+    }
+
+    addSymbol(_panel, referencePanel, rowNumber, rowNumber, _layout, makeDynString());
+    _paramsShapes.append(getShape(_panel, rowNumber));
+    invokeMethod(rowNumber, "initialize", param);
+  }
+
+  private void deleteParams()
+  {
+    for (int i = 0; i < _params.count(); i++)
+    {
+      removeSymbol(_panel, i);
+    }
+
+    _paramsShapes.clear();
   }
 };

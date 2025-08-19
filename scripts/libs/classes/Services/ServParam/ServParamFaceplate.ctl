@@ -14,13 +14,22 @@
 class ServParamFaceplate : MtpRefBase
 {
   private vector<shared_ptr<ServParamBase> > _params;
+  private vector<shape> _paramsShapes;
   private string _layout = "Layout";
   private shape _panel;
 
   public ServParamFaceplate(vector<shared_ptr<ServParamBase> > params, const mapping &shapes) : MtpRefBase(shapes)
   {
     _params = params;
-    InitializeTable();
+    initializeTable();
+  }
+
+  public void applyAll()
+  {
+    for (int i = 0; i < _paramsShapes.count(); i++)
+    {
+      _paramsShapes.at(i).applyRow();
+    }
   }
 
   private void initializeShapes()
@@ -28,17 +37,17 @@ class ServParamFaceplate : MtpRefBase
     _panel = MtpRefBase::extractShape("_panel");
   }
 
-  private void InitializeTable()
+  private void initializeTable()
   {
     int size = _params.count();
 
     for (int i = 0; i < size; i++)
     {
-      AppendParam(i, _params.at(i));
+      appendParam(i, _params.at(i));
     }
   }
 
-  private void AppendParam(const int &rowNumber, shared_ptr<ServParamBase> param)
+  private void appendParam(const int &rowNumber, shared_ptr<ServParamBase> param)
   {
     string referencePanel  = "";
 
@@ -58,6 +67,7 @@ class ServParamFaceplate : MtpRefBase
     }
 
     addSymbol(_panel, referencePanel, rowNumber, rowNumber, _layout, makeDynString());
+    _paramsShapes.append(getShape(_panel, rowNumber));
     invokeMethod(rowNumber, "initialize", param);
   }
 };

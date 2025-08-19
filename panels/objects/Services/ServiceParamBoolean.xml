@@ -4,7 +4,7 @@
   <prop name="Name">
    <prop name="de_AT.utf8"></prop>
   </prop>
-  <prop name="Size">823 58</prop>
+  <prop name="Size">823 50</prop>
   <prop name="BackColor">_3DFace</prop>
   <prop name="RefPoint">8.25 9</prop>
   <prop name="InitAndTermRef">True</prop>
@@ -13,6 +13,10 @@
   <prop name="DPI">96</prop>
   <prop name="PDPI">94.11039611039611</prop>
   <prop name="layoutType">HBox</prop>
+  <prop name="layoutLeftMargin">0</prop>
+  <prop name="layoutRightMargin">0</prop>
+  <prop name="layoutTopMargin">0</prop>
+  <prop name="layoutBottomMargin">0</prop>
  </properties>
  <events>
   <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/Services/ServParam/ServParamBooleanRef&quot;
@@ -30,6 +34,11 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
   shapes.insert(&quot;_rectApply&quot;, getShape(&quot;rectApply&quot;));
 
   _faceplate = new ServParamBooleanRef(viewModel, shapes);
+}
+
+public void applyRow()
+{
+  _faceplate.apply();
 }
 ]]></script>
  </events>
@@ -57,7 +66,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Geometry">1.47788049519242 0 0 1 67.4767249242777 8.5</prop>
+    <prop name="Geometry">1.47788049519242 0 0 1 57.4767249242777 4.5</prop>
     <prop name="Location">10.25 20.39453124999999</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
@@ -89,7 +98,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     </prop>
     <prop name="minimumSize">25 25</prop>
     <prop name="maximumSize">25 25</prop>
-    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
     <prop name="snapMode">Point</prop>
     <prop name="DashBackColor">_Transparent</prop>
     <prop name="AntiAliased">False</prop>
@@ -97,7 +106,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Close.svg]]</prop>
-    <prop name="Geometry">1.216084521758334 0 0 1.625 436.3050485228173 -112.6875</prop>
+    <prop name="Geometry">1.216084521758334 0 0 1.625 426.3050485228173 -116.6875</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">21 16</prop>
@@ -128,7 +137,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/apply_rounded.svg]]</prop>
-    <prop name="Geometry">0.9643945902326109 0 0 1.327956414473685 565.0820469513831 -96.28247265625005</prop>
+    <prop name="Geometry">0.9643945902326109 0 0 1.327956414473685 555.0820469513831 -100.2824726562501</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>
@@ -165,7 +174,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/False.svg]]</prop>
-    <prop name="Geometry">1.167441140888001 0 0 1.625 308.5328465819046 -113.1875</prop>
+    <prop name="Geometry">1.167441140888001 0 0 1.625 298.5328465819046 -117.1875</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">21 16</prop>
@@ -177,7 +186,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
    <properties>
     <prop name="serialId">7</prop>
     <prop name="Type">MtpButtonGreen</prop>
-    <prop name="RefPoint">162.8790760869565 24.19999999999999</prop>
+    <prop name="RefPoint">152.8790760869565 20.19999999999999</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">mtpTitleText</prop>
@@ -193,7 +202,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,19,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
     </prop>
-    <prop name="Location">231 13</prop>
+    <prop name="Location">221 9</prop>
     <prop name="Size">180 31</prop>
     <prop name="BorderStyle">None</prop>
     <prop name="Text">
@@ -211,7 +220,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
    <properties>
     <prop name="serialId">11</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">449 25</prop>
+    <prop name="RefPoint">439 21</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -221,14 +230,14 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">78 -1</prop>
-    <prop name="maximumSize">78 -1</prop>
+    <prop name="minimumSize">60 -1</prop>
+    <prop name="maximumSize">60 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">449 25</prop>
+    <prop name="Location">439 21</prop>
     <prop name="Size">49 6</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
@@ -237,7 +246,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
    <properties>
     <prop name="serialId">12</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">592 29</prop>
+    <prop name="RefPoint">582 25</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -247,14 +256,14 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">78 -1</prop>
-    <prop name="maximumSize">78 -1</prop>
+    <prop name="minimumSize">62 -1</prop>
+    <prop name="maximumSize">62 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">592 29</prop>
+    <prop name="Location">582 25</prop>
     <prop name="Size">35 6</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
@@ -263,7 +272,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
    <properties>
     <prop name="serialId">14</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">795.3749999999999 29.00000000000003</prop>
+    <prop name="RefPoint">785.3749999999999 25.00000000000003</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -280,7 +289,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">795.3749999999999 29.00000000000003</prop>
+    <prop name="Location">785.3749999999999 25.00000000000003</prop>
     <prop name="Size">35 6</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
@@ -289,7 +298,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
    <properties>
     <prop name="serialId">15</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">708.3749999999999 28</prop>
+    <prop name="RefPoint">698.3749999999999 24</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -299,14 +308,14 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">78 -1</prop>
-    <prop name="maximumSize">78 -1</prop>
+    <prop name="minimumSize">72 -1</prop>
+    <prop name="maximumSize">75 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">708.3749999999999 28</prop>
+    <prop name="Location">698.3749999999999 24</prop>
     <prop name="Size">35 6</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>

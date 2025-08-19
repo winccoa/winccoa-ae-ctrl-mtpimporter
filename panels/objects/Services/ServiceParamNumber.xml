@@ -4,7 +4,7 @@
   <prop name="Name">
    <prop name="de_AT.utf8"></prop>
   </prop>
-  <prop name="Size">828 58</prop>
+  <prop name="Size">828 50</prop>
   <prop name="BackColor">mtpBackground</prop>
   <prop name="RefPoint">27.25 43.03125</prop>
   <prop name="InitAndTermRef">True</prop>
@@ -13,6 +13,10 @@
   <prop name="DPI">96</prop>
   <prop name="PDPI">94.11039611039611</prop>
   <prop name="layoutType">HBox</prop>
+  <prop name="layoutLeftMargin">0</prop>
+  <prop name="layoutRightMargin">0</prop>
+  <prop name="layoutTopMargin">0</prop>
+  <prop name="layoutBottomMargin">0</prop>
  </properties>
  <events>
   <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/Services/ServParam/ServParamBase&quot;
@@ -30,6 +34,11 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
   shapes.insert(&quot;_rectApply&quot;, getShape(&quot;rectApply&quot;));
 
   _faceplate = new ServParamNumberRef(viewModel, shapes);
+}
+
+public void applyRow()
+{
+  _faceplate.apply();
 }
 ]]></script>
  </events>
@@ -57,7 +66,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Geometry">1.490073596358532 0 0 1 -44.07316464341685 0</prop>
+    <prop name="Geometry">1.490073596358532 0 0 1 -55.07316464341685 -5</prop>
     <prop name="Location">86.25 29.16796875000001</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
@@ -78,7 +87,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
    <properties>
     <prop name="serialId">2</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">141 58.67865953947368</prop>
+    <prop name="RefPoint">130 53.67865953947368</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">_WindowText</prop>
@@ -98,12 +107,12 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
      <prop name="de_AT.utf8">Roboto,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular</prop>
      <prop name="en_US.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
     </prop>
-    <prop name="Location">171 14.63671875000001</prop>
+    <prop name="Location">160 9.636718750000011</prop>
     <prop name="Size">180 31</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Editable">True</prop>
     <prop name="ClearButtonEnabled">False</prop>
-    <prop name="TextFormat">[0.2f,False,False,AlignLeft,False]</prop>
+    <prop name="TextFormat">[0.2f,False,False,AlignHCenter,False]</prop>
     <prop name="AllowEmptyNumeric">False</prop>
     <prop name="ulcClientSideWidget">False</prop>
    </properties>
@@ -130,7 +139,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Geometry">1.490073596358532 0 0 1 -45.07316464341685 8.136718750000007</prop>
+    <prop name="Geometry">1.490073596358532 0 0 1 -56.07316464341685 3.136718750000007</prop>
     <prop name="Location">369.25 21.2734375</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
@@ -160,8 +169,8 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     <prop name="ToolTipText">
      <prop name="de_AT.utf8"></prop>
     </prop>
-    <prop name="minimumSize">26 26</prop>
-    <prop name="maximumSize">26 26</prop>
+    <prop name="minimumSize">25 25</prop>
+    <prop name="maximumSize">25 25</prop>
     <prop name="layoutAlignment">AlignVCenter</prop>
     <prop name="snapMode">Point</prop>
     <prop name="DashBackColor">_Transparent</prop>
@@ -170,7 +179,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Close.svg]]</prop>
-    <prop name="Geometry">1.241727996965443 0 0 1.625 396.3635195372301 -112.55078125</prop>
+    <prop name="Geometry">1.241727996965443 0 0 1.625 385.3635195372301 -117.55078125</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">21 16</prop>
@@ -201,7 +210,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/apply_rounded.svg]]</prop>
-    <prop name="Geometry">0.9555865523460996 0 0 1.362006578947369 564.737299684224 -98.85812500000006</prop>
+    <prop name="Geometry">0.9555865523460996 0 0 1.362006578947369 553.737299684224 -103.8581250000001</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>
@@ -219,7 +228,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
    <properties>
     <prop name="serialId">8</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">391 28.63671874999942</prop>
+    <prop name="RefPoint">380 23.63671874999942</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -236,7 +245,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">391 28.63671874999942</prop>
+    <prop name="Location">380 23.63671874999942</prop>
     <prop name="Size">45 6</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
@@ -245,7 +254,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
    <properties>
     <prop name="serialId">9</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">557.2750437518899 29.63671875</prop>
+    <prop name="RefPoint">546.2750437518899 24.63671875</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -262,7 +271,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">557.2750437518899 29.63671875</prop>
+    <prop name="Location">546.2750437518899 24.63671875</prop>
     <prop name="Size">45 10</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
@@ -271,7 +280,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
    <properties>
     <prop name="serialId">10</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">692.3749999999999 29.63671875</prop>
+    <prop name="RefPoint">681.3749999999999 24.63671875</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -288,7 +297,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">692.3749999999999 29.63671875</prop>
+    <prop name="Location">681.3749999999999 24.63671875</prop>
     <prop name="Size">35 6</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
@@ -297,7 +306,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
    <properties>
     <prop name="serialId">11</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">799.3749999999999 29.63671875</prop>
+    <prop name="RefPoint">788.3749999999999 24.63671875</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -314,7 +323,7 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">799.3749999999999 29.63671875</prop>
+    <prop name="Location">788.3749999999999 24.63671875</prop>
     <prop name="Size">35 6</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
