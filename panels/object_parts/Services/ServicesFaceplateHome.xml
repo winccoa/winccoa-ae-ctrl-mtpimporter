@@ -741,7 +741,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="Location">20 304.1767896792763</prop>
     <prop name="Size">134 32</prop>
     <prop name="BorderStyle">Normal</prop>
-    <prop name="Editable">True</prop>
+    <prop name="Editable">False</prop>
     <prop name="ClearButtonEnabled">False</prop>
     <prop name="TextFormat">[0s,,,AlignLeft]</prop>
     <prop name="AllowEmptyNumeric">False</prop>

@@ -57,7 +57,6 @@ class ServicesFaceplateProcedureParam : MtpViewBase
     }
 
     popupMenu(proceduresNames, answer);
-
     deleteParams();
 
     if (answer == 0)

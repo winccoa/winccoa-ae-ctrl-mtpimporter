@@ -71,7 +71,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="Bordered">False</prop>
     <prop name="Fit">True</prop>
     <prop name="Transformable">False</prop>
-    <prop name="TextFormat">[0s,,,AlignHCenter]</prop>
+    <prop name="TextFormat">[0s,,,AlignHCenter|AlignVCenter]</prop>
    </properties>
   </shape>
   <shape Name="rectProcedurePicker" layerId="0" shapeType="RECTANGLE">
@@ -87,7 +87,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="ToolTipText">
      <prop name="de_AT.utf8"></prop>
     </prop>
-    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
     <prop name="snapMode">Point</prop>
     <prop name="DashBackColor">_Transparent</prop>
     <prop name="AntiAliased">False</prop>
@@ -122,7 +122,9 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="ToolTipText">
      <prop name="de_AT.utf8"></prop>
     </prop>
-    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="minimumSize">-1 28</prop>
+    <prop name="maximumSize">-1 28</prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
     <prop name="snapMode">Point</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
@@ -205,7 +207,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="minimumSize">180 -1</prop>
-    <prop name="maximumSize">180 -1</prop>
+    <prop name="maximumSize">175 -1</prop>
     <prop name="layoutAlignment">AlignVCenter</prop>
     <prop name="snapMode">Point</prop>
     <prop name="DashBackColor">_Transparent</prop>
@@ -245,7 +247,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="minimumSize">180 -1</prop>
-    <prop name="maximumSize">180 -1</prop>
+    <prop name="maximumSize">175 -1</prop>
     <prop name="layoutAlignment">AlignVCenter</prop>
     <prop name="snapMode">Point</prop>
     <prop name="DashBackColor">_Transparent</prop>
@@ -399,8 +401,8 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">55 -1</prop>
-    <prop name="maximumSize">55 -1</prop>
+    <prop name="minimumSize">60 -1</prop>
+    <prop name="maximumSize">60 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
@@ -451,8 +453,8 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">60 -1</prop>
-    <prop name="maximumSize">60 -1</prop>
+    <prop name="minimumSize">55 -1</prop>
+    <prop name="maximumSize">55 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>

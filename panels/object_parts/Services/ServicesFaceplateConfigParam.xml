@@ -96,7 +96,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="minimumSize">180 -1</prop>
-    <prop name="maximumSize">180 -1</prop>
+    <prop name="maximumSize">175 -1</prop>
     <prop name="layoutAlignment">AlignVCenter</prop>
     <prop name="snapMode">Point</prop>
     <prop name="DashBackColor">_Transparent</prop>
@@ -136,7 +136,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="minimumSize">180 -1</prop>
-    <prop name="maximumSize">180 -1</prop>
+    <prop name="maximumSize">175 -1</prop>
     <prop name="layoutAlignment">AlignVCenter</prop>
     <prop name="snapMode">Point</prop>
     <prop name="DashBackColor">_Transparent</prop>
@@ -290,8 +290,8 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">55 -1</prop>
-    <prop name="maximumSize">55 -1</prop>
+    <prop name="minimumSize">60 -1</prop>
+    <prop name="maximumSize">60 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
