@@ -104,11 +104,11 @@ public void applyRow()
     <prop name="layoutAlignment">AlignVCenter</prop>
     <prop name="snapMode">Point</prop>
     <prop name="Font">
-     <prop name="de_AT.utf8">Roboto,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular</prop>
+     <prop name="de_AT.utf8">Roboto,-1,15,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular</prop>
      <prop name="en_US.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
     </prop>
-    <prop name="Location">163.1466657085361 9.87890625</prop>
-    <prop name="Size">180 31</prop>
+    <prop name="Location">163.1466657085361 9.878906250000002</prop>
+    <prop name="Size">180 24</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Editable">True</prop>
     <prop name="ClearButtonEnabled">False</prop>
