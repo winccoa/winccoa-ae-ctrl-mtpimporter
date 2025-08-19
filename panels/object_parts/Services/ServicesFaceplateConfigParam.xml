@@ -316,8 +316,8 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">50 -1</prop>
-    <prop name="maximumSize">50 -1</prop>
+    <prop name="minimumSize">45 -1</prop>
+    <prop name="maximumSize">45 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
