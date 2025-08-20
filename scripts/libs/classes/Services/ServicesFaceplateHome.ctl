@@ -101,6 +101,7 @@ class ServicesFaceplateHome : MtpViewBase
     classConnectUserData(this, setResetCB, "_stateOperatorActive", MtpViewBase::getViewModel().getState(), MtpState::operatorActiveChanged);
     classConnectUserData(this, setResetCB, "_stateCurrent", MtpViewBase::getViewModel(), Services::currentStateChanged);
 
+    _procedures = MtpViewBase::getViewModel().getProcedures();
     _blinkingActive = FALSE;
     _stateOffActive =  MtpViewBase::getViewModel().getState().getOffActive();
     _stateChannel =  MtpViewBase::getViewModel().getState().getChannel();
@@ -126,9 +127,6 @@ class ServicesFaceplateHome : MtpViewBase
     setStopCB("_stateOperatorActive", _stateOperatorActive);
     setAbortCB("_stateOperatorActive", _stateOperatorActive);
     setResetCB("_stateOperatorActive", _stateOperatorActive);
-
-    _procedures = MtpViewBase::getViewModel().getProcedures();
-    _txtRequestedProcedure.text = "NOT_SELECTED";
   }
 
   public void proceduresPopUp()
@@ -147,11 +145,11 @@ class ServicesFaceplateHome : MtpViewBase
 
     if (answer == 0)
     {
-      _txtRequestedProcedure.text = "NOT_SELECTED";
+      MtpViewBase::getViewModel().getProcedure().setRequested(answer);
       return;
     }
 
-    _txtRequestedProcedure.text = _procedures.at(answer - 1).getName();
+    MtpViewBase::getViewModel().getProcedure().setRequested(answer);
   }
 
   /**
@@ -737,10 +735,12 @@ class ServicesFaceplateHome : MtpViewBase
     if (currentProcedure != 0)
     {
       _rectCurrentProcedure.fill = "[pattern,[fit,any,MTP_Icones/CurrentProcedureOn.svg]]";
+      _txtCurrentProcedure.text = _procedures.at(currentProcedure - 1).getName();
     }
     else
     {
       _rectCurrentProcedure.fill = "[pattern,[fit,any,MTP_Icones/CurrentProcedureOff.svg]]";
+      _txtCurrentProcedure.text = "";
     }
   }
 
@@ -754,10 +754,12 @@ class ServicesFaceplateHome : MtpViewBase
     if (requestedProcedure != 0)
     {
       _rectRequestedProcedure.fill = "[pattern,[fit,any,MTP_Icones/RequestedProcedureOn.svg]]";
+      _txtRequestedProcedure.text =  _procedures.at(requestedProcedure - 1).getName();
     }
     else
     {
       _rectRequestedProcedure.fill = "[pattern,[fit,any,MTP_Icones/RequestedProcedureOff.svg]]";
+      _txtRequestedProcedure.text = "NOT_SELECTED";
     }
   }
 

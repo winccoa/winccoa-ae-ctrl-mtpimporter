@@ -4,7 +4,7 @@
   <prop name="Name">
    <prop name="de_AT.utf8"></prop>
   </prop>
-  <prop name="Size">826 50</prop>
+  <prop name="Size">828 50</prop>
   <prop name="BackColor">_3DFace</prop>
   <prop name="RefPoint">20.62500000000001 10</prop>
   <prop name="InitAndTermRef">True</prop>
@@ -239,8 +239,6 @@ public void applyRow()
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">45 -1</prop>
-    <prop name="maximumSize">45 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
@@ -265,8 +263,6 @@ public void applyRow()
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">45 -1</prop>
-    <prop name="maximumSize">45 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>

@@ -239,7 +239,6 @@ public void applyRow()
     </prop>
     <prop name="TransparentForMouse">True</prop>
     <prop name="minimumSize">45 -1</prop>
-    <prop name="maximumSize">45 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
@@ -265,7 +264,6 @@ public void applyRow()
     </prop>
     <prop name="TransparentForMouse">True</prop>
     <prop name="minimumSize">45 -1</prop>
-    <prop name="maximumSize">45 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>

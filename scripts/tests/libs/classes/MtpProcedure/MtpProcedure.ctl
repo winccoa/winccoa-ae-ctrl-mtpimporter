@@ -271,6 +271,40 @@ class TstMtpProcedure : OaTest
     return 0;
   }
 
+  public int testSetRequested()
+  {
+    shared_ptr<MtpProcedure> procedure = new MtpProcedure(
+      _DpExists + ".operator",
+      _DpExists + ".internal",
+      _DpExists + ".external",
+      _DpExists + ".current",
+      _DpExists + ".requested"
+    );
+    procedure.setRequested(1L);
+    long value;
+    dpGet(_DpExists + ".requested", value);
+    assertEqual(value, 1L);
+    assertEqual(procedure.getRequested(), 1L);
+    return 0;
+  }
+
+  public int testSetCurrent()
+  {
+    shared_ptr<MtpProcedure> procedure = new MtpProcedure(
+      _DpExists + ".operator",
+      _DpExists + ".internal",
+      _DpExists + ".external",
+      _DpExists + ".current",
+      _DpExists + ".requested"
+    );
+    procedure.setCurrent(1L);
+    long value;
+    dpGet(_DpExists + ".current", value);
+    assertEqual(value, 1L);
+    assertEqual(procedure.getCurrent(), 1L);
+    return 0;
+  }
+
   private void setExternalCB(const long &value)
   {
     _eventExternal = value;

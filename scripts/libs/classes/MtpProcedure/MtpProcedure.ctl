@@ -19,6 +19,8 @@ class MtpProcedure
   private long _requested; //!< The requested value of the MTP procedure.
 
   private string _dpeOperator; //!< Data point element for operator state.
+  private string _dpeRequested; //!< Data point element for requested variable.
+  private string _dpeCurrent; //!< Data point element for current variable.
 
   /**
    * @brief Constructor for MtpProcedure.
@@ -57,6 +59,8 @@ class MtpProcedure
     }
 
     _dpeOperator = dpeOperator;
+    _dpeRequested = dpeRequested;
+    _dpeCurrent = dpeCurrent;
 
     dpGet(_dpeOperator, _operator);
 
@@ -80,6 +84,28 @@ class MtpProcedure
   {
     _operator = operatorProcedure;
     dpSet(_dpeOperator, _operator);
+  }
+
+  /**
+  * @brief Sets the requested procedure.
+  *
+  * @param requestedProcedure Sets Procedure using value of requested.
+  */
+  public void setRequested(const long &requestedProcedure)
+  {
+    _requested = requestedProcedure;
+    dpSet(_dpeRequested, _requested);
+  }
+
+  /**
+  * @brief Sets the current procedure.
+  *
+  * @param currentProcedure Sets Procedure using value of current.
+  */
+  public void setCurrent(const long &currentProcedure)
+  {
+    _current = currentProcedure;
+    dpSet(_dpeCurrent, _current);
   }
 
   /**
