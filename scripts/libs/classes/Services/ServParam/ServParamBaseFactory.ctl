@@ -13,13 +13,29 @@
 #uses "classes/Services/ServParam/ServParamBase"
 #uses "std"
 
+/**
+ * @class ServParamBaseFactory
+ * @brief Factory class for creating instances of ServParamBase objects.
+ */
 class ServParamBaseFactory
 {
 
-  public ServParamBaseFactory()
+  /**
+  * @brief Private constructor for the ServParamBaseFactory class.
+  *
+  * This constructor is declared private to prevent direct instantiation
+  * of the ServParamBaseFactory class.
+  */
+  private ServParamBaseFactory()
   {
   }
 
+    /**
+   * @brief Creates an instance of ServParamBase.
+   *
+   * @param dp The datapoint of the element.
+   * @return A shared pointer to the created ServParamBase instance.
+   */
   public static shared_ptr<ServParamBase> create(const string &dp)
   {
     switch (dpTypeName(dp))

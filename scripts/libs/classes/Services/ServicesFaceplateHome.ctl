@@ -6,6 +6,8 @@
   @author d.schermann
 */
 
+#uses "classes/ContextMenu/ContextMenuConfig"
+#uses "classes/ContextMenu/ContextMenuCustom"
 #uses "classes/Services/Procedure"
 #uses "classes/MtpState/MtpState"
 #uses "classes/MtpOsLevel/MtpOsLevel"
@@ -49,6 +51,8 @@ class ServicesFaceplateHome : MtpViewBase
   private long _stateCurrent; //!< The current state value of the procedure.
 
   private vector<shared_ptr<Procedure> > _procedures;
+  private shared_ptr<ContextMenuCustom> _contextMenu;
+  private shared_ptr<ContextMenuConfig> _contextConfig;
 
   /**
    * @brief Constructor for ServicesFaceplateHome.
@@ -127,25 +131,30 @@ class ServicesFaceplateHome : MtpViewBase
     setStopCB("_stateOperatorActive", _stateOperatorActive);
     setAbortCB("_stateOperatorActive", _stateOperatorActive);
     setResetCB("_stateOperatorActive", _stateOperatorActive);
+
+    _contextConfig = new ContextMenuConfig();
   }
 
+  /**
+   * @brief Opens the custom procedures popupmenu.
+   */
   public void proceduresPopUp()
   {
     int answer;
-    dyn_string proceduresNames;
 
-    proceduresNames.append("PUSH_BUTTON, NOT_SELECTED, 0, 1");
+    _contextConfig.Clear();
+    _contextConfig.AddPushButton("NOT_SELECTED", 0, 1);
 
     for (int i = 0; i < _procedures.count(); i++)
     {
-      proceduresNames.append("PUSH_BUTTON, " + _procedures.at(i).getName() + ", " + (i + 1) + ", 1");
+      _contextConfig.AddPushButton(_procedures.at(i).getName(), i + 1, 1);
     }
 
-    popupMenu(proceduresNames, answer);
+    _contextMenu = new ContextMenuCustom(_contextConfig, _rectRequestedProcedureInformation.name());
+    answer = _contextMenu.Open();
 
-    if (answer == 0)
+    if (answer == -1)
     {
-      MtpViewBase::getViewModel().getProcedure().setRequested(answer);
       return;
     }
 

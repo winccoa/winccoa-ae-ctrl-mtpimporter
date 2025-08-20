@@ -248,7 +248,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Information.svg]]</prop>
-    <prop name="Geometry">0.8910836762688614 0 0 0.5561755952380953 6.679286694101506 270.0720796130952</prop>
+    <prop name="Geometry">0.8910836762688614 0 0 0.5561755952380953 7.679286694101506 269.663318452381</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">183.5 79.14615384615388</prop>
     <prop name="Size">27.5 16.85384615384612</prop>

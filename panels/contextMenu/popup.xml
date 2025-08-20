@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="de_AT.utf8"></prop>
+   <prop name="en_US.utf8"></prop>
+  </prop>
+  <prop name="Size">331 31</prop>
+  <prop name="BackColor">mtpBackground</prop>
+  <prop name="RefPoint">105 6</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">96</prop>
+  <prop name="PDPI">108.8875329026083</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script isEscaped="1" name="Initialize"><![CDATA[#uses &quot;classes/ContextMenu/ContextMenuCustom&quot;
+
+main()
+{
+  shape panel = this.parentPanel();
+  dyn_string items = stringToDynString($Items, &quot;~&quot;);
+  ContextMenuCustom::BuildPopup(items, panel);
+}
+]]></script>
+ </events>
+</panel>
