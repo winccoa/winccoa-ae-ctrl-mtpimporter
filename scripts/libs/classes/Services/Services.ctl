@@ -527,11 +527,19 @@ class Services : MtpViewModelBase
     return _interactionAnswerId;
   }
 
+  /**
+  * @brief Retrieves the procedures as a vector.
+  * @return The procedures as a shared_ptr vector.
+  */
   public vector<shared_ptr<Procedure> > getProcedures()
   {
     return _procedures;
   }
 
+  /**
+  * @brief Retrieves the config parameters as a vector.
+  * @return The config parameters as a shared_ptr vector.
+  */
   public vector<shared_ptr<ServParamBase> >  getConfigParameters()
   {
     return _configParameters;
