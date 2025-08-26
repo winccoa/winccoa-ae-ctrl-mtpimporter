@@ -6,6 +6,7 @@
   @author m.woegrath
 */
 
+#uses "classes/AcknowledgeTable"
 #uses "classes/MtpViewModel/MtpViewModelBase"
 #uses "classes/MtpView/MtpViewBase"
 

@@ -67,7 +67,7 @@ class MtpFaceplateMainFactory
 
       case "Services": return new ServicesFaceplateMain(viewModel, shapes);
 
-      default: throw (makeError("", PRIO_SEVERE, ERR_PARAM, ErrCode::UNEXPECTEDSTATE, "datapoint type not defined '" + dpTypeName(dp) + "'"));
+      default: throw (makeError("", PRIO_SEVERE, ERR_PARAM, ErrCode::UNEXPECTEDSTATE, "datapoint type not defined '" + dpTypeName(viewModel.getDp()) + "'"));
     }
   }
 };
