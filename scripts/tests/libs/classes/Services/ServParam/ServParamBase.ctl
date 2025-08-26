@@ -45,6 +45,9 @@ class TstServParamBase : OaTest
   private const string _DptInvalidMissingStateOffAct = "ServParamBaseInvalid18";
   private const string _DptInvalidMissingStateOpAct = "ServParamBaseInvalid19";
   private const string _DptInvalidMissingStateAutAct = "ServParamBaseInvalid20";
+  private const string _DptInvalidMissingVOp = "ServParamBaseInvalid21";
+  private const string _DptInvalidMissingVOut = "ServParamBaseInvalid22";
+  private const string _DptInvalidMissingVUnit = "ServParamBaseInvalid23";
   private const string _DpExists = "ExistingTestDatapoint";
   private const string _DpExistsInvalidMissingApplyEn = "ExistingTestDatapointInvalid1";
   private const string _DpExistsInvalidMissingApplyExt = "ExistingTestDatapointInvalid2";
@@ -66,6 +69,9 @@ class TstServParamBase : OaTest
   private const string _DpExistsInvalidMissingStateOffAct = "ExistingTestDatapointInvalid18";
   private const string _DpExistsInvalidMissingStateOpAct = "ExistingTestDatapointInvalid19";
   private const string _DpExistsInvalidMissingStateAutAct = "ExistingTestDatapointInvalid20";
+  private const string _DpExistsInvalidMissingVOp = "ExistingTestDatapointInvalid21";
+  private const string _DpExistsInvalidMissingVOut = "ExistingTestDatapointInvalid22";
+  private const string _DpExistsInvalidMissingVUnit = "ExistingTestDatapointInvalid23";
 
   private bool _eventApplyEnabled;
   private bool _eventApplyExternal;
@@ -86,20 +92,13 @@ class TstServParamBase : OaTest
   private string _eventValueInternal;
   private string _eventValueRequested;
   private string _eventValueFeedback;
+  private string _eventValueOperator;
+  private string _eventValueOutput;
+  private int _eventValueUnit;
   private langString _eventName;
 
   public int setUp() override
   {
-    // Clean up existing data points and types
-    dyn_string existingDps = dpNames("*", _Dpt);
-
-    for (int i = 1; i <= dynlen(existingDps); i++) dpDelete(existingDps[i]);
-
-    dyn_string existingTypes = dpTypes("ServParamBaseInvalid*");
-
-    for (int i = 1; i <= dynlen(existingTypes); i++) dpTypeDelete(existingTypes[i]);
-
-    DebugN("Cleaned up existing data points: ", existingDps, "Types: ", existingTypes);
 
     if (dpTypes(_Dpt).count() == 0)
     {
@@ -118,6 +117,7 @@ class TstServParamBase : OaTest
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingApplyEn),
              makeDynString("", "VExt"), makeDynString("", "VInt"), makeDynString("", "VReq"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VFbk"), makeDynString("", "Name"), makeDynString("", "SrcChannel"),
              makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"), makeDynString("", "SrcExtAct"),
              makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"), makeDynString("", "ApplyInt"),
@@ -128,6 +128,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -137,13 +138,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingApplyEn, _DptInvalidMissingApplyEn);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingApplyEn);
-    DebugN("Verify ApplyEn does not exist: ", dpExists(_DpExistsInvalidMissingApplyEn + ".ApplyEn"));
 
     // Missing ApplyExt
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingApplyExt),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyInt"),
@@ -154,6 +154,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -163,13 +164,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingApplyExt, _DptInvalidMissingApplyExt);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingApplyExt);
-    DebugN("Verify ApplyExt does not exist: ", dpExists(_DpExistsInvalidMissingApplyExt + ".ApplyExt"));
 
     // Missing ApplyInt
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingApplyInt),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
@@ -189,13 +189,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingApplyInt, _DptInvalidMissingApplyInt);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingApplyInt);
-    DebugN("Verify ApplyInt does not exist: ", dpExists(_DpExistsInvalidMissingApplyInt + ".ApplyInt"));
 
     // Missing SrcChannel
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingSrcChannel),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"), makeDynString("", "SrcExtAct"),
              makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"), makeDynString("", "ApplyInt"),
@@ -206,6 +205,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -215,13 +215,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSrcChannel, _DptInvalidMissingSrcChannel);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingSrcChannel);
-    DebugN("Verify SrcChannel does not exist: ", dpExists(_DpExistsInvalidMissingSrcChannel + ".SrcChannel"));
 
     // Missing SrcExtAut
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingSrcExtAut),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcIntAut"), makeDynString("", "SrcExtAct"),
              makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"), makeDynString("", "ApplyInt"),
@@ -232,6 +231,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -241,13 +241,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSrcExtAut, _DptInvalidMissingSrcExtAut);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingSrcExtAut);
-    DebugN("Verify SrcExtAut does not exist: ", dpExists(_DpExistsInvalidMissingSrcExtAut + ".SrcExtAut"));
 
     // Missing SrcIntAut
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingSrcIntAut),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcExtAct"),
              makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"), makeDynString("", "ApplyInt"),
@@ -258,6 +257,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -267,13 +267,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSrcIntAut, _DptInvalidMissingSrcIntAut);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingSrcIntAut);
-    DebugN("Verify SrcIntAut does not exist: ", dpExists(_DpExistsInvalidMissingSrcIntAut + ".SrcIntAut"));
 
     // Missing SrcExtAct
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingSrcExtAct),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"), makeDynString("", "ApplyInt"),
@@ -284,6 +283,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -293,13 +293,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSrcExtAct, _DptInvalidMissingSrcExtAct);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingSrcExtAct);
-    DebugN("Verify SrcExtAct does not exist: ", dpExists(_DpExistsInvalidMissingSrcExtAct + ".SrcExtAct"));
 
     // Missing SrcIntAct
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingSrcIntAct),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "ApplyExt"), makeDynString("", "ApplyInt"),
@@ -310,6 +309,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -319,13 +319,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingSrcIntAct, _DptInvalidMissingSrcIntAct);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingSrcIntAct);
-    DebugN("Verify SrcIntAct does not exist: ", dpExists(_DpExistsInvalidMissingSrcIntAct + ".SrcIntAct"));
 
     // Missing VExt
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVExt),
              makeDynString("", "ApplyEn"), makeDynString("", "VInt"), makeDynString("", "VReq"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VFbk"), makeDynString("", "Name"), makeDynString("", "SrcChannel"),
              makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"), makeDynString("", "SrcExtAct"),
              makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"), makeDynString("", "ApplyInt"),
@@ -336,6 +335,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -345,13 +345,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVExt, _DptInvalidMissingVExt);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingVExt);
-    DebugN("Verify VExt does not exist: ", dpExists(_DpExistsInvalidMissingVExt + ".VExt"));
 
     // Missing VInt
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVInt),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VReq"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VFbk"), makeDynString("", "Name"), makeDynString("", "SrcChannel"),
              makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"), makeDynString("", "SrcExtAct"),
              makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"), makeDynString("", "ApplyInt"),
@@ -362,6 +361,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -371,13 +371,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVInt, _DptInvalidMissingVInt);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingVInt);
-    DebugN("Verify VInt does not exist: ", dpExists(_DpExistsInvalidMissingVInt + ".VInt"));
 
     // Missing VReq
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVReq),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VFbk"), makeDynString("", "Name"), makeDynString("", "SrcChannel"),
              makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"), makeDynString("", "SrcExtAct"),
              makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"), makeDynString("", "ApplyInt"),
@@ -388,6 +387,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -397,13 +397,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVReq, _DptInvalidMissingVReq);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingVReq);
-    DebugN("Verify VReq does not exist: ", dpExists(_DpExistsInvalidMissingVReq + ".VReq"));
 
     // Missing VFbk
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVFbk),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "Name"), makeDynString("", "SrcChannel"),
              makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"), makeDynString("", "SrcExtAct"),
              makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"), makeDynString("", "ApplyInt"),
@@ -414,6 +413,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -423,13 +423,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVFbk, _DptInvalidMissingVFbk);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingVFbk);
-    DebugN("Verify VFbk does not exist: ", dpExists(_DpExistsInvalidMissingVFbk + ".VFbk"));
 
     // Missing Name
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingName),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "SrcChannel"),
              makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"), makeDynString("", "SrcExtAct"),
              makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"), makeDynString("", "ApplyInt"),
@@ -440,6 +439,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -449,13 +449,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingName, _DptInvalidMissingName);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingName);
-    DebugN("Verify Name does not exist: ", dpExists(_DpExistsInvalidMissingName + ".Name"));
 
     // Missing StateChannel
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingStateChannel),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
@@ -466,6 +465,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -475,13 +475,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStateChannel, _DptInvalidMissingStateChannel);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingStateChannel);
-    DebugN("Verify StateChannel does not exist: ", dpExists(_DpExistsInvalidMissingStateChannel + ".StateChannel"));
 
     // Missing StateOffAut
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingStateOffAut),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
@@ -492,6 +491,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -501,13 +501,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStateOffAut, _DptInvalidMissingStateOffAut);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingStateOffAut);
-    DebugN("Verify StateOffAut does not exist: ", dpExists(_DpExistsInvalidMissingStateOffAut + ".StateOffAut"));
 
     // Missing StateOpAut
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingStateOpAut),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
@@ -518,6 +517,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -527,13 +527,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStateOpAut, _DptInvalidMissingStateOpAut);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingStateOpAut);
-    DebugN("Verify StateOpAut does not exist: ", dpExists(_DpExistsInvalidMissingStateOpAut + ".StateOpAut"));
 
     // Missing StateAutAut
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingStateAutAut),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
@@ -544,6 +543,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -553,13 +553,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStateAutAut, _DptInvalidMissingStateAutAut);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingStateAutAut);
-    DebugN("Verify StateAutAut does not exist: ", dpExists(_DpExistsInvalidMissingStateAutAut + ".StateAutAut"));
 
     // Missing StateOffAct
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingStateOffAct),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
@@ -570,6 +569,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -579,13 +579,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStateOffAct, _DptInvalidMissingStateOffAct);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingStateOffAct);
-    DebugN("Verify StateOffAct does not exist: ", dpExists(_DpExistsInvalidMissingStateOffAct + ".StateOffAct"));
 
     // Missing StateOpAct
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingStateOpAct),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
@@ -596,6 +595,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -605,13 +605,12 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStateOpAct, _DptInvalidMissingStateOpAct);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingStateOpAct);
-    DebugN("Verify StateOpAct does not exist: ", dpExists(_DpExistsInvalidMissingStateOpAct + ".StateOpAct"));
 
     // Missing StateAutAct
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingStateAutAct),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
@@ -622,6 +621,7 @@ class TstServParamBase : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -631,8 +631,84 @@ class TstServParamBase : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingStateAutAct, _DptInvalidMissingStateAutAct);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingStateAutAct);
-    DebugN("Verify StateAutAct does not exist: ", dpExists(_DpExistsInvalidMissingStateAutAct + ".StateAutAct"));
+
+    // Missing VOp
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingVOp),
+             makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VUnit"),  makeDynString("", "StateAutAct"),
+             makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
+             makeDynString("", "ApplyInt"), makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"), makeDynString("", "StateOffAct"),
+             makeDynString("", "StateOpAct"), makeDynString("", "WQC"), makeDynString("", "OSLevel")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),  makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT)
+             );
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingVOp, _DptInvalidMissingVOp);
+
+    // Missing VOut
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingVOut),
+             makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOp"), makeDynString("", "VUnit"),  makeDynString("", "StateAutAct"),
+             makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
+             makeDynString("", "ApplyInt"), makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"), makeDynString("", "StateOffAct"),
+             makeDynString("", "StateOpAct"), makeDynString("", "WQC"), makeDynString("", "OSLevel")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_INT),  makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT)
+             );
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingVOut, _DptInvalidMissingVOut);
+
+    // Missing VUnit
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingVUnit),
+             makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOp"), makeDynString("", "VOut"),  makeDynString("", "StateAutAct"),
+             makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
+             makeDynString("", "ApplyInt"), makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"), makeDynString("", "StateOffAct"),
+             makeDynString("", "StateOpAct"), makeDynString("", "WQC"), makeDynString("", "OSLevel")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING),  makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_STRING), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_INT), makeDynInt(0, DPEL_INT)
+             );
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingVUnit, _DptInvalidMissingVUnit);
 
     return OaTest::setUp();
   }
@@ -640,87 +716,75 @@ class TstServParamBase : OaTest
   public int tearDown() override
   {
     dpDelete(_DpExists);
-    DebugN("Deleted data point: " + _DpExists);
 
     dpDelete(_DpExistsInvalidMissingApplyEn);
     dpTypeDelete(_DptInvalidMissingApplyEn);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingApplyEn + ", " + _DptInvalidMissingApplyEn);
 
     dpDelete(_DpExistsInvalidMissingApplyExt);
     dpTypeDelete(_DptInvalidMissingApplyExt);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingApplyExt + ", " + _DptInvalidMissingApplyExt);
 
     dpDelete(_DpExistsInvalidMissingApplyInt);
     dpTypeDelete(_DptInvalidMissingApplyInt);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingApplyInt + ", " + _DptInvalidMissingApplyInt);
 
     dpDelete(_DpExistsInvalidMissingSrcChannel);
     dpTypeDelete(_DptInvalidMissingSrcChannel);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingSrcChannel + ", " + _DptInvalidMissingSrcChannel);
 
     dpDelete(_DpExistsInvalidMissingSrcExtAut);
     dpTypeDelete(_DptInvalidMissingSrcExtAut);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingSrcExtAut + ", " + _DptInvalidMissingSrcExtAut);
 
     dpDelete(_DpExistsInvalidMissingSrcIntAut);
     dpTypeDelete(_DptInvalidMissingSrcIntAut);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingSrcIntAut + ", " + _DptInvalidMissingSrcIntAut);
 
     dpDelete(_DpExistsInvalidMissingSrcExtAct);
     dpTypeDelete(_DptInvalidMissingSrcExtAct);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingSrcExtAct + ", " + _DptInvalidMissingSrcExtAct);
 
     dpDelete(_DpExistsInvalidMissingSrcIntAct);
     dpTypeDelete(_DptInvalidMissingSrcIntAct);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingSrcIntAct + ", " + _DptInvalidMissingSrcIntAct);
 
     dpDelete(_DpExistsInvalidMissingVExt);
     dpTypeDelete(_DptInvalidMissingVExt);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingVExt + ", " + _DptInvalidMissingVExt);
 
     dpDelete(_DpExistsInvalidMissingVInt);
     dpTypeDelete(_DptInvalidMissingVInt);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingVInt + ", " + _DptInvalidMissingVInt);
 
     dpDelete(_DpExistsInvalidMissingVReq);
     dpTypeDelete(_DptInvalidMissingVReq);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingVReq + ", " + _DptInvalidMissingVReq);
 
     dpDelete(_DpExistsInvalidMissingVFbk);
     dpTypeDelete(_DptInvalidMissingVFbk);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingVFbk + ", " + _DptInvalidMissingVFbk);
 
     dpDelete(_DpExistsInvalidMissingName);
     dpTypeDelete(_DptInvalidMissingName);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingName + ", " + _DptInvalidMissingName);
 
     dpDelete(_DpExistsInvalidMissingStateChannel);
     dpTypeDelete(_DptInvalidMissingStateChannel);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingStateChannel + ", " + _DptInvalidMissingStateChannel);
 
     dpDelete(_DpExistsInvalidMissingStateOffAut);
     dpTypeDelete(_DptInvalidMissingStateOffAut);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingStateOffAut + ", " + _DptInvalidMissingStateOffAut);
 
     dpDelete(_DpExistsInvalidMissingStateOpAut);
     dpTypeDelete(_DptInvalidMissingStateOpAut);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingStateOpAut + ", " + _DptInvalidMissingStateOpAut);
 
     dpDelete(_DpExistsInvalidMissingStateAutAut);
     dpTypeDelete(_DptInvalidMissingStateAutAut);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingStateAutAut + ", " + _DptInvalidMissingStateAutAut);
 
     dpDelete(_DpExistsInvalidMissingStateOffAct);
     dpTypeDelete(_DptInvalidMissingStateOffAct);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingStateOffAct + ", " + _DptInvalidMissingStateOffAct);
 
     dpDelete(_DpExistsInvalidMissingStateOpAct);
     dpTypeDelete(_DptInvalidMissingStateOpAct);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingStateOpAct + ", " + _DptInvalidMissingStateOpAct);
 
     dpDelete(_DpExistsInvalidMissingStateAutAct);
     dpTypeDelete(_DptInvalidMissingStateAutAct);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingStateAutAct + ", " + _DptInvalidMissingStateAutAct);
+
+    dpDelete(_DpExistsInvalidMissingVOp);
+    dpTypeDelete(_DptInvalidMissingVOp);
+
+    dpDelete(_DpExistsInvalidMissingVOut);
+    dpTypeDelete(_DptInvalidMissingVOut);
+
+    dpDelete(_DpExistsInvalidMissingVUnit);
+    dpTypeDelete(_DptInvalidMissingVUnit);
 
     return OaTest::tearDown();
   }
@@ -752,6 +816,9 @@ class TstServParamBase : OaTest
     assertEqual(servParam.getValueInternal(), "");
     assertEqual(servParam.getValueRequested(), "");
     assertEqual(servParam.getValueFeedback(), "");
+    assertEqual(servParam.getValueOutput(), "");
+    assertEqual(servParam.getValueOperator(), "");
+    assertTrue(servParam.getValueUnit() != nullptr);
     return 0;
   }
 
@@ -767,7 +834,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for ApplyEn: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing ApplyEn");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingApplyEn + ".ApplyEn"), "Exception should reference ApplyEn");
@@ -783,7 +849,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for ApplyExt: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing ApplyExt");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingApplyExt + ".ApplyExt"), "Exception should reference ApplyExt");
@@ -799,7 +864,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for ApplyInt: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing ApplyInt");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingApplyInt + ".ApplyInt"), "Exception should reference ApplyInt");
@@ -815,7 +879,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for SrcChannel: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing SrcChannel");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingSrcChannel + ".SrcChannel"), "Exception should reference SrcChannel");
@@ -831,7 +894,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for SrcExtAut: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing SrcExtAut");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingSrcExtAut + ".SrcExtAut"), "Exception should reference SrcExtAut");
@@ -847,7 +909,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for SrcIntAut: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing SrcIntAut");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingSrcIntAut + ".SrcIntAut"), "Exception should reference SrcIntAut");
@@ -863,7 +924,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for SrcExtAct: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing SrcExtAct");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingSrcExtAct + ".SrcExtAct"), "Exception should reference SrcExtAct");
@@ -879,7 +939,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for SrcIntAct: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing SrcIntAct");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingSrcIntAct + ".SrcIntAct"), "Exception should reference SrcIntAct");
@@ -895,7 +954,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for VExt: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VExt");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingVExt + ".VExt"), "Exception should reference VExt");
@@ -911,7 +969,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for VInt: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VInt");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingVInt + ".VInt"), "Exception should reference VInt");
@@ -927,7 +984,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for VReq: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VReq");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingVReq + ".VReq"), "Exception should reference VReq");
@@ -943,10 +999,54 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for VFbk: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VFbk");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingVFbk + ".VFbk"), "Exception should reference VFbk");
+    }
+
+    // Test missing VOut
+    try
+    {
+      shared_ptr<StringServParam> servParam = new StringServParam(_DpExistsInvalidMissingVOut);
+      assertTrue(false, "Expected DPNOTEXISTENT exception for missing VOut");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      string errText = getErrorText(err);
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VOut");
+      assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
+      assertTrue(errText.contains(_DpExistsInvalidMissingVOut + ".VOut"), "Exception should reference VOut");
+    }
+
+    // Test missing VOp
+    try
+    {
+      shared_ptr<StringServParam> servParam = new StringServParam(_DpExistsInvalidMissingVOp);
+      assertTrue(false, "Expected DPNOTEXISTENT exception for missing VOp");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      string errText = getErrorText(err);
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VOp");
+      assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
+      assertTrue(errText.contains(_DpExistsInvalidMissingVOp + ".VOp"), "Exception should reference VOp");
+    }
+
+    // Test missing VUnit
+    try
+    {
+      shared_ptr<StringServParam> servParam = new StringServParam(_DpExistsInvalidMissingVUnit);
+      assertTrue(false, "Expected DPNOTEXISTENT exception for missing VUnit");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      string errText = getErrorText(err);
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VUnit");
+      assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
+      assertTrue(errText.contains(_DpExistsInvalidMissingVUnit + ".VUnit"), "Exception should reference VUnit");
     }
 
     // Test missing Name
@@ -959,7 +1059,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for Name: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing Name");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingName + ".Name"), "Exception should reference Name");
@@ -975,7 +1074,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for StateChannel: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing StateChannel");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingStateChannel + ".StateChannel"), "Exception should reference StateChannel");
@@ -991,7 +1089,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for StateOffAut: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing StateOffAut");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingStateOffAut + ".StateOffAut"), "Exception should reference StateOffAut");
@@ -1007,7 +1104,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for StateOpA: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing StateOpAut");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingStateOpAut + ".StateOpAut"), "Exception should reference StateOpAut");
@@ -1023,7 +1119,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for StateAutAut: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing StateAutAut");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingStateAutAut + ".StateAutAut"), "Exception should reference StateAutAut");
@@ -1039,7 +1134,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for StateOffAct: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing StateOffAct");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingStateOffAct + ".StateOffAct"), "Exception should reference StateOffAct");
@@ -1055,7 +1149,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for StateOpAct: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing StateOpAct");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingStateOpAct + ".StateOpAct"), "Exception should reference StateOpAct");
@@ -1071,7 +1164,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for StateAutAct: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing StateAutAct");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingStateAutAct + ".StateAutAct"), "Exception should reference StateAutAct");
@@ -1093,7 +1185,6 @@ class TstServParamBase : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for non-existent DP: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for non-existent datapoint");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(nonExistentDp), "Exception should reference the non-existent datapoint");
@@ -1137,6 +1228,20 @@ class TstServParamBase : OaTest
     string valueFeedback;
     dpGet(_DpExists + ".VFbk", valueFeedback);
     assertEqual(valueFeedback, "FeedbackValue");
+
+        // Test ValueOperator
+    assertEqual(servParam.getValueOperator(), "");
+    servParam.setValueOperator("Value");
+    assertEqual(servParam.getValueOperator(), "Value");
+    string valueOperator;
+    dpGet(_DpExists + ".VOp", valueOperator);
+    assertEqual(valueOperator, "Value");
+
+    // Test ValueOutput
+    assertEqual(servParam.getValueOutput(), "");
+    string valueOutput;
+    dpGet(_DpExists + ".VOut", valueOutput);
+    assertEqual(valueOutput, "");
 
     return 0;
   }
@@ -1234,6 +1339,16 @@ class TstServParamBase : OaTest
   public void onValueFeedback(shared_ptr<StringServParam> sender, string value)
   {
     _eventValueFeedback = value;
+  }
+
+  public void onValueOperator(shared_ptr<StringServParam> sender, string value)
+  {
+    _eventValueOperator = value;
+  }
+
+  public void onValueOutput(shared_ptr<StringServParam> sender, string value)
+  {
+    _eventValueOutput = value;
   }
 
   public void onName(shared_ptr<StringServParam> sender, langString value)

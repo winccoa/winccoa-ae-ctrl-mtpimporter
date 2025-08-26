@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "classes/MtpUnit/MtpUnit"
 #uses "classes/MtpQualityCode/MtpQualityCode"
 #uses "classes/MtpRef/MtpRefBase"
 #uses "classes/Services/ServParam/ServParamBase"
@@ -14,7 +15,7 @@
  * @class ServParamNumberRef
  * @brief Manages the reference faceplate for a numeric service parameter.
  */
-class ServParamNumberRef : MtpRefBase
+class ServParamIntRef : MtpRefBase
 {
   private shared_ptr<ServParamBase> _param; //!< Reference to the numeric service parameter object.
   private shape _txtName; //!< Reference to the text shape displaying the parameter name.
@@ -22,6 +23,7 @@ class ServParamNumberRef : MtpRefBase
   private shape _txtCurrent; //!< Reference to the text shape displaying the current value.
   private shape _rectStatus; //!< Reference to the rectangle shape indicating the quality status.
   private shape _rectApply; //!< Reference to the rectangle shape for applying the requested value.
+  private shape _txtUnit; //!< Reference to the text shape for applying the unit of the value.
 
   /**
    * @brief Constructor for ServParamNumberRef.
@@ -30,16 +32,17 @@ class ServParamNumberRef : MtpRefBase
    * @param param A shared pointer to the ServParamBase object representing the numeric parameter.
    * @param shapes A mapping of shapes used in the faceplate.
    */
-  public ServParamNumberRef(shared_ptr<ServParamBase> param, const mapping &shapes) : MtpRefBase(shapes)
+  public ServParamIntRef(shared_ptr<ServParamBase> param, const mapping &shapes) : MtpRefBase(shapes)
   {
     assignPtr(_param, param);
-    classConnect(this, setCurrentCB, param, ServParamBase::valueFeedbackChanged);
+    classConnect(this, setCurrentCB, param, ServParamBase::valueOutputChanged);
     classConnect(this, setWqcCB, param.getWqc(), MtpQualityCode::qualityGoodChanged);
     setWqcCB(param.getWqc().getQualityGood());
-    setCurrentCB(param.getValueFeedback());
+    setCurrentCB(param.getValueOutput());
 
-    _txtRequired.text = param.getValueRequested();
+    _txtRequired.text = param.getValueOperator();
     _txtName.text = param.getName();
+    _txtUnit.text = param.getValueUnit().toString();
   }
 
   /**
@@ -48,7 +51,7 @@ class ServParamNumberRef : MtpRefBase
    */
   public void apply()
   {
-    _param.setValueRequested(_txtRequired.text);
+    _param.setValueOperator(_txtRequired.text);
   }
 
   /**
@@ -62,6 +65,7 @@ class ServParamNumberRef : MtpRefBase
     _txtCurrent = MtpRefBase::extractShape("_txtCurrent");
     _rectStatus = MtpRefBase::extractShape("_rectStatus");
     _rectApply = MtpRefBase::extractShape("_rectApply");
+    _txtUnit = MtpRefBase::extractShape("_txtUnit");
   }
 
   /**

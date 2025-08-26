@@ -6,6 +6,7 @@
   @author d.schermann
 */
 
+#uses "classes/MtpUnit/MtpUnit"
 #uses "std"
 #uses "classes/MtpOsLevel/MtpOsLevel"
 #uses "classes/MtpQualityCode/MtpQualityCode"
@@ -37,6 +38,9 @@ class ServParamBase
   private anytype _valueInternal; //!< The internal value of the service parameter.
   private anytype _valueRequested; //!< The requested value of the service parameter.
   private anytype _valueFeedback; //!< The feedback value of the service parameter.
+  private anytype _valueOperator; //!< The operator value of the service parameter.
+  private anytype _valueOutput; //!< The output value of the service parameter.
+  private shared_ptr<MtpUnit> _valueUnit; //!< The unit associated with the monitored value.
 
   private shared_ptr<MtpQualityCode> _wqc; //!< The quality code associated with the service parameter.
   private shared_ptr<MtpOsLevel> _osLevel; //!< The operational state level of the service parameter.
@@ -115,6 +119,21 @@ class ServParamBase
       throw (makeError("", PRIO_SEVERE, ERR_PARAM, (int)ErrCode::DPNOTEXISTENT, _dp + ".VFbk"));
     }
 
+    if (!dpExists(_dp + ".VOp"))
+    {
+      throw (makeError("", PRIO_SEVERE, ERR_PARAM, (int)ErrCode::DPNOTEXISTENT, _dp + ".VOp"));
+    }
+
+    if (!dpExists(_dp + ".VOut"))
+    {
+      throw (makeError("", PRIO_SEVERE, ERR_PARAM, (int)ErrCode::DPNOTEXISTENT, _dp + ".VOut"));
+    }
+
+    if (!dpExists(_dp + ".VUnit"))
+    {
+      throw (makeError("", PRIO_SEVERE, ERR_PARAM, (int)ErrCode::DPNOTEXISTENT, _dp + ".VUnit"));
+    }
+
     if (!dpExists(_dp + ".Name"))
     {
       throw (makeError("", PRIO_SEVERE, ERR_PARAM, (int)ErrCode::DPNOTEXISTENT, _dp + ".Name"));
@@ -169,6 +188,8 @@ class ServParamBase
     dpConnect(this, setValueInternalCB, _dp + ".VInt");
     dpConnect(this, setValueRequestedCB, _dp + ".VReq");
     dpConnect(this, setValueFeedbackCB, _dp + ".VFbk");
+    dpConnect(this, setValueOperatorCB, _dp + ".VOp");
+    dpConnect(this, setValueOutputCB, _dp + ".VOut");
     dpConnect(this, setStateChannelCB, _dp + ".StateChannel");
     dpConnect(this, setStateOffAutomaticCB, _dp + ".StateOffAut");
     dpConnect(this, setStateOperatorAutomaticCB, _dp + ".StateOpAut");
@@ -179,6 +200,7 @@ class ServParamBase
 
     _wqc = new MtpQualityCode(_dp + ".WQC");
     _osLevel = new MtpOsLevel(_dp + ".OSLevel");
+    _valueUnit = new MtpUnit(_dp + ".VUnit");
   }
 
 #event applyEnabledChanged(const bool &applyEnabled) //!< Event triggered when the applyEnabled state changes.
@@ -193,6 +215,8 @@ class ServParamBase
 #event valueInternalChanged(const anytype &valueInternal) //!< Event triggered when the valueInternal state changes.
 #event valueRequestedChanged(const anytype &valueRequested) //!< Event triggered when the valueRequested state changes.
 #event valueFeedbackChanged(const anytype &valueFeedback) //!< Event triggered when the valueFeedback state changes.
+#event valueOutputChanged(const anytype &valueOutput) //!< Event triggered when the valueOutput state changes.
+#event valueOperatorChanged(const anytype &valueOperator) //!< Event triggered when the valueOperator state changes.
 #event stateOffActiveChanged(const bool &active) //!< Event triggered when the off active state changes.
 #event stateOperatorActiveChanged(const bool &active) //!< Event triggered when the operator active state changes.
 #event stateAutomaticActiveChanged(const bool &active) //!< Event triggered when the automatic active state changes.
@@ -306,7 +330,7 @@ class ServParamBase
    */
   protected anytype getValueRequested()
   {
-   return _valueRequested;
+    return _valueRequested;
   }
 
   /**
@@ -316,6 +340,24 @@ class ServParamBase
   protected anytype getValueFeedback()
   {
     return _valueFeedback;
+  }
+
+  /**
+  * @brief Retrieves the operator value of the service parameter.
+  * @return The operator value as an anytype.
+  */
+  protected anytype getValueOperator()
+  {
+    return _valueOperator;
+  }
+
+  /**
+  * @brief Retrieves the output value of the service parameter.
+  * @return The output value as an anytype.
+  */
+  protected anytype getValueOutput()
+  {
+    return _valueOutput;
   }
 
   /**
@@ -411,6 +453,16 @@ class ServParamBase
   }
 
   /**
+  * @brief Retrieves the unit information.
+  *
+  * @return The shared pointer to the MtpUnit instance.
+  */
+  public shared_ptr<MtpUnit> getValueUnit()
+  {
+    return _valueUnit;
+  }
+
+  /**
    * @brief Sets the external value of the service parameter.
    * @details Updates the external value and writes it to the data point.
    *
@@ -456,6 +508,18 @@ class ServParamBase
   {
     _valueFeedback = valueFeedback;
     dpSet(_dp + ".VFbk", _valueFeedback);
+  }
+
+  /**
+  * @brief Sets the operator value of the service parameter.
+  * @details Updates the operator value and writes it to the data point.
+  *
+  * @param valueOperator The new feedback value.
+  */
+  protected void setValueOperator(const anytype &valueOperator)
+  {
+    _valueOperator = valueOperator;
+    dpSet(_dp + ".VOp", _valueOperator);
   }
 
   /**
@@ -612,6 +676,32 @@ class ServParamBase
   {
     _valueFeedback = valueFeedback;
     valueFeedbackChanged(_valueFeedback);
+  }
+
+  /**
+  * @brief Callback function to set the operator value.
+  * @details Updates the operator value and triggers the valueOperatorChanged event.
+  *
+  * @param dpe The data point element.
+  * @param valueOperator The new operator value.
+  */
+  private void setValueOperatorCB(const string &dpe, const anytype &valueOperator)
+  {
+    _valueOperator = valueOperator;
+    valueOperatorChanged(_valueOperator);
+  }
+
+  /**
+  * @brief Callback function to set the output value.
+  * @details Updates the output value and triggers the valueOutputChanged event.
+  *
+  * @param dpe The data point element.
+  * @param valueOutput The new output value.
+  */
+  private void setValueOutputCB(const string &dpe, const anytype &valueOutput)
+  {
+    _valueOutput = valueOutput;
+    valueOutputChanged(_valueOutput);
   }
 
   /**

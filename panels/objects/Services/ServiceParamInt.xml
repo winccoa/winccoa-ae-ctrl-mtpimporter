@@ -6,7 +6,7 @@
   </prop>
   <prop name="Size">828 50</prop>
   <prop name="BackColor">mtpBackground</prop>
-  <prop name="RefPoint">27.25 43.03125</prop>
+  <prop name="RefPoint">5.499999999999915 6</prop>
   <prop name="InitAndTermRef">True</prop>
   <prop name="SendClick">False</prop>
   <prop name="RefFileName"></prop>
@@ -17,12 +17,13 @@
   <prop name="layoutRightMargin">0</prop>
   <prop name="layoutTopMargin">0</prop>
   <prop name="layoutBottomMargin">0</prop>
+  <prop name="layoutSpacing">6</prop>
  </properties>
  <events>
-  <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/Services/ServParam/ServParamBase&quot;
-#uses &quot;classes/Services/ServParam/ServParamNumberRef&quot;
+  <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/Services/ServParam/ServParamIntRef&quot;
+#uses &quot;classes/Services/ServParam/ServParamBase&quot;
 
-shared_ptr&lt;ServParamNumberRef&gt; _faceplate;
+shared_ptr&lt;ServParamIntRef&gt; _faceplate;
 
 public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
 {
@@ -32,8 +33,9 @@ public void initialize(shared_ptr&lt;ServParamBase&gt; viewModel)
   shapes.insert(&quot;_txtCurrent&quot;, getShape(&quot;txtCurrent&quot;));
   shapes.insert(&quot;_rectStatus&quot;, getShape(&quot;rectStatus&quot;));
   shapes.insert(&quot;_rectApply&quot;, getShape(&quot;rectApply&quot;));
+  shapes.insert(&quot;_txtUnit&quot;, getShape(&quot;txtUnit&quot;));
 
-  _faceplate = new ServParamNumberRef(viewModel, shapes);
+  _faceplate = new ServParamIntRef(viewModel, shapes);
 }
 
 public void applyRow()
@@ -66,7 +68,7 @@ public void applyRow()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Geometry">1.490073596358532 0 0 1 -55.07316464341685 -5</prop>
+    <prop name="Geometry">1.490073596358532 0 0 1 -56.57316464341696 -4.167968750000011</prop>
     <prop name="Location">86.25 29.16796875000001</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
@@ -87,7 +89,7 @@ public void applyRow()
    <properties>
     <prop name="serialId">2</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">130 53.67865953947368</prop>
+    <prop name="RefPoint">111.5 54.51069078947367</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">_WindowText</prop>
@@ -96,8 +98,8 @@ public void applyRow()
     <prop name="ToolTipText">
      <prop name="de_AT.utf8"></prop>
     </prop>
-    <prop name="minimumSize">175 31</prop>
-    <prop name="maximumSize">175 31</prop>
+    <prop name="minimumSize">155 31</prop>
+    <prop name="maximumSize">155 31</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Fixed"/>
     </prop>
@@ -107,12 +109,12 @@ public void applyRow()
      <prop name="de_AT.utf8">Roboto,-1,15,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular</prop>
      <prop name="en_US.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
     </prop>
-    <prop name="Location">159.9999999999999 9.636718750000011</prop>
-    <prop name="Size">180 24</prop>
+    <prop name="Location">141 10</prop>
+    <prop name="Size">155 25</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Editable">True</prop>
     <prop name="ClearButtonEnabled">False</prop>
-    <prop name="TextFormat">[0.2f,False,False,AlignHCenter,False]</prop>
+    <prop name="TextFormat">[0d,False,False,AlignHCenter,False]</prop>
     <prop name="AllowEmptyNumeric">False</prop>
     <prop name="ulcClientSideWidget">False</prop>
    </properties>
@@ -139,7 +141,7 @@ public void applyRow()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Geometry">1.490073596358532 0 0 1 -56.07316464341685 3.136718750000007</prop>
+    <prop name="Geometry">1.490073596358532 0 0 1 -132.573164643417 3.968749999999996</prop>
     <prop name="Location">369.25 21.2734375</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
@@ -153,7 +155,7 @@ public void applyRow()
     <prop name="Bordered">False</prop>
     <prop name="Fit">True</prop>
     <prop name="Transformable">False</prop>
-    <prop name="TextFormat">[0.2f,False,False,AlignHCenter|AlignVCenter,False,False]</prop>
+    <prop name="TextFormat">[0d,False,False,AlignHCenter|AlignVCenter,False,False]</prop>
    </properties>
   </shape>
   <shape Name="rectStatus" layerId="0" shapeType="RECTANGLE">
@@ -179,7 +181,7 @@ public void applyRow()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Close.svg]]</prop>
-    <prop name="Geometry">1.241727996965443 0 0 1.625 385.3635195372301 -117.55078125</prop>
+    <prop name="Geometry">1.241727996965443 0 0 1.625 383.8635195372301 -116.71875</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">21 16</prop>
@@ -210,7 +212,7 @@ public void applyRow()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/apply_rounded.svg]]</prop>
-    <prop name="Geometry">0.9555865523460996 0 0 1.362006578947369 553.737299684224 -103.8581250000001</prop>
+    <prop name="Geometry">0.9555865523460996 0 0 1.362006578947369 552.237299684224 -103.0260937500001</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">41.5 29.6846153846154</prop>
@@ -226,9 +228,34 @@ public void applyRow()
   </shape>
   <shape Name="SPACER3" layerId="0" shapeType="SPACER">
    <properties>
-    <prop name="serialId">8</prop>
+    <prop name="serialId">6</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">380 23.63671874999942</prop>
+    <prop name="RefPoint">311.5 24.46874999999941</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">{0,0,0}</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">5</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="TransparentForMouse">True</prop>
+    <prop name="minimumSize">25 -1</prop>
+    <prop name="sizePolicy">
+     <sizePolicy horizontal="Expanding" vertical="Ignored"/>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">311.5 24.46874999999941</prop>
+    <prop name="Size">45 7</prop>
+    <prop name="Orientation">horizontal</prop>
+   </properties>
+  </shape>
+  <shape Name="SPACER4" layerId="0" shapeType="SPACER">
+   <properties>
+    <prop name="serialId">7</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">462.7750437518899 21.46874999999999</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -238,22 +265,21 @@ public void applyRow()
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">45 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">380 23.63671874999942</prop>
-    <prop name="Size">45 6</prop>
+    <prop name="Location">462.7750437518899 21.46874999999999</prop>
+    <prop name="Size">45 11</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
   </shape>
-  <shape Name="SPACER4" layerId="0" shapeType="SPACER">
+  <shape Name="SPACER6" layerId="0" shapeType="SPACER">
    <properties>
-    <prop name="serialId">9</prop>
+    <prop name="serialId">8</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">546.2750437518899 24.63671875</prop>
+    <prop name="RefPoint">677.8749999999999 23.46874999999999</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -263,22 +289,23 @@ public void applyRow()
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">45 -1</prop>
+    <prop name="minimumSize">30 -1</prop>
+    <prop name="maximumSize">30 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">546.2750437518899 24.63671875</prop>
-    <prop name="Size">45 10</prop>
+    <prop name="Location">677.8749999999999 23.46874999999999</prop>
+    <prop name="Size">35 7</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
   </shape>
-  <shape Name="SPACER6" layerId="0" shapeType="SPACER">
+  <shape Name="SPACER2" layerId="0" shapeType="SPACER">
    <properties>
-    <prop name="serialId">10</prop>
+    <prop name="serialId">9</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">681.3749999999999 24.63671875</prop>
+    <prop name="RefPoint">783.8749999999999 22.46874999999999</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -288,41 +315,81 @@ public void applyRow()
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">78 -1</prop>
-    <prop name="maximumSize">78 -1</prop>
+    <prop name="minimumSize">50 -1</prop>
+    <prop name="maximumSize">50 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">681.3749999999999 24.63671875</prop>
-    <prop name="Size">35 6</prop>
+    <prop name="Location">783.8749999999999 22.46874999999999</prop>
+    <prop name="Size">35 7</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
   </shape>
-  <shape Name="SPACER2" layerId="0" shapeType="SPACER">
+  <shape Name="txtUnit" layerId="0" shapeType="PRIMITIVE_TEXT">
    <properties>
     <prop name="serialId">11</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">788.3749999999999 24.63671875</prop>
+    <prop name="RefPoint">350.25 20.63671874999999</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
-    <prop name="ForeColor">{0,0,0}</prop>
-    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="ForeColor">mtpText</prop>
+    <prop name="BackColor">_Window</prop>
     <prop name="TabOrder">9</prop>
     <prop name="ToolTipText">
      <prop name="de_AT.utf8"></prop>
     </prop>
+    <prop name="minimumSize">100 -1</prop>
+    <prop name="maximumSize">100 -1</prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Geometry">1.79843609132172 0 0 1 -86.64929877138779 3.968749999999964</prop>
+    <prop name="Location">350.25 20.63671874999999</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignHCenter|AlignVCenter]</prop>
+   </properties>
+  </shape>
+  <shape Name="SPACER7" layerId="0" shapeType="SPACER">
+   <properties>
+    <prop name="serialId">12</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">572.7798745610401 25.46874999999996</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">{0,0,0}</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">10</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">78 -1</prop>
-    <prop name="maximumSize">78 -1</prop>
+    <prop name="minimumSize">30 -1</prop>
+    <prop name="maximumSize">30 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">788.3749999999999 24.63671875</prop>
-    <prop name="Size">35 6</prop>
+    <prop name="Location">572.7798745610401 25.46874999999996</prop>
+    <prop name="Size">34 6</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
   </shape>
@@ -333,12 +400,14 @@ public void applyRow()
     <prop idx="0" name="shapeSerial">1</prop>
     <prop idx="1" name="shapeSerial">2</prop>
     <prop idx="3" name="shapeSerial">3</prop>
-    <prop idx="5" name="shapeSerial">4</prop>
-    <prop idx="7" name="shapeSerial">5</prop>
-    <prop idx="2" name="shapeSerial">8</prop>
-    <prop idx="4" name="shapeSerial">9</prop>
-    <prop idx="6" name="shapeSerial">10</prop>
-    <prop idx="8" name="shapeSerial">11</prop>
+    <prop idx="7" name="shapeSerial">4</prop>
+    <prop idx="9" name="shapeSerial">5</prop>
+    <prop idx="2" name="shapeSerial">6</prop>
+    <prop idx="4" name="shapeSerial">7</prop>
+    <prop idx="8" name="shapeSerial">8</prop>
+    <prop idx="10" name="shapeSerial">9</prop>
+    <prop idx="5" name="shapeSerial">11</prop>
+    <prop idx="6" name="shapeSerial">12</prop>
     <prop name="isContainerShape">False</prop>
     <prop name="layoutType">HBox</prop>
    </properties>

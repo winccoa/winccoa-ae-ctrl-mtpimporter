@@ -95,6 +95,24 @@ class AnaServParam : ServParamBase
   }
 
   /**
+  * @brief Retrieves the operator value of the float parameter.
+  * @return The operator value as a float.
+  */
+  public float getValueOperator() override
+  {
+    return ServParamBase::getValueOperator();
+  }
+
+  /**
+  * @brief Retrieves the output value of the float parameter.
+  * @return The output value as a float.
+  */
+  public float getValueOutput() override
+  {
+    return ServParamBase::getValueOutput();
+  }
+
+  /**
    * @brief Retrieves the minimum scale value of the analog parameter.
    * @return The minimum scale value as a float.
    */
@@ -172,6 +190,17 @@ class AnaServParam : ServParamBase
   public void setValueFeedback(const float &valueFeedback) override
   {
     ServParamBase::setValueFeedback(valueFeedback);
+  }
+
+  /**
+  * @brief Sets the operator value of the float parameter.
+  * @details Updates the operator value by calling the base class method.
+  *
+  * @param valueOperator The new feedback value.
+  */
+  public void setValueOperator(const float &valueOperator) override
+  {
+    ServParamBase::setValueOperator(valueOperator);
   }
 
   /**

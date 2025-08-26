@@ -31,6 +31,8 @@ class TstAnaServParam : OaTest
   private const string _DptInvalidMissingVMin = "AnaServParamInvalid4";
   private const string _DptInvalidMissingVSclMax = "AnaServParamInvalid5";
   private const string _DptInvalidMissingVMax = "AnaServParamInvalid6";
+  private const string _DptInvalidMissingVOp = "AnaServParamInvalid7";
+  private const string _DptInvalidMissingVOut = "AnaServParamInvalid8";
   private const string _DpExists = "ExistingTestDatapoint";
   private const string _DpExistsInvalidMissingApplyEn = "ExistingTestDatapointInvalid1";
   private const string _DpExistsInvalidMissingVExt = "ExistingTestDatapointInvalid2";
@@ -38,6 +40,8 @@ class TstAnaServParam : OaTest
   private const string _DpExistsInvalidMissingVMin = "ExistingTestDatapointInvalid4";
   private const string _DpExistsInvalidMissingVSclMax = "ExistingTestDatapointInvalid5";
   private const string _DpExistsInvalidMissingVMax = "ExistingTestDatapointInvalid6";
+  private const string _DpExistsInvalidMissingVOp = "ExistingTestDatapointInvalid7";
+  private const string _DpExistsInvalidMissingVOut = "ExistingTestDatapointInvalid8";
 
   private float _eventValueExternal;
   private float _eventValueInternal;
@@ -47,6 +51,8 @@ class TstAnaServParam : OaTest
   private float _eventValueScaleMax;
   private float _eventValueMinimum;
   private float _eventValueMaximum;
+  private float _eventValueOperator;
+  private float _eventValueOutput;
 
   public int setUp() override
   {
@@ -63,6 +69,7 @@ class TstAnaServParam : OaTest
     dyn_dyn_string dpes = makeDynAnytype(
                             makeDynString(_DptInvalidMissingApplyEn),
                             makeDynString("", "VExt"), makeDynString("", "VInt"), makeDynString("", "VReq"),
+                            makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
                             makeDynString("", "VFbk"), makeDynString("", "Name"), makeDynString("", "SrcChannel"),
                             makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"), makeDynString("", "SrcExtAct"),
                             makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"), makeDynString("", "ApplyInt"),
@@ -74,6 +81,7 @@ class TstAnaServParam : OaTest
     dyn_dyn_int values = makeDynAnytype(
                            makeDynInt(DPEL_STRUCT),
                            makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
+                           makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT),
                            makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_LANGSTRING), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                            makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -84,14 +92,12 @@ class TstAnaServParam : OaTest
                          );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingApplyEn, _DptInvalidMissingApplyEn);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingApplyEn);
-    DebugN("Verify ApplyEn does not exist: ", dpExists(_DpExistsInvalidMissingApplyEn + ".ApplyEn"));
-    DebugN("Verify VSclMin exists: ", dpExists(_DpExistsInvalidMissingApplyEn + ".VSclMin"));
 
     // Create invalid data point type for missing VExt
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVExt),
              makeDynString("", "ApplyEn"), makeDynString("", "VInt"), makeDynString("", "VReq"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VFbk"), makeDynString("", "Name"), makeDynString("", "SrcChannel"),
              makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"), makeDynString("", "SrcExtAct"),
              makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"), makeDynString("", "ApplyInt"),
@@ -103,6 +109,7 @@ class TstAnaServParam : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_LANGSTRING), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -113,13 +120,12 @@ class TstAnaServParam : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVExt, _DptInvalidMissingVExt);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingVExt);
-    DebugN("Verify VExt does not exist: ", dpExists(_DpExistsInvalidMissingVExt + ".VExt"));
 
     // Create invalid data point type for missing VSclMin
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVSclMin),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
@@ -132,6 +138,7 @@ class TstAnaServParam : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -143,14 +150,12 @@ class TstAnaServParam : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVSclMin, _DptInvalidMissingVSclMin);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingVSclMin);
-    DebugN("Verify VSclMin does not exist: ", dpExists(_DpExistsInvalidMissingVSclMin + ".VSclMin"));
-    DebugN("Verify ApplyEn exists: ", dpExists(_DpExistsInvalidMissingVSclMin + ".ApplyEn"));
 
     // Create invalid data point type for missing VMin
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVMin),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
@@ -163,6 +168,7 @@ class TstAnaServParam : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -174,13 +180,12 @@ class TstAnaServParam : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVMin, _DptInvalidMissingVMin);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingVMin);
-    DebugN("Verify VMin does not exist: ", dpExists(_DpExistsInvalidMissingVMin + ".VMin"));
 
     // Create invalid data point type for missing VSclMax
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVSclMax),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
@@ -193,6 +198,7 @@ class TstAnaServParam : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -204,14 +210,12 @@ class TstAnaServParam : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVSclMax, _DptInvalidMissingVSclMax);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingVSclMax);
-    DebugN("Verify VSclMax does not exist: ", dpExists(_DpExistsInvalidMissingVSclMax + ".VSclMax"));
-    DebugN("Verify ApplyEn exists: ", dpExists(_DpExistsInvalidMissingVSclMax + ".ApplyEn"));
 
     // Create invalid data point type for missing VMax
     dpes = makeDynAnytype(
              makeDynString(_DptInvalidMissingVMax),
              makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VOp"), makeDynString("", "VUnit"),
              makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
              makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
              makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
@@ -224,6 +228,7 @@ class TstAnaServParam : OaTest
     values = makeDynAnytype(
                makeDynInt(DPEL_STRUCT),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT),
                makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_LANGSTRING),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
                makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
@@ -235,8 +240,66 @@ class TstAnaServParam : OaTest
              );
     dpTypeCreate(dpes, values);
     dpCreate(_DpExistsInvalidMissingVMax, _DptInvalidMissingVMax);
-    DebugN("Created invalid data point type: " + _DptInvalidMissingVMax);
-    DebugN("Verify VMax does not exist: ", dpExists(_DpExistsInvalidMissingVMax + ".VMax"));
+
+    // Create invalid data point type for missing VOp
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingVOp),
+             makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOut"), makeDynString("", "VMax"), makeDynString("", "VUnit"),
+             makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
+             makeDynString("", "ApplyInt"), makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"), makeDynString("", "StateOffAct"),
+             makeDynString("", "StateOpAct"), makeDynString("", "StateAutAct"), makeDynString("", "VSclMin"),
+             makeDynString("", "VSclMax"), makeDynString("", "VMin"), makeDynString("", "WQC"),
+             makeDynString("", "OSLevel")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT)
+             );
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingVOp, _DptInvalidMissingVOp);
+
+    // Create invalid data point type for missing VOut
+    dpes = makeDynAnytype(
+             makeDynString(_DptInvalidMissingVOut),
+             makeDynString("", "ApplyEn"), makeDynString("", "VExt"), makeDynString("", "VInt"),
+             makeDynString("", "VOp"), makeDynString("", "VMax"), makeDynString("", "VUnit"),
+             makeDynString("", "VReq"), makeDynString("", "VFbk"), makeDynString("", "Name"),
+             makeDynString("", "SrcChannel"), makeDynString("", "SrcExtAut"), makeDynString("", "SrcIntAut"),
+             makeDynString("", "SrcExtAct"), makeDynString("", "SrcIntAct"), makeDynString("", "ApplyExt"),
+             makeDynString("", "ApplyInt"), makeDynString("", "StateChannel"), makeDynString("", "StateOffAut"),
+             makeDynString("", "StateOpAut"), makeDynString("", "StateAutAut"), makeDynString("", "StateOffAct"),
+             makeDynString("", "StateOpAct"), makeDynString("", "StateAutAct"), makeDynString("", "VSclMin"),
+             makeDynString("", "VSclMax"), makeDynString("", "VMin"), makeDynString("", "WQC"),
+             makeDynString("", "OSLevel")
+           );
+    values = makeDynAnytype(
+               makeDynInt(DPEL_STRUCT),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT),
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_LANGSTRING),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL),
+               makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_BOOL), makeDynInt(0, DPEL_FLOAT),
+               makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_FLOAT), makeDynInt(0, DPEL_INT),
+               makeDynInt(0, DPEL_INT)
+             );
+    dpTypeCreate(dpes, values);
+    dpCreate(_DpExistsInvalidMissingVOut, _DptInvalidMissingVOut);
 
     return OaTest::setUp();
   }
@@ -244,31 +307,30 @@ class TstAnaServParam : OaTest
   public int tearDown() override
   {
     dpDelete(_DpExists);
-    DebugN("Deleted data point: " + _DpExists);
 
     dpDelete(_DpExistsInvalidMissingApplyEn);
     dpTypeDelete(_DptInvalidMissingApplyEn);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingApplyEn + ", " + _DptInvalidMissingApplyEn);
 
     dpDelete(_DpExistsInvalidMissingVExt);
     dpTypeDelete(_DptInvalidMissingVExt);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingVExt + ", " + _DptInvalidMissingVExt);
 
     dpDelete(_DpExistsInvalidMissingVSclMin);
     dpTypeDelete(_DptInvalidMissingVSclMin);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingVSclMin + ", " + _DptInvalidMissingVSclMin);
 
     dpDelete(_DpExistsInvalidMissingVMin);
     dpTypeDelete(_DptInvalidMissingVMin);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingVMin + ", " + _DptInvalidMissingVMin);
 
     dpDelete(_DpExistsInvalidMissingVSclMax);
     dpTypeDelete(_DptInvalidMissingVSclMax);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingVSclMax + ", " + _DptInvalidMissingVSclMax);
 
     dpDelete(_DpExistsInvalidMissingVMax);
     dpTypeDelete(_DptInvalidMissingVMax);
-    DebugN("Deleted data point and type: " + _DpExistsInvalidMissingVMax + ", " + _DptInvalidMissingVMax);
+
+    dpDelete(_DpExistsInvalidMissingVOp);
+    dpTypeDelete(_DptInvalidMissingVOp);
+
+    dpDelete(_DpExistsInvalidMissingVOut);
+    dpTypeDelete(_DptInvalidMissingVOut);
 
     return OaTest::tearDown();
   }
@@ -304,6 +366,8 @@ class TstAnaServParam : OaTest
     assertEqual(anaServParam.getValueInternal(), 0.0);
     assertEqual(anaServParam.getValueRequested(), 0.0);
     assertEqual(anaServParam.getValueFeedback(), 0.0);
+    assertEqual(anaServParam.getValueOutput(), 0.0);
+    assertEqual(anaServParam.getValueOperator(), 0.0);
     return 0;
   }
 
@@ -319,7 +383,6 @@ class TstAnaServParam : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for ApplyEn: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing ApplyEn");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingApplyEn + ".ApplyEn"), "Exception should reference ApplyEn");
@@ -335,7 +398,6 @@ class TstAnaServParam : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for VExt: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VExt");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingVExt + ".VExt"), "Exception should reference VExt");
@@ -351,7 +413,6 @@ class TstAnaServParam : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for VSclMin: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VSclMin");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingVSclMin + ".VSclMin"), "Exception should reference VSclMin");
@@ -367,7 +428,6 @@ class TstAnaServParam : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for VMin: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VMin");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingVMin + ".VMin"), "Exception should reference VMin");
@@ -383,7 +443,6 @@ class TstAnaServParam : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for VSclMax: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VSclMax");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingVSclMax + ".VSclMax"), "Exception should reference VSclMax");
@@ -399,10 +458,39 @@ class TstAnaServParam : OaTest
     {
       dyn_errClass err = getLastException();
       string errText = getErrorText(err);
-      DebugN("Caught exception for VMax: " + errText);
       assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VMax");
       assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
       assertTrue(errText.contains(_DpExistsInvalidMissingVMax + ".VMax"), "Exception should reference VMax");
+    }
+
+    // Test missing VOut
+    try
+    {
+      shared_ptr<AnaServParam> servParam = new AnaServParam(_DpExistsInvalidMissingVOut);
+      assertTrue(false, "Expected DPNOTEXISTENT exception for missing VOut");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      string errText = getErrorText(err);
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VOut");
+      assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
+      assertTrue(errText.contains(_DpExistsInvalidMissingVOut + ".VOut"), "Exception should reference VOut");
+    }
+
+    // Test missing VOp
+    try
+    {
+      shared_ptr<AnaServParam> servParam = new AnaServParam(_DpExistsInvalidMissingVOp);
+      assertTrue(false, "Expected DPNOTEXISTENT exception for missing VOp");
+    }
+    catch
+    {
+      dyn_errClass err = getLastException();
+      string errText = getErrorText(err);
+      assertEqual(getErrorCode(err), (int)ErrCode::DPNOTEXISTENT, "Expected DPNOTEXISTENT for missing VOp");
+      assertTrue(errText.contains("Datapoint does not exist"), "Exception should indicate datapoint does not exist");
+      assertTrue(errText.contains(_DpExistsInvalidMissingVOp + ".VOp"), "Exception should reference VOp");
     }
 
     return 0;
@@ -428,7 +516,6 @@ class TstAnaServParam : OaTest
     classConnect(this, setValueScaleMinChangedCB, anaServParam, AnaServParam::valueScaleMinChanged);
 
     anaServParam.setValueScaleMin(10.0);
-    DebugN("Called setValueScaleMin with 10.0 for " + _DpExists);
 
     // Give it time to execute callback
     delay(0, 200);
@@ -446,7 +533,6 @@ class TstAnaServParam : OaTest
     classConnect(this, setValueScaleMaxChangedCB, anaServParam, AnaServParam::valueScaleMaxChanged);
 
     anaServParam.setValueScaleMax(20.0);
-    DebugN("Called setValueScaleMax with 20.0 for " + _DpExists);
 
     // Give it time to execute callback
     delay(0, 200);
@@ -464,7 +550,6 @@ class TstAnaServParam : OaTest
     classConnect(this, setValueMinimumChangedCB, anaServParam, AnaServParam::valueMinimumChanged);
 
     anaServParam.setValueMinimum(5.0);
-    DebugN("Called setValueMinimum with 5.0 for " + _DpExists);
 
     // Give it time to execute callback
     delay(0, 200);
@@ -482,7 +567,6 @@ class TstAnaServParam : OaTest
     classConnect(this, setValueMaximumChangedCB, anaServParam, AnaServParam::valueMaximumChanged);
 
     anaServParam.setValueMaximum(30.0);
-    DebugN("Called setValueMaximum with 30.0 for " + _DpExists);
 
     // Give it time to execute callback
     delay(0, 200);
@@ -500,7 +584,6 @@ class TstAnaServParam : OaTest
     classConnect(this, setValueExternalChangedCB, anaServParam, AnaServParam::valueExternalChanged);
 
     anaServParam.setValueExternal(42.0);
-    DebugN("Called setValueExternal with 42.0 for " + _DpExists);
 
     // Give it time to execute callback
     delay(0, 200);
@@ -518,7 +601,6 @@ class TstAnaServParam : OaTest
     classConnect(this, setValueInternalChangedCB, anaServParam, AnaServParam::valueInternalChanged);
 
     anaServParam.setValueInternal(50.0);
-    DebugN("Called setValueInternal with 50.0 for " + _DpExists);
 
     // Give it time to execute callback
     delay(0, 200);
@@ -536,7 +618,6 @@ class TstAnaServParam : OaTest
     classConnect(this, setValueRequestedChangedCB, anaServParam, AnaServParam::valueRequestedChanged);
 
     anaServParam.setValueRequested(60.0);
-    DebugN("Called setValueRequested with 60.0 for " + _DpExists);
 
     // Give it time to execute callback
     delay(0, 200);
@@ -554,7 +635,6 @@ class TstAnaServParam : OaTest
     classConnect(this, setValueFeedbackChangedCB, anaServParam, AnaServParam::valueFeedbackChanged);
 
     anaServParam.setValueFeedback(70.0);
-    DebugN("Called setValueFeedback with 70.0 for " + _DpExists);
 
     // Give it time to execute callback
     delay(0, 200);
@@ -566,52 +646,66 @@ class TstAnaServParam : OaTest
     return 0;
   }
 
+  public int testSetValueOperator()
+  {
+    shared_ptr<AnaServParam> anaServParam = new AnaServParam(_DpExists);
+    classConnect(this, setValueOperatorChangedCB, anaServParam, AnaServParam::valueOperatorChanged);
+
+    anaServParam.setValueOperator(69.0);
+
+    // Give it time to execute callback
+    delay(0, 200);
+    float dpValue;
+    dpGet(_DpExists + ".VOp", dpValue);
+    assertEqual(anaServParam.getValueOperator(), 69.0, "getValueOperator should return 69.0");
+    assertEqual(dpValue, 69.0, "Data point VOp should be 69.0");
+    assertEqual(_eventValueOperator, 69.0, "Event value for VOp should be 69.0");
+    return 0;
+  }
+
   private void setValueScaleMinChangedCB(const float &value)
   {
     _eventValueScaleMin = value;
-    DebugN("ValueScaleMinChanged callback triggered with value: " + value);
   }
 
   private void setValueScaleMaxChangedCB(const float &value)
   {
     _eventValueScaleMax = value;
-    DebugN("ValueScaleMaxChanged callback triggered with value: " + value);
   }
 
   private void setValueMinimumChangedCB(const float &value)
   {
     _eventValueMinimum = value;
-    DebugN("ValueMinimumChanged callback triggered with value: " + value);
   }
 
   private void setValueMaximumChangedCB(const float &value)
   {
     _eventValueMaximum = value;
-    DebugN("ValueMaximumChanged callback triggered with value: " + value);
   }
 
   private void setValueExternalChangedCB(const float &value)
   {
     _eventValueExternal = value;
-    DebugN("ValueExternalChanged callback triggered with value: " + value);
   }
 
   private void setValueInternalChangedCB(const float &value)
   {
     _eventValueInternal = value;
-    DebugN("ValueInternalChanged callback triggered with value: " + value);
   }
 
   private void setValueRequestedChangedCB(const float &value)
   {
     _eventValueRequested = value;
-    DebugN("ValueRequestedChanged callback triggered with value: " + value);
   }
 
   private void setValueFeedbackChangedCB(const float &value)
   {
     _eventValueFeedback = value;
-    DebugN("ValueFeedbackChanged callback triggered with value: " + value);
+  }
+
+  private void setValueOperatorChangedCB(const float &value)
+  {
+    _eventValueOperator = value;
   }
 };
 

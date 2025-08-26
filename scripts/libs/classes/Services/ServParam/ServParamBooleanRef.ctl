@@ -35,12 +35,12 @@ class ServParamBooleanRef : MtpRefBase
   public ServParamBooleanRef(shared_ptr<ServParamBase> param, const mapping &shapes) : MtpRefBase(shapes)
   {
     assignPtr(_param, param);
-    classConnect(this, setCurrentCB, param, ServParamBase::valueFeedbackChanged);
-    classConnect(this, setRequestedCB, param, ServParamBase::valueRequestedChanged);
+    classConnect(this, setCurrentCB, param, ServParamBase::valueOutputChanged);
+    classConnect(this, setRequestedCB, param, ServParamBase::valueOperatorChanged);
     classConnect(this, setWqcCB, param.getWqc(), MtpQualityCode::qualityGoodChanged);
     setWqcCB(param.getWqc().getQualityGood());
-    setCurrentCB(param.getValueFeedback());
-    setRequestedCB(param.getValueRequested());
+    setCurrentCB(param.getValueOutput());
+    setRequestedCB(param.getValueOperator());
 
     _txtName.text = param.getName();
   }
@@ -71,7 +71,7 @@ class ServParamBooleanRef : MtpRefBase
    */
   public void apply()
   {
-    _param.setValueRequested(_btnBool.text);
+    _param.setValueOperator(_btnBool.text);
   }
 
   /**

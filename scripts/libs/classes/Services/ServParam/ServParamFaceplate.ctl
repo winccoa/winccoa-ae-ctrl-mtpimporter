@@ -6,7 +6,6 @@
   @author m.woegrath
 */
 
-#uses "classes/Services/ServParam/ServParamNumberRef"
 #uses "classes/MtpQualityCode/MtpQualityCode"
 #uses "classes/MtpRef/MtpRefBase"
 #uses "classes/Services/ServParam/ServParamBase"
@@ -92,7 +91,11 @@ class ServParamFaceplate : MtpRefBase
         break;
 
       case INT_VAR:
-        referencePanel = "objects/Services/ServiceParamNumber.xml";
+        referencePanel = "objects/Services/ServiceParamInt.xml";
+        break;
+
+      case FLOAT_VAR:
+        referencePanel = "objects/Services/ServiceParamFloat.xml";
         break;
     }
 

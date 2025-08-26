@@ -94,6 +94,24 @@ class DIntServParam : ServParamBase
   }
 
   /**
+  * @brief Retrieves the operator value of the float parameter.
+  * @return The operator value as a float.
+  */
+  public int getValueOperator() override
+  {
+    return ServParamBase::getValueOperator();
+  }
+
+  /**
+  * @brief Retrieves the output value of the int parameter.
+  * @return The output value as a int.
+  */
+  public int getValueOutput() override
+  {
+    return ServParamBase::getValueOutput();
+  }
+
+  /**
    * @brief Retrieves the minimum scale value of the discrete integer parameter.
    * @return The minimum scale value as an integer.
    */
@@ -171,6 +189,17 @@ class DIntServParam : ServParamBase
   public void setValueFeedback(const int &valueFeedback) override
   {
     ServParamBase::setValueFeedback(valueFeedback);
+  }
+
+  /**
+  * @brief Sets the operator value of the int parameter.
+  * @details Updates the operator value by calling the base class method.
+  *
+  * @param valueOperator The new feedback value.
+  */
+  public void setValueOperator(const int &valueOperator) override
+  {
+    ServParamBase::setValueOperator(valueOperator);
   }
 
   /**

@@ -4,7 +4,7 @@
   <prop name="Name">
    <prop name="de_AT.utf8"></prop>
   </prop>
-  <prop name="Size">840 460</prop>
+  <prop name="Size">847 460</prop>
   <prop name="BackColor">mtpBackground</prop>
   <prop name="RefPoint">27.5 20</prop>
   <prop name="InitAndTermRef">True</prop>
@@ -105,7 +105,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Geometry">1.47788049519242 0 0 1 174.960135295672 9.605468750000011</prop>
+    <prop name="Geometry">1.47788049519242 0 0 1 70.73456594230905 9.605468750000011</prop>
     <prop name="Location">10.25 20.39453124999999</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
@@ -135,8 +135,8 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="ToolTipText">
      <prop name="de_AT.utf8"></prop>
     </prop>
-    <prop name="minimumSize">180 -1</prop>
-    <prop name="maximumSize">175 -1</prop>
+    <prop name="minimumSize">155 -1</prop>
+    <prop name="maximumSize">155 -1</prop>
     <prop name="layoutAlignment">AlignVCenter</prop>
     <prop name="snapMode">Point</prop>
     <prop name="DashBackColor">_Transparent</prop>
@@ -145,7 +145,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Geometry">1.47788049519242 0 0 1 299.960135295672 9.605468750000011</prop>
+    <prop name="Geometry">1.47788049519242 0 0 1 185.960135295672 9.605468750000007</prop>
     <prop name="Location">10.25 20.39453124999999</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
@@ -183,7 +183,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Geometry">1.47788049519242 0 0 1 430.960135295672 9.605468750000011</prop>
+    <prop name="Geometry">1.47788049519242 0 0 1 344.960135295672 9.605468750000007</prop>
     <prop name="Location">10.25 20.39453124999999</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
@@ -221,7 +221,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Geometry">1.47788049519242 0 0 1 657.960135295672 9.605468750000007</prop>
+    <prop name="Geometry">1.47788049519242 0 0 1 680.6493894531502 9.710937500000014</prop>
     <prop name="Location">10.25 20.39453124999999</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
@@ -259,7 +259,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[outline]</prop>
-    <prop name="Geometry">1.47788049519242 0 0 1 548.5439910312434 9.605468750000007</prop>
+    <prop name="Geometry">1.47788049519242 0 0 1 563.5439910312434 9.605468750000007</prop>
     <prop name="Location">10.25 20.39453124999999</prop>
     <prop name="Font">
      <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
@@ -276,37 +276,11 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="TextFormat">[0s,,,AlignHCenter|AlignVCenter]</prop>
    </properties>
   </shape>
-  <shape Name="SPACER3" layerId="0" shapeType="SPACER">
-   <properties>
-    <prop name="serialId">13</prop>
-    <prop name="Type"></prop>
-    <prop name="RefPoint">360 27.00000000000036</prop>
-    <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
-    <prop name="ForeColor">{0,0,0}</prop>
-    <prop name="BackColor">{255,255,255}</prop>
-    <prop name="TabOrder">8</prop>
-    <prop name="ToolTipText">
-     <prop name="de_AT.utf8"></prop>
-    </prop>
-    <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">73 -1</prop>
-    <prop name="maximumSize">73 -1</prop>
-    <prop name="sizePolicy">
-     <sizePolicy horizontal="Expanding" vertical="Ignored"/>
-    </prop>
-    <prop name="layoutAlignment">AlignNone</prop>
-    <prop name="snapMode">Point</prop>
-    <prop name="Location">360 27.00000000000036</prop>
-    <prop name="Size">45 7</prop>
-    <prop name="Orientation">horizontal</prop>
-   </properties>
-  </shape>
   <shape Name="SPACER4" layerId="0" shapeType="SPACER">
    <properties>
     <prop name="serialId">14</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">491 27.00000000000036</prop>
+    <prop name="RefPoint">502.5267417884666 30.10546875000001</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -316,40 +290,15 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="maximumSize">65 -1</prop>
+    <prop name="minimumSize">40 -1</prop>
+    <prop name="maximumSize">40 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">491 27.00000000000036</prop>
+    <prop name="Location">502.5267417884666 30.10546875000001</prop>
     <prop name="Size">45 7</prop>
-    <prop name="Orientation">horizontal</prop>
-   </properties>
-  </shape>
-  <shape Name="SPACER6" layerId="0" shapeType="SPACER">
-   <properties>
-    <prop name="serialId">15</prop>
-    <prop name="Type"></prop>
-    <prop name="RefPoint">599.3749999999999 27.00000000000036</prop>
-    <prop name="Enable">True</prop>
-    <prop name="Visible">True</prop>
-    <prop name="ForeColor">{0,0,0}</prop>
-    <prop name="BackColor">{255,255,255}</prop>
-    <prop name="TabOrder">10</prop>
-    <prop name="ToolTipText">
-     <prop name="de_AT.utf8"></prop>
-    </prop>
-    <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">65 -1</prop>
-    <prop name="maximumSize">65 -1</prop>
-    <prop name="sizePolicy">
-     <sizePolicy horizontal="Expanding" vertical="Ignored"/>
-    </prop>
-    <prop name="layoutAlignment">AlignNone</prop>
-    <prop name="snapMode">Point</prop>
-    <prop name="Location">599.3749999999999 27.00000000000036</prop>
-    <prop name="Size">35 7</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
   </shape>
@@ -357,7 +306,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
    <properties>
     <prop name="serialId">16</prop>
     <prop name="Type"></prop>
-    <prop name="RefPoint">764.3749999999999 28.00000000000036</prop>
+    <prop name="RefPoint">625.3749999999999 30.10546875000001</prop>
     <prop name="Enable">True</prop>
     <prop name="Visible">True</prop>
     <prop name="ForeColor">{0,0,0}</prop>
@@ -367,14 +316,14 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">75 -1</prop>
-    <prop name="maximumSize">75 -1</prop>
+    <prop name="minimumSize">13 -1</prop>
+    <prop name="maximumSize">13 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
     <prop name="layoutAlignment">AlignNone</prop>
     <prop name="snapMode">Point</prop>
-    <prop name="Location">764.3749999999999 28.00000000000036</prop>
+    <prop name="Location">625.3749999999999 30.10546875000001</prop>
     <prop name="Size">35 7</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
@@ -499,8 +448,8 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
      <prop name="de_AT.utf8"></prop>
     </prop>
     <prop name="TransparentForMouse">True</prop>
-    <prop name="minimumSize">75 -1</prop>
-    <prop name="maximumSize">75 -1</prop>
+    <prop name="minimumSize">45 -1</prop>
+    <prop name="maximumSize">45 -1</prop>
     <prop name="sizePolicy">
      <sizePolicy horizontal="Expanding" vertical="Ignored"/>
     </prop>
@@ -508,6 +457,122 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="snapMode">Point</prop>
     <prop name="Location">757 412</prop>
     <prop name="Size">75 27</prop>
+    <prop name="Orientation">horizontal</prop>
+   </properties>
+  </shape>
+  <shape Name="PRIMITIVE_TEXT6" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">22</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">10.25 20.39453124999999</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">16</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignVCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Geometry">1.47788049519242 0 0 1 458.1018489134636 9.605468750000007</prop>
+    <prop name="Location">10.25 20.39453124999999</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">Unit</prop>
+     <prop name="en_US.utf8">Unit</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignHCenter|AlignVCenter]</prop>
+   </properties>
+  </shape>
+  <shape Name="SPACER3" layerId="0" shapeType="SPACER">
+   <properties>
+    <prop name="serialId">24</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">400 30.10546875000001</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">{0,0,0}</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">17</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="TransparentForMouse">True</prop>
+    <prop name="minimumSize">76 -1</prop>
+    <prop name="maximumSize">76 -1</prop>
+    <prop name="sizePolicy">
+     <sizePolicy horizontal="Expanding" vertical="Ignored"/>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">400 30.10546875000001</prop>
+    <prop name="Size">45 7</prop>
+    <prop name="Orientation">horizontal</prop>
+   </properties>
+  </shape>
+  <shape Name="SPACER8" layerId="0" shapeType="SPACER">
+   <properties>
+    <prop name="serialId">25</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">259 28.10546875000001</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">{0,0,0}</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">18</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="TransparentForMouse">True</prop>
+    <prop name="minimumSize">55 -1</prop>
+    <prop name="maximumSize">55 -1</prop>
+    <prop name="sizePolicy">
+     <sizePolicy horizontal="Expanding" vertical="Ignored"/>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">259 28.10546875000001</prop>
+    <prop name="Size">45 7</prop>
+    <prop name="Orientation">horizontal</prop>
+   </properties>
+  </shape>
+  <shape Name="SPACER9" layerId="0" shapeType="SPACER">
+   <properties>
+    <prop name="serialId">26</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">741.521665708536 30.10546875000001</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">{0,0,0}</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">19</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="TransparentForMouse">True</prop>
+    <prop name="minimumSize">45 -1</prop>
+    <prop name="maximumSize">45 -1</prop>
+    <prop name="sizePolicy">
+     <sizePolicy horizontal="Expanding" vertical="Ignored"/>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Location">741.521665708536 30.10546875000001</prop>
+    <prop name="Size">34 7</prop>
     <prop name="Orientation">horizontal</prop>
    </properties>
   </shape>
@@ -526,12 +591,14 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop idx="0" name="shapeSerial">6</prop>
     <prop idx="1" name="shapeSerial">7</prop>
     <prop idx="3" name="shapeSerial">8</prop>
-    <prop idx="7" name="shapeSerial">9</prop>
-    <prop idx="5" name="shapeSerial">12</prop>
-    <prop idx="2" name="shapeSerial">13</prop>
-    <prop idx="4" name="shapeSerial">14</prop>
-    <prop idx="6" name="shapeSerial">15</prop>
+    <prop idx="9" name="shapeSerial">9</prop>
+    <prop idx="7" name="shapeSerial">12</prop>
+    <prop idx="6" name="shapeSerial">14</prop>
     <prop idx="8" name="shapeSerial">16</prop>
+    <prop idx="5" name="shapeSerial">22</prop>
+    <prop idx="2" name="shapeSerial">25</prop>
+    <prop idx="4" name="shapeSerial">24</prop>
+    <prop idx="10" name="shapeSerial">26</prop>
     <prop name="isContainerShape">False</prop>
     <prop name="layoutType">HBox</prop>
    </properties>

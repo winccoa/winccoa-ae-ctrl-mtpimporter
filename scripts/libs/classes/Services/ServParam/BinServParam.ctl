@@ -75,6 +75,24 @@ class BinServParam : ServParamBase
   }
 
   /**
+  * @brief Retrieves the operator value of the bool parameter.
+  * @return The operator value as a bool.
+  */
+  public bool getValueOperator() override
+  {
+    return ServParamBase::getValueOperator();
+  }
+
+  /**
+  * @brief Retrieves the output value of the bool parameter.
+  * @return The output value as a bool.
+  */
+  public bool getValueOutput() override
+  {
+    return ServParamBase::getValueOutput();
+  }
+
+  /**
    * @brief Retrieves the text representation for the false state of the binary parameter.
    * @return The false state text as a string.
    */
@@ -134,5 +152,16 @@ class BinServParam : ServParamBase
   public void setValueFeedback(const bool &valueFeedback) override
   {
     ServParamBase::setValueFeedback(valueFeedback);
+  }
+
+    /**
+  * @brief Sets the operator value of the bool parameter.
+  * @details Updates the operator value by calling the base class method.
+  *
+  * @param valueOperator The new feedback value.
+  */
+  public void setValueOperator(const bool &valueOperator) override
+  {
+    ServParamBase::setValueOperator(valueOperator);
   }
 };

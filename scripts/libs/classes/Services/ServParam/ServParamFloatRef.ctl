@@ -7,40 +7,37 @@
 */
 
 #uses "classes/MtpQualityCode/MtpQualityCode"
-#uses "classes/MtpRef/MtpRefBase"
 #uses "classes/Services/ServParam/ServParamBase"
+#uses "classes/MtpRef/MtpRefBase"
 
-/**
- * @class ServParamStringRef
- * @brief Manages the reference faceplate for a string service parameter.
- */
-class ServParamStringRef : MtpRefBase
+class ServParamFloatRef : MtpRefBase
 {
-  private shared_ptr<ServParamBase> _param; //!< Reference to the string service parameter object.
+  private shared_ptr<ServParamBase> _param; //!< Reference to the numeric service parameter object.
   private shape _txtName; //!< Reference to the text shape displaying the parameter name.
   private shape _txtRequired; //!< Reference to the text shape displaying the requested value.
   private shape _txtCurrent; //!< Reference to the text shape displaying the current value.
   private shape _rectStatus; //!< Reference to the rectangle shape indicating the quality status.
   private shape _rectApply; //!< Reference to the rectangle shape for applying the requested value.
+  private shape _txtUnit; //!< Reference to the text shape for applying the unit of the value.
 
   /**
-   * @brief Constructor for ServParamStringRef.
+   * @brief Constructor for ServParamNumberRef.
    * @details Initializes the faceplate by setting up the parameter reference, connecting callbacks for value and quality changes, and updating the UI with initial values.
-   * @param param A shared pointer to the ServParamBase object representing the string parameter.
    *
+   * @param param A shared pointer to the ServParamBase object representing the numeric parameter.
    * @param shapes A mapping of shapes used in the faceplate.
    */
-  public ServParamStringRef(shared_ptr<ServParamBase> param, const mapping &shapes) : MtpRefBase(shapes)
+  public ServParamFloatRef(shared_ptr<ServParamBase> param, const mapping &shapes) : MtpRefBase(shapes)
   {
     assignPtr(_param, param);
+    classConnect(this, setCurrentCB, param, ServParamBase::valueOutputChanged);
+    classConnect(this, setWqcCB, param.getWqc(), MtpQualityCode::qualityGoodChanged);
+    setWqcCB(param.getWqc().getQualityGood());
+    setCurrentCB(param.getValueOutput());
 
-    classConnect(this, setCurrentCB, _param, ServParamBase::valueOutputChanged);
-    classConnect(this, setWqcCB, _param.getWqc(), MtpQualityCode::qualityGoodChanged);
-    setWqcCB(_param.getWqc().getQualityGood());
-    setCurrentCB(_param.getValueOutput());
-
-    _txtRequired.text = _param.getValueOperator();
-    _txtName.text = _param.getName();
+    _txtRequired.text = param.getValueOperator();
+    _txtName.text = param.getName();
+    _txtUnit.text = param.getValueUnit().toString();
   }
 
   /**
@@ -63,15 +60,16 @@ class ServParamStringRef : MtpRefBase
     _txtCurrent = MtpRefBase::extractShape("_txtCurrent");
     _rectStatus = MtpRefBase::extractShape("_rectStatus");
     _rectApply = MtpRefBase::extractShape("_rectApply");
+    _txtUnit = MtpRefBase::extractShape("_txtUnit");
   }
 
   /**
    * @brief Callback function to update the current value display.
-   * @details Updates the text of the current value shape based on the current string value from the view model.
+   * @details Updates the text of the current value shape based on the current numeric value from the view model.
    *
-   * @param value The current string value.
+   * @param value The current numeric value.
    */
-  private void setCurrentCB(const string &value)
+  private void setCurrentCB(const float &value)
   {
     _txtCurrent.text = value;
   }
@@ -93,4 +91,5 @@ class ServParamStringRef : MtpRefBase
       _rectStatus.fill = "[pattern,[fit,any,MTP_Icones/Close.svg]]";
     }
   }
+
 };

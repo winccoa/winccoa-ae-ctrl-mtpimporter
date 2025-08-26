@@ -164,7 +164,11 @@ class ServicesFaceplateProcedureParam : MtpViewBase
         break;
 
       case INT_VAR:
-        referencePanel = "objects/Services/ServiceParamNumber.xml";
+        referencePanel = "objects/Services/ServiceParamInt.xml";
+        break;
+
+      case FLOAT_VAR:
+        referencePanel = "objects/Services/ServiceParamFloat.xml";
         break;
     }
 

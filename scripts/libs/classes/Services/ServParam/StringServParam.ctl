@@ -52,9 +52,27 @@ class StringServParam : ServParamBase
   }
 
   /**
-   * @brief Retrieves the feedback value of the string parameter.
-   * @return The feedback value as a string.
+   * @brief Retrieves the operator value of the string parameter.
+   * @return The operator value as a string.
    */
+  public string getValueOperator() override
+  {
+    return ServParamBase::getValueOperator();
+  }
+
+  /**
+  * @brief Retrieves the output value of the string parameter.
+  * @return The output value as a string.
+  */
+  public string getValueOutput() override
+  {
+    return ServParamBase::getValueOutput();
+  }
+
+  /**
+  * @brief Retrieves the feedback value of the string parameter.
+  * @return The feedback value as a string.
+  */
   public string getValueFeedback() override
   {
     return ServParamBase::getValueFeedback();
@@ -102,5 +120,16 @@ class StringServParam : ServParamBase
   public void setValueFeedback(const string &valueFeedback) override
   {
     ServParamBase::setValueFeedback(valueFeedback);
+  }
+
+  /**
+  * @brief Sets the operator value of the string parameter.
+  * @details Updates the operator value by calling the base class method.
+  *
+  * @param valueOperator The new feedback value.
+  */
+  public void setValueOperator(const string &valueOperator) override
+  {
+    ServParamBase::setValueOperator(valueOperator);
   }
 };
