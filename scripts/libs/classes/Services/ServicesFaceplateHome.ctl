@@ -158,7 +158,7 @@ class ServicesFaceplateHome : MtpViewBase
       return;
     }
 
-    MtpViewBase::getViewModel().getProcedure().setRequested(answer);
+    MtpViewBase::getViewModel().getProcedure().setOperator(answer);
   }
 
   /**
