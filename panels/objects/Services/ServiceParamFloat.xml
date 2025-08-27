@@ -210,7 +210,7 @@ public void applyRow()
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/apply_rounded.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/apply_rounded_active.svg]]</prop>
     <prop name="Geometry">0.9555865523460996 0 0 1.362006578947369 553.737299684224 -103.8581250000001</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>

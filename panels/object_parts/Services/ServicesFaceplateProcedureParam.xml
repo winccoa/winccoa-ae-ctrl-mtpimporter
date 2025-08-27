@@ -4,7 +4,7 @@
   <prop name="Name">
    <prop name="de_AT.utf8"></prop>
   </prop>
-  <prop name="Size">840 437</prop>
+  <prop name="Size">840 460</prop>
   <prop name="BackColor">mtpBackground</prop>
   <prop name="RefPoint">18 22.00000000000004</prop>
   <prop name="InitAndTermRef">True</prop>
@@ -285,7 +285,7 @@ public void initialize(shared_ptr&lt;Services&gt; viewModel)
     <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
-    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/applyAll_rounded.svg]]</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/applyAll_rounded_active.svg]]</prop>
     <prop name="Geometry">0.9643945902326109 0 0 1.362902635907203 531.120302288525 285.5260889185855</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
