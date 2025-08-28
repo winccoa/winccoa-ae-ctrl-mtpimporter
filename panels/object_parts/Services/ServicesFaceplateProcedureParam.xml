@@ -13,10 +13,10 @@
   <prop name="DPI">96</prop>
   <prop name="PDPI">94.11039611039611</prop>
   <prop name="layoutType">VBox</prop>
-  <prop name="layoutLeftMargin">6</prop>
-  <prop name="layoutRightMargin">6</prop>
-  <prop name="layoutTopMargin">6</prop>
-  <prop name="layoutBottomMargin">6</prop>
+  <prop name="layoutLeftMargin">9</prop>
+  <prop name="layoutRightMargin">9</prop>
+  <prop name="layoutTopMargin">9</prop>
+  <prop name="layoutBottomMargin">9</prop>
   <prop name="layoutSpacing">6</prop>
  </properties>
  <events>
