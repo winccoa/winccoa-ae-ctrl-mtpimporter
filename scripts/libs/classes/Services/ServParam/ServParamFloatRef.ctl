@@ -10,6 +10,10 @@
 #uses "classes/Services/ServParam/ServParamBase"
 #uses "classes/MtpRef/MtpRefBase"
 
+/**
+ * @class ServParamFloatRef
+ * @brief A class that represents a service parameter reference for floating-point values.
+ */
 class ServParamFloatRef : MtpRefBase
 {
   private shared_ptr<ServParamBase> _param; //!< Reference to the numeric service parameter object.

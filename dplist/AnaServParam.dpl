@@ -29,3 +29,6 @@ AnaServParam.AnaServParam	1#1
 	VMin	22#34
 	VMax	22#35
 	Name	42#36
+	VOp	22
+	VOut	22
+	VUnit	21

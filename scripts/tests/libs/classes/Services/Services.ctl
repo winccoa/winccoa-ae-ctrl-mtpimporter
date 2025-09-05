@@ -25,7 +25,7 @@
 */
 class TstServices : OaTest
 {
-  private const string _Dpt = "Services";
+  private const string _Dpt = "ServiceControl";
   private const string _DptInvalidMissingCommandOp = "ServicesInvalid1";
   private const string _DptInvalidMissingStateCur = "ServicesInvalid2";
   private const string _DptInvalidMissingCommandInt = "ServicesInvalid3";
@@ -98,7 +98,7 @@ class TstServices : OaTest
   private const string _DpExistsInvalidMissingProcedures = "ExistingTestDatapointInvalid_Procedures";
   private const string _DpExistsInvalidMissingConfigParameters = "ExistingTestDatapointInvalid_ConfigParameters";
 
-  private const string _DptProcedure = "Procedures";
+  private const string _DptProcedure = "ProcedureHealthView";
   private const string _DptServParam = "StringServParam";
   private const string _DpProcedure1 = "Procedure_1";
   private const string _DpProcedure2 = "Procedure_1";

@@ -29,3 +29,6 @@ DIntServParam.DIntServParam	1#1
 	VMin	21#42
 	VMax	21#43
 	Name	42#44
+	VOp	21
+	VOut	21
+	VUnit	21

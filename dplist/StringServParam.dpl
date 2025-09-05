@@ -25,3 +25,6 @@ StringServParam.StringServParam	1#1
 	VReq	25#46
 	VFbk	25#47
 	Name	42#48
+	VOp	25
+	VOut	25
+	VUnit	21

@@ -27,3 +27,6 @@ BinServParam.BinServParam	1#1
 	VState0	25#26
 	VState1	25#27
 	Name	42#28
+	VOp	23
+	VOut	23
+	VUnit	21

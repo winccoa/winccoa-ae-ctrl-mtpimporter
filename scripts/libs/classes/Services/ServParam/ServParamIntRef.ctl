@@ -12,7 +12,7 @@
 #uses "classes/Services/ServParam/ServParamBase"
 
 /**
- * @class ServParamNumberRef
+ * @class ServParamIntRef
  * @brief Manages the reference faceplate for a numeric service parameter.
  */
 class ServParamIntRef : MtpRefBase
@@ -26,7 +26,7 @@ class ServParamIntRef : MtpRefBase
   private shape _txtUnit; //!< Reference to the text shape for applying the unit of the value.
 
   /**
-   * @brief Constructor for ServParamNumberRef.
+   * @brief Constructor for ServParamIntRef.
    * @details Initializes the faceplate by setting up the parameter reference, connecting callbacks for value and quality changes, and updating the UI with initial values.
    *
    * @param param A shared pointer to the ServParamBase object representing the numeric parameter.
