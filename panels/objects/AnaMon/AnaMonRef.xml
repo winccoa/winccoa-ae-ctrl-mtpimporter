@@ -6,7 +6,7 @@
   </prop>
   <prop name="Size">420 258</prop>
   <prop name="BackColor">_3DFace</prop>
-  <prop name="RefPoint">195 75</prop>
+  <prop name="RefPoint">150 55</prop>
   <prop name="InitAndTermRef">True</prop>
   <prop name="SendClick">False</prop>
   <prop name="RefFileName"></prop>

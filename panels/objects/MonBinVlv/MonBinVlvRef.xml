@@ -6,7 +6,7 @@
   </prop>
   <prop name="Size">400 400</prop>
   <prop name="BackColor">_3DFace</prop>
-  <prop name="RefPoint">187 135</prop>
+  <prop name="RefPoint">10 -20</prop>
   <prop name="InitAndTermRef">True</prop>
   <prop name="SendClick">False</prop>
   <prop name="RefFileName"></prop>
@@ -58,7 +58,7 @@ public void initialize()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/locked_.svg]]</prop>
-    <prop name="Geometry">1 0 0 1.354166666666667 8.526512829121202e-14 81.51041666666663</prop>
+    <prop name="Geometry">1 0 0 1.354166666666667 -165 -56.33333333333337</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">21 16</prop>
@@ -87,7 +87,7 @@ public void initialize()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/ValvStopped.svg]]</prop>
-    <prop name="Geometry">2.933333333333333 0 0 2.933333333333333 -295.9999999999999 -169.9744318181818</prop>
+    <prop name="Geometry">2.933333333333333 0 0 2.933333333333333 -461 -307.8181818181818</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">165 105</prop>
     <prop name="Size">16 16</prop>
@@ -116,7 +116,7 @@ public void initialize()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Mainenance.svg]]</prop>
-    <prop name="Geometry">1 0 0 1.354166666666667 -21.99999999999994 81.51041666666663</prop>
+    <prop name="Geometry">1 0 0 1.354166666666667 -187 -56.33333333333337</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">21 16</prop>
@@ -145,7 +145,7 @@ public void initialize()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Manual_1.svg]]</prop>
-    <prop name="Geometry">1.000000000000005 0 0 1.354166666666667 21.99999999999908 81.51041666666663</prop>
+    <prop name="Geometry">1.000000000000005 0 0 1.354166666666667 -143.000000000001 -56.33333333333337</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">21 16</prop>
@@ -174,7 +174,7 @@ public void initialize()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/disabled.svg]]</prop>
-    <prop name="Geometry">1.000000000000005 0 0 1.354166666666667 8.999999999999034 81.51041666666666</prop>
+    <prop name="Geometry">1.000000000000005 0 0 1.354166666666667 -156.0000000000011 -56.33333333333334</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">190 80</prop>
     <prop name="Size">21 16</prop>
@@ -203,7 +203,7 @@ public void initialize()
     <prop name="BorderZoomable">False</prop>
     <prop name="BorderScalable">False</prop>
     <prop name="FillType">[solid]</prop>
-    <prop name="Geometry">1.5 0 0 1.62 -82.49999999999991 48.92556818181817</prop>
+    <prop name="Geometry">1.5 0 0 1.62 -247.5 -88.91818181818184</prop>
     <prop name="BorderStyle">Normal</prop>
     <prop name="Location">165 55</prop>
     <prop name="Size">61 51</prop>
