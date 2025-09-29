@@ -11,3 +11,8 @@ config/host-key.pem
 config/influxdb.conf
 config/progs
 config/root-cert.pem
+panels/objects/AnaMon/AnaMonRef.xml.bak
+panels/objects/MonAnaDrv/MonAnaDrvRef.xml.bak
+panels/objects/MonBinVlv/MonBinVlvRef.xml.bak
+panels/objects/refPanel.xml
+panels/objects/usage.xml.bak
