@@ -1,0 +1,45 @@
+# ascii dump of database
+
+# DpType
+TypeName
+MonBinVlv.MonBinVlv	1#1
+	WQC	24#5
+	OSLevel	21#6
+	StateChannel	23#42
+	StateOffAut	23#43
+	StateOpAut	23#44
+	StateAutAut	23#45
+	StateOffOp	23#46
+	StateOpOp	23#47
+	StateAutOp	23#48
+	StateOpAct	23#49
+	StateAutAct	23#50
+	StateOffAct	23#51
+	SafePos	23#52
+	SafePosEn	23#53
+	SafePosAct	23#54
+	OpenOp	23#55
+	CloseOp	23#56
+	OpenAut	23#57
+	CloseAut	23#58
+	Ctrl	23#59
+	OpenFbkCalc	23#60
+	OpenFbk	23#61
+	CloseFbkCalc	23#62
+	CloseFbk	23#63
+	PermEn	23#64
+	Permit	23#65
+	IntEn	23#66
+	Interlock	23#67
+	ProtEn	23#68
+	Protect	23#69
+	ResetOp	23#70
+	ResetAut	23#71
+	MonEn	23#72
+	MonSafePos	23#73
+	MonStatErr	23#74
+	MonDynErr	23#75
+	MonStatTi	22#76
+	MonDynTi	22#77
+	enabled	23#78
+	tagName	42#79

@@ -1,0 +1,34 @@
+# ascii dump of database
+
+# DpType
+TypeName
+DIntServParam.DIntServParam	1#1
+	WQC	24#4
+	OSLevel	21#5
+	ApplyEn	23#6
+	ApplyExt	23#7
+	ApplyInt	23#8
+	StateChannel	23#9
+	StateOffAut	23#10
+	StateOpAut	23#11
+	StateAutAut	23#12
+	StateOffAct	23#13
+	StateOpAct	23#14
+	StateAutAct	23#15
+	SrcChannel	23#16
+	SrcExtAut	23#17
+	SrcIntAut	23#18
+	SrcIntAct	23#19
+	SrcExtAct	23#20
+	VExt	21#36
+	VInt	21#37
+	VReq	21#38
+	VFbk	21#39
+	VSclMin	21#40
+	VSclMax	21#41
+	VMin	21#42
+	VMax	21#43
+	Name	42#44
+	VOp	21
+	VOut	21
+	VUnit	21

@@ -1,0 +1,16 @@
+# ascii dump of database
+
+# DpType
+TypeName
+BinMon.BinMon	1#1
+	WQC	24#3
+	OSLevel	21#4
+	V	23#5
+	VState0	25#6
+	VState1	25#7
+	VFlutEn	23#8
+	VFlutTi	22#9
+	VFlutCnt	21#10
+	VFlutAct	23#11
+	enabled	23#12
+	tagName	42#13

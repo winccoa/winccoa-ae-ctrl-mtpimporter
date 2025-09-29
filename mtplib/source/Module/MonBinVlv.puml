@@ -1,0 +1,90 @@
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/ViewModel/MtpMonitor.puml
+!include source/Hilfsklassen/ViewModel/MtpState.puml
+!include source/Hilfsklassen/ViewModel/MtpSecurity.puml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
+!include source/Hilfsklassen/ViewModel/MtpOsLevel.puml
+
+class MonBinVlv {
+    - bool _safetyposition
+    - bool _safetypositionActive
+    - bool _safetypositionEnabled
+    - bool _openOperator
+    - bool _closeOperator
+    - bool _openAutomatic
+    - bool _closeAutomatic
+    - bool _valveControl
+    - bool _openFeedbackSource
+    - bool _closeFeedbackSource
+    - bool _openCheckbackSignal
+    - bool _closeCheckbackSignal
+    - bool _resetOperator
+    - bool _resetAutomatic
+--
+    + MonBinVlv(const string &dp)
+    + MtpQualityCode getWqc()
+    + MtpOsLevel getOsLevel()
+    + MtpState getState()
+    + MtpMonitor getMonitor()
+    + MtpSecurity getSecurity()
+    + bool getSafetyPosition()
+    + bool getSafetyPositionActive()
+    + bool getSafetyPositionEnabled()
+    + bool getOpenOperator()
+    + bool getCloseOperator()
+    + bool getOpenAutomatic()
+    + bool getCloseAutomatic()
+    + bool getValveControl()
+    + bool getOpenFeedbackSource()
+    + bool getCloseFeedbackSource()
+    + bool getOpenCheckbackSignal()
+    + bool getCloseCheckbackSignal()
+    + bool getResetOperator()
+    + bool getResetAutomatic()
+    + void setOpenOperator(const bool &openOperator)
+    + void setCloseOperator(const bool &closeOperator)
+    + void setResetOperator(const bool &resetOperator)
+    ' DPE: OpenFbk
+    - void setOpenCheckbackSignalCB(const string &dpe, const bool &openCheckbackSignal)
+    ' DPE: CloseFbk
+    - void setCloseCheckbackSignalCB(const string &dpe, const bool &closeCheckbackSignal)
+    ' DPE: SafePos
+    - void setSafetyPositionCB(const string &dpe, const bool &safetyPosition)
+    ' DPE: SafePosAct
+    - void setSafetyPositionActiveCB(const string &dpe, const bool &safetyPositionActive)
+    ' DPE: SafePosEn
+    - void setSafetyPositionEnabledCB(const string &dpe, const bool &safetyPositionEnabled)
+    ' DPE: OpenAut
+    - void setOpenAutomaticCB(const string &dpe, const bool &openAutomatic)
+    ' DPE: CloseAut
+    - void setCloseAutomaticCB(const string &dpe, const bool &closeAutomatic)
+    ' DPE: Ctrl
+    - void setValveControlCB(const string &dpe, const bool &valveControl)
+    ' DPE: ResetAut
+    - void setResetAutomaticCB(const string &dpe, const bool &resetAutomatic)
+
+    ..events..
+    + void openCheckBackSignalChanged(const bool &openCheckbackSignal)
+    + void valveControlChanged(const bool &valveControl)
+    + void closeCheckBackSignalChanged(const bool &closeCheckbackSignal)
+    + void safetyPositionActiveChanged(const bool &safetyPositionActive)
+    + void safetyPositionEnabledChanged(const bool &safetyPositionEnabled)
+    + void safetyPositionChanged(const bool &safetyPosition)
+    + void closeAutomaticChanged(const bool &closeAutomatic)
+    + void openAutomaticChanged(const bool &openAutomatic)
+    + void resetAutomaticChanged(const bool &resetAutomatic)
+}
+
+MtpViewModelBase <|-- MonBinVlv
+' DPE: WQC
+MtpQualityCode "1" --* "1" MonBinVlv : _wqc
+' DPE: OSLevel
+MtpOsLevel"1" --* "1" MonBinVlv : _osLevel
+' DPE: StateChannel, StateOffAut, StateOpAut, StateAutAut, StateOffOp, StateOpOp, StateAutOp, StateOpAct, StateAutAct, StateOffAct
+MtpState "1" --* "1" MonBinVlv : _state
+' DPE: MonEn, MonSafePos, MonStatErr, MonDynErr, MonStatTi, MonDynTi
+MtpMonitor "1" --* "1" MonBinVlv : _monitor
+' DPE: PermEn, Permit, IntEn, Interlock, ProtEn, Protect
+MtpSecurity "1" --* "1" MonBinVlv : _security
+@enduml

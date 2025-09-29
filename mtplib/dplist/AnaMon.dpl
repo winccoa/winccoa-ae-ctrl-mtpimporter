@@ -1,0 +1,31 @@
+# ascii dump of database
+
+# DpType
+TypeName
+AnaMon.AnaMon	1#1
+	WQC	24#2
+	OSLevel	21#3
+	V	22#4
+	VSclMin	22#5
+	VSclMax	22#6
+	VUnit	21#7
+	VAHEn	23#8
+	VAHLim	22#9
+	VAHAct	23#10
+	VWHEn	23#11
+	VWHLim	22#12
+	VWHAct	23#13
+	VTHEn	23#14
+	VTHLim	22#15
+	VTHAct	23#16
+	VTLEn	23#17
+	VTLLim	22#18
+	VTLAct	23#19
+	VWLEn	23#20
+	VWLLim	22#21
+	VWLAct	23#22
+	VALEn	23#23
+	VALLim	22#24
+	VALAct	23#25
+	enabled	23#26
+	tagName	42#27

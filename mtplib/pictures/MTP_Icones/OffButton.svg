@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="489.61157"
+   height="307.89282"
+   viewBox="0 0 489.61157 307.89282"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="Indicators.svg"
+   xml:space="preserve"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="0.99731523"
+     inkscape:cx="3443.2443"
+     inkscape:cy="217.08282"
+     inkscape:window-width="1920"
+     inkscape:window-height="1137"
+     inkscape:window-x="3832"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" /><defs
+     id="defs1" /><g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline"
+     transform="translate(-2469.3914,-2378.5095)"><path
+       id="rect1-3-4-8-4-9-0"
+       style="display:inline;fill:#00a1d1;fill-opacity:1;stroke:#666666;stroke-width:1.24232"
+       d="m 2892.9403,2379.1312 v 0.033 h 11.5567 c 29.8521,0 53.8847,24.0326 53.8847,53.8848 v 198.8124 c 0,29.8522 -24.0326,53.8848 -53.8847,53.8848 h -11.5567 v 0.035 h -422.9277 v -306.6504 z"
+       inkscape:export-filename="..\WinCC_OA_Proj\WCCOA_3_19\MTP_Raima\pictures\MTP_Icones\OnButton.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" /></g></svg>

@@ -1,0 +1,21 @@
+@startuml
+!include source/Hilfsklassen/View/MtpViewBase.puml
+
+class MtpFaceplateTrendBase {
+    - shape _trend
+--
+    # MtpFaceplateTrendBase(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes)
+    # initializeShapes()
+    # {abstract} dyn_string getTrendDpes()
+    - void connectTrend()
+    - void removeCurves()
+}
+MtpViewBase <|-- MtpFaceplateTrendBase
+
+class MtpFaceplateTrendFactory {
+    - MtpFaceplateTrendFactory()
+    + static shared_ptr<MtpFaceplateTrendBase> create(shared_ptr<MtpViewModelBase> viewModel, const mapping &shapes)
+}
+
+MtpFaceplateTrendFactory --> MtpFaceplateTrendBase
+@enduml

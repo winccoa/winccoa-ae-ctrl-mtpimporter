@@ -1,0 +1,51 @@
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/ViewModel/MtpSource.puml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
+!include source/Hilfsklassen/ViewModel/MtpOsLevel.puml
+
+class BinManInt {
+    - bool _valueOut
+    - string _valueStateFalseText
+    - string _valueStateTrueText
+    - bool _valueManual
+    - bool _valueInternal
+    - bool _valueReadback
+    - bool _valueFeedback
+--
+    + BinManInt(const string &dp)
+    + MtpQualityCode getWqc()
+    + MtpOsLevel getOsLevel()
+    + bool getValueOut()
+    + string getValueStateTrueText()
+    + string getValueStateFalseText()
+    + bool getValueManual()
+    + bool getValueInternal()
+    + bool getValueReadback()
+    + bool getValueFeedback()
+    + MtpSource getSource()
+    + void setValueManual(const bool &valueManual)
+    ' DPE: VOut
+    - void setValueOutCB(const string &dpe, const bool &valueOut)
+    ' DPE: VFbk
+    - void setValueFeedbackCB(const string &dpe, const bool &valueFeedback)
+    ' DPE: VInt
+    - void setValueInternalCB(const string &dpe, const bool &valueInternal)
+    ' DPE: VMan
+    - void setValueManualCB(const string &dpe, const bool &valueManual)
+
+    ..events..
+    + void valueOutChanged(const bool &valueOut)
+    + void valueFeedbackChanged(const bool &valueFeedback)
+    + void valueInternalChanged(const bool &valueInternal)
+    + void valueManualChanged(const bool &valueManual)
+}
+
+MtpViewModelBase <|-- BinManInt
+' DPE: WQC
+MtpQualityCode "1" --* "1" BinManInt : _wqc
+' DPE: OSLevel
+MtpOsLevel"1" --* "1" BinManInt : _osLevel
+' DPE: SrcChannel, SrcManAut, SrcIntAut, SrcManOp, SrcIntOp, SrcManAct, SrcIntAct
+MtpSource "1" --* "1" BinManInt : _source
+@enduml

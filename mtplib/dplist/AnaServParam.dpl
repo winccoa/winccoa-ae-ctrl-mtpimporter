@@ -1,0 +1,34 @@
+# ascii dump of database
+
+# DpType
+TypeName
+AnaServParam.AnaServParam	1#1
+	WQC	24#4
+	OSLevel	21#5
+	ApplyEn	23#6
+	ApplyExt	23#7
+	ApplyInt	23#8
+	StateChannel	23#9
+	StateOffAut	23#10
+	StateOpAut	23#11
+	StateAutAut	23#12
+	StateOffAct	23#13
+	StateOpAct	23#14
+	StateAutAct	23#15
+	SrcChannel	23#16
+	SrcExtAut	23#17
+	SrcIntAut	23#18
+	SrcIntAct	23#19
+	SrcExtAct	23#20
+	VExt	22#28
+	VInt	22#29
+	VReq	22#30
+	VFbk	22#31
+	VSclMin	22#32
+	VSclMax	22#33
+	VMin	22#34
+	VMax	22#35
+	Name	42#36
+	VOp	22
+	VOut	22
+	VUnit	21

@@ -1,0 +1,11 @@
+@startuml
+
+class MtpRefBase{
+    - mapping _shapes
+--
+    # MtpRefBase(const mapping &shapes)
+    # shape extractShape(const string &key)
+    # {abstract} void initializeShapes()
+}
+
+@enduml

@@ -1,0 +1,12 @@
+@startuml
+
+class MtpViewModelBase {
+    - string _dp
+    - bool _invalid
+--
+    # MtpViewModelBase(const string &dp)
+    + bool getInvalid()
+    + string getDp()
+}
+
+@enduml

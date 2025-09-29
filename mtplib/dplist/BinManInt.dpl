@@ -1,0 +1,23 @@
+# ascii dump of database
+
+# DpType
+TypeName
+BinManInt.BinManInt	1#1
+	WQC	24#3
+	OSLevel	21#5
+	VOut	23#6
+	VState0	25#7
+	VState1	25#8
+	VMan	23#9
+	VInt	23#10
+	VRbk	23#11
+	VFbk	23#12
+	SrcChannel	23#13
+	SrcManAut	23#14
+	SrcIntAut	23#15
+	SrcManOp	23#16
+	SrcIntOp	23#17
+	SrcManAct	23#18
+	SrcIntAct	23#19
+	enabled	23#20
+	tagName	42#21

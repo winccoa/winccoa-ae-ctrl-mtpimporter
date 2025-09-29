@@ -1,0 +1,41 @@
+@startuml
+
+class MtpSecurity {
+    - bool _permissionEnabled
+    - bool _permit
+    - bool _interlockEnabled
+    - bool _interlock
+    - bool _protectionEnabled
+    - bool _protect
+--
+    + MtpSecurity(
+        const string &dpePermissionEnabled,
+        const string &dpePermit,
+        const string &dpeInterlockEnabled,
+        const string &dpeInterlock,
+        const string &dpeProtectionEnabled,
+        const string &dpeProtect
+    )
+    + bool getPermissionEnabled()
+    + bool getPermit()
+    + bool getInterlockEnabled()
+    + bool getInterlock()
+    + bool getProtectionEnabled()
+    + bool getProtect()
+    - void setPermitCB(const string &dpe, const bool &permit)
+    - void setInterlockCB(const string &dpe, const bool &interlock)
+    - void setProtectCB(const string &dpe, const bool &protect)
+    - void setPermissionEnabledCB(const string &dpe, const bool &permissionEnabled)
+    - void setInterlockEnabledCB(const string &dpe, const bool &interlockEnabled)
+    - void setProtectionEnabledCB(const string &dpe, const bool &protectionEnabled)
+
+    ..events..
+    + void permitChanged(const bool &permit)
+    + void interlockChanged(const bool &interlock)
+    + void protectChanged(const bool &protect)
+    + void permissionEnabledChanged(const bool &permissionEnabled)
+    + void interlockEnabledChanged(const bool &interlockEnabled)
+    + void protectionEnabledChanged(const bool &protectionEnabled)
+}
+
+@enduml

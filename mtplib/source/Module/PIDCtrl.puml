@@ -1,0 +1,131 @@
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/ViewModel/MtpUnit.puml
+!include source/Hilfsklassen/ViewModel/MtpSource.puml
+!include source/Hilfsklassen/ViewModel/MtpState.puml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
+!include source/Hilfsklassen/ViewModel/MtpOsLevel.puml
+
+class PidCtrl {
+    - float _processValue
+    - float _processValueScaleMin
+    - float _processValueScaleMax
+    - float _setpointManual
+    - float _setpointInternal
+    - float _setpointScaleMin
+    - float _setpointScaleMax
+    - float _setpointInternalMin
+    - float _setpointInternalMax
+    - float _setpointManualMin
+    - float _setpointManualMax
+    - float _setpoint
+    - float _manipulatedValueManual
+    - float _manipulatedValue
+    - float _manipulatedValueMin
+    - float _manipulatedValueMax
+    - float _manipulatedValueScaleMin
+    - float _manipulatedValueScaleMax
+    - float _proportionalParameter
+    - float _integrationParameter
+    - float _derivationParameter
+--
+    + PidCtrl(const string &dp)
+    + MtpQualityCode getWqc()
+    + MtpOsLevel getOsLevel()
+    + MtpState getState()
+    + MtpSource getSource()
+    + MtpUnit getProcessValueUnit()
+    + MtpUnit getSetpointUnit()
+    + MtpUnit getManipulatedValueUnit()
+    + float getProcessValue()
+    + float getProcessValueScaleMin()
+    + float getProcessValueScaleMax()
+    + float getSetpointManual()
+    + float getSetpointInternal()
+    + float getSetpointScaleMin()
+    + float getSetpointScaleMax()
+    + float getSetpointInternalMin()
+    + float getSetpointInternalMax()
+    + float getSetpointManualMin()
+    + float getSetpointManualMax()
+    + float getSetpoint()
+    + float getManipulatedValueManual()
+    + float getManipulatedValue()
+    + float getManipulatedValueMin()
+    + float getManipulatedValueMax()
+    + float getManipulatedValueScaleMin()
+    + float getManipulatedValueScaleMax()
+    + float getProportionalParameter()
+    + float getIntegrationParameter()
+    + float getDerivationParameter()
+    + void setProcessValue(const float &processValue)
+    + void setSetpoint(const float &setpoint)
+    + void setManipulatedValue(const float &manipulatedValue)
+    + void setSetpointManual(const float &setpointManual)
+    + void setManipulatedValueManual(const float &manipulatedValueManual)
+    + void setSetpointManualMin(const float &setpointManualMin)
+    + void setSetpointManualMax(const float &setpointManualMax)
+    + void setProportionalParameter(const float &proportionalParameter)
+    + void setIntegrationParameter(const float &integrationParameter)
+    + void setDerivationParameter(const float &derivationParameter)
+    ' DPE: PV
+    - void setProcessValueCB(const string &dpe, const float &processValue)
+    ' DPE: SPInt
+    - void setSetpointInternalCB(const string &dpe, const float &setpointInternal)
+    ' DPE: MV
+    - void setManipulatedValueCB(const string &dpe, const float &manipulatedValue)
+    ' DPE: MVMin
+    - void setManipulatedValueMinCB(const string &dpe, const float &manipulatedValueMin)
+    ' DPE: MVMax
+    - void setManipulatedValueMaxCB(const string &dpe, const float &manipulatedValueMax)
+    ' DPE: SPIntMin
+    - void setSetpointInternalMinCB(const string &dpe, const float &setpointInternalMin)
+    ' DPE: SPIntMax
+    - void setSetpointInternalMaxCB(const string &dpe, const float &setpointInternalMax)
+    ' DPE: SP
+    - void setSetpointCB(const string &dpe, const float &setpoint)
+    ' DPE: PVSclMin
+    - void setProcessValueScaleMinCB(const string &dpe, const float &processValueScaleMin)
+    ' DPE: PVSclMax
+    - void setProcessValueScaleMaxCB(const string &dpe, const float &processValueScaleMax)
+    ' DPE: SPSclMin
+    - void setSetpointScaleMinCB(const string &dpe, const float &setpointScaleMin)
+    ' DPE: SPSclMax
+    - void setSetpointScaleMaxCB(const string &dpe, const float &setpointScaleMax)
+    ' DPE: MVSclMin
+    - void setManipulatedValueScaleMinCB(const string &dpe, const float &manipulatedValueScaleMin)
+    ' DPE: MVSclMax
+    - void setManipulatedValueScaleMaxCB(const string &dpe, const float &manipulatedValueScaleMax)
+    
+    ...events..
+    + void processValueChanged(const float &processValue)
+    + void setpointChanged(const float &setpoint)
+    + void manipulatedValueChanged(const float &manipulatedValue)
+    + void manipulatedValueMinChanged(const float &manipulatedValueMin)
+    + void manipulatedValueMaxChanged(const float &manipulatedValueMax)
+    + void setpointInternalChanged(const float &setpointInternal)
+    + void setpointInternalMinChanged(const float &setpointInternalMin)
+    + void setpointInternalMaxChanged(const float &setpointInternalMax)
+    + void processValueScaleMinChanged(const float &processValueScaleMin)
+    + void processValueScaleMaxChanged(const float &processValueScaleMax)
+    + void setpointScaleMinChanged(const float &setpointScaleMin)
+    + void setpointScaleMaxChanged(const float &setpointScaleMax)
+    + void manipulatedValueScaleMinChanged(const float &manipulatedValueScaleMin)
+    + void manipulatedValueScaleMaxChanged(const float &manipulatedValueScaleMax)
+}
+
+MtpViewModelBase <|-- PidCtrl
+' DPE: WQC
+MtpQualityCode "1" --* "1" PidCtrl : _wqc
+' DPE: OSLevel
+MtpOsLevel"1" --* "1" PidCtrl : _osLevel
+' DPE: StateChannel, StateOffAut, StateOpAut, StateAutAut, StateOffOp, StateOpOp, StateAutOp, StateOpAct, StateAutAct, StateOffAct
+MtpState "1" --* "1" PidCtrl : _state
+' DPE: SrcChannel, SrcManAut, SrcIntAut, SrcManOp, SrcIntOp, SrcManAct, SrcIntAct
+MtpSource "1" --* "1" PidCtrl : _source
+' DPE: PVUnit
+MtpUnit "1" --* "1" PidCtrl : _processValueUnit
+' DPE: SPUnit
+MtpUnit "1" --* "1" PidCtrl : _setpointUnit
+' DPE: MVUnit
+MtpUnit "1" --* "1" PidCtrl : _manipulatedValueUnit

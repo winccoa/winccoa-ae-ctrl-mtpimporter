@@ -1,0 +1,10 @@
+@startuml
+
+class MtpUnit {
+    - int _value
+--
+    + MtpUnit(const string &dpeUnit)
+    + string toString()
+}
+
+@enduml

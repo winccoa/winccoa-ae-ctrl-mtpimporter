@@ -1,0 +1,70 @@
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/ViewModel/MtpSource.puml
+!include source/Hilfsklassen/ViewModel/MtpUnit.puml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
+!include source/Hilfsklassen/ViewModel/MtpOsLevel.puml
+
+
+class AnaManInt {
+    - float _valueOut
+    - float _valueScaleMin
+    - float _valueScaleMax
+    - float _valueManual
+    - float _valueInternal
+    - float _valueReadback
+    - float _valueFeedback
+    - float _valueMin
+    - float _valueMax
+--
+    + AnaManInt(const string &dp)
+    + MtpQualityCode getWqc()
+    + MtpOsLevel getOsLevel()
+    + float getValueOut()
+    + float getValueScaleMin()
+    + float getValueScaleMax()
+    + float getValueManual()
+    + float getValueInternal()
+    + float getValueReadback()
+    + float getValueFeedback()
+    + MtpSource getSource()
+    + MtpUnit getValueUnit()
+    + float getValueMin()
+    + float getValueMax()
+    + void setValueManual(const float &valueManual)
+    ' DPE: VOut
+    - void setValueOutCB(const string &dpe, const float &valueOut)
+    ' DPE: VFbk
+    - void setValueFeedbackCB(const string &dpe, const float &valueFeedback)
+    ' DPE: VMin
+    - void setValueMinCB(const string &dpe, const float &min)
+    ' DPE: VMax
+    - void setValueMaxCB(const string &dpe, const float &max)
+    ' DPE: VInt
+    - void setValueInternalCB(const string &dpe, const float &valueInternal)
+    ' DPE: VSclMin
+    - void setValueScaleMinCB(const string &dpe, const float &valueScaleMin)
+    ' DPE: VSclMax
+    - void setValueScaleMaxCB(const string &dpe, const float &valueScaleMax)
+
+    ..events..
+    + void valueOutChanged(const float &value)
+    + void valueFeedbackChanged(const float &value)
+    + void valueMinChanged(const float &minExceeded)
+    + void valueMaxChanged(const float &maxExceeded)
+    + void valueInternalChanged(const float &valueInternal)
+    + void valueScaleMinChanged(const float &valueScaleMin)
+    + void valueScaleMaxChanged(const float &valueScaleMax)
+}
+
+MtpViewModelBase <|-- AnaManInt
+' DPE: WQC
+MtpQualityCode "1" --* "1" AnaManInt : _wqc
+' DPE: OSLevel
+MtpOsLevel"1" --* "1" AnaManInt : _osLevel
+' DPE: SrcChannel, SrcManAut, SrcIntAut, SrcManOp, SrcIntOp, SrcManAct, SrcIntAct
+MtpSource "1" --* "1" AnaManInt : _source
+' DPE: VUnit
+MtpUnit "1" --* "1" AnaManInt : _valueUnit
+
+@enduml

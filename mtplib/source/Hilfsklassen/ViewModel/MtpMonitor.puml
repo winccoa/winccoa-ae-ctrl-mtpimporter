@@ -1,0 +1,41 @@
+@startuml
+
+class MtpMonitor {
+    - bool _enabled
+    - bool _safePosition
+    - bool _staticError
+    - bool _dynamicError
+    - float _staticTime
+    - float _dynamicTime
+    - string _dpeEnabled
+--
+    + MtpMonitor(
+        const string &dpeEnabled,
+        const string &dpeSafePosition,
+        const string &dpeStaticError,
+        const string &dpeDynamicError,
+        const string &dpeStaticTime,
+        const string &dpeDynamicTime
+    )
+    + bool getEnabled()
+    + bool getSafePosition()
+    + bool getStaticError()
+    + bool getDynamicError()
+    + float getStaticTime()
+    + float getDynamicTime()
+    + void setEnabled(const bool &enabled)
+    - void setStaticErrorCB(const string &dpe, const bool &staticError)
+    - void setDynamicErrorCB(const string &dpe, const bool &dynamicError)
+    - void setSafePositionCB(const string &dpe, const bool &safePosition)
+    - void setStaticTimeCB(const string &dpe, const float &staticTime)
+    - void setDynamicTimeCB(const string &dpe, const float &dynamicTime)
+
+    ..events..
+    + void staticErrorChanged(const bool &staticError)
+    + void dynamicErrorChanged(const bool &dynamicError)
+    + void safePositionChanged(const bool &safePosition)
+    + void staticTimeChanged(const float &staticTime)
+    + void dynamicTimeChanged(const float &dynamicTime)
+}
+
+@enduml

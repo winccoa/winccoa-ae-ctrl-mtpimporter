@@ -1,0 +1,50 @@
+# ascii dump of database
+
+# DpType
+TypeName
+PIDCtrl.PIDCtrl	1#1
+	WQC	24#2
+	OSLevel	21#3
+	StateChannel	23#4
+	StateOffAut	23#5
+	StateOpAut	23#6
+	StateAutAut	23#7
+	StateOffOp	23#8
+	StateOpOp	23#9
+	StateAutOp	23#10
+	StateOpAct	23#11
+	StateAutAct	23#12
+	StateOffAct	23#13
+	SrcChannel	23#14
+	SrcManAut	23#15
+	SrcIntAut	23#16
+	SrcIntOp	23#17
+	SrcManOp	23#18
+	SrcIntAct	23#19
+	SrcManAct	23#20
+	PV	22#21
+	PVSclMin	22#22
+	PVSclMax	22#23
+	PVUnit	21#24
+	SPMan	22#25
+	SPInt	22#26
+	SPSclMin	22#27
+	SPSclMax	22#28
+	SPUnit	21#29
+	SPIntMin	22#30
+	SPIntMax	22#31
+	SPManMin	22#32
+	SPManMax	22#33
+	SP	22#34
+	MVMan	22#35
+	MV	22#36
+	MVMin	22#37
+	MVMax	22#38
+	MVUnit	21#39
+	MVSclMin	22#40
+	MVSclMax	22#41
+	P	22#42
+	Ti	22#43
+	Td	22#44
+	tagName	42#45
+	enabled	23#46

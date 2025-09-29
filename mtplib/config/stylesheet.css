@@ -1,0 +1,9 @@
+QPushButton[type="MtpButton"] {
+    border-radius: 5px;
+    background-color: oa-color(mtpTitlebar);
+}
+
+QPushButton[type="MtpButtonGreen"] {
+    border-radius: 5px;
+    background-color: oa-color(mtpGreen);
+}

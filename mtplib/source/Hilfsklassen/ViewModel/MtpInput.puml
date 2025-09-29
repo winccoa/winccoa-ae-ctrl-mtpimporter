@@ -1,0 +1,32 @@
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
+
+class MtpInput {
+    - bool _enabled
+    - bool _value
+    - bool _inverted
+    - string _text
+--
+    + MtpInput(
+        const string &dpeEnabled,
+        const string &dpeValue,
+        const string &dpeInverted,
+        const string &dpeText,
+        const string &dpeQualityCode
+    )
+    + bool getEnabled()
+    + bool getValue()
+    + bool getInverted()
+    + string getText()
+    + MtpQualityCode getQualityCode()
+    - void setEnabledCB(const string &dpe, const bool &enabled)
+    - void setValueCB(const string &dpe, const bool &value)
+
+    ..events..
+    + void enabledChanged(const bool &enabled)
+    + void valueChanged(const bool &value)
+}
+
+MtpQualityCode "1" --* "1" MtpInput : _qualityCode
+
+@enduml

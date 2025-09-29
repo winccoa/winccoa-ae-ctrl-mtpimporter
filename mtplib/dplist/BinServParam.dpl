@@ -1,0 +1,32 @@
+# ascii dump of database
+
+# DpType
+TypeName
+BinServParam.BinServParam	1#1
+	WQC	24#4
+	OSLevel	21#5
+	ApplyEn	23#6
+	ApplyExt	23#7
+	ApplyInt	23#8
+	StateChannel	23#9
+	StateOffAut	23#10
+	StateOpAut	23#11
+	StateAutAut	23#12
+	StateOffAct	23#13
+	StateOpAct	23#14
+	StateAutAct	23#15
+	SrcChannel	23#16
+	SrcExtAut	23#17
+	SrcIntAut	23#18
+	SrcIntAct	23#19
+	SrcExtAct	23#20
+	VExt	23#21
+	VInt	23#22
+	VReq	23#23
+	VFbk	23#24
+	VState0	25#26
+	VState1	25#27
+	Name	42#28
+	VOp	23
+	VOut	23
+	VUnit	21

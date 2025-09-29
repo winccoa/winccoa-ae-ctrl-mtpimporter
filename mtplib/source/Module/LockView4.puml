@@ -1,0 +1,117 @@
+@startuml
+!include source/Hilfsklassen/ViewModel/MtpViewModelBase.puml
+!include source/Hilfsklassen/ViewModel/MtpInput.puml
+!include source/Hilfsklassen/ViewModel/MtpQualityCode.puml
+!include source/Hilfsklassen/View/MtpViewBase.puml
+!include source/Hilfsklassen/View/MtpFaceplateTrendBase.puml
+!include source/Hilfsklassen/View/MtpFaceplateMainBase.puml
+
+class LockView4 {
+    - bool _logic
+    - bool _output
+--
+    + LockView4(const string &dp)
+    + bool getLogic()
+    + bool getOutput()
+    + MtpQualityCode getWqc()
+    + MtpInput getInput1()
+    + MtpInput getInput2()
+    + MtpInput getInput3()
+    + MtpInput getInput4()
+    + MtpQualityCode getOutputQualityCode()
+    ' DPE: Out
+    - void setOutputCB(const string &dpe, const bool &output)
+    ' DPE: Logic
+    - void setLogicCB(const string &dpe, const bool &logic)
+        
+    ...events..
+    + void outputChanged(const bool &output)
+    + void logicChanged(const bool &logic)
+}
+
+MtpViewModelBase <|-- LockView4
+' DPE: WQC
+MtpQualityCode "1" --* "1" LockView4 : _wqc
+' DPE: In1En, In1, In1QC, In1Inv, In1Txt
+MtpInput "1" --* "1" LockView4 : _input1
+' DPE: In2En, In2, In2QC, In2Inv, In2Txt
+MtpInput "1" --* "1" LockView4 : _input2
+' DPE: In3En, In3, In3QC, In3Inv, In3Txt
+MtpInput "1" --* "1" LockView4 : _input3
+' DPE: In4En, In4, In4QC, In4Inv, In4Txt
+MtpInput "1" --* "1" LockView4 : _input4
+' DPE: OutQC
+MtpQualityCode "1" --* "1" LockView4 : _outputQualityCode
+
+class LockView4FaceplateMain {
+    + LockView4FaceplateMain(shared_ptr<LockView4> viewModel, const mapping &shapes, const string &layoutNavigation)
+    # vector<shared_ptr<MtpNavigationButton> > getNavigationButtons()
+}
+MtpFaceplateMainBase <|-- LockView4FaceplateMain
+
+class LockView4FaceplateHome {
+    - shape _circleIn1En
+    - shape _circleIn2En
+    - shape _circleIn3En
+    - shape _circleIn4En
+    - shape _circleOut
+    - shape _lineOut
+    - shape _lineIn1Hor
+    - shape _lineIn2Hor
+    - shape _lineIn3Hor
+    - shape _lineIn4Hor
+    - shape _lineIn1Vert
+    - shape _lineIn2Vert
+    - shape _lineIn3Vert
+    - shape _lineIn4Vert
+    - shape _rectIn1QC
+    - shape _rectIn2QC
+    - shape _rectIn3QC
+    - shape _rectIn4QC
+    - shape _txtIn1Txt
+    - shape _txtIn2Txt
+    - shape _txtIn3Txt
+    - shape _txtIn4Txt
+    - shape _txtLogic
+    - shape _txtIn1Label
+    - shape _txtIn2Label
+    - shape _txtIn3Label
+    - shape _txtIn4Label
+    - shape _rectOutQC
+    - shape _circleIn1Inv
+    - shape _circleIn2Inv
+    - shape _circleIn3Inv
+    - shape _circleIn4Inv
+--
+    + LockView4FaceplateHome(shared_ptr<LockView4> viewModel, const mapping &shapes)
+    # void initializeShapes()
+    - void setOutqcCB(const bool &qualityGoodChanged)
+    - void setInputTexts(const string &varName, shared_ptr<MtpInput> input)
+    - void setInputChangedCB(const string &varName, const bool &value)
+    - void setOutputCB(const bool &output)
+    - void setLogicCB(const bool &logic)
+    - setQualityCodeCB(const string &varName, const bool &qualityGood)
+
+}
+MtpViewBase <|-- LockView4FaceplateHome
+
+class LockView4FaceplateTrend {
+    + LockView4FaceplateTrend(shared_ptr<LockView4> viewModel, const mapping &shapes)
+    # dyn_string getTrendDpes()
+}
+MtpFaceplateTrendBase <|-- LockView4FaceplateTrend
+
+class LockView4Ref {
+    - shape _rectOutput
+--
+    + LockView4Ref(shared_ptr<LockView4> viewModel, const mapping &shapes)
+    # void initializeShapes()
+    - void setOutputCB(const bool &output)
+}
+MtpViewRef <|-- LockView4Ref
+
+LockView4 "1" --* "1" LockView4Ref : _viewModel
+LockView4 "1" --* "1" LockView4FaceplateHome : _viewModel
+LockView4 "1" --* "1" LockView4FaceplateTrend : _viewModel
+LockView4 "1" --* "1" LockView4FaceplateMain : _viewModel
+@enduml

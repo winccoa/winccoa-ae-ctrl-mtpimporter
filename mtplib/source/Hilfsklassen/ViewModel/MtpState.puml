@@ -1,0 +1,61 @@
+@startuml
+
+class MtpState {
+    - bool _channel
+    - bool _offAutomatic
+    - bool _operatorAutomatic
+    - bool _automaticAutomatic
+    - bool _offOperator
+    - bool _operatorOperator
+    - bool _automaticOperator
+    - bool _operatorActive
+    - bool _automaticActive
+    - bool _offActive
+    - string _dpeOffOperator
+    - string _dpeOperatorOperator
+    - string _dpeAutomaticOperator
+--
+    + MtpState(
+        const string &dpeChannel,
+        const string &dpeOffAutomatic,
+        const string &dpeOperatorAutomatic,
+        const string &dpeAutomaticAutomatic,
+        const string &dpeOffOperator,
+        const string &dpeOperatorOperator,
+        const string &dpeAutomaticOperator,
+        const string &dpeOperatorActive,
+        const string &dpeAutomaticActive,
+        const string &dpeOffActive
+    )
+    + bool getChannel()
+    + bool getOffAutomatic()
+    + bool getOperatorAutomatic()
+    + bool getAutomaticAutomatic()
+    + bool getOffOperator()
+    + bool getOperatorOperator()
+    + bool getAutomaticOperator()
+    + bool getOperatorActive()
+    + bool getAutomaticActive()
+    + bool getOffActive()
+    + void setOffOperator(const bool &offOperator)
+    + void setOperatorOperator(const bool &operatorOperator)
+    + void setAutomaticOperator(const bool &automaticOperator)
+    - void setOffActiveCB(const string &dpe, const bool &offActive)
+    - void setOperatorActiveCB(const string &dpe, const bool &operatorActive)
+    - void setAutomaticActiveCB(const string &dpe, const bool &automaticActive)
+    - void setChannelCB(const string &dpe, const bool &channel)
+    - void setOffAutomaticCB(const string &dpe, const bool &offAutomatic)
+    - void setOperatorAutomaticCB(const string &dpe, const bool &operatorAutomatic)
+    - void setAutomaticAutomaticCB(const string &dpe, const bool &automaticAutomatic)
+
+    ..events..
+    + void offActiveChanged(const bool &active)
+    + void operatorActiveChanged(const bool &active)
+    + void automaticActiveChanged(const bool &active)
+    + void channelChanged(const bool &channel)
+    + void operatorAutomaticChanged(const bool &operatorAutomatic)
+    + void automaticAutomaticChanged(const bool &automaticAutomatic)
+    + void offAutomaticChanged(const bool &offAutomatic)
+}
+
+@enduml
