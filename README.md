@@ -17,7 +17,7 @@ Generate ready to use HMI panels. These visualizations provide you with immediat
 ### Contextual MTP Understanding
 The importer comprehends the hierarchical structure and semantics of your MTP files. It automatically recognizes modules, interfaces, and parameters, enabling precise and error-free transfer into the WinCC OA environment and facilitating adaptation to changes.
 
-![Alt text](images/2025-09-10 15-59-27.gif)
+![Alt text](images/gif.gif)
 
 For detailed instructions on usage and integration, please refer to the datasheet with the name: **WinCCOAMTPExample.pdf.”**
 
