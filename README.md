@@ -3,7 +3,7 @@
 
 ## Overview
 **The MTP Importer** reads the MTP file and automatically creates the WinCC OA configuration: data points, OPC UA connections, and visualization panels.
-
+![Alt text](images/post.png)
 ## Key Features
 ### Automatic data point generation
 Create datapoint types and datapoints with all necessary configurations based on the MTP structure.
@@ -17,9 +17,7 @@ Generate ready to use HMI panels. These visualizations provide you with immediat
 ### Contextual MTP Understanding
 The importer comprehends the hierarchical structure and semantics of your MTP files. It automatically recognizes modules, interfaces, and parameters, enabling precise and error-free transfer into the WinCC OA environment and facilitating adaptation to changes.
 
-
-## Video
-*(Add your video or thumbnail/link here.)*
+![Alt text](images/2025-09-10 15-59-27.gif)
 
 For detailed instructions on usage and integration, please refer to the datasheet with the name: **WinCCOAMTPExample.pdf.”**
 
