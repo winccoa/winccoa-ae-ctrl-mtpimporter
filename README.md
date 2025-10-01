@@ -6,7 +6,7 @@
 
 The MTP Importer reads the MTP file and automatically creates the WinCC OA configuration: data points, OPC UA connections, and visualization panels.
 
-![Alt text](images/post.png)
+<img width="754" height="462" alt="post" src="https://github.com/user-attachments/assets/4f8d6480-d145-4322-ab65-7bf52bd01d90" />
 
 ## Key Features
 
