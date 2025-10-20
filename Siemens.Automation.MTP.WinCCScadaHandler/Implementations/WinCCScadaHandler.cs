@@ -373,14 +373,15 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
             {
                 foreach (var screen in mtpScreenItems)
                 {
-                    panelPath += "\\" + screen.Name.Replace("|", "_") + ".xml";
+                    //panelPath += "\\" + screen.Name.Replace("|", "_") + ".xml";
+                    string panelName = panelPath + "\\" + screen.Name.Replace("|", "_") + ".xml";
                     //How to get screen Size?
 
-                    if (!File.Exists(panelPath))
+                    if (!File.Exists(panelName))
                     {
-                        Panel panel = new Panel(panelPath, screen.Name);
+                        Panel panel = new Panel(panelName, screen.Name);
                     }
-                    CreateScreenPictures(packageInformation.PeaInformation.DefaultValue, attributeTables, m_LoggingService, screen);
+                    CreateScreenPictures(packageInformation.PeaInformation.DefaultValue, attributeTables, m_LoggingService, screen, panelName);
                 }
             }
             catch (Exception ex)
@@ -582,7 +583,11 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
             panelPath = path;
         }
 
-        private void CreateScreenPictures(string peaPrefix, IEnumerable<IScadaMtpAttributeTable> allDataAssemblies, ILoggingService loggingService, IScadaMtpScreenItem screen)
+        private void CreateScreenPictures(string peaPrefix, 
+            IEnumerable<IScadaMtpAttributeTable> allDataAssemblies, 
+            ILoggingService loggingService, 
+            IScadaMtpScreenItem screen,
+            string panelPath)
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(panelPath);
@@ -593,13 +598,17 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                 bool referenceExists = doc.SelectNodes("//reference[@Name='" + picture.Name + "']").Count != 0;
                 if (!shapeExists && !referenceExists)
                 {
-                    CreateGraphicObject(peaPrefix, allDataAssemblies, loggingService, picture);
+                    CreateGraphicObject(peaPrefix, allDataAssemblies, loggingService, picture, panelPath);
                 }
                 refID++;
             }
         }
 
-        private void CreateGraphicObject(string peaPrefix, IEnumerable<IScadaMtpAttributeTable> allDataAssemblies,ILoggingService loggingService, IPictureItem picture)
+        private void CreateGraphicObject(string peaPrefix, 
+            IEnumerable<IScadaMtpAttributeTable> allDataAssemblies,
+            ILoggingService loggingService, 
+            IPictureItem picture,
+            string panelPath)
         {
             switch (picture)
             {
