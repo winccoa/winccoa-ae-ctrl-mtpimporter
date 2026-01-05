@@ -8,3 +8,9 @@ log/
 *.wsdl
 *.xltm
 *.xls
+**/.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+*.cache
