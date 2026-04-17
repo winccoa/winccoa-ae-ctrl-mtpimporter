@@ -1,0 +1,21 @@
+{
+  "RepoName": "WinCC OA MTP Importer",
+  "Keywords": [
+    "ctrl",
+    "mtp",
+    "importer",
+    "opc-ua",
+    "datapoints",
+    "visualization",
+    "automation"
+  ],
+  "Version": "1.0.0",
+  "Description": "Imports MTP (Module Type Package) files into WinCC OA and automatically generates the required configuration, including datapoint structures, OPC UA client connections, and visualization panels for modular automation projects.",
+  "OaVersions": "^3.20.0",
+  "Subprojects": [
+    {
+      "Name": "mtplib",
+      "Description": "Core library for interpreting MTP structures and supporting the automated import of modular automation data into WinCC OA."
+    }
+  ]
+}
