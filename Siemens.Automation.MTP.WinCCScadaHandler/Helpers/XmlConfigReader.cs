@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
@@ -6,18 +7,67 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
 {
     internal class XmlConfigReader
     {
+        private static Dictionary<string, string> _configs;
         private static Dictionary<string, string> _panelRefs;
 
-        public static void ReadConfigs(string pathToXml, ref string asciiPath, ref string userName, ref string password, ref bool useTypeInAddress)
+        public static void ReadConfigs(string pathToXml)
         {
+            _configs = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             XDocument doc = XDocument.Load(pathToXml);
             XElement root = doc.Element("Configs");
 
-            asciiPath = root.Element("PathToASCIIExe")?.Value ?? "WCCOAascii";
-            userName = root.Element("UserName")?.Value ?? "root";
-            password = root.Element("Password")?.Value ?? "";
-            string useType = root.Element("UseTypeInAddress")?.Value ?? "false";
-            useTypeInAddress = bool.Parse(useType);
+            if (root == null)
+                return;
+
+            foreach (XElement element in root.Elements())
+            {
+                _configs[element.Name.LocalName] = element.Value;
+            }
+        }
+
+        public static string GetStringValue(string key, string defaultValue = "")
+        {
+            if (_configs != null && _configs.TryGetValue(key, out string value))
+            {
+                return value;
+            }
+            return defaultValue;
+        }
+
+        public static bool GetBoolValue(string key, bool defaultValue = false)
+        {
+            if (_configs != null && _configs.TryGetValue(key, out string value))
+            {
+                if (bool.TryParse(value, out bool result))
+                {
+                    return result;
+                }
+            }
+            return defaultValue;
+        }
+
+        public static int GetIntValue(string key, int defaultValue = 0)
+        {
+            if (_configs != null && _configs.TryGetValue(key, out string value))
+            {
+                if (int.TryParse(value, out int result))
+                {
+                    return result;
+                }
+            }
+            return defaultValue;
+        }
+
+        public static double GetDoubleValue(string key, double defaultValue = 0.0)
+        {
+            if (_configs != null && _configs.TryGetValue(key, out string value))
+            {
+                if (double.TryParse(value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture, out double result))
+                {
+                    return result;
+                }
+            }
+            return defaultValue;
         }
 
         public static void FillDictionary(string pathToXml)

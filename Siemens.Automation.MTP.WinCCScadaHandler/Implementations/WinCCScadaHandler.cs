@@ -41,6 +41,8 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
         private readonly ILoggingService m_LoggingService;
         private IStringValidator stringValidator;
         private bool useTypeInAddress;
+        private bool forceOverwrite;
+        private bool useQuotation;
         private string configsPath = "";
 
         private static ScadaMtpLocalizationData localizedData = new ScadaMtpLocalizationData();
@@ -102,8 +104,13 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
 
             importSettings.AdditionalProperties.TryGetValue("WinCCOASettings", out pathToXml);
             configsPath = pathToXml ?? Path.Combine(projPath, "Data", "WinccOAMTPImporterConfgis.xml");
-            XmlConfigReader.ReadConfigs(pathToXml, ref asciiExePath, ref userName, ref password, ref useTypeInAddress);
-
+            XmlConfigReader.ReadConfigs(pathToXml);
+            asciiExePath = XmlConfigReader.GetStringValue("PathToASCIIExe", "WCCOAascii");
+            userName = XmlConfigReader.GetStringValue("UserName", "root");
+            password = XmlConfigReader.GetStringValue("Password", "");
+            useTypeInAddress = XmlConfigReader.GetBoolValue("UseTypeInAddress", false);
+            forceOverwrite = XmlConfigReader.GetBoolValue("ForceOverwrite", false);
+            useQuotation = XmlConfigReader.GetBoolValue("UseQuotation", false);
             importSettings.AdditionalProperties.TryGetValue("SupportedBlocksConfig", out pathToXml);
             pathToXml = pathToXml ?? Path.Combine(projPath, "Data", "Objects.xml");
 
@@ -156,7 +163,7 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                 writer.WriteLine("I");
             }
 
-            DpTypeHelper.ImportAscii(pathDpList, asciiExePath, userName, password);
+            DpTypeHelper.ImportAscii(pathDpList, asciiExePath, userName, password, forceOverwrite);
         }
 
         public void DeleteMtpScreenItems(IEnumerable<IScadaMtpScreenItem> mtpScreenItems)
@@ -267,10 +274,9 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                     var access = string.Equals(attribute.Access, "Read", StringComparison.OrdinalIgnoreCase) ? "\\4" : "\\7";
                     var dpAddress = (attribute.NameSpace ?? string.Empty).Replace("\"", "\\\"");
 
-                    /*This part was for work with WinCC OA as server*/
-                    
-                    //var dpAddress = Regex.Replace((attribute.NameSpace ?? string.Empty).Replace("\"", ""), @"\bns=[^;]+(?=;s=)", "ns=2", RegexOptions.IgnoreCase);
-                    dpAddress = dpAddress.Replace("ns=3", "ns=2");
+                    dpAddress = !useQuotation ? 
+                        Regex.Replace((attribute.NameSpace ?? string.Empty).Replace("\"", ""), @"\bns=[^;]+(?=;s=)", "ns=2", RegexOptions.IgnoreCase) : 
+                        dpAddress.Replace("ns=3", "ns=2");
 
                     lastAddressPattern = dpAddress;
                     lastEditablePart = sAttribute;
@@ -280,7 +286,7 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                     var transformation = AddressHelper.GetTransformationType(dpType, sAttribute);
 
                     addrRef = (useTypeInAddress) ? AddressHelper.AdaptAdderess(addrRef, dpType) : addrRef;
-                    sections.Address.Add(elementName + "\t" + dpType + "\t16\t" + addrRef + "\t" + access + $"\t_5s\t1\t{transformation}\tOPCUA");
+                    sections.Address.Add(elementName + "\t" + dpType + "\t16\t" + addrRef + "\t" + access + $"\t_5s\t1\t1\t{transformation}\tOPCUA");
                 }
 
                 if (DpTypeHelper.ExistingElements.TryGetValue(dpType, out var typeDpes))
@@ -338,21 +344,22 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                         if (DpTypeHelper.DPESWithoutAddress.Contains(dpType + "." + dpe)) continue;
 
                         sections.Distrib.Add(elementName + "\t" + dpType + "\t56");
-
-
-                        string substituted = (string.IsNullOrEmpty(lastAddressPattern) || string.IsNullOrEmpty(lastEditablePart))
-                            ? string.Empty
-                            : lastAddressPattern.Replace($"\\\"mtpData\\\".\\\"{lastEditablePart}\\\"", $"\\\"{dpe}\\\"");
-
-                        /*This part was for work with WinCC OA as server*/
-                        
-                        /*string substituted = (string.IsNullOrEmpty(lastAddressPattern) || string.IsNullOrEmpty(lastEditablePart))
+                        string substituted;
+                        if (!useQuotation)
+                        {
+                           substituted = (string.IsNullOrEmpty(lastAddressPattern) || string.IsNullOrEmpty(lastEditablePart))
                            ? string.Empty
-                           : lastAddressPattern.Replace($"mtpData.{lastEditablePart}", $"{dpe}");*/
+                           : lastAddressPattern.Replace($"mtpData.{lastEditablePart}", $"{dpe}");
+                        }
+                        else
+                        {
+                            substituted = (string.IsNullOrEmpty(lastAddressPattern) || string.IsNullOrEmpty(lastEditablePart))
+                                ? string.Empty
+                                : lastAddressPattern.Replace($"\\\"mtpData\\\".\\\"{lastEditablePart}\\\"", $"\\\"{dpe}\\\"");
+                        }
                         
-
                         var addrRef2 = "\"" + opcServerName + "$$1$1$" + substituted + "\"";
-                        sections.Address.Add(elementName + "\t" + dpType + "\t16\t" + addrRef2 + "\t\\4\t_5s\t1\t750\tOPCUA");
+                        sections.Address.Add(elementName + "\t" + dpType + "\t16\t" + addrRef2 + "\t\\4\t_5s\t1\t1\t750\tOPCUA");
                     }
                 }
 
@@ -520,12 +527,12 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
 
             foreach (var t in allTables)
             {
-                lines.Add("ElementName\tTypeName\t_address.._type\t_address.._reference\t_address.._direction\t_address.._poll_group\t_address.._active\t_address.._datatype\t_address.._drv_ident");
+                lines.Add("ElementName\tTypeName\t_address.._type\t_address.._reference\t_address.._direction\t_address.._poll_group\t_address.._active\t_address.._lowlevel\t_address.._datatype\t_address.._drv_ident");
                 lines.AddRange(t.Address);
             }
             File.WriteAllLines(pathDp, lines);
 
-            DpTypeHelper.ImportAscii(pathDp, asciiExePath, userName, password);
+            DpTypeHelper.ImportAscii(pathDp, asciiExePath, userName, password, forceOverwrite);
 
             if (configureAlarm && alertEntries.Count > 1)
             {
@@ -533,7 +540,7 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                 if (!string.IsNullOrEmpty(dir2)) Directory.CreateDirectory(dir2);
 
                 File.WriteAllLines(alertDpPath, alertEntries);
-                DpTypeHelper.ImportAscii(alertDpPath, asciiExePath, userName, password);
+                DpTypeHelper.ImportAscii(alertDpPath, asciiExePath, userName, password, forceOverwrite);
             }
         }
 
@@ -548,7 +555,7 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
             var dpTypeGenerator = new DpTypeHelper();
             dpTypeGenerator.GenarateASCII(pathToXml, pathDpList);
 
-            DpTypeHelper.ImportAscii(pathDpList, asciiExePath, userName, password);
+            DpTypeHelper.ImportAscii(pathDpList, asciiExePath, userName, password, forceOverwrite);
         }
 
         // Helper: holds per-table sections for assembly

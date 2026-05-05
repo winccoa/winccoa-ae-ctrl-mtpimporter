@@ -27,10 +27,13 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
 
             createDplFile(filePath);
 
-            bool dummy = false;
-            XmlConfigReader.ReadConfigs(pathToXml, ref asciiExePath, ref userName, ref password, ref dummy);
+            XmlConfigReader.ReadConfigs(pathToXml);
+            asciiExePath = XmlConfigReader.GetStringValue("PathToASCIIExe", "WCCOAascii");
+            userName = XmlConfigReader.GetStringValue("UserName", "root");
+            password = XmlConfigReader.GetStringValue("Password", "");
+            var forceOverwrite = XmlConfigReader.GetBoolValue("ForceOverwrite", false);
 
-            DpTypeHelper.ImportAscii(filePath, asciiExePath, userName, password);
+            DpTypeHelper.ImportAscii(filePath, asciiExePath, userName, password, forceOverwrite);
         }
 
         public void createDplFile(string filePath)

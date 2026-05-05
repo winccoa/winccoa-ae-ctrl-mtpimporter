@@ -120,9 +120,15 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler.Helpers
             return null;
         }
 
-        public static void ImportAscii(string path, string asciiExePath, string userName, string password)
+        public static void ImportAscii(string path, string asciiExePath, string userName, string password, bool forceOverwrite)
         {
-            ProcessStartInfo ProcessInfo = new ProcessStartInfo("cmd.exe", $"/c {asciiExePath} -currentproj -in {path} -user {userName}:{password}");
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"/c {asciiExePath} -currentproj -in {path} -user {userName}:{password}");
+            if (forceOverwrite)
+            {
+                sb.Append(" -yes -CNSyes");
+            }
+            ProcessStartInfo ProcessInfo = new ProcessStartInfo("cmd.exe", sb.ToString());
             ProcessInfo.CreateNoWindow = true;
             ProcessInfo.UseShellExecute = true;
             ProcessInfo.WindowStyle = ProcessWindowStyle.Hidden;
