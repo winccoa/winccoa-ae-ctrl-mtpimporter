@@ -129,7 +129,7 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
 
             XmlElement propDollarParameterName = doc.CreateElement(string.Empty, "prop", string.Empty);
             propDollarParameterName.SetAttribute("name", "Dollar");
-            propDollarParameterName.InnerText = "$dp";
+            propDollarParameterName.InnerText = "$DP";
             propDollarParameter.AppendChild(propDollarParameterName);
 
             XmlElement propDollarParameterValue = doc.CreateElement(string.Empty, "prop", string.Empty);

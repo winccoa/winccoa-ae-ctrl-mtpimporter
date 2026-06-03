@@ -5,7 +5,6 @@
 
 using ModuleTypePackage.Contract.HmiSet;
 using System.Xml;
-
 namespace Siemens.Automation.MTP.WinCCScadaHandler
 {
     public class ConnectionHandler
@@ -129,10 +128,6 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
             }
 
             doc.Save(path);
-
         }
-
-
-
     }
 }

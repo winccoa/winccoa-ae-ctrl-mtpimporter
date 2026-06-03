@@ -27,10 +27,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Xml;
-using static System.Collections.Specialized.BitVector32;
 
 namespace Siemens.Automation.MTP.WinCCScadaHandler
 {
@@ -41,13 +39,18 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
         private readonly ILoggingService m_LoggingService;
         private IStringValidator stringValidator;
         private bool useTypeInAddress;
+        
         private bool forceOverwrite;
         private bool useQuotation;
         private string configsPath = "";
+        private string datatypePrifix = String.Empty;
+        private int nameSpace = 2;
+        private bool reverseOrderOfProcedures = false;
+        private bool showWarningsForUnsupportedTypes = true;
 
         private static ScadaMtpLocalizationData localizedData = new ScadaMtpLocalizationData();
 
-        const string MTP_GROUP_NAME = "@mtp";
+        private string MTP_GROUP_NAME = "@mtp";
         private readonly string projPath;
         private readonly string deviceName;
 
@@ -82,6 +85,8 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
             {22, "TEXT"}
         };
 
+        public event EventHandler OnBackendClosed;
+
         /// <summary>
         /// WinCCUnifiedHandler Constructor
         /// </summary>
@@ -101,7 +106,6 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
 
             string pathToXml;
 
-
             importSettings.AdditionalProperties.TryGetValue("WinCCOASettings", out pathToXml);
             configsPath = pathToXml ?? Path.Combine(projPath, "Data", "WinccOAMTPImporterConfgis.xml");
             XmlConfigReader.ReadConfigs(pathToXml);
@@ -111,6 +115,11 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
             useTypeInAddress = XmlConfigReader.GetBoolValue("UseTypeInAddress", false);
             forceOverwrite = XmlConfigReader.GetBoolValue("ForceOverwrite", false);
             useQuotation = XmlConfigReader.GetBoolValue("UseQuotation", false);
+            datatypePrifix = XmlConfigReader.GetStringValue("DatatypePrefix", string.Empty);
+            MTP_GROUP_NAME = XmlConfigReader.GetStringValue("FolderName", "@mtp");
+            nameSpace = XmlConfigReader.GetIntValue("NameSpace", 2);
+            reverseOrderOfProcedures = XmlConfigReader.GetBoolValue("ReverseOrderOfProcedures", false);
+            showWarningsForUnsupportedTypes = XmlConfigReader.GetBoolValue("ShowWarningsForUnsupportedTypes", true);
             importSettings.AdditionalProperties.TryGetValue("SupportedBlocksConfig", out pathToXml);
             pathToXml = pathToXml ?? Path.Combine(projPath, "Data", "Objects.xml");
 
@@ -191,8 +200,14 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
 
         public void DisposeBackend() { }
 
-        public void GenerateMtpAttributeTables(IEnumerable<IScadaMtpAttributeTable> mtpAttributeTables, bool configureAlarm = false, IEnumerable<IScadaMtpLocalizationTexts> mtpMultiLanguageTexts = null)
+        public void GenerateMtpAttributeTables(IEnumerable<IScadaMtpAttributeTable> mtpAttributeTables, 
+            out List<string> errors, 
+            out List<string> warnings, 
+            DiscreteAlarmConfigurationState configureAlarm = DiscreteAlarmConfigurationState.NotSet,
+            IEnumerable<IScadaMtpLocalizationTexts> mtpMultiLanguageTexts = null)
         {
+            errors = new List<string>();
+            warnings = new List<string>();
             var alertTemplate = string.Join("\t", Enumerable.Range(0, 45).Select(i => _alertPlaceHolders.ContainsKey(i) ? _alertPlaceHolders[i] : string.Empty));
 
             var alertEntries = new List<string> { ALERT_HEADER };
@@ -200,6 +215,8 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
 
             var procedureNames = new HashSet<string>(StringComparer.Ordinal);
             var parameterNames = new HashSet<string>(StringComparer.Ordinal);
+            var valuesIn = new HashSet<string>(StringComparer.Ordinal);
+            var valuesOut = new HashSet<string>(StringComparer.Ordinal);
             foreach (var t in mtpAttributeTables)
             {
                 var dt = t.RefBaseSystemUnitPath.Elements.LastOrDefault();
@@ -207,16 +224,23 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                     procedureNames.Add(t.Name);
                 if (dt.Contains("ServParam"))
                     parameterNames.Add(t.Name);
+                if (t.RefBaseSystemUnitPath.Elements.Any(e => string.Equals(e, "InputElement", StringComparison.Ordinal)))
+                    valuesIn.Add(t.Name);
+                if (t.RefBaseSystemUnitPath.Elements.Any(e => string.Equals(e, "IndicatorElement", StringComparison.Ordinal)))
+                    valuesOut.Add(t.Name);
             }
 
             var allTables = new List<TableSections>();
 
             foreach (var attributeTable in mtpAttributeTables)
             {
-                var dpType = attributeTable.RefBaseSystemUnitPath.Elements.LastOrDefault();
+                var dpType = datatypePrifix + attributeTable.RefBaseSystemUnitPath.Elements.LastOrDefault();
+
                 if (!DpTypeHelper.CheckIfTypeRegistered(dpType))
                 {
                     m_LoggingService.LogError("Unsupported type: " + dpType, new Exception("Usupported type " + dpType));
+                    if (showWarningsForUnsupportedTypes)
+                    warnings.Add("Unsupported type: " + dpType);
                     continue;
                 }
 
@@ -225,6 +249,8 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                 var presentDpes = new HashSet<string>(StringComparer.Ordinal);
                 var dpLinks = new List<string>(); // links for THIS table
                 var parameters = new List<string>();
+                var valsIn = new List<string>();
+                var valsOut = new List<string>();
                 string lastAddressPattern = string.Empty;
                 string lastEditablePart = string.Empty;
 
@@ -239,9 +265,15 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                     {
                         dpLinks.Add(linked.TagPrefix);
                     }
-                    if (linked != null && parameterNames.Contains(linked.TagPrefix))
+                    else if (linked != null && parameterNames.Contains(linked.TagPrefix))
                     {
                         parameters.Add(linked.TagPrefix);
+                    }
+
+                    if (linked != null)
+                    {
+                        valsIn.AddRange(valuesIn.Where(x => MatchesPath(x, attributeTable.Name)));
+                        valsOut.AddRange(valuesOut.Where(x => MatchesPath(x, attributeTable.Name)));
                     }
 
                     var eqIdx = attribute.Name.IndexOf('=');
@@ -252,7 +284,7 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
 
                     var elementName = attributeTable.Name + "." + sAttribute;
 
-                    if (configureAlarm &&
+                    if (configureAlarm == DiscreteAlarmConfigurationState.Configured &&
                         !usedDpe.Contains(elementName) &&
                         DpTypeHelper.TryGetAlertClass(dpType, sAttribute, out string alertClass))
                     {
@@ -274,9 +306,18 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                     var access = string.Equals(attribute.Access, "Read", StringComparison.OrdinalIgnoreCase) ? "\\4" : "\\7";
                     var dpAddress = (attribute.NameSpace ?? string.Empty).Replace("\"", "\\\"");
 
-                    dpAddress = !useQuotation ? 
-                        Regex.Replace((attribute.NameSpace ?? string.Empty).Replace("\"", ""), @"\bns=[^;]+(?=;s=)", "ns=2", RegexOptions.IgnoreCase) : 
-                        dpAddress.Replace("ns=3", "ns=2");
+                    var sourceAddress = dpAddress ?? string.Empty;
+
+                    if (!useQuotation)
+                    {
+                        sourceAddress = sourceAddress.Replace("\"", "");
+                    }
+
+                    dpAddress = Regex.Replace(
+                        sourceAddress,
+                        @"\bns=[^;]+(?=;s=)",
+                        $"ns={nameSpace}",
+                        RegexOptions.IgnoreCase);
 
                     lastAddressPattern = dpAddress;
                     lastEditablePart = sAttribute;
@@ -295,7 +336,7 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                     {
                         var elementName = attributeTable.Name + "." + dpe;
 
-                        if (configureAlarm &&
+                        if (configureAlarm == DiscreteAlarmConfigurationState.Configured &&
                             !usedDpe.Contains(elementName) &&
                             DpTypeHelper.TryGetAlertClass(dpType, dpe, out string alertClass2))
                         {
@@ -313,11 +354,27 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                         {
                             HashSet<string> idSet;
                             var originalValue = (DpTypeHelper.DPIDS.TryGetValue(dpType, out idSet) && idSet.Contains(dpe))
-                                ? string.Join(",", dpLinks)
+                                ? string.Join(",", reverseOrderOfProcedures ? dpLinks.AsEnumerable().Reverse() : dpLinks)
                                 : string.Empty;
                             sections.Originals.Add(elementName + "\t" + dpType + "\t" + originalValue);
                         }
 
+                        if (dpe == "processValueIns")
+                        {
+                            HashSet<string> idSet;
+                            var originalValue = (DpTypeHelper.DPIDS.TryGetValue(dpType, out idSet) && idSet.Contains(dpe))
+                                ? string.Join(",", valsIn.ToHashSet())
+                                : string.Empty;
+                           sections.Originals.Add(elementName + "\t" + dpType + "\t" + originalValue);
+                        }
+                        if (dpe == "processValueOuts")
+                        {
+                            HashSet<string> idSet;
+                            var originalValue = (DpTypeHelper.DPIDS.TryGetValue(dpType, out idSet) && idSet.Contains(dpe))
+                                ? string.Join(",", valsOut.ToHashSet())
+                                : string.Empty;
+                            sections.Originals.Add(elementName + "\t" + dpType + "\t" + originalValue);
+                        }
                         if (dpe == "parameters" || dpe == "configParameters")
                         {
                             HashSet<string> idSet;
@@ -366,12 +423,20 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                 allTables.Add(sections);
             }
 
-            CreateAndImportASCII(allTables, alertEntries, configureAlarm);
+            CreateAndImportASCII(allTables, alertEntries, configureAlarm == DiscreteAlarmConfigurationState.Configured);
         }
-
-        public void GenerateMtpScreenItems(IPackageInformationObject packageInformation, IEnumerable<IScadaMtpScreenInfo> mtpScreenItems,
-            IEnumerable<IScadaMtpAttributeTable> attributeTables, SymbolType symbolType, bool IsMigrateProject)
+        public void GenerateMtpScreenItems(IPackageInformationObject packageInformation, 
+            IEnumerable<IScadaMtpScreenInfo> mtpScreenItems,
+            IEnumerable<IScadaMtpAttributeTable> attributeTables, 
+            SymbolType symbolType, 
+            bool IsMigrateProject, 
+            IManifest manifest,
+            out List<string> errors, 
+            out List<string> warnings
+            )
         {
+            errors = new List<string>();
+            warnings = new List<string>();
             _ = packageInformation ?? throw new ArgumentNullException(nameof(packageInformation));
             _ = mtpScreenItems ?? throw new ArgumentNullException(nameof(mtpScreenItems));
             _ = attributeTables ?? throw new ArgumentNullException(nameof(attributeTables));
@@ -430,7 +495,6 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
         public bool IsDeviceMtpSupported(string deviceName = "") => true;
 
         public bool IsSessionActive() => true;
-
 
         public void RegisterAssemblyResolver() { }
 
@@ -495,6 +559,12 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
             return;
         }
 
+        private bool MatchesPath(string value, string path)
+        {
+            return value != null
+                && value.StartsWith(path, StringComparison.Ordinal)
+                && (value.Length == path.Length || value[path.Length] == '|');
+        }
         private void CreateAndImportASCII(List<TableSections> allTables, List<string> alertEntries, bool configureAlarm)
         {
             var pathDp = Path.Combine(projPath, "dplist", "dp.txt");
@@ -636,6 +706,11 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
 
                     break;
             }
+        }
+
+        public List<string> GetActiveDevices()
+        {
+            return new List<string>();
         }
     }
 }
