@@ -201,13 +201,9 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
         public void DisposeBackend() { }
 
         public void GenerateMtpAttributeTables(IEnumerable<IScadaMtpAttributeTable> mtpAttributeTables, 
-            out List<string> errors, 
-            out List<string> warnings, 
             DiscreteAlarmConfigurationState configureAlarm = DiscreteAlarmConfigurationState.NotSet,
             IEnumerable<IScadaMtpLocalizationTexts> mtpMultiLanguageTexts = null)
         {
-            errors = new List<string>();
-            warnings = new List<string>();
             var alertTemplate = string.Join("\t", Enumerable.Range(0, 45).Select(i => _alertPlaceHolders.ContainsKey(i) ? _alertPlaceHolders[i] : string.Empty));
 
             var alertEntries = new List<string> { ALERT_HEADER };
@@ -239,8 +235,6 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                 if (!DpTypeHelper.CheckIfTypeRegistered(dpType))
                 {
                     m_LoggingService.LogError("Unsupported type: " + dpType, new Exception("Usupported type " + dpType));
-                    if (showWarningsForUnsupportedTypes)
-                    warnings.Add("Unsupported type: " + dpType);
                     continue;
                 }
 
@@ -363,7 +357,7 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                         {
                             HashSet<string> idSet;
                             var originalValue = (DpTypeHelper.DPIDS.TryGetValue(dpType, out idSet) && idSet.Contains(dpe))
-                                ? string.Join(",", valsIn.ToHashSet())
+                                ? string.Join(",", valsIn.ToHashSet().ToList())
                                 : string.Empty;
                            sections.Originals.Add(elementName + "\t" + dpType + "\t" + originalValue);
                         }
@@ -371,7 +365,7 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
                         {
                             HashSet<string> idSet;
                             var originalValue = (DpTypeHelper.DPIDS.TryGetValue(dpType, out idSet) && idSet.Contains(dpe))
-                                ? string.Join(",", valsOut.ToHashSet())
+                                ? string.Join(",", valsOut.ToHashSet().ToList())
                                 : string.Empty;
                             sections.Originals.Add(elementName + "\t" + dpType + "\t" + originalValue);
                         }
@@ -430,13 +424,9 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
             IEnumerable<IScadaMtpAttributeTable> attributeTables, 
             SymbolType symbolType, 
             bool IsMigrateProject, 
-            IManifest manifest,
-            out List<string> errors, 
-            out List<string> warnings
+            IManifest manifest
             )
         {
-            errors = new List<string>();
-            warnings = new List<string>();
             _ = packageInformation ?? throw new ArgumentNullException(nameof(packageInformation));
             _ = mtpScreenItems ?? throw new ArgumentNullException(nameof(mtpScreenItems));
             _ = attributeTables ?? throw new ArgumentNullException(nameof(attributeTables));
