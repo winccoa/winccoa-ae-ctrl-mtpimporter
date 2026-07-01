@@ -30,6 +30,10 @@ The importer comprehends the hierarchical structure and semantics of your MTP fi
 
 For detailed instructions on usage and integration, please refer to the datasheet: **"WinCCOAMTPExample.pdf."**
 
+### Contribute
+
+For building the project you need dll's from Release/MTPViewer.zip
+
 ## Conclusion
 
 MTP Importer offers a fast, efficient path from module description to a fully operational SCADA system. Less effort, higher quality, and reduced time-to-market.
