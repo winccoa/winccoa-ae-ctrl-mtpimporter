@@ -304,7 +304,7 @@ namespace Siemens.Automation.MTP.WinCCScadaHandler
 
                     if (!useQuotation)
                     {
-                        sourceAddress = sourceAddress.Replace("\"", "");
+                        sourceAddress = sourceAddress.Replace("\"", "").Replace("\\", "");
                     }
 
                     dpAddress = Regex.Replace(
