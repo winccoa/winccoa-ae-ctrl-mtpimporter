@@ -1,0 +1,4 @@
+safePositionOn,Behavior: After an error occurs, the entity \nholds the status.
+safePositionOff,Behavior: After an error has occurred, \nthe safe position is set.
+safetyPositionFalse,Safe position: Stopped
+safetyPositionTrue,Safe position: Running

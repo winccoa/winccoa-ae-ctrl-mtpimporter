@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="de_AT.utf8"></prop>
+   <prop name="en_US.utf8"></prop>
+  </prop>
+  <prop name="Size">419 437</prop>
+  <prop name="BackColor">mtpBackground</prop>
+  <prop name="RefPoint">0 0</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">96</prop>
+  <prop name="PDPI">94.11039611039611</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/MTP_MonTriPosVlv/MTP_MonTriPosVlvFaceplateSettings&quot;
+#uses &quot;classes/MTP_MonTriPosVlv/MTP_MonTriPosVlv&quot;
+
+shared_ptr&lt;MTP_MonTriPosVlvFaceplateSettings&gt; faceplate;
+shared_ptr&lt;MTP_MonTriPosVlv&gt; viewModel;
+
+public void initialize()
+{
+  shape parent = getShape(myModuleName(), myPanelName(), &quot;&quot;);
+
+  if (hasMethod(parent, &quot;getObjectPointer&quot;) &amp;&amp; parent.getObjectPointer() != nullptr)
+  {
+    viewModel = parent.getObjectPointer();
+  }
+
+  if (viewModel == nullptr)
+  {
+    viewModel = new MTP_MonTriPosVlv($DP);
+  }
+
+  mapping shapes;
+  shapes.insert(&quot;_btnMonitorDisabled&quot;, getShape(&quot;btnMonitorDisabled&quot;));
+  shapes.insert(&quot;_btnMonitorEnabled&quot;, getShape(&quot;btnMonitorEnabled&quot;));
+  faceplate = new MTP_MonTriPosVlvFaceplateSettings(viewModel, shapes);
+}
+
+public shared_ptr&lt;MTP_MonTriPosVlv&gt; getObjectPointer()
+{
+  return viewModel;
+}
+]]></script>
+  <script isEscaped="1" name="Initialize"><![CDATA[main()
+{
+  initialize();
+}
+
+]]></script>
+ </events>
+ <shapes>
+  <shape Name="PRIMITIVE_TEXT3" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">7</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">20.12401832460736 80.25</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">0</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">20.12401832460736 80.25</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">Überwachung
+aktivieren</prop>
+     <prop name="en_US.utf8">Monitor enable
+</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft|AlignVCenter]</prop>
+   </properties>
+  </shape>
+  <shape Name="btnMonitorDisabled" layerId="0" shapeType="PUSH_BUTTON">
+   <properties>
+    <prop name="serialId">8</prop>
+    <prop name="Type">MtpButton</prop>
+    <prop name="RefPoint">307.6820652173913 74.5</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpTitleText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,19,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Location">305 60.5</prop>
+    <prop name="Size">95 41</prop>
+    <prop name="BorderStyle">None</prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">Aus</prop>
+     <prop name="en_US.utf8">Off</prop>
+    </prop>
+   </properties>
+   <events>
+    <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
+{
+  faceplate.changeMonitorDisabled();
+}
+]]></script>
+   </events>
+  </shape>
+  <shape Name="btnMonitorEnabled" layerId="0" shapeType="PUSH_BUTTON">
+   <properties>
+    <prop name="serialId">9</prop>
+    <prop name="Type">MtpButton</prop>
+    <prop name="RefPoint">210.6820652173913 75</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpTitleText</prop>
+    <prop name="BackColor">_Button</prop>
+    <prop name="TabOrder">2</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,19,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Location">208 61</prop>
+    <prop name="Size">95 41</prop>
+    <prop name="BorderStyle">None</prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">Ein</prop>
+     <prop name="en_US.utf8">On</prop>
+    </prop>
+   </properties>
+   <events>
+    <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
+{
+  faceplate.changeMonitorEnabled();
+}
+]]></script>
+   </events>
+  </shape>
+  <shape Name="PRIMITIVE_TEXT6" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">10</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">20 20</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">3</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">20 20</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8">Rückmeldeüberwachung</prop>
+     <prop name="en_US.utf8">Feedback monitoring</prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+  </shape>
+ </shapes>
+</panel>

@@ -1,0 +1,314 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 419 437 N "mtpBackground" 1
+"$DP"
+"main()
+{
+  initialize();
+}
+" 0
+ E E E E 1 -1 -1 0  22 20
+""0  1
+E "#uses \"classes/MTP_BinMan/MTP_BinMan\"
+#uses \"classes/MTP_BinMan/MTP_BinManFaceplateHome\"
+
+shared_ptr<MTP_BinMan> viewModel;
+shared_ptr<MTP_BinManFaceplateHome> faceplate;
+
+public void initialize()
+{
+  shape parent = getShape(myModuleName(), myPanelName(), \"\");
+
+  if (hasMethod(parent, \"getObjectPointer\"))
+  {
+    if (parent.getObjectPointer() != nullptr)
+    {
+      viewModel = parent.getObjectPointer();
+    }
+  }
+
+  if (viewModel == nullptr)
+  {
+    viewModel = new MTP_BinMan($DP);
+  }
+
+  mapping shapes;
+  shapes.insert(\"_txtValue\", getShape(\"txtValue\"));
+  shapes.insert(\"_rectValue\", getShape(\"rectValue\"));
+  shapes.insert(\"_btnFalse\", getShape(\"btnFalse\"));
+  shapes.insert(\"_btnTrue\", getShape(\"btnTrue\"));
+  shapes.insert(\"_txtVFbk\", getShape(\"txtVFbk\"));
+
+  faceplate = new MTP_BinManFaceplateHome(viewModel, shapes);
+}
+
+public shared_ptr<MTP_BinMan> getObjectPointer()
+{
+  return viewModel;
+}
+
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+2 0
+"PRIMITIVE_TEXT2"
+""
+1 20 20 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20 20 148 38
+0 2 2 "0s" 0 0 0 192 0 0  20 20 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 14 Ausgangssignal
+LANG:10001 13 Output signal
+2 1
+"txtValue"
+""
+1 209.5 129 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 183 117 237 141
+0 2 2 "0s" 0 0 0 201 0 0  209.5 129 1
+1
+LANG:10000 45 Roboto,-1,21,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 4 wahr
+6 2
+"rectValue"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1.222731481481481 0 1.71123903508772 -47.57929398148134 -82.98535635964919 2  1 0  "pictures/MTP_Icones/True.svg" 4294967295 E 190 80 230.5 108.6846153846154
+4 3
+"LINE1"
+""
+1 -0.4999999999999716 168 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  -0.4999999999999716 168 419.5 168
+4 4
+"LINE2"
+""
+1 -0.5 279 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  -0.5 279 419.5 279
+4 5
+"LINE3"
+""
+1 209.5 168 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  209.5 168 209.5 277
+2 6
+"PRIMITIVE_TEXT4"
+""
+1 20 299 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20 299 117 316
+0 2 2 "0s" 0 0 0 192 0 0  20 299 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 11 Steuerungen
+LANG:10001 8 Controls
+2 8
+"PRIMITIVE_TEXT6"
+""
+1 230.2603125 185 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 230.2603125 185 359 202
+0 2 2 "0s" 0 0 0 192 0 0  230.2603125 185 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 16 Rückmeldesignal
+LANG:10001 15 Feedback signal
+2 11
+"txtVFbk"
+""
+1 317.8904687500001 235.375 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 291 223 345 247
+0 2 2 "0s" 0 0 0 201 0 0  317.8904687500001 235.375 1
+1
+LANG:10000 45 Roboto,-1,21,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 4 wahr
+13 16
+"btnTrue"
+"MtpButton"
+1 25.25 365 E E E 1 E 1 E N "mtpTitleText" E N "_Button" E E
+ E E
+15 0 0 0 0 0
+E E E
+1
+1
+LANG:10000 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10000 45 Roboto,-1,19,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0  18 349 206 393
+
+T 
+1
+LANG:10000 4 true
+"main(mapping event)
+{
+  faceplate.changeValueTrue();
+}
+" 0
+ E E E
+13 17
+"btnFalse"
+"MtpButton"
+1 204 365 E E E 1 E 1 E N "mtpTitleText" E N "_Button" E E
+ E E
+16 0 0 0 0 0
+E E E
+1
+1
+LANG:10000 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10000 45 Roboto,-1,19,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0  213 349 400 393
+
+T 
+1
+LANG:10000 5 false
+"main(mapping event)
+{
+  faceplate.changeValueFalse();
+}
+" 0
+ E E E
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+0

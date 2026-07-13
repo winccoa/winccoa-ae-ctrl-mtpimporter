@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="de_AT.utf8"></prop>
+  </prop>
+  <prop name="Size">233 219</prop>
+  <prop name="BackColor">_3DFace</prop>
+  <prop name="RefPoint">77 51</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">96</prop>
+  <prop name="PDPI">94.11039611039611</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/MTP_Services/MTP_ServicesRef&quot;
+#uses &quot;classes/MTP_Services/MTP_Services&quot;
+
+shared_ptr&lt;MTP_ServicesRef&gt; servicesRef;
+shared_ptr&lt;MTP_Services&gt; services;
+
+public void initialize()
+{
+  mapping shapes;
+  shapes.insert(&quot;_rectCurrentState&quot;, getShape(&quot;rectCurrentState&quot;));
+  shapes.insert(&quot;_rectStateBackground&quot;, getShape(&quot;rectStateBackground&quot;));
+  shapes.insert(&quot;_rectMode&quot;, getShape(&quot;rectMode&quot;));
+  shapes.insert(&quot;_rectSource&quot;, getShape(&quot;rectSource&quot;));
+  shapes.insert(&quot;_txtCurrentProcedure&quot;, getShape(&quot;txtCurrentProcedure&quot;));
+
+  services = new MTP_Services($DP);
+  servicesRef = new MTP_ServicesRef(services, shapes);
+}
+
+public shared_ptr&lt;MTP_Services&gt; getObjectPointer()
+{
+  return services;
+}
+]]></script>
+  <script isEscaped="1" name="Initialize"><![CDATA[main()
+{
+  initialize();
+}
+]]></script>
+ </events>
+ <shapes>
+  <shape Name="rectStateBackground" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">9</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">165 105</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">7</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/ProcedureRunning.svg]]</prop>
+    <prop name="Geometry">2.933333333333333 0 0 2.933333333333333 -391 -242.5</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">165 105</prop>
+    <prop name="Size">16 16</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="rectMode" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">1</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">190 80</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">0</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Manual_1.svg]]</prop>
+    <prop name="Geometry">1 0 0 1.354166666666667 -95.49999999999996 37.67234848484843</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">190 80</prop>
+    <prop name="Size">21 16</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="rectCurrentState" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">2</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">165 105</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/ProcedureRunning.svg]]</prop>
+    <prop name="Geometry">2.933333333333333 0 0 2.933333333333333 -391 -242.5</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">165 105</prop>
+    <prop name="Size">16 16</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="rectSource" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">4</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">190 80</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">3</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/Manual__2.svg]]</prop>
+    <prop name="Geometry">1.000000000000005 0 0 1.354166666666667 -73.50000000000097 37.67234848484843</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">190 80</prop>
+    <prop name="Size">21 16</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <shape Name="txtCurrentProcedure" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">6</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">117.4999999999999 119.3433948863636</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">mtpText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">5</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">117.4999999999999 119.3433948863636</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">True</prop>
+    <prop name="Transformable">False</prop>
+    <prop name="TextFormat">[0s,,,AlignHCenter]</prop>
+   </properties>
+  </shape>
+  <reference Name="PANEL_REF1" parentSerial="-1" referenceId="0">
+   <properties>
+    <prop name="FileName">objects/MTP_Basic/clickbox.xml</prop>
+    <prop name="Location">55.00000000000006 65.49999999999994</prop>
+    <prop name="Geometry">2.057142857142856 0 0 2.842857142857145 -35.14285714285717 -120.7071428571429</prop>
+    <prop name="TabOrder">8</prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <extended>
+     <script isEscaped="1" name="clicked"><![CDATA[void clicked()
+{
+  servicesRef.openFaceplate();
+}
+]]></script>
+    </extended>
+   </properties>
+  </reference>
+ </shapes>
+</panel>

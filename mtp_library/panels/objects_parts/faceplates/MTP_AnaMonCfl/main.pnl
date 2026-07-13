@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="de_AT.utf8"></prop>
+  </prop>
+  <prop name="Size">419 437</prop>
+  <prop name="BackColor">mtpBackground</prop>
+  <prop name="RefPoint">0 0</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="KeepInMemory">False</prop>
+  <prop name="DPI">96</prop>
+  <prop name="PDPI">108.8875329026083</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/MTP_AnaMonCfl/MTP_AnaMonCfl&quot;
+shared_ptr&lt;MTP_AnaMonCfl&gt; viewModel;
+
+public void initialize()
+{
+  if (viewModel == nullptr)
+  {
+    if (hasMethod(self.parentPanel(), &quot;getObjectPointer&quot;))
+    {
+      shared_ptr&lt;MTP_AnaMonCfl&gt; parentViewModel = self.parentPanel().getObjectPointer();
+
+      if (parentViewModel != nullptr)
+      {
+        viewModel = parentViewModel;
+      }
+      else
+      {
+        viewModel = new MTP_AnaMonCfl($DP);
+      }
+    }
+    else
+    {
+      viewModel = new MTP_AnaMonCfl($DP);
+    }
+  }
+}
+
+public shared_ptr&lt;MTP_AnaMonCfl&gt; getObjectPointer()
+{
+  return viewModel;
+}
+]]></script>
+  <script isEscaped="1" name="Initialize"><![CDATA[main()
+{
+  initialize();
+}]]></script>
+ </events>
+ <shapes>
+  <reference Name="PANEL_REF1" parentSerial="-1" referenceId="0">
+   <properties>
+    <prop name="FileName">objects_parts/faceplates/MTP_AnaMon/main.pnl</prop>
+    <prop name="Location">0.7594998082480231 1.678610490628955</prop>
+    <prop name="Geometry">1 0 0 1 -1.259499808248023 -0.6786104906289552</prop>
+    <prop name="TabOrder">94</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$DP</prop>
+      <prop name="Value">$DP</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+ </shapes>
+</panel>

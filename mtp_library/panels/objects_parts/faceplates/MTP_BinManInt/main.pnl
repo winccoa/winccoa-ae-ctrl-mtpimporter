@@ -1,0 +1,423 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 419 437 N "mtpBackground" 1
+"$DP"
+"main()
+{
+    initialize();
+}" 0
+ E E E E 1 -1 -1 0  22 20
+""0  1
+E "#uses \"classes/MTP_BinManInt/MTP_BinManInt\"
+#uses \"classes/MTP_BinManInt/MTP_BinManIntFaceplateHome\"
+
+shared_ptr<MTP_BinManInt> viewModel;
+shared_ptr<MTP_BinManIntFaceplateHome> faceplate;
+
+public void initialize()
+{
+  shape parent = getShape(myModuleName(), myPanelName(), \"\");
+
+  if (hasMethod(parent, \"getObjectPointer\"))
+  {
+    if (parent.getObjectPointer() != nullptr)
+    {
+      viewModel = parent.getObjectPointer();
+    }
+  }
+
+  if (viewModel == nullptr)
+  {
+    viewModel = new MTP_BinManInt($DP);
+  }
+
+  mapping shapes;
+  shapes.insert(\"_txtValue\", getShape(\"txtValue\"));
+  shapes.insert(\"_rectValue\", getShape(\"rectValue\"));
+  shapes.insert(\"_refWqc\", getShape(\"refWqc\"));
+  shapes.insert(\"_btnFalse\", getShape(\"btnFalse\"));
+  shapes.insert(\"_btnTrue\", getShape(\"btnTrue\"));
+  shapes.insert(\"_txtVFbk\", getShape(\"txtVFbk\"));
+  shapes.insert(\"_rectManual\", getShape(\"rectManual\"));
+  shapes.insert(\"_rectInternal\", getShape(\"rectInternal\"));
+  shapes.insert(\"_rectVIntFalse\", getShape(\"rectVIntFalse\"));
+  shapes.insert(\"_rectVIntTrue\", getShape(\"rectVIntTrue\"));
+
+  faceplate = new MTP_BinManIntFaceplateHome(viewModel, shapes);
+}
+
+public shared_ptr<MTP_BinManInt> getObjectPointer()
+{
+  return viewModel;
+}
+
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+6 26
+"rectVIntTrue"
+""
+1 248.2035380344478 296.8914534397122 E E E 1 E 0 E N "mtpBackground" E N "mtpBackground2" E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.9454117927221913 -0.3258781093933933 0.3258781093933933 0.9454117927221913 -178.6683609551468 183.5690284746994 1 E 248.2035380344478 296.8914534397122 347.773132174784 306.4935561062803
+2 0
+"PRIMITIVE_TEXT2"
+""
+1 20 20 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20 20 148 38
+0 2 2 "0s" 0 0 0 192 0 0  20 20 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 14 Ausgangssignal
+LANG:10001 13 Output signal
+2 1
+"txtValue"
+""
+1 209.5 129 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 183 117 237 141
+0 2 2 "0s" 0 0 0 201 0 0  209.5 129 1
+1
+LANG:10000 45 Roboto,-1,21,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 4 wahr
+6 2
+"rectValue"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1.222731481481481 0 1.71123903508772 -47.57929398148134 -82.98535635964919 2  1 0  "pictures/MTP_Icones/True.svg" 4294967295 E 190 80 230.5 108.6846153846154
+4 3
+"LINE1"
+""
+1 -0.4999999999999716 168 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  -0.4999999999999716 168 419.5 168
+4 4
+"LINE2"
+""
+1 -0.5 279 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  -0.5 279 419.5 279
+4 5
+"LINE3"
+""
+1 209.5 168 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  209.5 168 209.5 277
+2 6
+"PRIMITIVE_TEXT4"
+""
+1 20 299 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20 299 117 316
+0 2 2 "0s" 0 0 0 192 0 0  20 299 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 11 Steuerungen
+LANG:10001 8 Controls
+2 7
+"PRIMITIVE_TEXT5"
+""
+1 20.125 185 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20.125 185 70 202
+0 2 2 "0s" 0 0 0 192 0 0  20.125 185 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 6 Status
+2 8
+"PRIMITIVE_TEXT6"
+""
+1 230.2603125 185 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 230.2603125 185 359 202
+0 2 2 "0s" 0 0 0 192 0 0  230.2603125 185 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 16 Rückmeldesignal
+LANG:10001 15 Feedback signal
+1 27 0 "" 1
+0
+2 11
+"txtVFbk"
+""
+1 317.8904687500001 235.375 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 291 223 345 247
+0 2 2 "0s" 0 0 0 201 0 0  317.8904687500001 235.375 1
+1
+LANG:10000 45 Roboto,-1,21,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 4 wahr
+6 14
+"rectManual"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateManual();
+}
+" 0
+ 0 1 3 2 1 E 1.198276851851851 0 1.71123903508772 -72.69281435185168 178.1008771929824 2  1 0  "pictures/MTP_Icones/Manual_1_2_rounded.svg" 4294967295 E 190 80 230.5 108.6846153846154
+13 16
+"btnTrue"
+"MtpButton"
+1 25.25 391 E E E 1 E 1 E N "mtpTitleText" E N "_Button" E E
+ E E
+15 0 0 0 0 0
+E E E
+1
+1
+LANG:10000 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10000 45 Roboto,-1,19,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0  18 375 206 419
+
+T 
+1
+LANG:10000 4 true
+"main(mapping event)
+{
+  faceplate.changeValueTrue();
+}
+" 0
+ E E E
+6 22
+"rectVIntFalse"
+""
+1 248.2035380344478 296.8914534397122 E E E 1 E 0 E N "mtpBackground" E N "mtpBackground2" E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.915314938673111 0.4027388273333466 -0.4027388273333466 0.915314938673111 128.2736749447464 -20.30784702362852 1 E 248.2035380344478 296.8914534397122 327.6551740300717 307.3778258532598
+6 15
+"rectInternal"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateInternal();
+}
+" 0
+ 0 1 3 2 1 E 1.222731481481481 0 1.71123903508772 -17.81898148148134 178.1008771929824 2  1 0  "pictures/MTP_Icones/internal_1_rounded.svg" 4294967295 E 190 80 230.5 108.6846153846154
+13 17
+"btnFalse"
+"MtpButton"
+1 204 391 E E E 1 E 1 E N "mtpTitleText" E N "_Button" E E
+ E E
+16 0 0 0 0 0
+E E E
+1
+1
+LANG:10000 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10000 45 Roboto,-1,19,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0  213 375 400 419
+
+T 
+1
+LANG:10000 5 false
+"main(mapping event)
+{
+  faceplate.changeValueFalse();
+}
+" 0
+ E E E
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+3 0 "refWqc" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects/MTP_Faceplate/WQC.xml" 40 305 T 9 1 0 1 -20 -82
+2
+"$DP"""
+"$DPE"""
+0

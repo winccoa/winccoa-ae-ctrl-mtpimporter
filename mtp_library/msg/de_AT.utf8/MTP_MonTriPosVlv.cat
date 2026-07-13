@@ -1,0 +1,16 @@
+monitorHoldPosition,Verhalten: Nachdem ein Fehler aufgetreten \nist, hält die Entität die aktuelle Position.
+monitorSafePosition,Verhalten: Nachdem ein Fehler aufgetreten ist, \nwird die konfigurierte Sicherheitsposition gesetzt.
+safetyPosition1,Sicherheitsposition: Position 1
+safetyPosition2,Sicherheitsposition: Position 2
+safetyPosition3,Sicherheitsposition: Position 3
+safetyPositionUnknown,Sicherheitsposition: Unbekannt
+safePositionActive,Sicherheitsposition aktiv
+safePositionInactive,Sicherheitsposition nicht aktiv
+wqcOk,WQC OK
+wqcNotOk,WQC nicht OK
+noError,Kein Fehler
+staticError,Statischer Feedbackfehler
+dynamicError,Dynamischer Feedbackfehler
+permit,Berechtigung
+interlock,Verriegelung
+protect,Schutz

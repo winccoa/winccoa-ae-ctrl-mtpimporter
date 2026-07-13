@@ -1,0 +1,242 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 366 265 N "mtpBackground" 1
+"$DP"
+"main()
+{
+  initialize();
+}" 0
+ E E E E 1 -1 -1 0  15 40
+""0  1
+E "#uses \"classes/MTP_MonAnaVlv/MTP_MonAnaVlvFaceplatePositionError\"
+#uses \"classes/MTP_MonAnaVlv/MTP_MonAnaVlv\"
+
+private shared_ptr<MTP_MonAnaVlvFaceplatePositionError> faceplate;
+shared_ptr<MTP_MonAnaVlv> viewModel;
+
+public void initialize()
+{
+  if (hasMethod(this.rootPanel(), \"getObjectPointer\"))
+  {
+    viewModel = this.rootPanel().getObjectPointer();
+  }
+  else
+  {
+    viewModel = new MTP_MonAnaVlv($DP);
+  }
+
+  mapping shapes;
+  shapes.insert(\"_txtPositionTolerance\", getShape(\"txtPositionTolerance\"));
+  shapes.insert(\"_txtPositionToleranceValue\", getShape(\"txtPositionToleranceValue\"));
+  shapes.insert(\"_txtSafePosition\", getShape(\"txtSafePosition\"));
+  shapes.insert(\"_txtPositionTimeValue\", getShape(\"txtPositionTimeValue\"));
+  shapes.insert(\"_txtPositionTime\", getShape(\"txtPositionTime\"));
+
+  faceplate = new MTP_MonAnaVlvFaceplatePositionError(viewModel, shapes);
+}
+
+public shared_ptr<MTP_MonAnaVlv> getObjectPointer()
+{
+  return viewModel;
+}
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+6 1
+"RECTANGLE2"
+""
+1 65 110 E E E 1 E 1 E N "mtpTitlebar" E N "mtpTitlebar" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"minimumSize" "-1 21"
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.776595744680851 0 1 -50.47872340425532 -110 1 E 65 110 535 170
+2 2
+"txtTitle"
+""
+1 20 29.5 E E E 1 E 1 E N "mtpTitleText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20 11 155 50
+0 2 2 "0s" 0 0 0 200 0 0  20 29.5 2
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 16 Information zur 
+LANG:10001 20 Position information
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 8 Position
+LANG:10001 0 
+2 3
+"txtSafePosition"
+""
+1 20 80.49999999999994 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20 80.49999999999994 348 117
+0 2 2 "0s" 0 0 0 192 0 0  20 80.49999999999994 2
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 42 Verhalten: Nachdem ein Fehler aufgetreten 
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 35 ist, hält die Entität den Status.
+2 4
+"txtPositionTime"
+""
+1 20 140.4999999999999 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20 140.4999999999999 186 177
+0 2 2 "0s" 0 0 0 192 0 0  20 140.4999999999999 2
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 22 Überwachungszeit für
+LANG:10001 12 Monitor time
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 18 Positionierung [s]
+LANG:10001 19 for positioning [s]
+2 5
+"txtPositionTolerance"
+""
+1 20 200.4999999999999 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20 200.4999999999999 181 217
+0 2 2 "0s" 0 0 0 192 0 0  20 200.4999999999999 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 21 Toleranz der Position
+LANG:10001 18 Position tolerance
+2 6
+"txtPositionTimeValue"
+""
+1 282 150.4999999999999 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 282 150.4999999999999 319 167
+0 2 2 "0.2f" 3 0 0 192 0 0  282 150.4999999999999 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 4 1,00
+2 7
+"txtPositionToleranceValue"
+""
+1 282 200.4999999999999 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 282 200.4999999999999 319 217
+0 2 2 "0.2f" 3 0 0 192 0 0  282 200.4999999999999 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 4 1,00
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+0

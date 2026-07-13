@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="de_AT.utf8"></prop>
+  </prop>
+  <prop name="Size">400 400</prop>
+  <prop name="BackColor">_3DFace</prop>
+  <prop name="RefPoint">20 15</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">96</prop>
+  <prop name="PDPI">107.9749019607843</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script isEscaped="1" name="ScopeLib"><![CDATA[#event clicked()]]></script>
+ </events>
+ <shapes>
+  <shape Name="clickbox" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">1</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">165 55</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">_Transparent</prop>
+    <prop name="TabOrder">0</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[solid]</prop>
+    <prop name="Geometry">0.5833333333333335 0 0 0.7000000000000001 -76.25000000000003 -23.5</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">165 55</prop>
+    <prop name="Size">61 51</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+   <events>
+    <script isEscaped="1" name="Clicked"><![CDATA[main(mapping event)
+{
+  triggerEvent(&quot;clicked&quot;);
+}]]></script>
+   </events>
+  </shape>
+  <shape Name="TEXT_PARENT_REF_NAME" layerId="0" shapeType="PRIMITIVE_TEXT">
+   <properties>
+    <prop name="serialId">2</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">15 10</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">False</prop>
+    <prop name="ForeColor">_WindowText</prop>
+    <prop name="BackColor">_Window</prop>
+    <prop name="TabOrder">1</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="sizePolicy">
+     <sizePolicy horizontal="Fixed" vertical="Fixed"/>
+    </prop>
+    <prop name="layoutAlignment">AlignCenter</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapButt,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop name="FillType">[outline]</prop>
+    <prop name="Location">25 20</prop>
+    <prop name="Size">3 13</prop>
+    <prop name="Font">
+     <prop name="de_AT.utf8">MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1</prop>
+     <prop name="en_US.utf8">MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0</prop>
+     <prop name="ru_RU.utf8">MS Shell Dlg 2,8.25,-1,5,50,0,0,0,0,0</prop>
+    </prop>
+    <prop name="Text">
+     <prop name="de_AT.utf8"></prop>
+     <prop name="en_US.utf8"></prop>
+     <prop name="ru_RU.utf8"></prop>
+    </prop>
+    <prop name="Distance">2</prop>
+    <prop name="BorderOffset">2</prop>
+    <prop name="Bordered">False</prop>
+    <prop name="Fit">False</prop>
+    <prop name="Transformable">True</prop>
+    <prop name="TextFormat">[0s,,,AlignLeft]</prop>
+   </properties>
+   <events>
+    <script isEscaped="1" name="Initialize"><![CDATA[main()
+{
+  string sGlobalRefName = stdlib_getGlobalRefName();
+  strreplace(sGlobalRefName, &quot;.&quot; + self.name() + &quot;.&quot; + this.name(), &quot;&quot;);
+  this.text = sGlobalRefName;
+}]]></script>
+   </events>
+  </shape>
+ </shapes>
+</panel>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="en_US.utf8"></prop>
+  </prop>
+  <prop name="Size">500 400</prop>
+  <prop name="BackColor">_3DFace</prop>
+  <prop name="RefPoint">-1 -1</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">96</prop>
+  <prop name="PDPI">94.11039611039611</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script isEscaped="1" name="Initialize"><![CDATA[main()
+{
+  dpSet(&quot;_mp_WATER_pump.command.run:_general.._type&quot;, DPCONFIG_GENERAL);
+}]]></script>
+ </events>
+</panel>

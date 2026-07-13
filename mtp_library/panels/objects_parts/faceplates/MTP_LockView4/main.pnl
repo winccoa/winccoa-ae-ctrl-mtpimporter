@@ -1,0 +1,699 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 419 437 N "mtpBackground" 1
+"$DP"
+"main()
+{
+    initialize();
+}" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E "#uses \"classes/MTP_LockView4/MTP_LockView4\"
+#uses \"classes/MTP_LockView4/MTP_LockView4FaceplateHome\"
+
+shared_ptr<MTP_LockView4FaceplateHome> faceplate;
+shared_ptr<MTP_LockView4> viewModel;
+
+public void initialize()
+{
+  shape parent = getShape(myModuleName(), myPanelName(), \"\");
+
+  if (hasMethod(parent, \"getObjectPointer\"))
+  {
+    if (parent.getObjectPointer() != nullptr)
+    {
+      viewModel = parent.getObjectPointer();
+    }
+  }
+
+  if (viewModel == nullptr)
+  {
+    viewModel = new MTP_LockView4($DP);
+  }
+
+  mapping shapes;
+  shapes.insert(\"_circleIn1En\", getShape(\"circleIn1En\"));
+  shapes.insert(\"_circleIn2En\", getShape(\"circleIn2En\"));
+  shapes.insert(\"_circleIn3En\", getShape(\"circleIn3En\"));
+  shapes.insert(\"_circleIn4En\", getShape(\"circleIn4En\"));
+
+  shapes.insert(\"_circleOut\", getShape(\"circleOut\"));
+  shapes.insert(\"_lineOut\", getShape(\"lineOut\"));
+  shapes.insert(\"_rectOutQC\", getShape(\"rectOutQC\"));
+
+  shapes.insert(\"_lineIn1Hor\", getShape(\"lineIn1Hor\"));
+  shapes.insert(\"_lineIn2Hor\", getShape(\"lineIn2Hor\"));
+  shapes.insert(\"_lineIn3Hor\", getShape(\"lineIn3Hor\"));
+  shapes.insert(\"_lineIn4Hor\", getShape(\"lineIn4Hor\"));
+
+  shapes.insert(\"_lineIn1Vert\", getShape(\"lineIn1Vert\"));
+  shapes.insert(\"_lineIn2Vert\", getShape(\"lineIn2Vert\"));
+  shapes.insert(\"_lineIn3Vert\", getShape(\"lineIn3Vert\"));
+  shapes.insert(\"_lineIn4Vert\", getShape(\"lineIn4Vert\"));
+
+  shapes.insert(\"_rectIn1QC\", getShape(\"rectIn1QC\"));
+  shapes.insert(\"_rectIn2QC\", getShape(\"rectIn2QC\"));
+  shapes.insert(\"_rectIn3QC\", getShape(\"rectIn3QC\"));
+  shapes.insert(\"_rectIn4QC\", getShape(\"rectIn4QC\"));
+
+  shapes.insert(\"_txtIn1Txt\", getShape(\"txtIn1Txt\"));
+  shapes.insert(\"_txtIn2Txt\", getShape(\"txtIn2Txt\"));
+  shapes.insert(\"_txtIn3Txt\", getShape(\"txtIn3Txt\"));
+  shapes.insert(\"_txtIn4Txt\", getShape(\"txtIn4Txt\"));
+
+  shapes.insert(\"_txtIn1Label\", getShape(\"txtIn1Label\"));
+  shapes.insert(\"_txtIn2Label\", getShape(\"txtIn2Label\"));
+  shapes.insert(\"_txtIn3Label\", getShape(\"txtIn3Label\"));
+  shapes.insert(\"_txtIn4Label\", getShape(\"txtIn4Label\"));
+
+  shapes.insert(\"_circleIn1Inv\", getShape(\"circleIn1Inv\"));
+  shapes.insert(\"_circleIn2Inv\", getShape(\"circleIn2Inv\"));
+  shapes.insert(\"_circleIn3Inv\", getShape(\"circleIn3Inv\"));
+  shapes.insert(\"_circleIn4Inv\", getShape(\"circleIn4Inv\"));
+
+  shapes.insert(\"_txtLogic\", getShape(\"txtLogic\"));
+
+  faceplate = new MTP_LockView4FaceplateHome(viewModel, shapes);
+}
+
+public shared_ptr<MTP_LockView4> getObjectPointer()
+{
+  return viewModel;
+}
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+6 0
+"RECTANGLE1"
+""
+1 190 70 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.9428571428571428 0 1.108571428571429 23.85714285714286 -34.04536120346345 1 E 190 70 295 245
+4 18
+"lineIn2Hor"
+""
+1 171 117.9866071428572 E E E 1 E 1 E N "mtpGreen" E N {255,255,255} E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  171 117.9866071428572 266 117.9866071428572
+2 1
+"txtLogic"
+""
+1 253.5 32.078125 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 236 23 272 41
+0 2 2 "0s" 0 0 0 201 0 0  253.5 32.078125 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 3 UND
+6 2
+"rectIn1QC"
+""
+1 183.5 79.14615384615388 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 -143.5138545953361 -54.1411210317461 2  1 0  "pictures/MTP_Icones/Ok_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+6 3
+"rectIn2QC"
+""
+1 183.5 79.14615384615388 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 -143.5138545953361 -11.14112103174608 2  1 0  "pictures/MTP_Icones/Ok_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+6 4
+"rectIn3QC"
+""
+1 183.5 79.14615384615388 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 -143.5138545953361 30.85887896825392 2  1 0  "pictures/MTP_Icones/Ok_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+6 5
+"rectIn4QC"
+""
+1 183.5 79.14615384615388 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 -143.5138545953361 75.85887896825392 2  1 0  "pictures/MTP_Icones/Ok_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 6
+"txtIn1Txt"
+""
+1 108 73.83482142857142 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 91 66 125 83
+0 2 2 "0s" 0 0 0 201 0 0  108 73.83482142857142 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 3 UND
+2 7
+"txtIn2Txt"
+""
+1 108.5 117.3214285714286 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 92 109 126 126
+0 2 2 "0s" 0 0 0 201 0 0  108.5 117.3214285714286 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 3 UND
+2 8
+"txtIn3Txt"
+""
+1 108 158.8348214285714 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 91 151 125 168
+0 2 2 "0s" 0 0 0 201 0 0  108 158.8348214285714 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 3 UND
+2 9
+"txtIn4Txt"
+""
+1 108 204.8348214285714 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 91 197 125 214
+0 2 2 "0s" 0 0 0 201 0 0  108 204.8348214285714 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 3 UND
+4 10
+"lineIn1Hor"
+""
+1 171 75 E E E 1 E 1 E N "mtpGreen" E N {255,255,255} E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  171 75 266 75
+4 12
+"lineIn3Hor"
+""
+1 171 160 E E E 1 E 1 E N "mtpGreen" E N {255,255,255} E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  171 160 266.0000000000001 160
+4 13
+"lineIn4Hor"
+""
+1 171 206 E E E 1 E 1 E N "mtpGreen" E N {255,255,255} E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  171 206 266 206
+7 14
+"circleIn1En"
+""
+1 252.5 87.5 E E E 1 E 1 E N "_Transparent" E N "mtpGreen" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E 1 0 1 1 -12.5 1 E 252.5 87.5 12.5 12.5
+7 15
+"circleIn2En"
+""
+1 252.5 87.5 E E E 1 E 1 E N "_Transparent" E N "mtpGreen" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E 1 0 1 1.000000000000028 30.48660714285718 1 E 252.5 87.5 12.5 12.5
+7 16
+"circleIn3En"
+""
+1 252.5 87.5 E E E 1 E 1 E N "_Transparent" E N "mtpGreen" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E 1 0 1 1 72.5 1 E 252.5 87.5 12.5 12.5
+7 17
+"circleIn4En"
+""
+1 252.5 87.5 E E E 1 E 1 E N "_Transparent" E N "mtpGreen" E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E 1 0 1 1.999999999999972 118.5 1 E 252.5 87.5 12.5 12.5
+4 19
+"lineIn1Vert"
+""
+1 266 75 E E E 1 E 1 E N "mtpGreen" E N {255,255,255} E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  266 75 301 151
+4 20
+"lineIn2Vert"
+""
+1 266 118 E E E 1 E 1 E N "mtpGreen" E N {255,255,255} E E
+ E E
+20 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  266 118 302 152
+4 21
+"lineIn3Vert"
+""
+1 266 160 E E E 1 E 1 E N "mtpGreen" E N {255,255,255} E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  266 160 302 150
+4 22
+"lineIn4Vert"
+""
+1 266 205 E E E 1 E 1 E N "mtpGreen" E N {255,255,255} E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  266 205 302 150
+4 23
+"lineOut"
+""
+1 301 150 E E E 1 E 1 E N "mtpGreen" E N {255,255,255} E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  301 150 354 150
+7 24
+"circleOut"
+""
+1 252.5 87.5 E E E 1 E 1 E N "_Transparent" E N "mtpGreen" E E
+ E E
+24 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E 1 0 1 80.5 62.5 1 E 252.5 87.5 12.5 12.5
+6 26
+"rectOutQC"
+""
+1 183.5 79.14615384615388 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 204.4861454046639 19.85887896825392 2  1 0  "pictures/MTP_Icones/Ok_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 27
+"txtIn1Label"
+""
+1 181.5 65.83482142857144 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+26 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 173 59 191 74
+0 2 2 "0s" 0 0 0 201 0 0  181.5 65.83482142857144 1
+1
+LANG:10000 48 Roboto,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+0 1
+LANG:10000 3 In1
+2 28
+"txtIn2Label"
+""
+1 181.5 108.8214285714286 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+27 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 173 102 191 117
+0 2 2 "0s" 0 0 0 201 0 0  181.5 108.8214285714286 1
+1
+LANG:10000 48 Roboto,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+0 1
+LANG:10000 3 In2
+2 29
+"txtIn3Label"
+""
+1 181.5 150.8348214285714 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+28 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 173 144 191 159
+0 2 2 "0s" 0 0 0 201 0 0  181.5 150.8348214285714 1
+1
+LANG:10000 48 Roboto,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+0 1
+LANG:10000 3 In3
+2 30
+"txtIn4Label"
+""
+1 181.5 196.8348214285714 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+29 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 173 190 191 205
+0 2 2 "0s" 0 0 0 201 0 0  181.5 196.8348214285714 1
+1
+LANG:10000 48 Roboto,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+0 1
+LANG:10000 3 In4
+7 32
+"circleIn1Inv"
+""
+1 252.5 87.5 E E E 1 E 1 E N "_Transparent" E N "mtpGreen" E E
+ E E
+30 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E 1 0 1 23 -241 1 E 174.5 316 4.5 5
+7 33
+"circleIn2Inv"
+""
+1 252.5 87.5 E E E 1 E 1 E N "_Transparent" E N "mtpGreen" E E
+ E E
+31 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E 1 0 1 23 -198 1 E 174.5 316 4.5 5
+7 34
+"circleIn3Inv"
+""
+1 252.5 87.5 E E E 1 E 1 E N "_Transparent" E N "mtpGreen" E E
+ E E
+32 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E 1 0 1 23 -156 1 E 174.5 316 4.5 5
+7 35
+"circleIn4Inv"
+""
+1 252.5 87.5 E E E 1 E 1 E N "_Transparent" E N "mtpGreen" E E
+ E E
+33 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E 1 0 1 23 -110 1 E 174.5 316 4.5 5
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+0

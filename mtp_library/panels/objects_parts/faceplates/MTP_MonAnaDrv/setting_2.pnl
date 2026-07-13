@@ -1,0 +1,360 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 419 437 N "mtpBackground2" 1
+"$DP"
+"main()
+{
+    initialize();
+}
+" 0
+ E E E E 1 -1 -1 0  17.74803664921471 16
+""0  1
+E "#uses \"classes/MTP_MonAnaDrv/MTP_MonAnaDrv\"
+#uses \"classes/MTP_MonAnaDrv/MTP_MonAnaDrvFaceplateSettings2\"
+
+shared_ptr<MTP_MonAnaDrvFaceplateSettings2> faceplate;
+shared_ptr<MTP_MonAnaDrv> viewModel;
+
+public void initialize()
+{
+  shape parent = getShape(myModuleName(), myPanelName(), \"\");
+
+  if (hasMethod(parent, \"getObjectPointer\"))
+  {
+    if (parent.getObjectPointer() != nullptr)
+    {
+      viewModel = parent.getObjectPointer();
+    }
+  }
+
+  if (viewModel == nullptr)
+  {
+    viewModel = new MTP_MonAnaDrv($DP);
+  }
+
+  mapping shapes;
+  shapes.insert(\"_txtRpmAlarmHighLimit\", getShape(\"txtRpmAlarmHighLimit\"));
+  shapes.insert(\"_txtRpmAlarmLowLimit\", getShape(\"txtRpmAlarmLowLimit\"));
+  shapes.insert(\"_txtAlarmUpper\", getShape(\"txtAlarmUpper\"));
+  shapes.insert(\"_txtAlarmLower\", getShape(\"txtAlarmLower\"));
+  shapes.insert(\"_txtRpmUnit1\", getShape(\"txtRpmUnit1\"));
+  shapes.insert(\"_txtRpmUnit2\", getShape(\"txtRpmUnit2\"));
+
+  faceplate = new MTP_MonAnaDrvFaceplateSettings2(viewModel, shapes);
+}
+
+public shared_ptr<MTP_MonAnaDrv> getObjectPointer()
+{
+  return viewModel;
+}
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+2 4
+"txtRpmUnit1"
+""
+1 20.24803664921471 156.25 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20.24803664921471 156.25 51 173
+0 2 2 "0s" 0 0 0 192 0 0  20.24803664921471 156.25 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 4 unit
+2 5
+"txtRpmUnit2"
+""
+1 19.99803664921471 232.75 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 19.99803664921471 232.75 50 250
+0 2 2 "0s" 0 0 0 192 0 0  19.99803664921471 232.75 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 4 unit
+2 7
+"txtAlarmUpper"
+""
+1 20.24803664921471 138 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20.24803664921471 138 160 155
+0 2 2 "0s" 0 0 0 192 0 0  20.24803664921471 138 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 16 Alarm-Obergrenze
+LANG:10001 17 Alarm upper limit
+2 8
+"txtAlarmLower"
+""
+1 20.24803664921471 213.75 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20.24803664921471 213.75 165 231
+0 2 2 "0s" 0 0 0 192 0 0  20.24803664921471 213.75 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 17 Alarm-Untergrenze
+LANG:10001 17 Alarm lower limit
+2 10
+"PRIMITIVE_TEXT6"
+""
+1 20.24803664921471 90.25 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+9 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20.24803664921471 90.25 204 108
+0 2 2 "0s" 0 0 0 192 0 0  20.24803664921471 90.25 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 20 Drehzahlüberwachung
+LANG:10001 27 Revolution speed monitoring
+14 11
+"txtRpmAlarmHighLimit"
+""
+1 274.2480366492148 158.25 E E E 1 E 1 E N "mtpInputText" E N "_Window" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10000 45 Roboto,-1,21,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0  272.2480366492148 134.0083333333334 401 177
+3 "0.2f" 3 0 0 9 0 -1  E E "main()
+{
+  faceplate.setRpmAlarmHighLimit(this.text());
+}
+" 0
+
+14 12
+"txtRpmAlarmLowLimit"
+""
+1 279.248036649215 231.8257575757576 E E E 1 E 1 E N "mtpInputText" E N "_Window" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10000 45 Roboto,-1,21,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0  272.2480366492148 210.25 401 253
+3 "0.2f" 3 0 0 9 0 -1  E E "main()
+{
+  faceplate.setRpmAlarmLowLimit(this.text());
+}
+" 0
+
+6 16
+"RECTANGLE1"
+""
+1 25 20 E E E 1 E 1 E N "white" E N "white" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1.039715269310765 0 1.088888888888889 -5.86690005737637 -1.777777777777779 1 E 25 20 390 65
+13 17
+"PUSH_BUTTON1"
+""
+1 27.37205497382207 48.00000000000001 E E E 1 E 1 E N "_ButtonText" E N "white" E E
+ E E
+16 0 0 0 0 0
+E E E
+8
+1
+LANG:10000 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10000 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  25.37205497382207 25.00000000000001 66 65
+
+P 
+4294967295
+"pictures/MTP_Icones/BackEn.svg"
+2
+LANG:10000 0 
+LANG:10001 0 
+"main(mapping event)
+{
+  faceplate.switchPageBackward();
+}
+" 0
+ E E E
+13 18
+"PUSH_BUTTON2"
+""
+1 356.6220549738221 40.68000000000001 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+17 0 0 0 0 0
+E E E
+8
+1
+LANG:10000 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10000 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  354.6220549738221 25.00000000000001 395 65
+
+P 
+4294967295
+"pictures/MTP_Icones/NextDis.svg"
+2
+LANG:10000 0 
+LANG:10001 0 
+"main(mapping event)
+{
+  faceplate.switchPageForward();
+}
+" 0
+ E E E
+2 19
+"PRIMITIVE_TEXT7"
+""
+1 203.3720549738221 26 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 148 26 258 44
+0 2 2 "0s" 0 0 0 193 0 0  203.3720549738221 26 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 13 Einstellungen
+LANG:10001 8 Settings
+2 20
+"PRIMITIVE_TEXT8"
+""
+1 193.3720549738221 46 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 193.3720549738221 46 214 61
+0 2 2 "0s" 0 0 0 192 0 0  193.3720549738221 46 1
+1
+LANG:10000 48 Roboto,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+0 1
+LANG:10000 3 2/2
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+0

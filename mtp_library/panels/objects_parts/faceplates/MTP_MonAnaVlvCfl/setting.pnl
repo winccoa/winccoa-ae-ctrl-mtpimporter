@@ -1,0 +1,88 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 419 437 N "_3DFace" 1
+"$DP"
+"main()
+{
+  initialize();
+}
+" 0
+ E E E E 1 -1 -1 0  19.74803664921471 16
+""0  1
+E "#uses \"classes/MTP_MonAnaVlv/MTP_MonAnaVlvFaceplateSettings\"
+#uses \"classes/MTP_MonAnaVlv/MTP_MonAnaVlv\"
+
+shared_ptr<MTP_MonAnaVlvFaceplateSettings> faceplate;
+shared_ptr<MTP_MonAnaVlv> viewModel;
+
+public void initialize()
+{
+  shape parent = getShape(myModuleName(), myPanelName(), \"\");
+
+  if (hasMethod(parent, \"getObjectPointer\"))
+  {
+    if (parent.getObjectPointer() != nullptr)
+    {
+      viewModel = parent.getObjectPointer();
+    }
+  }
+
+  if (viewModel == nullptr)
+  {
+    viewModel = new MTP_MonAnaVlv($DP);
+  }
+
+  mapping shapes;
+  shapes.insert(\"_btnMonitorDisabled\", getShape(\"btnMonitorDisabled\"));
+  shapes.insert(\"_btnMonitorEnabled\", getShape(\"btnMonitorEnabled\"));
+
+  faceplate = new MTP_MonAnaVlvFaceplateSettings(viewModel, shapes);
+}
+
+public shared_ptr<MTP_MonAnaVlv> getObjectPointer()
+{
+  return viewModel;
+}
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+1 10 0 "" 4
+0
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+3 0 "PANEL_REF1" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects_parts/faceplates/MTP_MonAnaVlv/setting.pnl" 20.26887258559626 27 T 9 1 0 1 0 -6
+1
+"$DP""$DP"
+0

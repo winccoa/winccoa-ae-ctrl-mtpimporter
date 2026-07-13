@@ -1,0 +1,87 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 419 437 N "mtpBackground" 1
+"$DP"
+"main()
+{
+  initialize();
+}
+" 0
+ E E E E 1 -1 -1 0  -5.000000000000013 -7.999999999999886
+""0  1
+E "#uses \"classes/MTP_BinDrvCfl/MTP_BinDrvCfl\"
+
+shared_ptr<MTP_BinDrvCfl> viewModel;
+
+public void initialize()
+{
+  if (viewModel == nullptr)
+  {
+    if (hasMethod(self.parentPanel(), \"getObjectPointer\"))
+    {
+      shared_ptr<MTP_BinDrvCfl> parentViewModel = self.parentPanel().getObjectPointer();
+
+      if (parentViewModel != nullptr)
+      {
+        viewModel = parentViewModel;
+      }
+      else
+      {
+        viewModel = new MTP_BinDrvCfl($DP);
+      }
+    }
+    else
+    {
+      viewModel = new MTP_BinDrvCfl($DP);
+    }
+  }
+}
+
+public shared_ptr<MTP_BinDrvCfl> getObjectPointer()
+{
+  return viewModel;
+}
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+1 35 0 "" 65
+0
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+3 0 "PANEL_REF1" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects_parts/faceplates/MTP_BinDrv/main.pnl" -5 3.000000000000114 T 63 1 0 1 0 -9
+1
+"$DP""$DP"
+0

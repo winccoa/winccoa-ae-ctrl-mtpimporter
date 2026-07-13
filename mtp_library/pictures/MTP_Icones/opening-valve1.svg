@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Ebene_1"
+   data-name="Ebene 1"
+   viewBox="0 0 41.69 38.04"
+   version="1.1"
+   sodipodi:docname="opening-valve1.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="15.339116"
+     inkscape:cx="23.958355"
+     inkscape:cy="25.327404"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Ebene_1" />
+  <defs
+     id="defs1">
+    <style
+       id="style1">
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: #5dcfad;
+      }
+    </style>
+  </defs>
+  <g
+     id="g2"
+     transform="matrix(0,-0.90247606,0.93208199,0,3.1120905,37.82729)">
+    <polygon
+       class="cls-2"
+       points="5.56,28.93 20.84,1.04 36.12,28.93 "
+       id="polygon1" />
+    <polygon
+       class="cls-3"
+       points="0.84,37.54 5.56,28.93 36.12,28.93 40.84,37.54 "
+       id="polygon2" />
+  </g>
+  <polygon
+     class="cls-1"
+     points="5.56,28.93 0.84,37.54 40.84,37.54 36.12,28.93 20.84,1.04 "
+     id="polygon3"
+     transform="matrix(0,-0.90247606,0.93208199,0,3.1120905,37.82729)" />
+</svg>

@@ -1,0 +1,154 @@
+V 14
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+PANEL,-1 -1 120 47 N "STDLIB_panelBackground" 9
+"$DP"
+"$DPE"
+"$_BIT_NUMBER"
+"$_DPE_Enable"
+"$_DPE_Highlight"
+"$_DPE_Visible"
+"$_RULE_Enable"
+"$_RULE_Highlight"
+"$_RULE_Visible"
+"main()
+{
+  sConnectedDpe = $DP;
+  if (strlen(sConnectedDpe)>0 && sConnectedDpe[strlen(sConnectedDpe)-1]!=\".\")
+    sConnectedDpe+=\".\";
+  string sDPE = $DPE;
+
+  int iBitNumber = -1;
+  if ($_BIT_NUMBER != \"\")
+    iBitNumber = $_BIT_NUMBER;
+  bool bUseBitNumber = ((iBitNumber >= 0) && (iBitNumber < 32)) ? true : false;  
+  
+  if (!bUseBitNumber)
+  {
+    if (sDPE[0] == \".\")  //remove beginning \".\"
+      sDPE = substr(sDPE, 1);
+    sConnectedDpe+=sDPE;
+  }
+  else
+    sConnectedDpe+=\"command.bit\" + iBitNumber;
+}
+
+" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E "bool bStatus;
+string sConnectedDpe;
+
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+1 8 1 "" 2
+8 "backCol" 0 0 "_Transparent"
+7 "rotation" 0 0 0
+0
+1 9 1 "" 5
+7 "rotation" 0 0 0
+0
+1 10 1 "" 7
+7 "rotation" 0 0 0
+0
+0
+LAYER, 1 
+0
+1 12 1 "" 1
+1 "leftClick" 1 1 E 
+31 "transform" 0 0 1 0 1 -1.4210854715202e-14 -1.776356839400251e-14
+7 "rotation" 0 0 0
+8 "fill" 0 0 "[pattern,[fit,any,ToggleSwitch_3d_on.png]]"
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+6 7
+"clickFrame"
+""
+1 80 10 E E E 1 E 1 E N "_Transparent" E N "_Transparent" E E
+ "main()
+{
+  openPopUpMenuForDPE(sConnectedDpe);
+}
+" 0
+ E
+17 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main()
+{
+  int  iValue;
+
+  dpGet(sConnectedDpe, iValue);
+  dpSet(sConnectedDpe, iValue>0 ? 0:1);
+}
+
+
+
+
+" 0
+ 0 1 1 2 1 E 0.6 0 1.483333333333333 -8 -14.83333333333333 1 E 80 10 10 40
+0
+3 1 "PANEL_REF1" -1
+"layoutAlignment" "AlignCenter"
+"" ""
+"objects/symbols_bool/stdlib_boolObject_1.pnl" 31 12 T 15 1.419354838709678 0 1.483870967741936 -44.00000000000001 -17.80645161290322
+21
+"$DP""$DP"
+"$DPE""$DPE"
+"$_BIT_NUMBER"""
+"$_BOOL_DPEDescrAsToolTip"""
+"$_BOOL_SHOWALARM"""
+"$_DPE_Enable""$_DPE_Enable"
+"$_DPE_Highlight""$_DPE_Highlight"
+"$_DPE_Visible""$_DPE_Visible"
+"$_INT_BIT"""
+"$_MSGCAT"""
+"$_MSGTOOLTIP"""
+"$_RULE_Enable""$_RULE_Enable"
+"$_RULE_Highlight""$_RULE_Highlight"
+"$_RULE_Visible""$_RULE_Visible"
+"$__ENUM_ActState""2"
+"$__ENUM_Color"""
+"$__ENUM_Image""|ToggleSwitch_3d_on.png|ToggleSwitch_3d_off.png"
+"$__ENUM_ImageDef""dynamic"
+"$__ENUM_ImageDirection"""
+"$__ENUM_ShapeDirection"""
+"$__ENUM_ShapeForm""0"
+0

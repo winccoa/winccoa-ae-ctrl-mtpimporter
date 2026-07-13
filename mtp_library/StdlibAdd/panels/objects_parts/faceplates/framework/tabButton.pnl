@@ -1,0 +1,131 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 93 75 N "_3DFace" 2
+"$name"
+"$panel"
+"main()
+{ //use icon if available
+  dsPanels = strsplit($panel, \"|\");
+  dsNames = strsplit($name, \"|\");
+  setIcon(1);
+}
+" 0
+ E E E E 1 -1 -1 0  10 10
+""0  1
+E "function_ptr fpEvent;
+
+dyn_string dsPanels;
+dyn_string dsNames;
+int iCurrentIndex = -1;
+bool bCurrentSelection = FALSE;
+
+public connectEvent(function_ptr _fpEvent)
+{
+  fpEvent = _fpEvent;
+
+  uiConnect(\"selectionChanged\", fpEvent);
+}
+
+selectionChanged(const string &panel, const string &name)
+{
+  for (int i = 1; i <= dynlen(dsPanels); i++)
+  {
+    if (dsPanels[i] == panel && dsNames[i] == name)
+    {
+      setIcon(i, TRUE); //select the item
+      return;
+    }
+  }
+  setIcon(1, FALSE); //unselect and change to icon 1
+}
+
+setIcon(int iIndex=-1, bool bSelected = FALSE)
+{
+  bCurrentSelection = bSelected;
+  if (iIndex != -1)
+  {
+    button.toolTipText = dsNames[iIndex];
+    string sName = strtolower(dsNames[iIndex]);
+
+    string sSvg = getPath(PICTURES_REL_PATH, \"faceplateTabIcons/\"+sName+\".svg\");
+
+    if (sSvg != \"\")
+      button.fill(\"[pattern,[fit,any,\" + \"faceplateTabIcons/\"+sName + \".svg]]\");
+
+    if (iCurrentIndex != iIndex)
+      iCurrentIndex = iIndex;
+
+  }
+
+  button.fillSvgElement(\"rBackground\", \"[solid]\", bSelected ? \"fp_tabHeaderSelected\" : \"fp_tabHeader\");
+}
+
+" 0
+ 5
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "107.975"
+"sizePolicy" "Fixed Fixed"
+0 1 0 0 0 0 1 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+6 3
+"button"
+""
+1 35 165 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+6
+"minimumSize" "70 53"
+"maximumSize" "70 53"
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  int iNextIndex;
+  if (!bCurrentSelection)
+    iNextIndex = 1;
+  else //find next index
+  {
+    iNextIndex = iCurrentIndex + 1;
+    if (iNextIndex > dynlen(dsPanels))
+      iNextIndex = 1;
+  }
+  triggerEvent(fpEvent, dsPanels[iNextIndex], dsNames[iNextIndex], iNextIndex, dynlen(dsPanels));
+}
+" 0
+ 0 1 3 2 1 E 0.4181643889697901 0 0.7428332163896747 -4.635753613940324 -112.5674807042969 2  1 0  "pictures/faceplateTabIcons/TabButton.svg" 4294967295 E 35 165 200 235
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+0

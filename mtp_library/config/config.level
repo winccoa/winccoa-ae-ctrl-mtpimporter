@@ -1,0 +1,5 @@
+[ui]
+LoadCtrlLibs = "stdlib_MTP_hook.ctl"
+
+[ctrl]
+LoadCtrlLibs = "stdlib_MTP_hook.ctl"

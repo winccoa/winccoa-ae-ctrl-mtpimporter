@@ -1,0 +1,299 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 419 437 N "mtpBackground2" 1
+"$DP"
+"main()
+{
+    initialize();
+}
+" 0
+ E E E E 1 -1 -1 0  18.75 17
+""0  1
+E "#uses \"classes/MTP_MonAnaDrv/MTP_MonAnaDrvFaceplateSettings1\"
+#uses \"classes/MTP_MonAnaDrv/MTP_MonAnaDrv\"
+
+shared_ptr<MTP_MonAnaDrvFaceplateSettings1> faceplate;
+shared_ptr<MTP_MonAnaDrv> viewModel;
+
+public void initialize()
+{
+  shape parent = getShape(myModuleName(), myPanelName(), \"\");
+
+  if (hasMethod(parent, \"getObjectPointer\"))
+  {
+    if (parent.getObjectPointer() != nullptr)
+    {
+      viewModel = parent.getObjectPointer();
+    }
+  }
+
+  if (viewModel == nullptr)
+  {
+    viewModel = new MTP_MonAnaDrv($DP);
+  }
+
+  mapping shapes;
+  shapes.insert(\"_btnMonitorDisabled\", getShape(\"btnMonitorDisabled\"));
+  shapes.insert(\"_btnMonitorEnabled\", getShape(\"btnMonitorEnabled\"));
+
+  faceplate = new MTP_MonAnaDrvFaceplateSettings1(viewModel, shapes);
+}
+
+public shared_ptr<MTP_MonAnaDrv> getObjectPointer()
+{
+  return viewModel;
+}
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+6 1
+"RECTANGLE1"
+""
+1 25 20 E E E 1 E 1 E N "white" E N "white" E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1.039715269310765 0 1.088888888888889 -5.990918381983736 -1.777777777777779 1 E 25 20 390 65
+13 2
+"PUSH_BUTTON1"
+""
+1 27.24803664921471 48.00000000000001 E E E 0 E 1 E N "_ButtonText" E N "white" E E
+ E E
+1 0 0 0 0 0
+E E E
+8
+1
+LANG:10000 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10000 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  25.24803664921471 25.00000000000001 66 65
+
+P 
+4294967295
+"pictures/MTP_Icones/BackDis.svg"
+2
+LANG:10000 0 
+LANG:10001 0 
+E E E E
+13 3
+"PUSH_BUTTON2"
+""
+1 356.4980366492147 40.68000000000001 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+2 0 0 0 0 0
+E E E
+8
+1
+LANG:10000 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10000 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  354.4980366492147 25.00000000000001 395 65
+
+P 
+4294967295
+"pictures/MTP_Icones/NextEn.svg"
+2
+LANG:10000 0 
+LANG:10001 0 
+"main(mapping event)
+{
+  faceplate.switchPage();
+}
+" 0
+ E E E
+2 4
+"PRIMITIVE_TEXT3"
+""
+1 20.49803664921471 148.75 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20.49803664921471 131 124 168
+0 2 2 "0s" 0 0 0 200 0 0  20.49803664921471 148.75 2
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 12 Überwachung
+LANG:10001 14 Monitor enable
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 10 aktivieren
+LANG:10001 0 
+2 5
+"PRIMITIVE_TEXT7"
+""
+1 203.2480366492147 26 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 148 26 258 44
+0 2 2 "0s" 0 0 0 193 0 0  203.2480366492147 26 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 13 Einstellungen
+LANG:10001 8 Settings
+2 6
+"PRIMITIVE_TEXT8"
+""
+1 193.2480366492147 46.00000000000001 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 193.2480366492147 46.00000000000001 214 61
+0 2 2 "0s" 0 0 0 192 0 0  193.2480366492147 46.00000000000001 1
+1
+LANG:10000 48 Roboto,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+0 1
+LANG:10000 3 1/2
+13 7
+"btnMonitorDisabled"
+"MtpButton"
+1 307.9320652173913 143.5 E E E 1 E 1 E N "mtpTitleText" E N "_Button" E E
+ E E
+6 0 0 0 0 0
+E E E
+1
+1
+LANG:10000 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10000 45 Roboto,-1,19,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0  303.25 127.5 402 172
+
+T 
+2
+LANG:10000 3 Aus
+LANG:10001 3 Off
+"main(mapping event)
+{
+faceplate.changeMonitorDisabled();
+}
+" 0
+ E E E
+13 8
+"btnMonitorEnabled"
+"MtpButton"
+1 210.9320652173913 144 E E E 1 E 1 E N "mtpTitleText" E N "_Button" E E
+ E E
+7 0 0 0 0 0
+E E E
+1
+1
+LANG:10000 0 
+
+1
+"layoutAlignment" "AlignNone"
+1
+LANG:10000 45 Roboto,-1,19,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0  206.25 128 305 172
+
+T 
+2
+LANG:10000 3 Ein
+LANG:10001 2 On
+"main(mapping event)
+{
+faceplate.changeMonitorEnabled();
+}
+" 0
+ E E E
+2 9
+"PRIMITIVE_TEXT6"
+""
+1 19.75 90 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 19.75 90 220 108
+0 2 2 "0s" 0 0 0 192 0 0  19.75 90 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 22 Rückmeldeüberwachung
+LANG:10001 19 Feedback monitoring
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+0

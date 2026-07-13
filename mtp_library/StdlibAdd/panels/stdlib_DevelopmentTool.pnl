@@ -1,0 +1,1696 @@
+V 14
+3
+LANG:10001 6 window
+LANG:10000 0 
+LANG:10027 0 
+PANEL,-1 -1 870 399 N "_3DFace" 0
+"main()
+{
+  if ( !dynlen(dpTypes(\"_STDLIB_Note\")) )
+  {
+    stdlibExt_importSdllibDpl();
+    logs += \"Stdlib data points have been imported.\\n\";
+
+    ChildPanelOnCentral(\"vision/MessageInfo1\",
+                        getCatStr(\"general\",\"information\"),
+                        makeDynString(getCatStr(\"stdlib\",\"dpImported\") + \"\\n\" + getCatStr(\"stdlib\",\"stdLibStart\")));
+  }
+  generateLib();
+
+  stdlibExt_createConfig();
+
+  logs += \"Initialization is completed. \\n\";
+}
+" 0
+ E E E E 1 -1 -1 0  60 120
+""0  1
+E "bool libExists = false;
+string logs = \"\";
+
+/*
+  @author Grygorii Sokhrannyi
+  Show the faceplate panel path and name for the given DPT name
+  @param DPT Is the selected DPT
+*/
+void showPanelPath(string DPT)
+{
+  pathPanel.text(\"objects_parts/faceplates/\" + DPT + \"/\");
+}
+
+//--------------------------------------------------------------------------------
+
+/*
+  @author Grygorii Sokhrannyi
+  Check if all DPTs exist and relevant.
+  @return 1 - when check is done and there are some DPTs, 0 - when check is done and all DPTs are not relevant
+*/
+int checkDPTlist()
+{
+    dyn_string dpts;
+    getValue(\"cbDpt\", \"items\", dpts);
+    for (int i = 1; i<= dynlen(dpts); ++i)
+    {
+      if ( dynlen(dpTypes(dpts[i])) < 1 )
+      {
+        dynRemove(dpts, i);
+        break;
+      }
+    }
+
+    setValue(\"cbDpt\", \"items\", dpts);
+    if ( dynlen(dpts) == 0 )
+      return 0;
+
+  return 1;
+}
+
+//--------------------------------------------------------------------------------
+
+/*
+  @author Grygorii Sokhrannyi
+  Open file Editor window with workflow logs
+*/
+void openLogs()
+{
+  textEditor(\"text\", logs, \"readOnly\", true);
+}
+
+//--------------------------------------------------------------------------------
+
+/*
+  @author Grygorii Sokhrannyi
+  Generate users hook library
+*/
+void generateLib()
+{
+  string destination = getPath(LIBS_REL_PATH);
+  destination += strtolower(strsplit(PROJ, \"_\")[1]) + \"_hook.ctl\";
+
+  if ( isfile(destination) )
+    return;
+
+  dyn_string stdlibFunctions = makeDynString(\"string hook_stdlib_getAlertElement(string &dp)\",
+                                             \"string hook_stdlib_getInvalidElement(string &dp)\",
+                                             \"string hook_stdlib_getOperationModeElement(string &dp)\",
+                                             \"int hook_stdlib_alterInfoAreaDisplay(anytype &aParams)\",
+                                             \"dyn_string hook_stdlib_getInfoAreaDPEs(anytype &aParams)\",
+                                             \"bool hook_stdlib_hasDpeAnActiveAdress(string &DPE)\",
+                                             \"dyn_anytype hook_stdlib_fillPopUpMenu(anytype &aParams)\",
+                                             \"dyn_string hook_stdlib_addEnableRuleDpes(string &sDpe)\",
+                                             \"dyn_string hook_stdlib_addVisibleRuleDpes(string &sDpe)\",
+                                             \"dyn_string hook_stdlib_addHighlightRuleDpes(string &sDpe)\",
+                                             \"bool hook_stdlib_libEnableElementarySymbol(dyn_anytype &aParams)\",
+                                             \"bool hook_stdlib_libVisibleElementarySymbol(dyn_anytype &aParams)\",
+                                             \"bool hook_stdlib_libHighlightElementarySymbol(dyn_anytype &aParams)\",
+                                             \"bool hook_stdlib_libLicenseAvailable(string s=\\\"\\\")\",
+                                             \"langString hook_stdlib_faceplateHeadline(string &sDp)\",
+                                             \"langString hook_stdlib_faceplateWindowTitle(string &sDp)\");
+
+  // Add function header
+  string moment = getCurrentTime();
+  string content = \"#uses \\\"stdlib_hook\\\"\\n\\n/*\\n  Automatically generated on \";
+  content += moment;
+  content += \" with Stdlib Development Panel\\n*/\";
+
+  // Add functions
+  for (int i = 1; i <= dynlen(stdlibFunctions); ++i)
+  {
+    strreplace(stdlibFunctions[i], \"_stdlib_\", \"_\" + strtolower(strsplit(PROJ, \"_\")[1]) + \"_\");
+    content += \"\\n\\n\" + stdlibFunctions[i] + \"\\n{\\n  return \";
+    strreplace(stdlibFunctions[i], \"string\", \"\");
+    strreplace(stdlibFunctions[i], \"bool\", \"\");
+    strreplace(stdlibFunctions[i], \"int \", \"\");
+    strreplace(stdlibFunctions[i], \"langString\", \"\");
+    strreplace(stdlibFunctions[i], \"anytype\", \"\");
+    strreplace(stdlibFunctions[i], \"dyn_\", \"\");
+    strreplace(stdlibFunctions[i], \"&\", \"\");
+    strreplace(stdlibFunctions[i], \" \", \"\");
+    strreplace(stdlibFunctions[i], \"_\" + strtolower(strsplit(PROJ, \"_\")[1]) + \"_\", \"_stdlib_\");
+    content += stdlibFunctions[i];
+    content += \";\\n}\";
+  }
+
+  // Write to a file
+  file fileDest = fopen(destination, \"w\");
+  fputs(content, fileDest);
+  fclose(fileDest);
+
+  logs += \"The library file \" + destination + \" has been generated.\\n\";
+}
+
+//--------------------------------------------------------------------------------
+
+/*
+  @authors Grygorii Sokhrannyi
+  Create symbol of a given template for the given DPT
+  @params:
+    template Is the symbol template
+    dpt Is the datapoint type
+  @return the path where template panel is copied, suffix \"-\" means that the panel is already exists
+*/
+string stdlibExt_createSymbol(string template, string dpt)
+{
+  string destFile = template;
+  strreplace(destFile, \"template\", \"\");
+
+  dyn_string pathAndPanel;
+  dptsGetSymbolsForDpt(dpt, pathAndPanel);
+
+  for (int i = 1; i <= dynlen(pathAndPanel); ++i)
+  {
+    if ( pathAndPanel[i] == \"objects/\" + dpt + \"/\" + dpt + destFile )  // panel exists, do nothing
+    {
+      logs += \"The reference panel exists: panels/objects/\" + dpt + \"/\" + dpt + destFile + \"\\n\";
+      return \"-panels/objects/\" + dpt + \"/\";
+    }
+  }
+  string panelPath = \"objects/\" + dpt + \"/\" + dpt + destFile;
+
+  dynAppend(pathAndPanel, panelPath);
+
+  // Retrieve an icon for the given template
+  string pictFile = destFile;
+  strreplace(pictFile, \".pnl\", \".png\");
+
+  string destImg = getPath(PANELS_REL_PATH) + \"objects/\" + dpt + \"/\" + dpt + destFile + \"/\" + dpt + pictFile,
+         tempImg = template;
+
+  destFile = getPath(PANELS_REL_PATH) + \"objects/\" + dpt + \"/\" + dpt + destFile;
+
+  strreplace(destImg, getPath(PANELS_REL_PATH), getPath(IMAGES_REL_PATH));
+  strreplace(tempImg, \".pnl\", \".png\");
+
+  if ( !isfile(destFile) )
+  {
+    // Save the template panel in the project
+    copyFile(getPath(PANELS_REL_PATH, \"objects/STDLIB_template/\" + template), destFile);
+
+    // Save the tamplate icon in the project
+    copyFile(getPath(IMAGES_REL_PATH, \"objects/STDLIB_template/\" + template + \"/\" + tempImg), destImg);
+  }
+
+  logs += \"The reference panel has been created: \" + panelPath + \"\\n\";
+
+  // Set ref panels to the given DPT as symbols
+  dptsSetSymbolsForDpt(dpt, pathAndPanel);
+
+  return \"panels/objects/\" + dpt + \"/\";
+}
+
+//--------------------------------------------------------------------------------
+
+/*
+  @authors Markus Trummer
+  Create a config.level file
+*/
+void stdlibExt_createConfig()
+{
+  string configLevel = getPath(CONFIG_REL_PATH) + \"config.level\";
+  string hookCtlName = strtolower(strsplit(PROJ, \"_\")[1]) + \"_hook.ctl\";
+  string configLevelContent;
+
+  // Check if confi.level does already exist
+  if ( access(configLevel, F_OK) == 0 )
+  {
+    fileToString(configLevel, configLevelContent);
+
+    if ( strpos(configLevelContent, hookCtlName) > 0 ) // config entry already set, nothing more to do
+      return;
+  }
+
+  // Add the created HOOK lib name to the config
+  stdlibExt_addConfigEntry(configLevelContent, \"ui\", \"LoadCtrlLibs = \\\"\" + hookCtlName + \"\\\"\");
+  stdlibExt_addConfigEntry(configLevelContent, \"ctrl\", \"LoadCtrlLibs = \\\"\" + hookCtlName + \"\\\"\");
+
+  file configFile = fopen(configLevel, \"w\");
+  fputs(configLevelContent, configFile);
+  fclose(configFile);
+
+  // Create messages for the Log
+  logs += \"config.level has been created in \" + getPath(CONFIG_REL_PATH) + \"\\n\";
+}
+
+//--------------------------------------------------------------------------------
+
+/*
+  @authors Markus Trummer
+  Add the given config entry to the config.level file
+  @params:
+     configFileContent Is the content of the config.level file
+     section Is the config section to which the entry to be added
+     line Is the entry which should be added to the file
+*/
+stdlibExt_addConfigEntry(string &configFileContent, string section, string line)
+{
+  section = \"[\" + section + \"]\";
+
+  // Check if the section does exist and get its position
+  int sectionPos = strpos(configFileContent, section);
+
+  // Add the entry for the given section
+  if ( sectionPos < 0 )  // section does not exist, will be added with the entry
+  {
+    configFileContent += \"\\n\\n\" + section + \"\\n\" + line;
+  }
+  else  // section exists, entry will be added to it
+  {
+    int insertPos = strpos(configFileContent, \"\\n\", sectionPos);
+    configFileContent = substr(configFileContent, 0, insertPos) + \"\\n\" + line + \"\\n\" + substr(configFileContent, insertPos + 1);
+  }
+}
+
+//--------------------------------------------------------------------------------
+
+/*
+  @authors Markus Trummer
+  Import the necessary STDLib DPEs to the project
+*/
+stdlibExt_importSdllibDpl()
+{
+  string stdlibDplPath,
+         asciiTool = getComponentName(ASCII_COMPONENT),
+         asciiPath;
+
+  stdlibDplPath = getPath(DPLIST_REL_PATH, \"stdlib.dpl\");
+
+  if ( _WIN32 )
+    asciiTool += \".exe\";
+
+  asciiPath = getPath(BIN_REL_PATH, asciiTool);
+
+  system(makeMapping(\"program\", asciiPath,
+                     \"arguments\", makeDynString(\"-in\", stdlibDplPath)));
+}
+
+//--------------------------------------------------------------------------------
+
+/*
+  @authors Markus Trummer
+  Create the given DPT and a master DPE
+  @param DPTname Is the DPT name
+*/
+stdlibExt_createDPTs(string DPTname)
+{
+  string stdlibname = strtoupper(strsplit(PROJ, \"_\")[1]);
+  dyn_dyn_int DPTstructure;
+  dyn_dyn_string DPTStructurenames;
+  dyn_errClass err;
+  string DPT = stdlibname + \"_\" + DPTname;
+
+  DPTStructurenames[1] = makeDynString(DPT, \"\", \"\");
+  DPTStructurenames[2] = makeDynString(\"\", \"state\", \"\");
+  DPTStructurenames[3] = makeDynString(\"\", \"alarm\", \"\");
+  DPTStructurenames[4] = makeDynString(\"\", \"command\", \"\");
+  DPTStructurenames[5] = makeDynString(\"\", \"para\", \"\");
+  DPTStructurenames[6] = makeDynString(\"\", \"general\", \"\");
+  DPTStructurenames[7] = makeDynString(\"\", \"\", \"note\", \"_STDLIB_Note\", \"\");
+  DPTStructurenames[8] = makeDynString(\"\", \"operationMode\", \"_STDLIB_OMD\", \"\");
+
+  DPTstructure[1] = makeDynInt(DPEL_STRUCT);
+  DPTstructure[2] = makeDynInt(0, DPEL_STRUCT);
+  DPTstructure[3] = makeDynInt(0, DPEL_STRUCT);
+  DPTstructure[4] = makeDynInt(0, DPEL_STRUCT);
+  DPTstructure[5] = makeDynInt(0, DPEL_STRUCT);
+  DPTstructure[6] = makeDynInt(0, DPEL_STRUCT);
+  DPTstructure[7] = makeDynInt(0, 0, DPEL_TYPEREF);
+  DPTstructure[8] = makeDynInt(0, DPEL_TYPEREF);
+
+  // Create DPT
+  if ( dynlen(dpTypes(DPT)) < 1 )
+    dpTypeCreate(DPTStructurenames, DPTstructure);
+
+  // Create master DP
+  if ( !dpExists(\"_mp_\" + DPT) )
+    mpCreateMpDp(DPT, 1, FALSE);
+
+  // Check if any errors occurred
+  err = getLastError();
+  if ( dynlen(err) > 0 )  // if any errors -> open the Dialog and stop
+  {
+    errorDialog(err);
+    return;
+  }
+
+  // Configure summary alarm handler
+  stdlibExt_insertSummaryAlarm(\"_mp_\" + DPT);
+}
+
+//--------------------------------------------------------------------------------
+
+/*
+  @author Markus Trummer
+  Create the alarm handling for the given DPE
+  @param DPE Is the DPE name
+*/
+private stdlibExt_insertSummaryAlarm(string DPE)
+{
+  dyn_string leaf, attributes;
+  DPE = dpSubStr(DPE, DPSUB_DP);
+
+  dpGet(\"_dt_\" + dpTypeName(DPE) + \".Leaf:_online.._value\", leaf,
+        \"_dt_\" + dpTypeName(DPE) + \".DynamicAttribute:_online.._value\", attributes);
+
+  dynAppend(leaf, DPE + \".alarm:_alert_hdl\");
+  dynAppend(attributes, \"_da_none\");
+
+  dpSet(DPE + \".alarm:_alert_hdl.._type\",DPCONFIG_SUM_ALERT);
+  dpSet(DPE + \".alarm:_alert_hdl.._dp_pattern\", \"{\" + DPE + \".alarm.**,\" + DPE + \".state.**}\");
+  dpSet(DPE + \".alarm:_alert_hdl.._active\",true);
+
+  dpSet(\"_dt_\" + dpTypeName(DPE) + \".Leaf:_original.._value\", leaf,
+        \"_dt_\" + dpTypeName(DPE) + \".DynamicAttribute:_original.._value\", attributes);
+}
+
+//--------------------------------------------------------------------------------
+
+/*
+  @author Markus Trummer
+  Create the main panel or a tab panel of the given name related to the given DPT
+  @params:
+    tabName Is the template panel name
+    DPT Is the Datapoint Type name
+  @return If faceplate created - TRUE, otherwise - FALSE
+*/
+bool stdlibExt_createFaceplateTab(string tabName, string DPT = \"\")  // not a general faceplate tab if DPT != \"\"
+{
+  // Create folder if does not exist
+  string folder = getPath(PANELS_REL_PATH) + \"objects_parts/faceplates/\";
+  if ( DPT != \"\" )
+    folder += DPT + \"/\";
+
+  if ( access(folder, F_OK) != 0)  // folder does not exist
+    mkdir(folder);
+
+  string sourceFile;
+
+  if ( tabName == \"main.pnl\" )
+    sourceFile = getPath(PANELS_REL_PATH, \"/objects_parts/faceplates/template/main.pnl\");
+  else
+    sourceFile = getPath(PANELS_REL_PATH, \"/objects_parts/faceplates/template/tab.pnl\");
+
+  if ( strpos(tabName, \".\") < 0 )  // no given extension
+    tabName += \".pnl\";
+
+  if ( !isfile(folder + tabName) )  // does not exist
+    copyFile(sourceFile, folder + tabName);
+  else
+  {
+    // Create messages for the Log
+    logs += \"The faceplate panel exists: panels/objects_parts/faceplates/\" + tabName + \"\\n\";
+    return false;
+  }
+
+  // Create messages for the Log
+  logs += \"The faceplate panel has been created: panels/objects_parts/faceplates/\" + tabName + \"\\n\";
+  return true;
+}
+
+//--------------------------------------------------------------------------------
+
+/*
+  @author Grygorii Sokhrannyi
+  Export the given DPT and its DPEs to the file
+  @param: DPTname Is the Datapoint type
+  @return: Exist status, 0 - Error, 1 - No Errors
+*/
+bool stdlibExt_exportLibDpl(dyn_string DPTname)
+{
+  string asciiTool = getComponentName(ASCII_COMPONENT);
+  if ( _WIN32 )
+    asciiTool += \".exe\";
+
+  string commandLine;
+  string asciiPath = getPath(BIN_REL_PATH, asciiTool);
+  string dplistPath = getPath(DPLIST_REL_PATH);
+  string logPath = getPath(LOG_REL_PATH);
+  string tempFile = dplistPath + \"additional_ascii_dump_tempfile.dpl\";
+
+  tempFile = makeNativePath(tempFile);
+
+  dyn_string dpeNames;
+  string type, DT, DS;
+
+  for (int i = 1; i <= dynlen(DPTname); ++i)
+   dynAppend(dpeNames, dpNames(\"*\", DPTname[i]));
+
+  type += \" -filterDpType _STDLIB_Note -filterDpType _STDLIB_OMD\";
+
+  for (int i = 1; i <= dynlen(DPTname); ++i)
+  {
+    type += \" -filterDpType \" + DPTname[i];
+
+    if ( _WIN32 )
+    {
+      DT += \" -filterDp _dt_\" + DPTname[i] + \";\";
+      DS += \" -filterDp _ds_\" + DPTname[i] + \";\";
+    }
+    else
+    {
+      DT += \" -filterDp '_dt_\" + DPTname[i] + \";'\";
+      DS += \" -filterDp '_ds_\" + DPTname[i] + \";'\";
+    }
+  }
+
+  type = strrtrim(type, \" \");
+  DT =   strrtrim(DT, \" \");
+  DS =   strrtrim(DS, \" \");
+
+  string asciifile = getPath(DPLIST_REL_PATH) + strsplit(PROJ, \"_\")[1] + \"_stdlib.dpl\";
+
+  asciifile = makeNativePath(asciifile);
+
+  // Form an ASCII export command to be executed
+  for (int i = 1; i <= 2; ++i)  // two system commands loop (1st - export DPEs, 2nd - export DPTypes)
+  {
+    commandLine = makeNativePath(asciiPath);
+
+    if ( i > 1 )
+    {
+      commandLine += \" -out \" + \"\\\"\" + tempFile + \"\\\"\";
+      commandLine += \" -filter DO\";
+    }
+    else
+    {
+      commandLine += \" -out \" + \"\\\"\" + asciifile + \"\\\"\";
+      commandLine += \" -filter TDAOHP\";
+    }
+
+    commandLine += type;
+
+    if ( i > 1 )
+    {
+      commandLine += \" -filterDpType _DynamicDatapoints -filterDpType _DynamicDptSettings\";
+      commandLine += DT;
+      commandLine += DS;
+    }
+    else
+    {
+      dynSortAsc(dpeNames);
+      for (int w = 1; w <= dynlen(dpeNames); ++w)
+      {
+        if ( _WIN32 )
+          commandLine += \" -filterDp \" + dpSubStr(dpeNames[w], DPSUB_DP) + \";\";
+        else
+          commandLine += \" -filterDp '\" + dpSubStr(dpeNames[w], DPSUB_DP) + \";'\";
+      }
+    }
+
+    commandLine += \" -log +stderr -log -file > \" + logPath + \"WCCOAascii_info.log 2> \" + logPath + \"WCCOAascii_log.log\";
+
+    system(commandLine);
+
+    if ( i > 1 )
+    {
+      string content;
+      fileToString(tempFile, content);
+
+      // Add temporary file content to main asciifile
+      file fileDest = fopen(asciifile, \"a\");
+      fputs(content, fileDest);
+      fclose(fileDest);
+    }
+  }
+
+  // Create messages for the Log
+  logs += \"DPT has been exported to a file: \" + asciifile + \"\\n\";
+  pathDPL.text(asciifile);
+
+  remove(tempFile); // delete temporary file
+  return 1;
+}
+
+" 0
+ 5
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "96"
+"sizePolicy" "Fixed Fixed"
+2 1 0 0 0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+13 1
+"symbolBut"
+""
+1 698.606607948605 147.8750000000001 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+4
+"minimumSize" "85 25"
+"maximumSize" "85 25"
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignCenter"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  665.5 184.5 753.5 212.5
+
+T 
+3
+LANG:10001 6 Create
+LANG:10000 9 Erstellen
+LANG:10027 14 Создать
+"main()
+{
+  string destination = stdlibExt_createSymbol(cbTemplateSymbols.selectedText(), cbDpt.selectedText());  // run Create Symbol function
+
+  if ( patternMatch(\"-*\", destination) )
+  {
+    strreplace(destination, \"-\", \"\");
+
+    ChildPanelOnCentral(\"vision/MessageInfo1\",
+                        getCatStr(\"general\",\"information\"),
+                        makeDynString(getCatStr(\"stdlib\",\"templExists\") + \"\\n\" + destination));
+  }
+  else
+    ChildPanelOnCentral(\"vision/MessageInfo1\",
+                        getCatStr(\"general\",\"information\"),
+                        makeDynString(getCatStr(\"stdlib\",\"templCreated\") + \"\\n\" + destination));
+}
+" 0
+ E E E
+30 12
+"FRAME3"
+""
+1 50 4 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+12 0 0 0 0 0
+E E E
+1
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1.233823529411765 0 0.6875 -46.69117647058824 53.25 0 E 50 4 731 101
+3
+LANG:10001 44 Arial,-1,13,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+LANG:10000 44 Arial,-1,13,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+LANG:10027 31 Arial,-1,13,5,75,0,0,0,0,0,Bold
+0 3
+LANG:10001 22 Create Data point Type
+LANG:10000 23 Datenpunkttyp erstellen
+LANG:10027 42 Создать Тип Датапоинта
+13 14
+"DPTcreate"
+""
+1 774.7189553787612 46.3371647509577 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+14 0 0 0 0 0
+E E E
+8
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+4
+"minimumSize" "85 25"
+"maximumSize" "85 25"
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignNone"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  756 82 844 110
+
+T 
+3
+LANG:10001 6 Create
+LANG:10000 9 Erstellen
+LANG:10027 14 Создать
+"main(mapping event)
+{
+  // Check if DPT name is set correctly
+  if ( !dpIsLegalName(txtDPT.text) )
+  {
+    txtDPT.backCol(\"red\");
+    delay(0, 200);
+    txtDPT.backCol(\"\");
+
+    //ChildPanelOnCentral(\"vision/MessageWarning\", \"Warn\", makeDynString(\"The name is empty or incorrect!\\nPlease don't use any special characters.\"));
+
+    ChildPanelOnCentral(\"vision/MessageInfo1\",
+                        getCatStr(\"general\",\"warning\"),
+                        makeDynString(getCatStr(\"stdlib\",\"nameErr\") + \"\\n\" + getCatStr(\"stdlib\",\"noSpecialChar\")));
+    return;
+  }
+  else if ( dynlen(dpTypes(strtoupper(strsplit(PROJ, \"_\")[1]) + \"_\" + txtDPT.text)) > 0 )
+  {
+    txtDPT.backCol(\"red\");
+    delay(0, 200);
+    txtDPT.backCol(\"\");
+
+    // Create messages for the Log
+    logs += \"The data point type '\" + strtoupper(strsplit(PROJ, \"_\")[1]) + \"_\" + txtDPT.text + \"' already exists.\\n\";
+
+    ChildPanelOnCentral(\"vision/MessageInfo1\",
+                        getCatStr(\"general\",\"information\"),
+                        makeDynString(getCatStr(\"stdlib\",\"dptExist\")));
+    return;
+  }
+
+  stdlibExt_createDPTs(txtDPT.text);  // run Create DPT function
+
+  // Show DPT name on the panel and put in log
+  dyn_string dpts;
+  getValue(\"cbDpt\", \"items\", dpts);
+
+  dynAppend(dpts, strtoupper(strsplit(PROJ, \"_\")[1]) + \"_\" + txtDPT.text);
+  showPanelPath(strtoupper(strsplit(PROJ, \"_\")[1]) + \"_\" + txtDPT.text);
+
+  setValue(\"cbDpt\", \"items\", dpts);
+  cbDpt.selectedPos = dynlen(dpts);
+
+  // Create messages for the Log
+  logs += \"The data point type has been created with the name: \" + strtoupper(strsplit(PROJ, \"_\")[1]) + \"_\" + txtDPT.text + \"\\n\";
+
+  dyn_float resultFloat;
+  dyn_string resultString;
+
+  ChildPanelOnCentralModalReturn(\"vision/MessageInfo1\",
+                      getCatStr(\"general\",\"information\"),
+                      makeDynString(getCatStr(\"stdlib\",\"dptCreated\") + \"\\n\" + getCatStr(\"stdlib\",\"editIt\")),
+                      resultFloat,
+                      resultString);
+
+  stdlibExt_createFaceplateTab(\"main.pnl\", strtoupper(strsplit(PROJ, \"_\")[1]) + \"_\" + txtDPT.text);  // run Create Faceplate function
+
+  // Enable DP Type and Export buttons
+  DPTeff.visible(1);
+  DPTeff.start();
+
+  delay(2);  // animation duration
+
+  DPTeff.stop();
+  DPTeff.visible(0);
+
+  exportBut.enabled(1);
+  DPTreview.enabled(1);
+  tabBut.enabled(1);
+  symbolBut.enabled(1);
+}
+" 0
+ E E E
+14 15
+"txtDPT"
+""
+1 467.9857297174371 88.24031620553365 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+1
+"layoutAlignment" "AlignNone"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  448 82 753 107
+3 "0s" 0 0 0 0 0 -1  E E E
+30 17
+"FRAME5"
+""
+1 50 4 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+17 0 0 0 0 0
+E E E
+1
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1.233823529411765 0 1.270833333333333 -46.69117647058824 123.9166666666667 0 E 50 4 731 101
+3
+LANG:10001 44 Arial,-1,13,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+LANG:10000 44 Arial,-1,13,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+LANG:10027 31 Arial,-1,13,5,75,0,0,0,0,0,Bold
+0 3
+LANG:10001 23 Create Symbols and Tabs
+LANG:10000 36 Symbole und Registerkarten erstellen
+LANG:10027 47 Создать Символы и Вкладки
+22 19
+"cbTemplateSymbols"
+""
+1 131.7597173144877 192.6566985645933 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+2
+"sizePolicy" "Expanding Fixed"
+"layoutAlignment" "AlignNone"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  126 184 662 209
+0
+
+"main()
+{
+  string sourcePath;
+
+  sourcePath = getPath(PANELS_REL_PATH, \"objects/STDLIB_template\", 1);
+
+  dyn_string symbols = getFileNames(sourcePath);
+  this.items = symbols;
+  this.text = symbols[1];
+}
+" 0
+
+E
+E
+ 0 0
+2 20
+"PRIMITIVE_TEXT2"
+""
+1 31 196.9999999999999 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+20 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+5
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E 1 0 0.9999999999999911 -2 -7.999999999998126 0 E 31 196.9999999999999 135 211
+0 2 2 "0s" 0 0 0 192 0 0  31 196.9999999999999 1
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0 3
+LANG:10001 16 Symbol template:
+LANG:10000 14 Symbolvorlage:
+LANG:10027 28 Шаблон Символа:
+22 21
+"cbDpt"
+""
+1 131.3050397877985 163.6496714914695 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+2
+"sizePolicy" "Expanding Fixed"
+"layoutAlignment" "AlignNone"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  126 155 753 180
+0
+
+"main()
+{
+  dyn_string dpts = dpTypes(strtoupper(strsplit(PROJ, \"_\")[1]) + \"_*\");
+  this.items(dpts);
+
+  if ( this.selectedText() != \"\" )
+    showPanelPath(this.selectedText());
+
+  if ( dynlen(dpts) > 0 )
+  {
+    this.selectedPos = 1;
+    exportBut.enabled(1);
+    DPTreview.enabled(1);
+    tabBut.enabled(1);
+    symbolBut.enabled(1);
+  }
+}
+" 0
+
+"main()
+{
+  if ( dynlen(dpTypes(this.selectedText)) > 0 )
+  {
+    exportBut.enabled(1);
+    tabBut.enabled(1);
+    symbolBut.enabled(1);
+    showPanelPath(this.selectedText());
+  }
+  else
+  {
+    if ( checkDPTlist() < 1 )
+    {
+      exportBut.enabled(0);
+      tabBut.enabled(0);
+      symbolBut.enabled(0);
+      DPTreview.enabled(0);
+      pathPanel.text(\"\");
+      ChildPanelOnCentral(\"vision/MessageInfo1\",
+                        getCatStr(\"general\",\"information\"),
+                        makeDynString(getCatStr(\"stdlib\",\"stdLibStart\")));
+    }
+  }
+}" 0
+
+E
+ 0 0
+13 22
+"tabBut"
+""
+1 814.930771424881 139.8027783778889 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+4
+"minimumSize" "85 25"
+"maximumSize" "85 25"
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignCenter"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  756 214.13 844 240
+
+T 
+3
+LANG:10001 6 Create
+LANG:10000 9 Erstellen
+LANG:10027 14 Создать
+"main()
+{
+  this.enabled(0);
+
+  string tabName = txtTabName.text;
+  strreplace(tabName, \".pnl\", \"\");
+
+  if ( !dpIsLegalName(tabName) )
+  {
+    txtTabName.backCol(\"red\");
+    delay(0, 200);
+    txtTabName.backCol(\"\");
+
+    ChildPanelOnCentral(\"vision/MessageInfo1\",
+                        getCatStr(\"general\",\"warning\"),
+                        makeDynString(getCatStr(\"stdlib\",\"nameErr\") + \"\\n\" + getCatStr(\"stdlib\",\"noSpecialChar\")));
+
+    return;
+  }
+
+  if ( stdlibExt_createFaceplateTab(tabName, cbDpt.selectedText()) )
+    ChildPanelOnCentral(\"vision/MessageInfo1\",
+                        getCatStr(\"general\",\"information\"),
+                        makeDynString(getCatStr(\"stdlib\",\"tabCreated\")));
+  else
+    ChildPanelOnCentral(\"vision/MessageInfo1\",
+                        getCatStr(\"general\",\"information\"),
+                        makeDynString(getCatStr(\"stdlib\",\"tabExists\")));
+
+  this.enabled(1);
+}
+
+" 0
+ E E E
+14 23
+"txtTabName"
+""
+1 648.5945113614453 209.9583333333334 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+1
+"layoutAlignment" "AlignNone"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  440.9999999999999 216 752.9999999999999 241
+3 "0s" 0 0 0 0 0 -1  E "main()
+{
+  this.text = \"control\";
+}
+" 0
+ E
+2 24
+"PRIMITIVE_TEXT3"
+""
+1 31 225.9999999999998 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+24 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+5
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E 1 0 0.9999999999999866 -2 -7.999999999996763 0 E 31 225.9999999999998 93 240
+0 2 2 "0s" 0 0 0 192 0 0  31 225.9999999999998 1
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0 3
+LANG:10001 9 Tab name:
+LANG:10000 9 Tab-Name:
+LANG:10027 22 Имя вкладки:
+2 25
+"PRIMITIVE_TEXT4"
+""
+1 27 201.9999999999999 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+5
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 1 2 1 E 1 0 0.9999999999999916 2 -41.99999999999818 0 E 27 201.9999999999999 121 216
+0 2 2 "0s" 0 0 0 192 0 0  27 201.9999999999999 1
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0 3
+LANG:10001 16 Data point type:
+LANG:10000 14 Datenpunkttyp:
+LANG:10027 28 Тип Датапоинта:
+13 26
+"DPTreview"
+""
+1 817.3031618165032 172.7435457869487 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+26 0 0 0 0 0
+E E E
+8
+3
+LANG:10001 20 Show data point type
+LANG:10000 22 Datenpunkttyp anzeigen
+LANG:10027 44 Показать тип датапоинта
+
+1
+"layoutAlignment" "AlignNone"
+3
+LANG:10001 48 MS Shell Dlg 2,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10000 48 MS Shell Dlg 2,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10027 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  780.0335193950332 163.0744680851063 823.0335193950332 206.0744680851064
+
+P 
+4294967295
+"pictures/para_32x32.png"
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+"main(mapping event)
+{
+  string DPT = cbDpt.selectedText();
+
+  if ( DPT != \"\" )
+  {
+    DPT = \"_mp_\" + DPT;
+    ChildPanelOnCentral(\"para.pnl\", \"Para\", makeDynString(\"$Filter_DPE:\" + DPT));  // open para Window with DPT
+  }
+}
+" 0
+ E E E
+13 27
+"exportBut"
+""
+1 978.9868557653651 196.155859375 E E E 0 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+27 0 0 0 0 0
+E E E
+8
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+4
+"minimumSize" "85 25"
+"maximumSize" "85 25"
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignNone"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  756 284 844 312
+
+T 
+3
+LANG:10001 6 Export
+LANG:10000 7 Starten
+LANG:10027 14 Экспорт
+"main(mapping event)
+{
+  this.enabled(0);
+
+  if ( checkDPTlist() < 1 )
+  {
+    exportBut.enabled(0);
+    tabBut.enabled(0);
+    symbolBut.enabled(0);
+    DPTreview.enabled(0);
+    pathPanel.text(\"\");
+    ChildPanelOnCentral(\"vision/MessageInfo1\",
+                      getCatStr(\"general\",\"information\"),
+                      makeDynString(getCatStr(\"stdlib\",\"stdLibStart\")));
+    return;
+  }
+
+  dyn_string dpts;
+  getValue(\"cbDpt\", \"items\", dpts);
+  dynSortAsc(dpts);
+
+  pathDPL.text(getCatStr(\"stdlib\",\"exporting\"));
+
+  if ( dynlen(dpts) == 0 || stdlibExt_exportLibDpl(dpts) < 1 )
+    pathDPL.text(getCatStr(\"stdlib\",\"noExport\"));
+
+  this.enabled(1);
+}
+" 0
+ E E E
+30 28
+"FRAME6"
+""
+1 30 412 E E E 1 E 1 E N "_WindowText" E N {0,0,0} E E
+ E E
+28 0 0 0 0 0
+E E E
+1
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1.398333333333333 0 0.9558823529411762 -26.95 -135.8235294117646 0 E 30 412 631 481
+3
+LANG:10001 44 Arial,-1,13,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+LANG:10000 44 Arial,-1,13,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+LANG:10027 31 Arial,-1,13,5,75,0,0,0,0,0,Bold
+0 3
+LANG:10001 22 Export Data point Type
+LANG:10000 25 Datenpunkttyp exportieren
+LANG:10027 51 ЭкспортироватьТип Датапота
+6 34
+"RECTANGLE1"
+""
+1 10 10 E E E 1 E 1 E N {0,0,0} E N "_PanelDescriptionBackground" E E
+ E E
+34 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1.379365079365079 0 0.8166666666666668 -13.79365079365079 -8.166666666666668 1 E 10 10 640 70
+2 35
+"PRIMITIVE_TEXT5"
+""
+1 15 10 E E E 1 E 1 E N "_PanelDescriptionText" E N "_Window" E E
+ E E
+35 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E 1.250359712230213 0 0.742424242424243 18.75539568345346 4.454545454545437 0 E 15 10 545 50
+0 2 2 "0s" 0 0 0 64 0 0  15 10 1
+3
+LANG:10001 44 Arial,-1,13,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+LANG:10000 44 Arial,-1,13,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+LANG:10027 31 Arial,-1,13,5,75,0,0,0,0,0,Bold
+0 3
+LANG:10001 29 Standard Object Library Setup
+LANG:10000 36 Standard-Objektbibliothek einrichten
+LANG:10027 83 Установить Стандартную Объектную Библиотеку
+13 38
+"help"
+""
+1 13.64910268086749 308.7415845311976 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+38 0 0 0 112 0
+E E E
+0
+3
+LANG:10001 16 Open online help
+LANG:10000 20 Online Hilfe öffnen
+LANG:10027 14 Справка
+
+4
+"minimumSize" "85 25"
+"maximumSize" "85 25"
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignTrailing|AlignVCenter"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  13 362.5 101 390.5
+
+T 
+3
+LANG:10001 4 Help
+LANG:10000 5 Hilfe
+LANG:10027 14 Справка
+"main()
+{
+  std_help(\"stdlib_help\");  // open STDLib Help
+}
+" 0
+ E E E
+13 39
+"exit"
+""
+1 735.2988386232812 318.0812025075992 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+39 0 0 0 27 0
+E E E
+0
+3
+LANG:10001 11 Close panel
+LANG:10000 16 Panel schließen
+LANG:10027 27 Закрыть панель
+
+4
+"minimumSize" "85 25"
+"maximumSize" "85 25"
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignLeading|AlignVCenter"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  769 362.5 857 390.5
+
+T 
+3
+LANG:10001 5 Close
+LANG:10000 10 Schließen
+LANG:10027 14 Закрыть
+"main()
+{
+  PanelOff();  // Close the panel
+}
+" 0
+ E E E
+29 40
+"DPTeff"
+""
+1 761.0670387900662 157 E E E 1 E 0 E N "_3DText" E N "_3DFace" E E
+ E E
+40 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+2
+"color1" "color _GediBackground"
+"layoutAlignment" "AlignNone"
+3
+LANG:10001 48 MS Shell Dlg 2,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10000 48 MS Shell Dlg 2,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10027 35 MS Shell Dlg 2,-1,13,5,50,0,0,0,0,0
+0  761.0670387900662 157 842 212.1489361702128
+19 AttentionEffect.ewo
+0
+E13 44
+"PUSH_BUTTON9"
+""
+1 677.8604373678918 308.726398479716 E E E 1 E 1 E N "_ButtonText" E N "_Button" E E
+ E E
+44 0 0 0 32 0
+E E E
+0
+3
+LANG:10001 12 Show Logfile
+LANG:10000 23 Protokolldatei anzeigen
+LANG:10027 29 Показать Журнал
+
+4
+"minimumSize" "85 25"
+"maximumSize" "85 25"
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignLeading|AlignVCenter"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  678 362.5 766 390.5
+
+T 
+3
+LANG:10001 8 Log file
+LANG:10000 9 Log Datei
+LANG:10027 12 Журнал
+"main()
+{
+  openLogs();  // Show the Log
+}
+" 0
+ E E E
+2 50
+"PRIMITIVE_TEXT8"
+""
+1 30 110 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+50 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+6
+"maximumSize" "109 -1"
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E 0.4521739130434783 0 1.100000000000001 15.43478260869565 -35.00000000000011 0 E 30 110 260 130
+0 2 2 "0s" 0 0 0 64 0 0  30 110 1
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0 3
+LANG:10001 5 Name:
+LANG:10000 5 Name:
+LANG:10027 7 Имя:
+14 51
+"prefix"
+""
+1 147.2347826086959 88.6441558441559 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+51 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+1
+"layoutAlignment" "AlignNone"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  140 82 444.9999999999999 107
+2 "0s" 0 0 0 2 0 -1  E "main()
+{
+  this.text = strtoupper(strsplit(PROJ, \"_\")[1]) + \"_\";
+}
+" 0
+ E
+14 54
+"pathPanel"
+""
+1 130.3071161048688 230.2805194805196 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+54 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+1
+"layoutAlignment" "AlignNone"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  126 216 438.0000000000001 241
+2 "0s" 0 0 0 2 0 -1  E E E
+14 55
+"pathDPL"
+""
+1 145.0374064837903 308.0987012987013 E E E 1 E 1 E N "_WindowText" E N "_3DFace" E E
+ E E
+55 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+1
+"layoutAlignment" "AlignNone"
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0  140 284 752.9999999999999 309
+2 "0s" 0 0 0 0 0 -1  E E E
+2 56
+"PRIMITIVE_TEXT10"
+""
+1 30 110 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+56 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+6
+"maximumSize" "109 -1"
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E 0.4521739130434783 0 1.050000000000001 15.43478260869565 172.4999999999999 0 E 30 110 260 130
+0 2 2 "0s" 0 0 0 64 0 0  30 110 1
+3
+LANG:10001 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10000 47 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1,Regular
+LANG:10027 34 Arial,-1,13,5,50,0,0,0,0,0,Regular
+0 3
+LANG:10001 13 DP List Path:
+LANG:10000 15 DP-Listen-Pfad:
+LANG:10027 25 Путь Списка DP:
+1 64 5 "" 0
+31 "transform" 0 0 0.9999999999999994 0 1 -8.647922092094523e-15 -4.334310688136615e-13
+0
+32 60
+"SPACER2"
+""
+1 105 364 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+58 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+3
+"transparentForMouse" ""
+"sizePolicy" "Expanding Ignored"
+"layoutAlignment" "AlignNone"
+ 105 364 673.0000000000001 388 1
+32 63
+"SPACER3"
+""
+1 15 331 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+59 0 0 0 0 0
+E E E
+0
+3
+LANG:10001 0 
+LANG:10000 0 
+LANG:10027 0 
+
+3
+"transparentForMouse" ""
+"sizePolicy" "Ignored Expanding"
+"layoutAlignment" "AlignNone"
+ 15 331 854 347 2
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+1 4 "SHAPE_GROUP5" 23
+2 0 
+34 35 
+
+"minimumSize" "700 50"
+"maximumSize" "-1 70"
+"sizePolicy" "Preferred Fixed"
+"layoutAlignment" "AlignNone"
+"" ""
+3 5 "PANEL_REF1" 22
+"layoutAlignment" "AlignNone"
+"" ""
+"objects_parts/STD_OBJECTS/ButtonBarBackground.pnl" 62 400 T 57 1.741482965931864 0 1 -107.9719438877755 -45.99999999999955
+0
+1 6 "SHAPE_GROUP6" 11
+2 0 
+26 40 
+
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignNone"
+"" ""
+4 7 "LAYOUT_GROUP1" 9
+2 0 
+19 1 
+
+"S 19" "0 0 1 1"
+"S 1" "1 0 1 1"
+"" ""
+0 1 1 0 0 0 0 0
+4 8 "LAYOUT_GROUP2" 9
+2 0 
+54 23 
+
+"S 54" "0 0 1 1"
+"S 23" "1 0 1 1"
+"" ""
+0 1 0 0
+4 9 "LAYOUT_GROUP4" 13
+1 2 
+21 
+8 7 
+"S 21" "0 0 1 1"
+"G 8" "2 0 1 1"
+"G 7" "1 0 1 1"
+"" ""
+0 2 0 1 7
+4 10 "LAYOUT_GROUP5" 13
+3 0 
+25 20 24 
+
+"S 25" "0 0 1 1"
+"S 20" "1 0 1 1"
+"S 24" "2 0 1 1"
+"" ""
+0 2 0 1 8
+1 11 "SHAPE_GROUP7" 12
+1 1 
+22 
+6 
+"layoutAlignment" "AlignNone"
+"" ""
+4 12 "LAYOUT_GROUP6" 13
+0 1 
+
+11 
+"G 11" "0 0 1 1"
+"" ""
+0 2 1 0 0 0 1 0
+4 13 "LAYOUT_GROUP7" 18
+0 3 
+
+9 10 12 
+"G 9" "1 0 1 1"
+"G 10" "0 0 1 1"
+"G 12" "2 0 1 1"
+"" ""
+0 1 0 0
+4 14 "LAYOUT_GROUP9" 15
+3 0 
+56 55 27 
+
+"S 56" "0 0 1 1"
+"S 55" "1 0 1 1"
+"S 27" "2 0 1 1"
+"" ""
+0 1 0 0
+4 15 "LAYOUT_GROUP10" 19
+1 1 
+28 
+14 
+"G 14" "0 0 1 1"
+"" ""
+1 2 0 0
+4 16 "LAYOUT_GROUP11" 17
+4 0 
+50 51 15 14 
+
+"S 50" "0 0 1 1"
+"S 51" "1 0 1 1"
+"S 15" "2 0 1 1"
+"S 14" "3 0 1 1"
+"" ""
+0 1 0 0
+4 17 "LAYOUT_GROUP12" 20
+1 1 
+12 
+16 
+"G 16" "0 0 1 1"
+"" ""
+1 2 0 0
+4 18 "LAYOUT_GROUP13" 20
+1 1 
+17 
+13 
+"G 13" "0 0 1 1"
+"" ""
+1 2 0 0
+4 19 "LAYOUT_GROUP14" 20
+1 1 
+63 
+15 
+"S 63" "1 0 1 1"
+"G 15" "0 0 1 1"
+"" ""
+0 2 1 0 0 0 0 1 7
+4 20 "LAYOUT_GROUP15" 24
+0 3 
+
+19 18 17 
+"G 19" "2 0 1 1"
+"G 18" "1 0 1 1"
+"G 17" "0 0 1 1"
+"" ""
+0 2 1 15 15 0 0 0
+4 21 "LAYOUT_GROUP16" 22
+4 0 
+38 60 44 39 
+
+"S 38" "0 0 1 1"
+"S 60" "1 0 1 1"
+"S 44" "2 0 1 1"
+"S 39" "3 0 1 1"
+"" ""
+0 1 1 8 8 0 0 0
+4 22 "LAYOUT_GROUP17" 24
+0 2 
+
+21 5 
+"G 21" "1 1 1 1"
+"G 5" "0 0 3 3"
+"" ""
+0 3 1 0 0 0 0 0
+4 23 "LAYOUT_GROUP18" 24
+0 1 
+
+4 
+"G 4" "0 0 1 1"
+"" ""
+0 3 0 0
+4 24 "LAYOUT_GROUP19" -1
+0 3 
+
+23 22 20 
+"G 23" "0 0 1 1"
+"G 22" "2 0 1 1"
+"G 20" "1 0 1 1"
+"" ""
+0 2 0 0
+0

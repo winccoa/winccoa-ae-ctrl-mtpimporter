@@ -1,0 +1,27 @@
+0 11 15
+"lib_header" N {0,161,209}
+"lib_tabBackground" N {240,242,243}
+"lib_tabHeaderBackground" N {205,211,215}
+"lib_headerSelected" N {0,135,172}
+"lib_on" N {0,161,209}
+"lib_off" N {134,134,134}
+"lib_onDisabled" N {0,161,209,180}
+"lib_offDisabled" N {134,134,134,180}
+"lib_frameBackground" N {195,201,208}
+"lib_frameText" N {0,0,0}
+"lib_text" N {0,0,0}
+"fp_headerBackground" "lib_header"
+"fp_tabBackground" "lib_tabBackground"
+"fp_tabHeader" "lib_header"
+"fp_tabHeaderBackground" "lib_tabHeaderBackground"
+"lib_headerText" "White"
+"fp_headerText" "lib_headerText"
+"fp_tabHeaderSelected" "lib_headerSelected"
+"fp_elemSymbol_on" "lib_on"
+"fp_elemSymbol_off" "lib_off"
+"fp_elemSymbol_onDisabled" "lib_onDisabled"
+"fp_elemSymbol_offDisabled" "lib_offDisabled"
+"fp_frameBackground" "lib_frameBackground"
+"fp_frameText" "lib_frameText"
+"fp_ButtonText" "lib_headerText"
+"fp_labelText" "lib_text"

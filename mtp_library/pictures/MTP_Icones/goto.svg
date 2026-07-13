@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="308" height="308" viewBox="0 0 308 308" role="img" aria-labelledby="title desc">
+  <title id="title">Up-right arrow with blue rounded square background</title>
+  <desc id="desc">A white arrow pointing diagonally up and to the right on a blue rounded square background.</desc>
+
+  <!-- Blue rounded-square background -->
+  <rect x="3" y="3" width="302" height="302" rx="44.65" ry="44.65" fill="#00a1d1" stroke="#00a1d1" stroke-width="6"/>
+
+  <!-- White arrow -->
+  <g fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M105 202 L201 106"/>
+    <path d="M145 106 H201 V162"/>
+  </g>
+</svg>

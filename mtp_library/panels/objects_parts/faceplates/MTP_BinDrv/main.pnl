@@ -1,0 +1,682 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 419 437 N "mtpBackground" 1
+"$DP"
+"main()
+{
+    initialize();
+}" 0
+ E E E E 1 -1 -1 0  -5.000000000000013 -7.999999999999886
+""0  1
+E "#uses \"classes/MTP_BinDrv/MTP_BinDrvFaceplateHome\"
+#uses \"classes/MTP_BinDrv/MTP_BinDrv\"
+
+shared_ptr<MTP_BinDrvFaceplateHome> faceplate;
+shared_ptr<MTP_BinDrv> viewModel;
+
+public void initialize()
+{
+  shape parent = getShape(myModuleName(), myPanelName(), \"\");
+
+  if (hasMethod(parent, \"getObjectPointer\"))
+  {
+    if (parent.getObjectPointer() != nullptr)
+    {
+      viewModel = parent.getObjectPointer();
+    }
+  }
+
+  if (viewModel == nullptr)
+  {
+    viewModel = new MTP_BinDrv($DP);
+  }
+
+  mapping shapes;
+  shapes.insert(\"_refWqc\", getShape(\"refWqc\"));
+  shapes.insert(\"_rectAutomatic\", getShape(\"rectAutomatic\"));
+  shapes.insert(\"_rectForward\", getShape(\"rectForward\"));
+  shapes.insert(\"_rectForwardAut\", getShape(\"rectForwardAut\"));
+  shapes.insert(\"_rectLock\", getShape(\"rectLock\"));
+  shapes.insert(\"_rectMotor\", getShape(\"rectMotor\"));
+  shapes.insert(\"_rectMotorProtection\", getShape(\"rectMotorProtection\"));
+  shapes.insert(\"_rectOff\", getShape(\"rectOff\"));
+  shapes.insert(\"_rectOperator\", getShape(\"rectOperator\"));
+  shapes.insert(\"_rectPermission\", getShape(\"rectPermission\"));
+  shapes.insert(\"_rectProtection\", getShape(\"rectProtection\"));
+  shapes.insert(\"_rectReset\", getShape(\"rectReset\"));
+  shapes.insert(\"_rectReverse\", getShape(\"rectReverse\"));
+  shapes.insert(\"_rectReverseAut\", getShape(\"rectReverseAut\"));
+  shapes.insert(\"_rectSafetyPosition\", getShape(\"rectSafetyPosition\"));
+  shapes.insert(\"_rectSafetyPositionInformation\", getShape(\"rectSafetyPositionInformation\"));
+  shapes.insert(\"_rectStop\", getShape(\"rectStop\"));
+  shapes.insert(\"_rectStopAut\", getShape(\"rectStopAut\"));
+  shapes.insert(\"_txtLock\", getShape(\"txtLock\"));
+  shapes.insert(\"_txtMotorProtection\", getShape(\"txtMotorProtection\"));
+  shapes.insert(\"_txtPermission\", getShape(\"txtPermission\"));
+  shapes.insert(\"_txtProtection\", getShape(\"txtProtection\"));
+  shapes.insert(\"_txtSafetyPosition\", getShape(\"txtSafetyPosition\"));
+  shapes.insert(\"_parent\", parent);
+
+  faceplate = new MTP_BinDrvFaceplateHome(viewModel, shapes);
+}
+
+public shared_ptr<MTP_BinDrv> getObjectPointer()
+{
+  return viewModel;
+}
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+NC
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+6 65
+"rectForwardAut"
+""
+1 339 196 E E E 1 E 0 E N "_Transparent" E N "mtpBackground2" E E
+ E E
+59 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1 0 0.5 15.41912031249996 -1.500000000000028 1 E 339 196 354 286
+6 66
+"rectStopAut"
+""
+1 339 196 E E E 1 E 0 E N "_Transparent" E N "mtpBackground2" E E
+ E E
+60 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.4664546515615513 0.7632675727110282 -0.3828162518291034 0.230256072835639 276.1993665117715 -210.3115585078376 1 E 339 196 355.6827930899779 346.0261857405004
+6 67
+"rectReverseAut"
+""
+1 339 196 E E E 1 E 0 E N "_Transparent" E N "mtpBackground2" E E
+ E E
+61 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.3351129675574118 0.7188843219506869 -0.4133331178703073 0.1432417116644427 320.6944479237259 -179.7771606275136 1 E 339 196 356.511248440308 453.1399392594943
+4 31
+"LINE2"
+""
+1 209.5 -0.4999999999999432 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+30 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  209.5 -0.4999999999999432 209.5 449.4999999999999
+2 32
+"PRIMITIVE_TEXT4"
+""
+1 19.87499999999996 205.8749999999999 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+31 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 19.87499999999996 205.8749999999999 69 223
+0 2 2 "0s" 0 0 0 192 0 0  19.87499999999996 205.8749999999999 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 6 Status
+1 68 0 "" 1
+0
+6 37
+"rectMotorProtection"
+""
+1 183.5 79.14615384615388 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+34 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 -145.5138545953361 217.5243365575395 2  1 0  "pictures/MTP_Icones/Ok_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 38
+"txtMotorProtection"
+""
+1 62.13233047862656 337.4545200892856 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+35 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 62.13233047862656 337.4545200892856 164 355
+0 2 2 "0s" 0 0 0 192 0 0  62.13233047862656 337.4545200892856 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 11 Motorschutz
+LANG:10001 4 Trip
+6 39
+"rectSafetyPosition"
+""
+1 183.5 79.14615384615388 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+36 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 -145.5138545953361 271.5243365575395 2  1 0  "pictures/MTP_Icones/Ok_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 40
+"txtSafetyPosition"
+""
+1 61.9999999999998 381.9868861607143 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+37 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 61.9999999999998 381.9868861607143 160 421
+0 2 2 "0s" 0 0 0 192 0 0  61.9999999999998 381.9868861607143 2
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 12 Sicherheits-
+LANG:10001 4 Safe
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 8 position
+LANG:10001 8 position
+4 41
+"LINE3"
+""
+1 209.5 185.9611417214911 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+38 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  209.5 185.9611417214911 -4.000000000000013 185.9611417214911
+4 42
+"LINE4"
+""
+1 423 254.8749999999999 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+39 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  423 254.8749999999999 209.5 254.8749999999999
+6 43
+"rectMotor"
+""
+1 190 80 E E E 1 E 0 E N "_Transparent" E N {255,255,255} E E
+ E E
+40 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1.467699409323115 0 2.060471491228071 -200.8752663274264 -89.94155153508785 2  1 0  "pictures/MTP_Icones/MotorStopped.svg" 4294967295 E 190 80 230.5 108.6846153846154
+2 44
+"PRIMITIVE_TEXT2"
+""
+1 20.48968750000003 19.99999999999994 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+41 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20.48968750000003 19.99999999999994 133 38
+0 2 2 "0s" 0 0 0 192 0 0  20.48968750000003 19.99999999999994 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 13 Prozesssignal
+LANG:10001 14 Process signal
+6 46
+"rectSafetyPositionInformation"
+""
+1 183.5 79.14615384615388 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+43 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.openSafetyPositionInformation();
+}
+" 0
+ 0 1 3 2 1 E 0.8910836762688614 0 0.5561755952380953 6.679286694101478 348.8611421130952 2  1 0  "pictures/MTP_Icones/Information.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 47
+"PRIMITIVE_TEXT7"
+""
+1 227.25 19.99999999999994 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+44 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 227.25 19.99999999999994 324 37
+0 2 2 "0s" 0 0 0 192 0 0  227.25 19.99999999999994 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 11 Steuerungen
+LANG:10001 8 Controls
+6 48
+"rectOff"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+45 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateStateOff();
+}
+" 0
+ 0 1 3 2 1 E 1.223240952932098 0 1.71123903508772 8.169341110870185 -80.87106668037291 2  1 0  "pictures/MTP_Icones/Power_1_rounded.svg" 4294967295 E 190 80 230.5 108.6846153846154
+6 49
+"rectOperator"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+46 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateStateOperator();
+}
+" 0
+ 0 1 3 2 1 E 1.198276851851851 0 1.71123903508772 64.45119971064834 -80.87106668037291 2  1 0  "pictures/MTP_Icones/Operator_2_rounded.svg" 4294967295 E 190 80 230.5 108.6846153846154
+6 50
+"rectAutomatic"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+47 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateStateAutomatic();
+}
+" 0
+ 0 1 3 2 1 E 1.223240952932098 0 1.71123903508772 109.2310249650369 -80.87106668037291 2  1 0  "pictures/MTP_Icones/automatic_3_rounded.svg" 4294967295 E 190 80 230.5 108.6846153846154
+6 51
+"rectReverse"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+48 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateReverse();
+}
+" 0
+ 0 1 3 2 1 E 1.223240952932098 0 1.71123903508772 8.169341110870185 -17.89912280701762 2  1 0  "pictures/MTP_Icones/revers_5_rounded.svg" 4294967295 E 190 80 230.5 108.6846153846154
+6 52
+"rectStop"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+49 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateStop();
+}
+" 0
+ 0 1 3 2 1 E 1.198276851851851 0 1.71123903508772 64.45119971064834 -17.89912280701762 2  1 0  "pictures/MTP_Icones/stop_2_rounded.svg" 4294967295 E 190 80 230.5 108.6846153846154
+6 53
+"rectReset"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+50 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateReset();
+}
+" 0
+ 0 1 3 2 1 E 1.223240952932098 0 1.677014254385966 8.169341110870185 49.28660520833322 2  1 0  "pictures/MTP_Icones/reset_1.svg" 4294967295 E 190 80 230.5 108.6846153846154
+2 54
+"PRIMITIVE_TEXT8"
+""
+1 229.5935890625 274.6065848214285 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+51 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 229.5935890625 274.6065848214285 327 292
+0 2 2 "0s" 0 0 0 192 0 0  229.5935890625 274.6065848214285 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 11 Bedingungen
+LANG:10001 10 Conditions
+6 55
+"rectPermission"
+""
+1 183.5 79.14615384615388 E E E 1 E 0 E N "_Transparent" E N {255,255,255} E E
+ E E
+52 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 68.78293993591396 189.8276289682538 2  1 0  "pictures/MTP_Icones/Locked_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 56
+"txtPermission"
+""
+1 276.2967945312499 309.2901785714285 E E E 1 E 0 E N "mtpText" E N "_Window" E E
+ E E
+53 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 276.2967945312499 309.2901785714285 386 327
+0 2 2 "0s" 0 0 0 192 0 0  276.2967945312499 309.2901785714285 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 12 Berechtigung
+LANG:10001 6 Permit
+6 57
+"rectLock"
+""
+1 183.5 79.14615384615388 E E E 1 E 0 E N "_Transparent" E N {255,255,255} E E
+ E E
+54 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 68.78293993591396 230.8276289682538 2  1 0  "pictures/MTP_Icones/unlocked_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 58
+"txtLock"
+""
+1 276.4291250098767 350.7578124999999 E E E 1 E 0 E N "mtpText" E N "_Window" E E
+ E E
+55 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 276.4291250098767 350.7578124999999 383 369
+0 2 2 "0s" 0 0 0 192 0 0  276.4291250098767 350.7578124999999 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 12 Verriegelung
+LANG:10001 9 Interlock
+6 59
+"rectProtection"
+""
+1 183.5 79.14615384615388 E E E 1 E 0 E N "_Transparent" E N {255,255,255} E E
+ E E
+56 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 68.78293993591396 274.8276289682538 2  1 0  "pictures/MTP_Icones/unlocked_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 60
+"txtProtection"
+""
+1 276.2967945312499 394.2901785714285 E E E 1 E 0 E N "mtpText" E N "_Window" E E
+ E E
+57 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 276.2967945312499 394.2901785714285 332 412
+0 2 2 "0s" 0 0 0 192 0 0  276.2967945312499 394.2901785714285 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 6 Schutz
+LANG:10001 7 Protect
+6 61
+"rectForward"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+58 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateForward();
+}
+" 0
+ 0 1 3 2 1 E 1.223240952932098 0 1.71123903508772 109.2310249650368 -17.89912280701762 2  1 0  "pictures/MTP_Icones/forward_5_rounded.svg" 4294967295 E 190 80 230.5 108.6846153846154
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+3 0 "refWqc" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects/MTP_Faceplate/WQC.xml" 40 305 T 29 1 0 1 -22.00000000000004 -63.09123883928578
+2
+"$DP"""
+"$DPE"""
+0

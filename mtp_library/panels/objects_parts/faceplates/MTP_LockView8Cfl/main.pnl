@@ -1,0 +1,85 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 419 437 N "mtpBackground" 1
+"$DP"
+"main()
+{
+    initialize();
+}" 0
+ E E E E 1 -1 -1 0  0 0
+""0  1
+E "#uses \"classes/MTP_LockView8Cfl/MTP_LockView8Cfl\"
+
+shared_ptr<MTP_LockView8Cfl> viewModel;
+
+public void initialize()
+{
+  if (viewModel == nullptr)
+  {
+    if (hasMethod(self.parentPanel(), \"getObjectPointer\"))
+    {
+      shared_ptr<MTP_LockView8Cfl> parentViewModel = self.parentPanel().getObjectPointer();
+
+      if (parentViewModel != nullptr)
+      {
+        viewModel = parentViewModel;
+      }
+      else
+      {
+        viewModel = new MTP_LockView8Cfl($DP);
+      }
+    }
+    else
+    {
+      viewModel = new MTP_LockView8Cfl($DP);
+    }
+  }
+}
+
+public shared_ptr<MTP_LockView8Cfl> getObjectPointer()
+{
+  return viewModel;
+}
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+1 1 0 "" 0
+0
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+3 0 "PANEL_REF1" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects_parts/faceplates/MTP_LockView8/main.pnl" 16.5 2.243303571428555 T 64 1 0 1 -13 -4
+1
+"$DP""$DP"
+0

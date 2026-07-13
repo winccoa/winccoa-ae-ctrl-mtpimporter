@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="de_AT.utf8"></prop>
+  </prop>
+  <prop name="Size">500 400</prop>
+  <prop name="BackColor">_3DFace</prop>
+  <prop name="RefPoint">228 175</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="DPI">96</prop>
+  <prop name="PDPI">94.11039611039611</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/MTP_BinView/MTP_BinView&quot;
+#uses &quot;classes/MTP_BinView/MTP_BinViewRef&quot;
+
+shared_ptr&lt;MTP_BinViewRef&gt; binviewRef;
+shared_ptr&lt;MTP_BinView&gt; binView;
+
+public void initialize()
+{
+  mapping shapes;
+  shapes.insert(&quot;_rectValue&quot;, getShape(&quot;rectValue&quot;));
+
+  binView = new MTP_BinView($DP);
+  binviewRef = new MTP_BinViewRef(binView, shapes);
+}
+
+public shared_ptr&lt;MTP_BinView&gt; getObjectPointer()
+{
+  return binView;
+}
+]]></script>
+  <script isEscaped="1" name="Initialize"><![CDATA[main()
+{
+    initialize();
+}
+]]></script>
+ </events>
+ <shapes>
+  <shape Name="rectValue" layerId="0" shapeType="RECTANGLE">
+   <properties>
+    <prop name="serialId">4</prop>
+    <prop name="Type"></prop>
+    <prop name="RefPoint">165 105</prop>
+    <prop name="Enable">True</prop>
+    <prop name="Visible">True</prop>
+    <prop name="ForeColor">_Transparent</prop>
+    <prop name="BackColor">{255,255,255}</prop>
+    <prop name="TabOrder">4</prop>
+    <prop name="ToolTipText">
+     <prop name="de_AT.utf8"></prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <prop name="snapMode">Point</prop>
+    <prop name="DashBackColor">_Transparent</prop>
+    <prop name="AntiAliased">False</prop>
+    <prop name="LineType">[solid,oneColor,JoinBevel,CapProjecting,1]</prop>
+    <prop name="BorderZoomable">False</prop>
+    <prop name="BorderScalable">False</prop>
+    <prop SharedPixmap="1" name="FillType">[pattern,[fit,any,pictures/MTP_Icones/True.svg]]</prop>
+    <prop name="Geometry">2.933333333333333 0 0 2.933333333333333 -278 -169.9744318181818</prop>
+    <prop name="BorderStyle">Normal</prop>
+    <prop name="Location">165 105</prop>
+    <prop name="Size">16 16</prop>
+    <prop name="CornerRadius">0</prop>
+    <prop name="Transformable">True</prop>
+   </properties>
+  </shape>
+  <reference Name="PANEL_REF1" parentSerial="-1" referenceId="0">
+   <properties>
+    <prop name="FileName">objects/MTP_Basic/clickbox.xml</prop>
+    <prop name="Location">192.9999999999999 135</prop>
+    <prop name="Geometry">1.885714285714292 0 0 1.428571428571429 -170.9428571428583 -57.85714285714288</prop>
+    <prop name="TabOrder">6</prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+    <extended>
+     <script isEscaped="1" name="clicked"><![CDATA[void clicked()
+{
+    binviewRef.openFaceplate();
+}
+]]></script>
+    </extended>
+   </properties>
+  </reference>
+ </shapes>
+</panel>

@@ -1,0 +1,4 @@
+safePositionOn,Verhalten: Nachdem ein Fehler aufgetreten \nist, wird die Sicherheitsposition gesetzt.
+safePositionOff,Verhalten: Nachdem ein Fehler aufgetreten \nist, hält die Entität den Status.
+safetyPositionFalse,Sicherheitsposition: Geschlossen
+safetyPositionTrue,Sicherheitsposition: Offen

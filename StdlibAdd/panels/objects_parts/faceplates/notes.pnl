@@ -1,0 +1,308 @@
+V 14
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+PANEL,-1 -1 508 315 N "_3DFace" 1
+"$DP"
+"main()
+{
+  int iType;
+  sDP=$DP;
+
+  if (isDollarDefined(\"$BOOL_REALDPE\") == TRUE && ((bool)getDollarValue(\"$BOOL_REALDPE\")) == TRUE)
+  {
+    if (strpos(sDP, \".\")<1)
+      sDP += \".\";
+  }
+  else
+  {
+    if (strpos(sDP, \".\")<1)
+      sDP += \".\";
+
+    if(dpExists(sDP+\"general.note\"))
+      sDP += \"general.note\";
+    else if(dpExists(sDP+\"GEN.note\"))
+      sDP += \"GEN.note\";
+  }
+
+  last.font(\"Arial,10,-1,5,50,0,0,0,0,0\");
+  dpConnect(\"lastnode\",sDP);
+
+  dpGet(sDP+\":_archive.._type\",iType);
+
+  if(iType!=0)
+    history.enabled(TRUE);
+}
+
+lastnode(string dp, string sNote)
+{
+  string sTime,sUser,sHTML;
+  time tTime;
+  int iUser;
+
+  dpGet(sDP+\":_original.._stime\",tTime,
+        sDP+\":_original.._user\",iUser);
+
+  sTime=formatTime(\"%c\",tTime); //cut millisec
+
+  sUser=getUserName(iUser);
+  strreplace(sNote, \"\\n\", \"<br>\");
+  sHTML=\"<table border=\\\"0\\\" width=\\\"100%\\\"><tr bgcolor=\\\"#d4d0c8\\\"><th>\"+sTime+\"</th><th>\"+sUser+\"</th></tr><tr><td colspan=\\\"2\\\">\"+sNote+\"</td></tr></table>\";
+  if(sNote!=\"\")
+    last.text(sHTML);
+  else
+    last.text(\"\");
+}
+
+" 0
+ E E E E 1 -1 -1 0  40 20
+""0  1
+E "string sDP;" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "96"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+13 3
+"history"
+""
+1 26 214 E E E 0 E 1 E N {0,0,0} E N "_Button" E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 19 Historische Notizen
+LANG:10001 13 history notes
+LANG:10027 39 Исторические заметки
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 39 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10001 39 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0  458 94 493 124
+
+P 
+4294967295
+"pictures/table.png"
+3
+LANG:10000 7 history
+LANG:10001 7 history
+LANG:10027 14 История
+"main()
+{
+  ChildPanelOnCentralModal(\"objects_parts/stdlib/notesHistory.pnl\",\"History\",makeDynString(\"$DP:\"+sDP));
+}" 0
+ E E E
+2 5
+"PRIMITIVE_TEXT1"
+""
+1 16 12 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+4
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 16 12 111 32
+0 2 2 "0s" 0 0 0 64 0 0  16 12 1
+3
+LANG:10000 39 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10001 39 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0 3
+LANG:10000 11 Neue Notiz:
+LANG:10001 9 New note:
+LANG:10027 26 Новая заметка:
+2 7
+"PRIMITIVE_TEXT3"
+""
+1 16 168 E E E 1 E 1 E N {0,0,0} E N "_Transparent" E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+4
+"sizePolicy" "Fixed Fixed"
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 1 2 1 E U  1 E 16 168 146 188
+0 2 2 "0s" 0 0 0 64 0 0  16 168 1
+3
+LANG:10000 39 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10001 39 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0 3
+LANG:10000 13 Letzte Notiz:
+LANG:10001 10 Last note:
+LANG:10027 34 Последняя заметка:
+13 8
+"save"
+""
+1 340 58 E E E 1 E 1 E N {0,0,0} E N "_Button" E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 9 Speichern
+LANG:10001 4 Save
+LANG:10027 18 Сохранить
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 39 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10001 39 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0  458 30 493 60
+
+P 
+4294967295
+"pictures/speichern.gif"
+3
+LANG:10000 12 PUSH_BUTTON2
+LANG:10001 12 PUSH_BUTTON2
+LANG:10027 12 PUSH_BUTTON2
+"main()
+{
+  string newNode, User, Date;
+  
+  newNode=newText.text();  
+  if(newNode!=\"\")
+  {
+    dpSet(sDP,newNode);
+  }
+    
+}
+" 0
+ E E E
+13 9
+"buDelete"
+""
+1 376 50 E E E 1 E 1 E N {0,0,0} E N "_Button" E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 8 Löschen
+LANG:10001 6 Delete
+LANG:10027 14 Удалить
+
+1
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 39 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10001 39 Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10027 26 Arial,-1,13,5,50,0,0,0,0,0
+0  458 62 493 92
+
+P 
+4294967295
+"pictures/loeschen.gif"
+3
+LANG:10000 12 PUSH_BUTTON2
+LANG:10001 12 PUSH_BUTTON2
+LANG:10027 12 PUSH_BUTTON2
+"main()
+{
+  newText.text(\"\");
+  dpSet(sDP,\"\");
+}
+" 0
+ E E E
+29 10
+"newText"
+""
+1 16 32 E E E 1 E 1 E N {0,0,0} E N "_Window" E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+2
+"currentFont" "font Arial,-1,13,5,400,0,0,0,0,0,0,0,0,0,0,1"
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10027 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  16 32 454 152
+15 PVSS.TextEdit.1
+0
+E29 11
+"last"
+""
+1 16 188 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+3
+LANG:10000 0 
+LANG:10001 0 
+LANG:10027 0 
+
+5
+"textFormat" "enum 1"
+"currentFont" "font MS Shell Dlg,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1"
+"bold" "bool FALSE"
+"readOnly" "bool TRUE"
+"layoutAlignment" "AlignCenter"
+3
+LANG:10000 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10027 35 MS Shell Dlg 2,-1,11,5,50,0,0,0,0,0
+0  16 188 456 302
+15 PVSS.TextEdit.1
+0
+E0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+0

@@ -1,0 +1,704 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 419 437 N "mtpBackground" 1
+"$DP"
+"main()
+{
+      initialize();
+}" 0
+ E E E E 1 -1 -1 0  208.5 -7.499999999999943
+""0  1
+E "#uses \"classes/MTP_MonBinVlv/MTP_MonBinVlv\"
+#uses \"classes/MTP_MonBinVlv/MTP_MonBinVlvFaceplateHome\"
+
+shared_ptr<MTP_MonBinVlvFaceplateHome> faceplate;
+shared_ptr<MTP_MonBinVlv> viewModel;
+
+public void initialize()
+{
+  shape parent = getShape(myModuleName(), myPanelName(), \"\");
+
+  if (hasMethod(parent, \"getObjectPointer\"))
+  {
+    if (parent.getObjectPointer() != nullptr)
+    {
+      viewModel = parent.getObjectPointer();
+    }
+  }
+
+  if (viewModel == nullptr)
+  {
+    viewModel = new MTP_MonBinVlv($DP);
+  }
+
+  mapping shapes;
+  shapes.insert(\"_refWqc\", getShape(\"refWqc\"));
+  shapes.insert(\"_rectAutomatic\", getShape(\"rectAutomatic\"));
+  shapes.insert(\"_rectError\", getShape(\"rectError\"));
+  shapes.insert(\"_rectErrorInformation\", getShape(\"rectErrorInformation\"));
+  shapes.insert(\"_rectLock\", getShape(\"rectLock\"));
+  shapes.insert(\"_rectMaintenance\", getShape(\"rectMaintenance\"));
+  shapes.insert(\"_rectOff\", getShape(\"rectOff\"));
+  shapes.insert(\"_rectOperator\", getShape(\"rectOperator\"));
+  shapes.insert(\"_rectPermission\", getShape(\"rectPermission\"));
+  shapes.insert(\"_rectProtection\", getShape(\"rectProtection\"));
+  shapes.insert(\"_rectReset\", getShape(\"rectReset\"));
+  shapes.insert(\"_rectSafetyPosition\", getShape(\"rectSafetyPosition\"));
+  shapes.insert(\"_rectSafetyPositionInformation\", getShape(\"rectSafetyPositionInformation\"));
+  shapes.insert(\"_rectValve\", getShape(\"rectValve\"));
+  shapes.insert(\"_rectValveClose\", getShape(\"rectValveClose\"));
+  shapes.insert(\"_rectValveOpen\", getShape(\"rectValveOpen\"));
+    shapes.insert(\"_rectValveCloseAut\", getShape(\"rectValveCloseAut\"));
+  shapes.insert(\"_rectValveOpenAut\", getShape(\"rectValveOpenAut\"));
+  shapes.insert(\"_txtError\", getShape(\"txtError\"));
+  shapes.insert(\"_txtLock\", getShape(\"txtLock\"));
+  shapes.insert(\"_txtMaintenance\", getShape(\"txtMaintenance\"));
+  shapes.insert(\"_txtPermission\", getShape(\"txtPermission\"));
+  shapes.insert(\"_txtProtection\", getShape(\"txtProtection\"));
+  shapes.insert(\"_txtSafetyPosition\", getShape(\"txtSafetyPosition\"));
+
+  faceplate = new MTP_MonBinVlvFaceplateHome(viewModel, shapes);
+}
+
+public shared_ptr<MTP_MonBinVlv> getObjectPointer()
+{
+  return viewModel;
+}
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+6 39
+"rectValveOpenAut"
+""
+1 339 196 E E E 1 E 0 E N "_Transparent" E N "mtpBackground2" E E
+ E E
+34 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.4664546515615513 0.7632675727110282 -0.3828162518291034 0.230256072835639 279.7691319526081 -212.4769578239414 1 E 339 196 355.6827930899779 346.0261857405004
+6 38
+"rectValveCloseAut"
+""
+1 339 196 E E E 1 E 0 E N "_Transparent" E N "mtpBackground2" E E
+ E E
+33 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.3365319511459092 0.8287964619697168 -0.4150833124841279 0.1651423187416794 328.1350598962075 -230.0754987383068 1 E 339 196 356.511248440308 453.1399392594943
+4 1
+"LINE2"
+""
+1 209.5 -0.4999999999999432 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+0 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  209.5 -0.4999999999999432 209.5 449.4999999999999
+2 2
+"PRIMITIVE_TEXT4"
+""
+1 19.87499999999999 205.875 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+2 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 19.87499999999999 205.875 69 223
+0 2 2 "0s" 0 0 0 192 0 0  19.87499999999999 205.875 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 1
+LANG:10000 6 Status
+1 40 0 "" 1
+0
+6 5
+"rectError"
+""
+1 183.5 79.14615384615388 E E E 1 E 0 E N "_Transparent" E N {255,255,255} E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 -145.5138545953361 171.5243365575396 2  1 0  "pictures/MTP_Icones/Ok_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 6
+"txtError"
+""
+1 61.99999999999983 290.9868861607143 E E E 1 E 0 E N "mtpText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 61.99999999999983 290.9868861607143 114 309
+0 2 2 "0s" 0 0 0 192 0 0  61.99999999999983 290.9868861607143 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 6 Fehler
+LANG:10001 5 Error
+6 7
+"rectMaintenance"
+""
+1 183.5 79.14615384615388 E E E 1 E 0 E N "_Transparent" E N {255,255,255} E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 -145.5138545953361 274.4421657986111 2  1 0  "pictures/MTP_Icones/Ok_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 8
+"txtMaintenance"
+""
+1 62.13233047862659 394.3723493303572 E E E 1 E 0 E N "mtpText" E N "_Window" E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 62.13233047862659 394.3723493303572 188 412
+0 2 2 "0s" 0 0 0 192 0 0  62.13233047862659 394.3723493303572 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 14 Instandhaltung
+LANG:10001 11 Maintenance
+6 9
+"rectSafetyPosition"
+""
+1 183.5 79.14615384615388 E E E 1 E 0 E N "_Transparent" E N {255,255,255} E E
+ E E
+7 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 -145.5138545953361 223.2352740575396 2  1 0  "pictures/MTP_Icones/Ok_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 10
+"txtSafetyPosition"
+""
+1 61.99999999999983 333.6978236607143 E E E 1 E 0 E N "mtpText" E N "_Window" E E
+ E E
+8 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 61.99999999999983 333.6978236607143 160 373
+0 2 2 "0s" 0 0 0 192 0 0  61.99999999999983 333.6978236607143 2
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 12 Sicherheits-
+LANG:10001 4 Safe
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 8 position
+LANG:10001 8 position
+4 12
+"LINE3"
+""
+1 209.5 185.9611417214912 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+10 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  209.5 185.9611417214912 -3.999999999999985 185.9611417214912
+4 13
+"LINE4"
+""
+1 423 254.875 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+11 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  423 254.875 209.5 254.875
+6 14
+"rectValve"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+12 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1.467699409323115 0 2.060471491228071 -200.8752663274263 -89.9415515350878 2  1 0  "pictures/MTP_Icones/ValvOpen.svg" 4294967295 E 190 80 230.5 108.6846153846154
+2 15
+"PRIMITIVE_TEXT2"
+""
+1 20.48968750000006 20 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+13 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20.48968750000006 20 133 38
+0 2 2 "0s" 0 0 0 192 0 0  20.48968750000006 20 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 13 Prozesssignal
+LANG:10001 14 Process signal
+6 16
+"rectErrorInformation"
+""
+1 183.5 79.14615384615388 E E E 1 E 0 E N "_Transparent" E N {255,255,255} E E
+ E E
+14 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.openErrorInformation();
+}
+" 0
+ 0 1 3 2 1 E 0.8910836762688614 0 0.5561755952380953 6.679286694101506 251.7699032738095 2  1 0  "pictures/MTP_Icones/Information.svg" 4294967295 E 183.5 79.14615384615388 210 95
+6 17
+"rectSafetyPositionInformation"
+""
+1 183.5 79.14615384615388 E E E 1 E 0 E N "_Transparent" E N {255,255,255} E E
+ E E
+15 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.openSafetyPositionInformation();
+}
+" 0
+ 0 1 3 2 1 E 0.8910836762688614 0 0.5561755952380953 6.679286694101506 300.5720796130952 2  1 0  "pictures/MTP_Icones/Information.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 18
+"PRIMITIVE_TEXT7"
+""
+1 227.25 20 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 227.25 20 324 37
+0 2 2 "0s" 0 0 0 192 0 0  227.25 20 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 11 Steuerungen
+LANG:10001 8 Controls
+6 19
+"rectOff"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateStateOff();
+}
+" 0
+ 0 1 3 2 1 E 1.223240952932098 0 1.71123903508772 8.169341110870217 -80.87106668037285 2  1 0  "pictures/MTP_Icones/Power_1_rounded.svg" 4294967295 E 190 80 230.5 108.6846153846154
+6 20
+"rectOperator"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateStateOperator();
+}
+" 0
+ 0 1 3 2 1 E 1.198276851851851 0 1.71123903508772 63.45119971064837 -80.87106668037285 2  1 0  "pictures/MTP_Icones/Operator_2_rounded.svg" 4294967295 E 190 80 230.5 108.6846153846154
+6 21
+"rectAutomatic"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateStateAutomatic();
+}
+" 0
+ 0 1 3 2 1 E 1.223240952932098 0 1.71123903508772 108.2310249650369 -80.87106668037285 2  1 0  "pictures/MTP_Icones/automatic_3_rounded.svg" 4294967295 E 190 80 230.5 108.6846153846154
+6 22
+"rectValveClose"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+20 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateValveClose();
+}
+" 0
+ 0 1 3 2 1 E 1.223240952932098 0 1.71123903508772 8.169341110870217 -17.89912280701756 2  1 0  "pictures/MTP_Icones/ValveClose2_rounded.svg" 4294967295 E 190 80 230.5 108.6846153846154
+6 23
+"rectValveOpen"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateValveOpen();
+}
+" 0
+ 0 1 3 2 1 E 1.198276851851851 0 1.71123903508772 63.45119971064837 -17.89912280701756 2  1 0  "pictures/MTP_Icones/ValveOpen2_rounded.svg" 4294967295 E 190 80 230.5 108.6846153846154
+6 25
+"rectReset"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.activateReset();
+}
+" 0
+ 0 1 3 2 1 E 1.223240952932098 0 1.677014254385966 8.169341110870217 51.28660520833328 2  1 0  "pictures/MTP_Icones/reset_1.svg" 4294967295 E 190 80 230.5 108.6846153846154
+2 28
+"PRIMITIVE_TEXT8"
+""
+1 229.5935890625 274.6065848214286 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+26 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 229.5935890625 274.6065848214286 327 292
+0 2 2 "0s" 0 0 0 192 0 0  229.5935890625 274.6065848214286 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 11 Bedingungen
+LANG:10001 10 Conditions
+6 29
+"rectPermission"
+""
+1 183.5 79.14615384615388 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+27 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 68.78293993591399 189.6155753968253 2  1 0  "pictures/MTP_Icones/Locked_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 30
+"txtPermission"
+""
+1 276.2967945312499 309.2901785714286 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+28 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 276.2967945312499 309.2901785714286 386 327
+0 2 2 "0s" 0 0 0 192 0 0  276.2967945312499 309.2901785714286 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 12 Berechtigung
+LANG:10001 6 Permit
+6 31
+"rectLock"
+""
+1 183.5 79.14615384615388 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+29 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 68.78293993591399 230.8276289682539 2  1 0  "pictures/MTP_Icones/unlocked_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 32
+"txtLock"
+""
+1 276.4291250098767 350.7578124999999 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+30 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 276.4291250098767 350.7578124999999 383 369
+0 2 2 "0s" 0 0 0 192 0 0  276.4291250098767 350.7578124999999 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 12 Verriegelung
+LANG:10001 9 Interlock
+6 33
+"rectProtection"
+""
+1 183.5 79.14615384615388 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+31 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 68.78293993591399 274.8276289682539 2  1 0  "pictures/MTP_Icones/unlocked_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 34
+"txtProtection"
+""
+1 276.2967945312499 394.2901785714286 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+32 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 276.2967945312499 394.2901785714286 332 412
+0 2 2 "0s" 0 0 0 192 0 0  276.2967945312499 394.2901785714286 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 6 Schutz
+LANG:10001 7 Protect
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+3 0 "refWqc" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects/MTP_Faceplate/WQC.xml" 40 305 T 1 1 0 1 -22.00000000000002 -63.09123883928572
+2
+"$DP"""
+"$DPE"""
+0

@@ -1,0 +1,16 @@
+monitorHoldPosition,Behavior: After an error occurs, the entity \nholds the current position.
+monitorSafePosition,Behavior: After an error occurs, \nthe configured safe position is set.
+safetyPosition1,Safe position: Position 1
+safetyPosition2,Safe position: Position 2
+safetyPosition3,Safe position: Position 3
+safetyPositionUnknown,Safe position: Unknown
+safePositionActive,Safe position active
+safePositionInactive,Safe position not active
+wqcOk,WQC OK
+wqcNotOk,WQC not OK
+noError,No error
+staticError,Static feedback error
+dynamicError,Dynamic feedback error
+permit,Permit
+interlock,Interlock
+protect,Protect

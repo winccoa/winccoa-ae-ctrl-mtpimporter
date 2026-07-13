@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="de_AT.utf8"></prop>
+  </prop>
+  <prop name="Size">419 437</prop>
+  <prop name="BackColor">mtpBackground2</prop>
+  <prop name="RefPoint">0 0</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="KeepInMemory">False</prop>
+  <prop name="DPI">96</prop>
+  <prop name="PDPI">108.888</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <shapes>
+  <reference Name="PANEL_REF1" parentSerial="-1" referenceId="0">
+   <properties>
+    <prop name="FileName">objects_parts/faceplates/MTP_AnaMon/setting.pnl</prop>
+    <prop name="Location">0.2480366492147255 -3.75</prop>
+    <prop name="Geometry">1 0 0 1 0 4</prop>
+    <prop name="TabOrder">16</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$DP</prop>
+      <prop name="Value">$DP</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+ </shapes>
+</panel>

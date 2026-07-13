@@ -1,0 +1,88 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 419 437 N "mtpBackground" 1
+"$DP"
+"main()
+{
+  initialize();
+}
+" 0
+ E E E E 1 -1 -1 0  -4.999999999999985 -8
+""0  1
+E "#uses \"classes/MTP_AnaDrv/MTP_AnaDrvFaceplateHome1\"
+#uses \"classes/MTP_AnaDrvCfl/MTP_AnaDrvCfl\"
+
+shared_ptr<MTP_AnaDrvFaceplateHome> faceplate;
+shared_ptr<MTP_AnaDrvCfl> viewModel;
+
+public void initialize()
+{
+  if (viewModel == nullptr)
+  {
+    if (hasMethod(self.parentPanel(), \"getObjectPointer\"))
+    {
+      shared_ptr<MTP_AnaDrvCfl> parentViewModel = self.parentPanel().getObjectPointer();
+
+      if (parentViewModel != nullptr)
+      {
+        viewModel = parentViewModel;
+      }
+      else
+      {
+        viewModel = new MTP_AnaDrvCfl($DP);
+      }
+    }
+    else
+    {
+      viewModel = new MTP_AnaDrvCfl($DP);
+    }
+  }
+}
+
+public shared_ptr<MTP_AnaDrvCfl> getObjectPointer()
+{
+  return viewModel;
+}
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+1 52 0 "" 2
+0
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+3 0 "PANEL_REF1" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects_parts/faceplates/MTP_AnaDrv/main1.pnl" 3.534543772198276 3.29895045697026 T 56 1 0 1 -6.681251848633678 -10.7989504569702
+1
+"$DP""$DP"
+0

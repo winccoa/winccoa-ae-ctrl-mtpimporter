@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel version="14">
+ <properties>
+  <prop name="Name">
+   <prop name="de_AT.utf8"></prop>
+  </prop>
+  <prop name="Size">419 437</prop>
+  <prop name="BackColor">mtpBackground</prop>
+  <prop name="RefPoint">0 0</prop>
+  <prop name="InitAndTermRef">True</prop>
+  <prop name="SendClick">False</prop>
+  <prop name="RefFileName"></prop>
+  <prop name="KeepInMemory">False</prop>
+  <prop name="DPI">96</prop>
+  <prop name="PDPI">108.8875329026083</prop>
+  <prop name="layoutType">None</prop>
+ </properties>
+ <events>
+  <script isEscaped="1" name="ScopeLib"><![CDATA[#uses &quot;classes/MTP_DIntMonCfl/MTP_DIntMonCfl&quot;
+shared_ptr&lt;MTP_DIntMonCfl&gt; viewModel;
+
+public void initialize()
+{
+  if (viewModel == nullptr)
+  {
+    if (hasMethod(self.parentPanel(), &quot;getObjectPointer&quot;))
+    {
+      shared_ptr&lt;MTP_DIntMonCfl&gt; parentViewModel = self.parentPanel().getObjectPointer();
+
+      if (parentViewModel != nullptr)
+      {
+        viewModel = parentViewModel;
+      }
+      else
+      {
+        viewModel = new MTP_DIntMonCfl($DP);
+      }
+    }
+    else
+    {
+      viewModel = new MTP_DIntMonCfl($DP);
+    }
+  }
+}
+
+public shared_ptr&lt;MTP_DIntMonCfl&gt; getObjectPointer()
+{
+  return viewModel;
+}
+]]></script>
+  <script isEscaped="1" name="Initialize"><![CDATA[main()
+{
+  initialize();
+}]]></script>
+ </events>
+ <shapes>
+  <reference Name="PANEL_REF1" parentSerial="-1" referenceId="0">
+   <properties>
+    <prop name="FileName">objects_parts/faceplates/MTP_DIntMon/main.pnl</prop>
+    <prop name="Location">20.93927455306854 13.56167017767183</prop>
+    <prop name="Geometry">1 0 0 1 -21.43927455306857 -10</prop>
+    <prop name="TabOrder">95</prop>
+    <prop name="dollarParameters">
+     <prop name="dollarParameter">
+      <prop name="Dollar">$DP</prop>
+      <prop name="Value">$DP</prop>
+     </prop>
+    </prop>
+    <prop name="layoutAlignment">AlignNone</prop>
+   </properties>
+  </reference>
+ </shapes>
+</panel>

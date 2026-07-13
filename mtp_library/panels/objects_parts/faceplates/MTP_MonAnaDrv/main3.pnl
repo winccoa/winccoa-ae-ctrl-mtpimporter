@@ -1,0 +1,230 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 419 437 N "mtpBackground" 1
+"$DP"
+"main()
+{
+      initialize();
+}" 0
+ E E E E 1 -1 -1 0  -4.621621621621699 12.5
+""0  1
+E "#uses \"classes/MTP_MonAnaDrv/MTP_MonAnaDrv\"
+#uses \"classes/MTP_MonAnaDrv/MTP_MonAnaDrvFaceplateHome3\"
+
+shared_ptr<MTP_MonAnaDrvFaceplateHome3> faceplate;
+shared_ptr<MTP_MonAnaDrv> viewModel;
+
+public void initialize()
+{
+  shape parent = getShape(myModuleName(), myPanelName(), \"\");
+
+  if (hasMethod(parent, \"getObjectPointer\"))
+  {
+    if (parent.getObjectPointer() != nullptr)
+    {
+      viewModel = parent.getObjectPointer();
+    }
+  }
+
+  if (viewModel == nullptr)
+  {
+    viewModel = new MTP_MonAnaDrv($DP);
+  }
+
+  mapping shapes;
+  shapes.insert(\"_rectAlarmHighActive\", getShape(\"rectAlarmHighActive\"));
+  shapes.insert(\"_rectAlarmLowActive\", getShape(\"rectAlarmLowActive\"));
+  shapes.insert(\"_txtAlarmHighActive\", getShape(\"txtAlarmHighActive\"));
+  shapes.insert(\"_txtAlarmLowActive\", getShape(\"txtAlarmLowActive\"));
+
+  shapes.insert(\"_refBarIndicator\", getShape(\"refBarIndicator\"));
+
+  faceplate = new MTP_MonAnaDrvFaceplateHome3(viewModel, shapes);
+}
+
+public shared_ptr<MTP_MonAnaDrv> getObjectPointer()
+{
+  return viewModel;
+}
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+2 32
+"PRIMITIVE_TEXT2"
+""
+1 19.50000000000006 20.38296667709699 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 19.50000000000006 20.38296667709699 203 38
+0 2 2 "0s" 0 0 0 192 0 0  19.50000000000006 20.38296667709699 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 20 Drehzahlüberwachung
+LANG:10001 27 Revolution speed monitoring
+4 33
+"LINE1"
+""
+1 -0.4999999999999432 275.382966677097 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  -0.4999999999999432 275.382966677097 419.5000000000001 275.382966677097
+6 34
+"rectAlarmHighActive"
+""
+1 183.5 79.14615384615388 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.8910836762688614 0 1.483134920634921 -143.013854595336 207.9985420739223 2  1 0  "pictures/MTP_Icones/Ok_2.svg" 4294967295 E 183.5 79.14615384615388 210 95
+2 35
+"PRIMITIVE_TEXT3"
+""
+1 20.25000000000006 295.382966677097 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 20.25000000000006 295.382966677097 84 312
+0 2 2 "0s" 0 0 0 192 0 0  20.25000000000006 295.382966677097 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 7 Grenzen
+LANG:10001 6 Limits
+6 39
+"rectAlarmLowActive"
+""
+1 183 77.04615384615389 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 0.888888888888889 0 1.354166666666667 -142.1666666666666 266.0496333437636 2  1 0  "pictures/MTP_Icones/Ok_2.svg" 4294967295 E 183 77.04615384615389 210 95
+2 40
+"txtAlarmHighActive"
+""
+1 60 330 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 60 330 163 348
+0 2 2 "0s" 0 0 0 192 0 0  60 330 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 11 Grenze hoch
+LANG:10001 10 Limit high
+2 41
+"txtAlarmLowActive"
+""
+1 60 375 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 60 375 182 393
+0 2 2 "0s" 0 0 0 192 0 0  60 375 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 14 Grenze niedrig
+LANG:10001 9 Limit low
+1 42 1 "" 2
+0
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+3 1 "refBarIndicator" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects/MTP_BarIndicator/MTP_BarIndicator.xml" 208.9706829052491 207.0770661471861 T 15 1.122927539883648 0 1.122927539883648 -26.41843467084524 -13.64957377788622
+0
+0

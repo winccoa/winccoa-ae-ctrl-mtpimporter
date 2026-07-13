@@ -1,0 +1,124 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 419 437 N "mtpBackground" 1
+"$DP"
+"main()
+{
+      initialize();
+}" 0
+ E E E E 1 -1 -1 0  -4.621621621621699 12.5
+""0  1
+E "#uses \"classes/MTP_AnaDrv/MTP_AnaDrv\"
+#uses \"classes/MTP_AnaDrv/MTP_AnaDrvFaceplateHome3\"
+
+shared_ptr<MTP_AnaDrvFaceplateHome3> faceplate;
+shared_ptr<MTP_AnaDrv> viewModel;
+
+public void initialize()
+{
+  shape parent = getShape(myModuleName(), myPanelName(), \"\");
+
+  if (hasMethod(parent, \"getObjectPointer\"))
+  {
+    if (parent.getObjectPointer() != nullptr)
+    {
+      viewModel = parent.getObjectPointer();
+    }
+  }
+
+  if (viewModel == nullptr)
+  {
+    viewModel = new MTP_AnaDrv($DP);
+  }
+
+  mapping shapes;
+  shapes.insert(\"_refBarIndicator\", getShape(\"refBarIndicator\"));
+
+  faceplate = new MTP_AnaDrvFaceplateHome3(viewModel, shapes);
+}
+
+public shared_ptr<MTP_AnaDrv> getObjectPointer()
+{
+  return viewModel;
+}
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+0 0 0
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+2 32
+"PRIMITIVE_TEXT2"
+""
+1 19.50000000000006 20.38296667709699 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+16 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E U  0 E 19.50000000000006 20.38296667709699 203 38
+0 2 2 "0s" 0 0 0 192 0 0  19.50000000000006 20.38296667709699 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 20 Drehzahlüberwachung
+LANG:10001 27 Revolution speed monitoring
+4 33
+"LINE1"
+""
+1 -0.4999999999999432 275.382966677097 E E E 1 E 1 E N "mtpBorder" E N {255,255,255} E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "1"
+E E 0 1 3 2 1 E  -0.4999999999999432 275.382966677097 419.5000000000001 275.382966677097
+1 34 1 "" 2
+0
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+3 1 "refBarIndicator" -1
+"layoutAlignment" "AlignNone"
+"" ""
+"objects/MTP_BarIndicator/MTP_BarIndicator.xml" 208.9706829052491 207.0770661471861 T 15 1.122927539883648 0 1.122927539883648 -26.41843467084524 -13.64957377788622
+0
+0

@@ -1,0 +1,556 @@
+V 14
+1
+LANG:10000 0 
+PANEL,-1 -1 843 460 N "mtpBackground" 0
+"main()
+{
+    initialize();
+}" 0
+ E E E E 1 -1 -1 0  18 22.00000000000004
+""0  1
+E "#uses \"classes/MTP_Services/ServParam/ServicesFaceplateProcedureParam\"
+#uses \"classes/MTP_Services/MTP_Services\"
+
+shared_ptr<ServicesFaceplateProcedureParam> faceplate;
+shared_ptr<MTP_Services> viewModel;
+
+public void initialize()
+{
+  shape parent = getShape(myModuleName(), myPanelName(), \"\");
+
+  if (hasMethod(parent, \"getObjectPointer\"))
+  {
+    if (parent.getObjectPointer() != nullptr)
+    {
+      viewModel = parent.getObjectPointer();
+    }
+  }
+
+  if (viewModel == nullptr)
+  {
+    viewModel = new MTP_Services($DP);
+  }
+
+  mapping shapes;
+  shapes.insert(\"_panel\", getShape(myModuleName(), myPanelName(), \"\"));
+  shapes.insert(\"_txtProcedure\", getShape(\"txtProcedure\"));
+  shapes.insert(\"_rectProcedurePicker\", getShape(\"rectProcedurePicker\"));
+
+  faceplate = new ServicesFaceplateProcedureParam(viewModel, shapes);
+}
+
+public shared_ptr<MTP_Services> getObjectPointer()
+{
+  return viewModel;
+}
+" 0
+ 4
+"CBRef" "1"
+"EClose" E
+"dpi" "96"
+"pdpi" "94.1104"
+2 1 9 9 9 9 1 6
+""
+DISPLAY_LAYER, 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0
+LAYER, 0 
+0
+2 2
+"Title_Text"
+""
+1 500 20.00000000000004 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+1 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E 1.235294117647059 0 1 -101.1686981313706 0.33839483963812 0 E 463 11 537 29
+0 2 2 "0s" 0 0 0 201 0 0  500 20.00000000000004 1
+1
+LANG:10000 45 Roboto,-1,16,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 8 Prozedur
+LANG:10001 9 Procedure
+6 4
+"rectProcedurePicker"
+""
+1 183.5 79.14615384615388 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+3 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignVCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.proceduresPopUp();
+}
+" 0
+ 0 1 3 2 1 E 0.8910836762688613 0 0.5561755952380953 630.8724279835391 -19.25113070762915 2  1 0  "pictures/MTP_Icones/Information.svg" 4294967295 E 183.5 79.14615384615388 210 95
+14 5
+"txtProcedure"
+""
+1 604 23.67678967927628 E E E 1 E 1 E N "_WindowText" E N "_Window" E E
+ E E
+4 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"minimumSize" "-1 28"
+"maximumSize" "-1 28"
+"layoutAlignment" "AlignVCenter"
+2
+LANG:10000 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+LANG:10001 48 MS Shell Dlg 2,-1,11,5,400,0,0,0,0,0,0,0,0,0,0,1
+0  602 11.67678967927628 783 47
+2 "0s" 0 0 0 0 0 -1  E E E
+6 8
+"RECTANGLE1"
+""
+1 53 24 E E E 1 E 0 E N "_Transparent" E N "_Transparent" E E
+ E E
+5 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"layoutAlignment" "AlignNone"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E E 0 1 3 2 1 E 1 0 1 -10 106 1 E 53 24 796 249
+32 9
+"SPACER1"
+""
+1 406 364 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+6 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+3
+"transparentForMouse" ""
+"sizePolicy" "Ignored Expanding"
+"layoutAlignment" "AlignNone"
+ 406 364 426 380 2
+32 20
+"SPACER8"
+""
+1 43 29.33839483963814 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+17 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+5
+"transparentForMouse" ""
+"minimumSize" "450 -1"
+"maximumSize" "450 -1"
+"sizePolicy" "Expanding Ignored"
+"layoutAlignment" "AlignNone"
+ 43 29.33839483963814 442 35 1
+2 21
+"PRIMITIVE_TEXT5"
+""
+1 10.25 20.39453124999999 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+18 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignVCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E "main(mapping event)
+{
+    faceplate.applyAll();
+}
+" 0
+ 0 1 3 2 1 E 1.47788049519242 0 1 655.8517249242777 394.60546875 0 E -23 12 43 29
+0 2 2 "0s" 0 0 0 201 0 0  10.25 20.39453124999999 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 9 Apply All
+LANG:10001 9 Apply All
+6 22
+"rectApply"
+""
+1 190 80 E E E 1 E 1 E N "_Transparent" E N {255,255,255} E E
+ E E
+19 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+5
+"minimumSize" "40 40"
+"maximumSize" "40 40"
+"layoutAlignment" "AlignVCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+E "main(mapping event)
+{
+  faceplate.applyAll();
+}
+" 0
+ 0 1 3 2 1 E 0.9643945902326109 0 1.362902635907203 531.120302288525 285.5260889185855 2  1 0  "pictures/MTP_Icones/applyAll_rounded_active.svg" 4294967295 E 190 80 230.5 108.6846153846154
+32 23
+"SPACER9"
+""
+1 47.89158962860574 406 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+20 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"transparentForMouse" ""
+"minimumSize" "547 -1"
+"sizePolicy" "Expanding Ignored"
+"layoutAlignment" "AlignNone"
+ 47.89158962860574 406 597 425 1
+32 24
+"SPACER7"
+""
+1 762.8362782146291 402 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+21 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+5
+"transparentForMouse" ""
+"minimumSize" "45 -1"
+"maximumSize" "45 -1"
+"sizePolicy" "Expanding Ignored"
+"layoutAlignment" "AlignNone"
+ 762.8362782146291 402 837 428 1
+2 26
+"txtName"
+""
+1 10.25 20.39453124999999 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+22 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+6
+"minimumSize" "180 -1"
+"maximumSize" "175 -1"
+"layoutAlignment" "AlignVCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E 1.47788049519242 0 1 101.7810415232105 65.60546875000001 0 E -12 12 32 29
+0 2 2 "0s" 0 0 0 201 0 0  10.25 20.39453124999999 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 4 Name
+LANG:10001 4 Name
+2 27
+"PRIMITIVE_TEXT1"
+""
+1 10.25 20.39453124999999 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+23 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+6
+"minimumSize" "155 -1"
+"maximumSize" "155 -1"
+"layoutAlignment" "AlignVCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E 1.47788049519242 0 1 217.0066108765735 65.60546875 0 E -24 12 44 29
+0 2 2 "0s" 0 0 0 201 0 0  10.25 20.39453124999999 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 8 Required
+LANG:10001 8 Required
+2 28
+"PRIMITIVE_TEXT2"
+""
+1 10.25 20.39453124999999 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+24 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignVCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E 1.47788049519242 0 1 376.0066108765735 65.60546875 0 E -19 12 39 29
+0 2 2 "0s" 0 0 0 201 0 0  10.25 20.39453124999999 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 7 Current
+LANG:10001 7 Current
+2 29
+"PRIMITIVE_TEXT3"
+""
+1 10.25 20.39453124999999 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+25 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignVCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E 1.47788049519242 0 1 711.6958650340517 65.71093750000001 0 E -11 12 31 29
+0 2 2 "0s" 0 0 0 201 0 0  10.25 20.39453124999999 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 5 Apply
+LANG:10001 5 Apply
+2 30
+"PRIMITIVE_TEXT4"
+""
+1 10.25 20.39453124999999 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+26 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignVCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E 1.47788049519242 0 1 594.590466612145 65.60546875 0 E -9 12 29 29
+0 2 2 "0s" 0 0 0 201 0 0  10.25 20.39453124999999 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 3 WQC
+LANG:10001 3 WQC
+32 31
+"SPACER4"
+""
+1 533.5732173693681 86.10546875000001 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+27 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+5
+"transparentForMouse" ""
+"minimumSize" "40 -1"
+"maximumSize" "40 -1"
+"sizePolicy" "Expanding Ignored"
+"layoutAlignment" "AlignNone"
+ 533.5732173693681 86.10546875000001 578 92 1
+32 32
+"SPACER5"
+""
+1 656.4214755809013 86.10546875 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+28 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+5
+"transparentForMouse" ""
+"minimumSize" "13 -1"
+"maximumSize" "13 -1"
+"sizePolicy" "Expanding Ignored"
+"layoutAlignment" "AlignNone"
+ 656.4214755809013 86.10546875 690 92 1
+2 33
+"PRIMITIVE_TEXT6"
+""
+1 10.25 20.39453124999999 E E E 1 E 1 E N "mtpText" E N "_Window" E E
+ E E
+29 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+4
+"layoutAlignment" "AlignVCenter"
+"dashclr"N "_Transparent"
+"antiAliased" "0"
+"transformable" "0"
+E E 0 1 3 2 1 E 1.47788049519242 0 1 489.1483244943649 65.60546875 0 E -6 12 26 29
+0 2 2 "0s" 0 0 0 201 0 0  10.25 20.39453124999999 1
+1
+LANG:10000 45 Roboto,-1,15,5,700,0,0,0,0,0,0,0,0,0,0,1,Bold
+0 2
+LANG:10000 4 Unit
+LANG:10001 4 Unit
+32 34
+"SPACER3"
+""
+1 431.0464755809015 86.10546875000001 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+30 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+5
+"transparentForMouse" ""
+"minimumSize" "76 -1"
+"maximumSize" "76 -1"
+"sizePolicy" "Expanding Ignored"
+"layoutAlignment" "AlignNone"
+ 431.0464755809015 86.10546875000001 475 92 1
+32 35
+"SPACER10"
+""
+1 290.0464755809015 84.10546875000001 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+31 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+5
+"transparentForMouse" ""
+"minimumSize" "55 -1"
+"maximumSize" "55 -1"
+"sizePolicy" "Expanding Ignored"
+"layoutAlignment" "AlignNone"
+ 290.0464755809015 84.10546875000001 334 90 1
+32 36
+"SPACER11"
+""
+1 772.5681412894374 86.10546875 E E E 1 E 1 E N {0,0,0} E N {255,255,255} E E
+ E E
+32 0 0 0 0 0
+E E E
+0
+1
+LANG:10000 0 
+
+5
+"transparentForMouse" ""
+"minimumSize" "45 -1"
+"maximumSize" "45 -1"
+"sizePolicy" "Expanding Ignored"
+"layoutAlignment" "AlignNone"
+ 772.5681412894374 86.10546875 806 92 1
+0
+LAYER, 1 
+0
+0
+LAYER, 2 
+0
+0
+LAYER, 3 
+0
+0
+LAYER, 4 
+0
+0
+LAYER, 5 
+0
+0
+LAYER, 6 
+0
+0
+LAYER, 7 
+0
+0
+4 0 "Layout" -1
+2 0 
+9 8 
+
+"S 9" "1 0 1 1"
+"S 8" "0 0 1 1"
+"" ""
+0 2 0 0
+4 2 "LAYOUT_GROUP2" -1
+4 0 
+2 5 4 20 
+
+"S 2" "1 0 1 1"
+"S 5" "2 0 1 1"
+"S 4" "3 0 1 1"
+"S 20" "0 0 1 1"
+"" ""
+0 4 1 0 0 0 5 0
+4 3 "LAYOUT_GROUP3" -1
+4 0 
+24 22 21 23 
+
+"S 24" "3 0 1 1"
+"S 22" "2 0 1 1"
+"S 21" "1 0 1 1"
+"S 23" "0 0 1 1"
+"" ""
+0 1 0 1 6
+4 4 "LAYOUT_GROUP1" -1
+11 0 
+26 27 28 29 30 31 32 33 35 34 36 
+
+"S 26" "0 0 1 1"
+"S 27" "1 0 1 1"
+"S 28" "3 0 1 1"
+"S 29" "9 0 1 1"
+"S 30" "7 0 1 1"
+"S 31" "6 0 1 1"
+"S 32" "8 0 1 1"
+"S 33" "5 0 1 1"
+"S 35" "2 0 1 1"
+"S 34" "4 0 1 1"
+"S 36" "10 0 1 1"
+"" ""
+0 1 0 0
+0
