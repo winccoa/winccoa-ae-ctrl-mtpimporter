@@ -2,6 +2,8 @@
 
 **Revolutionize Your Modular Automation with the WinCC OA MTP Importer! Transform your MTP (Module Type Package) into a fully functional WinCC OA configuration. The importer automatically creates the project structure, configures connections, and generates visualizations, reducing integration time from hours or days to minutes.**
 
+<img width="754" height="462" alt="post" src="images/MTP_Importer_Banner.png" />
+
 ## Overview
 
 The MTP Importer reads the MTP file and automatically creates the WinCC OA configuration: data points, OPC UA connections, and visualization panels.
@@ -32,7 +34,7 @@ For detailed instructions on usage and integration, please refer to the datashee
 
 ### Contribute
 
-For building the project you need dll's from Release/MTPViewer.zip
+For building the project you need dll's from Release/MtpImporter.zip
 
 ## Conclusion
 
