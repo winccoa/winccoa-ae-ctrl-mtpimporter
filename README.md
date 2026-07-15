@@ -30,7 +30,8 @@ The importer comprehends the hierarchical structure and semantics of your MTP fi
 
 ![Alt text](images/gif.gif)
 
-For detailed instructions on usage and integration, please refer to the datasheet: **"WinCCOAMTPExample.pdf."**
+For detailed instructions on usage and integration, please refer to the datasheet: **"WinCCOAMTPExample_V2.pdf."**
+and the detailed object documentation for the MTP objects, please refer to the datasheet available in the Downloads section with the name: **"mtpObjectsDocu_v2.pdf"**
 
 ### Contribute
 
